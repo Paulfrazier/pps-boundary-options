@@ -155,11 +155,11 @@ Context [PPS TLE deck, June 2026, slide 13]: 2025-26 K "Lottery Slots" and "Enro
 A first idea was "about 2 classes per grade" if PPS has no rule. Applied strictly, that fails almost every strand today (only Ainsworth, Rigler, Richmond, Kellogg and Mt. Tabor pass), so an option that keeps immersion strands in place would collapse into a plain redraw. The model uses two tiers instead:
 
 - **Healthy strand (target, reported):** ≥ 2 classes/grade. Elementary ≥ 44 students/grade (2 × 22) averaged over K-5. Middle ≥ 40 students/grade.
-- **Viable strand (hard rule for an option that keeps immersion strands in place):** ≥ 1 full class/grade. Elementary ≥ 22 students/grade (≥ 132 K-5). Middle ≥ 20 students/grade (≥ 60 across 6-8).
+- **Viable strand (hard rule for an option that keeps some immersion strands in place):** ≥ 1 full class/grade. Elementary ≥ 22 students/grade (≥ 132 K-5). Middle ≥ 20 students/grade (≥ 60 across 6-8).
 - **Sole-pathway exemption:** if a strand is the only host for its language on its HS pathway (Tubman Mandarin, Lane/Brentwood Russian, Kelly Russian, Roseway Vietnamese, Richmond/Mt. Tabor Japanese), it stays even if below viable. Moving it can't create continuity, and PPS keeps all of these in both scenarios.
 - **Continuity (hard, all options):** each K-5 strand feeds exactly one 6-8 strand of the same language, which feeds that language's high school (Spanish by home-address region). This matches today's chart and A.
 
-Applying the viable rule to 2031-32 numbers: **Clark (14.5/grade), Sitton (18.8) and Beach (21.2)** fall below viable; Beach and James John close anyway. **Ockley Green MS Spanish (11.3)** falls below viable. In an option that keeps strands in place, these still move to their pathway's surviving host, the same as A. Atkinson (30.5), Scott (37.2), James John (22.7, but its building closes) and RCP are viable where they are. In such an option, a strand whose building stays open stays put. A strand whose building closes moves to the nearest viable same-language host on its pathway, or travels with the neighborhood receiver if the receiver can hold it in range (e.g. James John → Sitton).
+Applying the viable rule to 2031-32 numbers: **Clark (14.5/grade), Sitton (18.8) and Beach (21.2)** fall below viable; Beach and James John close anyway. **Ockley Green MS Spanish (11.3)** falls below viable. In an option that keeps some strands in place, these still move to their pathway's surviving host, the same as A. Atkinson (30.5), Scott (37.2), James John (22.7, but its building closes) and RCP are viable where they are. In such an option, a strand whose building stays open stays put. A strand whose building closes moves to the nearest viable same-language host on its pathway, or travels with the neighborhood receiver if the receiver can hold it in range (e.g. James John → Sitton).
 
 ---
 
@@ -295,7 +295,7 @@ Feeder rules: middle zones are unions of whole K-5 zones, and high zones are uni
 2. **Viable strand [DEFAULT]:** ≥ 22 students/grade averaged over K-5 (≥ 132 total), and ≥ 20/grade in 6-8 (≥ 60). **Healthy:** ≥ 44/grade K-5 and ≥ 40/grade 6-8 (reported).
 3. **Sole-pathway exemption:** a strand that's the only host on its pathway stays regardless of size.
 4. **DLI students count toward their host building's size and capacity.** Whole-school DLI buildings (Rigler, Lent, Richmond) have no neighborhood zone.
-5. **Options that keep immersion strands in place:** a strand stays in its 2025-26 building if the building stays open and the strand is viable. Otherwise it moves to the pathway's surviving or viable host, and the solver uses A's destination unless a closer viable host exists.
+5. **Options that keep some immersion strands in place:** a strand stays in its 2025-26 building if the building stays open and the strand is viable. Otherwise it moves to the pathway's surviving or viable host, and the solver uses A's destination unless a closer viable host exists.
 
 ### Scenario-A facts the "district-like" option must replicate
 

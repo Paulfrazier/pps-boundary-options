@@ -1,5 +1,5 @@
 window.SITE_TABLES = {
- "generated": "2026-10-15T20:18:38+00:00",
+ "generated": "2026-10-15T21:16:19+00:00",
  "basis": "2031-32 (PSU forecast), kids of color from Census 2020 under-18 race by block",
  "diversity": {
   "levels": {

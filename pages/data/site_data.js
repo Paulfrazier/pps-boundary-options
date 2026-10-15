@@ -1,5 +1,5 @@
 window.SITE_DATA = {
- "generated": "2026-10-15T20:18:36+00:00",
+ "generated": "2026-10-15T21:16:17+00:00",
  "generated_label": "October 15, 2026",
  "model_version": "v2",
  "calibrated": true,
