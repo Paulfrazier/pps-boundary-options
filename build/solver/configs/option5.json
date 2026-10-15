@@ -1,0 +1,255 @@
+{
+ "basis": "2031-32 (PSU forecast; block kids scaled by area, see METHOD.md)",
+ "lr_nbhd_share": 0.02,
+ "floors": {
+  "K-5": 360,
+  "K-8": 500,
+  "6-8": 500,
+  "9-12": 1100
+ },
+ "ceiling_k5_max": 600,
+ "exempt_floor": [
+  "Astor",
+  "Skyline"
+ ],
+ "exempt_hold_status_quo": true,
+ "capacity_overrides": {
+  "Jefferson": 1773,
+  "Grant": 1935,
+  "McDaniel": 1735,
+  "Roosevelt": 1404,
+  "Harrison Park": 890
+ },
+ "hs_range_max": 350,
+ "focus": [
+  "Winterhaven",
+  "da Vinci",
+  "Odyssey",
+  "ACCESS",
+  "MLC",
+  "Benson"
+ ],
+ "past_margin_miles": 0.25,
+ "name": "option5",
+ "label": "Option 5 (placeholder): built to last - every school at target through 2040-41; solver chooses closures",
+ "kind": "option",
+ "move_baseline": "status_quo",
+ "levels": {
+  "K-5": {
+   "zoned": [
+    "Abernethy",
+    "Ainsworth",
+    "Alameda",
+    "Arleta",
+    "Astor",
+    "Atkinson",
+    "Beverly Cleary",
+    "Boise-Eliot/Humboldt",
+    "Bridger",
+    "Bridlemile",
+    "Capitol Hill",
+    "Chapman",
+    "Chief Joseph",
+    "Clark",
+    "Duniway",
+    "Faubion",
+    "Forest Park",
+    "Glencoe",
+    "Grout",
+    "Hayhurst",
+    "Kelly",
+    "Laurelhurst",
+    "Lee",
+    "Llewellyn",
+    "MLK Jr",
+    "Markham",
+    "Rieke",
+    "Rosa Parks",
+    "Scott",
+    "Sitton",
+    "Skyline",
+    "Sunnyside",
+    "Vernon",
+    "Vestal",
+    "Whitman",
+    "Woodlawn",
+    "Woodstock"
+   ],
+   "k8": [
+    "Astor",
+    "Skyline"
+   ],
+   "programs": {
+    "Ainsworth": [
+     "Ainsworth|Spanish"
+    ],
+    "Cesar Chavez": [
+     "Cesar Chavez|Spanish K-5",
+     "Beach|Spanish",
+     "James John|Spanish",
+     "Sitton|Spanish"
+    ],
+    "Lent": [
+     "Lent|Spanish",
+     "Atkinson|Spanish"
+    ],
+    "Rigler": [
+     "Rigler|Spanish",
+     "Scott|Spanish"
+    ],
+    "Boise-Eliot/Humboldt": [
+     "MLK Jr|Mandarin"
+    ],
+    "Woodstock": [
+     "Woodstock|Mandarin",
+     "Clark|Mandarin"
+    ],
+    "Kelly": [
+     "Kelly|Russian"
+    ],
+    "Vestal": [
+     "Rose City Park|Vietnamese"
+    ],
+    "Richmond": [
+     "Richmond|Japanese"
+    ]
+   },
+   "hint": "A_es",
+   "n_cand": 7,
+   "rooted": true
+  },
+  "6-8": {
+   "zoned": [
+    "Astor",
+    "Beaumont",
+    "George",
+    "Gray",
+    "Harrison Park",
+    "Hosford",
+    "Jackson",
+    "Kellogg",
+    "Lane",
+    "Mt Tabor",
+    "Ockley Green",
+    "Roseway Heights",
+    "Skyline",
+    "Tubman",
+    "West Sylvan"
+   ],
+   "k8": [
+    "Astor",
+    "Skyline"
+   ],
+   "programs": {
+    "West Sylvan": [
+     "West Sylvan|Spanish"
+    ],
+    "Kellogg": [
+     "Kellogg|Spanish"
+    ],
+    "George": [
+     "George|Spanish",
+     "Ockley Green|Spanish",
+     "Cesar Chavez|Spanish 6-8"
+    ],
+    "Roseway Heights": [
+     "Roseway Heights|Spanish",
+     "Beaumont|Spanish",
+     "Roseway Heights|Vietnamese"
+    ],
+    "Harrison Park": [
+     "Harrison Park|Mandarin"
+    ],
+    "Tubman": [
+     "Tubman|Mandarin"
+    ],
+    "Mt Tabor": [
+     "Mt Tabor|Japanese"
+    ],
+    "Lane": [
+     "Lane|Russian"
+    ]
+   },
+   "hint": "A_ms",
+   "n_cand": 5,
+   "rooted": true
+  },
+  "9-12": {
+   "zoned": [
+    "Cleveland",
+    "Franklin",
+    "Grant",
+    "Ida B. Wells",
+    "Jefferson",
+    "Lincoln",
+    "McDaniel",
+    "Roosevelt"
+   ],
+   "k8": [],
+   "programs": {
+    "Lincoln": [
+     "Lincoln|Spanish"
+    ],
+    "Roosevelt": [
+     "Roosevelt|Spanish",
+     "Roosevelt|PISA"
+    ],
+    "McDaniel": [
+     "McDaniel|Spanish",
+     "McDaniel|Vietnamese",
+     "McDaniel|PISA"
+    ],
+    "Franklin": [
+     "Franklin|Spanish",
+     "Franklin|Russian"
+    ],
+    "Cleveland": [
+     "Cleveland|Mandarin"
+    ],
+    "Jefferson": [
+     "Jefferson|Mandarin"
+    ],
+    "Grant": [
+     "Grant|Japanese"
+    ]
+   },
+   "hint": "A_hs",
+   "n_cand": 5,
+   "rooted": true,
+   "group_by": "K-5",
+   "parent_split_by": "6-8"
+  }
+ },
+ "weights": {
+  "walk": 1.0,
+  "past": 0.25,
+  "move": 0.15,
+  "perim": 3.0,
+  "diversity": 0.0,
+  "diversity_band": 0.15,
+  "split": 20000.0,
+  "hs_range": 2.0,
+  "slack": 10000.0,
+  "durable_school": 3000.0,
+  "school_year_at_target": 100.0,
+  "durability_count_slack": 100000.0,
+  "ms_split": 5000.0
+ },
+ "solver": {
+  "time_first": 180,
+  "time_round": 60,
+  "time_star": 600,
+  "max_rounds": 10,
+  "workers": 6
+ },
+ "durability": {
+  "mode": "all",
+  "reference": "scenario_A",
+  "note": "every zoned non-exempt school at target every year 2031-32..2040-41"
+ },
+ "optional_open": {
+  "K-5": "all current K-5/K-8 buildings",
+  "6-8": "all current 6-8 buildings"
+ },
+ "status": "placeholder: needs open/close variables (as 3b) and a closure-count / cost objective; do not run yet"
+}

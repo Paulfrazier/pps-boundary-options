@@ -1,0 +1,267 @@
+SELECTED: Clark
+RETRIEVED: 2026-10-09T19:12:58.145Z
+SOURCE: https://app.powerbi.com/view?r=eyJrIjoiOWZlNmJhYjQtYzc5YS00MzY5LTk3ODYtMWYxMmQ0YWMyMjIxIiwidCI6ImQwOGRmYzk0LWEyM2MtNDRlNC04YjhkLTRhYmM0MGRkYTlhZSIsImMiOjZ9&pageName=52fe3db4b36f375bbf95
+
+Show keyboard shortcuts
+Show screen reader tips
+Skip to main content
+Power BI Report
+
+School Profiles
+
+2025 - 2026
+
+School
+Abernethy
+Access Academy
+Ainsworth
+Alameda
+Alliance
+Arleta
+Astor
+Atkinson
+Beach
+Beaumont
+Benson
+Beverly Cleary
+Boise-Eliot/Humboldt
+Brentwood
+Bridger Creative Science
+Bridlemile
+Buckman
+Capitol Hill
+Cesar Chavez
+Chapman
+Chief Joseph
+Clark
+Cleveland
+Creston
+DaVinci Arts
+Dr Martin Luther King Jr
+Duniway
+Faubion
+Forest Park
+Franklin
+George
+Glencoe
+Grant
+Grout
+Harriet Tubman
+Harrison Park
+Hayhurst
+Hosford
+Ida B Wells
+Irvington
+Jackson
+James John
+Jefferson
+Kellogg
+Kelly
+Laurelhurst
+Lent
+Lewis
+Lincoln
+Llewellyn
+Maplewood
+Markham
+Marysville
+McDaniel
+MLC K12
+Mt Tabor
+Ockley Green
+Odyssey Program
+Peninsula
+Richmond
+Rieke
+Rigler
+Robert Gray
+Roosevelt
+Rosa Parks
+Rose City Park
+Roseway Heights
+Sabin
+Scott
+Sellwood
+Sitton
+Skyline
+Stephenson
+Sunnyside Environmental
+Sunrise
+Vernon
+Vestal
+West Sylvan
+Whitman
+Winterhaven
+Woodlawn
+Woodmere
+Woodstock
+
+Clark
+
+Map panned south east 11.56 kilometers.
+
+Location: SE 92nd Ave & SE Main St, Maywood Park.
+
+Map style: grayscale_light.
+
+Map shortcuts: Zoom out: hyphen. Zoom in: plus. Pan right 100 pixels: right arrow. Pan left 100 pixels: left arrow. Pan up 100 pixels: up arrow. Pan down 100 pixels: down arrow. Rotate 15 degrees clockwise: shift + right arrow. Rotate 15 degrees counter clockwise: shift + left arrow. Increase pitch 10 degrees: shift + up arrow. Decrease pitch 10 degrees: shift + down arrow. Jump focus to the map: Escape.
+Road
+Satellite
+Hybrid
+Grayscale (Dark)
+Night
+Grayscale (Light)
+Terra
+Blank
+Blank (Accessible)
+High contrast (Dark)
+High contrast (Light)
+Grayscale (Light)
+©2026 TomTom©2026 OSM
+Feedback
+
+Address: 1231 SE 92ND AVE
+Originally Built For: K-5
+HS Cluster: MCDANIEL
+Primary Use: K-8
+
+BUILDING INFORMATION
+
+Grades: K-5
+Year Built: 1955
+Square Footage: 50,227
+
+Enrollment
+
+364
+
+=
+
+Utilization Rate
+
+79%
+
+÷
+
+Functional Capacity
+
+459
+
+Functional
+Capacity
+
+458.85
+
+2025-2026 Utilization Rate
+
+79%
+
+Enrollment
+
+Direct Cert. indicates percentage of students qualifying for direct certification. 
+
+2026 - 2027 Projected
+
+363
+
+2025 - 2026 Enrollment
+
+364
+
+2025 - 2026 Direct Cert.
+
+67.9%
+
+Students in Neighborhood School
+
+318
+
+PPS Students Live in Zone
+
+516
+
+In District Capture Rate
+
+61.6%
+
+Historical and Projected Enrollment
+0
+100
+200
+300
+School Year
+2023-2024
+2024-2025
+2025-2026
+2026-2027
+2027-2028
+2028-2029
+2029-2030
+2030-2031
+2031-2032
+343
+341
+360
+350
+356
+355
+364
+331
+363
+Historical Demographics
+0
+100
+200
+300
+School Year
+2023-24
+2024-25
+2025-26
+75
+81
+79
+31
+40
+37
+41
+53
+50
+58
+72
+67
+63
+76
+70
+89
+Race
+Asian
+Black
+Latino
+Multiple
+Native
+Pacific Islander
+White
+
+Programs
+
+Program Type
+
+Neighborhood / Immersion
+
+Title 1
+
+Yes
+
+Immersion Language
+
+Mandarin
+
+Immersion Language 2
+
+--
+
+-
++
+107%
+Microsoft Power BI
+Report Zoomed To 107%

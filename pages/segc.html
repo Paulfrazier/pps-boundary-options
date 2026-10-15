@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lessons from SEGC | PPS boundary options</title>
+<meta name="description" content="PPS&rsquo;s outside equity audit of its last boundary change (SEGC) made a set of recommendations. A lesson-by-lesson check of how PPS A and PPS B measure up.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23245c9e%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23fff%27/%3E%3Crect x=%2713.5%27 y=%2718%27 width=%275%27 height=%277%27 fill=%27%23245c9e%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css">
+<style>
+/* Verdict colors reuse the site tokens: --good / --pps / --today / --bad. */
+:root{--ok-bg:#e3f1ea;--part-bg:#f3ead9;--yet-bg:#eceeee;--no-bg:#f7e4df}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ok-bg:#1d3329;--part-bg:#352c1b;--yet-bg:#262c2f;--no-bg:#3a231d}}
+:root[data-theme="dark"]{--ok-bg:#1d3329;--part-bg:#352c1b;--yet-bg:#262c2f;--no-bg:#3a231d}
+.tally{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 8px}
+.pill{display:inline-block;border-radius:999px;padding:1px 10px;font-size:13px;font-weight:600;white-space:nowrap;color:var(--ink)}
+.pill.ok{background:var(--ok-bg);box-shadow:inset 0 0 0 1px var(--good)}
+.pill.part{background:var(--part-bg);box-shadow:inset 0 0 0 1px var(--pps)}
+.pill.yet{background:var(--yet-bg);box-shadow:inset 0 0 0 1px var(--today)}
+.pill.no{background:var(--no-bg);box-shadow:inset 0 0 0 1px var(--bad)}
+.pill.ok::before{content:"\2713  "}.pill.no::before{content:"\2715  "}.pill.part::before{content:"\25D0  "}.pill.yet::before{content:"\2026  "}
+table.sc th,table.sc td{text-align:left;vertical-align:top;font-variant-numeric:normal}
+table.sc td.les{min-width:220px;width:38%}
+table.sc td.les b{display:block;margin-bottom:3px}
+table.sc .aud{display:block;color:var(--muted);font-size:13px;line-height:1.45}
+table.sc td.v{white-space:nowrap}
+table.sc tr.grp th{background:var(--paper);color:var(--ink);font-size:13px;font-weight:700;letter-spacing:.02em;padding-top:12px}
+.pg{color:var(--muted);font-size:12px;white-space:nowrap}
+table.n td,table.n th{text-align:right}table.n td:first-child,table.n th:first-child{text-align:left}
+ol.asks{padding-left:22px}ol.asks li{margin:8px 0;max-width:70ch}
+.lead p{max-width:70ch}
+/* Phones: each scorecard row becomes a card. */
+@media (max-width:640px){
+  table.sc thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  table.sc,table.sc tbody,table.sc tr,table.sc td,table.sc th{display:block;width:auto}
+  table.sc tr{border-bottom:1px solid var(--rule);padding:10px 12px}
+  table.sc tr.grp{padding:0}
+  table.sc td,table.sc th{border:0;padding:3px 0}
+  table.sc tr.grp th{padding:10px 12px 6px}
+  table.sc td.les{min-width:0;width:auto}
+  table.sc td.v{order:-1}
+  .pg{white-space:normal}
+  .tbl.cards{overflow:visible;background:var(--card)}
+}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="schools.html">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html" aria-current="page">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
+<main>
+<div class="warn" id="pps-disclaimer"><b>Independent analysis by a PPS parent, not an official Portland Public Schools product.</b> It may contain errors. Check PPS's own materials: the <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">Rightsizing scenarios page</a> and the <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
+
+<h1>Did PPS learn from SEGC?</h1>
+<p class="lede">PPS paid for an outside audit of its last big boundary change, the 2020&ndash;23 Southeast Enrollment and Program Balancing (&ldquo;SEGC&rdquo;). Here is what the audit recommended, and how PPS A and PPS B measure up so far.</p>
+
+<div class="lead">
+<p>In 2026, Dr. Terrance Green and Dr. Havala Hanson audited the 20 schools SEGC changed. They drew on 905 family and 327 staff surveys, five years of student and staff records, and focus groups and interviews <span class="pg">(audit pp. 4&ndash;5)</span>. They found that SEGC evened out middle school sizes but did not stop decline, that its projections ran high, and that staff of color and trust took the biggest hits. The Board wrote several of the process lessons into Resolution 7307.</p>
+<p>The scenarios apply some of them: every region is in scope, the criteria came before the list, and Marysville&rsquo;s closure is phased so SEGC-moved students don&rsquo;t move twice. Others haven&rsquo;t been published yet, and a few go the other way.</p>
+</div>
+
+<div class="tally" aria-label="Verdict counts">
+  <span class="pill ok">Applied 3</span>
+  <span class="pill part">Partly 6</span>
+  <span class="pill yet">Not yet 3</span>
+  <span class="pill no">Not applied 4</span>
+</div>
+<p class="small muted">As of October 14, 2026. Nothing new had been posted to PPS&rsquo;s rightsizing pages since the October 6 release. &ldquo;p.&rdquo; is the PDF page of the source. &ldquo;Not yet&rdquo; means promised but not published; PPS&rsquo;s scenario memo says the district will consider &ldquo;equity impact findings&rdquo; (none are published yet) and that the superintendent&rsquo;s mid-November recommendation will describe &ldquo;implementation considerations and transition supports.&rdquo;</p>
+
+<h2 id="scorecard">The scorecard</h2>
+<p class="small muted"><b>Applied:</b> visible in the scenarios. <b>Partly:</b> some of it. <b>Not yet:</b> promised, not published. <b>Not applied:</b> the scenarios do something different.</p>
+<div class="tbl cards"><table class="sc">
+<thead><tr><th>Lesson, and what the audit found</th><th>What PPS has done so far</th><th>Verdict</th></tr></thead>
+<tbody>
+<tr class="grp"><th colspan="3">Applied</th></tr>
+<tr><td class="les"><b>Put every school in scope</b><span class="aud">Leaving some Southeast schools out &ldquo;undermined trust.&rdquo; Participants described the excluded schools as whiter and more affluent; SEGC schools averaged 54% free or reduced-price lunch vs 25% at excluded Southeast schools. <span class="pg">pp. 21, 70</span></span></td>
+<td>Resolution 7307 puts every school and program in scope, and the scenarios cover all four regions. But &ldquo;no alternative or focus option school closure is proposed.&rdquo; <span class="pg">Res. 7307 p. 2; scenario memo p. 2</span></td><td class="v"><span class="pill ok">Applied</span></td></tr>
+<tr><td class="les"><b>Only promise what is budgeted</b><span class="aud">&ldquo;Broken promises or even the perceptions of them were among the most trust-damaging elements&hellip;&rdquo; Only 3% of surveyed staff mostly or completely trust PPS to handle rightsizing fairly. <span class="pg">pp. 17, 66</span></span></td>
+<td>Every Family Guide says: &ldquo;A larger school does not automatically get a full-time librarian, certain staff, or specific programs.&rdquo; <span class="pg">Family Guides p. 1</span></td><td class="v"><span class="pill ok">Applied</span></td></tr>
+<tr><td class="les"><b>Track what happens afterward</b><span class="aud">PPS &ldquo;must publicly track follow-through.&rdquo; <span class="pg">p. 66</span></span></td>
+<td>Resolution 7307 commits to &ldquo;monitoring, evaluation, and adjustment.&rdquo; <span class="pg">Res. 7307 p. 3; Sept 15 deck p. 7</span></td><td class="v"><span class="pill ok">Applied</span></td></tr>
+
+<tr class="grp"><th colspan="3">Partly</th></tr>
+<tr><td class="les"><b>Set criteria before the list</b><span class="aud">Ground scenario work in &ldquo;transparent criteria.&rdquo; Only 23% of SEGC members said decision rules were clear and applied consistently. <span class="pg">pp. 58, 72</span></span></td>
+<td>Principles came May 26, measures Sept 15 and scenarios Oct 6. But the criteria &ldquo;were weighed against one another rather than applied in a fixed ranking, with the balance differing by regional conditions.&rdquo; <span class="pg">scenario memo p. 1</span></td><td class="v"><span class="pill part">Partly</span></td></tr>
+<tr><td class="les"><b>Define &ldquo;well-resourced&rdquo; as a funded staffing model</b><span class="aud">Name the staff and services students can count on, funded for several years (&ldquo;e.g., five-year window&rdquo;), and show students get more, &ldquo;not only that enrollment numbers improve on paper.&rdquo; <span class="pg">p. 72</span></span></td>
+<td>Described: K-5 with &ldquo;2-3 sections per grade&rdquo; and &ldquo;counseling and nursing support on site&rdquo;; middle school with &ldquo;6-8 sections per grade.&rdquo; No funded staffing model. <span class="pg">Sept 8 deck p. 7</span></td><td class="v"><span class="pill part">Partly</span></td></tr>
+<tr><td class="les"><b>Count cumulative burden</b><span class="aud">Schools lived SEGC as &ldquo;layered disruption.&rdquo; Map which schools have already absorbed change before choosing who absorbs more. <span class="pg">pp. 69, 73</span></span></td>
+<td>The memo cites &ldquo;lessons from prior southeast changes&rdquo; and &ldquo;limiting repeated transitions,&rdquo; and Marysville is phased in so SEGC-moved students avoid &ldquo;multiple school moves.&rdquo; Still, several audited schools change again: Marysville and Creston close, Clark&rsquo;s Mandarin moves again (to Woodstock), Atkinson&rsquo;s Spanish moves to Lent, and Bridger loses grades 6-8. No burden map. <span class="pg">scenario memo p. 2; Marysville guide p. 3; district-wide comparison p. 2</span></td><td class="v"><span class="pill part">Partly</span></td></tr>
+<tr><td class="les"><b>Engage early, with data, so people can test alternatives</b><span class="aud">&ldquo;&hellip;limited access to requested data made it difficult for members to test alternatives&hellip;&rdquo; <span class="pg">p. 20</span></span></td>
+<td>About six weeks from release (Oct 6) to the recommendation (mid-November), with the vote in December. The two scenarios &ldquo;share most of their proposed structural changes.&rdquo; Boundaries were released as PDF maps, not GIS data. <span class="pg">scenario memo pp. 1, 3</span></td><td class="v"><span class="pill part">Partly</span></td></tr>
+<tr><td class="les"><b>Program moves hurt most</b><span class="aud">Black students leave SEGC immersion programs at 7&ndash;17% a year, higher than any other group. Total SEGC immersion enrollment reached 86% of target. <span class="pg">p. 10</span></span></td>
+<td>13 program moves in PPS A and 12 in PPS B, and the immersion moves are largely shared, so there is no lighter choice on immersion. <span class="pg">district-wide comparison p. 2</span></td><td class="v"><span class="pill part">Partly</span></td></tr>
+<tr><td class="les"><b>Acknowledge past harm</b><span class="aud">Begin by &ldquo;publicly acknowledging past harms, broken trust&rdquo; and creating guardrails. <span class="pg">p. 22</span></span></td>
+<td>&ldquo;The gap between stated intentions and actions eroded trust with the impacted communities.&rdquo; <span class="pg">Aug 4 memo p. 1</span></td><td class="v"><span class="pill part">Partly</span></td></tr>
+
+<tr class="grp"><th colspan="3">Not yet</th></tr>
+<tr><td class="les"><b>An equity impact summary for every scenario</b><span class="aud">For each option: students affected, by race, multilingual status, special education and poverty. <span class="pg">p. 71</span></span></td>
+<td>Required by Resolution 7307, including for &ldquo;communities that have recently been impacted,&rdquo; and promised as &ldquo;an equity analysis review attached to every scenario.&rdquo; The Oct 6 release has none; focal groups appear only as shares &ldquo;in sustainable schools.&rdquo; <span class="pg">Res. 7307 p. 2; Sept 15 deck p. 7; district-wide comparison p. 1</span></td><td class="v"><span class="pill yet">Not yet</span></td></tr>
+<tr><td class="les"><b>Be honest about money</b><span class="aud">A rule of thumb the audit cites: closing 1 of every 15 schools saves about 4% of a budget, mostly in staff. Publish net savings after transition, receiving-school and vacant-building costs. <span class="pg">pp. 110&ndash;111, 148</span></span></td>
+<td>A board member asked for &ldquo;the estimated cost savings to closing a school&rdquo; and how many layoffs were expected. The reply covered only layoffs (&ldquo;The number of potential layoffs can not be determined at this time.&rdquo;) and gave no savings figure. <span class="pg">Board Q&amp;A, Oct 1, p. 7</span></td><td class="v"><span class="pill yet">Not yet</span></td></tr>
+<tr><td class="les"><b>Staff stability is student stability</b><span class="aud">In the year SEGC took effect, 32% of SEGC staff left their school vs 19% elsewhere, and 39% of staff of color vs 21%. The overall gap closed by 2024-25. <span class="pg">p. 14</span></span></td>
+<td>No staff placement or retention plan has been published, including for staff of color. <span class="pg">Board Q&amp;A, Oct 1, p. 7</span></td><td class="v"><span class="pill yet">Not yet</span></td></tr>
+
+<tr class="grp"><th colspan="3">Not applied</th></tr>
+<tr><td class="les"><b>Add a decline buffer to size floors</b><span class="aud">Treat the state&rsquo;s 360 / 500 as &ldquo;a starting floor,&rdquo; add about five years of PPS&rsquo;s own losses, and plan around <b>450 K-5, 600 middle, 650 K-8</b>. These &ldquo;should not be understood as automatic closure thresholds.&rdquo; <span class="pg">pp. 140&ndash;141, 144&ndash;146</span></span></td>
+<td>PPS uses 360 / 500 as is, and applies 500 to K-8s too. On PPS&rsquo;s own projections for 2031-32, 13 of PPS A&rsquo;s 24 K-5 schools at the goal are below 450 (<a href="#floors">table below</a>). <span class="pg">Aug 4 memo p. 2; Family Guides p. 4</span></td><td class="v"><span class="pill no">Not applied</span></td></tr>
+<tr><td class="les"><b>Use projection ranges</b><span class="aud">Projections ran high at 12 of 20 schools; Mandarin immersion reached 69% of target and Russian 67%. Use &ldquo;enrollment projection ranges rather than a single projected number.&rdquo; <span class="pg">pp. 6, 48, 73</span></span></td>
+<td>&ldquo;All figures are projections for the 2031&ndash;32 school year&rdquo;: one number per school. <span class="pg">district-wide comparison p. 1</span></td><td class="v"><span class="pill no">Not applied</span></td></tr>
+<tr><td class="les"><b>Fund the transition before the vote</b><span class="aud">&ldquo;Develop a robust, funded transition plan prior to any Board vote,&rdquo; and treat receiving-school readiness as &ldquo;an equity requirement.&rdquo; <span class="pg">pp. 73, 114</span></span></td>
+<td>Readiness, transportation, staffing and transition supports &ldquo;will require further implementation planning.&rdquo; The vote is in December; staffing runs winter to fall 2027. <span class="pg">scenario memo pp. 1&ndash;2; PPS timeline</span></td><td class="v"><span class="pill no">Not applied</span></td></tr>
+<tr><td class="les"><b>Don&rsquo;t repeat a whole-school conversion</b><span class="aud">Lent&rsquo;s conversion to whole-school Spanish immersion: 57% of students left, and Black enrollment fell from 10% to 2%. &ldquo;Programmatic equity and racial equity must be analyzed together.&rdquo; <span class="pg">pp. 11&ndash;12, 50, 124; school-by-school p. 45</span></span></td>
+<td>C&eacute;sar Ch&aacute;vez &ldquo;would change from a K-8 to a focused K-5 regional Spanish DLI school,&rdquo; and its neighborhood K-5 students would go to Rosa Parks. Its guide shows students experiencing poverty falling from 65.7% to 47.8% and underserved racial groups from 81.5% to 69.1%, with no breakdown by race of who moves. <span class="pg">Ch&aacute;vez guide pp. 3&ndash;4</span></td><td class="v"><span class="pill no">Not applied</span></td></tr>
+</tbody></table></div>
+
+<h2 id="floors">How thin is &ldquo;sustainable&rdquo;?</h2>
+<p>PPS counts a school at its goal (360 K-5, 500 middle) as sustainable. The audit&rsquo;s planning floor adds a five-year decline buffer: about 450 and 600. Schools between the two lines meet PPS&rsquo;s goal today but have little room if enrollment keeps falling, as it&rsquo;s forecast to after 2031 (Res. 7307, recital C).</p>
+<div class="tbl"><table class="n">
+<thead><tr><th>2031-32, PPS&rsquo;s own projections</th><th>Neighborhood schools</th><th>At PPS&rsquo;s goal</th><th>At the audit floor</th><th>Between the two</th></tr></thead>
+<tbody>
+<tr><td><b>PPS A, K-5</b> (360 / 450)</td><td>35</td><td>24</td><td>11</td><td><b>13</b></td></tr>
+<tr><td>PPS B, K-5</td><td>38</td><td>19</td><td>6</td><td><b>13</b></td></tr>
+<tr><td>PPS A, middle (500 / 600)</td><td>13</td><td>8</td><td>3</td><td><b>5</b></td></tr>
+<tr><td>PPS B, middle</td><td>13</td><td>9</td><td>3</td><td><b>6</b></td></tr>
+</tbody></table></div>
+<p class="small muted">Source: PPS Family Guides, &ldquo;How many students are expected?&rdquo;, p. 4, 2031-32 column; neighborhood schools only (program-only immersion schools left out), the same set the <a href="durability.html">Durability page</a> uses. Floors: audit pp. 144&ndash;146. See <a href="sizes.html">Why these sizes</a> for where 360 and 500 come from.</p>
+
+<h2 id="asks">What would close the gap by mid-November</h2>
+<ol class="asks">
+<li><b>Publish the equity impact analysis for PPS A and B now</b>, including who moves (by race, poverty, special education and language) and the recently impacted schools, as Resolution 7307 requires.</li>
+<li><b>Show low, expected and high enrollment</b> for every receiving school, not one 2031-32 number.</li>
+<li><b>Say what happens below the line.</b> For schools projected at 360&ndash;449 (K-5) or 500&ndash;599 (middle), state the staffing they keep if they drift under, and whether they&rsquo;d be on the next list.</li>
+<li><b>Put a number on net savings</b>, after transition, receiving-school and vacant-building costs.</li>
+<li><b>Publish a cumulative-burden map</b>, and explain each second move: Mandarin, Lent, Atkinson, Creston, Bridger.</li>
+<li><b>Fund transition and receiving-school readiness before the vote</b>, or vote in stages so readiness gates each step.</li>
+<li><b>Release the boundaries as GIS data</b>, so families can test alternatives.</li>
+</ol>
+
+<h2 id="care">Read with care</h2>
+<ul>
+<li>Two findings cut against simple stories. SEGC students&rsquo; test scores, attendance and discipline were broadly similar to matched peers&rsquo; <span class="pg">(audit p. 7)</span>. And immersion students in SEGC schools left PPS at about 6% vs 11% for other students <span class="pg">(p. 11)</span>.</li>
+<li>Dr. Green writes that the report &ldquo;should not be read as a justification for school closures&rdquo; <span class="pg">(p. 152)</span>.</li>
+<li>Many audit findings are participant perceptions, and the audit labels them that way. The 450 / 600 / 650 floors are the auditors&rsquo; &ldquo;preliminary planning estimates,&rdquo; not PPS policy <span class="pg">(pp. 144, 146)</span>.</li>
+<li>&ldquo;Not yet&rdquo; is as of October 14, 2026. If PPS publishes any of these, the verdicts here should change.</li>
+</ul>
+
+<h2 id="sources">Sources</h2>
+<ul class="small">
+<li>Green &amp; Hanson, <i>Equity Audit Evaluation of PPS&rsquo;s Southeast Enrollment and Program Balancing Initiative</i>, June 10, 2026 (&ldquo;audit&rdquo;): <a href="https://drive.google.com/file/d/1gcq_2z1sc6yj90PJCsUc9yqrLfAVWxSz/view">PDF</a> &middot; <i>School-by-School Analysis</i>, June 29, 2026: <a href="https://drive.google.com/file/d/1xKJXsjio70jEAndFTHpr1_9FF3dQptlY/view">PDF</a> &middot; <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/segc-documents">PPS SEGC Documents page</a></li>
+<li>Resolution 7307, Guiding Principles and Workplan, May 26, 2026: <a href="https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=3997273">BoardBook</a></li>
+<li>Equity Audit update memo, Aug 4, 2026: <a href="https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=3997426">BoardBook</a></li>
+<li>Well-Resourced Schools deck, Sept 8, 2026: <a href="https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=14374370">BoardBook</a> &middot; Decision Framework deck, Sept 15, 2026: <a href="https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=14430171">BoardBook</a></li>
+<li>Board Q&amp;A tracker, Oct 1, 2026: <a href="https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=14493920">BoardBook</a></li>
+<li>Scenario release memo, Oct 5, 2026: <a href="https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=14509719">BoardBook</a> &middot; District-wide comparison, Oct 4, 2026: <a href="https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=14505788">BoardBook</a></li>
+<li>Family Guides (C&eacute;sar Ch&aacute;vez, Marysville and others): <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/how-could-your-school-be-impacted">How could your school be impacted?</a> &middot; <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/timeline">PPS rightsizing timeline</a></li>
+<li>Text copies of each are in <a href="../build/pps-texts/README.md">build/pps-texts/</a>.</li>
+</ul>
+
+<footer><p><a href="sizes.html">Why these sizes</a> &middot; <a href="durability.html">School sizes year by year</a> &middot; <a href="options.html">Every plan side by side</a></p><p id="ai"><b>Built with AI.</b> The research, data work, modeling and writing were done by AI (Claude, from Anthropic), directed and guided by Paul Frazier, a PPS parent, who made every judgment call and checked results against PPS&rsquo;s documents. Best effort; it will have errors. <a href="how.html">How we did this</a> &middot; <a href="method.html">Method</a>.</p>
+<p><a href="../LICENSE">License</a>: code MIT, analysis CC BY 4.0, OpenStreetMap-derived data &copy; OpenStreetMap contributors, ODbL. &copy; 2026 Paul Frazier.</p>
+</footer>
+</main>
+</body>
+</html>

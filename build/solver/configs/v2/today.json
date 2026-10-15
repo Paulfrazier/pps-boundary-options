@@ -1,0 +1,307 @@
+{
+ "basis": "2031-32 (PSU forecast; block kids scaled by area, see METHOD.md)",
+ "lr_nbhd_share": 0.02,
+ "floors": {
+  "K-5": 360,
+  "K-8": 500,
+  "6-8": 500,
+  "9-12": 1100
+ },
+ "ceiling_k5_max": 600,
+ "exempt_floor": [
+  "Astor",
+  "Skyline"
+ ],
+ "exempt_hold_status_quo": true,
+ "capacity_overrides": {
+  "Jefferson": 1773
+ },
+ "hs_range_max": 350,
+ "focus": [
+  "Winterhaven",
+  "da Vinci",
+  "Odyssey",
+  "ACCESS",
+  "MLC",
+  "Benson"
+ ],
+ "past_margin_miles": 0.25,
+ "name": "today",
+ "label": "Today (2025-26 lines, today's programs)",
+ "kind": "baseline",
+ "levels": {
+  "K-5": {
+   "assign": "es_cur",
+   "zoned": [
+    "Abernethy",
+    "Ainsworth",
+    "Alameda",
+    "Arleta",
+    "Astor",
+    "Atkinson",
+    "Beach",
+    "Beverly Cleary",
+    "Boise-Eliot/Humboldt",
+    "Bridger",
+    "Bridlemile",
+    "Buckman",
+    "Capitol Hill",
+    "Cesar Chavez",
+    "Chapman",
+    "Chief Joseph",
+    "Clark",
+    "Creston",
+    "Duniway",
+    "Faubion",
+    "Forest Park",
+    "Glencoe",
+    "Grout",
+    "Hayhurst",
+    "Irvington",
+    "James John",
+    "Kelly",
+    "Laurelhurst",
+    "Lee",
+    "Lewis",
+    "Llewellyn",
+    "MLK Jr",
+    "Maplewood",
+    "Markham",
+    "Marysville",
+    "Peninsula",
+    "Rieke",
+    "Rigler",
+    "Rosa Parks",
+    "Rose City Park",
+    "Sabin",
+    "Scott",
+    "Sitton",
+    "Skyline",
+    "Stephenson",
+    "Sunnyside",
+    "Vernon",
+    "Vestal",
+    "Whitman",
+    "Woodlawn",
+    "Woodmere",
+    "Woodstock"
+   ],
+   "programs": {
+    "Ainsworth": [
+     "Ainsworth|Spanish"
+    ],
+    "Atkinson": [
+     "Atkinson|Spanish"
+    ],
+    "Beach": [
+     "Beach|Spanish"
+    ],
+    "Cesar Chavez": [
+     "Cesar Chavez|Spanish K-5"
+    ],
+    "Clark": [
+     "Clark|Mandarin"
+    ],
+    "James John": [
+     "James John|Spanish"
+    ],
+    "Kelly": [
+     "Kelly|Russian"
+    ],
+    "Lent": [
+     "Lent|Spanish"
+    ],
+    "MLK Jr": [
+     "MLK Jr|Mandarin"
+    ],
+    "Rigler": [
+     "Rigler|Spanish"
+    ],
+    "Rose City Park": [
+     "Rose City Park|Vietnamese"
+    ],
+    "Scott": [
+     "Scott|Spanish"
+    ],
+    "Sitton": [
+     "Sitton|Spanish"
+    ],
+    "Woodstock": [
+     "Woodstock|Mandarin"
+    ],
+    "Richmond": [
+     "Richmond|Japanese"
+    ]
+   },
+   "k8": [
+    "Astor",
+    "Beverly Cleary",
+    "Bridger",
+    "Cesar Chavez",
+    "Faubion",
+    "Laurelhurst",
+    "Skyline",
+    "Sunnyside",
+    "Vernon"
+   ]
+  },
+  "6-8": {
+   "assign": "ms_cur",
+   "zoned": [
+    "Astor",
+    "Beaumont",
+    "Beverly Cleary",
+    "Bridger",
+    "Cesar Chavez",
+    "Faubion",
+    "George",
+    "Gray",
+    "Harrison Park",
+    "Hosford",
+    "Jackson",
+    "Kellogg",
+    "Lane",
+    "Laurelhurst",
+    "Mt Tabor",
+    "Ockley Green",
+    "Roseway Heights",
+    "Sellwood",
+    "Skyline",
+    "Sunnyside",
+    "Tubman",
+    "Vernon",
+    "West Sylvan"
+   ],
+   "programs": {
+    "Cesar Chavez": [
+     "Cesar Chavez|Spanish 6-8"
+    ],
+    "West Sylvan": [
+     "West Sylvan|Spanish"
+    ],
+    "Kellogg": [
+     "Kellogg|Spanish"
+    ],
+    "George": [
+     "George|Spanish"
+    ],
+    "Beaumont": [
+     "Beaumont|Spanish"
+    ],
+    "Roseway Heights": [
+     "Roseway Heights|Spanish",
+     "Roseway Heights|Vietnamese"
+    ],
+    "Ockley Green": [
+     "Ockley Green|Spanish"
+    ],
+    "Harrison Park": [
+     "Harrison Park|Mandarin"
+    ],
+    "Tubman": [
+     "Tubman|Mandarin"
+    ],
+    "Mt Tabor": [
+     "Mt Tabor|Japanese"
+    ],
+    "Lane": [
+     "Lane|Russian"
+    ]
+   },
+   "k8": [
+    "Astor",
+    "Beverly Cleary",
+    "Bridger",
+    "Cesar Chavez",
+    "Faubion",
+    "Laurelhurst",
+    "Skyline",
+    "Sunnyside",
+    "Vernon"
+   ]
+  },
+  "9-12": {
+   "assign": "hs_cluster_cur",
+   "zoned": [
+    "Cleveland",
+    "Franklin",
+    "Grant",
+    "Ida B. Wells",
+    "Lincoln",
+    "McDaniel",
+    "Roosevelt"
+   ],
+   "programs": {
+    "Lincoln": [
+     "Lincoln|Spanish"
+    ],
+    "Roosevelt": [
+     "Roosevelt|Spanish",
+     "Roosevelt|PISA"
+    ],
+    "McDaniel": [
+     "McDaniel|Spanish",
+     "McDaniel|Vietnamese",
+     "McDaniel|PISA"
+    ],
+    "Franklin": [
+     "Franklin|Spanish",
+     "Franklin|Russian"
+    ],
+    "Cleveland": [
+     "Cleveland|Mandarin"
+    ],
+    "Jefferson": [
+     "Jefferson|Mandarin"
+    ],
+    "Grant": [
+     "Grant|Japanese"
+    ]
+   },
+   "k8": []
+  }
+ },
+ "model_version": "v2",
+ "v2": {
+  "focus_lottery": {
+   "Sunnyside": {
+    "in_zone_2025_26": 219,
+    "enrollment_2025_26": 485,
+    "source": "PPS Enrollment Summary Oct 2025 by neighborhood and type of school attended, p. 1 (build/pps-texts/boardbook-2026-10/pps-enrollment-summary-oct-2025-capture-rates.md); ODE Fall Membership 2025-26 (build/data/schools.csv enr_total)",
+    "placement": {
+     "K-5": "host",
+     "6-8": "host"
+    }
+   },
+   "Bridger": {
+    "in_zone_2025_26": 143,
+    "enrollment_2025_26": 446,
+    "source": "PPS Enrollment Summary Oct 2025 by neighborhood and type of school attended, p. 1 (build/pps-texts/boardbook-2026-10/pps-enrollment-summary-oct-2025-capture-rates.md); ODE Fall Membership 2025-26 (build/data/schools.csv enr_total)",
+    "placement": {
+     "K-5": "host",
+     "6-8": "host"
+    }
+   },
+   "Buckman": {
+    "in_zone_2025_26": 133,
+    "enrollment_2025_26": 283,
+    "source": "PPS Enrollment Summary Oct 2025 by neighborhood and type of school attended, p. 1 (build/pps-texts/boardbook-2026-10/pps-enrollment-summary-oct-2025-capture-rates.md); ODE Fall Membership 2025-26 (build/data/schools.csv enr_total)",
+    "placement": {
+     "K-5": "host"
+    }
+   }
+  },
+  "lent_nondli": {
+   "kids_2025_26": 117,
+   "source": "PPS Enrollment Summary Oct 2025 by neighborhood and type of school attended, p. 1 (build/pps-texts/boardbook-2026-10/pps-enrollment-summary-oct-2025-capture-rates.md): Lent row, 117 Lent-area PPS students attend another neighborhood school (Marysville by design; Closure Commutes cites ~115). Marysville closure memo: \"pre-SEGC Lent non-DLI area -> Kelly\" (build/data/scenarios.json closures)"
+  },
+  "dli_follow": "build/data/v2/dli_follow.json",
+  "capacity": "build/data/v2/capacity_2025_26.csv",
+  "psu_by_year": "build/data/v2/psu_table5_5_by_year.csv",
+  "returner_weighting": "residents",
+  "reassign_K5": {
+   "Lent": "Marysville"
+  }
+ },
+ "horizon": "pps2031"
+}

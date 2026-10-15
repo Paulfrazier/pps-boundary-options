@@ -1,0 +1,1423 @@
+{
+  "basis": "Trade-offs matrix across plans (Paul 2026-10-14: \"a trade offs table looking at each model ... green, yellow, red\").\n\n  python tradeoffs_matrix.py            -> out_v2/TRADEOFFS_MATRIX.json and .md\n\nOne row per plan, 2031-32 unless noted (our model v2 on PSU July 2026 Table 5.5; scorecards in out_v2/<plan>/).\nRatings: rule rows (at target every required year) are absolute (green all, yellow >= 80%, red less).  Comparison\nrows place each plan that closes schools (everything but PPS Status Quo, shown uncolored) on the range from the best\nto the worst of those plans: best third of the range green, middle third yellow, worst third red.  PPS A is rated like every other plan.",
+  "measures": [
+    [
+      "K-5_at_target",
+      "K-5 schools at target every year 2027-32",
+      "rule"
+    ],
+    [
+      "6-8_at_target",
+      "6-8 schools at target every year 2027-32",
+      "rule"
+    ],
+    [
+      "K-5_in_range_minus9",
+      "K-5 schools in range if enrollment is 9% lower",
+      "high"
+    ],
+    [
+      "moved",
+      "Students reassigned vs PPS Status Quo (K-5 + 6-8)",
+      "low"
+    ],
+    [
+      "dli_moved",
+      "Immersion students whose program moves",
+      "low"
+    ],
+    [
+      "K-5_past_closer",
+      "K-5 kids assigned to a farther school, past a closer one",
+      "low"
+    ],
+    [
+      "6-8_past_closer",
+      "6-8 kids assigned to a farther school, past a closer one",
+      "low"
+    ],
+    [
+      "K-5_avg_walk",
+      "K-5 average walk (mi)",
+      "low"
+    ],
+    [
+      "6-8_avg_walk",
+      "6-8 average walk (mi)",
+      "low"
+    ],
+    [
+      "K-5->6-8_together_pct",
+      "Elementary class kept together into middle school (%)",
+      "high"
+    ],
+    [
+      "K-5->6-8_splits",
+      "Elementary schools split between middle schools",
+      "low"
+    ],
+    [
+      "6-8->9-12_together_pct",
+      "Middle-school class kept together into high school (%)",
+      "high"
+    ],
+    [
+      "6-8->9-12_splits",
+      "Middle schools split between high schools",
+      "low"
+    ],
+    [
+      "K-5_open",
+      "Elementary schools open",
+      "info"
+    ]
+  ],
+  "plans": [
+    {
+      "run": "status_quo",
+      "name": "PPS Status Quo",
+      "status": "reference",
+      "cells": {
+        "K-5_at_target": {
+          "value": 9,
+          "text": "9/50",
+          "rating": "red"
+        },
+        "6-8_at_target": {
+          "value": 2,
+          "text": "2/14",
+          "rating": "red"
+        },
+        "K-5_in_range_minus9": {
+          "value": 8,
+          "text": "8/54",
+          "rating": ""
+        },
+        "moved": {
+          "value": 0.0,
+          "text": "0",
+          "rating": ""
+        },
+        "dli_moved": {
+          "value": 0,
+          "text": "0",
+          "rating": ""
+        },
+        "K-5_past_closer": {
+          "value": 1861.0,
+          "text": "1,861",
+          "rating": ""
+        },
+        "6-8_past_closer": {
+          "value": 1407.0,
+          "text": "1,407",
+          "rating": ""
+        },
+        "K-5_avg_walk": {
+          "value": 0.874,
+          "text": "0.87",
+          "rating": ""
+        },
+        "6-8_avg_walk": {
+          "value": 1.555,
+          "text": "1.55",
+          "rating": ""
+        },
+        "K-5->6-8_together_pct": {
+          "value": 98.6,
+          "text": "98.6",
+          "rating": ""
+        },
+        "K-5->6-8_splits": {
+          "value": 1,
+          "text": "1",
+          "rating": ""
+        },
+        "6-8->9-12_together_pct": {
+          "value": 90.6,
+          "text": "90.6",
+          "rating": ""
+        },
+        "6-8->9-12_splits": {
+          "value": 5,
+          "text": "5",
+          "rating": ""
+        },
+        "K-5_open": {
+          "value": 54,
+          "text": "54",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 9,
+        "K-5_zoned": 50,
+        "K-5_in_range_minus9": 8,
+        "K-5_avg_walk": 0.874,
+        "K-5_within_1mi_pct": 72.2,
+        "K-5_past_closer": 1861.0,
+        "K-5_reassigned": 0.0,
+        "K-5_open": 54,
+        "K-5_dissimilarity": 0.217,
+        "6-8_at_target_all_req": 2,
+        "6-8_zoned": 14,
+        "6-8_in_range_minus9": 5,
+        "6-8_avg_walk": 1.555,
+        "6-8_within_1mi_pct": 39.9,
+        "6-8_past_closer": 1407.0,
+        "6-8_reassigned": 0.0,
+        "6-8_open": 23,
+        "6-8_dissimilarity": 0.188,
+        "dli_moved": 0,
+        "hs_reassigned": 0.0,
+        "K-5->6-8_together_pct": 98.6,
+        "K-5->6-8_splits": 1,
+        "6-8->9-12_together_pct": 90.6,
+        "6-8->9-12_splits": 5,
+        "at_target_source": "PPS Family Guide figures"
+      }
+    },
+    {
+      "run": "scenario_A",
+      "name": "PPS A",
+      "status": "reference",
+      "cells": {
+        "K-5_at_target": {
+          "value": 18,
+          "text": "18/35",
+          "rating": "red"
+        },
+        "6-8_at_target": {
+          "value": 5,
+          "text": "5/13",
+          "rating": "red"
+        },
+        "K-5_in_range_minus9": {
+          "value": 25,
+          "text": "25/41",
+          "rating": "green"
+        },
+        "moved": {
+          "value": 4907.0,
+          "text": "4,907",
+          "rating": "green"
+        },
+        "dli_moved": {
+          "value": 1567,
+          "text": "1,567",
+          "rating": "red"
+        },
+        "K-5_past_closer": {
+          "value": 1970.0,
+          "text": "1,970",
+          "rating": "red"
+        },
+        "6-8_past_closer": {
+          "value": 1259.0,
+          "text": "1,259",
+          "rating": "red"
+        },
+        "K-5_avg_walk": {
+          "value": 0.975,
+          "text": "0.97",
+          "rating": "red"
+        },
+        "6-8_avg_walk": {
+          "value": 1.758,
+          "text": "1.76",
+          "rating": "yellow"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 98.6,
+          "text": "98.6",
+          "rating": "green"
+        },
+        "K-5->6-8_splits": {
+          "value": 1,
+          "text": "1",
+          "rating": "green"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 90.2,
+          "text": "90.2",
+          "rating": "green"
+        },
+        "6-8->9-12_splits": {
+          "value": 3,
+          "text": "3",
+          "rating": "green"
+        },
+        "K-5_open": {
+          "value": 41,
+          "text": "41",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 18,
+        "K-5_zoned": 35,
+        "K-5_in_range_minus9": 25,
+        "K-5_avg_walk": 0.975,
+        "K-5_within_1mi_pct": 62.7,
+        "K-5_past_closer": 1970.0,
+        "K-5_reassigned": 2935.0,
+        "K-5_open": 41,
+        "K-5_dissimilarity": 0.204,
+        "6-8_at_target_all_req": 5,
+        "6-8_zoned": 13,
+        "6-8_in_range_minus9": 9,
+        "6-8_avg_walk": 1.758,
+        "6-8_within_1mi_pct": 30.3,
+        "6-8_past_closer": 1259.0,
+        "6-8_reassigned": 1972.0,
+        "6-8_open": 15,
+        "6-8_dissimilarity": 0.181,
+        "dli_moved": 1567,
+        "hs_reassigned": 388.0,
+        "K-5->6-8_together_pct": 98.6,
+        "K-5->6-8_splits": 1,
+        "6-8->9-12_together_pct": 90.2,
+        "6-8->9-12_splits": 3,
+        "at_target_source": "PPS Family Guide figures"
+      }
+    },
+    {
+      "run": "scenario_B",
+      "name": "PPS B",
+      "status": "reference",
+      "cells": {
+        "K-5_at_target": {
+          "value": 15,
+          "text": "15/38",
+          "rating": "red"
+        },
+        "6-8_at_target": {
+          "value": 6,
+          "text": "6/13",
+          "rating": "red"
+        },
+        "K-5_in_range_minus9": {
+          "value": 20,
+          "text": "20/44",
+          "rating": "yellow"
+        },
+        "moved": {
+          "value": 4277.0,
+          "text": "4,277",
+          "rating": "green"
+        },
+        "dli_moved": {
+          "value": 1357,
+          "text": "1,357",
+          "rating": "yellow"
+        },
+        "K-5_past_closer": {
+          "value": 2144.0,
+          "text": "2,144",
+          "rating": "red"
+        },
+        "6-8_past_closer": {
+          "value": 1216.0,
+          "text": "1,216",
+          "rating": "red"
+        },
+        "K-5_avg_walk": {
+          "value": 0.949,
+          "text": "0.95",
+          "rating": "yellow"
+        },
+        "6-8_avg_walk": {
+          "value": 1.754,
+          "text": "1.75",
+          "rating": "yellow"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 98.5,
+          "text": "98.5",
+          "rating": "green"
+        },
+        "K-5->6-8_splits": {
+          "value": 1,
+          "text": "1",
+          "rating": "green"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 91.0,
+          "text": "91.0",
+          "rating": "green"
+        },
+        "6-8->9-12_splits": {
+          "value": 3,
+          "text": "3",
+          "rating": "green"
+        },
+        "K-5_open": {
+          "value": 44,
+          "text": "44",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 15,
+        "K-5_zoned": 38,
+        "K-5_in_range_minus9": 20,
+        "K-5_avg_walk": 0.949,
+        "K-5_within_1mi_pct": 65.3,
+        "K-5_past_closer": 2144.0,
+        "K-5_reassigned": 2305.0,
+        "K-5_open": 44,
+        "K-5_dissimilarity": 0.205,
+        "6-8_at_target_all_req": 6,
+        "6-8_zoned": 13,
+        "6-8_in_range_minus9": 8,
+        "6-8_avg_walk": 1.754,
+        "6-8_within_1mi_pct": 30.3,
+        "6-8_past_closer": 1216.0,
+        "6-8_reassigned": 1972.0,
+        "6-8_open": 15,
+        "6-8_dissimilarity": 0.181,
+        "dli_moved": 1357,
+        "hs_reassigned": 355.0,
+        "K-5->6-8_together_pct": 98.5,
+        "K-5->6-8_splits": 1,
+        "6-8->9-12_together_pct": 91.0,
+        "6-8->9-12_splits": 3,
+        "at_target_source": "PPS Family Guide figures"
+      }
+    },
+    {
+      "run": "option2",
+      "name": "Boundary changes, same closures",
+      "status": "pick",
+      "cells": {
+        "K-5_at_target": {
+          "value": 35,
+          "text": "35/35",
+          "rating": "green"
+        },
+        "6-8_at_target": {
+          "value": 12,
+          "text": "12/13",
+          "rating": "yellow"
+        },
+        "K-5_in_range_minus9": {
+          "value": 15,
+          "text": "15/41",
+          "rating": "red"
+        },
+        "moved": {
+          "value": 7141.0,
+          "text": "7,141",
+          "rating": "red"
+        },
+        "dli_moved": {
+          "value": 1226,
+          "text": "1,226",
+          "rating": "green"
+        },
+        "K-5_past_closer": {
+          "value": 932.0,
+          "text": "932",
+          "rating": "green"
+        },
+        "6-8_past_closer": {
+          "value": 1233.0,
+          "text": "1,233",
+          "rating": "red"
+        },
+        "K-5_avg_walk": {
+          "value": 0.927,
+          "text": "0.93",
+          "rating": "green"
+        },
+        "6-8_avg_walk": {
+          "value": 1.739,
+          "text": "1.74",
+          "rating": "yellow"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 89.1,
+          "text": "89.1",
+          "rating": "red"
+        },
+        "K-5->6-8_splits": {
+          "value": 13,
+          "text": "13",
+          "rating": "red"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 76.1,
+          "text": "76.1",
+          "rating": "red"
+        },
+        "6-8->9-12_splits": {
+          "value": 9,
+          "text": "9",
+          "rating": "red"
+        },
+        "K-5_open": {
+          "value": 41,
+          "text": "41",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 35,
+        "K-5_zoned": 35,
+        "K-5_in_range_minus9": 15,
+        "K-5_avg_walk": 0.927,
+        "K-5_within_1mi_pct": 67.6,
+        "K-5_past_closer": 932.0,
+        "K-5_reassigned": 4867.0,
+        "K-5_open": 41,
+        "K-5_dissimilarity": 0.213,
+        "6-8_at_target_all_req": 12,
+        "6-8_zoned": 13,
+        "6-8_in_range_minus9": 7,
+        "6-8_avg_walk": 1.739,
+        "6-8_within_1mi_pct": 27.6,
+        "6-8_past_closer": 1233.0,
+        "6-8_reassigned": 2274.0,
+        "6-8_open": 15,
+        "6-8_dissimilarity": 0.164,
+        "dli_moved": 1226,
+        "hs_reassigned": 388.0,
+        "K-5->6-8_together_pct": 89.1,
+        "K-5->6-8_splits": 13,
+        "6-8->9-12_together_pct": 76.1,
+        "6-8->9-12_splits": 9
+      }
+    },
+    {
+      "run": "option2_ms460",
+      "name": "Balanced middle schools",
+      "status": "pick",
+      "cells": {
+        "K-5_at_target": {
+          "value": 35,
+          "text": "35/35",
+          "rating": "green"
+        },
+        "6-8_at_target": {
+          "value": 9,
+          "text": "9/13",
+          "rating": "red"
+        },
+        "K-5_in_range_minus9": {
+          "value": 15,
+          "text": "15/41",
+          "rating": "red"
+        },
+        "moved": {
+          "value": 7182.0,
+          "text": "7,182",
+          "rating": "red"
+        },
+        "dli_moved": {
+          "value": 1226,
+          "text": "1,226",
+          "rating": "green"
+        },
+        "K-5_past_closer": {
+          "value": 932.0,
+          "text": "932",
+          "rating": "green"
+        },
+        "6-8_past_closer": {
+          "value": 1082.0,
+          "text": "1,082",
+          "rating": "yellow"
+        },
+        "K-5_avg_walk": {
+          "value": 0.927,
+          "text": "0.93",
+          "rating": "green"
+        },
+        "6-8_avg_walk": {
+          "value": 1.71,
+          "text": "1.71",
+          "rating": "green"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 96.9,
+          "text": "96.9",
+          "rating": "green"
+        },
+        "K-5->6-8_splits": {
+          "value": 3,
+          "text": "3",
+          "rating": "green"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 77.3,
+          "text": "77.3",
+          "rating": "red"
+        },
+        "6-8->9-12_splits": {
+          "value": 9,
+          "text": "9",
+          "rating": "red"
+        },
+        "K-5_open": {
+          "value": 41,
+          "text": "41",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 35,
+        "K-5_zoned": 35,
+        "K-5_in_range_minus9": 15,
+        "K-5_avg_walk": 0.927,
+        "K-5_within_1mi_pct": 67.6,
+        "K-5_past_closer": 932.0,
+        "K-5_reassigned": 4867.0,
+        "K-5_open": 41,
+        "K-5_dissimilarity": 0.213,
+        "6-8_at_target_all_req": 9,
+        "6-8_zoned": 13,
+        "6-8_in_range_minus9": 10,
+        "6-8_avg_walk": 1.71,
+        "6-8_within_1mi_pct": 28.9,
+        "6-8_past_closer": 1082.0,
+        "6-8_reassigned": 2315.0,
+        "6-8_open": 15,
+        "6-8_dissimilarity": 0.166,
+        "dli_moved": 1226,
+        "hs_reassigned": 388.0,
+        "K-5->6-8_together_pct": 96.9,
+        "K-5->6-8_splits": 3,
+        "6-8->9-12_together_pct": 77.3,
+        "6-8->9-12_splits": 9,
+        "6-8_at_target_own_floor": 13,
+        "6-8_own_floor": 460
+      }
+    },
+    {
+      "run": "option1_durable",
+      "name": "Redrawn K-8 lines",
+      "status": "pick",
+      "cells": {
+        "K-5_at_target": {
+          "value": 35,
+          "text": "35/35",
+          "rating": "green"
+        },
+        "6-8_at_target": {
+          "value": 12,
+          "text": "12/13",
+          "rating": "yellow"
+        },
+        "K-5_in_range_minus9": {
+          "value": 16,
+          "text": "16/41",
+          "rating": "red"
+        },
+        "moved": {
+          "value": 7349.0,
+          "text": "7,349",
+          "rating": "red"
+        },
+        "dli_moved": {
+          "value": 1567,
+          "text": "1,567",
+          "rating": "red"
+        },
+        "K-5_past_closer": {
+          "value": 1285.0,
+          "text": "1,285",
+          "rating": "yellow"
+        },
+        "6-8_past_closer": {
+          "value": 882.0,
+          "text": "882",
+          "rating": "yellow"
+        },
+        "K-5_avg_walk": {
+          "value": 0.947,
+          "text": "0.95",
+          "rating": "yellow"
+        },
+        "6-8_avg_walk": {
+          "value": 1.667,
+          "text": "1.67",
+          "rating": "green"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 89.8,
+          "text": "89.8",
+          "rating": "red"
+        },
+        "K-5->6-8_splits": {
+          "value": 17,
+          "text": "17",
+          "rating": "red"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 74.9,
+          "text": "74.9",
+          "rating": "red"
+        },
+        "6-8->9-12_splits": {
+          "value": 8,
+          "text": "8",
+          "rating": "red"
+        },
+        "K-5_open": {
+          "value": 41,
+          "text": "41",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 35,
+        "K-5_zoned": 35,
+        "K-5_in_range_minus9": 16,
+        "K-5_avg_walk": 0.947,
+        "K-5_within_1mi_pct": 65.7,
+        "K-5_past_closer": 1285.0,
+        "K-5_reassigned": 4914.0,
+        "K-5_open": 41,
+        "K-5_dissimilarity": 0.211,
+        "6-8_at_target_all_req": 12,
+        "6-8_zoned": 13,
+        "6-8_in_range_minus9": 6,
+        "6-8_avg_walk": 1.667,
+        "6-8_within_1mi_pct": 30.1,
+        "6-8_past_closer": 882.0,
+        "6-8_reassigned": 2435.0,
+        "6-8_open": 15,
+        "6-8_dissimilarity": 0.164,
+        "dli_moved": 1567,
+        "hs_reassigned": 388.0,
+        "K-5->6-8_together_pct": 89.8,
+        "K-5->6-8_splits": 17,
+        "6-8->9-12_together_pct": 74.9,
+        "6-8->9-12_splits": 8
+      }
+    },
+    {
+      "run": "frontier_k17",
+      "name": "Shortest walks",
+      "status": "dropped",
+      "cells": {
+        "K-5_at_target": {
+          "value": 28,
+          "text": "28/35",
+          "rating": "yellow"
+        },
+        "6-8_at_target": {
+          "value": 10,
+          "text": "10/13",
+          "rating": "red"
+        },
+        "K-5_in_range_minus9": {
+          "value": 15,
+          "text": "15/41",
+          "rating": "red"
+        },
+        "moved": {
+          "value": 7413.0,
+          "text": "7,413",
+          "rating": "red"
+        },
+        "dli_moved": {
+          "value": 1567,
+          "text": "1,567",
+          "rating": "red"
+        },
+        "K-5_past_closer": {
+          "value": 995.0,
+          "text": "995",
+          "rating": "green"
+        },
+        "6-8_past_closer": {
+          "value": 1267.0,
+          "text": "1,267",
+          "rating": "red"
+        },
+        "K-5_avg_walk": {
+          "value": 0.929,
+          "text": "0.93",
+          "rating": "green"
+        },
+        "6-8_avg_walk": {
+          "value": 1.751,
+          "text": "1.75",
+          "rating": "yellow"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 93.3,
+          "text": "93.3",
+          "rating": "yellow"
+        },
+        "K-5->6-8_splits": {
+          "value": 8,
+          "text": "8",
+          "rating": "yellow"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 76.1,
+          "text": "76.1",
+          "rating": "red"
+        },
+        "6-8->9-12_splits": {
+          "value": 9,
+          "text": "9",
+          "rating": "red"
+        },
+        "K-5_open": {
+          "value": 41,
+          "text": "41",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 28,
+        "K-5_zoned": 35,
+        "K-5_in_range_minus9": 15,
+        "K-5_avg_walk": 0.929,
+        "K-5_within_1mi_pct": 67.5,
+        "K-5_past_closer": 995.0,
+        "K-5_reassigned": 4815.0,
+        "K-5_open": 41,
+        "K-5_dissimilarity": 0.212,
+        "6-8_at_target_all_req": 10,
+        "6-8_zoned": 13,
+        "6-8_in_range_minus9": 8,
+        "6-8_avg_walk": 1.751,
+        "6-8_within_1mi_pct": 28.1,
+        "6-8_past_closer": 1267.0,
+        "6-8_reassigned": 2598.0,
+        "6-8_open": 15,
+        "6-8_dissimilarity": 0.171,
+        "dli_moved": 1567,
+        "hs_reassigned": 388.0,
+        "K-5->6-8_together_pct": 93.3,
+        "K-5->6-8_splits": 8,
+        "6-8->9-12_together_pct": 76.1,
+        "6-8->9-12_splits": 9
+      }
+    },
+    {
+      "run": "option4",
+      "name": "Rebalanced PPS A",
+      "status": "pick",
+      "cells": {
+        "K-5_at_target": {
+          "value": 33,
+          "text": "33/35",
+          "rating": "yellow"
+        },
+        "6-8_at_target": {
+          "value": 9,
+          "text": "9/13",
+          "rating": "red"
+        },
+        "K-5_in_range_minus9": {
+          "value": 16,
+          "text": "16/41",
+          "rating": "red"
+        },
+        "moved": {
+          "value": 6356.0,
+          "text": "6,356",
+          "rating": "yellow"
+        },
+        "dli_moved": {
+          "value": 1567,
+          "text": "1,567",
+          "rating": "red"
+        },
+        "K-5_past_closer": {
+          "value": 1838.0,
+          "text": "1,838",
+          "rating": "red"
+        },
+        "6-8_past_closer": {
+          "value": 1614.0,
+          "text": "1,614",
+          "rating": "red"
+        },
+        "K-5_avg_walk": {
+          "value": 0.969,
+          "text": "0.97",
+          "rating": "red"
+        },
+        "6-8_avg_walk": {
+          "value": 1.898,
+          "text": "1.90",
+          "rating": "red"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 100.0,
+          "text": "100.0",
+          "rating": "green"
+        },
+        "K-5->6-8_splits": {
+          "value": 0,
+          "text": "0",
+          "rating": "green"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 72.4,
+          "text": "72.4",
+          "rating": "red"
+        },
+        "6-8->9-12_splits": {
+          "value": 8,
+          "text": "8",
+          "rating": "red"
+        },
+        "K-5_open": {
+          "value": 41,
+          "text": "41",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 33,
+        "K-5_zoned": 35,
+        "K-5_in_range_minus9": 16,
+        "K-5_avg_walk": 0.969,
+        "K-5_within_1mi_pct": 63.4,
+        "K-5_past_closer": 1838.0,
+        "K-5_reassigned": 3594.0,
+        "K-5_open": 41,
+        "K-5_dissimilarity": 0.214,
+        "6-8_at_target_all_req": 9,
+        "6-8_zoned": 13,
+        "6-8_in_range_minus9": 9,
+        "6-8_avg_walk": 1.898,
+        "6-8_within_1mi_pct": 26.1,
+        "6-8_past_closer": 1614.0,
+        "6-8_reassigned": 2762.0,
+        "6-8_open": 15,
+        "6-8_dissimilarity": 0.137,
+        "dli_moved": 1567,
+        "hs_reassigned": 388.0,
+        "K-5->6-8_together_pct": 100.0,
+        "K-5->6-8_splits": 0,
+        "6-8->9-12_together_pct": 72.4,
+        "6-8->9-12_splits": 8
+      }
+    },
+    {
+      "run": "option3a",
+      "name": "Close 2 focus options",
+      "status": "what-if",
+      "cells": {
+        "K-5_at_target": {
+          "value": 35,
+          "text": "35/35",
+          "rating": "green"
+        },
+        "6-8_at_target": {
+          "value": 13,
+          "text": "13/13",
+          "rating": "green"
+        },
+        "K-5_in_range_minus9": {
+          "value": 17,
+          "text": "17/41",
+          "rating": "red"
+        },
+        "moved": {
+          "value": 7525.0,
+          "text": "7,525",
+          "rating": "red"
+        },
+        "dli_moved": {
+          "value": 1567,
+          "text": "1,567",
+          "rating": "red"
+        },
+        "K-5_past_closer": {
+          "value": 1001.0,
+          "text": "1,001",
+          "rating": "green"
+        },
+        "6-8_past_closer": {
+          "value": 1044.0,
+          "text": "1,044",
+          "rating": "yellow"
+        },
+        "K-5_avg_walk": {
+          "value": 0.928,
+          "text": "0.93",
+          "rating": "green"
+        },
+        "6-8_avg_walk": {
+          "value": 1.657,
+          "text": "1.66",
+          "rating": "green"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 92.8,
+          "text": "92.8",
+          "rating": "yellow"
+        },
+        "K-5->6-8_splits": {
+          "value": 8,
+          "text": "8",
+          "rating": "yellow"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 80.7,
+          "text": "80.7",
+          "rating": "yellow"
+        },
+        "6-8->9-12_splits": {
+          "value": 10,
+          "text": "10",
+          "rating": "red"
+        },
+        "K-5_open": {
+          "value": 41,
+          "text": "41",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 35,
+        "K-5_zoned": 35,
+        "K-5_in_range_minus9": 17,
+        "K-5_avg_walk": 0.928,
+        "K-5_within_1mi_pct": 67.7,
+        "K-5_past_closer": 1001.0,
+        "K-5_reassigned": 4888.0,
+        "K-5_open": 41,
+        "K-5_dissimilarity": 0.212,
+        "6-8_at_target_all_req": 13,
+        "6-8_zoned": 13,
+        "6-8_in_range_minus9": 11,
+        "6-8_avg_walk": 1.657,
+        "6-8_within_1mi_pct": 30.3,
+        "6-8_past_closer": 1044.0,
+        "6-8_reassigned": 2637.0,
+        "6-8_open": 15,
+        "6-8_dissimilarity": 0.186,
+        "dli_moved": 1567,
+        "hs_reassigned": 388.0,
+        "K-5->6-8_together_pct": 92.8,
+        "K-5->6-8_splits": 8,
+        "6-8->9-12_together_pct": 80.7,
+        "6-8->9-12_splits": 10
+      }
+    },
+    {
+      "run": "ppsrules_walk",
+      "name": "PPS rules, walkable lines",
+      "status": "test",
+      "cells": {
+        "K-5_at_target": {
+          "value": 30,
+          "text": "30/35",
+          "rating": "yellow"
+        },
+        "6-8_at_target": {
+          "value": 9,
+          "text": "9/13",
+          "rating": "red"
+        },
+        "K-5_in_range_minus9": {
+          "value": 17,
+          "text": "17/41",
+          "rating": "red"
+        },
+        "moved": {
+          "value": 6846.0,
+          "text": "6,846",
+          "rating": "red"
+        },
+        "dli_moved": {
+          "value": 1567,
+          "text": "1,567",
+          "rating": "red"
+        },
+        "K-5_past_closer": {
+          "value": 1200.0,
+          "text": "1,200",
+          "rating": "yellow"
+        },
+        "6-8_past_closer": {
+          "value": 1159.0,
+          "text": "1,159",
+          "rating": "yellow"
+        },
+        "K-5_avg_walk": {
+          "value": 0.943,
+          "text": "0.94",
+          "rating": "green"
+        },
+        "6-8_avg_walk": {
+          "value": 1.725,
+          "text": "1.73",
+          "rating": "green"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 95.9,
+          "text": "95.9",
+          "rating": "green"
+        },
+        "K-5->6-8_splits": {
+          "value": 5,
+          "text": "5",
+          "rating": "green"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 79.5,
+          "text": "79.5",
+          "rating": "yellow"
+        },
+        "6-8->9-12_splits": {
+          "value": 7,
+          "text": "7",
+          "rating": "yellow"
+        },
+        "K-5_open": {
+          "value": 41,
+          "text": "41",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 30,
+        "K-5_zoned": 35,
+        "K-5_in_range_minus9": 17,
+        "K-5_avg_walk": 0.943,
+        "K-5_within_1mi_pct": 66.4,
+        "K-5_past_closer": 1200.0,
+        "K-5_reassigned": 4703.0,
+        "K-5_open": 41,
+        "K-5_dissimilarity": 0.21,
+        "6-8_at_target_all_req": 9,
+        "6-8_zoned": 13,
+        "6-8_in_range_minus9": 8,
+        "6-8_avg_walk": 1.725,
+        "6-8_within_1mi_pct": 28.8,
+        "6-8_past_closer": 1159.0,
+        "6-8_reassigned": 2143.0,
+        "6-8_open": 15,
+        "6-8_dissimilarity": 0.176,
+        "dli_moved": 1567,
+        "hs_reassigned": 388.0,
+        "K-5->6-8_together_pct": 95.9,
+        "K-5->6-8_splits": 5,
+        "6-8->9-12_together_pct": 79.5,
+        "6-8->9-12_splits": 7
+      }
+    },
+    {
+      "run": "option2_sellwood_flex_long",
+      "name": "Lead plan + Sellwood open",
+      "status": "test",
+      "cells": {
+        "K-5_at_target": {
+          "value": 35,
+          "text": "35/35",
+          "rating": "green"
+        },
+        "6-8_at_target": {
+          "value": 12,
+          "text": "12/14",
+          "rating": "yellow"
+        },
+        "K-5_in_range_minus9": {
+          "value": 15,
+          "text": "15/41",
+          "rating": "red"
+        },
+        "moved": {
+          "value": 6754.0,
+          "text": "6,754",
+          "rating": "red"
+        },
+        "dli_moved": {
+          "value": 1226,
+          "text": "1,226",
+          "rating": "green"
+        },
+        "K-5_past_closer": {
+          "value": 1097.0,
+          "text": "1,097",
+          "rating": "green"
+        },
+        "6-8_past_closer": {
+          "value": 1234.0,
+          "text": "1,234",
+          "rating": "red"
+        },
+        "K-5_avg_walk": {
+          "value": 0.936,
+          "text": "0.94",
+          "rating": "green"
+        },
+        "6-8_avg_walk": {
+          "value": 1.676,
+          "text": "1.68",
+          "rating": "green"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 90.6,
+          "text": "90.6",
+          "rating": "red"
+        },
+        "K-5->6-8_splits": {
+          "value": 10,
+          "text": "10",
+          "rating": "yellow"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 78.8,
+          "text": "78.8",
+          "rating": "yellow"
+        },
+        "6-8->9-12_splits": {
+          "value": 9,
+          "text": "9",
+          "rating": "red"
+        },
+        "K-5_open": {
+          "value": 41,
+          "text": "41",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 35,
+        "K-5_zoned": 35,
+        "K-5_in_range_minus9": 15,
+        "K-5_avg_walk": 0.936,
+        "K-5_within_1mi_pct": 66.9,
+        "K-5_past_closer": 1097.0,
+        "K-5_reassigned": 4923.0,
+        "K-5_open": 41,
+        "K-5_dissimilarity": 0.213,
+        "6-8_at_target_all_req": 12,
+        "6-8_zoned": 14,
+        "6-8_in_range_minus9": 5,
+        "6-8_avg_walk": 1.676,
+        "6-8_within_1mi_pct": 29.1,
+        "6-8_past_closer": 1234.0,
+        "6-8_reassigned": 1831.0,
+        "6-8_open": 16,
+        "6-8_dissimilarity": 0.19,
+        "dli_moved": 1226,
+        "hs_reassigned": 388.0,
+        "K-5->6-8_together_pct": 90.6,
+        "K-5->6-8_splits": 10,
+        "6-8->9-12_together_pct": 78.8,
+        "6-8->9-12_splits": 9
+      }
+    },
+    {
+      "run": "capstone_s2",
+      "name": "Solver picks schools",
+      "status": "test",
+      "cells": {
+        "K-5_at_target": {
+          "value": 32,
+          "text": "32/32",
+          "rating": "green"
+        },
+        "6-8_at_target": {
+          "value": 12,
+          "text": "12/12",
+          "rating": "green"
+        },
+        "K-5_in_range_minus9": {
+          "value": 23,
+          "text": "23/38",
+          "rating": "green"
+        },
+        "moved": {
+          "value": 7684.0,
+          "text": "7,684",
+          "rating": "red"
+        },
+        "dli_moved": {
+          "value": 1611,
+          "text": "1,611",
+          "rating": "red"
+        },
+        "K-5_past_closer": {
+          "value": 706.0,
+          "text": "706",
+          "rating": "green"
+        },
+        "6-8_past_closer": {
+          "value": 315.0,
+          "text": "315",
+          "rating": "green"
+        },
+        "K-5_avg_walk": {
+          "value": 0.97,
+          "text": "0.97",
+          "rating": "red"
+        },
+        "6-8_avg_walk": {
+          "value": 1.723,
+          "text": "1.72",
+          "rating": "green"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 86.1,
+          "text": "86.1",
+          "rating": "red"
+        },
+        "K-5->6-8_splits": {
+          "value": 18,
+          "text": "18",
+          "rating": "red"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 75.0,
+          "text": "75.0",
+          "rating": "red"
+        },
+        "6-8->9-12_splits": {
+          "value": 8,
+          "text": "8",
+          "rating": "red"
+        },
+        "K-5_open": {
+          "value": 38,
+          "text": "38",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 32,
+        "K-5_zoned": 32,
+        "K-5_in_range_minus9": 23,
+        "K-5_avg_walk": 0.97,
+        "K-5_within_1mi_pct": 68.0,
+        "K-5_past_closer": 706.0,
+        "K-5_reassigned": 5490.0,
+        "K-5_open": 38,
+        "K-5_dissimilarity": 0.214,
+        "6-8_at_target_all_req": 12,
+        "6-8_zoned": 12,
+        "6-8_in_range_minus9": 9,
+        "6-8_avg_walk": 1.723,
+        "6-8_within_1mi_pct": 30.0,
+        "6-8_past_closer": 315.0,
+        "6-8_reassigned": 2194.0,
+        "6-8_open": 14,
+        "6-8_dissimilarity": 0.16,
+        "dli_moved": 1611,
+        "hs_reassigned": 388.0,
+        "K-5->6-8_together_pct": 86.1,
+        "K-5->6-8_splits": 18,
+        "6-8->9-12_together_pct": 75.0,
+        "6-8->9-12_splits": 8
+      }
+    },
+    {
+      "run": "option2_ms420",
+      "name": "Same closures, middle 420-450",
+      "status": "test",
+      "cells": {
+        "K-5_at_target": {
+          "value": 35,
+          "text": "35/35",
+          "rating": "green"
+        },
+        "6-8_at_target": {
+          "value": 9,
+          "text": "9/13",
+          "rating": "red"
+        },
+        "K-5_in_range_minus9": {
+          "value": 15,
+          "text": "15/41",
+          "rating": "red"
+        },
+        "moved": {
+          "value": 7398.0,
+          "text": "7,398",
+          "rating": "red"
+        },
+        "dli_moved": {
+          "value": 1226,
+          "text": "1,226",
+          "rating": "green"
+        },
+        "K-5_past_closer": {
+          "value": 1097.0,
+          "text": "1,097",
+          "rating": "green"
+        },
+        "6-8_past_closer": {
+          "value": 1166.0,
+          "text": "1,166",
+          "rating": "yellow"
+        },
+        "K-5_avg_walk": {
+          "value": 0.936,
+          "text": "0.94",
+          "rating": "green"
+        },
+        "6-8_avg_walk": {
+          "value": 1.745,
+          "text": "1.75",
+          "rating": "yellow"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 100.0,
+          "text": "100.0",
+          "rating": "green"
+        },
+        "K-5->6-8_splits": {
+          "value": 0,
+          "text": "0",
+          "rating": "green"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 75.2,
+          "text": "75.2",
+          "rating": "red"
+        },
+        "6-8->9-12_splits": {
+          "value": 10,
+          "text": "10",
+          "rating": "red"
+        },
+        "K-5_open": {
+          "value": 41,
+          "text": "41",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 35,
+        "K-5_zoned": 35,
+        "K-5_in_range_minus9": 15,
+        "K-5_avg_walk": 0.936,
+        "K-5_within_1mi_pct": 66.9,
+        "K-5_past_closer": 1097.0,
+        "K-5_reassigned": 4923.0,
+        "K-5_open": 41,
+        "K-5_dissimilarity": 0.213,
+        "6-8_at_target_all_req": 9,
+        "6-8_zoned": 13,
+        "6-8_in_range_minus9": 13,
+        "6-8_avg_walk": 1.745,
+        "6-8_within_1mi_pct": 28.3,
+        "6-8_past_closer": 1166.0,
+        "6-8_reassigned": 2475.0,
+        "6-8_open": 15,
+        "6-8_dissimilarity": 0.173,
+        "dli_moved": 1226,
+        "hs_reassigned": 388.0,
+        "K-5->6-8_together_pct": 100.0,
+        "K-5->6-8_splits": 0,
+        "6-8->9-12_together_pct": 75.2,
+        "6-8->9-12_splits": 10,
+        "6-8_at_target_own_floor": 13,
+        "6-8_own_floor": 420
+      }
+    }
+  ]
+}

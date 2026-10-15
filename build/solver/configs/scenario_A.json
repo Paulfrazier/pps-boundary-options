@@ -1,0 +1,214 @@
+{
+ "basis": "2031-32 (PSU forecast; block kids scaled by area, see METHOD.md)",
+ "lr_nbhd_share": 0.02,
+ "floors": {
+  "K-5": 360,
+  "K-8": 500,
+  "6-8": 500,
+  "9-12": 1100
+ },
+ "ceiling_k5_max": 600,
+ "exempt_floor": [
+  "Astor",
+  "Skyline"
+ ],
+ "exempt_hold_status_quo": true,
+ "capacity_overrides": {
+  "Jefferson": 1773,
+  "Grant": 1935,
+  "McDaniel": 1735,
+  "Roosevelt": 1404,
+  "Harrison Park": 890
+ },
+ "hs_range_max": 350,
+ "focus": [
+  "Winterhaven",
+  "da Vinci",
+  "Odyssey",
+  "ACCESS",
+  "MLC",
+  "Benson"
+ ],
+ "past_margin_miles": 0.25,
+ "name": "scenario_A",
+ "label": "PPS Scenario A (digitized PPS maps)",
+ "kind": "baseline",
+ "levels": {
+  "K-5": {
+   "assign": "A_es",
+   "zoned": [
+    "Abernethy",
+    "Ainsworth",
+    "Alameda",
+    "Arleta",
+    "Astor",
+    "Atkinson",
+    "Beverly Cleary",
+    "Boise-Eliot/Humboldt",
+    "Bridger",
+    "Bridlemile",
+    "Capitol Hill",
+    "Chapman",
+    "Chief Joseph",
+    "Clark",
+    "Duniway",
+    "Faubion",
+    "Forest Park",
+    "Glencoe",
+    "Grout",
+    "Hayhurst",
+    "Kelly",
+    "Laurelhurst",
+    "Lee",
+    "Llewellyn",
+    "MLK Jr",
+    "Markham",
+    "Rieke",
+    "Rosa Parks",
+    "Scott",
+    "Sitton",
+    "Skyline",
+    "Sunnyside",
+    "Vernon",
+    "Vestal",
+    "Whitman",
+    "Woodlawn",
+    "Woodstock"
+   ],
+   "programs": {
+    "Ainsworth": [
+     "Ainsworth|Spanish"
+    ],
+    "Cesar Chavez": [
+     "Cesar Chavez|Spanish K-5",
+     "Beach|Spanish",
+     "James John|Spanish",
+     "Sitton|Spanish"
+    ],
+    "Lent": [
+     "Lent|Spanish",
+     "Atkinson|Spanish"
+    ],
+    "Rigler": [
+     "Rigler|Spanish",
+     "Scott|Spanish"
+    ],
+    "Boise-Eliot/Humboldt": [
+     "MLK Jr|Mandarin"
+    ],
+    "Woodstock": [
+     "Woodstock|Mandarin",
+     "Clark|Mandarin"
+    ],
+    "Kelly": [
+     "Kelly|Russian"
+    ],
+    "Vestal": [
+     "Rose City Park|Vietnamese"
+    ],
+    "Richmond": [
+     "Richmond|Japanese"
+    ]
+   },
+   "k8": [
+    "Astor",
+    "Skyline"
+   ]
+  },
+  "6-8": {
+   "assign": "A_ms",
+   "zoned": [
+    "Astor",
+    "Beaumont",
+    "George",
+    "Gray",
+    "Harrison Park",
+    "Hosford",
+    "Jackson",
+    "Kellogg",
+    "Lane",
+    "Mt Tabor",
+    "Ockley Green",
+    "Roseway Heights",
+    "Skyline",
+    "Tubman",
+    "West Sylvan"
+   ],
+   "programs": {
+    "West Sylvan": [
+     "West Sylvan|Spanish"
+    ],
+    "Kellogg": [
+     "Kellogg|Spanish"
+    ],
+    "George": [
+     "George|Spanish",
+     "Ockley Green|Spanish",
+     "Cesar Chavez|Spanish 6-8"
+    ],
+    "Roseway Heights": [
+     "Roseway Heights|Spanish",
+     "Beaumont|Spanish",
+     "Roseway Heights|Vietnamese"
+    ],
+    "Harrison Park": [
+     "Harrison Park|Mandarin"
+    ],
+    "Tubman": [
+     "Tubman|Mandarin"
+    ],
+    "Mt Tabor": [
+     "Mt Tabor|Japanese"
+    ],
+    "Lane": [
+     "Lane|Russian"
+    ]
+   },
+   "k8": [
+    "Astor",
+    "Skyline"
+   ]
+  },
+  "9-12": {
+   "assign": "A_hs",
+   "zoned": [
+    "Cleveland",
+    "Franklin",
+    "Grant",
+    "Ida B. Wells",
+    "Jefferson",
+    "Lincoln",
+    "McDaniel",
+    "Roosevelt"
+   ],
+   "programs": {
+    "Lincoln": [
+     "Lincoln|Spanish"
+    ],
+    "Roosevelt": [
+     "Roosevelt|Spanish",
+     "Roosevelt|PISA"
+    ],
+    "McDaniel": [
+     "McDaniel|Spanish",
+     "McDaniel|Vietnamese",
+     "McDaniel|PISA"
+    ],
+    "Franklin": [
+     "Franklin|Spanish",
+     "Franklin|Russian"
+    ],
+    "Cleveland": [
+     "Cleveland|Mandarin"
+    ],
+    "Jefferson": [
+     "Jefferson|Mandarin"
+    ],
+    "Grant": [
+     "Grant|Japanese"
+    ]
+   },
+   "k8": []
+  }
+ }
+}

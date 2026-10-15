@@ -1,0 +1,980 @@
+{
+  "meta": {
+    "compiled": "2026-10-11",
+    "companion": "targets.md",
+    "evaluation_year": "2031-32",
+    "evaluation_note": "PPS evaluates all thresholds on PSU 2031-32 projections ('All figures are projections for the 2031-32 school year'). Report 2025-26 as a check; robustness at -9%.",
+    "forecast_source": "PSU PRC forecast for PPS, Table 5.5 (May 19 2026), https://resources.finalsite.net/images/v1785171463/ppsnet/ejdr22voeddvux8qwlob/PPS_Forecast_2026_27.pdf ; parsed rows in sources/psu_forecast_table5_5_by_school_program.json",
+    "source_tags": {
+      "PPS": "primary PPS document",
+      "STATE": "Oregon statute/rule",
+      "3P": "third party",
+      "DEFAULT": "assumption, no source found"
+    }
+  },
+  "levels": {
+    "K-5": {
+      "min": 360,
+      "min_tag": "PPS",
+      "max": 600,
+      "max_tag": "DEFAULT",
+      "max_rule": "min(functional_capacity_at_100pct_rate, 600)",
+      "basis": "Quality Education Model prototype (Aug 4 2026 board memo); not a staffing model",
+      "sources": [
+        {
+          "url": "https://drive.google.com/file/d/1ueJVC-Jo6MRKw56Jedihc6YbVdBlSB2z/view",
+          "quote": "SUSTAINABILITY THRESHOLDS K–5: 360 students K–8 and middle school: 500 students High school: 1,100 students"
+        },
+        {
+          "url": "https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=3997426",
+          "quote": "We used the threshold of 360 students for elementaries and 500 students for middle schools as guided by the prototype school description in the Quality Education Model. We applied the same number for K-8s and used the 1100 students threshold we developed during the sunsetting of Jefferson dual assignment process."
+        }
+      ]
+    },
+    "K-8": {
+      "min": 500,
+      "min_tag": "PPS",
+      "remaining_after_A": {
+        "neighborhood": [
+          "Astor",
+          "Skyline"
+        ],
+        "focus": [
+          "Winterhaven",
+          "MLC & Odyssey"
+        ],
+        "alternative_2_8": [
+          "ACCESS"
+        ]
+      },
+      "district_like_exempt": [
+        "Astor",
+        "Skyline"
+      ],
+      "exempt_reason": "PPS leaves both below 500 in A and B (2031-32: Astor 418, Skyline 177); enforcing 500 is infeasible",
+      "max_rule": "functional_capacity_at_100pct_rate"
+    },
+    "6-8": {
+      "min": 500,
+      "min_tag": "PPS",
+      "max_rule": "utilization <= 1.00 of functional capacity (MS rate 85%, -5 pts Title I, -5 pts TSI/CSI)",
+      "utilization_min": 0.7,
+      "utilization_min_tag": "DEFAULT",
+      "utilization_min_mode": "report; hard only if requested",
+      "utilization_definition": "enrollment / functional capacity",
+      "functional_capacity_method": "classrooms 500-800 sqft=24, 800-1000=27, >1000=30 -> gross; minus set-asides; x rate (K-5/K-8 100%, MS/HS 85%; -5% Title I; -5% TSI/CSI)",
+      "efficiently_utilized_kpi": "named in Sept 15 2026 deck slide 17; no numeric band published",
+      "sources": [
+        {
+          "url": "https://www.pps.net/fs/resource-manager/view/84245cbd-4298-4803-8ba9-d26fb13a9c7a",
+          "quote": "the utilization rate for these configurations is 85%."
+        },
+        {
+          "url": "https://www.wweek.com/news/schools/2026/04/15/pps-introduces-another-metric-to-inform-school-closures/",
+          "quote": "defined as a school's enrollment divided by its functional capacity."
+        },
+        {
+          "url": "https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=14357211",
+          "quote": "6-8 Schools with 500 + Students 1 in 8"
+        }
+      ],
+      "functional_capacity_lrfp_2021": {
+        "Mt Tabor": 682,
+        "Kellogg": 803,
+        "Hosford": 696,
+        "Jackson": 908,
+        "Sellwood": 683,
+        "Roseway Heights": 803,
+        "West Sylvan": 987,
+        "Ockley Green": 689,
+        "Gray": 622,
+        "Beaumont": 701,
+        "da Vinci": 714,
+        "Tubman": 732,
+        "George": 617,
+        "Brentwood (Lane)": 770
+      },
+      "functional_capacity_3p_2025_model": {
+        "Harrison Park": 890,
+        "Kellogg": 732,
+        "Jackson": 931,
+        "_source": "meub/pps-data from PPS utilization model (records request); 3P"
+      },
+      "forecast_2031_32_status_quo": {
+        "Beaumont": 418,
+        "George": 390,
+        "Gray": 368,
+        "Tubman": 374,
+        "Harrison Park": 417,
+        "Hosford": 374,
+        "Jackson": 515,
+        "Kellogg": 471,
+        "Brentwood (Lane)": 357,
+        "Mt Tabor": 354,
+        "Ockley Green": 436,
+        "Roseway Heights": 498,
+        "Sellwood": 350,
+        "West Sylvan": 620,
+        "da Vinci": 419
+      },
+      "feasibility_note": "Approx. 7,020 6-8 students for 13 neighborhood MS after A (avg ~540) vs 13x500=6,500: feasible but tight"
+    },
+    "9-12": {
+      "min": 1100,
+      "min_tag": "PPS",
+      "basis": "Jefferson dual-assignment sunset work; 'necessary to justify comprehensive programming' (WW Dec 10 2025)",
+      "range_max": 350,
+      "range_max_tag": "PPS",
+      "range_mode": "soft",
+      "range_note": "Jefferson is Rising KPI 'HS Enrollment Range (target = <350)'; status quo 2031-32 range is 375, so a hard constraint risks infeasibility",
+      "ms_feeders_same_hs_target": 1.0,
+      "comprehensive_schools": [
+        "Cleveland",
+        "Franklin",
+        "Grant",
+        "Ida B. Wells",
+        "Jefferson",
+        "Lincoln",
+        "McDaniel",
+        "Roosevelt"
+      ],
+      "focus_fixed": [
+        "Benson"
+      ],
+      "capacity": {
+        "Jefferson": 1773,
+        "Jefferson_current": 1590,
+        "Grant": 1935,
+        "McDaniel": 1735,
+        "Roosevelt": 1404,
+        "Cleveland": 1859,
+        "Franklin": 1744,
+        "Lincoln": 1867,
+        "Ida B. Wells": 1872,
+        "Benson": 2203,
+        "_sources": "Jefferson/Grant/McDaniel/Roosevelt: Sept 15 2026 deck slide 21 (2025 'Jefferson is Rising'); others LRFP 2021. Lincoln new-building capacity unconfirmed."
+      },
+      "forecast_2031_32_status_quo": {
+        "Cleveland": 1318,
+        "Franklin": 1492,
+        "Grant": 1487,
+        "Ida B. Wells": 1457,
+        "Jefferson": 1183,
+        "McDaniel": 1261,
+        "Lincoln": 1411,
+        "Roosevelt": 1117,
+        "Benson": 1213
+      },
+      "sources": [
+        {
+          "url": "https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=14430171",
+          "quote": "% of High Schools in each scenario with enroll above 1100 students (target = 100%) ... HS Enrollment Range (target = <350) ... % MS feeders moving to the same HS (target = 100%)"
+        },
+        {
+          "url": "https://www.wweek.com/news/schools/2025/12/10/enrollment-balancing-in-north-and-northeast-portland-shows-the-consequences-of-overbuilding-high-school-capacity/",
+          "quote": "ensuring that the student body of each high school stays above 1,100 by 2030–31, which district officials say is necessary to justify comprehensive programming."
+        }
+      ],
+      "baseline_note": "Jefferson dual-assignment sunset (effective 9th grade 2027-28) is current state: Peninsula area + Beach Spanish DLI -> Roosevelt; Irvington -> Grant; rest of old dual zone -> Jefferson"
+    },
+    "focus_alt_fixed": {
+      "schools": [
+        "da Vinci",
+        "Winterhaven",
+        "MLC & Odyssey",
+        "ACCESS",
+        "Benson"
+      ],
+      "rule": "fixed enrollment, no attendance zone; option 3 closes da Vinci and Winterhaven and returns students to neighborhood schools"
+    }
+  },
+  "dli": {
+    "pps_published_min_strand": null,
+    "pps_min_note": "No PPS minimum strand size found. PPS: programs are 'full learning experiences from PK-12, not just single classrooms' (FAQ Sept 15 2026); KATU: DLI 'consolidated to provide more consistent pathways', 'no DLI program would be eliminated'.",
+    "rules": {
+      "continuity": {
+        "tag": "PPS-derived",
+        "hard": true,
+        "rule": "Per language per HS pathway: exactly one K-5 host and one 6-8 host; strands never split across MS. Spanish HS by home-address region."
+      },
+      "viable": {
+        "tag": "DEFAULT",
+        "hard_for_option": "2",
+        "k5_min_per_grade": 22,
+        "k5_min_total": 132,
+        "ms_min_per_grade": 20,
+        "ms_min_total": 60
+      },
+      "healthy": {
+        "tag": "DEFAULT",
+        "reported": true,
+        "k5_min_per_grade": 44,
+        "ms_min_per_grade": 40
+      },
+      "sole_pathway_exemption": {
+        "tag": "DEFAULT",
+        "rule": "A strand that is the only host for its language on its HS pathway stays regardless of size",
+        "applies_to": [
+          "Tubman Mandarin",
+          "Brentwood Russian",
+          "Kelly Russian",
+          "Roseway Heights Vietnamese",
+          "Richmond Japanese",
+          "Mt Tabor Japanese",
+          "Boise-Eliot/Humboldt (or MLK) Mandarin"
+        ]
+      },
+      "capacity_accounting": "DLI students count toward host building size/capacity; whole-school DLI (Rigler, Lent, Richmond) have no neighborhood zone",
+      "option2": "Strand stays in its 2025-26 building if the building stays open and the strand is viable; else moves to the pathway's surviving viable host (A's destination unless a closer viable host exists). Strands in closing buildings must move."
+    },
+    "spanish_hs_regions": {
+      "Lincoln": [
+        "Lincoln",
+        "Ida B. Wells"
+      ],
+      "Roosevelt": [
+        "Roosevelt",
+        "Jefferson"
+      ],
+      "McDaniel": [
+        "McDaniel",
+        "Grant"
+      ],
+      "Franklin": [
+        "Franklin",
+        "Cleveland"
+      ]
+    },
+    "pathways": [
+      {
+        "lang": "Spanish",
+        "hs": "Lincoln",
+        "today_k5": [
+          "Ainsworth"
+        ],
+        "today_ms": [
+          "West Sylvan"
+        ],
+        "A_k5": [
+          "Ainsworth"
+        ],
+        "A_ms": [
+          "West Sylvan"
+        ],
+        "B_same_as_A": true
+      },
+      {
+        "lang": "Spanish",
+        "hs": "Roosevelt",
+        "today_k5": [
+          "Beach",
+          "James John",
+          "Sitton",
+          "Cesar Chavez"
+        ],
+        "today_ms": [
+          "Ockley Green",
+          "George",
+          "Cesar Chavez"
+        ],
+        "A_k5": [
+          "Cesar Chavez"
+        ],
+        "A_ms": [
+          "George"
+        ],
+        "B_same_as_A": true
+      },
+      {
+        "lang": "Spanish",
+        "hs": "McDaniel",
+        "today_k5": [
+          "Rigler",
+          "Scott"
+        ],
+        "today_ms": [
+          "Beaumont",
+          "Roseway Heights"
+        ],
+        "A_k5": [
+          "Rigler"
+        ],
+        "A_ms": [
+          "Roseway Heights"
+        ],
+        "B_same_as_A": true
+      },
+      {
+        "lang": "Spanish",
+        "hs": "Franklin",
+        "today_k5": [
+          "Atkinson",
+          "Lent"
+        ],
+        "today_ms": [
+          "Kellogg"
+        ],
+        "A_k5": [
+          "Lent"
+        ],
+        "A_ms": [
+          "Kellogg"
+        ],
+        "B_same_as_A": true
+      },
+      {
+        "lang": "Mandarin",
+        "hs": "Jefferson",
+        "today_k5": [
+          "MLK Jr"
+        ],
+        "today_ms": [
+          "Harriet Tubman"
+        ],
+        "A_k5": [
+          "Boise-Eliot/Humboldt"
+        ],
+        "A_ms": [
+          "Harriet Tubman"
+        ],
+        "B_same_as_A": true
+      },
+      {
+        "lang": "Mandarin",
+        "hs": "Cleveland",
+        "today_k5": [
+          "Woodstock",
+          "Clark"
+        ],
+        "today_ms": [
+          "Harrison Park"
+        ],
+        "A_k5": [
+          "Woodstock"
+        ],
+        "A_ms": [
+          "Harrison Park"
+        ],
+        "B_same_as_A": true
+      },
+      {
+        "lang": "Japanese",
+        "hs": "Grant",
+        "today_k5": [
+          "Richmond"
+        ],
+        "today_ms": [
+          "Mt Tabor"
+        ],
+        "A_k5": [
+          "Richmond"
+        ],
+        "A_ms": [
+          "Mt Tabor"
+        ],
+        "B_same_as_A": true
+      },
+      {
+        "lang": "Russian",
+        "hs": "Franklin",
+        "today_k5": [
+          "Kelly"
+        ],
+        "today_ms": [
+          "Brentwood"
+        ],
+        "A_k5": [
+          "Kelly"
+        ],
+        "A_ms": [
+          "Brentwood"
+        ],
+        "B_same_as_A": true
+      },
+      {
+        "lang": "Vietnamese",
+        "hs": "McDaniel",
+        "today_k5": [
+          "Rose City Park"
+        ],
+        "today_ms": [
+          "Roseway Heights"
+        ],
+        "A_k5": [
+          "Vestal"
+        ],
+        "A_ms": [
+          "Roseway Heights"
+        ],
+        "B_same_as_A": false,
+        "B_k5": [
+          "Rose City Park"
+        ],
+        "B_ms": [
+          "Roseway Heights"
+        ]
+      }
+    ],
+    "strands_psu": {
+      "_cols": "[2025-26 count, 2031-32 count, grades]",
+      "Ainsworth|Spanish": [
+        287,
+        291,
+        6
+      ],
+      "Rigler|Spanish": [
+        289,
+        321,
+        6
+      ],
+      "Lent|Spanish": [
+        256,
+        274,
+        6
+      ],
+      "Scott|Spanish": [
+        222,
+        223,
+        6
+      ],
+      "Atkinson|Spanish": [
+        178,
+        183,
+        6
+      ],
+      "Beach|Spanish": [
+        155,
+        127,
+        6
+      ],
+      "Sitton|Spanish": [
+        138,
+        113,
+        6
+      ],
+      "James John|Spanish": [
+        133,
+        136,
+        6
+      ],
+      "Cesar Chavez|Spanish": [
+        300,
+        295,
+        9
+      ],
+      "MLK Jr|Mandarin": [
+        193,
+        196,
+        6
+      ],
+      "Woodstock|Mandarin": [
+        190,
+        194,
+        6
+      ],
+      "Clark|Mandarin": [
+        91,
+        87,
+        6
+      ],
+      "Richmond|Japanese": [
+        512,
+        497,
+        6
+      ],
+      "Kelly|Russian": [
+        143,
+        145,
+        6
+      ],
+      "Rose City Park|Vietnamese": [
+        207,
+        210,
+        6
+      ],
+      "West Sylvan|Spanish": [
+        116,
+        133,
+        3
+      ],
+      "Kellogg|Spanish": [
+        201,
+        257,
+        3
+      ],
+      "George|Spanish": [
+        109,
+        123,
+        3
+      ],
+      "Beaumont|Spanish": [
+        101,
+        145,
+        3
+      ],
+      "Roseway Heights|Spanish": [
+        93,
+        78,
+        3
+      ],
+      "Ockley Green|Spanish": [
+        63,
+        34,
+        3
+      ],
+      "Roseway Heights|Vietnamese": [
+        64,
+        72,
+        3
+      ],
+      "Harrison Park|Mandarin": [
+        111,
+        98,
+        3
+      ],
+      "Harriet Tubman|Mandarin": [
+        48,
+        52,
+        3
+      ],
+      "Mt Tabor|Japanese": [
+        222,
+        210,
+        3
+      ],
+      "Brentwood|Russian": [
+        36,
+        30,
+        3
+      ],
+      "Lincoln|Spanish": [
+        178,
+        180,
+        4
+      ],
+      "Roosevelt|Spanish": [
+        299,
+        282,
+        4
+      ],
+      "McDaniel|Spanish": [
+        205,
+        174,
+        4
+      ],
+      "McDaniel|Vietnamese": [
+        34,
+        110,
+        4
+      ],
+      "Franklin|Spanish": [
+        173,
+        225,
+        4
+      ],
+      "Franklin|Russian": [
+        29,
+        25,
+        4
+      ],
+      "Cleveland|Mandarin": [
+        115,
+        112,
+        4
+      ],
+      "Jefferson|Mandarin": [
+        14,
+        11,
+        4
+      ],
+      "Grant|Japanese": [
+        265,
+        221,
+        4
+      ]
+    },
+    "below_viable_2031_32": [
+      "Clark Mandarin (14.5/gr)",
+      "Sitton Spanish (18.8/gr)",
+      "Beach Spanish (21.2/gr; building closes anyway)",
+      "Ockley Green MS Spanish (11.3/gr)"
+    ],
+    "below_viable_exempt": [
+      "Harriet Tubman MS Mandarin (17.3/gr)",
+      "Brentwood MS Russian (10.0/gr)"
+    ],
+    "students_moved_by_A_program_moves_2031_32": {
+      "elementary": 1275,
+      "middle": 179,
+      "middle_plus_chavez_6_8_est": 277,
+      "B_difference": "B omits RCP Vietnamese (-210)"
+    }
+  },
+  "focus_options": {
+    "Winterhaven": {
+      "grades": "K-8",
+      "enrollment_2025_26": 316,
+      "forecast_2031_32": 310,
+      "address": "3830 SE 14th Ave",
+      "building": "Brooklyn School building (1930); 'Winterhaven at Brooklyn School'",
+      "former_neighborhood_school": "probable, unverified",
+      "functional_capacity_2021": 261,
+      "utilization_2021_22": 1.12,
+      "admission": "lottery; K 26 offered/70 waitlist/143 apps (2026-27); 23 sixth-grade slots",
+      "top_origins": {
+        "Hosford": 45,
+        "Grout": 32,
+        "Sellwood": 26,
+        "Brentwood/Lane": 18,
+        "Out of District": 15
+      },
+      "scenario_A": "unchanged",
+      "scenario_B": "unchanged",
+      "vs_500": "below (threshold applies to K-8); PPS has made no specific statement"
+    },
+    "da Vinci": {
+      "grades": "6-8",
+      "enrollment_2025_26": 429,
+      "forecast_2031_32": 419,
+      "address": "2508 NE Everett St",
+      "building": "former Girls Polytechnic / James Monroe High School (closed 1978)",
+      "former_neighborhood_school": "no (former high school)",
+      "functional_capacity_2021": 714,
+      "utilization_2021_22": 0.63,
+      "admission": "lottery at 6th grade; 150 sixth-grade slots (2026-27)",
+      "top_origins": {
+        "Ockley Green": 60,
+        "Tubman": 56,
+        "Roseway Heights": 40,
+        "Hosford": 36,
+        "Brentwood/Lane": 35
+      },
+      "scenario_A": "unchanged",
+      "scenario_B": "unchanged",
+      "vs_500": "below; PPS has made no specific statement"
+    },
+    "sources": [
+      "https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=3997345",
+      "PPS 2026-27 lottery slot sheet (sources/lottery_slots_ms_hs_2026-27.txt)",
+      "PPS 2026-27 K Lottery Results Summary",
+      "LRFP 2021"
+    ],
+    "other_focus_changes_both_scenarios": [
+      "Buckman (arts K-5) closes",
+      "Sunnyside loses environmental focus status, becomes neighborhood K-5",
+      "Odyssey moves to MLC site; MLC becomes K-8",
+      "MLC 9-12 program closes (students to neighborhood HS)",
+      "Bridger loses 6-8"
+    ]
+  },
+  "scenarios": {
+    "effective": "2027-28 (implementation complete within 3 years); board vote Dec 2026",
+    "A": {
+      "closures": [
+        "Beach",
+        "Buckman",
+        "Creston",
+        "Irvington",
+        "James John",
+        "Lewis",
+        "Maplewood",
+        "Marysville",
+        "Peninsula",
+        "Rose City Park",
+        "Sabin",
+        "Sellwood MS",
+        "Stephenson",
+        "Woodmere"
+      ],
+      "also_closing": [
+        "MLC 9-12 program",
+        "Odyssey building (1849 SW 58th Ave)"
+      ],
+      "k5_receivers": {
+        "Maplewood": [
+          "Hayhurst",
+          "Rieke"
+        ],
+        "Stephenson": [
+          "Markham",
+          "Capitol Hill"
+        ],
+        "Irvington": [
+          "Beverly Cleary"
+        ],
+        "Rose City Park": [
+          "Scott"
+        ],
+        "Buckman": [
+          "Abernethy",
+          "Sunnyside"
+        ],
+        "Creston": [
+          "Atkinson"
+        ],
+        "Marysville": [
+          "Arleta"
+        ],
+        "Woodmere": [
+          "Whitman"
+        ],
+        "Lewis": [
+          "Duniway"
+        ],
+        "Beach": [
+          "Chief Joseph"
+        ],
+        "James John": [
+          "Sitton"
+        ],
+        "Peninsula": [
+          "Rosa Parks"
+        ],
+        "Sabin": [
+          "MLK Jr"
+        ]
+      },
+      "k8_to_k5": {
+        "Beverly Cleary": "Beaumont",
+        "Laurelhurst": "Mt Tabor",
+        "Bridger Creative Science": "Harrison Park",
+        "Sunnyside Environmental": "Hosford",
+        "Faubion": "Ockley Green",
+        "Vernon": "Harriet Tubman",
+        "Cesar Chavez": "George"
+      },
+      "ms_reassignments": {
+        "Sellwood MS: Llewellyn area": "Hosford",
+        "Sellwood MS: Duniway + Lewis areas": "Brentwood",
+        "Irvington area 6-8": "Beaumont"
+      },
+      "program_moves": [
+        "Spanish: Beach, James John, Sitton -> Cesar Chavez",
+        "Spanish: Chavez 6-8 and Ockley Green MS -> George MS",
+        "Spanish: Atkinson -> Lent",
+        "Spanish: Scott -> Rigler",
+        "Spanish: Beaumont MS -> Roseway Heights MS",
+        "Vietnamese: Rose City Park -> Vestal",
+        "Mandarin: Clark -> Woodstock",
+        "Mandarin: MLK Jr -> Boise-Eliot/Humboldt",
+        "Creston Deaf and Hard of Hearing -> Glencoe",
+        "Odyssey -> MLC site"
+      ],
+      "grade_changes": [
+        "MLC becomes K-8"
+      ],
+      "boundary_change_ms": [
+        "Beaumont",
+        "Brentwood",
+        "George",
+        "Harriet Tubman",
+        "Harrison Park",
+        "Hosford",
+        "Jackson",
+        "Kellogg",
+        "Mt Tabor",
+        "Ockley Green",
+        "Gray"
+      ],
+      "boundary_change_hs": [
+        "Cleveland",
+        "Franklin",
+        "Jefferson",
+        "Lincoln",
+        "McDaniel",
+        "Roosevelt"
+      ],
+      "boundary_change_k5_k8": [
+        "Abernethy",
+        "Arleta",
+        "Astor",
+        "Atkinson",
+        "Beverly Cleary",
+        "Capitol Hill",
+        "Chief Joseph",
+        "MLK Jr",
+        "Duniway",
+        "Faubion",
+        "Hayhurst",
+        "Kelly",
+        "Lent",
+        "Llewellyn",
+        "Markham",
+        "Rieke",
+        "Rosa Parks",
+        "Scott",
+        "Sitton",
+        "Sunnyside Environmental",
+        "Whitman"
+      ],
+      "boundary_change_count_total": 38,
+      "lines_frozen": [
+        "Roseway Heights",
+        "West Sylvan",
+        "Grant",
+        "Ida B. Wells",
+        "da Vinci",
+        "Winterhaven"
+      ],
+      "neighborhood_ms_after": [
+        "Beaumont",
+        "Brentwood",
+        "George",
+        "Gray",
+        "Harrison Park",
+        "Hosford",
+        "Jackson",
+        "Kellogg",
+        "Mt Tabor",
+        "Ockley Green",
+        "Roseway Heights",
+        "Harriet Tubman",
+        "West Sylvan"
+      ],
+      "split_feeders_visible_on_6_8_map": [
+        "Mt Tabor (Grant/Franklin)",
+        "Harrison Park (McDaniel/Franklin)",
+        "Brentwood (Franklin/Cleveland)"
+      ],
+      "split_feeders_note": "Read from HS-cluster shading on the A 6-8 map; confirm when digitizing. Tubman becomes all-Jefferson (Irvington -> Beaumont).",
+      "maps": {
+        "6-8": "PPS BoardBook PDF "Scenario A - Attendance Boundaries 6-8.pdf" (SY 2027-28, version 10/5/2026; HS clusters shaded)",
+        "K-5": null,
+        "9-12": null
+      }
+    },
+    "B": {
+      "diff_from_A": {
+        "stay_open": [
+          "Lewis",
+          "Rose City Park",
+          "Stephenson"
+        ],
+        "no_program_move": [
+          "Vietnamese: Rose City Park -> Vestal"
+        ],
+        "k5_boundary_list_drops": [
+          "Capitol Hill",
+          "Duniway",
+          "Llewellyn",
+          "Markham",
+          "Scott"
+        ],
+        "k5_boundary_list_adds": [
+          "Lewis"
+        ],
+        "ms_hs_boundary_lists": "identical to A",
+        "boundary_change_count_total": 34
+      },
+      "maps": {
+        "6-8": null,
+        "K-5": null,
+        "9-12": null
+      }
+    }
+  },
+  "transportation": {
+    "state": {
+      "elementary_miles": 1.0,
+      "secondary_miles": 1.5,
+      "source": {
+        "url": "https://www.oregonlegislature.gov/bills_laws/ors/ors327.html",
+        "quote": "A school district is required to provide transportation for elementary school students who reside more than one mile from school and for secondary school students who reside more than 1.5 miles from school."
+      },
+      "definitions": "OAR 581-023-0040: elementary = school offering only K-8 grades; board-designated MS/junior high may be treated as secondary; distance over shortest practicable route on public roads or pedestrian facilities (rule amended Feb 19 2026; amended text not retrieved)"
+    },
+    "pps_practice": {
+      "K-5_miles": 1.0,
+      "6-8_miles": 1.5,
+      "9-12_miles": 1.5,
+      "9-12_yellow_bus_also_requires_trimet_stop_miles_gt": 1.0,
+      "9-12_default_mode": "TriMet via school ID",
+      "k8_6_8_rule": "use 1.5 mi for grades 6-8 even at K-8 buildings (PPS Sec D.1 is grade-based); flag vs OAR school-type definition",
+      "measurement": "most direct combination of roads, streets, highways and public paths; street in front of school to street in front of residence",
+      "source": {
+        "url": "https://resources.finalsite.net/images/v1751562292/ppsnet/thzskadliar1v7qds4yc/Service_Guidelines_Student_Transportation_2024.pdf",
+        "quote": "For students who live more than one and one-half miles from the middle school they attend which is within their attendance boundary."
+      },
+      "trimet_source": {
+        "url": "https://blog.trimet.org/2025/08/20/trimet-101-how-to-get-around-as-a-student/",
+        "quote": "if you're a Portland Public School (PPS) District student in grades 9-12, you can use your school ID card to get rides on TriMet"
+      }
+    }
+  },
+  "boundary_principles": [
+    {
+      "src": "Policy 4.10.045-P (quoted, Mar 31 2026 work session)",
+      "url": "https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=3988980",
+      "text": "A. A feeder pattern that allows as many students as possible to continue together from one school level to the next; B. Student body demographics; C. Compact boundaries that promote safer routes to schools...natural and human-made barriers; D. Optimal use of existing facilities; E. Program and enrollment stability in the surrounding schools; F. Limiting the impact of boundary changes to the smallest number of students possible (non-prioritized)"
+    },
+    {
+      "src": "Resolution 7307",
+      "url": "https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=3997273",
+      "text": "prioritize walkability and safe routes to schools; ... an assessment of cohort cohesion"
+    },
+    {
+      "src": "Sept 15 2026 KPIs",
+      "url": "https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=14430171",
+      "text": "Percent of efficiently utilized schools; Percent of students living within 1.0 and 1.5 miles of school; Number of schools with split feeders; Percent of middle school feeders moving to the same high school"
+    },
+    {
+      "src": "FAQ Sept 15 2026",
+      "url": "https://www.pps.net/about/portland-public-schools-information/rightsize/frequently-asked-questions",
+      "text": "PPS will look at where students live, school size and space, programs, transportation, and how students move through schools from elementary to high school."
+    }
+  ],
+  "solver_spec": {
+    "evaluate_on": "PSU 2031-32 forecast; check 2025-26 and -9%",
+    "hard": {
+      "K-5": {
+        "min": 360,
+        "max": "min(fc, 600)"
+      },
+      "K-8_neighborhood": {
+        "min": 500,
+        "district_like_exempt": [
+          "Astor",
+          "Skyline"
+        ],
+        "max": "fc"
+      },
+      "6-8": {
+        "min": 500,
+        "max": "fc (utilization <= 1.0)"
+      },
+      "9-12": {
+        "min": 1100,
+        "max": "fc"
+      },
+      "dli_continuity": true,
+      "dli_viable_option2": {
+        "k5_per_grade": 22,
+        "ms_per_grade": 20,
+        "sole_pathway_exempt": true
+      }
+    },
+    "soft": {
+      "6-8_utilization_min": 0.7,
+      "9-12_range_max": 350,
+      "dli_healthy": {
+        "k5_per_grade": 44,
+        "ms_per_grade": 40
+      },
+      "split_feeders": "minimize; report each"
+    },
+    "feeders": "MS zones = unions of whole K-5 zones; HS zones = unions of whole MS zones; split only if needed for feasibility; district-like must permit splits at Mt Tabor, Harrison Park, Brentwood",
+    "district_like_must_replicate": "scenarios.A (closures, receivers, k8_to_k5, ms_reassignments, program_moves, lines_frozen, Jefferson sunset baseline)"
+  },
+  "gaps": [
+    "No PPS DLI minimum strand size; viable/healthy thresholds are DEFAULT",
+    "CORRECTED 2026-10-12: 70-100% utilization IS a stated PPS aim (Family Guide glossary p.2 'Space use goal'; PPS staff Sept 15 2026 board meeting https://youtu.be/uAf7l-ChjFo?t=15369); no research basis given",
+    "No HS upper bound besides capacity and <350 range KPI; Lincoln new-building capacity unconfirmed; Cleveland/Wells capacities are LRFP 2021",
+    "Per-school Scenario A/B projected enrollments not published (PPS 'How Could Your School Be Impacted?' tool is dynamic; scrape with /browse)",
+    "No Scenario A K-5 or 9-12 maps and no Scenario B maps found; only A 6-8 (HS clusters shaded on it)",
+    "Lincoln HS listed for boundary change while Ida B. Wells is not",
+    "Winterhaven building's history as Brooklyn neighborhood school unverified",
+    "Chavez K-8 Spanish 6-8 count not split out (est. 1/3 of 295)",
+    "OAR 581-023-0040 amended Feb 19 2026; new text not retrieved",
+    "Overview PDF lists 'McDaniel' without 'HS' among boundary changes; treated as McDaniel HS (38 = 21 K-5/K-8 + 11 MS + 6 HS)"
+  ]
+}

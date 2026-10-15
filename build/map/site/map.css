@@ -1,0 +1,496 @@
+
+/* ---- site map additions (build/map/site/map.css) ---- */
+.wrap{max-width:1320px}
+.wrap>.warn{margin:0;font-size:.9rem}
+.warn.prelim{margin-top:10px;font-size:.88rem;max-width:84ch}
+.warn.prelim[hidden]{display:none}
+.side .tag{background:none;padding:0;margin:0;border-radius:0;display:block;vertical-align:baseline}
+.wrap .note{border-left:0;padding:0}
+.quick{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;font-size:.8rem;color:var(--muted)}
+.quick button{font:600 .8rem var(--sans);border:1px solid var(--rule);background:var(--plate);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;min-height:32px}
+.quick button:hover{background:var(--accent-soft)}
+.quick button[aria-pressed="true"]{border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+label.sel.inl{display:inline-flex;flex-direction:row;align-items:center;gap:8px;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--muted)}
+label.sel.inl[hidden]{display:none}
+label.sel select,#sel0{font:600 .88rem var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:7px 10px;min-height:36px;max-width:100%;text-transform:none;letter-spacing:0}
+.layers{gap:8px 18px}
+.loading{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);background:var(--plate);border:1px solid var(--rule);border-radius:6px;padding:8px 14px;font:700 .85rem var(--sans);z-index:5}
+.loading[hidden]{display:none}
+/* past a closer school: blue-violet, dashed outline + light tint (the legend swatch draws the same thing). Chosen by CIELAB
+   distance under normal / protan / deutan simulation from plan 2's magenta, plan 1's ink, the orange freeways and the
+   racial-mix ramp (amber, the first idea, sat on top of the freeway orange) */
+.pastsw{display:inline-block;width:26px;height:12px;border:1.6px dashed var(--past);background:color-mix(in srgb,var(--past) 22%,transparent)}
+:root{--past:#5b3fc4}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--past:#a99bff}}
+:root[data-theme="dark"]{--past:#a99bff}
+.vtag{display:inline-block;font:700 .66rem var(--sans);letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--rule);border-radius:4px;padding:1px 6px;color:var(--muted);background:var(--paper);white-space:nowrap}
+.vtag.off{color:var(--accent)}
+.cite{font-size:.74rem;color:var(--muted);margin:0;line-height:1.45}
+.cite a{color:var(--muted)}
+.sect{display:flex;flex-direction:column;gap:10px}
+.sect h2{margin:6px 0 0}
+#lines-note p{margin:0;font-size:.86rem;color:var(--muted);max-width:90ch}
+.ctab{min-width:820px}
+.ctab td,.ctab th{text-align:right;font-variant-numeric:tabular-nums}
+.ctab td:first-child,.ctab th:first-child{text-align:left}
+.ctab td.num{font-family:var(--mono)}
+.ctab tbody th{font-weight:700}
+.ctab tbody th small{display:block;font-weight:500;color:var(--muted);font-size:.72rem}
+.bt thead tr:first-child th{cursor:default}
+.kv span.src{grid-column:1/-1;border:0;padding:2px 0 0;font-family:var(--sans);font-size:.72rem;font-weight:400;text-align:left;color:var(--muted)}
+.side .vline{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.side h3{flex-wrap:wrap}
+.pastm{fill:var(--past);fill-opacity:.22;stroke:var(--past);stroke-width:1.6;stroke-dasharray:4 2.5;vector-effect:non-scaling-stroke;cursor:pointer}
+.pastm:focus-visible{outline:none;stroke-width:3}
+.edge{fill:none;stroke:var(--edge);stroke-width:1.6;stroke-linejoin:round;vector-effect:non-scaling-stroke;pointer-events:none}
+.edge.sel{stroke:var(--accent);stroke-width:3.4}
+.edge.selc{stroke:var(--plate);stroke-width:7;stroke-opacity:.9}
+@media (max-width:600px){
+ .controls{gap:8px 12px}
+ .seg button{padding:6px 10px;font-size:.8rem}
+ .layers{gap:6px 14px}
+ .chk{font-size:.8rem}
+ .side{padding:14px}
+ label.sel.inl{width:100%}
+ label.sel.inl select{flex:1;min-width:0}
+ .cmpbar label.sel{flex:1 1 40%}
+ .cmpbar select{width:100%}
+}
+.dtab th,.dtab td{padding:4px 5px;font-size:.78rem}
+.dtab thead th{white-space:normal;line-height:1.2;vertical-align:bottom}
+.dtab td.num{white-space:nowrap}
+.legend [hidden]{display:none}
+.legend .dvl:not(.on){display:none}
+.wrap .lede{font-size:1rem}
+.grid{grid-template-columns:minmax(0,1fr) 340px}@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.side .caveat{font-size:.8rem;line-height:1.45;margin:8px 0 2px;padding:6px 9px;border-left:3px solid var(--accent);background:var(--accent-soft);color:var(--ink);border-radius:0 4px 4px 0}
+
+/* ---- comparison UX pass (MAP_UX_AUDIT.md) ---- */
+.fade{fill:var(--plate);fill-opacity:.62;pointer-events:none}
+.pin-halo{fill:color-mix(in srgb,var(--plate) 55%,transparent);stroke:var(--ink);stroke-width:2;vector-effect:non-scaling-stroke}
+.pin-dot{fill:var(--ink)}
+.pin{pointer-events:none}
+.spot{margin:0 0 14px;padding:0 0 12px;border-bottom:1px solid var(--rule)}
+.spothd{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.spothd button{font:600 .76rem var(--sans);color:var(--accent);background:none;border:0;border-bottom:1px dotted var(--accent);padding:0 0 1px;cursor:pointer}
+.spott{margin:6px 0 6px}
+.spott td.mv{font-size:.72rem;font-weight:700;color:var(--muted);text-align:right;white-space:nowrap}
+.spott .muted{color:var(--muted)}
+.spott thead th{font-size:.7rem;color:var(--muted)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+@media (max-width:600px){
+ .quick{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;padding-bottom:2px;margin-right:-16px}
+ .quick::-webkit-scrollbar{display:none}
+ .quick span,.quick button{flex:none}
+ .cmpbar{gap:8px 10px}
+ .cmpbar label.sel{flex:1 1 calc(100% - 60px)}
+ .cmpbar .swap~label.sel{flex-basis:100%}
+ .cmpbar .chk{flex:1 1 auto}
+ .wrap .lede{font-size:.92rem}
+}
+
+/* overlay: two line types only. plan 1 = solid dark (not dashed: rail is dashed) (above the fade), plan 2 = magenta (gOv) */
+.edge.p1{stroke:var(--ink);stroke-opacity:.85;stroke-width:2}
+.fade{fill-opacity:.55}
+.chgsw{border:1px solid var(--rule)!important;box-shadow:none!important;background:repeating-linear-gradient(-45deg,var(--ink) 0 1px,transparent 1px 4px);opacity:.75}
+.cchip i.p1{display:inline-block;width:18px;height:0;border-top:2px solid var(--ink);opacity:.85;margin-right:6px;vertical-align:middle}
+
+/* ---- usability + mobile pass 2 (audit-desktop.md / audit-mobile.md, 2026-10-12) ---- */
+/* district scorecard at the top of the side panel */
+.score{margin:6px 0 4px;table-layout:auto}
+.score th,.score td{font-size:.8rem;padding:5px 5px}
+.score thead th{font-size:.72rem;color:var(--ink);font-weight:800;vertical-align:bottom}
+.score thead th.p2{color:var(--cmp)}
+.score tbody th{font-weight:600;color:var(--muted)}
+.score td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--muted)}
+.score td.win{color:var(--ink);font-weight:800}
+.score td.win b{color:var(--accent)}
+.side .tag.sch{margin-top:6px}
+details.oor{font-size:.82rem;margin:6px 0 0}
+details.oor summary{cursor:pointer;font-weight:700;color:var(--ink);padding:3px 0}
+details.oor ul{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column}
+details.oor li{display:flex;justify-content:space-between;gap:8px;padding:3px 0;border-bottom:1px dotted var(--rule)}
+details.oor li span{font-family:var(--mono);font-size:.76rem;color:var(--muted);text-align:right;white-space:nowrap}
+details.oor li small{font-size:.7rem}
+details.oor button{all:unset;cursor:pointer;color:var(--ink);font-weight:600;border-bottom:1px dotted var(--muted)}
+details.oor button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+p.oor{margin-top:6px}
+.chk[hidden]{display:none}
+.copyl{font:600 .8rem var(--sans);border:1px solid var(--rule);background:var(--plate);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer;min-height:32px;margin-left:auto}
+.copyl:hover{background:var(--accent-soft)}
+.seg button{white-space:nowrap}
+.legd>summary{cursor:pointer;font:700 .8rem var(--sans);color:var(--ink);padding:10px 14px;border-top:1px solid var(--rule);list-style-position:inside}
+@media (min-width:601px){.legd>summary{display:none}}
+/* compare table: sticky plan column, scroll cue, trade-off columns first (map.js tables()) */
+.tablebox thead th:first-child,.tablebox tbody th:first-child,.tablebox tfoot th:first-child{position:sticky;left:0;z-index:1;background:var(--plate)}
+.tablebox tr.hl th:first-child{background:var(--accent-soft)}
+.tablebox{background:linear-gradient(to left,var(--plate) 30%,transparent) right/24px 100% no-repeat local,linear-gradient(to left,rgba(0,0,0,.14),transparent) right/10px 100% no-repeat scroll,var(--plate)}
+@media (max-width:600px){
+ .cmpbar .cnote{display:none}
+ .seg button{padding:6px 9px}
+ .ctab{min-width:560px}
+ .ctab .c-lines,.ctab .c-src{display:none}
+ .ctab td{white-space:nowrap}
+ .ctab tbody th{min-width:118px}
+ .btbox{max-height:70vh;overflow:auto}
+ .btbox thead{position:sticky;top:0;z-index:2;background:var(--plate)}
+ .btbox thead th:first-child{z-index:3}
+ /* 12px text floor */
+ .cchip,.vtag,#sclab,.side .tag,.ctab thead th,.bt thead th,.zh,.cite,.cmpbar label.sel,.ctab small,.dtab th,.dtab td,.score th,.score td,.legend{font-size:12px}
+ .scale{padding:3px 6px 4px}
+ .copyl{margin-left:0}
+}
+@media (max-width:430px){.seg .xl{display:none}}
+/* touch: 44px-ish targets, 16px selects (iOS zooms into smaller form fields) */
+@media (pointer:coarse){
+ .seg button{min-height:40px}
+ .zoom button{width:44px;height:44px}
+ .chk{min-height:40px}
+ .chk input{width:20px;height:20px}
+ .quick button,label.sel select,#sel0,.cmpbar select,.cmpbar .swap,.copyl{min-height:44px}
+ label.sel select,#sel0,.cmpbar select{font-size:16px}
+ .spothd button{padding:12px 4px;margin:-12px -4px}
+ .spott button,.dtab button{display:block;padding:10px 0}
+ details.oor li{padding:8px 0}
+ details.oor summary{padding:10px 0}
+}
+
+/* ---- round 3 (2026-10-12): compact controls, color-by, both plans' past regions, plan-2 double line, keyboard ---- */
+.skip{position:absolute;left:12px;top:8px;z-index:20;background:var(--ink);color:var(--plate);font:700 .85rem var(--sans);padding:8px 12px;border-radius:6px;clip-path:inset(50%);width:1px;height:1px;overflow:hidden;white-space:nowrap}
+.skip:focus{clip-path:none;width:auto;height:auto;overflow:visible;outline:3px solid var(--accent);outline-offset:2px}
+.wrap{padding-block:16px 56px;gap:12px}
+.wrap>.warn{font-size:.82rem;padding:8px 12px;line-height:1.4}
+header h1{font-size:clamp(1.4rem,3vw,2rem)}
+.wrap .lede{font-size:.95rem;margin:4px 0 0;max-width:95ch}
+.ctl{display:flex;flex-direction:column;gap:8px}
+.controls.top{gap:8px 12px;flex-wrap:wrap}
+.cmpbar{display:flex;flex-wrap:nowrap;align-items:center;gap:6px;padding:0;border:0;background:none;flex:0 1 auto;min-width:0}
+.cmpbar label.sel{display:flex;flex-direction:row;align-items:center;gap:6px;min-width:0;flex:0 1 auto}
+.cmpbar select,#sel0{max-width:240px;padding:6px 8px}
+.cmpbar .swap{min-height:34px}
+.pk{display:inline-block;width:20px;flex:none}
+.pk.p1{border-top:2.4px solid var(--ink);opacity:.85}
+.pk.p2{height:4.6px;border-top:1.6px solid var(--cmp);border-bottom:1.6px solid var(--cmp);box-sizing:border-box}
+.cchip i.p2{height:5px;border-top:1.6px solid var(--cmp);border-bottom:1.6px solid var(--cmp);box-sizing:border-box;width:16px}
+.quick{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:thin;padding-bottom:2px}
+.quick span,.quick button{flex:none}
+.quick button{min-height:30px;padding:4px 11px}
+.lead{display:inline-block;font:800 .6rem var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--plate);background:var(--accent);border-radius:3px;padding:1px 4px;margin-left:5px;vertical-align:1px;white-space:nowrap}
+.quick .lead{margin-left:3px}
+.controls.layers{gap:6px 16px;align-items:center;position:relative}
+.cby select{font:600 .84rem var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:5px 8px;min-height:32px;text-transform:none;letter-spacing:0}
+.legend .cnote{flex-basis:100%;margin:0;font-size:.8rem;color:var(--ink)}
+.legend .cnote[hidden]{display:none}
+.legend .lgp,.legend .szl{flex-wrap:wrap;gap:6px 14px}
+.pastsw.p2{background:repeating-linear-gradient(45deg,var(--past) 0 1.4px,transparent 1.4px 4.5px);border-style:solid}
+.pastm.p2{fill:url(#pasth);fill-opacity:1;stroke-dasharray:none;stroke-width:1.3}
+/* size vs target range (2031-32): blue = under floor, brown = over ceiling, near-neutral = at target; picked by CIELAB
+   distance under normal, protan and deutan simulation from each other, the neutral, plan 2's magenta, the past violet and
+   the freeway orange (all >= 29) */
+:root{--sz-u:color-mix(in srgb,#2166ac 58%,var(--plate));--sz-o:color-mix(in srgb,#8c5a2b 60%,var(--plate));--sz-in:color-mix(in srgb,var(--ink) 7%,var(--plate))}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sz-u:color-mix(in srgb,#5b9bd5 62%,var(--plate));--sz-o:color-mix(in srgb,#c08a55 62%,var(--plate));--sz-in:color-mix(in srgb,var(--ink) 10%,var(--plate))}}
+:root[data-theme="dark"]{--sz-u:color-mix(in srgb,#5b9bd5 62%,var(--plate));--sz-o:color-mix(in srgb,#c08a55 62%,var(--plate));--sz-in:color-mix(in srgb,var(--ink) 10%,var(--plate))}
+.szsw{display:inline-block;width:16px;height:12px;border:1px solid var(--rule);vertical-align:-1px;margin-right:5px}
+.szsw.u{background:var(--sz-u)}.szsw.o{background:var(--sz-o)}.szsw.in{background:var(--sz-in)}
+.szsw.x{background:radial-gradient(circle,var(--muted) 0 1px,transparent 1.2px) 0 0/5px 5px,var(--sz-in)}
+.szl .szh{flex-basis:100%;color:var(--ink)}
+.szl .szrow{display:inline-flex;flex-wrap:wrap;gap:4px 12px;align-items:center}
+.szl .szrow b{color:var(--ink)}
+/* keyboard: one tab stop for the areas; focus ring drawn above every line (gFoc) */
+.area:focus,.area:focus-visible{outline:none}
+.focc{fill:none;stroke:var(--plate);stroke-width:6;vector-effect:non-scaling-stroke;stroke-linejoin:round}
+.focr{fill:none;stroke:var(--accent);stroke-width:3;vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-dasharray:7 3}
+#side:focus{outline:none}#side:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* plan comparison table: the plan name loads it on the map */
+.ctab tr.pick{cursor:pointer}
+.ctab tr.pick:hover th,.ctab tr.pick:hover td{background:var(--accent-soft)}
+.ctab tbody th button{all:unset;cursor:pointer;font-weight:700;color:var(--ink);border-bottom:1px dotted var(--muted)}
+.ctab tbody th button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* walking-distance table folded; the summary line shows the district row */
+.bandsd>summary{cursor:pointer;list-style:none;display:flex;flex-direction:column;gap:4px}
+.bandsd>summary::-webkit-details-marker{display:none}
+.bandsd>summary h2{margin:6px 0 0}
+.bandsd .bsum{font-size:.86rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.bandsd .bsum b{color:var(--ink)}
+.bandsd .bopen{font:600 .82rem var(--sans);color:var(--accent);border-bottom:1px dotted var(--accent);align-self:flex-start}
+.bandsd .bopen::before{content:"▸ "}
+.bandsd[open] .bopen::before{content:"▾ "}
+.bandsd[open] .bopen{font-size:0;border:0}.bandsd[open] .bopen::before{font-size:.82rem;content:"▾ Hide the table"}
+.bbody{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+@media (max-width:600px){
+ .wrap{gap:10px}
+ .wrap>.warn{font-size:.76rem;padding:7px 10px}
+ .eyebrow{display:none}
+ .wrap .lede{font-size:.86rem}
+ .controls.top{gap:8px}
+ .controls.top .seg button{padding:6px 10px}
+ #segS{width:100%}
+ .cmpbar{flex:1 1 100%;order:3}
+ .cmpbar label.sel{flex:1 1 0}
+ .cmpbar .swap~label.sel{flex-basis:0}
+ .cmpbar select{width:100%;max-width:none}
+ .pk{width:12px}
+ .controls.layers{gap:6px 12px}
+ label.sel.inl.cby{width:auto}
+ .cby select{max-width:170px}
+ .quick{margin-right:-16px}
+}
+@media (max-width:380px){.controls.top .seg button{padding:6px 8px}.copyl{padding:5px 9px}}
+@media (pointer:coarse){.cby select{min-height:44px;font-size:16px}.mopt>summary,.copyl{min-height:44px}.cmpbar select,#sel0{font-size:16px}.mpop .chk{min-height:40px}}
+
+/* ---- round 4 (2026-10-12): one theme at a time, key in the side panel, past difference, mobile fixes ---- */
+.gloss{font-size:.8rem;color:var(--muted);margin:4px 0 0;max-width:110ch;line-height:1.4}
+.gloss p{margin:0}
+.gloss>summary{cursor:pointer;font:600 12px var(--sans);color:var(--muted)}
+@media (min-width:601px){.gloss>summary{display:none}}
+.tkey>*,.tkey .lg2>*,.tkey .lg2 span{min-width:0;max-width:100%}
+.gloss a{color:var(--muted)}
+.tlong+.tshort,.tshort{display:none}
+/* the theme key sits at the top of the side panel (always next to the map on desktop; above the answer on phones) */
+.side .tkey{padding:0 0 10px;margin:0 0 10px;border-top:0;border-bottom:1px solid var(--rule);gap:6px 14px}
+.side .tkey:not(:has(> :not([hidden]):not(.dvl))):not(:has(.dvl.on)){display:none}
+.tkey .lg2{display:flex;flex-wrap:wrap;gap:6px 14px}
+.tkey .lgp .pxh{flex-basis:100%;color:var(--ink);font-weight:700}
+.lnk{all:unset;cursor:pointer;color:var(--accent);font-weight:700;border-bottom:1px dotted var(--accent)}
+.lnk:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+/* past theme, overlay = a difference: fixed by plan 2 (teal fill), new under plan 2 (orange dots), both (violet dashed outline) */
+:root{--pfix:#0e8f7e;--pnew:#b4470e}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pfix:#4fd1bd;--pnew:#ff9a62}}
+:root[data-theme="dark"]{--pfix:#4fd1bd;--pnew:#ff9a62}
+.pfix path{fill:var(--pfix);fill-opacity:.42;stroke:var(--pfix);stroke-width:1.2;vector-effect:non-scaling-stroke}
+.pnew path{fill:url(#pdot);stroke:var(--pnew);stroke-width:1.4;vector-effect:non-scaling-stroke}
+.pboth path{fill:var(--past);fill-opacity:.12;stroke:var(--past);stroke-width:1.8;stroke-dasharray:4 2.5;vector-effect:non-scaling-stroke}
+.pboth.l path{fill:none}
+.pasthit{fill:#000;fill-opacity:0;cursor:pointer}
+.pastsw.fix{background:color-mix(in srgb,var(--pfix) 42%,transparent);border:1.4px solid var(--pfix)}
+.pastsw.new{background:radial-gradient(circle,var(--pnew) 0 1.4px,transparent 1.6px) 0 0/5px 5px;border:1.4px solid var(--pnew)}
+.pastsw.both{background:color-mix(in srgb,var(--past) 12%,transparent)}
+.tip{white-space:pre-line;line-height:1.35}
+/* tapped spot: in-map answer (phones and tablets, where the panel is below the map) */
+.spotpill{position:absolute;right:12px;bottom:12px;z-index:4;max-width:calc(100% - 140px);display:flex;align-items:center;gap:8px;padding:6px 6px 6px 10px;border-radius:8px;background:color-mix(in srgb,var(--plate) 94%,transparent);border:1px solid var(--rule);box-shadow:0 2px 8px rgba(0,0,0,.18);font:600 12px/1.3 var(--sans);color:var(--ink)}
+.spotpill[hidden]{display:none}
+.spotpill button{font:700 12px var(--sans);color:var(--accent);background:none;border:1px solid var(--rule);border-radius:999px;padding:4px 10px;cursor:pointer;white-space:nowrap;min-height:30px}
+@media (min-width:901px){.spotpill{display:none}}
+/* swipe: plan 2's chip stays on the right (plan 2 is the right half) */
+.mapbox.sw .cchip.r{left:auto;right:58px;top:12px}
+/* quick-compare row: right-edge fade while more chips are hidden */
+.quick.more{-webkit-mask-image:linear-gradient(to left,transparent,#000 40px);mask-image:linear-gradient(to left,transparent,#000 40px)}
+.cchip .lead{margin:0 4px 0 0}
+/* plan table: best value per column */
+.ctab td.best{font-weight:800;color:var(--ink)}
+/* Streets & rail popover: anchored to the layers row, never off-screen */
+/* text floor leftovers */
+.lead{font-size:11px}
+.chk .zh{font-size:12px}
+.score thead th,details.oor li small,.bt th.grp{font-size:12px}
+@media (max-width:600px){
+ .lead{font-size:12px}
+ .mapbox.sw .cchip.r{max-width:38%}
+ .legend .lg2,.legend #lgO{display:flex;flex-direction:column;flex-wrap:nowrap;align-items:flex-start;gap:6px;flex-basis:auto;width:100%}
+ .ctab .tlong{display:none}.ctab .tshort,#ctabn .tshort{display:inline}#ctabn .tlong{display:none}
+ .gloss{font-size:12px}
+ label.sel.inl.cby,.ctab tbody th small{font-size:12px}
+}
+@media (max-width:430px){
+ .cmpbar{flex-wrap:wrap}
+ .cmpbar label.sel{flex:1 1 calc(100% - 54px)}
+ .cmpbar .swap~label.sel{flex-basis:100%}
+ .cby .tlong,#lhfw .tlong{display:none}.cby .tshort,#lhfw .tshort{display:inline}
+}
+@media (pointer:coarse){
+ .chk .zh{padding:12px 6px;margin:-12px -6px -12px 0}
+ .legd>summary{box-sizing:border-box}
+ .spotpill button{min-height:40px}
+ .ctab tbody th button{display:block;padding:10px 0}
+}
+
+/* ---- round 5 (2026-10-12, night): review3 desktop / mobile / numbers ---- */
+/* past difference: fixed and new are fills of equal weight (blue / crimson, CIELAB distance >= 21 from each other and from the
+   plain fill under normal, protan and deutan simulation; crimson stays clear of the freeway orange); both = violet outline */
+:root{--pfix:#1478c2;--pnew:#a8152d;--pfix-a:.46;--pnew-a:.38}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pfix:#58b7f0;--pnew:#ff7f7f;--pfix-a:.46;--pnew-a:.44}}
+:root[data-theme="dark"]{--pfix:#58b7f0;--pnew:#ff7f7f;--pfix-a:.46;--pnew-a:.44}
+.pfix path{fill:var(--pfix);fill-opacity:var(--pfix-a);stroke:var(--pfix);stroke-width:1.2}
+.pnew path{fill:var(--pnew);fill-opacity:var(--pnew-a);stroke:var(--pnew);stroke-width:1.2;vector-effect:non-scaling-stroke}
+.pastsw.fix{background:color-mix(in srgb,var(--pfix) 46%,transparent);border:1.2px solid var(--pfix)}
+.pastsw.new{background:color-mix(in srgb,var(--pnew) 40%,transparent);border:1.2px solid var(--pnew)}
+.tkey .lgp .pxn{flex-basis:100%;font-size:.74rem}
+/* desktop: the map column stays in view while the side panel scrolls; long tables show 12 rows + "Show all" */
+@media (min-width:901px){.grid>.panel.plate{position:sticky;top:8px;align-self:start}}
+.dscroll:not(.all) tr.xr{display:none}
+.morer{display:inline-block;margin:6px 0 10px;font-size:.8rem}
+/* single plan: the scorecard's header would repeat the tag line above it */
+.score.one thead{display:none}
+/* "Terms" folded at every width */
+@media (min-width:601px){.gloss>summary{display:list-item}}
+/* spot pill at every width: one line, × clears the pin */
+.spotpill:not([hidden]){display:flex}
+.spotpill{white-space:nowrap;padding:4px 4px 4px 10px;gap:6px}
+.spotpill .spt{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.spotpill .spotx{border:0;font-size:16px;line-height:1;padding:4px 8px;min-width:30px;color:var(--muted)}
+/* lede and disclaimer: short versions on phones */
+.lshort,.dshort{display:none}
+.lede .lnk{font-size:.86rem}
+/* N1: plan selects shrink instead of overflowing (601-900px landscape phones / small tablets) */
+.cmpbar label.sel{min-width:0}
+.cmpbar label.sel select{min-width:0;width:100%;max-width:240px}
+@media (max-width:900px){.cmpbar{flex:1 1 100%;order:3}.cmpbar label.sel{flex:1 1 0}.cmpbar label.sel select{max-width:none}}
+@media (max-width:600px){
+ .lshort{display:inline}.llong{display:none}.lede.open .llong{display:inline}.lede.open .lshort{display:none}
+ .dshort{display:inline}.dlong{display:none}
+ .quick .qlab{display:none}
+ .spotpill{left:12px;right:12px;max-width:none}
+ .mapbox.haspin .scale{bottom:62px}
+ .tkey .dvl{flex-wrap:wrap}.tkey .dvl{gap:4px 8px}
+}
+/* N3: the phone legend keeps its disclosure triangle; touch tablets never show the stray summary bar */
+@media (pointer:coarse) and (max-width:600px){.legd>summary{display:list-item;padding-block:13px}}
+@media (min-width:601px){.legd>summary{display:none}}
+/* N7 / N11: whole-row targets, Terms target, detached underline, 12px floor on touch tablets too */
+.chk .zh{border-bottom:0;text-decoration:underline dotted;text-underline-offset:2px}
+@media (pointer:coarse){
+ details.oor li{padding:0;align-items:center}details.oor li button{display:block;flex:1;padding:9px 0;border-bottom:0;text-decoration:underline dotted;text-underline-offset:3px}
+ .gloss>summary{padding:12px 0}
+ .spotpill .spotx{min-width:44px;min-height:40px}
+ .cchip,.vtag,#sclab,.side .tag,.ctab thead th,.bt thead th,.zh,.cite,.ctab small,.ctab tbody th small,.dtab th,.dtab td,.score th,.score td,.lead,.legend,.tkey .lgp .pxn,.eyebrow,label.sel.inl{font-size:12px}
+}
+/* landscape phones: the same short lede and disclaimer (the map started ~620px down on a 375px-tall screen) */
+@media (max-height:500px) and (min-width:601px){
+ .lshort{display:inline}.llong{display:none}.lede.open .llong{display:inline}.lede.open .lshort{display:none}
+ .dshort{display:inline}.dlong{display:none}.eyebrow{display:none}
+}
+
+/* ---- round 6 (2026-10-13): review4 final polish ---- */
+/* #1 "Show all" shows all: no nested 300px scroller (the 12-row cap bounds the length); wide tables still scroll sideways */
+.dscroll{max-height:none;overflow-x:auto;overflow-y:hidden}
+/* #2 phone-sized overlay at district zoom: plan 2 = one thin magenta line (map.js sets html.thin2); wording swaps with it */
+.thin2 .ov2c,.thin2 .ov2p{display:none}
+.thin2 .ov2m{stroke-width:1.4px}
+:root:not(.thin2) .w2t,.thin2 .w2d{display:none!important}
+.thin2 .cchip i.p2,.thin2 .pk.p2{height:0;border-bottom:0;border-top-width:1.6px}
+/* #5 racial-mix key: the sentence, then one row "lower [ramp] higher · district 42.5% · what this counts" */
+.tkey .dvl.on{display:flex;flex-direction:column;align-items:flex-start;gap:4px;flex-basis:100%;flex-wrap:nowrap}
+.dvl .dvs{color:var(--ink)}
+.tkey .dvl .dvr{display:block;font-size:12px;white-space:nowrap;max-width:100%}
+.tkey .dvl .dvr b{display:inline-block;width:40px;vertical-align:-1px;margin:0 4px}
+.tkey .dvl .dsep{font-style:normal;margin:0 6px 0 3px}   /* Overpass sets its middle dot left of centre */
+@media (max-width:380px){.tkey .dvl .dvr{white-space:normal}}
+/* #9 freeway shields: 12px numbers on screen (12.9 map px x 0.93) */
+.shield text{font-size:12.9px}
+/* #4 spot on a boundary line */
+.spot .edgen{color:var(--ink);margin:0 0 4px}
+/* #11 plan selects: full names (with "(lead plan)") on desktop; the row wraps if it must */
+@media (min-width:901px){.cmpbar label.sel select,.cmpbar select,#sel0{max-width:340px;width:auto}}
+
+/* rev5: space between the "Biggest moves" list and the note under it */
+.side .from + .hint{margin-top:10px}
+/* what-if plan tag: same shape as the lead tag, neutral colour */
+.lead.wif{background:var(--muted,#6b6b6b)}
+
+/* review 6 (phones): hidden legend rows stay hidden; the tap answer wraps instead of being cut off */
+.legend #lgO[hidden],.legend .lg2[hidden]{display:none!important}
+@media (max-width:600px){.spotpill{white-space:normal;align-items:flex-start}.spotpill .spt{overflow:visible;text-overflow:clip}}
+/* review 6: desktop quick-compare pills wrap instead of scrolling with the last one cut off */
+@media (min-width:901px){.quick{flex-wrap:wrap;overflow-x:visible}}
+
+/* ---- rev7 (2026-10-14): declutter. Fewer competing marks: plan 2 = one dashed magenta stroke, a quiet change hatch,
+   calmer school fills (no pink/magenta hue, so plan 2 and the program dot own that colour), title-case labels ---- */
+/* school fills: 8 hues ~40 deg apart in OKLCH, skipping the magenta band; low chroma so the lines read first, lightness
+   alternates a little so neighbours also differ in value; c7 is a neutral stone (a 9th hue sat too close to peach) */
+:root{--c0:#f7d9c2;--c1:#f0e7c1;--c2:#cfe4c3;--c3:#c8ece1;--c4:#c1e5ef;--c5:#d4e3f7;--c6:#d7daf7;--c7:#dcd7cf}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--c0:#4f3724;--c1:#4f482b;--c2:#35452d;--c3:#325249;--c4:#1e434c;--c5:#354a5f;--c6:#3b3d57;--c7:#4b4741}}
+:root[data-theme="dark"]{--c0:#4f3724;--c1:#4f482b;--c2:#35452d;--c3:#325249;--c4:#1e434c;--c5:#354a5f;--c6:#3b3d57;--c7:#4b4741}
+/* overlay lines: plan 1 thin solid (ink), plan 2 one dashed magenta stroke on top (map.js drawAreas) */
+.edge.p1{stroke:var(--ink);stroke-opacity:.7;stroke-width:1.6}
+.thin2 .ov2m{stroke-width:2px}
+.pk.p1{border-top-width:1.6px;opacity:.7}
+.pk.p2,.cchip i.p2,.thin2 .cchip i.p2,.thin2 .pk.p2{height:0;border-bottom:0;border-top:2.4px dashed var(--cmp);box-sizing:content-box}
+.cchip i.p1{border-top-width:1.6px;opacity:.7}
+/* change hatch: hairline, sparse, faint (pattern in map.js) */
+.hatchl{stroke:var(--ink);stroke-width:.9;opacity:.38}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hatchl{opacity:.32}}
+:root[data-theme="dark"] .hatchl{opacity:.32}
+.chgsw{background:repeating-linear-gradient(-45deg,var(--ink) 0 .8px,transparent .8px 5.6px);opacity:.55}
+/* labels: title case, semibold, no tracking (map.js measures them the same way); the river label lighter tracking */
+.lbl{font-weight:600;letter-spacing:0;text-transform:none}
+.wlbl{letter-spacing:.04em}
+/* freeways sit back a little behind the plan lines (shields keep full strength for wayfinding) */
+.fwyg{opacity:.75}
+/* compare header: each plan's tag next to its own name */
+.cside .cmpn{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 8px;margin:2px 0 0}
+.cside .cmpn h3{font-size:1.1rem;margin:0}
+.cside .cmpvs{font-weight:600;color:var(--muted);font-size:.85rem;margin:2px 0 0}
+.dtab th .lead{display:table;margin:3px 0 0 auto;white-space:nowrap}   /* rev8: the longer "lead example" tag sits under the plan name */
+
+/* ---- round 8 (2026-10-14): fewer controls. Row 1 = level, view, the two plans; row 2 = three quick compares, then
+   "Map options" (color by, hatch, layers) and Copy link at the right. Phones: chips scroll, the two buttons stay put. ---- */
+.row2{display:flex;align-items:center;gap:8px 12px;min-width:0}
+.row2 .quick{flex:1 1 auto;min-width:0;flex-wrap:nowrap;overflow-x:auto;margin-right:0}
+.mtools{display:flex;gap:8px;align-items:center;flex:none;margin-left:auto}
+.mopt{position:relative}
+.mopt>summary,.copyl{cursor:pointer;font:600 .8rem var(--sans);color:var(--ink);border:1px solid var(--rule);border-radius:999px;padding:5px 12px;background:var(--plate);list-style:none;min-height:32px;display:inline-flex;align-items:center;gap:6px;margin:0;white-space:nowrap}
+.mopt>summary::-webkit-details-marker{display:none}
+.mopt>summary::after{content:"▾";font-size:.7rem}
+.mopt[open]>summary::after{content:"▴"}
+.mopt[open]>summary{border-color:var(--ink)}
+.mopt>summary:hover,.copyl:hover{background:var(--accent-soft)}
+.mopt>summary:focus-visible,.copyl:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.mdot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--cmp);margin-left:-2px}
+.mdot[hidden]{display:none}
+.mpop{position:absolute;z-index:8;top:calc(100% + 6px);right:0;display:flex;flex-direction:column;gap:6px;padding:12px 14px;background:var(--plate);border:1px solid var(--rule);border-radius:8px;box-shadow:0 6px 18px rgba(0,0,0,.18);width:260px;max-width:calc(100vw - 32px);box-sizing:border-box}
+.mpop label.sel.cby{font:700 .7rem var(--sans);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:0}
+.mpop select{font:600 .88rem var(--sans);color:var(--ink);background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:6px 8px;min-height:36px;width:100%;text-transform:none;letter-spacing:0}
+.mpop .mh{font:700 .7rem var(--sans);text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin:6px 0 0;padding-top:8px;border-top:1px solid var(--rule)}
+.mpop .chk{font-size:.84rem}
+.ico{flex:none}
+.copyl .ct{display:inline}
+.mts{display:none}
+@media (max-width:600px){
+ .row2 .quick{margin-right:0}
+ .mopt .mt{display:none}
+ .mopt .mts{display:inline}
+ .mopt>summary{padding:5px 10px}
+ .copyl{padding:5px 10px}
+ .copyl .ct{display:none}
+ .copyl.msg .ct{display:inline}
+ .wrap h1{margin-bottom:0}
+}
+@media (pointer:coarse){.mpop select{min-height:44px;font-size:16px}}
+@media (min-width:901px){.row2 .quick{flex-wrap:wrap;overflow-x:visible}}
+/* the "Terms" glossary now sits at the foot of the side panel */
+.side .gloss{margin-top:14px;padding-top:10px;border-top:1px solid var(--rule)}
+.side .gloss>summary{display:list-item}
+/* round 8: with Status Quo | PPS A as the default pair both "Schools at target" cells carry "(PPS figures)"; on one line each
+   they pushed the side-panel table past the panel (and the phone's width) */
+.score .pf{display:block;font-size:.85em;font-weight:600}
+
+/* ---- review 6 mobile pass. Keep LAST so it wins the cascade. ---- */
+/* quick-compare chips get their own full-width, wrapping row; Map options + Copy link sit under them */
+@media (max-width:600px){
+ .row2{flex-wrap:wrap}
+ .row2 .quick{flex:1 1 100%;flex-wrap:wrap;overflow:visible;margin-right:0;-webkit-mask-image:none;mask-image:none;padding-bottom:0}
+ .mtools{flex:1 1 100%;justify-content:flex-end;margin-left:0}
+}
+/* tap targets: 44px on phones and touch screens (the older 44px block lost the cascade to later 30-36px rules) */
+@media (max-width:700px),(pointer:coarse){
+ .wrap .seg button,.wrap .controls.top .seg button,.wrap .quick button,.wrap .cmpbar select,.wrap .cmpbar .swap,.wrap #sel0,.wrap label.sel select,
+ .wrap .mpop select,.wrap .cby select,.wrap .mopt>summary,.wrap .copyl,.wrap .spotpill button,.wrap .bandsd .seg button{min-height:44px}
+ .wrap .copyl{min-width:44px;justify-content:center}
+ .wrap .mpop .chk,.wrap .chk{min-height:44px;display:flex;align-items:center;gap:8px}
+ .wrap .chk input{width:22px;height:22px;flex:none}
+ .wrap .chk .zh{display:inline-block;padding:14px 8px;margin:-14px -8px -14px 0;min-height:0}
+ .wrap .legend a{display:inline-block;padding-block:13px}
+ .wrap .legd>summary{min-height:44px;box-sizing:border-box}
+ .wrap .mpop .mh{margin-top:4px}
+}
+/* one finger scrolls the page on touch screens; two fingers move the map (see "Use two fingers" hint in map.js) */
+@media (pointer:coarse){.mapbox{touch-action:pan-y}}
+.mapbox .swipe button{touch-action:none}
+.mhint{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:6;pointer-events:none;background:rgba(20,26,29,.86);color:#fff;font:600 .9rem/1.3 var(--sans);padding:10px 16px;border-radius:999px;opacity:0;transition:opacity .25s;white-space:nowrap;max-width:90%}
+.mhint.on{opacity:1}
+/* map tables already fade at the right edge (scroll-shadow background on .tablebox); phones: 14px table text, tighter first column */
+@media (max-width:600px){
+ .ctab thead th,.ctab td,.ctab tbody th,.bt td,.bt th,.bt thead th{font-size:14px}
+ .ctab tbody th{min-width:110px;max-width:130px;white-space:normal}
+}

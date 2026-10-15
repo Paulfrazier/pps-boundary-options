@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Options compared | PPS boundary options</title>
+<meta name="description" content="Every PPS boundary plan and example plan side by side: walks, schools at their size target, kids reassigned, feeders and diversity at K-5, 6-8 and 9-12 (preliminary model results).">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23245c9e%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23fff%27/%3E%3Crect x=%2713.5%27 y=%2718%27 width=%275%27 height=%277%27 fill=%27%23245c9e%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css">
+<style>
+.lvl-row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:16px 0 10px}
+.prelim{border:2px solid var(--bad);background:var(--card);border-radius:8px;padding:10px 14px;margin:14px 0;font-size:15px}
+.prelim b{color:var(--bad)}
+.tbl table.cmp{min-width:640px}
+.cmp th.grp{text-align:center;font-size:12px;letter-spacing:.04em;text-transform:uppercase;border-bottom:2px solid var(--rule)}
+.cmp th.g-reference{border-bottom-color:var(--today)}
+.cmp th.g-pps{border-bottom-color:var(--pps)}
+.cmp th.g-option{border-bottom-color:var(--ours)}
+.cmp th.g-whatif{border-bottom-color:var(--muted);border-bottom-style:dashed}
+.cmp th.first-of-group,.cmp td.first-of-group{border-left:2px solid var(--rule)}
+.cmp td.today,.cmp th.today{color:var(--muted);background:color-mix(in srgb,var(--today) 8%,transparent)}
+.cmp td.best{color:var(--good);background:color-mix(in srgb,var(--good) 10%,transparent)}
+.cmp th .ver{display:block;font-weight:400;font-size:11px}
+.cmp th:first-child,.cmp td:first-child{position:sticky;left:0;background:var(--card);min-width:150px;max-width:190px;z-index:1}
+.cmp td small{display:block;font-weight:400;color:var(--muted)}
+.opt{margin-top:28px;border-top:1px solid var(--rule);padding-top:4px}
+.md h4,.md h5{margin:18px 0 6px}
+.md h3{font-size:16px}
+.md .tbl{margin:10px 0}
+.md ul ul{margin-top:2px}
+.md code{background:var(--tag);padding:0 4px;border-radius:3px;font-size:.92em}
+.md p{margin:8px 0}
+.keeps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin:10px 0}
+.keeps div{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:10px 12px;font-size:14px}
+.keeps b{display:block;margin-bottom:2px}
+.dv td.n{text-align:right;font-variant-numeric:tabular-nums}
+.dv td.sumrow,.dv tr.sum td{font-weight:600;border-top:2px solid var(--rule)}
+.dv tr.sum td:first-child{font-weight:700}
+.wk td{vertical-align:top;font-size:13px;min-width:130px}
+.wk td:first-child{min-width:110px;font-size:14px}
+.wk td b{font-size:14px}
+.wk td small{display:block;font-weight:400;color:var(--muted)}
+.wk td .dest{display:block;font-weight:400;color:var(--muted);line-height:1.3}
+.mv td:nth-child(n+2),.mv th:nth-child(n+2){text-align:left}
+.mv td:nth-child(4),.mv th:nth-child(4){text-align:right}
+details.full{margin:.6em 0 1em}details.full>summary{cursor:pointer;font-weight:600;color:var(--accent)}
+.md.brief{border-left:3px solid var(--ours);padding-left:12px}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html" aria-current="page">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="schools.html">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
+<main>
+<div class="warn" id="pps-disclaimer"><b>Independent analysis by a PPS parent, not an official Portland Public Schools product.</b> It may contain errors. Check PPS's own materials: the <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">Rightsizing scenarios page</a> and the <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
+<div id="prelim"></div>
+
+<h1>Options compared</h1>
+<p class="lede" id="lede">Loading data...</p>
+
+
+<h2 id="glance">Every measure</h2>
+<p class="muted">Every plan, rated from better to worse, across levels. For one level at a time, see &ldquo;Side by side&rdquo; below.</p>
+<div id="mx"></div>
+
+<h2 id="compare">Side by side</h2>
+<div class="lvl-row"><span class="small">School level:</span>
+  <div class="levels lvsel" id="levels" role="group" aria-label="School level">
+    <button type="button" data-lv="K-5" aria-pressed="true">K-5</button>
+    <button type="button" data-lv="6-8" aria-pressed="false">6-8</button>
+    <button type="button" data-lv="9-12" aria-pressed="false">9-12</button>
+  </div>
+  <span class="muted small" id="lvnote"></span>
+</div>
+<div class="tbl"><table class="cmp" id="cmp"></table></div>
+<p class="cite" id="cmpcite"></p>
+<p class="note">Green and bold marks the best value in a row among the plans (PPS Status Quo is the baseline, not a contender). Terms are defined on <a href="sources.html#definitions">Sources &amp; definitions</a>.</p>
+
+<h2 id="why">Shorter walks and more schools at target: what&rsquo;s the catch?</h2>
+<div class="md" id="why-out"></div>
+<p class="cite" id="why-cite"></p>
+
+<h2 id="per-option">Example plans, one by one (and one what-if)</h2>
+<div id="per-option-out"></div>
+
+<h2 id="programs">Program moves</h2>
+<p class="muted">Dual Language Immersion (DLI) and other programs that change buildings. "Kids 2031" is program kids on the 2031-32 basis.</p>
+<div id="programs-out"></div>
+
+<h2 id="diversity">How diverse each school would be</h2>
+<p class="muted">Share of each school's neighborhood kids who are kids of color, under each plan. The cell tint shows how far the school sits from the district share (orange = more kids of color than the district, blue = fewer, as on the map); the number is always shown. Evenly mixed schools sit near the district share.</p>
+<div class="lvl-row"><span class="small">School level:</span>
+  <div class="levels lvsel" role="group" aria-label="School level (diversity table)">
+    <button type="button" data-lv="K-5" aria-pressed="true">K-5</button>
+    <button type="button" data-lv="6-8" aria-pressed="false">6-8</button>
+    <button type="button" data-lv="9-12" aria-pressed="false">9-12</button>
+  </div>
+</div>
+<div class="tbl"><table class="cmp dv" id="dv"></table></div>
+<p class="cite" id="dvcite"></p>
+<p class="note" id="dvnote"></p>
+
+<h2 id="walks">Walking from each closing school's area</h2>
+<p class="muted">Take the neighborhood around a school that PPS closes. Where do its K-5 kids go under each plan, and how far do they walk? Distances are foot-routed block to school; the bus line is 1 mile at K-5.</p>
+<div class="lvl-row"><div class="levels" id="scen" role="group" aria-label="Which PPS scenario's closures">
+  <button type="button" data-sc="A" aria-pressed="true">Closes under PPS A</button>
+  <button type="button" data-sc="B" aria-pressed="false">Closes under PPS B</button>
+</div></div>
+<div class="tbl"><table class="cmp wk" id="wk"></table></div>
+<p class="cite" id="wkcite"></p>
+<p class="note">Each cell: average walk in miles; below it, kids walking more than 1 mile; below that, where the area's kids go (top destinations, kids). K-5 only. "Straight" is straight-line miles to the assigned school. PPS Status Quo keeps the closing school open, so it shows the starting point.</p>
+
+<footer>
+  <p><a href="method.html">How the model works</a> &middot; <a href="sources.html">Sources &amp; definitions</a> &middot; <a href="durability.html">Durability year by year</a></p>
+  <p id="gen"></p>
+<p id="ai"><b>Built with AI.</b> The research, data work, modeling and writing were done by AI (Claude, from Anthropic), directed and guided by Paul Frazier, a PPS parent, who made every judgment call and checked results against PPS&rsquo;s documents. Best effort; it will have errors. <a href="how.html">How we did this</a> &middot; <a href="method.html">Method</a>.</p>
+<p><a href="../LICENSE">License</a>: code MIT, analysis CC BY 4.0, OpenStreetMap-derived data &copy; OpenStreetMap contributors, ODbL. &copy; 2026 Paul Frazier.</p>
+</footer>
+</main>
+
+<script src="data/site_data.js"></script>
+<script src="data/site_tables.js"></script>
+<script src="matrix.js"></script>
+<script>
+(function(){
+'use strict';
+var D = window.SITE_DATA;
+if(D && window.renderMatrix) renderMatrix(document.getElementById('mx'), D, '../');
+var LEVELS = ['K-5','6-8','9-12'];
+var level = 'K-5';
+
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function fmtInt(v){return v==null?'-':Math.round(v).toLocaleString('en-US');}
+// decimal half-up rounding, same as the landing page (0.975 -> 0.98; toFixed on the float gives 0.97)
+function fx(v,d){return Number(v).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d,useGrouping:false});}
+function fmt1(v){return v==null?'-':fx(v,1);}
+function fmt2(v){return v==null?'-':fx(v,2);}
+function fmt3(v){return v==null?'-':fx(v,3);}
+function pct(v){return v==null?'-':fx(v,1)+'%';}
+function srcLink(p,text){return '<a href="../'+esc(p)+'">'+esc(text||p)+'</a>';}
+
+// ---- Markdown (safe: escapes everything first) ----
+function inline(s){
+  s = esc(s);
+  s = s.replace(/`([^`]+)`/g,'<code>$1</code>');
+  s = s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+  s = s.replace(/(^|[\s(])\*([^*\s][^*]*)\*(?=[\s).,;:]|$)/g,'$1<em>$2</em>');
+  s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,'<a href="$2">$1</a>');
+  return s;
+}
+function splitRow(l){
+  l = l.trim().replace(/^\|/,'').replace(/\|$/,'');
+  return l.split('|').map(function(c){return c.trim();});
+}
+function md(src, minHeading){
+  var lines = src.replace(/\r/g,'').split('\n'), out = [], i = 0;
+  var base = minHeading || 4;
+  while(i < lines.length){
+    var l = lines[i];
+    if(!l.trim()){i++;continue;}
+    var h = /^(#{1,6})\s+(.*)$/.exec(l);
+    if(h){
+      var lv = Math.min(6, base + h[1].length - 2); if(lv < base) lv = base;
+      out.push('<h'+lv+'>'+inline(h[2])+'</h'+lv+'>'); i++; continue;
+    }
+    if(/^\s*\|/.test(l) && i+1 < lines.length && /^\s*\|[\s:|-]+\|?\s*$/.test(lines[i+1])){
+      var head = splitRow(l); i += 2; var rows = [];
+      while(i < lines.length && /^\s*\|/.test(lines[i])){rows.push(splitRow(lines[i])); i++;}
+      var t = '<div class="tbl"><table><thead><tr>'+head.map(function(c){return '<th>'+inline(c)+'</th>';}).join('')+'</tr></thead><tbody>';
+      rows.forEach(function(r){t += '<tr>'+r.map(function(c){return '<td>'+inline(c)+'</td>';}).join('')+'</tr>';});
+      out.push(t+'</tbody></table></div>'); continue;
+    }
+    if(/^\s*[-*]\s+/.test(l)){
+      var items = [];
+      while(i < lines.length && (/^\s*[-*]\s+/.test(lines[i]) || (lines[i].trim() && /^\s{2,}\S/.test(lines[i]) && items.length))){
+        var m = /^(\s*)[-*]\s+(.*)$/.exec(lines[i]);
+        if(m){items.push({d:Math.floor(m[1].length/2), t:m[2]});}
+        else {items[items.length-1].t += ' '+lines[i].trim();}
+        i++;
+      }
+      var pos = 0;
+      var build = function(d){
+        var h2 = '<ul>';
+        while(pos < items.length && items[pos].d >= d){
+          if(items[pos].d > d){ h2 += build(items[pos].d); continue; }
+          h2 += '<li>'+inline(items[pos].t);
+          pos++;
+          if(pos < items.length && items[pos].d > d){ h2 += build(items[pos].d); }
+          h2 += '</li>';
+        }
+        return h2 + '</ul>';
+      };
+      var html = build(items[0].d);
+      out.push(html); continue;
+    }
+    var p = [];
+    while(i < lines.length && lines[i].trim() && !/^(#{1,6}\s|\s*\||\s*[-*]\s+)/.test(lines[i])){p.push(lines[i].trim()); i++;}
+    out.push('<p>'+inline(p.join(' '))+'</p>');
+  }
+  return out.join('\n');
+}
+
+// ---- metrics ----
+// PPS's own Family Guide figures represent PPS's plans wherever PPS publishes them (school sizes, at-target counts)
+function isPF(o, lv){var P=D.pps_figures&&D.pps_figures.plans[o.name];return !!(P&&P.levels[lv]);}
+var PFTAG=' <span class="small muted">PPS figures</span>';
+function durLv(o, lv){var P=D.pps_figures&&D.pps_figures.plans[o.name];if(P&&P.levels[lv])return P.levels[lv];return o.durability && o.durability.levels && o.durability.levels[lv];}
+function inRange(o, lv){var d = durLv(o,lv); if(!d) return null; var n = d.n_zoned_non_exempt, a = d.at_target_zoned && d.at_target_zoned['2031-32']; return a==null?null:{a:a,n:n};}
+function durable(o, lv){var d = durLv(o,lv); if(!d) return null; var a = d.at_target_all_required_years!=null ? d.at_target_all_required_years : d.durable_through_2040_41; return {a:a, n:d.n_zoned_non_exempt};}
+function reqLabel(){var o=D.options.find(function(x){return x.durability;}); var du=o&&o.durability; if(du&&du.required_years) return du.required_years[0]+' to '+du.required_years[du.required_years.length-1]; return du? 'to '+du.years[du.years.length-1] : '';}
+
+function metrics(lv){
+  var thr = D.levels[lv].bus_threshold_mi;
+  var far = lv==='9-12' ? '2.0' : null;
+  var m = [];
+  m.push({k:'avg_walk_mi',label:'Average walk (mi)',dir:-1,get:function(o){return L(o).avg_walk_mi;},f:fmt2});
+  m.push({k:'avg_bike_mi',label:'Average bike (mi)',dir:-1,opt:true,get:function(o){return L(o).avg_bike_mi;},f:fmt2});
+  ['0.5','1.0','1.5'].concat(far?[far]:[]).forEach(function(t){
+    var key='pct_within_'+t+'mi';
+    m.push({k:key,label:'Within '+(t==='1.0'?'1':t)+' mi',dir:1,opt:true,get:function(o){return L(o)[key];},f:pct});
+  });
+  m.push({k:'kids_over_bus_threshold',label:'Kids over the bus line ('+thr+' mi)',dir:-1,get:function(o){return L(o).kids_over_bus_threshold;},f:fmtInt,cite:'../build/research/targets.md'});
+  m.push({k:'kids_past_closer_school',label:'Kids assigned to a farther school, past a closer one',dir:-1,get:function(o){return L(o).kids_past_closer_school;},f:fmtInt});
+  m.push({k:'kids_reassigned_vs_status_quo',label:'Kids reassigned vs PPS Status Quo',dir:-1,skip:['status_quo'],get:function(o){return L(o).kids_reassigned_vs_status_quo;},f:fmtInt});
+  if(lv==='9-12') m.push({k:'pct_ms_feeders_to_one_hs',label:'Middle zones feeding one high school',dir:1,opt:true,get:function(o){return L(o).pct_ms_feeders_to_one_hs;},f:function(v){return v==null?'-':Math.round(v)+'%';},note:'PPS aims for 100%; Scenario A reaches 80%'});
+  m.push({k:'dissimilarity_index',label:'Dissimilarity index',dir:-1,opt:true,get:function(o){return L(o).dissimilarity_index;},f:fmt3,note:'lower = more evenly mixed'});
+  m.push({k:'durability.at_target_zoned[2031-32]',label:'Schools at target, 2031-32',dir:1,get:function(o){var r=inRange(o,lv);return r?r.a:null;},f:function(v,o){var r=inRange(o,lv);return r?r.a+' of '+r.n+(isPF(o,lv)?PFTAG:''):'-';},note:'zoned, non-exempt; floor '+D.levels[lv].floor});
+  m.push({k:'schools_in_range',label:'All open schools in range, 2031-32',dir:1,get:function(o){return L(o).schools_in_range;},f:function(v,o){return v==null?'-':v+' of '+L(o).schools_open;},note:'includes program-only and exempt schools'});
+  m.push({k:'schools_in_range_at_minus9pct',label:'… if enrollment is 9% below forecast',dir:1,get:function(o){return L(o).schools_in_range_at_minus9pct;},f:function(v,o){return v==null?'-':v+' of '+L(o).schools_open;},note:'same schools; how many still fit if fewer kids enroll than PSU forecasts'});
+  m.push({k:'durability.at_target_all_required_years',label:'At target every year, '+reqLabel(),dir:1,get:function(o){var r=durable(o,lv);return r?r.a:null;},f:function(v,o){var r=durable(o,lv);return r?r.a+' of '+r.n+(isPF(o,lv)?PFTAG:''):'-';}});
+  return m;
+}
+function L(o){return (o.levels && o.levels[level]) || {};}
+
+// ---- render ----
+function renderPrelim(){
+  var el = document.getElementById('prelim');
+  if(D.placeholder_note){
+    el.innerHTML = '<div class="prelim"><b>Preliminary numbers.</b> '+esc(D.placeholder_note)+'</div>';
+  } else el.innerHTML = '';
+}
+function renderLede(){
+  document.getElementById('lede').innerHTML =
+   'An option is one complete set of school boundaries. <strong>Example plans</strong> keep PPS\'s own closures, K-8 conversions and program placements, and let a solver redraw the lines to keep kids closer to school and keep schools in their size range for longer. <strong>PPS A and PPS B</strong> are the district\'s Scenarios A and B as traced from its published maps. <strong>PPS Status Quo</strong> (2027-28, no closures) is the baseline every plan is compared with. All use the same kids, the same 2031-32 enrollment basis and the same walk routes, so the rows compare like with like. <strong>These are model estimates</strong>, built from Census blocks rather than PPS&rsquo;s student records, so they may not hold up on PPS&rsquo;s real data; that is why we&rsquo;d like PPS to test options like these on its own data. <a href="method.html">How it works</a>.';
+}
+function groups(opts){
+  var g = [], last = null;
+  opts.forEach(function(o){
+    var key = grpKey(o);
+    if(last && last.kind===key){last.n++;} else {last={kind:key,n:1}; g.push(last);}
+  });
+  return g;
+}
+var GNAME = {reference:'Baseline',pps:'PPS plans',option:'Example plans',whatif:'What-if'};
+function grpKey(o){return o.what_if?'whatif':o.kind;}
+function renderTable(){
+  var opts = D.options.filter(function(o){return o.levels && o.levels[level];});
+  var ms = metrics(level).filter(function(m){
+    if(!m.opt) return true;
+    return opts.some(function(o){return m.get(o)!=null;});
+  });
+  var firstOf = {}, seen = {};
+  opts.forEach(function(o){var g=grpKey(o); if(!seen[g]){seen[g]=1; firstOf[o.name]=true;}});
+  var h = '<thead><tr><th></th>';
+  groups(opts).forEach(function(g){h += '<th class="grp g-'+g.kind+' first-of-group" colspan="'+g.n+'">'+GNAME[g.kind]+'</th>';});
+  h += '</tr><tr><th>Measure</th>';
+  opts.forEach(function(o){
+    h += '<th class="'+(o.kind==='reference'?'today ':'')+(firstOf[o.name]?'first-of-group':'')+'">'+hdName(o)+(o.caveat?'<sup class="src"><a href="#opt-'+esc(o.name)+'" title="'+esc(o.caveat)+'">&dagger;</a></sup>':'')+hdTag(o)+'</th>';
+  });
+  h += '</tr></thead><tbody>';
+  ms.forEach(function(m){
+    var best = null;
+    opts.forEach(function(o){
+      if(o.kind==='reference' || o.what_if) return;
+      if(m.skip && m.skip.indexOf(o.name)>=0) return;
+      var v = m.get(o); if(v==null) return;
+      if(best==null || (m.dir>0 ? v>best : v<best)) best = v;
+    });
+    h += '<tr><td>'+esc(m.label)+(m.note?'<small>'+esc(m.note)+'</small>':'')+'</td>';
+    opts.forEach(function(o){
+      var v = m.get(o);
+      var cls = [];
+      if(o.kind==='reference') cls.push('today');
+      if(firstOf[o.name]) cls.push('first-of-group');
+      if(v!=null && best!=null && o.kind!=='reference' && !o.what_if && !(m.skip && m.skip.indexOf(o.name)>=0) && v===best) cls.push('best');
+      var base = m.skip && m.skip.indexOf(o.name)>=0;   // the baseline row value (e.g. Status Quo vs itself) reads as a dash, as on the landing page
+      h += '<td'+(cls.length?' class="'+cls.join(' ')+'"':'')+'>'+(v==null||base?'–':m.f(v,o))+'</td>';
+    });
+    h += '</tr>';
+  });
+  h += '</tbody>';
+  document.getElementById('cmp').innerHTML = h;
+
+  var keys = ms.map(function(m){return '<code>'+esc(m.k)+'</code>';}).join(', ');
+  var srcs = opts.map(function(o){return esc(o.short)+': '+srcLink(o.source);}).join('; ');
+  document.getElementById('cmpcite').innerHTML =
+    'All plans: '+(D.model_version==='v2'?'current model (v2)':'model '+esc(D.model_version))+', 2031-32 basis. Sources (scorecard.json, JSON keys under <code>levels["'+esc(level)+'"]</code> unless noted): '+srcs+'. Keys: '+keys+'. Bus line ('+D.levels[level].bus_threshold_mi+' mi) and the '+fmtInt(D.levels[level].floor)+'-kid floor are PPS-defined: '+srcLink(D.targets_source,'targets.md')+'. Size-range and every-year rows come from the <code>durability</code> block of the same file, except that the two at-target rows for PPS Status Quo, A and B use PPS&rsquo;s own Family Guide projections (marked &ldquo;PPS figures&rdquo;; '+srcLink(D.pps_figures?D.pps_figures.source:'','PPS_OFFICIAL_DURABILITY.json')+').'
+  // plans with a caveat but no per-option section (the PPS baseline): give the table's dagger link a visible target
+  document.getElementById('cmpcite').innerHTML += opts.filter(function(o){return o.caveat && o.kind!=='option';}).map(function(o){return '<span class="note" id="opt-'+esc(o.name)+'" style="display:block;margin-top:6px">† <b>'+esc(o.short)+':</b> '+esc(o.caveat)+'</span>';}).join('');
+  document.getElementById('lvnote').textContent = 'Showing '+level+'. Floor '+fmtInt(D.levels[level].floor)+' kids; bus line '+D.levels[level].bus_threshold_mi+' mi.';
+}
+function renderOptions(){
+  var out = '';
+  if(D.briefs_why_md){
+    document.getElementById('why-out').innerHTML = md(D.briefs_why_md,4);
+    document.getElementById('why-cite').innerHTML = 'Plan briefs from the models track: '+srcLink(D.briefs_source,'BRIEFS.md')+'. Numbers come from each plan&rsquo;s scorecard.json.';
+  } else { var w=document.getElementById('why'); if(w) w.style.display='none'; }
+  D.options.filter(function(o){return o.kind==='option';}).slice().sort(function(a,b){
+    var ra=a.brief_rank==null?99:a.brief_rank, rb=b.brief_rank==null?99:b.brief_rank; return ra-rb;
+  }).forEach(function(o){
+    var id = 'opt-'+o.name;
+    out += '<section class="opt" id="'+esc(id)+'"><h3>'+esc(o.full||o.short)+(o.brief_rank===0?'<span class="tag">best we modeled</span>':'')+(o.what_if?'<span class="tag">what-if, not one of the example plans</span>':'')+'</h3>';
+    if(o.caveat) out += '<p class="note"><b>Caveat.</b> '+esc(o.caveat)+'</p>';
+    if(!o.brief_md) out += '<p>'+esc(o.label)+'</p>';   // the brief's "How it works" replaces the scorecard label
+    var p = o.programs;
+    var keeps = '<div><b>Keeps</b>'+(o.name==='option3a'?'PPS A\'s closures, K-8 conversions, program moves and high-school lines. Also closes Winterhaven (K-8 STEM) and da Vinci (6-8 arts); their students return to neighborhood schools.':(o.name==='option2'||o.name==='option2_ms460')?'PPS A\'s closures and K-8 conversions, and its program moves except two: MLK Jr Mandarin and Beaumont Spanish 6-8 stay in their buildings.':'PPS A\'s closures, K-8 conversions and program set.')+'</div>';
+    var changes = '<div><b>Changes</b>The K-5 and 6-8 attendance lines (PPS A\'s high-school lines are kept)'+(p&&p.dli_kids_moved_total!=null?'; '+fmtInt(p.dli_kids_moved_total)+' program kids ('+fmtInt(p.because_building_closes)+' because a building closes, '+fmtInt(p.because_program_moves)+' because a program moves)':'')+'.</div>';
+    var k = L(o);
+    var rule = o.split_feeder_rule ? '<div><b>Feeder rule</b>'+esc(typeof o.split_feeder_rule==='string'?o.split_feeder_rule:JSON.stringify(o.split_feeder_rule)).replace(/&gt;=/g,'&ge;').replace(/&lt;=/g,'&le;')+'</div>' : '';
+    if(o.brief_md) out += '<div class="md brief">'+md(o.brief_md,4)+'</div>';
+    out += '<div class="keeps">'+keeps+changes+rule+'</div>';
+    if(o.tradeoffs_md && !o.brief_md){
+      out += '<div class="md">'+md(o.tradeoffs_md,4)+'</div><p class="cite">Written up from the solver output: '+srcLink(o.tradeoffs,'TRADEOFFS.md (raw)')+'. Scorecard: '+srcLink(o.source)+'.</p>';
+    } else if(o.tradeoffs_md){
+      out += '<details class="full"><summary>Full trade-off write-up</summary><div class="md">'+md(o.tradeoffs_md,4)+'</div>'
+        +'<p class="cite">Written up from the solver output: '+srcLink(o.tradeoffs,o.tradeoffs.split('/').pop())+'. Scorecard: '+srcLink(o.source)+'.</p></details>';
+    } else {
+      out += '<p class="muted">No trade-off write-up for this option yet. Its numbers are in the table above. <span class="cite">Scorecard: '+srcLink(o.source)+'.</span></p>';
+    }
+    out += '</section>';
+  });
+  if(!out) out = '<p class="muted">No solver options in the data yet.</p>';
+  else{
+    var ours=D.options.filter(function(o){return o.kind==='option'}),bs={};
+    ours.forEach(function(o){if(o.basis)bs[String(o.basis).replace(/\.\s*$/,'')]=1});
+    var bl=Object.keys(bs);
+    out=(bl.length===1?'<p class="muted small">All figures: '+esc(bl[0]).replace(/see METHOD\.md/,'see <a href="method.html#solver">Method</a>')+'.</p>':'')+out
+      +(D.briefs_source?'<p class="cite">Plan briefs: '+srcLink(D.briefs_source,'BRIEFS.md')+'.</p>':'');
+  }
+  document.getElementById("per-option-out").innerHTML = out;
+}
+function renderPrograms(){
+  // Plans with identical program moves share one table (Scenario A and the example plans all use A's programs).
+  var groupsByKey = {}, order = [];
+  D.options.forEach(function(o){
+    var p = o.programs;
+    if(!p || !p.moves || !p.moves.length) return;
+    var key = JSON.stringify(p.moves);
+    if(!groupsByKey[key]){ groupsByKey[key] = {moves:p.moves, total:p.dli_kids_moved_total, opts:[]}; order.push(key); }
+    groupsByKey[key].opts.push(o);
+  });
+  var out = '';
+  order.forEach(function(k){
+    var g = groupsByKey[k];
+    out += '<h3>'+(g.opts.length>1?'Same moves in '+g.opts.length+' plans':esc(g.opts[0].short))+'</h3>';
+    if(g.opts.length > 1) out += '<p class="chips">'+g.opts.map(function(o){return '<span class="chip">'+esc(o.short)+'</span>';}).join(' ')+'</p>';
+    out += '<div class="tbl"><table class="mv"><thead><tr><th>Program</th><th>From</th><th>To</th><th>Kids 2031</th><th>Why</th></tr></thead><tbody>';
+    g.moves.forEach(function(m){
+      out += '<tr><td>'+esc(String(m.program).replace('|',' '))+'</td><td>'+esc(m.from)+'</td><td>'+esc(m.to)+'</td><td>'+fmtInt(m.kids_2031)+'</td><td>'+esc(m.why)+'</td></tr>';
+    });
+    out += '</tbody></table></div>';
+    out += '<p class="cite">'+g.opts.map(function(o){return srcLink(o.source);}).join('; ')+'; key <code>programs.moves</code>. '+fmtInt(g.total)+' kids moved in total.</p>';
+  });
+  if(!order.length) out = '<p class="muted">No program moves in the data.</p>';
+  document.getElementById('programs-out').innerHTML = out;
+}
+
+
+// ---- diversity + closing-area walks (window.SITE_TABLES, from build/export/site_tables.py) ----
+var T = window.SITE_TABLES, scen = 'A';
+function hdName(o){return esc(o.short).replace(/K-8/g,'K&#8209;8');}
+function hdTag(o){return o.brief_rank===0?'<span class="ver">best we modeled</span>':o.what_if?'<span class="ver">what-if</span>':'';}
+function tint(diff){ // diff = share - district, in fraction; +/-0.30 saturates
+  var a = Math.min(1, Math.abs(diff)/0.30)*45;
+  return 'color-mix(in srgb,'+(diff>=0?'#d9822b':'#2f6db5')+' '+a.toFixed(0)+'%,transparent)';
+}
+function optsFor(names){return names.map(function(n){return D.options.filter(function(o){return o.name===n;})[0];}).filter(Boolean);}
+function renderDiversity(){
+  var el = document.getElementById('dv');
+  if(!T){el.innerHTML='<tbody><tr><td>Table data failed to load (data/site_tables.js).</td></tr></tbody>';return;}
+  var dl = T.diversity.levels[level], names = Object.keys(dl.poc_share);
+  var opts = optsFor(names);
+  var h = '<thead><tr><th>School</th>'+opts.map(function(o){return '<th class="'+(o.kind==='reference'?'today':'')+'">'+hdName(o)+hdTag(o)+'</th>';}).join('')+'</tr></thead><tbody>';
+  function sum(label, f){
+    return '<tr class="sum"><td>'+label+'</td>'+opts.map(function(o){return '<td class="n">'+f(dl.summary[o.name])+'</td>';}).join('')+'</tr>';
+  }
+  h += sum('District share', function(s){return pct(s.poc_share_district*100);});
+  h += sum('Dissimilarity index<small>lower = more evenly mixed</small>', function(s){return fmt3(s.dissimilarity_index);});
+  h += sum('Schools within 15 pts of district', function(s){return s.n_within_15+' of '+s.n_schools;});
+  h += sum('Range (lowest to highest)', function(s){return Math.round(s.min*100)+'% to '+Math.round(s.max*100)+'%';});
+  dl.schools.forEach(function(sc){
+    h += '<tr><td>'+esc(sc)+'</td>';
+    opts.forEach(function(o){
+      var v = dl.poc_share[o.name][sc], d = dl.summary[o.name].poc_share_district;
+      h += v==null ? '<td class="n muted">-</td>' : '<td class="n" style="background:'+tint(v-d)+'">'+Math.round(v*100)+'%</td>';
+    });
+    h += '</tr>';
+  });
+  el.innerHTML = h+'</tbody>';
+  document.getElementById('dvcite').innerHTML = 'Sources: per-school shares are the <code>poc_share_'+esc(level)+'</code> column of each plan\'s schools.csv; the summary rows are <code>levels["'+esc(level)+'"].dissimilarity_index</code> and <code>poc_share_district</code> in scorecard.json. '+
+    opts.map(function(o){return esc(o.short)+': '+srcLink(o.schools_source,'schools.csv')+' / '+srcLink(o.source,'scorecard.json');}).join('; ')+'. Kids of color = Census 2020 under-18 not non-Hispanic white, by block, on the 2031-32 basis. A dash means the school is not open at this level in that plan.';
+  var diffs = opts.filter(function(o){var s=dl.summary[o.name];return s.dissimilarity_index!=null && Math.abs(s.dissimilarity_index-s.dissimilarity_from_schools_csv)>0.0005;});
+  document.getElementById('dvnote').textContent = 'Cross-check: the index recomputed from the rounded schools.csv shares matches the scorecard to within 0.001'+(diffs.length?' (rounding differs in the last digit for '+diffs.map(function(o){return o.short;}).join(', ')+'; the scorecard value is shown)':'')+'.';
+}
+function renderWalks(){
+  var el = document.getElementById('wk');
+  if(!T){el.innerHTML='<tbody><tr><td>Table data failed to load (data/site_tables.js).</td></tr></tbody>';return;}
+  var W = T.walks, sc = W.scenarios[scen], plans = W.plans;
+  var opts = optsFor(plans.map(function(p){return p.name;}));
+  var h = '<thead><tr><th>Closing area</th>'+opts.map(function(o){return '<th class="'+(o.kind==='reference'?'today':'')+'">'+hdName(o)+hdTag(o)+'</th>';}).join('')+'</tr></thead><tbody>';
+  sc.closing.forEach(function(a){
+    var recv = a.ppsrecv.map(function(r){return esc(r.to)+(r.group?' ('+esc(r.group)+')':'');}).join('; ');
+    h += '<tr><td><b>'+esc(a.school)+'</b><small>PPS receivers: '+recv+'</small></td>';
+    opts.forEach(function(o){
+      var b = a.by_plan[o.name];
+      if(!b){h += '<td class="muted">-</td>'; return;}
+      var dest = b.destinations.filter(function(d){return d.kids>=1;}).map(function(d){return esc(d.school)+' '+fmtInt(d.kids);}).join(', ');
+      h += '<td'+(o.kind==='reference'?' class="today"':'')+'><b>'+fmt2(b.avg_walk_mi)+' mi</b><small>straight '+fmt2(b.avg_straight_mi)+'</small><small>'+fmtInt(b.kids_over_1mi)+' of '+fmtInt(b.kids)+' kids over 1 mi</small><span class="dest">'+dest+'</span></td>';
+    });
+    h += '</tr>';
+  });
+  el.innerHTML = h+'</tbody>';
+  document.getElementById('wkcite').innerHTML = 'Sources: closures and PPS receivers from '+srcLink(sc.source,'scenarios.json')+', <code>'+esc(sc.source_keys)+'</code>. Each plan\'s destinations from its '+opts.map(function(o){var p=plans.filter(function(q){return q.name===o.name;})[0];return esc(o.short)+' '+srcLink(p.source,'assign_K-5.parquet');}).join(', ')+', joined to <code>build/data/blocks.parquet</code> (<code>es_cur</code> = the closing school) and foot-routed distances in <code>build/routing/walk_miles.parquet</code>. Block kids are 2031-32 neighborhood K-5 kids.';
+}
+
+function readHash(){
+  var m = /level=([0-9-]+)/.exec(location.hash||'');
+  return m && LEVELS.indexOf(m[1])>=0 ? m[1] : 'K-5';
+}
+function setLevel(lv, push){
+  level = lv;
+  Array.prototype.forEach.call(document.querySelectorAll('.lvsel button'),function(b){b.setAttribute('aria-pressed', b.getAttribute('data-lv')===lv?'true':'false');});
+  if(push){try{history.replaceState(null,'','#level='+lv);}catch(e){location.hash='level='+lv;}}
+  renderTable(); renderDiversity();
+}
+function init(){
+  if(!D){document.getElementById('lede').textContent='Data file failed to load (data/site_data.js).'; return;}
+  renderPrelim(); renderLede(); renderOptions(); renderPrograms();
+  document.getElementById('gen').textContent = 'Data generated '+(D.generated_label||D.generated)+'. Model: '+(D.model_version==='v2'?'v2':'earlier model v1')+(D.calibrated?', calibrated':', not yet calibrated')+'.';
+  Array.prototype.forEach.call(document.querySelectorAll('.lvsel button'),function(b){b.addEventListener('click',function(){setLevel(b.getAttribute('data-lv'),true);});});
+  window.addEventListener('hashchange',function(){setLevel(readHash(),false);});
+  Array.prototype.forEach.call(document.querySelectorAll('#scen button'),function(b){b.addEventListener('click',function(){
+    scen = b.getAttribute('data-sc');
+    Array.prototype.forEach.call(document.querySelectorAll('#scen button'),function(x){x.setAttribute('aria-pressed', x===b?'true':'false');});
+    renderWalks();});});
+  setLevel(readHash(),false); renderWalks();
+}
+init();
+})();
+</script>
+</body>
+</html>

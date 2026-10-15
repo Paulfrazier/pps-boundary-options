@@ -1,0 +1,10 @@
+== option4 K-5
+ K-5: each kid placed across a A_hs high-school line costs 1.0 kid-miles
+ K-5: hard nesting in A_hs: 2577 blocks lost cross-line candidates
+ durability mode (meet_reference): required at target by year [21, 21, 20, 19, 18, 18, 18, 18, 18, 18] (reference scenario_A); 35 countable schools
+ 37 schools, 9295 blocks, 16327 assignment vars, avg 1.8 candidates/block
+ pruned 362 unreachable (block, school) candidates
+ component: 37 schools, 9295 blocks
+  relaxation (no contiguity): FEASIBLE 90s obj=515547996 bound=215592536 islands=68 slack={'Chapman:lo': 0.8, 'Faubion:lo': 156.37, 'Forest Park:lo': 101.32, 'Glencoe:lo': 21.2, 'Grout:lo': 24.61, 'Laurelhurst:lo': 30.98, 'Lee:lo': 75.28, 'Scott:lo': 0.38, 'Skyline:lo': 5.83, 'Sunnyside:lo': 106.15}
+  star-feasible warm start: 14 violations left after greedy repair
+  round 0: status INFEASIBLE after 0s

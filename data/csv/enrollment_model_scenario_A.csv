@@ -1,0 +1,56 @@
+school,current,base,config,status,added,from_,projected,dest,boundary,notes
+Abernethy,285,285,K-5,Receiving,153,Buckman +153,438,,True,
+Ainsworth,587,587,K-5,No change,0,,587,,False,
+Alameda,498,498,K-5,No change,0,,498,,False,
+Arleta,252,252,K-5,Receiving,318,Marysville +318,570,,True,
+Astor,413,413,K-8,Changes,0,,413,,True,
+Atkinson,372,372,K-5,Receiving,61,Creston +246; Spanish immersion −185 to Lent,433,,True,
+Beach,295,295,K-5,Closes,0,,0,"Chief Joseph (121), César Chávez (174, Spanish immersion)",False,
+Beverly Cleary,535,296,K-8 → K-5,Receiving,249,Irvington +249,545,,True,Grades 6–8 (239) move to middle school
+Boise-Eliot/Humboldt,313,313,K-5,Receiving,179,Dr. Martin Luther King Jr. +179 (Mandarin immersion),492,,False,
+Bridger Creative Science,474,330,K-8 → K-5,Changes,0,,330,,False,Grades 6–8 (144) move to middle school
+Bridlemile,418,418,K-5,No change,0,,418,,False,
+Buckman,306,306,K-5,Closes,0,,0,"Abernethy (153), Sunnyside Environmental (153)",False,
+Capitol Hill,323,323,K-5,Receiving,142,Stephenson +142,465,,True,
+Chapman,353,353,K-5,No change,0,,353,,False,
+Chief Joseph,278,278,K-5,Receiving,121,Beach +121,399,,True,
+Clark,330,330,K-5,Changes,-72,Mandarin immersion −72 to Woodstock,258,,False,
+Creston,246,246,K-5,Closes,0,,0,Atkinson (246),False,Deaf/Hard of Hearing program goes to Glencoe (count not published)
+César Chávez,453,286,K-8 → K-5,Receiving,450,Beach +174 (Spanish immersion); James John +143 (Spanish immersion); Sitton +133 (Spanish immersion),736,,False,Grades 6–8 (167) move to middle school
+Dr. Martin Luther King Jr.,312,312,K-5,Receiving,114,Sabin +293; Mandarin immersion −179 to Boise-Eliot/Humboldt,426,,True,
+Duniway,387,387,K-5,Receiving,267,Lewis +267,654,,True,
+Faubion,585,379,K-8 → K-5,Changes,0,,379,,True,Grades 6–8 (206) move to middle school
+Forest Park,302,302,K-5,No change,0,,302,,False,
+Glencoe,357,357,K-5,Changes,0,,357,,False,Gains Deaf/Hard of Hearing program from Creston (count not published)
+Grout,295,295,K-5,No change,0,,295,,False,
+Hayhurst,525,525,K-8,Receiving,148,Maplewood +148,673,,True,
+Irvington,249,249,K-5,Closes,0,,0,Beverly Cleary (249),False,
+James John,367,367,K-5,Closes,0,,0,"Sitton (224), César Chávez (143, Spanish immersion)",False,
+Kelly,385,385,K-5,Changes,0,,385,,True,
+Laurelhurst,660,409,K-8 → K-5,Changes,0,,409,,False,Grades 6–8 (251) move to middle school
+Lent,256,256,K-5,Receiving,185,Atkinson +185 (Spanish immersion),441,,True,
+Lewis,267,267,K-5,Closes,0,,0,Duniway (267),False,
+Llewellyn,373,373,K-5,Changes,0,,373,,True,
+Maplewood,296,296,K-5,Closes,0,,0,"Hayhurst (148), Rieke (148)",False,
+Markham,341,341,K-5,Receiving,142,Stephenson +142,483,,True,
+Marysville,318,318,K-5,Closes,0,,0,Arleta (318),False,
+Peninsula,235,235,K-5,Closes,0,,0,Rosa Parks (235),False,
+Richmond,530,530,K-5,No change,0,,530,,False,
+Rieke,279,279,K-5,Receiving,148,Maplewood +148,427,,True,
+Rigler,303,303,K-5,Receiving,242,Scott +242 (Spanish immersion),545,,False,
+Rosa Parks,172,172,K-5,Receiving,235,Peninsula +235,407,,True,
+Rose City Park,448,448,K-5,Closes,0,,0,"Scott (239), Vestal (209, Vietnamese immersion)",False,
+Sabin,293,293,K-5,Closes,0,,0,Dr. Martin Luther King Jr. (293),False,
+Scott,493,493,K-5,Receiving,-3,Rose City Park +239; Spanish immersion −242 to Rigler,490,,True,
+Sitton,339,339,K-5,Receiving,91,James John +224; Spanish immersion −133 to César Chávez,430,,True,
+Skyline,226,226,K-8,No change,0,,226,,False,
+Stephenson,285,285,K-5,Closes,0,,0,"Markham (142), Capitol Hill (142)",False,
+Sunnyside Environmental,461,269,K-8 → K-5,Receiving,153,Buckman +153,422,,True,Grades 6–8 (192) move to middle school
+Sunrise (Lee),257,257,K-5,No change,0,,257,,False,
+Vernon,564,361,K-8 → K-5,Changes,0,,361,,False,Grades 6–8 (203) move to middle school
+Vestal,257,257,K-5,Receiving,209,Rose City Park +209 (Vietnamese immersion),466,,False,
+Whitman,198,198,K-5,Receiving,241,Woodmere +241,439,,True,
+Winterhaven,322,322,K-8,No change,0,,322,,False,
+Woodlawn,306,306,K-5,No change,0,,306,,False,
+Woodmere,241,241,K-5,Closes,0,,0,Whitman (241),False,
+Woodstock,393,393,K-5,Receiving,72,Clark +72 (Mandarin immersion),465,,False,

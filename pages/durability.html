@@ -1,0 +1,424 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Durability and school sizes | PPS boundary options</title>
+<meta name="description" content="How many schools stay within their size target each year from 2027-28 to 2031-32 under each PPS plan and example plan, on PSU&rsquo;s enrollment forecast.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23245c9e%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23fff%27/%3E%3Crect x=%2713.5%27 y=%2718%27 width=%275%27 height=%277%27 fill=%27%23245c9e%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css">
+<style>
+:root{--s-today:#7a8388;--s-status_quo:#7a8388;--s-option2_ms460:#2a78d6;--s-option2:#1baf7a;--s-scenario_A:#eb6834;--s-frontier_k17:#1baf7a;--s-scenario_B:#eda100;--s-option4:#e87ba4;--s-option3a:#008300;--s-option1_durable:#6250d6;--s-other:#556b2f;
+ --grid:#e6e2d8;--out:#b4472f;--outlater:#e5b8ac;--in:#2e7d5b;--band:#efe9d6;--reqline:#3a3a3a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--s-today:#9aa3a8;--s-status_quo:#9aa3a8;--s-option2_ms460:#3987e5;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#008300;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--grid:#2c3235;--out:#e8876f;--outlater:#5a3a32;--in:#6cc49a;--band:#2a2f2c;--reqline:#cfcfcf}}
+:root[data-theme="dark"]{--s-today:#9aa3a8;--s-status_quo:#9aa3a8;--s-option2_ms460:#3987e5;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#008300;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--grid:#2c3235;--out:#e8876f;--outlater:#5a3a32;--in:#6cc49a;--band:#2a2f2c;--reqline:#cfcfcf}
+.row{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;margin:12px 0}
+#chartwrap,#schwrap{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:8px 4px 4px}
+#chartwrap svg,#schwrap svg{display:block;width:100%;height:auto;overflow:visible}
+#schwrap text{fill:var(--muted);font:12px system-ui,sans-serif}
+#schtip{position:absolute;pointer-events:none;background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:6px 9px;font-size:12px;box-shadow:0 2px 8px #0003;display:none;z-index:2;white-space:nowrap}
+#schtip b{display:block;margin-bottom:2px}#schtip div{display:flex;gap:6px;align-items:center}#schtip i{display:inline-block;width:8px;height:8px;border-radius:50%}
+#chartwrap text{fill:var(--muted);font:12px system-ui,sans-serif}
+#chartwrap .lab{font-size:12px;fill:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin:8px 0;font-size:13px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend button{font:inherit;font-size:13px;display:inline-flex;align-items:center;gap:6px;background:none;border:1px solid transparent;border-radius:6px;padding:3px 6px;color:var(--ink);cursor:pointer}
+.legend button:hover{border-color:var(--rule)}
+.legend button[aria-pressed="true"]{border-color:var(--ink);font-weight:600}
+.legend button.dim{opacity:.45}
+.legend i{display:inline-block;width:18px;height:0;border-top:3px solid}
+#tip{position:absolute;pointer-events:none;background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:6px 9px;font-size:12px;box-shadow:0 2px 8px #0003;display:none;z-index:2;white-space:nowrap}
+#tip b{display:block;margin-bottom:2px}
+#tip div{display:flex;gap:6px;align-items:center}
+#tip i{display:inline-block;width:8px;height:8px;border-radius:50%}
+.strip{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:6px 8px;font-size:13px}
+.sr{display:grid;grid-template-columns:minmax(90px,1.4fr) 44px repeat(var(--ny,10),minmax(11px,1fr));gap:2px;align-items:center;padding:1px 0}
+.sr.h{color:var(--muted);font-size:11px;position:sticky;top:0;background:var(--card)}
+.sr .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sr .sz{text-align:right;color:var(--muted);font-variant-numeric:tabular-nums;padding-right:4px}
+.sr .c{height:14px;border-radius:2px;background:var(--in);opacity:.85}
+.sr .c.o{background:var(--out);opacity:1}
+.sr .c.n{background:var(--grid)}
+.sr .c.l{background:var(--outlater);}
+.sr .c.rq{border-top:3px solid var(--reqline);box-sizing:border-box;height:17px}
+.sr.h .c.rq{border-top:3px solid var(--reqline);height:auto}
+#tbl td.rq,#tbl th.grp.rq{background:var(--band)}
+#tbl th.grp{text-align:center;font-size:12px}
+#tbl thead th{white-space:nowrap}
+#tbl tbody th:first-child,#tbl tbody td:first-child,#tbl thead th:first-child{position:sticky;left:0;z-index:1;background:var(--card)}
+#tbl .sep{border-left:2px solid var(--rule)}
+#tbl td.lo{color:var(--out);font-weight:700}
+.mtg{font-size:12px;white-space:normal;min-width:110px}
+.sr.h .c{background:none;height:auto;text-align:center;opacity:1}
+.stripbox{max-height:520px;overflow-y:auto}
+.key{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--muted);margin:6px 0}
+.key i{display:inline-block;width:12px;height:12px;border-radius:2px;vertical-align:-2px;margin-right:4px}
+select{font:inherit;font-size:14px;padding:5px 8px;border:1px solid var(--rule);border-radius:6px;background:var(--card);color:var(--ink);max-width:100%}
+th.opt{white-space:nowrap}
+.vtag{font-size:11px;color:var(--muted);display:block;font-weight:400}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html" aria-current="page">Durability</a><a href="schools.html">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
+<main>
+<div class="warn" id="pps-disclaimer">Independent analysis by a PPS parent, not an official Portland Public Schools product. Official material: <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">PPS rightsizing scenarios</a> and <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
+<div id="prelim" class="warn" style="margin-top:10px;display:none"></div>
+
+<h1>Durability and school sizes</h1>
+<p class="lede" id="lede"></p>
+<p class="note"><b>A projection, not a forecast:</b> each plan&rsquo;s lines stay fixed while enrollment follows Portland State University&rsquo;s July 2026 forecast. <span id="dur-status"></span></p>
+<script>document.addEventListener('DOMContentLoaded',function(){var D=window.SITE_DATA||{},t=[];if(D.model_version!=='v2')t.push('These results come from the earlier model (v1); the calibrated model v2 replaces them when the example plans finish re-running.');else if(D.calibrated)t.push('Model v2 is calibrated to 2025-26 enrollment and checked against PPS&rsquo;s own projections (see <a href="method.html#calibration">Method</a>).');var p=(D.v2_pending_runs||[]).length;if(p)t.push('More plans are still being run and will appear when done.');var e=document.getElementById('dur-status');if(e)e.innerHTML=t.join(' ');});</script>
+<p><b>At target</b> means a school&rsquo;s enrollment is between its floor (<span id="floors"></span>) and its building capacity. <a href="sources.html#definitions">Definitions</a> &middot; <a href="../build/research/targets.md">size targets</a>.</p>
+<p id="rule" hidden></p>
+
+<div class="row"><div class="levels" id="levels" role="group" aria-label="School level"></div><div class="levels" id="plset" role="group" aria-label="Plans shown"><button type="button" data-p="all" aria-pressed="true">All plans</button><button type="button" data-p="pps" aria-pressed="false">PPS plans only</button></div><span class="muted small" id="lvlnote"></span></div>
+<div class="note" id="ppsnote" style="display:none"><div class="row" style="margin:0 0 6px"><span class="small">PPS&rsquo;s plans use:</span><div class="levels" id="srcset" role="group" aria-label="Numbers from"><button type="button" data-s="model" aria-pressed="true">Our model</button><button type="button" data-s="pps" aria-pressed="false">PPS&rsquo;s own projections</button></div></div><span id="srcnote"></span></div>
+
+<h2>Schools at target, year by year</h2>
+<p id="chartsum"></p>
+<div class="row" style="margin:6px 0"><span class="small muted">Show:</span><div class="levels" id="modes" role="group" aria-label="Chart units"><button type="button" data-m="share" aria-pressed="true">Share (%)</button><button type="button" data-m="count" aria-pressed="false">Count</button></div></div>
+<div id="chartwrap"><svg id="chart" role="img" aria-label="Line chart of the share of schools at target, by year"></svg><div id="tip"></div></div>
+<div class="legend" id="legend"></div>
+<p class="small muted" id="modenote"></p>
+<p class="cite" id="cite1"></p>
+
+<h3>Same numbers as a table</h3>
+<div class="tbl"><table id="tbl"></table></div>
+<p class="cite" id="cite2"></p>
+<div id="prog" class="note" style="margin-top:12px"></div>
+
+<h2>School by school</h2>
+<div class="row"><label for="optsel">Plan: </label><select id="optsel"></select></div>
+<p id="stripsum"></p>
+<div class="key" id="stripkey"></div>
+<div class="strip"><div class="stripbox" id="strip"></div></div>
+<p class="cite" id="cite3"></p>
+
+<h2 id="school">One school, year by year</h2>
+<p id="schintro">Projected enrollment for one school under each plan. The shaded band is the school&rsquo;s size range, from its floor to its building&rsquo;s capacity. Filled dots are our model; open squares are PPS&rsquo;s own Family Guide projections. For actual enrollment since 2018-19 and PSU&rsquo;s forecast to 2035-36, see the <a href="schools.html">School by school page</a>.</p>
+<div class="row"><label for="schsel">School: </label><select id="schsel"></select></div>
+<div id="schwrap" class="chartbox"><svg id="schchart" role="img" aria-label="Line chart of one school's projected enrollment by year, by plan"></svg><div id="schtip" class="tipbox"></div></div>
+<div class="legend" id="schlegend"></div>
+<p class="small muted" id="schnote"></p>
+
+<h2>Caveats</h2>
+<ul id="cav"></ul>
+
+<footer><p id="foot"></p>
+<p id="ai"><b>Built with AI.</b> The research, data work, modeling and writing were done by AI (Claude, from Anthropic), directed and guided by Paul Frazier, a PPS parent, who made every judgment call and checked results against PPS&rsquo;s documents. Best effort; it will have errors. <a href="how.html">How we did this</a> &middot; <a href="method.html">Method</a>.</p>
+<p><a href="../LICENSE">License</a>: code MIT, analysis CC BY 4.0, OpenStreetMap-derived data &copy; OpenStreetMap contributors, ODbL. &copy; 2026 Paul Frazier.</p>
+</footer>
+</main>
+<script src="data/site_data.js"></script>
+<script>
+(function(){
+var D=window.SITE_DATA, LV=['K-5','6-8','9-12'];
+var $=function(id){return document.getElementById(id)};
+function el(t,a,h){var e=document.createElement(t);for(var k in a||{})e.setAttribute(k,a[k]);if(h!=null)e.innerHTML=h;return e}
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var ALL=D.options.filter(function(o){return o.durability}),opts=ALL,plset=/plans=pps/.test(location.hash)?'pps':'all';
+var PFIG=D.pps_figures,src=PFIG&&/src=pps/.test(location.hash)?'pps':'model',school=decodeURIComponent((location.hash.match(/school=([^&]+)/)||[])[1]||'');
+function yl(y){return y.slice(2,4)+'-'+y.slice(5)}
+var reqSrc=opts.filter(function(o){return o.durability.required_years})[0];
+var REQ=reqSrc?reqSrc.durability.required_years:[];
+// show only PPS's own projection window (2027-28 to 2031-32), nothing past it
+var years=opts[0].durability.years.filter(function(y){return !REQ.length||REQ.indexOf(y)>=0});
+function isReq(y){return REQ.indexOf(y)>=0}
+var nReq=years.filter(isReq).length, nRep=years.length-nReq, lastYr=years[years.length-1];
+function allKey(l){return Object.keys(l).filter(function(k){return /^at_target_all_years_to_|^durable_through_/.test(k)})[0]}
+function allYrs(l){var k=allKey(l);return k?l[k]:null}
+function ref(o){return o.durability.reference||o.reference||null}
+function refShort(o,lv){var r=ref(o);return r&&r.short_in_required_years?r.short_in_required_years.filter(function(x){return x.level===lv}):[]}
+var hasRef0=opts.some(function(o){return ref(o)}),hasRef=hasRef0;
+var hasReq=REQ.length>0;
+function best(l){return hasReq?l.at_target_all_required_years:allYrs(l)}
+var level=(location.hash.match(/level=([\w-]+)/)||[])[1];
+if(LV.indexOf(level)<0)level='K-5';
+var mode='share';
+var sel=(opts.filter(function(o){return o.brief_rank===0})[0]||opts[opts.length-1]).name;
+
+// series colors by family
+// color follows the plan (fixed per name), never its rank; PPS plans dashed, baseline dotted
+var fam={},focus=null;
+ALL.forEach(function(o){
+  var c='var(--s-'+o.name+',var(--s-other))',dash='';
+  if(o.kind==='reference')dash='2 4';else if(o.kind==='pps')dash='7 4';
+  fam[o.name]={c:c,dash:dash,short:o.short}
+});
+function shortName(o){return o.short}
+
+if(D.placeholder_note){var p=$('prelim');p.style.display='';p.innerHTML='<b>Preliminary numbers.</b> '+esc(D.placeholder_note)}
+
+// PPS's own projections (Family Guides, p. 4) for PPS's three plans, shaped like our durability levels
+var pfCache={};
+function usePF(o){return src==='pps'&&PFIG&&PFIG.plans[o.name]}
+function pfLevel(name,lv){var k=name+'|'+lv;if(pfCache[k])return pfCache[k];var P=PFIG.plans[name],x=P.levels[lv],sch={};
+  Object.keys(x.schools).forEach(function(n){var r=x.schools[n],sz={},ir=[];P.years.forEach(function(y,i){var v=r.s[i];sz[y]=v;ir.push(v==null?null:(r.f==null||v>=r.f)&&(r.c==null||v<=r.c))});
+    var fo=null;P.years.forEach(function(y,i){if(fo==null&&ir[i]===false)fo=y});
+    sch[n]={sizes_by_year:sz,in_range_by_year:ir,size_2031:sz['2031-32'],program_only:r.po,first_year_out:fo}});
+  return pfCache[k]={n_zoned_non_exempt:x.n_zoned_non_exempt,at_target_zoned:x.at_target_zoned,at_target_all_required_years:x.at_target_all_required_years,n_program_only:0,schools:sch}}
+function L(o){return usePF(o)?pfLevel(o.name,level):o.durability.levels[level]}
+function yearsOf(o){return usePF(o)?PFIG.plans[o.name].years:o.durability.years}
+function vlab(o){return usePF(o)?'PPS Family Guides':o.version_label}
+function srcLinks(){return (src==='pps'&&PFIG?'PPS&rsquo;s plans: <a href="../'+esc(PFIG.source)+'">PPS_OFFICIAL_DURABILITY.json</a> (PPS&rsquo;s Family Guide projections, p. 4). The example plans: ':'')+opts.filter(function(o){return !usePF(o)}).map(function(o){return '<a href="../'+esc(o.source)+'">'+esc(o.short)+'</a> ('+esc(o.version_label)+')'}).join('; ')}
+// the basis string also names years past the window (2032-33 to 2035-36) that the scorecards compute but this page never shows: drop that clause for display
+function basisShown(b){return String(b).replace(/;\s*\d{4}-\d{2} to \d{4}-\d{2} reported only(?:\s*\([^)]*\))?\.?(\s*No extension past \d{4}-\d{2}\.?)?/,'.')}
+function basis(){var b={};opts.forEach(function(o){b[String(o.durability.basis).replace(/\.\s*$/,'')]=1});return Object.keys(b)}
+
+function setHash(){history.replaceState(null,'','#level='+level+(plset==='pps'?'&plans=pps':'')+(src==='pps'&&PFIG?'&src=pps':'')+(school?'&school='+encodeURIComponent(school):''))}
+function render(){
+  hasRef=hasRef0;
+  pfCache={};
+  if(focus&&!(plset!=='pps'||ALL.filter(function(o){return o.name===focus&&o.kind!=='option'}).length))focus=null;
+  opts=plset==='pps'?ALL.filter(function(o){return o.kind!=='option'}):ALL;
+  Array.prototype.forEach.call($('plset').children,function(b){b.setAttribute('aria-pressed',b.dataset.p===plset)});
+  $('ppsnote').style.display=PFIG?'':'none';
+  Array.prototype.forEach.call($('srcset').children,function(b){b.setAttribute('aria-pressed',b.dataset.s===src)});
+  $('srcnote').innerHTML=src==='pps'?'PPS Status Quo, PPS A and PPS B use PPS&rsquo;s own Family Guide projections (p. 4) for each school and year, checked against the same floors and capacities. The example plans use our model, which is close to PPS&rsquo;s figures (<a href="method.html#calibration">how they compare</a>). This mixes two sources, so small gaps can come from the estimates, not the lines: at 9-12 every example plan uses PPS A&rsquo;s own high-school lines. The fair comparison is &ldquo;Our model&rdquo;.':'PPS&rsquo;s plans on our model, so every plan is measured the same way. PPS&rsquo;s own figures differ a little (<a href="method.html#calibration">how they compare</a>).';
+  if(!opts.some(function(o){return o.name===sel}))sel='scenario_A';
+  var os=$('optsel');os.innerHTML='';opts.forEach(function(o){os.appendChild(el('option',{value:o.name},esc(o.short)+' ('+(usePF(o)?'PPS figures':esc(o.version_label))+')'))});os.value=sel;
+  var lv=D.levels[level];
+  $('floors').innerHTML=LV.map(function(k){return k+': '+D.levels[k].floor.toLocaleString()}).join(', ');
+  $('lvlnote').textContent='Showing '+level+' schools (floor '+lv.floor.toLocaleString()+').';
+  Array.prototype.forEach.call($('modes').children,function(b){b.setAttribute('aria-pressed',b.dataset.m===mode)});
+  $('modenote').textContent=mode==='share'?'The chart shows the share of schools at target because plans have different numbers of schools (for example, the no-closures baseline has more K-5 schools than the plans that close some). Counts are in the table below.':'The chart shows counts. Plans with more schools start higher, so compare shares before comparing lines.';
+  Array.prototype.forEach.call($('levels').children,function(b){b.setAttribute('aria-pressed',b.dataset.l===level)});
+  var n=Math.max.apply(null,opts.map(function(o){return L(o).n_zoned_non_exempt}));
+  // lede + rule
+  var bs0=basis();
+  var reqTxt=hasReq?yl(REQ[0])+' to '+yl(REQ[REQ.length-1])+' ('+REQ[0]+' to '+REQ[REQ.length-1]+')':'';
+  var rep=reqSrc?reqSrc.durability.reported_years||[]:[];
+  var refName=(opts.filter(function(o){return o.name==='scenario_A'})[0]||{}).short||'PPS Scenario A';
+  if(hasReq){
+    $('lede').innerHTML='A plan must keep at least as many schools at target as '+esc(refName)+' in <b>every year from '+REQ[0]+' to '+REQ[REQ.length-1]+'</b>, PPS&rsquo;s own projection window (Family Guide p. 1). Nothing past it is shown.';
+    $('rule').innerHTML='<b>The test.</b> For each level and each year in the required window ('+REQ[0]+' to '+REQ[REQ.length-1]+'; PPS Family Guide p. 1), a plan&rsquo;s count of schools at target must match or beat '+esc(refName)+'&rsquo;s count for that year. Only these years are shown. Projection basis (<code>durability.basis</code>, shortened to the years shown): <q>'+esc(basisShown(reqSrc.durability.basis))+'</q>';
+  }else{
+    $('lede').innerHTML='A plan can look good in one year and fall apart later, because enrollment keeps falling. This page follows each plan year by year, from '+years[0]+' to '+lastYr+'. These plans are still on the earlier model: there is no required window yet, so every year is reported only.';
+    $('rule').innerHTML='Projection basis (<code>durability.basis</code>): '+bs0.map(function(b){return '<q>'+esc(b)+'</q>'}).join('; ');
+  }
+  // table
+  var allLab='All years to '+lastYr;
+  var h='<thead><tr><th rowspan="2">Plan</th><th rowspan="2" title="zoned, non-exempt schools">Schools</th>';
+  if(hasReq){h+='<th class="grp rq sep" colspan="'+nReq+'">Required window</th>'+(nRep?'<th class="grp sep" colspan="'+nRep+'">Reported only</th>':'')+'<th rowspan="2" class="sep">All required years</th>'}
+  else h+='<th class="grp sep" colspan="'+years.length+'">Reported only</th>';
+  if(!hasReq||nRep)h+='<th rowspan="2"'+(hasReq?'':' class="sep"')+'>'+esc(allLab)+'</th>';
+  if(hasRef)h+='<th rowspan="2" class="sep">Meets '+esc(refName)+' every required year</th>';
+  h+='</tr><tr>'+years.map(function(y,i){var q=isReq(y),sp=i===0||(q!==isReq(years[i-1]));return '<th class="'+(q?'rq':'')+(sp?' sep':'')+'">'+yl(y)+'</th>'}).join('')+'</tr></thead><tbody>';
+  var Aopt=ALL.filter(function(o){return o.name==='scenario_A'})[0],rl=Aopt?L(Aopt):null;
+  opts.forEach(function(o){var l=L(o),r=ref(o);
+    h+='<tr><th class="opt" scope="row" style="text-align:left;font-weight:'+(o.kind==='option'?700:500)+';color:var(--ink)">'+esc(o.short)+'<span class="vtag">'+esc(vlab(o))+'</span></th><td>'+l.n_zoned_non_exempt+'</td>'+
+    years.map(function(y,i){var q=isReq(y),sp=i===0||(q!==isReq(years[i-1])),v=l.at_target_zoned[y],lo=q&&rl&&v!=null&&v<rl.at_target_zoned[y];
+      return '<td class="'+(q?'rq':'')+(sp?' sep':'')+(lo?' lo':'')+'"'+(lo?' title="short of '+esc(refName)+' ('+rl.at_target_zoned[y]+')"':'')+'>'+(v==null?'&ndash;':v)+'</td>'}).join('');
+    if(hasReq)h+='<td class="sep best">'+(l.at_target_all_required_years==null?'&ndash;':l.at_target_all_required_years)+'</td>';
+    var ay=allYrs(l);if(!hasReq||nRep)h+='<td'+(hasReq?'':' class="sep best"')+'>'+(ay==null?'&ndash;':ay)+'</td>';
+    if(hasRef){
+      if(o.name==='scenario_A')h+='<td class="sep mtg muted">reference</td>';
+      else{var sh=rl?years.filter(function(y){return isReq(y)&&l.at_target_zoned[y]!=null&&l.at_target_zoned[y]<rl.at_target_zoned[y]}):[];
+        h+='<td class="sep mtg">'+(sh.length?'<b style="color:var(--out)">&#10007;</b> short in '+sh.map(yl).join(', '):'<b style="color:var(--in)">&#10003;</b> yes')+'</td>'}
+    }
+    h+='</tr>'});
+  $('tbl').innerHTML=h+'</tbody>';
+  var keys='durability.levels["'+level+'"].at_target_zoned, .n_zoned_non_exempt'+(hasReq?', .at_target_all_required_years':'')+', .'+(allKey(L(opts[0]))||'at_target_all_years_to_*')+(hasRef?'; durability.reference.short_in_required_years, .meets_reference_every_required_year':'')+'; durability.required_years, .reported_years';
+  var bs=bs0.map(function(b){return '<q>'+esc(basisShown(b))+'</q>'}).join('; ');
+  var proj=/every school|district ratio/i.test(bs)?'Later years are projected by scaling each school\'s 2031-32 size by the district-wide enrollment ratio for that year; the plan\'s school sets and boundaries do not change.':'';
+  var cite='Source files: '+srcLinks()+'. Keys: '+keys+'. Projection basis (durability.basis, shortened to the years shown): '+bs+'. '+proj+(hasReq?' &ldquo;All required years&rdquo; = schools at target in every year '+REQ[0]+' to '+REQ[REQ.length-1]+'. Red counts fall short of '+esc(refName)+' in that year.':' &ldquo;'+esc(allLab)+'&rdquo; = schools at target in every year shown.')+opts.filter(function(o){return o.caveat}).map(function(o){return ' <b>'+esc(o.short)+':</b> '+esc(o.caveat)}).join('');
+  $('cite1').innerHTML='';$('cite2').innerHTML=cite;
+  // summary
+  var ours=opts.filter(function(o){return o.kind==='option'&&!o.what_if&&best(L(o))!=null}).sort(function(a,b){return (best(L(b))||0)-(best(L(a))||0)})[0];
+  var pps=opts.filter(function(o){return plset==='pps'?o.kind!=='option':o.kind==='pps'});
+  var span=hasReq?'in every required year ('+yl(REQ[0])+' to '+yl(REQ[REQ.length-1])+')':'in every year to '+lastYr;
+  var lead=opts.filter(function(o){return o.brief_rank===0&&best(L(o))!=null})[0]||ours;
+  var sum=!lead?'In '+level+', schools at target '+span+':':'In '+level+', '+(lead?'<b>'+esc(lead.short)+'</b>'+(lead.brief_rank===0?' (the best example we modeled)':'')+' keeps '+best(L(lead))+' of '+L(lead).n_zoned_non_exempt+' schools at target '+span:'no option plans are in this comparison yet')+'.';
+  if(lead&&ours&&ours!==lead&&best(L(ours))>best(L(lead)))sum+=' The most among the example plans: '+esc(ours.short)+', '+best(L(ours))+'.';
+  if(pps.length)sum+=' '+pps.map(function(o){var bv=best(L(o));return esc(o.short)+': '+(bv==null?'n/a':bv)}).join('; ')+'.';
+  $('chartsum').innerHTML=sum;
+  // program-only
+  var po=opts.filter(function(o){return L(o).n_program_only>0});
+  $('prog').innerHTML=po.length?'<b>Program-only schools</b> (not counted above; they serve a program, not a neighborhood zone), at target in '+years[years.length-1]+': '+po.map(function(o){var l=L(o);return esc(shortName(o))+' '+l.at_target_program_only[years[years.length-1]]+' of '+l.n_program_only}).join('; ')+'. Keys: at_target_program_only, n_program_only.':'';
+  $('prog').style.display=po.length?'':'none';
+  drawChart(n);drawStrip();drawSchool();
+}
+
+function drawChart(n){
+  var wrap=$('chartwrap'),W=Math.max(300,wrap.clientWidth-8),narrow=W<520;
+  var labW=0;if(!narrow){ // right margin sized from the widest end label
+    var cx=document.createElement('canvas').getContext('2d');cx.font='12px system-ui,-apple-system,"Segoe UI",Roboto,sans-serif';
+    opts.forEach(function(o){labW=Math.max(labW,cx.measureText(shortName(o)+' 100%').width)});
+    labW=Math.ceil(labW)+16;if(labW>W*0.42){narrow=true}}
+  var m={l:34,r:narrow?8:Math.max(112,labW),t:24,b:hasReq?48:30},H=narrow?260:320,iw=W-m.l-m.r,ih=H-m.t-m.b;
+  var svg=$('chart');svg.setAttribute('viewBox','0 0 '+W+' '+H);
+  var share=mode==='share';var yMax=share?100:n,step=share?25:yMax>30?10:yMax>14?5:2;
+  function val(o,yr){var l=L(o),c=l.at_target_zoned[yr];return c==null?null:share?100*c/l.n_zoned_non_exempt:c}
+  var x=function(i){return m.l+iw*i/(years.length-1)},y=function(v){return m.t+ih*(1-v/yMax)};
+  var s='';
+  for(var v=0;v<=yMax;v+=step)s+='<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="var(--grid)"/><text x="'+(m.l-6)+'" y="'+(y(v)+4)+'" text-anchor="end">'+v+(share?'%':'')+'</text>';
+  s+='<text x="'+m.l+'" y="'+(m.t-10)+'" style="font-size:11px">'+(share?'share of schools at target':'of up to '+yMax+' schools')+'</text>';
+  var step_x=iw/(years.length-1);
+  function band(a,b){return '<rect x="'+a+'" y="'+m.t+'" width="'+(b-a)+'" height="'+ih+'" fill="var(--band)"/>'}
+  if(hasReq){
+    var i0=years.indexOf(REQ[0]),i1=years.indexOf(REQ[REQ.length-1]);
+    var bx0=Math.max(m.l,x(i0)-step_x/2),bx1=Math.min(W-m.r,x(i1)+step_x/2);
+    if(nRep)s=band(bx0,bx1)+s;
+    var ly=H-8;
+    s+='<line x1="'+bx0+'" x2="'+bx1+'" y1="'+(ly-14)+'" y2="'+(ly-14)+'" stroke="var(--muted)"/>';
+    s+='<text x="'+((bx0+bx1)/2)+'" y="'+ly+'" text-anchor="middle" style="font-size:'+(narrow?10:12)+'px">'+(narrow?'Required: match PPS A':'Required: match or beat PPS A')+'</text>';
+    if(nRep)s+='<text x="'+((bx1+(W-m.r))/2)+'" y="'+ly+'" text-anchor="middle" style="font-size:'+(narrow?10:12)+'px">'+(narrow?'Reported':'Reported only')+'</text>';
+  }
+  years.forEach(function(yr,i){if(!narrow||years.length<=6||i%3===0||i===years.length-1)s+='<text x="'+x(i)+'" y="'+(hasReq?H-30:H-10)+'" text-anchor="middle">'+yl(yr)+'</text>'});
+  // order: other first, ours last (on top)
+  var order=opts.slice().sort(function(a,b){return (a.kind==='option')-(b.kind==='option')||(a.brief_rank===0)-(b.brief_rank===0)||(a.name===focus)-(b.name===focus)});
+  var ends=[];
+  order.forEach(function(o){var f=fam[o.name],l=L(o);
+    var segs=[[]];years.forEach(function(yr,i){var v=val(o,yr);if(v==null){if(segs[segs.length-1].length)segs.push([])}else segs[segs.length-1].push(x(i)+','+y(v))});
+    segs.forEach(function(sg){if(sg.length>1)s+='<polyline points="'+sg.join(' ')+'" fill="none" stroke="'+f.c+'" stroke-width="'+(o.name===focus?4.5:o.brief_rank===0?3.5:2.5)+'"'+(focus&&o.name!==focus?' stroke-opacity="0.15"':'')+''+(f.dash?' stroke-dasharray="'+f.dash+'"':'')+' stroke-linejoin="round"/>'});
+    var dim=focus&&o.name!==focus?' opacity="0.15"':'';
+    years.forEach(function(yr,i){var v=val(o,yr);if(v!=null)s+='<circle cx="'+x(i)+'" cy="'+y(v)+'" r="'+(o.name===focus?5:3.5)+'" fill="'+f.c+'" stroke="var(--card)" stroke-width="1.5"'+dim+'/>'});
+    var last=val(o,years[years.length-1]);if(last==null)return;
+    ends.push({o:o,y:y(last),v:share?Math.round(last)+'%':last})});
+  if(!narrow){ // dodge direct labels
+    ends.sort(function(a,b){return a.y-b.y});
+    for(var i=1;i<ends.length;i++)if(ends[i].y-ends[i-1].y<15)ends[i].y=ends[i-1].y+15;
+    var over=ends.length&&ends[ends.length-1].y-(m.t+ih);if(over>0)ends.forEach(function(e){e.y-=over});
+    ends.forEach(function(e){var f=fam[e.o.name];s+='<text class="lab" x="'+(W-m.r+8)+'" y="'+(e.y+4)+'"'+(focus&&e.o.name!==focus?' opacity="0.3"':'')+(e.o.name===focus?' font-weight="700"':'')+'><tspan fill="'+f.c+'">&#9679;</tspan> '+esc(shortName(e.o))+' '+e.v+'</text>'});
+  }
+  s+='<line id="xh" y1="'+m.t+'" y2="'+(m.t+ih)+'" stroke="var(--muted)" stroke-dasharray="3 3" style="display:none"/><rect id="hit" x="'+m.l+'" y="'+m.t+'" width="'+iw+'" height="'+ih+'" fill="transparent" style="touch-action:pan-y"/>';
+  svg.innerHTML=s;
+  var hit=$('hit'),xh=$('xh'),tip=$('tip');
+  function move(ev){var r=svg.getBoundingClientRect(),px=(ev.clientX-r.left)*W/r.width;
+    var i=Math.max(0,Math.min(years.length-1,Math.round((px-m.l)/iw*(years.length-1))));
+    xh.setAttribute('x1',x(i));xh.setAttribute('x2',x(i));xh.style.display='';
+    var yr=years[i];tip.innerHTML='<b>'+yr+'</b>'+opts.filter(function(o){return val(o,yr)!=null}).sort(function(a,b){return val(b,yr)-val(a,yr)}).map(function(o){return '<div><i style="background:'+fam[o.name].c+'"></i>'+esc(o.short)+': <b style="display:inline">'+L(o).at_target_zoned[yr]+' of '+L(o).n_zoned_non_exempt+', '+Math.round(100*L(o).at_target_zoned[yr]/L(o).n_zoned_non_exempt)+'%</b></div>'}).join('');
+    tip.style.display='block';var wr=wrap.getBoundingClientRect();
+    var tx=ev.clientX-wr.left+12;if(tx+tip.offsetWidth>wr.width)tx=ev.clientX-wr.left-tip.offsetWidth-12;
+    tip.style.left=Math.max(0,tx)+'px';tip.style.top=Math.max(0,Math.min(ev.clientY-wr.top-10,wr.height-tip.offsetHeight))+'px'}
+  hit.addEventListener('pointermove',move);hit.addEventListener('pointerdown',move);
+  hit.addEventListener('pointerleave',function(){tip.style.display='none';xh.style.display='none'});
+  $('legend').innerHTML=opts.map(function(o){var f=fam[o.name];return '<button type="button" data-n="'+esc(o.name)+'" aria-pressed="'+(focus===o.name)+'"'+(focus&&focus!==o.name?' class="dim"':'')+'><i style="border-color:'+f.c+(f.dash?';border-top-style:'+(o.kind==='reference'?'dotted':'dashed'):'')+'"></i>'+esc(o.short)+'</button>'}).join('')+'<span class="muted small">'+(focus?'Tap again to show all.':'Tap a plan to highlight its line.')+'</span>';
+  Array.prototype.forEach.call($('legend').querySelectorAll('button'),function(b){b.onclick=function(){focus=focus===b.dataset.n?null:b.dataset.n;drawChart(n)}});
+}
+
+function drawStrip(){
+  var o=opts.filter(function(x){return x.name===sel})[0],l=L(o),S=l.schools;
+  var rows=Object.keys(S).map(function(k){return {n:k,s:S[k]}}).filter(function(r){return !r.s.program_only});
+  var oy=yearsOf(o);
+  rows.forEach(function(r){var a=r.s.in_range_by_year;r.ir=Array.isArray(a)?years.map(function(y){var j=oy.indexOf(y);return j<0?null:a[j]}):null});
+  var exact=rows.length>0&&rows.every(function(r){return r.ir});
+  var yi=function(y){return y?years.indexOf(y):99};
+  var t,k=$('stripkey');
+  $('strip').parentNode.style.setProperty('--ny',years.length);
+  if(exact){
+    var reqFail=function(r){return years.some(function(y,i){return isReq(y)&&r.ir[i]===false})};
+    var firstOut=function(r){var i=r.ir.indexOf(false);return i<0?99:i};
+    rows.sort(function(a,b){var fa=reqFail(a)?0:1,fb=reqFail(b)?0:1;return fa-fb||firstOut(a)-firstOut(b)||a.n.localeCompare(b.n)});
+    var failReq=rows.filter(reqFail).length;
+    var okAll=rows.filter(function(r){return r.ir.every(function(v){return v===true})}).length;
+    var okReq=rows.length-failReq;
+    t='<b>'+esc(o.short)+'</b>, '+level+': of '+rows.length+' schools, <b>'+okReq+'</b> stay in range in every required year ('+yl(REQ[0])+' to '+yl(REQ[REQ.length-1])+'). '+failReq+' '+(failReq===1?'is':'are')+' out of range in at least one required year. A school can leave range and later return; each square is that year only.';
+    k.innerHTML='<span><i style="background:var(--in)"></i>in range</span><span><i style="background:var(--out)"></i>out of range</span><span><i style="background:none;border-top:3px solid var(--reqline);height:0;width:12px;border-radius:0"></i>bar above = required year</span>';
+  }else{
+    rows.sort(function(a,b){return yi(a.s.first_year_out)-yi(b.s.first_year_out)||a.n.localeCompare(b.n)});
+    var out=rows.filter(function(r){return r.s.first_year_out}),start=out.filter(function(r){return yi(r.s.first_year_out)===0}),later=out.filter(function(r){return yi(r.s.first_year_out)>0});
+    var first=later.length?later[0].s.first_year_out:null;
+    var names=later.filter(function(r){return r.s.first_year_out===first}).map(function(r){return r.n});
+    t='<b>'+esc(o.short)+'</b>, '+level+': of '+rows.length+' schools, <b>'+out.length+'</b> leave their range by '+lastYr+'.';
+    if(start.length)t+=' '+start.length+' '+(start.length===1?'is':'are')+' already out of range in '+years[0]+'.';
+    if(first)t+=' Among the rest, the first to leave '+(names.length>1?'are ':'is ')+esc(names.slice(0,4).join(', '))+(names.length>4?' and '+(names.length-4)+' more':'')+' in '+first+'.';
+    if(!out.length)t='<b>'+esc(o.short)+'</b>, '+level+': all '+rows.length+' schools stay in range through '+lastYr+'.';
+    k.innerHTML='<span><i style="background:var(--in)"></i>in range</span><span><i style="background:var(--out)"></i>first year out of range</span><span><i style="background:var(--outlater)"></i>later years (may come back in range; not tracked in this earlier model)</span>';
+  }
+  $('stripsum').innerHTML=t;
+  var h='<div class="sr h"><span>School</span><span class="sz">2031-32 size</span>'+years.map(function(y){return '<span class="c'+(isReq(y)?' rq':'')+'" title="'+y+'">'+y.slice(2,4)+'</span>'}).join('')+'</div>';
+  rows.forEach(function(r){var kk=yi(r.s.first_year_out);
+    h+='<div class="sr"><span class="nm" title="'+esc(r.n)+'">'+esc(r.n)+'</span><span class="sz">'+(r.s.size_2031!=null?Math.round(r.s.size_2031):'')+'</span>'+years.map(function(y,i){
+      var q=isReq(y)?' rq':'',c,lab;
+      if(exact){var ok=r.ir[i],sz=r.s.sizes_by_year&&r.s.sizes_by_year[y];c=ok===null?' n':ok?'':' o';lab=r.n+' '+y+(isReq(y)?' (required)':'')+': '+(ok===null?'not projected':ok?'in range':'out of range')+(sz!=null?', size '+Math.round(sz):'')}
+      else{c=kk===99||i<kk?'':i===kk?' o':' l';lab=r.n+' '+y+': '+(kk===99||i<kk?'in range':i===kk?'first year out of range'+(r.s.by!=null?' ('+(r.s.by<0?'short by ':'over by ')+Math.abs(Math.round(r.s.by))+')':''):'out of range from '+r.s.first_year_out+' (later years not tracked)')}
+      return '<span class="c'+c+q+'" title="'+esc(lab)+'"></span>'}).join('')+'</div>'});
+  $('strip').innerHTML=h;
+  $('cite3').innerHTML=usePF(o)?'Source: <a href="../'+esc(PFIG.source)+'">'+esc(PFIG.source)+'</a> (PPS&rsquo;s own Family Guide projections, p. 4). Keys: plans["'+esc(o.name)+'"].durability.levels["'+level+'"].schools[name].sizes_by_year, .floor, .capacity, .program_only; a year is in range when the size is from floor to capacity. Program-only schools are left out of the strip. Hover a cell for details.':'Source: <a href="../'+esc(o.source)+'">'+esc(o.source)+'</a> ('+esc(o.version_label)+'). Keys: durability.levels["'+level+'"].schools[name].'+(exact?'in_range_by_year, .in_range_all_required_years, .in_range_all_years, .sizes_by_year':'first_year_out, .by')+', .size_2031, .program_only. '+(exact?'':'Only the first year out is recorded. ')+'Program-only schools are left out of the strip. Hover a cell for details.';
+}
+
+// One school, year by year: each shown plan (our model, filled dots) + PPS's own figures (open squares) for PPS's plans
+function drawSchool(){
+  var names={};opts.forEach(function(o){var l=o.durability.levels[level];Object.keys(l.schools).forEach(function(k){if(!l.schools[k].program_only)names[k]=1})});
+  var list=Object.keys(names).sort();
+  if(list.indexOf(school)<0){ // default: PPS A's school furthest out of range in 2031-32, on PPS's own figures
+    var best=null,bv=-1,A=PFIG&&PFIG.plans.scenario_A&&PFIG.plans.scenario_A.levels[level];
+    if(A)Object.keys(A.schools).forEach(function(k){var r=A.schools[k],v=r.s[r.s.length-1];if(v==null||r.po||list.indexOf(k)<0)return;var d=r.f!=null&&v<r.f?r.f-v:r.c!=null&&v>r.c?v-r.c:0;if(d>bv){bv=d;best=k}});
+    school=best||list[0]}
+  var ss=$('schsel');ss.innerHTML=list.map(function(k){return '<option'+(k===school?' selected':'')+'>'+esc(k)+'</option>'}).join('');
+  var wrap=$('schwrap'),W=Math.max(300,wrap.clientWidth-8),narrow=W<520,H=narrow?240:300,m={l:44,r:narrow?10:190,t:16,b:30},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  var ser=[],closed=[],bandO=null;
+  opts.forEach(function(o){var r=o.durability.levels[level].schools[school];
+    if(!r){closed.push(o.short);return}
+    ser.push({o:o,kind:'model',v:years.map(function(y){var v=r.sizes_by_year&&r.sizes_by_year[y];return v==null?null:Math.round(v)})});
+    if(!bandO||o.name==='scenario_A')bandO=o;
+    var P=PFIG&&PFIG.plans[o.name],pr=P&&P.levels[level].schools[school];
+    if(pr)ser.push({o:o,kind:'pps',v:years.map(function(y){var i=P.years.indexOf(y);return i<0?null:pr.s[i]})})});
+  var b=bandO&&bandO.bounds&&bandO.bounds[school],fl=b?b[0]:D.levels[level].floor,cap=b?b[1]:null;
+  var all=[];ser.forEach(function(sr){sr.v.forEach(function(v){if(v!=null)all.push(v)})});if(fl!=null)all.push(fl);if(cap!=null)all.push(cap);
+  var lo=Math.min.apply(null,all),hi=Math.max.apply(null,all),pad=Math.max(20,(hi-lo)*0.12);lo=Math.max(0,Math.floor((lo-pad)/50)*50);hi=Math.ceil((hi+pad)/50)*50;
+  var x=function(i){return m.l+iw*i/(years.length-1)},y=function(v){return m.t+ih*(1-(v-lo)/(hi-lo))};
+  var s='';
+  if(fl!=null&&cap!=null)s+='<rect x="'+m.l+'" y="'+y(cap)+'" width="'+iw+'" height="'+(y(fl)-y(cap))+'" fill="var(--in)" opacity="0.10"/>';
+  var step=(hi-lo)>600?200:(hi-lo)>250?100:50;
+  for(var v=lo;v<=hi;v+=step)s+='<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="var(--grid)"/><text x="'+(m.l-6)+'" y="'+(y(v)+4)+'" text-anchor="end">'+v+'</text>';
+  if(fl!=null)s+='<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+y(fl)+'" y2="'+y(fl)+'" stroke="var(--in)" stroke-width="1.5"/><text x="'+(W-m.r-4)+'" y="'+(y(fl)+14)+'" text-anchor="end" style="fill:var(--in)">floor '+Math.round(fl)+'</text>';
+  if(cap!=null)s+='<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+y(cap)+'" y2="'+y(cap)+'" stroke="var(--in)" stroke-width="1.5" stroke-dasharray="4 3"/><text x="'+(W-m.r-4)+'" y="'+(y(cap)-6)+'" text-anchor="end" style="fill:var(--in)">capacity '+Math.round(cap)+'</text>';
+  years.forEach(function(yr,i){s+='<text x="'+x(i)+'" y="'+(H-8)+'" text-anchor="middle">'+yl(yr)+'</text>'});
+  ser.sort(function(a,b){return (a.o.kind==='option')-(b.o.kind==='option')||(a.o.brief_rank===0)-(b.o.brief_rank===0)});
+  ser.forEach(function(sr){var f=fam[sr.o.name],pts=[];sr.v.forEach(function(v,i){if(v!=null)pts.push(x(i)+','+y(v))});
+    if(sr.kind==='model'){if(pts.length>1)s+='<polyline points="'+pts.join(' ')+'" fill="none" stroke="'+f.c+'" stroke-width="'+(sr.o.brief_rank===0?3.5:2.5)+'"'+(f.dash?' stroke-dasharray="'+f.dash+'"':'')+' stroke-linejoin="round"/>';
+      sr.v.forEach(function(v,i){if(v!=null)s+='<circle cx="'+x(i)+'" cy="'+y(v)+'" r="3.5" fill="'+f.c+'" stroke="var(--card)" stroke-width="1.5"/>'})}
+    else sr.v.forEach(function(v,i){if(v!=null)s+='<rect x="'+(x(i)-4.5)+'" y="'+(y(v)-4.5)+'" width="9" height="9" fill="var(--card)" stroke="'+f.c+'" stroke-width="2"/>'})});
+  // end labels: plans whose model lines end within 3 kids share one label (identical lines would hide each other)
+  if(!narrow){var ends=[];ser.filter(function(sr){return sr.kind==='model'&&sr.v[sr.v.length-1]!=null}).forEach(function(sr){var v=sr.v[sr.v.length-1],g=ends.filter(function(e){return Math.abs(e.v-v)<=3})[0];if(g){g.m.push(sr.o);g.lo=Math.min(g.lo,v);g.hi=Math.max(g.hi,v)}else ends.push({v:v,lo:v,hi:v,m:[sr.o]})});
+    ends.forEach(function(e){var ours=e.m.filter(function(o){return o.kind==='option'}),oth=e.m.filter(function(o){return o.kind!=='option'});
+      var nm=oth.map(function(o){return o.short});if(ours.length>2)nm.push(ours.length===opts.filter(function(o){return o.kind==='option'}).length?'all the example plans':ours.length+' of the example plans');else ours.forEach(function(o){nm.push(o.short)});
+      e.t=nm.join(', ')+' '+(e.lo===e.hi?e.lo:e.lo+'\u2013'+e.hi);e.y=y(e.v);e.c=fam[(e.m.filter(function(o){return o.brief_rank===0})[0]||e.m[0]).name].c});
+    ends.sort(function(a,b){return a.y-b.y});for(var i=1;i<ends.length;i++)if(ends[i].y-ends[i-1].y<15)ends[i].y=ends[i-1].y+15;
+    ends.forEach(function(e){s+='<text x="'+(W-m.r+8)+'" y="'+(e.y+4)+'" style="fill:var(--ink)"><tspan fill="'+e.c+'">&#9679;</tspan> '+esc(e.t)+'</text>'})}
+  s+='<line id="schxh" y1="'+m.t+'" y2="'+(m.t+ih)+'" stroke="var(--muted)" stroke-dasharray="3 3" style="display:none"/><rect id="schhit" x="'+m.l+'" y="'+m.t+'" width="'+iw+'" height="'+ih+'" fill="transparent" style="touch-action:pan-y"/>';
+  var svg=$('schchart');svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.innerHTML=s;
+  var hit=$('schhit'),xh=$('schxh'),tip=$('schtip');
+  function move(ev){var r=svg.getBoundingClientRect(),px=(ev.clientX-r.left)*W/r.width,i=Math.max(0,Math.min(years.length-1,Math.round((px-m.l)/iw*(years.length-1))));
+    xh.setAttribute('x1',x(i));xh.setAttribute('x2',x(i));xh.style.display='';
+    tip.innerHTML='<b>'+esc(school)+', '+years[i]+'</b>'+ser.filter(function(sr){return sr.v[i]!=null}).sort(function(a,b){return b.v[i]-a.v[i]}).map(function(sr){return '<div><i style="background:'+fam[sr.o.name].c+(sr.kind==='pps'?';border-radius:0':'')+'"></i>'+esc(sr.o.short)+(sr.kind==='pps'?' (PPS figure)':'')+': <b style="display:inline">'+sr.v[i].toLocaleString()+'</b></div>'}).join('');
+    tip.style.display='block';var wr=wrap.getBoundingClientRect(),tx=ev.clientX-wr.left+12;if(tx+tip.offsetWidth>wr.width)tx=ev.clientX-wr.left-tip.offsetWidth-12;
+    tip.style.left=Math.max(0,tx)+'px';tip.style.top=Math.max(0,Math.min(ev.clientY-wr.top-10,wr.height-tip.offsetHeight))+'px'}
+  hit.addEventListener('pointermove',move);hit.addEventListener('pointerdown',move);hit.addEventListener('pointerleave',function(){tip.style.display='none';xh.style.display='none'});
+  var shown={};ser.forEach(function(sr){shown[sr.o.name]=1});
+  $('schlegend').innerHTML=opts.filter(function(o){return shown[o.name]}).map(function(o){var f=fam[o.name];return '<span><i style="border-color:'+f.c+(f.dash?';border-top-style:'+(o.kind==='reference'?'dotted':'dashed'):'')+'"></i>'+esc(o.short)+'</span>'}).join('')
+    +(ser.some(function(sr){return sr.kind==='pps'})?'<span><svg width="12" height="12" aria-hidden="true"><rect x="1.5" y="1.5" width="9" height="9" fill="none" stroke="var(--muted)" stroke-width="2"/></svg>PPS&rsquo;s own figure</span>':'');
+  var bn=bandO&&bandO.short;
+  $('schnote').innerHTML=(closed.length?'Not open as a '+level+' neighborhood school under: '+closed.map(esc).join(', ')+'. ':'')
+    +(fl!=null?'Band: floor '+Math.round(fl)+(cap!=null?' to capacity '+Math.round(cap):'')+(bn?' (as under '+esc(bn)+'; a school&rsquo;s floor can change if a plan converts it, such as to a K-8)':'')+'. ':'')
+    +'Capacity: PPS&rsquo;s 2025-26 school profiles, captured second-hand. PPS figures: Family Guides, p. 4. Model sizes: each plan&rsquo;s scorecard, <code>durability.levels["'+level+'"].schools</code>.';
+}
+
+// controls
+Array.prototype.forEach.call($('modes').children,function(b){b.onclick=function(){mode=b.dataset.m;render()}});
+LV.forEach(function(k){var b=el('button',{type:'button','data-l':k,'aria-pressed':'false'},k);b.onclick=function(){level=k;setHash();render()};$('levels').appendChild(b)});
+Array.prototype.forEach.call($('plset').children,function(b){b.onclick=function(){plset=b.dataset.p;setHash();render()}});
+$('optsel').onchange=function(){sel=this.value;drawStrip()};
+Array.prototype.forEach.call($('srcset').children,function(b){b.onclick=function(){src=b.dataset.s;setHash();render()}});
+$('schsel').onchange=function(){school=this.value;setHash();drawSchool()};
+window.addEventListener('hashchange',function(){var h=location.hash,m=h.match(/level=([\w-]+)/);if(m&&LV.indexOf(m[1])>=0)level=m[1];plset=/plans=pps/.test(h)?'pps':'all';src=PFIG&&/src=pps/.test(h)?'pps':'model';var sc=h.match(/school=([^&]+)/);if(sc)school=decodeURIComponent(sc[1]);render()});
+var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(function(){render()},120)});
+
+// caveats
+var cav=['It applies Portland State University&rsquo;s July 2026 medium forecast to each plan, with boundaries held fixed. Sizes within about 15% of a threshold are uncertain: a school shown just inside or just outside its range could land on either side. See the backtest in <a href="../build/data/backtest.md">backtest.md</a>.'];
+if(/every school/i.test(basis().join(' ')))cav.push('The decline is applied the same way to every school at a level (the district-wide ratio). Real neighborhoods will lose or hold kids at different rates, so individual schools will drift from these paths.');
+if(hasReq)cav.push('Only PPS&rsquo;s own projection window ('+REQ[0]+' to '+REQ[REQ.length-1]+') is shown. PSU&rsquo;s per-school forecast runs further, but PPS plans on this window.');
+cav.push('&ldquo;At target&rdquo; only checks size (floor to capacity). It says nothing about walking distance, feeder splits or program fit. See <a href="options.html">Options</a> for those.');
+cav.push('Boundaries are held fixed for every year shown. A real district could redraw them; this page shows what happens if it does not.');
+if(D.model_version!=='v2')cav.push('Each plan is labeled with its model version. Plans marked &ldquo;earlier model v1&rdquo; will be re-run on model v2 and these numbers will change.');
+$('cav').innerHTML=cav.map(function(c){return '<li>'+c+'</li>'}).join('');
+$('foot').innerHTML='Data generated '+esc(D.generated_label||D.generated)+'. Model '+esc(D.model_version)+'. See <a href="method.html">Method</a> and <a href="sources.html#definitions">definitions</a>.';
+render();
+// a #school=... deep link selects the school; also bring the "One school, year by year" section into view
+if(/[#&]school=/.test(location.hash)){var goSchool=function(){var h=$('school');if(h&&h.scrollIntoView)h.scrollIntoView()};requestAnimationFrame(function(){goSchool();setTimeout(goSchool,250)})}
+})();
+</script>
+</body>
+</html>

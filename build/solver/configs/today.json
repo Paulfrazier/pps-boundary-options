@@ -1,0 +1,269 @@
+{
+ "basis": "2031-32 (PSU forecast; block kids scaled by area, see METHOD.md)",
+ "lr_nbhd_share": 0.02,
+ "floors": {
+  "K-5": 360,
+  "K-8": 500,
+  "6-8": 500,
+  "9-12": 1100
+ },
+ "ceiling_k5_max": 600,
+ "exempt_floor": [
+  "Astor",
+  "Skyline"
+ ],
+ "exempt_hold_status_quo": true,
+ "capacity_overrides": {
+  "Jefferson": 1773,
+  "Grant": 1935,
+  "McDaniel": 1735,
+  "Roosevelt": 1404,
+  "Harrison Park": 890
+ },
+ "hs_range_max": 350,
+ "focus": [
+  "Winterhaven",
+  "da Vinci",
+  "Odyssey",
+  "ACCESS",
+  "MLC",
+  "Benson"
+ ],
+ "past_margin_miles": 0.25,
+ "name": "today",
+ "label": "Today (2025-26 lines, today's programs)",
+ "kind": "baseline",
+ "levels": {
+  "K-5": {
+   "assign": "es_cur",
+   "zoned": [
+    "Abernethy",
+    "Ainsworth",
+    "Alameda",
+    "Arleta",
+    "Astor",
+    "Atkinson",
+    "Beach",
+    "Beverly Cleary",
+    "Boise-Eliot/Humboldt",
+    "Bridger",
+    "Bridlemile",
+    "Buckman",
+    "Capitol Hill",
+    "Cesar Chavez",
+    "Chapman",
+    "Chief Joseph",
+    "Clark",
+    "Creston",
+    "Duniway",
+    "Faubion",
+    "Forest Park",
+    "Glencoe",
+    "Grout",
+    "Hayhurst",
+    "Irvington",
+    "James John",
+    "Kelly",
+    "Laurelhurst",
+    "Lee",
+    "Lent",
+    "Lewis",
+    "Llewellyn",
+    "MLK Jr",
+    "Maplewood",
+    "Markham",
+    "Marysville",
+    "Peninsula",
+    "Rieke",
+    "Rigler",
+    "Rosa Parks",
+    "Rose City Park",
+    "Sabin",
+    "Scott",
+    "Sitton",
+    "Skyline",
+    "Stephenson",
+    "Sunnyside",
+    "Vernon",
+    "Vestal",
+    "Whitman",
+    "Woodlawn",
+    "Woodmere",
+    "Woodstock"
+   ],
+   "programs": {
+    "Ainsworth": [
+     "Ainsworth|Spanish"
+    ],
+    "Atkinson": [
+     "Atkinson|Spanish"
+    ],
+    "Beach": [
+     "Beach|Spanish"
+    ],
+    "Cesar Chavez": [
+     "Cesar Chavez|Spanish K-5"
+    ],
+    "Clark": [
+     "Clark|Mandarin"
+    ],
+    "James John": [
+     "James John|Spanish"
+    ],
+    "Kelly": [
+     "Kelly|Russian"
+    ],
+    "Lent": [
+     "Lent|Spanish"
+    ],
+    "MLK Jr": [
+     "MLK Jr|Mandarin"
+    ],
+    "Rigler": [
+     "Rigler|Spanish"
+    ],
+    "Rose City Park": [
+     "Rose City Park|Vietnamese"
+    ],
+    "Scott": [
+     "Scott|Spanish"
+    ],
+    "Sitton": [
+     "Sitton|Spanish"
+    ],
+    "Woodstock": [
+     "Woodstock|Mandarin"
+    ],
+    "Richmond": [
+     "Richmond|Japanese"
+    ]
+   },
+   "k8": [
+    "Astor",
+    "Beverly Cleary",
+    "Bridger",
+    "Cesar Chavez",
+    "Faubion",
+    "Laurelhurst",
+    "Skyline",
+    "Sunnyside",
+    "Vernon"
+   ]
+  },
+  "6-8": {
+   "assign": "ms_cur",
+   "zoned": [
+    "Astor",
+    "Beaumont",
+    "Beverly Cleary",
+    "Bridger",
+    "Cesar Chavez",
+    "Faubion",
+    "George",
+    "Gray",
+    "Harrison Park",
+    "Hosford",
+    "Jackson",
+    "Kellogg",
+    "Lane",
+    "Laurelhurst",
+    "Mt Tabor",
+    "Ockley Green",
+    "Roseway Heights",
+    "Sellwood",
+    "Skyline",
+    "Sunnyside",
+    "Tubman",
+    "Vernon",
+    "West Sylvan"
+   ],
+   "programs": {
+    "Cesar Chavez": [
+     "Cesar Chavez|Spanish 6-8"
+    ],
+    "West Sylvan": [
+     "West Sylvan|Spanish"
+    ],
+    "Kellogg": [
+     "Kellogg|Spanish"
+    ],
+    "George": [
+     "George|Spanish"
+    ],
+    "Beaumont": [
+     "Beaumont|Spanish"
+    ],
+    "Roseway Heights": [
+     "Roseway Heights|Spanish",
+     "Roseway Heights|Vietnamese"
+    ],
+    "Ockley Green": [
+     "Ockley Green|Spanish"
+    ],
+    "Harrison Park": [
+     "Harrison Park|Mandarin"
+    ],
+    "Tubman": [
+     "Tubman|Mandarin"
+    ],
+    "Mt Tabor": [
+     "Mt Tabor|Japanese"
+    ],
+    "Lane": [
+     "Lane|Russian"
+    ]
+   },
+   "k8": [
+    "Astor",
+    "Beverly Cleary",
+    "Bridger",
+    "Cesar Chavez",
+    "Faubion",
+    "Laurelhurst",
+    "Skyline",
+    "Sunnyside",
+    "Vernon"
+   ]
+  },
+  "9-12": {
+   "assign": "hs_cluster_cur",
+   "zoned": [
+    "Cleveland",
+    "Franklin",
+    "Grant",
+    "Ida B. Wells",
+    "Lincoln",
+    "McDaniel",
+    "Roosevelt"
+   ],
+   "programs": {
+    "Lincoln": [
+     "Lincoln|Spanish"
+    ],
+    "Roosevelt": [
+     "Roosevelt|Spanish",
+     "Roosevelt|PISA"
+    ],
+    "McDaniel": [
+     "McDaniel|Spanish",
+     "McDaniel|Vietnamese",
+     "McDaniel|PISA"
+    ],
+    "Franklin": [
+     "Franklin|Spanish",
+     "Franklin|Russian"
+    ],
+    "Cleveland": [
+     "Cleveland|Mandarin"
+    ],
+    "Jefferson": [
+     "Jefferson|Mandarin"
+    ],
+    "Grant": [
+     "Grant|Japanese"
+    ]
+   },
+   "k8": []
+  }
+ }
+}

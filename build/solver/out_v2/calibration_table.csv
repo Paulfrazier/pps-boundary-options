@@ -1,0 +1,204 @@
+plan,school,type,focus_or_alt,program_only,ours_v1_2031,ours_v2_2031,pps_2031,ours_v2_2027,pps_2027,pct_v1_2031,pct_v2_2031,pct_v2_2027
+status_quo,Abernethy,K-5,False,False,241.0,241.0,241.0,242.0,242.0,0.0,0.0,0.0
+status_quo,Ainsworth,K-5,False,False,557.0,557.0,557.0,555.0,555.0,0.0,0.0,0.0
+status_quo,Alameda,K-5,False,False,490.0,490.0,492.0,496.0,498.0,-0.4,-0.4,-0.4
+status_quo,Arleta,K-5,False,False,210.0,210.0,210.0,213.0,213.0,0.0,0.0,0.0
+status_quo,Astor,K-8,False,False,419.0,419.0,418.0,413.0,412.0,0.2,0.2,0.2
+status_quo,Atkinson,K-5,False,False,386.0,386.0,386.0,363.0,363.0,0.0,0.0,0.0
+status_quo,Beach,K-5,False,False,287.0,287.0,287.0,284.0,284.0,0.0,0.0,0.0
+status_quo,Beaumont,6-8,False,False,313.0,313.0,418.0,297.0,410.0,-25.1,-25.1,-27.6
+status_quo,Beverly Cleary,K-8,False,False,394.0,394.0,389.0,436.0,430.0,1.3,1.3,1.4
+status_quo,Boise-Eliot/Humboldt,K-5,False,False,309.0,309.0,308.0,315.0,314.0,0.3,0.3,0.3
+status_quo,Bridger,K-8,False,False,417.0,417.0,415.0,453.0,450.0,0.5,0.5,0.7
+status_quo,Bridlemile,K-5,False,False,407.0,407.0,413.0,413.0,419.0,-1.5,-1.5,-1.4
+status_quo,Buckman,K-5,False,False,239.0,239.0,239.0,244.0,244.0,0.0,0.0,0.0
+status_quo,Capitol Hill,K-5,False,False,320.0,320.0,311.0,319.0,310.0,2.9,2.9,2.9
+status_quo,Cesar Chavez,K-8,False,False,392.0,392.0,392.0,413.0,413.0,0.0,0.0,0.0
+status_quo,Chapman,K-5,False,False,336.0,336.0,333.0,319.0,316.0,0.9,0.9,0.9
+status_quo,Chief Joseph,K-5,False,False,243.0,243.0,238.0,250.0,245.0,2.1,2.1,2.0
+status_quo,Clark,K-5,False,False,343.0,343.0,343.0,360.0,360.0,0.0,0.0,0.0
+status_quo,Cleveland,9-12,False,False,1318.0,1318.0,1318.0,1460.0,1460.0,0.0,0.0,0.0
+status_quo,Creston,K-5,False,False,192.0,192.0,187.0,207.0,201.0,2.7,2.7,3.0
+status_quo,Duniway,K-5,False,False,348.0,348.0,345.0,341.0,338.0,0.9,0.9,0.9
+status_quo,Faubion,K-8,False,False,603.0,603.0,602.0,619.0,618.0,0.2,0.2,0.2
+status_quo,Forest Park,K-5,False,False,258.0,258.0,258.0,260.0,260.0,0.0,0.0,0.0
+status_quo,Franklin,9-12,False,False,1492.0,1492.0,1492.0,1689.0,1689.0,0.0,0.0,0.0
+status_quo,George,6-8,False,False,389.0,389.0,390.0,390.0,391.0,-0.3,-0.3,-0.3
+status_quo,Glencoe,K-5,False,False,301.0,301.0,296.0,316.0,311.0,1.7,1.7,1.6
+status_quo,Grant,9-12,False,False,1487.0,1487.0,1487.0,1935.0,1935.0,0.0,0.0,0.0
+status_quo,Gray,6-8,False,False,366.0,366.0,368.0,425.0,427.0,-0.5,-0.5,-0.5
+status_quo,Grout,K-5,False,False,280.0,280.0,280.0,303.0,303.0,0.0,0.0,0.0
+status_quo,Harrison Park,6-8,False,False,417.0,417.0,417.0,427.0,427.0,0.0,0.0,0.0
+status_quo,Hayhurst,K-5,False,False,266.0,266.0,266.0,274.0,274.0,0.0,0.0,0.0
+status_quo,Hosford,6-8,False,False,375.0,375.0,374.0,484.0,482.0,0.3,0.3,0.4
+status_quo,Ida B. Wells,9-12,False,False,1457.0,1457.0,1457.0,1524.0,1524.0,0.0,0.0,0.0
+status_quo,Irvington,K-5,False,False,223.0,223.0,223.0,240.0,240.0,0.0,0.0,0.0
+status_quo,Jackson,6-8,False,False,515.0,515.0,515.0,660.0,661.0,0.0,0.0,-0.2
+status_quo,James John,K-5,False,False,354.0,354.0,352.0,361.0,359.0,0.6,0.6,0.6
+status_quo,Jefferson,9-12,False,False,1183.0,1183.0,1183.0,564.0,564.0,0.0,0.0,0.0
+status_quo,Kellogg,6-8,False,False,470.0,470.0,471.0,512.0,513.0,-0.2,-0.2,-0.2
+status_quo,Kelly,K-5,False,False,391.0,391.0,391.0,402.0,402.0,0.0,0.0,0.0
+status_quo,Lane,6-8,False,False,357.0,357.0,357.0,417.0,417.0,0.0,0.0,0.0
+status_quo,Laurelhurst,K-8,False,False,527.0,527.0,525.0,610.0,607.0,0.4,0.4,0.5
+status_quo,Lee,K-5,False,False,254.0,254.0,254.0,245.0,245.0,0.0,0.0,0.0
+status_quo,Lent,K-5,False,True,279.0,274.0,274.0,256.0,256.0,1.8,0.0,0.0
+status_quo,Lewis,K-5,False,False,201.0,201.0,201.0,224.0,224.0,0.0,0.0,0.0
+status_quo,Lincoln,9-12,False,False,1411.0,1411.0,1411.0,1598.0,1598.0,0.0,0.0,0.0
+status_quo,Llewellyn,K-5,False,False,312.0,312.0,312.0,312.0,312.0,0.0,0.0,0.0
+status_quo,MLK Jr,K-5,False,False,337.0,337.0,337.0,337.0,337.0,0.0,0.0,0.0
+status_quo,Maplewood,K-5,False,False,248.0,248.0,247.0,279.0,278.0,0.4,0.4,0.4
+status_quo,Markham,K-5,False,False,345.0,345.0,347.0,310.0,312.0,-0.6,-0.6,-0.6
+status_quo,Marysville,K-5,False,False,309.0,309.0,312.0,297.0,300.0,-1.0,-1.0,-1.0
+status_quo,McDaniel,9-12,False,False,1261.0,1261.0,1261.0,1528.0,1528.0,0.0,0.0,0.0
+status_quo,Mt Tabor,6-8,False,False,350.0,350.0,354.0,401.0,406.0,-1.1,-1.1,-1.2
+status_quo,Ockley Green,6-8,False,False,436.0,436.0,436.0,442.0,442.0,0.0,0.0,0.0
+status_quo,Peninsula,K-5,False,False,236.0,236.0,236.0,250.0,250.0,0.0,0.0,0.0
+status_quo,Richmond,K-5,False,True,497.0,497.0,497.0,504.0,504.0,0.0,0.0,0.0
+status_quo,Rieke,K-5,False,False,313.0,313.0,311.0,254.0,252.0,0.6,0.6,0.8
+status_quo,Rigler,K-5,False,False,327.0,327.0,321.0,312.0,306.0,1.9,1.9,2.0
+status_quo,Roosevelt,9-12,False,False,1117.0,1117.0,1117.0,1312.0,1312.0,0.0,0.0,0.0
+status_quo,Rosa Parks,K-5,False,False,168.0,168.0,168.0,159.0,159.0,0.0,0.0,0.0
+status_quo,Rose City Park,K-5,False,False,370.0,370.0,370.0,391.0,391.0,0.0,0.0,0.0
+status_quo,Roseway Heights,6-8,False,False,601.0,601.0,498.0,665.0,554.0,20.7,20.7,20.0
+status_quo,Sabin,K-5,False,False,236.0,236.0,235.0,237.0,236.0,0.4,0.4,0.4
+status_quo,Scott,K-5,False,False,470.0,470.0,470.0,500.0,500.0,0.0,0.0,0.0
+status_quo,Sellwood,6-8,False,False,351.0,351.0,350.0,525.0,523.0,0.3,0.3,0.4
+status_quo,Sitton,K-5,False,False,309.0,309.0,311.0,331.0,333.0,-0.6,-0.6,-0.6
+status_quo,Skyline,K-8,False,False,177.0,177.0,177.0,196.0,196.0,0.0,0.0,0.0
+status_quo,Stephenson,K-5,False,False,260.0,260.0,261.0,270.0,271.0,-0.4,-0.4,-0.4
+status_quo,Sunnyside,K-8,False,False,475.0,475.0,475.0,484.0,484.0,0.0,0.0,0.0
+status_quo,Tubman,6-8,False,False,374.0,374.0,374.0,457.0,457.0,0.0,0.0,0.0
+status_quo,Vernon,K-8,False,False,451.0,451.0,453.0,490.0,492.0,-0.4,-0.4,-0.4
+status_quo,Vestal,K-5,False,False,282.0,282.0,279.0,297.0,294.0,1.1,1.1,1.0
+status_quo,West Sylvan,6-8,False,False,622.0,622.0,620.0,689.0,687.0,0.3,0.3,0.3
+status_quo,Whitman,K-5,False,False,222.0,222.0,223.0,204.0,205.0,-0.4,-0.4,-0.5
+status_quo,Woodlawn,K-5,False,False,289.0,289.0,289.0,300.0,300.0,0.0,0.0,0.0
+status_quo,Woodmere,K-5,False,False,224.0,224.0,225.0,223.0,224.0,-0.4,-0.4,-0.4
+status_quo,Woodstock,K-5,False,False,325.0,325.0,325.0,342.0,342.0,0.0,0.0,0.0
+scenario_A,Abernethy,K-5,False,False,349.0,355.0,365.0,358.0,354.0,-4.4,-2.7,1.1
+scenario_A,Ainsworth,K-5,False,False,557.0,557.0,557.0,555.0,555.0,0.0,0.0,0.0
+scenario_A,Alameda,K-5,False,False,490.0,490.0,493.0,496.0,498.0,-0.6,-0.6,-0.4
+scenario_A,Arleta,K-5,False,False,519.0,549.0,543.0,516.0,224.0,-4.4,1.1,130.4
+scenario_A,Astor,K-8,False,False,431.0,434.0,430.0,428.0,422.0,0.2,0.9,1.4
+scenario_A,Atkinson,K-5,False,False,395.0,463.0,413.0,431.0,395.0,-4.4,12.1,9.1
+scenario_A,Beaumont,6-8,False,False,449.0,464.0,498.0,524.0,506.0,-9.8,-6.8,3.6
+scenario_A,Beverly Cleary,K-5,False,False,451.0,451.0,484.0,492.0,503.0,-6.8,-6.8,-2.2
+scenario_A,Boise-Eliot/Humboldt,K-5,False,False,505.0,505.0,512.0,516.0,521.0,-1.4,-1.4,-1.0
+scenario_A,Bridger,K-5,False,False,285.0,293.0,305.0,310.0,310.0,-6.6,-3.9,0.0
+scenario_A,Bridlemile,K-5,False,False,407.0,407.0,413.0,413.0,419.0,-1.5,-1.5,-1.4
+scenario_A,Capitol Hill,K-5,False,False,386.0,386.0,379.0,387.0,381.0,1.8,1.8,1.6
+scenario_A,Cesar Chavez,K-5,False,True,558.0,517.0,527.0,531.0,541.0,5.9,-1.9,-1.8
+scenario_A,Chapman,K-5,False,False,336.0,336.0,333.0,319.0,316.0,0.9,0.9,0.9
+scenario_A,Chief Joseph,K-5,False,False,403.0,410.0,417.0,415.0,420.0,-3.4,-1.7,-1.2
+scenario_A,Clark,K-5,False,False,256.0,262.0,272.0,276.0,276.0,-5.9,-3.7,0.0
+scenario_A,Cleveland,9-12,False,False,1238.0,1238.0,1322.0,1377.0,1465.0,-6.4,-6.4,-6.0
+scenario_A,Duniway,K-5,False,False,428.0,428.0,463.0,447.0,544.0,-7.6,-7.6,-17.8
+scenario_A,Faubion,K-5,False,False,373.0,375.0,407.0,385.0,425.0,-8.4,-7.9,-9.4
+scenario_A,Forest Park,K-5,False,False,258.0,258.0,258.0,260.0,260.0,0.0,0.0,0.0
+scenario_A,Franklin,9-12,False,False,1543.0,1543.0,1476.0,1737.0,1686.0,4.5,4.5,3.0
+scenario_A,George,6-8,False,False,673.0,673.0,636.0,707.0,604.0,5.8,5.8,17.1
+scenario_A,Glencoe,K-5,False,False,301.0,327.0,317.0,322.0,318.0,-5.0,3.2,1.3
+scenario_A,Grant,9-12,False,False,1487.0,1487.0,1487.0,1935.0,1935.0,0.0,0.0,0.0
+scenario_A,Gray,6-8,False,False,472.0,472.0,490.0,561.0,481.0,-3.7,-3.7,16.6
+scenario_A,Grout,K-5,False,False,280.0,280.0,280.0,303.0,303.0,0.0,0.0,0.0
+scenario_A,Harrison Park,6-8,False,False,620.0,645.0,591.0,699.0,642.0,4.9,9.1,8.9
+scenario_A,Hayhurst,K-5,False,False,409.0,409.0,410.0,439.0,472.0,-0.2,-0.2,-7.0
+scenario_A,Hosford,6-8,False,False,669.0,566.0,557.0,742.0,602.0,20.1,1.6,23.3
+scenario_A,Ida B. Wells,9-12,False,False,1461.0,1461.0,1457.0,1529.0,1524.0,0.3,0.3,0.3
+scenario_A,Jackson,6-8,False,False,409.0,409.0,404.0,524.0,618.0,1.2,1.2,-15.2
+scenario_A,Jefferson,9-12,False,False,1181.0,1181.0,1190.0,563.0,570.0,-0.8,-0.8,-1.2
+scenario_A,Kellogg,6-8,False,False,567.0,613.0,579.0,661.0,507.0,-2.1,5.9,30.4
+scenario_A,Kelly,K-5,False,False,396.0,407.0,401.0,405.0,407.0,-1.2,1.5,-0.5
+scenario_A,Lane,6-8,False,False,435.0,448.0,457.0,579.0,384.0,-4.8,-2.0,50.8
+scenario_A,Laurelhurst,K-5,False,False,323.0,323.0,359.0,374.0,378.0,-10.0,-10.0,-1.1
+scenario_A,Lee,K-5,False,False,254.0,254.0,254.0,245.0,245.0,0.0,0.0,0.0
+scenario_A,Lent,K-5,False,True,457.0,421.0,421.0,401.0,401.0,8.6,0.0,0.0
+scenario_A,Lincoln,9-12,False,False,1314.0,1314.0,1331.0,1485.0,1580.0,-1.3,-1.3,-6.0
+scenario_A,Llewellyn,K-5,False,False,431.0,431.0,399.0,429.0,330.0,8.0,8.0,30.0
+scenario_A,MLK Jr,K-5,False,False,377.0,377.0,383.0,373.0,376.0,-1.6,-1.6,-0.8
+scenario_A,Markham,K-5,False,False,539.0,539.0,549.0,511.0,519.0,-1.8,-1.8,-1.5
+scenario_A,McDaniel,9-12,False,False,1290.0,1290.0,1281.0,1562.0,1535.0,0.7,0.7,1.8
+scenario_A,Mt Tabor,6-8,False,False,554.0,574.0,546.0,657.0,645.0,1.5,5.1,1.9
+scenario_A,Ockley Green,6-8,False,False,521.0,521.0,507.0,508.0,552.0,2.8,2.8,-8.0
+scenario_A,Richmond,K-5,False,True,497.0,497.0,497.0,504.0,504.0,0.0,0.0,0.0
+scenario_A,Rieke,K-5,False,False,418.0,418.0,432.0,368.0,348.0,-3.2,-3.2,5.7
+scenario_A,Rigler,K-5,False,True,544.0,505.0,505.0,487.0,487.0,7.7,0.0,0.0
+scenario_A,Roosevelt,9-12,False,False,1212.0,1212.0,1205.0,1421.0,1337.0,0.6,0.6,6.3
+scenario_A,Rosa Parks,K-5,False,False,464.0,472.0,472.0,492.0,481.0,-1.7,0.0,2.3
+scenario_A,Roseway Heights,6-8,False,False,746.0,731.0,628.0,766.0,655.0,18.8,16.4,16.9
+scenario_A,Scott,K-5,False,False,413.0,452.0,470.0,508.0,512.0,-12.1,-3.8,-0.8
+scenario_A,Sitton,K-5,False,False,414.0,433.0,449.0,445.0,464.0,-7.8,-3.6,-4.1
+scenario_A,Skyline,K-8,False,False,177.0,177.0,177.0,196.0,196.0,0.0,0.0,0.0
+scenario_A,Sunnyside,K-5,False,False,417.0,280.0,235.0,392.0,376.0,77.4,19.1,4.3
+scenario_A,Tubman,6-8,False,False,423.0,423.0,455.0,490.0,608.0,-7.0,-7.0,-19.4
+scenario_A,Vernon,K-5,False,False,288.0,288.0,323.0,313.0,325.0,-10.8,-10.8,-3.7
+scenario_A,Vestal,K-5,False,False,492.0,494.0,500.0,506.0,507.0,-1.6,-1.2,-0.2
+scenario_A,West Sylvan,6-8,False,False,622.0,622.0,620.0,689.0,687.0,0.3,0.3,0.3
+scenario_A,Whitman,K-5,False,False,447.0,461.0,465.0,431.0,437.0,-3.9,-0.9,-1.4
+scenario_A,Woodlawn,K-5,False,False,289.0,292.0,289.0,303.0,300.0,0.0,1.0,1.0
+scenario_A,Woodstock,K-5,False,False,412.0,407.0,406.0,426.0,426.0,1.5,0.2,0.0
+scenario_B,Abernethy,K-5,False,False,349.0,355.0,365.0,358.0,354.0,-4.4,-2.7,1.1
+scenario_B,Ainsworth,K-5,False,False,557.0,557.0,557.0,555.0,555.0,0.0,0.0,0.0
+scenario_B,Alameda,K-5,False,False,490.0,490.0,493.0,496.0,498.0,-0.6,-0.6,-0.4
+scenario_B,Arleta,K-5,False,False,519.0,549.0,543.0,516.0,224.0,-4.4,1.1,130.4
+scenario_B,Astor,K-8,False,False,431.0,434.0,430.0,428.0,422.0,0.2,0.9,1.4
+scenario_B,Atkinson,K-5,False,False,395.0,463.0,413.0,431.0,395.0,-4.4,12.1,9.1
+scenario_B,Beaumont,6-8,False,False,449.0,464.0,498.0,524.0,506.0,-9.8,-6.8,3.6
+scenario_B,Beverly Cleary,K-5,False,False,451.0,451.0,484.0,492.0,503.0,-6.8,-6.8,-2.2
+scenario_B,Boise-Eliot/Humboldt,K-5,False,False,505.0,505.0,512.0,516.0,521.0,-1.4,-1.4,-1.0
+scenario_B,Bridger,K-5,False,False,285.0,293.0,305.0,310.0,310.0,-6.6,-3.9,0.0
+scenario_B,Bridlemile,K-5,False,False,407.0,407.0,413.0,413.0,419.0,-1.5,-1.5,-1.4
+scenario_B,Capitol Hill,K-5,False,False,320.0,320.0,311.0,319.0,310.0,2.9,2.9,2.9
+scenario_B,Cesar Chavez,K-5,False,True,558.0,517.0,527.0,531.0,541.0,5.9,-1.9,-1.8
+scenario_B,Chapman,K-5,False,False,336.0,336.0,333.0,319.0,316.0,0.9,0.9,0.9
+scenario_B,Chief Joseph,K-5,False,False,403.0,410.0,417.0,415.0,420.0,-3.4,-1.7,-1.2
+scenario_B,Clark,K-5,False,False,256.0,262.0,272.0,276.0,276.0,-5.9,-3.7,0.0
+scenario_B,Cleveland,9-12,False,False,1314.0,1314.0,1371.0,1463.0,1480.0,-4.2,-4.2,-1.1
+scenario_B,Duniway,K-5,False,False,348.0,348.0,345.0,341.0,338.0,0.9,0.9,0.9
+scenario_B,Faubion,K-5,False,False,373.0,375.0,407.0,385.0,425.0,-8.4,-7.9,-9.4
+scenario_B,Forest Park,K-5,False,False,258.0,258.0,258.0,260.0,260.0,0.0,0.0,0.0
+scenario_B,Franklin,9-12,False,False,1468.0,1468.0,1429.0,1652.0,1672.0,2.7,2.7,-1.2
+scenario_B,George,6-8,False,False,673.0,673.0,636.0,707.0,604.0,5.8,5.8,17.1
+scenario_B,Glencoe,K-5,False,False,301.0,327.0,317.0,322.0,318.0,-5.0,3.2,1.3
+scenario_B,Grant,9-12,False,False,1487.0,1487.0,1487.0,1935.0,1935.0,0.0,0.0,0.0
+scenario_B,Gray,6-8,False,False,472.0,472.0,490.0,561.0,481.0,-3.7,-3.7,16.6
+scenario_B,Grout,K-5,False,False,280.0,280.0,280.0,303.0,303.0,0.0,0.0,0.0
+scenario_B,Harrison Park,6-8,False,False,620.0,645.0,591.0,699.0,642.0,4.9,9.1,8.9
+scenario_B,Hayhurst,K-5,False,False,409.0,409.0,410.0,439.0,472.0,-0.2,-0.2,-7.0
+scenario_B,Hosford,6-8,False,False,626.0,522.0,501.0,677.0,602.0,25.0,4.2,12.5
+scenario_B,Ida B. Wells,9-12,False,False,1461.0,1461.0,1457.0,1529.0,1524.0,0.3,0.3,0.3
+scenario_B,Jackson,6-8,False,False,409.0,409.0,404.0,524.0,618.0,1.2,1.2,-15.2
+scenario_B,Jefferson,9-12,False,False,1181.0,1181.0,1190.0,563.0,570.0,-0.8,-0.8,-1.2
+scenario_B,Kellogg,6-8,False,False,567.0,613.0,579.0,661.0,507.0,-2.1,5.9,30.4
+scenario_B,Kelly,K-5,False,False,396.0,407.0,401.0,405.0,407.0,-1.2,1.5,-0.5
+scenario_B,Lane,6-8,False,False,479.0,492.0,512.0,644.0,384.0,-6.4,-3.9,67.7
+scenario_B,Laurelhurst,K-5,False,False,323.0,323.0,359.0,374.0,378.0,-10.0,-10.0,-1.1
+scenario_B,Lee,K-5,False,False,254.0,254.0,254.0,245.0,245.0,0.0,0.0,0.0
+scenario_B,Lent,K-5,False,True,457.0,421.0,421.0,401.0,401.0,8.6,0.0,0.0
+scenario_B,Lewis,K-5,False,False,308.0,311.0,283.0,323.0,296.0,8.8,9.9,9.1
+scenario_B,Lincoln,9-12,False,False,1314.0,1314.0,1331.0,1485.0,1580.0,-1.3,-1.3,-6.0
+scenario_B,Llewellyn,K-5,False,False,312.0,312.0,312.0,312.0,312.0,0.0,0.0,0.0
+scenario_B,MLK Jr,K-5,False,False,377.0,377.0,383.0,373.0,376.0,-1.6,-1.6,-0.8
+scenario_B,Markham,K-5,False,False,345.0,345.0,347.0,310.0,312.0,-0.6,-0.6,-0.6
+scenario_B,McDaniel,9-12,False,False,1290.0,1290.0,1281.0,1562.0,1535.0,0.7,0.7,1.8
+scenario_B,Mt Tabor,6-8,False,False,554.0,574.0,546.0,657.0,645.0,1.5,5.1,1.9
+scenario_B,Ockley Green,6-8,False,False,521.0,521.0,507.0,508.0,552.0,2.8,2.8,-8.0
+scenario_B,Richmond,K-5,False,True,497.0,497.0,497.0,504.0,504.0,0.0,0.0,0.0
+scenario_B,Rieke,K-5,False,False,418.0,418.0,432.0,368.0,348.0,-3.2,-3.2,5.7
+scenario_B,Rigler,K-5,False,True,544.0,505.0,505.0,487.0,487.0,7.7,0.0,0.0
+scenario_B,Roosevelt,9-12,False,False,1212.0,1212.0,1205.0,1421.0,1337.0,0.6,0.6,6.3
+scenario_B,Rosa Parks,K-5,False,False,464.0,472.0,472.0,492.0,481.0,-1.7,0.0,2.3
+scenario_B,Rose City Park,K-5,False,False,370.0,370.0,370.0,391.0,391.0,0.0,0.0,0.0
+scenario_B,Roseway Heights,6-8,False,False,746.0,731.0,628.0,766.0,655.0,18.8,16.4,16.9
+scenario_B,Scott,K-5,False,False,253.0,292.0,301.0,325.0,326.0,-15.9,-3.0,-0.3
+scenario_B,Sitton,K-5,False,False,414.0,433.0,449.0,445.0,464.0,-7.8,-3.6,-4.1
+scenario_B,Skyline,K-8,False,False,177.0,177.0,177.0,196.0,196.0,0.0,0.0,0.0
+scenario_B,Stephenson,K-5,False,False,260.0,260.0,261.0,270.0,271.0,-0.4,-0.4,-0.4
+scenario_B,Sunnyside,K-5,False,False,417.0,280.0,235.0,392.0,376.0,77.4,19.1,4.3
+scenario_B,Tubman,6-8,False,False,423.0,423.0,455.0,490.0,608.0,-7.0,-7.0,-19.4
+scenario_B,Vernon,K-5,False,False,288.0,288.0,323.0,313.0,325.0,-10.8,-10.8,-3.7
+scenario_B,Vestal,K-5,False,False,282.0,284.0,279.0,298.0,294.0,1.1,1.8,1.4
+scenario_B,West Sylvan,6-8,False,False,622.0,622.0,620.0,689.0,687.0,0.3,0.3,0.3
+scenario_B,Whitman,K-5,False,False,339.0,350.0,382.0,331.0,363.0,-11.3,-8.4,-8.8
+scenario_B,Woodlawn,K-5,False,False,289.0,292.0,289.0,303.0,300.0,0.0,1.0,1.0
+scenario_B,Woodstock,K-5,False,False,412.0,407.0,406.0,426.0,426.0,1.5,0.2,0.0

@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Plan one-pagers | PPS boundary options</title>
+<meta name="description" content="One page per boundary plan, PPS&rsquo;s and the example plans: what it does, its key numbers, what it does well and what it gives up.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23245c9e%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23fff%27/%3E%3Crect x=%2713.5%27 y=%2718%27 width=%275%27 height=%277%27 fill=%27%23245c9e%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css">
+<style>
+.pick{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin:14px 0 6px}
+.pick .grp{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pick .grp>span{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;margin-right:2px}
+.pick button{font:inherit;font-size:14px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:999px;padding:5px 12px;cursor:pointer}
+.pick button[aria-pressed="true"]{background:var(--accent);color:var(--paper);border-color:var(--accent);font-weight:600}
+.flip{display:flex;justify-content:space-between;gap:10px;margin:8px 0 12px}
+.flip button{font:inherit;font-size:14px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:8px;padding:6px 12px;cursor:pointer}
+.one{background:var(--card);border:1px solid var(--rule);border-top:5px solid var(--pps);border-radius:10px;padding:18px 20px}
+.one.k-option{border-top-color:var(--ours)}.one.k-reference{border-top-color:var(--today)}
+.one .eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);font-weight:700}
+.one h2{margin:4px 0 4px;font-size:26px}
+.one .what{font-size:16px;margin:0 0 14px;color:var(--ink)}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:6px 0 16px}
+.tile{border:1px solid var(--rule);border-radius:8px;padding:10px 12px;background:var(--paper)}
+.tile .v{font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;display:flex;align-items:center;gap:7px}
+.tile .l{font-size:13px;color:var(--ink);margin-top:2px;line-height:1.3}
+.tile .c{font-size:12px;color:var(--muted);margin-top:4px}
+.dot{width:10px;height:10px;border-radius:50%;display:inline-block;flex:none}
+.dot.green{background:#2e7d5b}.dot.yellow{background:#c99a00}.dot.red{background:#c0392b}
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:4px 0 10px}
+.pc>div{border-radius:8px;padding:10px 14px;border:1px solid var(--rule)}
+.pc h3{margin:0 0 6px;font-size:15px}
+.pc .pro{border-left:4px solid #2e7d5b}.pc .con{border-left:4px solid #c0392b}
+.pc ul{margin:0;padding-left:18px}.pc li{font-size:14px;line-height:1.45;margin:3px 0}
+.oneline{font-size:15px;border-top:1px solid var(--rule);padding-top:10px;margin-top:10px}
+.links{display:flex;flex-wrap:wrap;gap:8px 16px;margin-top:12px;font-size:14px}
+.auto{font-size:12px;color:var(--muted);margin:2px 0 8px} .opnote{font-size:12px;line-height:1.4;color:var(--muted);border-bottom:1px solid var(--rule);padding:0 0 8px;margin:0 0 10px}
+@media (max-width:700px){.tile .v{font-size:19px}.pc{grid-template-columns:1fr}.one{padding:14px}.one h2{font-size:22px}}
+@media print{.site-nav,#pps-disclaimer,.pick,.flip,.noprint,footer{display:none!important}.one{border:none;padding:0}body{background:#fff}}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html">Options</a><a href="plans.html" aria-current="page">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="schools.html">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
+<main>
+<div class="warn" id="pps-disclaimer"><b>Independent analysis by a PPS parent, not an official Portland Public Schools product.</b> It may contain errors. Check PPS's own materials: the <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">Rightsizing scenarios page</a> and the <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
+
+<h1>Plan one-pagers</h1>
+<p class="lede">One page per plan: what it does, its key numbers, what it does well and what it gives up. Flip between plans to compare, or print one.</p>
+
+<div class="pick" id="pick"></div>
+<div class="flip"><button type="button" id="prev">&larr; Previous</button><button type="button" class="noprint" onclick="window.print()">Print this page</button><button type="button" id="next">Next &rarr;</button></div>
+<article class="one" id="one"><p>Loading data...</p></article>
+<p class="cite" id="cite"></p>
+
+<footer>
+  <p><a href="options.html">Every plan side by side</a> &middot; <a href="durability.html">School sizes year by year</a> &middot; <a href="map.html">Map</a> &middot; <a href="method.html">Method</a></p>
+  <p id="gen"></p>
+<p id="ai"><b>Built with AI.</b> The research, data work, modeling and writing were done by AI (Claude, from Anthropic), directed and guided by Paul Frazier, a PPS parent, who made every judgment call and checked results against PPS&rsquo;s documents. Best effort; it will have errors. <a href="how.html">How we did this</a> &middot; <a href="method.html">Method</a>.</p>
+<p><a href="../LICENSE">License</a>: code MIT, analysis CC BY 4.0, OpenStreetMap-derived data &copy; OpenStreetMap contributors, ODbL. &copy; 2026 Paul Frazier.</p>
+</footer>
+</main>
+<script src="data/site_data.js"></script>
+<script>
+(function(){
+var D=window.SITE_DATA;
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function fmtInt(v){return v==null?'-':Math.round(v).toLocaleString('en-US');}
+// decimal half-up rounding, same as the landing page (0.975 -> 0.98; toFixed on the float gives 0.97)
+function fx(v,d){return Number(v).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d,useGrouping:false});}
+function fmt1(v){return v==null?'-':fx(v,1);}
+function fmt2(v){return v==null?'-':fx(v,2);}
+function fmt3(v){return v==null?'-':fx(v,3);}
+function pct(v){return v==null?'-':fx(v,1)+'%';}
+function srcLink(p,text){return '<a href="../'+esc(p)+'">'+esc(text||p)+'</a>';}
+
+// ---- Markdown (safe: escapes everything first) ----
+function inline(s){
+  s = esc(s);
+  s = s.replace(/`([^`]+)`/g,'<code>$1</code>');
+  s = s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
+  s = s.replace(/(^|[\s(])\*([^*\s][^*]*)\*(?=[\s).,;:]|$)/g,'$1<em>$2</em>');
+  s = s.replace(/\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,'<a href="$2">$1</a>');
+  return s;
+}
+function splitRow(l){
+  l = l.trim().replace(/^\|/,'').replace(/\|$/,'');
+  return l.split('|').map(function(c){return c.trim();});
+}
+function md(src, minHeading){
+  var lines = src.replace(/\r/g,'').split('\n'), out = [], i = 0;
+  var base = minHeading || 4;
+  while(i < lines.length){
+    var l = lines[i];
+    if(!l.trim()){i++;continue;}
+    var h = /^(#{1,6})\s+(.*)$/.exec(l);
+    if(h){
+      var lv = Math.min(6, base + h[1].length - 2); if(lv < base) lv = base;
+      out.push('<h'+lv+'>'+inline(h[2])+'</h'+lv+'>'); i++; continue;
+    }
+    if(/^\s*\|/.test(l) && i+1 < lines.length && /^\s*\|[\s:|-]+\|?\s*$/.test(lines[i+1])){
+      var head = splitRow(l); i += 2; var rows = [];
+      while(i < lines.length && /^\s*\|/.test(lines[i])){rows.push(splitRow(lines[i])); i++;}
+      var t = '<div class="tbl"><table><thead><tr>'+head.map(function(c){return '<th>'+inline(c)+'</th>';}).join('')+'</tr></thead><tbody>';
+      rows.forEach(function(r){t += '<tr>'+r.map(function(c){return '<td>'+inline(c)+'</td>';}).join('')+'</tr>';});
+      out.push(t+'</tbody></table></div>'); continue;
+    }
+    if(/^\s*[-*]\s+/.test(l)){
+      var items = [];
+      while(i < lines.length && (/^\s*[-*]\s+/.test(lines[i]) || (lines[i].trim() && /^\s{2,}\S/.test(lines[i]) && items.length))){
+        var m = /^(\s*)[-*]\s+(.*)$/.exec(lines[i]);
+        if(m){items.push({d:Math.floor(m[1].length/2), t:m[2]});}
+        else {items[items.length-1].t += ' '+lines[i].trim();}
+        i++;
+      }
+      var pos = 0;
+      var build = function(d){
+        var h2 = '<ul>';
+        while(pos < items.length && items[pos].d >= d){
+          if(items[pos].d > d){ h2 += build(items[pos].d); continue; }
+          h2 += '<li>'+inline(items[pos].t);
+          pos++;
+          if(pos < items.length && items[pos].d > d){ h2 += build(items[pos].d); }
+          h2 += '</li>';
+        }
+        return h2 + '</ul>';
+      };
+      var html = build(items[0].d);
+      out.push(html); continue;
+    }
+    var p = [];
+    while(i < lines.length && lines[i].trim() && !/^(#{1,6}\s|\s*\||\s*[-*]\s+)/.test(lines[i])){p.push(lines[i].trim()); i++;}
+    out.push('<p>'+inline(p.join(' '))+'</p>');
+  }
+  return out.join('\n');
+}
+if(!D){document.getElementById('one').innerHTML='<p>Data file failed to load (data/site_data.js).</p>';return;}
+var $=function(i){return document.getElementById(i)};
+var O=D.options,by={};O.forEach(function(o){by[o.name]=o});
+var M=D.matrix,cell=function(name,key){if(!M)return null;var p=M.plans.filter(function(x){return x.name===name})[0];return p&&p.cells[key]};
+var order=['status_quo','scenario_A','scenario_B'].filter(function(k){return by[k]}).concat(O.filter(function(o){return o.kind==='option'}).sort(function(a,b){var ra=a.brief_rank==null?99:a.brief_rank,rb=b.brief_rank==null?99:b.brief_rank;return ra-rb}).map(function(o){return o.name}));
+var WHAT={status_quo:'PPS&rsquo;s 2027-28 lines with no closures: every school stays open. The baseline every plan is compared with.',
+ scenario_A:'PPS&rsquo;s first rightsizing scenario: closes schools, converts some to K-8, moves programs, and mostly merges each closing school&rsquo;s area into one receiving school.',
+ scenario_B:'PPS&rsquo;s second rightsizing scenario, with fewer closures than PPS A.',
+ frontier_k17:'Example plan: PPS A&rsquo;s closures and programs; lines drawn for the shortest walks that keep at least PPS A&rsquo;s count of schools at target.',
+ option1_durable:'Example plan: PPS A&rsquo;s closures and programs; elementary and middle lines redrawn for walking and size; PPS A&rsquo;s high-school lines.',
+ option2_ms460:'Example plan: PPS A&rsquo;s closures with redrawn K-5 and middle-school lines (middle-school minimum 460, below PPS&rsquo;s 500); MLK Jr Mandarin and Beaumont Spanish 6-8 stay in their buildings.',
+ option2:'Example plan: PPS A&rsquo;s closures with redrawn K-5 and middle-school lines (middle-school minimum 500); MLK Jr Mandarin and Beaumont Spanish 6-8 stay in their buildings.',
+ option4:'Example plan: PPS A&rsquo;s closures and programs, with today&rsquo;s lines changed as little as possible to bring schools into range.',
+ option3a:'What-if: PPS A, plus Winterhaven and da Vinci close and their students return to neighborhood schools.'};
+var TILES=[['K-5_at_target','K-5 schools at target every year, 2027-28 to 2031-32'],['6-8_at_target','Middle schools at target every year'],
+ ['K-5_within1','Elementary kids within a 1-mile walk of school'],['K-5_past_closer','Elementary kids assigned to a farther school, past a closer one'],
+ ['moved','Kids changing school vs PPS Status Quo (K-5 + 6-8)'],['dli_moved','Immersion students whose program moves'],
+ ['K-5->6-8_together_pct','Elementary class kept together into middle school (%)'],['6-8->9-12_together_pct','Middle-school class kept together into high school (%)']];
+var cur=(location.hash.match(/plan=([\w]+)/)||[])[1];if(order.indexOf(cur)<0)cur=(O.filter(function(o){return o.brief_rank===0})[0]||{}).name||order[0];
+function eyebrow(o){return o.kind==='reference'?'Baseline':o.kind==='pps'?'PPS scenario':o.what_if?'What-if':o.brief_rank===0?'Best we modeled':'Example plan'}
+function section(b,name){var re=new RegExp('\\*\\*'+name.replace(/[.]/g,'\\.')+'\\*\\*([\\s\\S]*?)(?=\\n\\*\\*[A-Z][^*]{2,40}\\.\\*\\*|$)');var m=re.exec(b);return m?m[1].trim():''}
+function picker(){var g=function(lab,ks){return '<div class="grp"><span>'+lab+'</span>'+ks.map(function(k){return '<button type="button" data-k="'+k+'" aria-pressed="'+(k===cur)+'">'+esc(by[k].short)+'</button>'}).join('')+'</div>'};
+  $('pick').innerHTML=g('From PPS',order.filter(function(k){return by[k].kind!=='option'}))+g('Example plans',order.filter(function(k){return by[k].kind==='option'}));
+  Array.prototype.forEach.call($('pick').querySelectorAll('button'),function(b){b.onclick=function(){go(b.dataset.k)}})}
+function go(k){cur=k;history.replaceState(null,'','#plan='+k);render();window.scrollTo({top:$('pick').offsetTop-10})}
+function render(){
+  picker();
+  var o=by[cur],i=order.indexOf(cur),ref=cur==='scenario_A'?'status_quo':'scenario_A',rn=by[ref].short;
+  $('prev').disabled=i<=0;$('next').disabled=i>=order.length-1;
+  // on every one-pager, and in print (the page banner and footer don't print)
+  var h='<p class="opnote"><b>Independent analysis by a PPS parent, not an official PPS product.</b> Built with AI (Claude, from Anthropic), directed and guided by Paul Frazier. These figures are model estimates, built from Census blocks rather than PPS&rsquo;s student records, so they may not hold up on PPS&rsquo;s real data; we&rsquo;d like PPS to test options like these on its own data.</p>'
+    +'<div class="eyebrow">'+eyebrow(o)+'</div><h2>'+esc(o.full||o.short)+'</h2><p class="what">'+(WHAT[o.name]||esc(o.label||''))+'</p>';
+  h+='<div class="tiles">'+TILES.map(function(t){var c=cell(cur,t[0]);if(!c||c.text==='')return '';var rc=cur==='status_quo'?null:cell(ref,t[0]);
+    return '<div class="tile"><div class="v">'+(c.rating?'<span class="dot '+c.rating+'" title="'+({green:'better',yellow:'middle',red:'worse'})[c.rating]+' among the plans that close schools"></span>':'')+esc(c.text)+'</div><div class="l">'+t[1]+'</div>'+(rc&&rc.text!==''?'<div class="c">'+esc(rn)+': '+esc(rc.text)+'</div>':'')+'</div>'}).join('')+'</div>';
+  var b=o.brief_md||'',good=section(b,'The good.'),bad=section(b,'The bad.'),how=section(b,'How it works.'),one=section(b,'Trade-off in one line.');
+  var autoP=[],autoC=[];
+  if(M&&cur!=='status_quo')M.measures.forEach(function(m){var c=cell(cur,m.key);if(!c||!c.rating||m.key==='K-5_in_range_minus9')return;(c.rating==='green'?autoP:c.rating==='red'?autoC:[]).push(esc(m.label)+': '+esc(c.text))});
+  if(how)h+='<div class="md">'+md('**How it works.** '+how,4)+'</div>';
+  h+='<div class="pc"><div class="pro"><h3>What it does well</h3>'+(good?'<div class="md">'+md(good,4)+'</div>':(autoP.length?'<p class="auto">Rows where it rates best among the plans that close schools:</p><ul>'+autoP.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>':'<p class="auto">'+(cur==='status_quo'?'Keeps every school open, so it has the shortest walks of any plan. It is the baseline the other plans&rsquo; moves are counted against, so it is not rated.':'No row where it rates best.')+'</p>'))+'</div>'
+    +'<div class="con"><h3>What it gives up</h3>'+(bad?'<div class="md">'+md(bad,4)+'</div>':(autoC.length?'<p class="auto">Rows where it rates worst among the plans that close schools:</p><ul>'+autoC.map(function(x){return '<li>'+x+'</li>'}).join('')+'</ul>':'<p class="auto">'+(cur==='status_quo'?'Most schools stay below their size targets as enrollment falls (see the tiles above).':'No row where it rates worst.')+'</p>'))+'</div></div>';
+  if(one)h+='<p class="oneline"><b>Trade-off in one line.</b> '+inline(one)+'</p>';
+  var a=cur==='scenario_A'?'status_quo':'scenario_A';
+  h+='<div class="links noprint"><a href="map.html#level=K-5&amp;view=overlay&amp;a='+a+'&amp;b='+esc(cur)+'">See it on the map, vs '+esc(by[a].short)+'</a><a href="durability.html'+(o.kind==='option'?'':'#plans=pps')+'">School sizes year by year</a>'+(o.kind==='option'?'<a href="options.html#opt-'+esc(cur)+'">Full write-up</a>':'<a href="options.html#compare">Side by side</a>')+'</div>';
+  var el=$('one');el.className='one k-'+o.kind;el.innerHTML=h;
+  $('cite').innerHTML='Numbers: the trade-offs table (<a href="../'+esc(M?M.source:'')+'">TRADEOFFS_MATRIX.json</a>), 2031-32 unless noted; for PPS&rsquo;s plans the &ldquo;at target every year&rdquo; tiles use PPS&rsquo;s own Family Guide projections, everything else is our model. Dots compare the plans that close schools (green better, red worse). '+(b?'Text: the plan brief, <a href="../'+esc(D.briefs_source||'')+'">BRIEFS.md</a>.':'No written brief for this plan yet; strengths and weaknesses are read from the table.');
+}
+$('prev').onclick=function(){var i=order.indexOf(cur);if(i>0)go(order[i-1])};
+$('next').onclick=function(){var i=order.indexOf(cur);if(i<order.length-1)go(order[i+1])};
+document.addEventListener('keydown',function(e){if(e.target.tagName==='INPUT'||e.target.tagName==='SELECT')return;if(e.key==='ArrowLeft')$('prev').click();if(e.key==='ArrowRight')$('next').click()});
+window.addEventListener('hashchange',function(){var k=(location.hash.match(/plan=([\w]+)/)||[])[1];if(k&&order.indexOf(k)>=0&&k!==cur){cur=k;render()}});
+$('gen').textContent='Data generated '+(D.generated_label||D.generated)+'.';
+render();
+})();
+</script>
+</body>
+</html>

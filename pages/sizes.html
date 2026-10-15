@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Why these sizes | PPS boundary options</title>
+<meta name="description" content="Where PPS&rsquo;s school-size targets (360 elementary, 500 middle and K-8, 1,100 high school) come from, and how many schools fall short.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23245c9e%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23fff%27/%3E%3Crect x=%2713.5%27 y=%2718%27 width=%275%27 height=%277%27 fill=%27%23245c9e%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css">
+<style>
+:root{--below:#b4472f;--above:#2e7d5b;--thr:#2a78d6;--aud:#6b7a86;--band:#e6eef8}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--below:#e8876f;--above:#6cc49a;--thr:#5fa0ec;--aud:#9aa7b2;--band:#1f2c3a}}
+:root[data-theme="dark"]{--below:#e8876f;--above:#6cc49a;--thr:#5fa0ec;--aud:#9aa7b2;--band:#1f2c3a}
+.keys{background:var(--card);border:1px solid var(--rule);border-left:4px solid var(--thr);border-radius:8px;padding:12px 16px;margin:14px 0}
+.keys li{margin:5px 0;line-height:1.5}
+.chartbox{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:8px 6px;position:relative}
+.chartbox svg{display:block;width:100%;height:auto;overflow:visible}
+.chartbox text{fill:var(--muted);font:12px system-ui,sans-serif;stroke:var(--card);stroke-width:3;paint-order:stroke;stroke-linejoin:round}
+.chartbox .lab{fill:var(--ink)}
+.lg{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:13px;margin:8px 2px;color:var(--ink);align-items:center}
+.lg span{display:inline-flex;gap:6px;align-items:center}
+.ctl{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:10px 0}
+.cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin:12px 0}
+.pcard{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:12px 14px}
+.pcard .big{font-size:28px;font-weight:700;color:var(--ink)}
+.pcard ul{margin:6px 0 0;padding-left:18px;font-size:14px}
+blockquote.q{margin:12px 0;padding:8px 14px;border-left:3px solid var(--rule);color:var(--ink);font-size:15px}
+blockquote.q cite{display:block;font-style:normal;font-size:12px;color:var(--muted);margin-top:4px}
+#tip,#ctip{position:absolute;pointer-events:none;background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:6px 9px;font-size:12px;box-shadow:0 2px 8px #0003;display:none;z-index:2;white-space:nowrap}
+.cap{font-size:15px;margin:8px 2px;color:var(--ink)}
+table.ar td,table.ar th{text-align:right}table.ar td:first-child,table.ar th:first-child{text-align:left}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="schools.html">Schools</a><a href="sizes.html" aria-current="page">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
+<main>
+<div class="warn" id="pps-disclaimer"><b>Independent analysis by a PPS parent, not an official Portland Public Schools product.</b> It may contain errors. Check PPS's own materials: the <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">Rightsizing scenarios page</a> and the <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
+
+<h1>Why these sizes?</h1>
+<p class="lede">PPS&rsquo;s size goal is more than 360 students for each elementary school, more than 500 for each middle and K-8 school, and more than 1,100 for each high school (<a href="https://www.pps.net/about/portland-public-schools-information/rightsize/how-could-your-school-be-impacted">PPS Family Guides</a>, glossary, p. 2). Where do those numbers come from, and how many schools fall short?</p>
+
+<ul class="keys">
+<li><b>360 and 500 come from the state&rsquo;s Quality Education Model.</b> Oregon uses an average 360-student elementary and 500-student middle school to estimate what an adequate education costs. The state calls them &ldquo;composites representing an average school&rdquo; (<a href="https://www.oregon.gov/ode/reports-and-data/taskcomm/Documents/Quality%20Education%20Commission%20QEM%20Report%202026.pdf">QEM Report 2026</a>, p. 91), and the Legislature&rsquo;s research office notes that &ldquo;Schools in Oregon are not required to adhere to the model&rsquo;s components&rdquo; (<a href="https://www.oregonlegislature.gov/lpro/Publications/Oregon%20Quality%20Education%20Model%20-%20Issue%20Brief%20Dec.%202023.pdf">LPRO issue brief, Dec. 2023</a>, p. 2).</li>
+<li><b>PPS uses them as floors.</b> An outside equity audit PPS commissioned (<a href="https://drive.google.com/file/d/1gcq_2z1sc6yj90PJCsUc9yqrLfAVWxSz/view">SEGC equity audit evaluation report, June 2026</a>, reviewing PPS&rsquo;s Southeast enrollment-balancing work) called the state numbers a &ldquo;minimum adequacy floor&rdquo; but not &ldquo;a final enrollment target&rdquo; (p. 143). It suggested higher planning floors, about 450 elementary, 600 middle and 650 K-8 (pp. 144&ndash;145), and said even those &ldquo;should not be used as automatic closure thresholds&rdquo; (p. 145).</li>
+<li><b>1,100 for high school is PPS&rsquo;s own number,</b> from its Jefferson dual-assignment work (<a href="https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=3997426">PPS board memo, Aug. 4, 2026</a>, p. 2). The state model&rsquo;s high school has 1,000 students (<a href="https://www.oregon.gov/ode/reports-and-data/taskcomm/Documents/Quality%20Education%20Commission%20QEM%20Report%202026.pdf">QEM Report 2026</a>, p. 91).</li>
+</ul>
+
+<h2 id="cost">Bigger schools cost less per student, up to a point</h2>
+<p>What Oregon schools spent per student, by school size. Cost per student falls steeply as schools grow from very small, then flattens out. The shaded band is the size range the state&rsquo;s cited research calls effective; the blue line is PPS&rsquo;s threshold.</p>
+<div class="ctl"><div class="levels" id="clv" role="group" aria-label="School level"></div></div>
+<p class="cap" id="ccap"></p>
+<div class="chartbox" id="costbox"><svg id="costc" role="img" aria-label="Line chart of cost per student by school size"></svg><div id="ctip" class="tipbox"></div></div>
+<div class="lg"><span><svg width="22" height="12"><line x1="1" x2="21" y1="6" y2="6" stroke="var(--ink)" stroke-width="2.5"/><circle cx="11" cy="6" r="3" fill="var(--ink)"/></svg>spending per student, Oregon schools of that size</span><span><svg width="22" height="12"><rect x="1" y="2" width="20" height="8" rx="2" fill="var(--band)"/></svg>size range learning studies favor (not a cost finding)</span><span><svg width="12" height="14"><line x1="6" x2="6" y1="0" y2="14" stroke="var(--thr)" stroke-width="3"/></svg>PPS threshold</span><span><svg width="12" height="14"><line x1="6" x2="6" y1="0" y2="14" stroke="var(--muted)" stroke-width="2" stroke-dasharray="4 3"/></svg>Oregon&rsquo;s model school (same as PPS for elementary and middle)</span></div>
+<p class="small muted">Source: Oregon Department of Education, <a href="https://www.oregon.gov/ode/reports-and-data/taskcomm/Documents/SFTF/2014.01.SFTFCostOfOperatingSmallSchoolsInOregon.pdf"><i>The Costs of Operating Small Schools in Oregon</i></a> (2002), Table 5 (printed p. 9, PDF p. 13): non-transportation operating spending per student by school size, every Oregon school, 2000-01, including district and ESD costs. Dollars are 2000-01 dollars, so read the shape, not the level. Each point is a size group (for example 351&ndash;500 students) drawn at its middle; the open-ended &ldquo;greater than 2,000&rdquo; high school group is placed at 2,250 for display. The large blue dot sits where PPS&rsquo;s threshold crosses the line (360 elementary, 500 middle, 1,100 high): a value read from the line between the two nearest size groups, not a reported figure. Statewide, not PPS: for a PPS-specific view, see a community site&rsquo;s reconstruction of PPS&rsquo;s staffing formula (<a href="https://rightsizepdx.com/rightsizing-scenario-explorer.html">Right Size Portland</a>); PPS hasn&rsquo;t published the formula itself. The shaded range comes from studies of student learning, not from this cost data (see Research ranges below). The state model school is the average-size school Oregon uses to estimate what an adequate education costs: 360 elementary, 500 middle, 1,000 high (<a href="https://www.oregon.gov/ode/reports-and-data/taskcomm/Documents/Quality%20Education%20Commission%20QEM%20Report%202026.pdf">QEM Report 2026</a>, p. 91); schools are not required to match it.</p>
+
+<h2 id="origin">Where the numbers come from</h2>
+<p>For each level: the size range the state&rsquo;s cited research calls effective, the state&rsquo;s model school, PPS&rsquo;s threshold, and the floor PPS&rsquo;s equity audit suggested.</p>
+<div class="chartbox"><svg id="lin" role="img" aria-label="Size benchmarks by school level"></svg></div>
+<div class="lg" id="linlg"></div>
+<p class="small muted">Research ranges: Cotton (1996), the synthesis the state model cites, for elementary (300&ndash;400) and middle (400&ndash;800); Lee &amp; Smith (1997) for high school (600&ndash;900). There is no state K-8 model school; PPS reused 500. The state&rsquo;s elementary model school was 340 students until at least 2018 and is 360 from 2022; no report says why.</p>
+
+<h2 id="state">What the state model is</h2>
+<blockquote class="q">&ldquo;The prototypes do not represent any actual schools but are composites representing an average school for its category. A research synthesis conducted by Education Northwest indicates that an effective size for elementary schools is between 300-400 students and that middle schools that are effective range from 400-800 students. The ideal high school is between 600-900 students.&rdquo;<cite>Quality Education Commission, <a href="https://www.oregon.gov/ode/reports-and-data/taskcomm/Documents/Quality%20Education%20Commission%20QEM%20Report%202026.pdf">QEM Report 2026</a>, p. 91</cite></blockquote>
+<p>The model prices an adequate education at &ldquo;efficiently-scaled&rdquo; schools (2026 report, p. 92). It is a funding benchmark: &ldquo;Schools in Oregon are not required to adhere to the model&rsquo;s components&rdquo; (<a href="https://www.oregonlegislature.gov/lpro/Publications/Oregon%20Quality%20Education%20Model%20-%20Issue%20Brief%20Dec.%202023.pdf">Legislative Policy and Research Office, issue brief, Dec. 2023</a>, p. 2). Its own 2024 report says the model schools &ldquo;no longer fully account for the diverse conditions and communities present across Oregon&rdquo; (<a href="https://www.oregon.gov/ode/reports-and-data/taskcomm/Documents/M000266%20DOE%20Quality%20Education%20Model%20Report%202024.pdf">QEM Report 2024</a>, printed p. 18, PDF p. 20), and an outside evaluation found their sizes rest on &ldquo;decades-old research estimates&rdquo; (<a href="https://olis.oregonlegislature.gov/liz/2025I1/Downloads/CommitteeMeetingDocument/310513">LPRO summary of the AIR evaluation, Oct. 2025</a>, p. 8).</p>
+<div class="cards3">
+<div class="pcard"><div class="small muted">State model elementary school</div><div class="big">360 students</div><ul><li>Average class of 20</li><li>All-day kindergarten</li><li>A librarian, nurse, PE and music specialist, family resource staffer</li></ul></div>
+<div class="pcard"><div class="small muted">State model middle school</div><div class="big">500 students</div><ul><li>Average class of 17.7</li><li>1.5 extra math, English and science teachers</li><li>A counselor per 250 students; a librarian and nurse</li></ul></div>
+<div class="pcard"><div class="small muted">State model high school</div><div class="big">1,000 students</div><ul><li>Average class of 20.7</li><li>3 extra math, English and science teachers</li><li>A counselor per 250 students; a school-to-work coordinator</li></ul></div>
+</div>
+<p class="small muted">Source: <a href="https://www.oregon.gov/ode/reports-and-data/taskcomm/Documents/Quality%20Education%20Commission%20QEM%20Report%202026.pdf">QEM Report 2026</a>, &ldquo;Prototype schools,&rdquo; p. 91. Oregon law&rsquo;s only school-size line, <a href="https://www.oregonlegislature.gov/bills_laws/ors/ors327.html">ORS 327.077</a>, gives <em>extra</em> funding to remote small elementary schools and to small high schools in small districts; PPS schools don&rsquo;t qualify. There is no state minimum school size.</p>
+
+<h2 id="count">How many schools fall below</h2>
+<p>Every neighborhood school, by enrollment. A dot is red if it is below the line you choose, green if at or above.</p>
+<div class="ctl"><div class="levels" id="lvl" role="group" aria-label="School level"></div>
+<div class="levels" id="yr" role="group" aria-label="Year"></div>
+<div class="levels" id="fl" role="group" aria-label="Line"></div></div>
+<p class="cap" id="cap"></p>
+<div class="chartbox" id="stripbox"><svg id="strip" role="img" aria-label="Dot plot of school enrollments"></svg><div id="tip"></div></div>
+<div class="lg"><span><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="var(--below)"/></svg>below the line</span><span><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="var(--above)"/></svg>at or above</span><span><svg width="20" height="12"><line x1="10" x2="10" y1="0" y2="12" stroke="var(--thr)" stroke-width="2"/></svg>PPS threshold</span><span><svg width="20" height="12"><line x1="10" x2="10" y1="0" y2="12" stroke="var(--aud)" stroke-width="2" stroke-dasharray="3 2"/></svg>audit&rsquo;s suggested floor</span></div>
+<details><summary>Show as a table</summary><div class="tbl"><table id="tbl"></table></div></details>
+<p class="small muted" id="stripnote"></p>
+
+<h2 id="why">Why PPS says size matters</h2>
+<p>PPS&rsquo;s case is about staffing: with too few students, schools blend grades, share specialists and cut electives.</p>
+<blockquote class="q">&ldquo;Maintaining more than 80 school sites amid declining enrollment has spread resources increasingly thin. Schools experience this through blended classrooms, an increase in itinerant staff, reduction in school-wide supports such as counselors or social workers, or courses being offered in alternate years.&rdquo;<cite>PPS board memo, &ldquo;Rightsizing Update: Equity Audit Evaluation,&rdquo; Aug. 4, 2026, p. 2 (<a href="https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=3997426">BoardBook</a>)</cite></blockquote>
+<p>PPS&rsquo;s &ldquo;well-resourced schools&rdquo; definition lists &ldquo;2-3 sections per grade&rdquo; for K-5 and &ldquo;6-8 sections per grade&rdquo; for middle school (Sept. 8, 2026 deck, slide 7, &ldquo;Sustainability thresholds by grade band&rdquo;). The arithmetic behind the numbers:</p>
+<div class="tbl"><table class="ar"><thead><tr><th>School size</th><th>Students per grade</th><th>Classes per grade at 20</th><th>at 25</th></tr></thead><tbody>
+<tr><td>Elementary, PPS 360</td><td>60</td><td>3</td><td>2.4</td></tr>
+<tr><td>Elementary, audit 450</td><td>75</td><td>3.8</td><td>3</td></tr>
+<tr><td>Middle, PPS 500</td><td>167</td><td>8.3</td><td>6.7</td></tr>
+<tr><td>Middle, audit 600</td><td>200</td><td>10</td><td>8</td></tr>
+</tbody></table></div>
+<p class="small muted">Six grades for K-5, three for middle school. This is arithmetic, not evidence about outcomes; PPS hasn&rsquo;t published the staffing formula that ties enrollment to specialists.</p>
+
+<h2 id="research">What the research says, and doesn&rsquo;t</h2>
+<ul>
+<li>Studies mostly give <b>ranges where schools tend to work well</b>, often <b>upper</b> limits, not a size below which a school fails. Cotton (1996): &ldquo;an appropriate and effective size is 300-400 students for an elementary school and 400-800 students for a secondary school&rdquo; (<a href="https://educationnorthwest.org/sites/default/files/SizeClimateandPerformance.pdf">Education Northwest</a>, summary, PDF p. 11).</li>
+<li>Leithwood &amp; Jantzi (2009), a review of 57 studies, favors smaller schools: elementary schools of no more than about 300 (high-need) to 500 students, secondary schools of no more than about 600 to 1,000. This is from the article&rsquo;s <a href="https://eric.ed.gov/?id=EJ879147">ERIC abstract</a>; the full article was not read.</li>
+<li>In Oregon, per-student costs rise steeply only for very small schools: below about 100 students for elementary and 300 for high school (<a href="https://www.oregon.gov/ode/reports-and-data/taskcomm/Documents/SFTF/2014.01.SFTFCostOfOperatingSmallSchoolsInOregon.pdf">ODE, <i>The Costs of Operating Small Schools in Oregon</i>, 2002</a>, printed p. 1).</li>
+<li>PPS&rsquo;s equity audit: effects of size on achievement are &ldquo;mixed, modest, and highly dependent on context&rdquo; (p. 142). Smaller schools &ldquo;often provide stronger relationships&rdquo;; larger ones &ldquo;often provide more staffing flexibility, more program breadth&rdquo; (p. 141).</li>
+</ul>
+
+<h2 id="floors">Floors or goals?</h2>
+<blockquote class="q">&ldquo;PPS should consider Oregon&rsquo;s QEM as an adequacy benchmark, but not as a final enrollment target.&rdquo; &hellip; &ldquo;PPS should treat QEM as a minimum adequacy floor rather than a complete contemporary model of what every well-resourced school requires.&rdquo;<cite>On the state&rsquo;s numbers: PPS&rsquo;s equity audit of the Southeast enrollment and program balancing work, June 10, 2026, p. 143 (<a href="https://drive.google.com/file/d/1gcq_2z1sc6yj90PJCsUc9yqrLfAVWxSz/view">report</a>)</cite></blockquote>
+<blockquote class="q">&ldquo;Moreover, we cannot state enough that these numbers should not be used as automatic closure thresholds. They should be used as planning ranges to assess whether schools are likely to remain large enough over the next five or so years to sustain the staffing, programming, class size, and student support conditions associated with however PPS describes well-resourced schools.&rdquo;<cite>On the audit&rsquo;s own suggested floors (450 elementary, 600 middle, 650 K-8): the same report, pp. 145&ndash;146</cite></blockquote>
+<blockquote class="q">&ldquo;School size goal: More than 360 students for K-5 schools; more than 500 for K-8 or middle schools; more than 1,100 for high schools. These are planning goals, not ratings of school quality.&rdquo;<cite>PPS Family Guides, glossary, p. 2</cite></blockquote>
+<blockquote class="q">&ldquo;So these are numbers that we&rsquo;ve settled on. Again, not ideal state, but it&rsquo;s a bridge.&rdquo;<cite>PPS staff, Oct. 6, 2026 board meeting (<a href="https://youtu.be/zOUH2Jq7Owo?t=5917">video, 1:38:37</a>)</cite></blockquote>
+<p>The audit&rsquo;s higher floors add a five-year enrollment-loss buffer to the state numbers (360 + about 85; 500 + about 100; pp. 144&ndash;146). It says schools below them &ldquo;may still be necessary, valued, and educationally strong&rdquo; (p. 146). Switch the chart above to &ldquo;Audit floor&rdquo; to see how many schools fall below it.</p>
+
+<h2 id="links">The Oregon guidance</h2>
+<ul>
+<li><a href="https://www.oregon.gov/ode/reports-and-data/taskcomm/Pages/QEMReports.aspx">Quality Education Model reports (Oregon Department of Education)</a></li>
+<li><a href="https://www.oregon.gov/ode/reports-and-data/taskcomm/Documents/Quality%20Education%20Commission%20QEM%20Report%202026.pdf">QEM Report 2026</a> (model schools, p. 91) &middot; <a href="https://www.oregon.gov/ode/reports-and-data/taskcomm/Documents/M000266%20DOE%20Quality%20Education%20Model%20Report%202024.pdf">QEM Report 2024</a></li>
+<li><a href="https://www.oregonlegislature.gov/lpro/Publications/Oregon%20Quality%20Education%20Model%20-%20Issue%20Brief%20Dec.%202023.pdf">Legislative Policy and Research Office: QEM issue brief (Dec. 2023)</a></li>
+<li><a href="https://olis.oregonlegislature.gov/liz/2025I1/Downloads/CommitteeMeetingDocument/310513">LPRO summary of the AIR evaluation of the QEM (Oct. 2025)</a></li>
+<li><a href="https://apps.oregonlegislature.gov/liz/2023R1/Downloads/CommitteeMeetingDocument/274502">Quality Education Commission slides naming the model schools (2023)</a></li>
+<li><a href="https://www.oregonlegislature.gov/bills_laws/ors/ors327.html">ORS 327.077, small-school funding</a></li>
+<li><a href="https://www.oregon.gov/ode/reports-and-data/taskcomm/Documents/SFTF/2014.01.SFTFCostOfOperatingSmallSchoolsInOregon.pdf">ODE: The Costs of Operating Small Schools in Oregon (2002)</a></li>
+</ul>
+<p class="small muted">Research notes with every quote and page number: <a href="../build/export/sizes/RESEARCH.md">RESEARCH.md</a>. Chart style inspired by the community site <a href="https://rightsizepdx.com/">Right Size Portland</a>.</p>
+
+<footer><p><a href="durability.html">School sizes year by year</a> &middot; <a href="options.html">Every plan side by side</a> &middot; <a href="method.html">Method</a></p><p id="gen"></p><p id="ai"><b>Built with AI.</b> The research, data work, modeling and writing were done by AI (Claude, from Anthropic), directed and guided by Paul Frazier, a PPS parent, who made every judgment call and checked results against PPS&rsquo;s documents. Best effort; it will have errors. <a href="how.html">How we did this</a> &middot; <a href="method.html">Method</a>.</p>
+<p><a href="../LICENSE">License</a>: code MIT, analysis CC BY 4.0, OpenStreetMap-derived data &copy; OpenStreetMap contributors, ODbL. &copy; 2026 Paul Frazier.</p>
+</footer>
+</main>
+<script src="data/site_data.js"></script>
+<script>
+(function(){
+var D=window.SITE_DATA,$=function(i){return document.getElementById(i)};
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var fmt=function(v){return Math.round(v).toLocaleString('en-US')};
+// 1. lineage chart
+var ROWS=[{l:'Elementary (K-5)',max:700,r:[300,400],st:360,pps:360,aud:450},{l:'Middle (6-8)',max:900,r:[400,800],st:500,pps:500,aud:600},
+ {l:'K-8',max:900,r:null,st:null,pps:500,aud:650},{l:'High (9-12)',max:1400,r:[600,900],st:1000,pps:1100,aud:null}];
+function lineage(){var box=$('lin').parentNode,W=Math.max(320,box.clientWidth-12),narrow=W<560,lw=narrow?0:130,rh=narrow?74:66,H=ROWS.length*rh+8,s='';
+  ROWS.forEach(function(r,i){var y0=i*rh+(narrow?18:16),x0=lw+10,iw=W-x0-14,x=function(v){return x0+iw*v/r.max},cy=y0+22;
+    s+='<text class="lab" x="'+(narrow?x0:0)+'" y="'+(narrow?y0-4:cy+4)+'" style="font-weight:600">'+r.l+'</text>';
+    s+='<line x1="'+x0+'" x2="'+(x0+iw)+'" y1="'+cy+'" y2="'+cy+'" stroke="var(--rule)"/>';
+    for(var t=0;t<=r.max;t+=(r.max>1000?200:100))s+='<text x="'+x(t)+'" y="'+(cy+20)+'" text-anchor="middle" style="font-size:10px">'+t+'</text>';
+    if(r.r)s+='<rect x="'+x(r.r[0])+'" y="'+(cy-9)+'" width="'+(x(r.r[1])-x(r.r[0]))+'" height="18" fill="var(--band)" rx="3"/><text x="'+x((r.r[0]+r.r[1])/2)+'" y="'+(cy-12)+'" text-anchor="middle" style="font-size:10px">research range</text>';
+    if(r.aud)s+='<line x1="'+x(r.aud)+'" x2="'+x(r.aud)+'" y1="'+(cy-12)+'" y2="'+(cy+12)+'" stroke="var(--aud)" stroke-width="2" stroke-dasharray="3 2"/>';
+    if(r.pps)s+='<line x1="'+x(r.pps)+'" x2="'+x(r.pps)+'" y1="'+(cy-12)+'" y2="'+(cy+12)+'" stroke="var(--thr)" stroke-width="3"/>';
+    if(r.st)s+='<path d="M'+x(r.st)+','+(cy-6)+' l6,6 l-6,6 l-6,-6z" fill="var(--card)" stroke="var(--ink)" stroke-width="1.5"/>';
+    var lab=[];if(r.st)lab.push('state '+fmt(r.st));lab.push('PPS '+fmt(r.pps));if(r.aud)lab.push('audit '+fmt(r.aud));
+    if(!narrow)s+='<text x="'+(x0+iw)+'" y="'+(cy-12)+'" text-anchor="end" style="font-size:11px">'+lab.join(' · ')+'</text>';});
+  var svg=$('lin');svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.innerHTML=s;
+  $('linlg').innerHTML='<span><svg width="22" height="12"><rect x="1" y="2" width="20" height="8" rx="2" fill="var(--band)"/></svg>effective range in the research the state cites</span><span><svg width="14" height="14"><path d="M7,1 l6,6 l-6,6 l-6,-6z" fill="none" stroke="var(--ink)" stroke-width="1.5"/></svg>state model school</span><span><svg width="12" height="14"><line x1="6" x2="6" y1="0" y2="14" stroke="var(--thr)" stroke-width="3"/></svg>PPS threshold</span><span><svg width="12" height="14"><line x1="6" x2="6" y1="0" y2="14" stroke="var(--aud)" stroke-width="2" stroke-dasharray="3 2"/></svg>equity audit&rsquo;s floor</span>';}
+// 2. cost per student by size (ODE 2002, Table 5; 2000-01 dollars). [lo, hi, $] per size group
+var COST={es:{l:'Elementary',thr:360,st:360,aud:450,band:[300,400],max:1000,d:[[1,25,10763],[26,50,10522],[51,75,8564],[76,100,7524],[101,150,7192],[151,200,7293],[201,250,6981],[251,300,6671],[301,350,6651],[351,500,6282],[501,750,6055],[751,1000,5862]]},
+ ms:{l:'Middle',thr:500,st:500,aud:600,band:[400,800],max:1500,d:[[101,150,6980],[151,200,6876],[201,250,6958],[251,300,6714],[301,350,6669],[351,500,6914],[501,750,6670],[751,1000,6527],[1001,1500,6071]]},
+ hs:{l:'High',thr:1100,st:1000,aud:null,band:[600,900],max:2500,d:[[26,50,15577],[51,75,11092],[76,100,12292],[101,150,9866],[151,200,9001],[201,250,7588],[251,300,7585],[301,350,7845],[351,500,7278],[501,750,7027],[751,1000,6930],[1001,1500,6971],[1501,2000,6599],[2001,2500,6335]]}},clv='es';
+// label collision pass (run after the SVG is in the DOM so getBBox is real): drop touching x ticks, keep the threshold label inside the
+// plot, move the "sweet spot" label and the cost annotation off the threshold line (try the other side, then just past the line)
+function thinTicks(svg){var prev=null;Array.prototype.forEach.call(svg.querySelectorAll('text.xt'),function(t){t.removeAttribute('visibility');var b=t.getBBox();if(prev&&b.x<prev.x+prev.width+6)t.setAttribute('visibility','hidden');else prev=b})}
+function avoidCollisions(svg,W,m,xt,sx,bx){
+  thinTicks(svg);
+  m.ih=m.ih||0;var lo=m.l,hi=W-m.r,thr=svg.querySelector('#cthr');
+  if(thr){var tb=thr.getBBox();if(tb.x+tb.width>hi+2){thr.setAttribute('text-anchor','end');thr.setAttribute('x',xt-4)}}
+  var hit=function(b){return xt>=b.x-5&&xt<=b.x+b.width+5};
+  var place=function(els,w,cands){var cur=null;for(var i=0;i<cands.length;i++){var c=cands[i];if(c.x-(c.a==='end'?w:c.a==='middle'?w/2:0)<lo-1||c.x+(c.a==='start'?w:c.a==='middle'?w/2:0)>hi+1)continue;
+      var l=c.a==='end'?c.x-w:c.a==='middle'?c.x-w/2:c.x;if(xt>=l-5&&xt<=l+w+5)continue;cur=c;break}
+    if(cur)els.forEach(function(e){e.setAttribute('text-anchor',cur.a);e.setAttribute('x',cur.x)});return !!cur};
+  var bl=svg.querySelector('#cbl');
+  if(bl){var bb=bl.getBBox(),hh=0;if(hit(bb)&&!place([bl],bb.width,[{a:'end',x:xt-6},{a:'start',x:xt+6}])){bl.textContent='learning studies';bb=bl.getBBox();if(!place([bl],bb.width,[{a:'end',x:xt-6},{a:'start',x:xt+6}])){bl.textContent='sweet spot';bb=bl.getBBox();place([bl],bb.width,[{a:'end',x:xt-6},{a:'start',x:xt+6},{a:'middle',x:+bl.getAttribute('x')}])}}}
+  var a1=svg.querySelector('#ca1'),a2=svg.querySelector('#ca2');
+  if(a1&&a2){var b1=a1.getBBox(),b2=a2.getBBox(),bx0=Math.min(b1.x,b2.x),bw=Math.max(b1.x+b1.width,b2.x+b2.width)-bx0;
+    if(hit({x:bx0,width:bw})||bx0<lo-1||bx0+bw>hi+1){var cur=a1.getAttribute('text-anchor'),sp=sx+12;
+      var ok=place([a1,a2],bw,[{a:'end',x:sx-12},{a:'start',x:sp},{a:'start',x:xt+8},{a:'end',x:xt-8}]);
+      if(!ok){   // too wide beside the line: stack four short lines just above the curve, right of (or left of) the threshold line
+        var sy=+a1.getAttribute('data-sy'),t1=a1.textContent.replace(/ per student$/,''),t2=a2.textContent.split(', '),right=xt+8,ls=[[t1,a1,1],['per student',null,1],[t2[0]+',',a2,0]].concat((t2[1]||'').split(/ (?=at)/).map(function(x){return [x,null,0]})),lh=ls.length*15;
+        ls.forEach(function(l,i){var e=l[1]||a1.cloneNode(false);if(!l[1]){e.removeAttribute('id');e.style.fontWeight=l[2]?'700':'';if(!l[2])e.style.fontSize='11px';a1.parentNode.appendChild(e)}
+          e.textContent=l[0];e.setAttribute('text-anchor','start');e.setAttribute('x',right);e.setAttribute('y',(sy+16+lh<=m.t+m.ih?sy+20:sy-lh+2)+i*15)})}}}
+}
+function costChart(){var C=COST[clv],box=$('costbox'),W=Math.max(320,box.clientWidth-12),narrow=W<520,H=narrow?260:320,m={l:narrow?44:56,r:14,t:22,b:34},iw=W-m.l-m.r,ih=H-m.t-m.b;
+  Array.prototype.forEach.call($('clv').children,function(b){b.setAttribute('aria-pressed',b.dataset.v===clv)});
+  var ymax=Math.ceil(Math.max.apply(null,C.d.map(function(r){return r[2]}))/2000)*2000,ymin=4000,x=function(v){return m.l+iw*v/C.max},y=function(v){return m.t+ih*(1-(v-ymin)/(ymax-ymin))};
+  var pts=C.d.map(function(r){var mid=r[0]===1?13:(r[0]+r[1])/2;return {x:x(mid),y:y(r[2]),r:r}}),s='';
+  s+='<rect x="'+x(C.band[0])+'" y="'+m.t+'" width="'+(x(C.band[1])-x(C.band[0]))+'" height="'+ih+'" fill="var(--band)"/><text x="'+x((C.band[0]+C.band[1])/2)+'" y="'+(m.t+12)+'" text-anchor="middle" id="cbl" style="font-size:11px">size range learning studies favor</text>';
+  for(var v=ymin;v<=ymax;v+=2000)s+='<line x1="'+m.l+'" x2="'+(W-m.r)+'" y1="'+y(v)+'" y2="'+y(v)+'" stroke="var(--rule)" opacity=".7"/><text x="'+(m.l-6)+'" y="'+(y(v)+4)+'" text-anchor="end">$'+(v/1000)+'k</text>';
+  var st=C.max>1500?500:C.max>1000?250:100;for(var t=0;t<=C.max;t+=st)s+='<text class="xt" x="'+x(t)+'" y="'+(H-14)+'" text-anchor="middle">'+t.toLocaleString()+'</text>';
+  s+='<text x="'+(m.l+iw/2)+'" y="'+(H-1)+'" text-anchor="middle" style="font-size:11px">students in the school</text>';
+  s+='<line x1="'+x(C.thr)+'" x2="'+x(C.thr)+'" y1="'+m.t+'" y2="'+(m.t+ih)+'" stroke="var(--thr)" stroke-width="2.5"/><text id="cthr" x="'+(x(C.thr)+4)+'" y="'+(m.t-6)+'" style="fill:var(--thr);font-weight:600">PPS '+C.thr.toLocaleString()+(C.st===C.thr?' = state model':'')+'</text>';
+  if(C.st!==C.thr)s+='<line x1="'+x(C.st)+'" x2="'+x(C.st)+'" y1="'+m.t+'" y2="'+(m.t+ih)+'" stroke="var(--muted)" stroke-width="2" stroke-dasharray="5 4"/><text x="'+(x(C.st)-4)+'" y="'+(m.t+ih-6)+'" text-anchor="end" style="fill:var(--muted);font-weight:600;font-size:11px">state model '+C.st.toLocaleString()+'</text>';
+  s+='<polyline points="'+pts.map(function(p){return p.x+','+p.y}).join(' ')+'" fill="none" stroke="var(--ink)" stroke-width="2.5" stroke-linejoin="round"/>';
+  pts.forEach(function(p,i){s+='<circle data-i="'+i+'" cx="'+p.x+'" cy="'+p.y+'" r="'+(narrow?4:5)+'" fill="var(--ink)" stroke="var(--card)" stroke-width="1.5"/>'});
+  // the sweet spot's cost: the line read at the middle of the research range (linear between size-group midpoints)
+  var mids=C.d.map(function(r){return [r[0]===1?13:(r[0]+r[1])/2,r[2]]}),sm=C.thr,sv=null;   // read at PPS's threshold, so the dot sits on the PPS line
+  for(var k=1;k<mids.length;k++)if(mids[k-1][0]<=sm&&sm<=mids[k][0]){var f=(sm-mids[k-1][0])/(mids[k][0]-mids[k-1][0]);sv=mids[k-1][1]+f*(mids[k][1]-mids[k-1][1]);break}
+  if(sv!=null){var rv=Math.round(sv/10)*10,sx=x(sm),sy=y(sv);
+    s+='<circle cx="'+sx+'" cy="'+sy+'" r="'+(narrow?7:9)+'" fill="var(--thr)" stroke="var(--card)" stroke-width="2.5"/>';
+    var lx=sx+12,la='start',l1=narrow?sy+24:sy-30,l2=narrow?sy+38:sy-15;   // right of the PPS line: below on phones, above on wide screens (the curve falls to the right)
+    s+='<text id="ca1" data-sy="'+sy+'" x="'+lx+'" y="'+l1+'" text-anchor="'+la+'" style="fill:var(--ink);font-weight:700;font-size:'+(narrow?12:14)+'px">about $'+rv.toLocaleString()+' per student</text>';
+    s+='<text id="ca2" x="'+lx+'" y="'+l2+'" text-anchor="'+la+'" style="font-size:11px">at PPS&rsquo;s '+sm.toLocaleString()+' (2000-01 dollars, read from the line)</text>';}
+  var svg=$('costc');svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.innerHTML=s;
+  m.ih=ih;try{avoidCollisions(svg,W,m,x(C.thr),x(sm),(C.band[0]+C.band[1])/2>0?x((C.band[0]+C.band[1])/2):0)}catch(e){console.error(e)}
+  // keep the band label clear of the state-model line (high school: 1,000 sits just right of the 600-900 band)
+  try{var bl2=svg.querySelector('#cbl');if(C.st!==C.thr&&bl2){var xs=x(C.st),bb2=bl2.getBBox();if(bb2.x+bb2.width>xs-4&&bb2.x<xs+4){bl2.setAttribute('text-anchor','end');bl2.setAttribute('x',Math.min(x(C.band[1]),xs-6));bb2=bl2.getBBox();if(bb2.x<m.l){bl2.textContent='learning studies';}}}}catch(e){console.error(e)}
+  var tip=$('ctip');Array.prototype.forEach.call(svg.querySelectorAll('circle[data-i]'),function(c){var r=pts[+c.dataset.i].r;var show=function(ev){var br=box.getBoundingClientRect();tip.innerHTML='<b>'+(r[0]===1?'25 or fewer':r[0]>2000?'More than 2,000':r[0].toLocaleString()+'&ndash;'+r[1].toLocaleString())+' students</b>: $'+r[2].toLocaleString()+' per student'+(r[0]>2000?' (placed at 2,250 for display)':'');tip.style.display='block';var tx=ev.clientX-br.left+10;if(tx+tip.offsetWidth>br.width)tx-=tip.offsetWidth+20;tip.style.left=tx+'px';tip.style.top=(ev.clientY-br.top-30)+'px'};c.addEventListener('pointerenter',show);c.addEventListener('pointerdown',show);c.addEventListener('pointerleave',function(){tip.style.display='none'})});
+  var CAP={es:'Elementary: spending per student falls about 30% from the smallest schools to about 100 students, then eases slowly. A school of 251&ndash;300 students spent about 6% more per student than one of 351&ndash;500.',
+   ms:'Middle: the curve is nearly flat between 100 and 1,000 students ($6,527&ndash;$6,980 per student), so in this data size explains little of the cost.',
+   hs:'High: spending per student is more than double below 50 students and falls fast to about 250; past about 500 it barely changes ($6,335&ndash;$7,027).'};
+  $('ccap').innerHTML=CAP[clv];}
+// 3. dot strip
+var LV=[['K-5','Elementary',360,450],['6-8','Middle',500,600],['K-8','K-8',500,650],['9-12','High',1100,null]],lv='K-5',yr='y25',fl='pps';
+var YRS=[['y25','2025-26'],['y31','2031-32, no changes'],['A','2031-32, PPS A'],['B','2031-32, PPS B']];
+var S=(D&&D.school_sizes&&D.school_sizes.schools)||[],PF=D&&D.pps_figures&&D.pps_figures.plans;
+// the two K-8s PPS keeps under A and B; the PPS-figures data leaves them out (our solver exempts them), so they are
+// taken straight from each school's Family Guide, p. 4 ("Options A and B", 2031-32)
+var K8KEEP=[{n:'Astor',v:430},{n:'Skyline',v:177}];
+function rows(){ // [{n,v}] for level and year
+  if(yr==='y25'||yr==='y31')return S.filter(function(s){return s.lvl===lv&&s[yr]!=null}).map(function(s){return {n:s.n,v:s[yr]}});
+  var P=PF&&PF[yr==='A'?'scenario_A':'scenario_B'];if(!P)return [];var yi=P.years.indexOf('2031-32'),out=[];
+  var src=lv==='9-12'?'9-12':lv==='6-8'?'6-8':'K-5';var L=P.levels[src];if(!L)return [];
+  if(lv==='K-8')K8KEEP.forEach(function(k){if(!L.schools[k.n])out.push({n:k.n,v:k.v})});
+  Object.keys(L.schools).forEach(function(n){var r=L.schools[n];if(r.po||r.s[yi]==null)return;var k8=r.f===500&&src==='K-5';
+    if((lv==='K-8')===k8&&(lv!=='K-5'||!k8))out.push({n:n,v:r.s[yi]})});
+  return lv==='K-8'||lv==='K-5'||lv==='6-8'||lv==='9-12'?out:[]}
+function strip(){var L=LV.filter(function(x){return x[0]===lv})[0],thr=L[2],aud=L[3],line=fl==='aud'&&aud?aud:thr;
+  ['lvl','yr','fl'].forEach(function(id){Array.prototype.forEach.call($(id).children,function(b){b.setAttribute('aria-pressed',b.dataset.v===({lvl:lv,yr:yr,fl:fl})[id])})});
+  $('fl').querySelector('[data-v=aud]').disabled=!aud;
+  var R=rows().sort(function(a,b){return a.v-b.v}),box=$('stripbox'),W=Math.max(320,box.clientWidth-12),m={l:12,r:12,t:26,b:30};
+  var mx=Math.max.apply(null,R.map(function(r){return r.v}).concat([(aud||thr)*1.15,thr*1.6])),lo=0,iw=W-m.l-m.r,x=function(v){return m.l+iw*(v-lo)/(mx-lo)},rad=W<520?5:6;
+  var lanes=[],pts=R.map(function(r){var px=x(r.v),k=0;while(lanes[k]!=null&&px-lanes[k]<rad*2+1)k++;lanes[k]=px;return {r:r,x:px,k:k}});
+  var nl=Math.max(1,lanes.length),ih=nl*(rad*2+2),H=m.t+ih+m.b,s='';
+  if(aud)s+='<rect x="'+x(thr)+'" y="'+m.t+'" width="'+(x(aud)-x(thr))+'" height="'+ih+'" fill="var(--band)" opacity=".6"/>';
+  var step=mx>1500?250:mx>700?100:50;for(var t=0;t<=mx;t+=step)s+='<text class="xt" x="'+x(t)+'" y="'+(H-10)+'" text-anchor="middle">'+t+'</text><line x1="'+x(t)+'" x2="'+x(t)+'" y1="'+(m.t+ih)+'" y2="'+(m.t+ih+4)+'" stroke="var(--rule)"/>';
+  var close=aud&&x(aud)-x(thr)<90;
+  s+='<line x1="'+x(thr)+'" x2="'+x(thr)+'" y1="'+(m.t-6)+'" y2="'+(m.t+ih)+'" stroke="var(--thr)" stroke-width="2"/><text x="'+(x(thr)-(close?4:0))+'" y="'+(m.t-10)+'" text-anchor="'+(close?'end':'middle')+'" style="fill:var(--thr);font-weight:600">PPS '+fmt(thr)+'</text>';
+  if(aud)s+='<line x1="'+x(aud)+'" x2="'+x(aud)+'" y1="'+(m.t-6)+'" y2="'+(m.t+ih)+'" stroke="var(--aud)" stroke-width="2" stroke-dasharray="3 2"/><text x="'+(x(aud)+(close?4:0))+'" y="'+(m.t-10)+'" text-anchor="'+(close?'start':'middle')+'" style="fill:var(--aud)">audit '+fmt(aud)+'</text>';
+  pts.forEach(function(p,i){var b=p.r.v<line;s+='<circle data-i="'+i+'" cx="'+p.x+'" cy="'+(m.t+ih-rad-1-p.k*(rad*2+2))+'" r="'+rad+'" fill="'+(b?'var(--below)':'var(--above)')+'" stroke="var(--card)" stroke-width="1"/>'});
+  var svg=$('strip');svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.innerHTML=s;try{thinTicks(svg)}catch(e){console.error(e)}
+  var below=R.filter(function(r){return r.v<line}).length,yl=YRS.filter(function(y){return y[0]===yr})[0][1];
+  var ab=yr==='A'||yr==='B',k8note=lv==='K-8'&&ab?' Under PPS&rsquo;s scenarios only Astor and Skyline stay K-8s; the others become K-5s. Skyline stays a K-8 &ldquo;because of its distance from other schools&rdquo; (Skyline Family Guide, p. 3). Their guides still list the goal of more than 500, and neither meets it (p. 4).':'';
+  $('cap').innerHTML=R.length?'<b>'+below+' of '+R.length+'</b> '+(lv==='K-8'?'K-8':L[1].toLowerCase())+' schools are below '+(fl==='aud'&&aud?'the audit&rsquo;s '+fmt(aud):'PPS&rsquo;s '+fmt(thr))+' in '+yl+'.'+k8note:'No schools at this level in this view.';
+  var tip=$('tip');Array.prototype.forEach.call(svg.querySelectorAll('circle[data-i]'),function(c){var p=pts[+c.dataset.i];
+    var show=function(ev){var br=box.getBoundingClientRect();tip.innerHTML='<b>'+esc(p.r.n)+'</b>: '+fmt(p.r.v)+' students';tip.style.display='block';var tx=ev.clientX-br.left+10;if(tx+tip.offsetWidth>br.width)tx-=tip.offsetWidth+20;tip.style.left=tx+'px';tip.style.top=(ev.clientY-br.top-30)+'px'};
+    c.addEventListener('pointerenter',show);c.addEventListener('pointerdown',show);c.addEventListener('pointerleave',function(){tip.style.display='none'})});
+  $('tbl').innerHTML='<thead><tr><th>School</th><th>Students, '+esc(yl)+'</th><th>vs line</th></tr></thead><tbody>'+R.slice().reverse().map(function(r){return '<tr><td>'+esc(r.n)+'</td><td>'+fmt(r.v)+'</td><td>'+(r.v<line?'below by '+fmt(line-r.v):'at or above')+'</td></tr>'}).join('')+'</tbody>';
+  $('stripnote').innerHTML=(yr==='y25'?'2025-26: Oregon Department of Education fall membership (Oct. 1, 2025), whole-school enrollment.':yr==='y31'?'2031-32, no changes: Portland State University&rsquo;s July 2026 forecast (Table 5.5), the same figures as PPS&rsquo;s Family Guides except Bridlemile.':'2031-32 under PPS&rsquo;s scenario: PPS&rsquo;s own Family Guide projections (p. 4). Closed schools drop out; converted K-8s show as elementary; Astor and Skyline, the two K-8s PPS keeps, come from their own Family Guides (p. 4). Program-only buildings (no neighborhood zone) drop out too. Here a school over its building&rsquo;s capacity still counts as &ldquo;at or above&rdquo;; on the <a href="durability.html">Durability</a> page it does not count as &ldquo;at target.&rdquo;')+' Neighborhood schools only; focus schools (da Vinci, Winterhaven, ACCESS, Benson and others) are left out.';}
+function btns(id,list,get,set){$(id).innerHTML=list.map(function(x){return '<button type="button" data-v="'+x[0]+'" aria-pressed="false">'+x[1]+'</button>'}).join('');Array.prototype.forEach.call($(id).children,function(b){b.onclick=function(){if(b.disabled)return;set(b.dataset.v);strip()}})}
+btns('lvl',LV.map(function(x){return [x[0],x[1]]}),0,function(v){lv=v});
+btns('yr',YRS,0,function(v){yr=v});
+btns('fl',[['pps','PPS threshold'],['aud','Audit floor']],0,function(v){fl=v});
+$('clv').innerHTML=[['es','Elementary'],['ms','Middle'],['hs','High']].map(function(x){return '<button type="button" data-v="'+x[0]+'">'+x[1]+'</button>'}).join('');Array.prototype.forEach.call($('clv').children,function(b){b.onclick=function(){clv=b.dataset.v;costChart()}});
+function drawAll(){[costChart,lineage,strip].forEach(function(f){try{f()}catch(e){console.error(e)}})}
+drawAll();
+var rt;window.addEventListener('resize',function(){clearTimeout(rt);rt=setTimeout(drawAll,120)});
+if(D)$('gen').textContent='Data generated '+(D.generated_label||D.generated)+'.';
+})();
+</script>
+</body>
+</html>

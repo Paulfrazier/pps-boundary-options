@@ -1,0 +1,301 @@
+SELECTED: McDaniel
+RETRIEVED: 2026-10-09T19:24:34.786Z
+SOURCE: https://app.powerbi.com/view?r=eyJrIjoiOWZlNmJhYjQtYzc5YS00MzY5LTk3ODYtMWYxMmQ0YWMyMjIxIiwidCI6ImQwOGRmYzk0LWEyM2MtNDRlNC04YjhkLTRhYmM0MGRkYTlhZSIsImMiOjZ9&pageName=52fe3db4b36f375bbf95
+
+Show keyboard shortcuts
+Show screen reader tips
+Skip to main content
+Power BI Report
+
+School Profiles
+
+2025 - 2026
+
+School
+Abernethy
+Access Academy
+Ainsworth
+Alameda
+Alliance
+Arleta
+Astor
+Atkinson
+Beach
+Beaumont
+Benson
+Beverly Cleary
+Boise-Eliot/Humboldt
+Brentwood
+Bridger Creative Science
+Bridlemile
+Buckman
+Capitol Hill
+Cesar Chavez
+Chapman
+Chief Joseph
+Clark
+Cleveland
+Creston
+DaVinci Arts
+Dr Martin Luther King Jr
+Duniway
+Faubion
+Forest Park
+Franklin
+George
+Glencoe
+Grant
+Grout
+Harriet Tubman
+Harrison Park
+Hayhurst
+Hosford
+Ida B Wells
+Irvington
+Jackson
+James John
+Jefferson
+Kellogg
+Kelly
+Laurelhurst
+Lent
+Lewis
+Lincoln
+Llewellyn
+Maplewood
+Markham
+Marysville
+McDaniel
+MLC K12
+Mt Tabor
+Ockley Green
+Odyssey Program
+Peninsula
+Richmond
+Rieke
+Rigler
+Robert Gray
+Roosevelt
+Rosa Parks
+Rose City Park
+Roseway Heights
+Sabin
+Scott
+Sellwood
+Sitton
+Skyline
+Stephenson
+Sunnyside Environmental
+Sunrise
+Vernon
+Vestal
+West Sylvan
+Whitman
+Winterhaven
+Woodlawn
+Woodmere
+Woodstock
+
+McDaniel
+
+Map panned north east 6.15 kilometers.
+
+Location: NE Alameda St, Maywood Park.
+
+Map style: grayscale_light.
+
+Map shortcuts: Zoom out: hyphen. Zoom in: plus. Pan right 100 pixels: right arrow. Pan left 100 pixels: left arrow. Pan up 100 pixels: up arrow. Pan down 100 pixels: down arrow. Rotate 15 degrees clockwise: shift + right arrow. Rotate 15 degrees counter clockwise: shift + left arrow. Increase pitch 10 degrees: shift + up arrow. Decrease pitch 10 degrees: shift + down arrow. Jump focus to the map: Escape.
+Road
+Satellite
+Hybrid
+Grayscale (Dark)
+Night
+Grayscale (Light)
+Terra
+Blank
+Blank (Accessible)
+High contrast (Dark)
+High contrast (Light)
+Grayscale (Light)
+©2026 TomTom©2026 OSM
+Feedback
+
+Address: 2735 NE 82ND AVE
+Originally Built For: High
+HS Cluster: MCDANIEL
+Primary Use: High
+
+BUILDING INFORMATION
+
+Grades: HS
+Year Built: 2021
+Square Footage: 320,482
+
+Enrollment
+
+2K
+
+=
+
+Utilization Rate
+
+94%
+
+÷
+
+Functional Capacity
+
+1726
+
+Functional
+Capacity
+
+1725.6
+
+2025-2026 Utilization Rate
+
+94%
+
+Enrollment
+
+Direct Cert. indicates percentage of students qualifying for direct certification. 
+
+2026 - 2027 Projected
+
+1588
+
+2025 - 2026 Enrollment
+
+1629
+
+2025 - 2026 Direct Cert.
+
+41.9%
+
+Students in Neighborhood School
+
+1K
+
+PPS Students Live in Zone
+
+2K
+
+In District Capture Rate
+
+74.0%
+
+Historical and Projected Enrollment
+0
+500
+1000
+1500
+School Year
+2019-2020
+2020-2021
+2021-2022
+2022-2023
+2023-2024
+2024-2025
+2025-2026
+2026-2027
+2027-2028
+2028-2029
+2029-2030
+2030-2031
+2031-2032
+1079
+1261
+1650
+1173
+1528
+1292
+1443
+1346
+1476
+1629
+1369
+1686
+1588
+Historical Demographics
+0
+500
+1000
+1500
+School Year
+2018-19
+2019-20
+2020-21
+2021-22
+2022-23
+2023-24
+2024-25
+2025-26
+406
+369
+408
+502
+532
+639
+634
+615
+144
+154
+157
+142
+139
+276
+271
+293
+330
+377
+423
+479
+448
+179
+152
+169
+195
+179
+212
+207
+204
+167
+160
+149
+161
+167
+186
+195
+183
+Race
+Asian
+Black
+Latino
+Multiple
+Native
+Pacific Islander
+White
+
+Programs
+
+Program Type
+
+Neighborhood / Immersion
+
+Title 1
+
+No
+
+Immersion Language
+
+Spanish
+
+Immersion Language 2
+
+Vietnamese
+
+-
++
+107%
+Microsoft Power BI
+Report Zoomed To 107%

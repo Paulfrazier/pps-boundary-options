@@ -1,0 +1,117 @@
+<title>PPS Walk-Distance Tables</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800&family=Overpass+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one working sheet. Header, a control bar, then a single wide table that scrolls inside its own box. */
+:root{
+  --paper:#f3f1ec; --plate:#fbfaf7; --ink:#1f2a30; --muted:#5f6b70; --rule:#dcd8cf; --accent:#2f5d6e; --accent-soft:#e2ecee; --heat:#2f5d6e;
+  --sans:"Overpass",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"Overpass Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#14191c;--plate:#1b2226;--ink:#e7ebe9;--muted:#9aa7ab;--rule:#2d373c;--accent:#8cc3d4;--accent-soft:#20343c;--heat:#5fa6bd;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#14191c;--plate:#1b2226;--ink:#e7ebe9;--muted:#9aa7ab;--rule:#2d373c;--accent:#8cc3d4;--accent-soft:#20343c;--heat:#5fa6bd;color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.5}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:flex;flex-direction:column;gap:16px}
+.eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:700;color:var(--accent)}
+h1{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800;letter-spacing:-.01em;line-height:1.15;margin:4px 0 0;text-wrap:balance}
+.lede{color:var(--muted);max-width:72ch;margin:6px 0 0}
+.controls{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.ctl{display:flex;flex-direction:column;gap:4px}
+.ctl>span{font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:var(--muted)}
+.seg{display:inline-flex;flex-wrap:wrap;border:1px solid var(--rule);border-radius:18px;padding:3px;background:var(--plate);gap:2px}
+.seg button{font:700 .84rem var(--sans);padding:6px 13px;border:0;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--plate)}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.summary{display:flex;flex-wrap:wrap;gap:8px 28px;font-size:.88rem;color:var(--muted)}
+.summary b{color:var(--ink);font-family:var(--mono);font-weight:600}
+.box{background:var(--plate);border:1px solid var(--rule);border-radius:6px;overflow-x:auto;min-width:0}
+table{border-collapse:collapse;width:100%;min-width:860px;font-size:.84rem}
+th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:left;white-space:nowrap}
+thead th{font-size:.66rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700;position:sticky;top:0;background:var(--plate);cursor:pointer;user-select:none}
+thead th[aria-sort]{color:var(--ink)}
+thead th[aria-sort="ascending"]::after{content:" ▲"}thead th[aria-sort="descending"]::after{content:" ▼"}
+tbody th{font-weight:700}
+td.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+td.n small{color:var(--muted);font-size:.74rem;margin-left:4px}
+td.st{font-size:.76rem;color:var(--muted)}
+td.cl{color:var(--muted);text-align:center;font-style:italic}
+tfoot td,tfoot th{font-weight:700;border-top:2px solid var(--rule);border-bottom:0}
+tr.hl>*{background:var(--accent-soft)}
+.ctl[hidden]{display:none}
+.note{font-size:.8rem;color:var(--muted);margin:0;max-width:86ch}
+</style>
+<div class="wrap">
+ <header>
+  <div class="eyebrow">Portland Public Schools · K–5 · walking distance by school</div>
+  <h1>How many students and homes are within walking distance of each school</h1>
+  <p class="lede">Every elementary school, under today's boundaries, PPS's closure plans A and B, and the walk-based redraws. Counts are estimated K–5 neighborhood students or 2020 Census housing units in each school's area; distances are walking routes to that area's assigned school.</p>
+ </header>
+ <div class="controls">
+  <div class="ctl"><span>Plan</span><div class="seg" id="plan"></div></div>
+  <div class="ctl"><span>Count</span><div class="seg" id="unit"><button data-v="S" aria-pressed="true">K–5 students</button><button data-v="H" aria-pressed="false">Homes</button></div></div>
+  <div class="ctl"><span>Show</span><div class="seg" id="fmt"><button data-v="b" aria-pressed="true">Count and %</button><button data-v="c" aria-pressed="false">Count</button><button data-v="p" aria-pressed="false">%</button></div></div>
+  <div class="ctl" id="bandctl" hidden><span>Distance</span><div class="seg" id="band"><button data-v="1" aria-pressed="false">½ mi</button><button data-v="2" aria-pressed="true">1 mi</button><button data-v="3" aria-pressed="false">1½ mi</button><button data-v="4" aria-pressed="false">2 mi</button></div></div>
+ </div>
+ <div class="summary" id="sum"></div>
+ <div class="box"><table><thead id="th"></thead><tbody id="tb"></tbody><tfoot id="tf"></tfoot></table></div>
+ <p class="note" id="nt"></p>
+ <p class="note">Within ½ mile is about a 10-minute walk; 1 mile about 20 minutes. Distances are walking routes on OpenStreetMap from each census block's center, so freeways, rail and the river only count as crossable at real bridges and overpasses. Students are estimated from 2020 Census under-18 counts calibrated to 2024–25 neighborhood enrollment; immersion students choose a program site and are not counted. PPS plan areas are today's areas merged as PPS proposes; where PPS splits a closing school, the line is drawn halfway between the two receiving schools. "Closes" means the school has no neighborhood area in that plan; César Chávez becomes immersion-only in the redraws.</p>
+</div>
+<script>
+const T=__DATA__;
+const LBL={"MLK Jr":"King","Lee":"Sunrise (Lee)","Cesar Chavez":"César Chávez","Boise-Eliot/Humboldt":"Boise-Eliot"};const nm=n=>LBL[n]||n;
+const fmtN=v=>v.toLocaleString("en-US");const pct=(a,b)=>b>0?Math.round(a/b*100):0;
+let plan="A",unit="S",fm="b",band=2,sk=null,dir=1;
+const planEl=document.getElementById("plan");
+[...T.plans,["CMP","Compare all plans"]].forEach(([k,l])=>{const b=document.createElement("button");b.dataset.v=k;b.textContent=l;b.setAttribute("aria-pressed",k===plan);planEl.append(b)});
+const seg=(id,fn)=>document.getElementById(id).addEventListener("click",e=>{const b=e.target.closest("button");if(!b)return;document.querySelectorAll(`#${id} button`).forEach(x=>x.setAttribute("aria-pressed",x===b));fn(b.dataset.v);draw()});
+seg("plan",v=>{plan=v;sk=null});seg("unit",v=>unit=v);seg("fmt",v=>fm=v);seg("band",v=>band=+v);
+const cell=(c,tot,heat)=>{const p=pct(c,tot);const bg=heat?`style="background:color-mix(in srgb,var(--heat) ${Math.round((p/100)**2*30)}%,transparent)"`:"";
+ return `<td class="n" ${bg}>${fm==="p"?p+"%":fm==="c"?fmtN(c):fmtN(c)+`<small>${p}%</small>`}</td>`};
+const BANDS=["½ mi","1 mi","1½ mi","2 mi"];
+function rowsPlan(){const D=T.data[plan];const isS=unit==="S";
+ const cols=[["School",0],["Status",1],[isS?"Students":"Homes",2],...BANDS.map((b,i)=>["Within "+b,3+i]),["Over 2 mi",7]].concat(isS?[["Avg walk",8]]:[]);
+ const rows=T.names.map(n=>{const r=D[n];if(!r)return{n,closed:true,key:[nm(n),"Closes",-1,-1,-1,-1,-1,-1,-1]};const v=r[unit];const im=T.imm[plan][n]||0;
+  return{n,r,v,im,key:[nm(n),im?"Open · immersion "+im:"Open",v[0],...[1,2,3,4].map(j=>fm==="c"?v[j]:v[j]/Math.max(v[0],1)),fm==="c"?v[0]-v[4]:(v[0]-v[4])/Math.max(v[0],1),r.avg]}});
+ return{cols,rows,render:o=>o.closed?`<th scope="row">${nm(o.n)}</th><td class="st">${o.n==="Cesar Chavez"&&!plan.startsWith("P")&&plan!=="T"?"Immersion only":"Closes"}</td><td class="cl" colspan="${cols.length-2}">${o.n==="Cesar Chavez"&&plan!=="T"&&!plan.startsWith("P")?"Immersion only, no neighborhood area":"No neighborhood area in this plan"}</td>`:
+  `<th scope="row">${nm(o.n)}</th><td class="st">${o.im?"+ "+o.im+" immersion":""}</td><td class="n">${fmtN(o.v[0])}</td>${[1,2,3,4].map(j=>cell(o.v[j],o.v[0],true)).join("")}${cell(o.v[0]-o.v[4],o.v[0],false)}${isS?`<td class="n">${o.r.avg.toFixed(2)} mi</td>`:""}`,
+  foot:()=>{const a=D.__ALL[unit];return `<th scope="row">District</th><td></td><td class="n">${fmtN(a[0])}</td>${[1,2,3,4].map(j=>cell(a[j],a[0],false)).join("")}${cell(a[0]-a[4],a[0],false)}${isS?`<td class="n">${D.__ALL.avg.toFixed(2)} mi</td>`:""}`}}}
+function rowsCmp(){const cols=[["School",0],...T.plans.map(([k,l],i)=>[l,1+i])];
+ const rows=T.names.map(n=>({n,key:[nm(n),...T.plans.map(([k])=>{const r=T.data[k][n];if(!r)return -1;const v=r[unit];return fm==="c"?v[band]:v[band]/Math.max(v[0],1)})]}));
+ return{cols,rows,render:o=>`<th scope="row">${nm(o.n)}</th>`+T.plans.map(([k])=>{const r=T.data[k][o.n];if(!r)return `<td class="cl">closes</td>`;const v=r[unit];return cell(v[band],v[0],true)}).join(""),
+  foot:()=>`<th scope="row">District</th>`+T.plans.map(([k])=>{const a=T.data[k].__ALL[unit];return cell(a[band],a[0],false)}).join("")}}
+function draw(){const cmp=plan==="CMP";document.getElementById("bandctl").hidden=!cmp;const M=cmp?rowsCmp():rowsPlan();
+ document.getElementById("th").innerHTML="<tr>"+M.cols.map(([l,k])=>`<th scope="col" data-k="${k}"${sk===k?` aria-sort="${dir>0?"ascending":"descending"}"`:""}${k>=2||(cmp&&k>=1)?' style="text-align:right"':""}>${l}</th>`).join("")+"</tr>";
+ let rows=M.rows.slice();if(sk!=null)rows.sort((a,b)=>{const x=a.key[sk],y=b.key[sk];if(typeof x==="string")return dir*x.localeCompare(y);if(x<0&&y<0)return 0;if(x<0)return 1;if(y<0)return -1;return dir*(x-y)});
+ document.getElementById("tb").innerHTML=rows.map(o=>`<tr${o.n==="Sabin"||o.n==="Alameda"||o.n==="MLK Jr"?' class="hl"':""}>${M.render(o)}</tr>`).join("");
+ document.getElementById("tf").innerHTML="<tr>"+M.foot()+"</tr>";
+ document.querySelectorAll("#th th").forEach(th=>th.onclick=()=>{const k=+th.dataset.k;if(sk===k)dir=-dir;else{sk=k;dir=k<=1?1:-1}draw()});
+ const u=unit==="S"?"students":"homes";
+ if(cmp){document.getElementById("sum").innerHTML=T.plans.map(([k,l])=>{const a=T.data[k].__ALL[unit];return `<span>${l}: <b>${pct(a[band],a[0])}%</b></span>`}).join("");
+  document.getElementById("nt").textContent=`Each cell is the number of a school's ${u} within ${BANDS[band-1]} of that school under each plan. A school's area differs between plans, so totals differ too.`}
+ else{const a=T.data[plan].__ALL[unit];document.getElementById("sum").innerHTML=BANDS.map((b,i)=>`<span>Within ${b}: <b>${fmtN(a[i+1])}</b> (${pct(a[i+1],a[0])}%)</span>`).join("")+`<span>Over 2 mi: <b>${fmtN(a[0]-a[4])}</b></span>`;
+  document.getElementById("nt").textContent=`Distances count up: "within 1 mi" includes everyone within ½ mi. Highlighted rows are Alameda, King and Sabin.`}}
+draw();
+</script>
+
+<!-- pps-disclaimer (added by export) -->
+<style>
+#pps-disclaimer-x{position:absolute;opacity:0;pointer-events:none}
+#pps-disclaimer{position:fixed;bottom:0;left:0;right:0;z-index:2147483000;box-sizing:border-box;padding:7px 40px 7px 16px;
+ font:12.5px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#fff4d1;color:#3b3000;border-top:1px solid #d9bd5e;
+ box-shadow:0 -1px 4px rgba(0,0,0,.12)}
+#pps-disclaimer a{color:#6b4f00;text-decoration:underline}
+#pps-disclaimer label{position:absolute;top:4px;right:8px;cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;border-radius:4px}
+#pps-disclaimer label:hover{background:rgba(0,0,0,.08)}
+#pps-disclaimer-x:checked + #pps-disclaimer{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #pps-disclaimer{background:#3a3214;color:#f4e8bf;border-top-color:#7a6528}
+ :root:not([data-theme="light"]) #pps-disclaimer a{color:#ffd970}}
+:root[data-theme="dark"] #pps-disclaimer{background:#3a3214;color:#f4e8bf;border-top-color:#7a6528}
+:root[data-theme="dark"] #pps-disclaimer a{color:#ffd970}
+@media print{#pps-disclaimer{position:static}}
+</style>
+<input type="checkbox" id="pps-disclaimer-x" aria-label="Hide disclaimer">
+<div id="pps-disclaimer" role="note"><b>Independent analysis, not an official PPS product.</b>
+This is a best-effort analysis by a PPS parent and may contain errors. Confirm against PPS's own materials:
+the <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios" target="_blank" rel="noopener">Rightsizing scenarios site</a> and the
+<a href="https://meetings.boardbook.org/Public/Organization/915" target="_blank" rel="noopener">October 6, 2026 Board of Education meeting materials (BoardBook)</a>.
+<label for="pps-disclaimer-x" title="Hide">&times;</label></div>
+<!-- /pps-disclaimer -->

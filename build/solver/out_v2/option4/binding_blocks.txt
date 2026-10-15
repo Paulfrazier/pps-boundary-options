@@ -1,0 +1,20 @@
+[' pruned 72 unreachable (block, school) candidates']
+blocks with no reachable candidate: 1 kids 2.0
+[
+ {
+  "blocks": 1,
+  "kids_2031": 2.0,
+  "GEOID_first": "410510072023008",
+  "lon": -122.7332,
+  "lat": 45.6267,
+  "status_quo_school": "Faubion",
+  "candidates_left": [
+   "Astor"
+  ],
+  "nearest_walk": {
+   "Rosa Parks": 3.83,
+   "Astor": 4.55,
+   "Sitton": 4.92
+  }
+ }
+]

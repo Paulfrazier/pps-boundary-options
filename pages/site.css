@@ -1,0 +1,186 @@
+/* Shared styles for the PPS boundary options site. Tokens match the landing page (build/export/repo/index.html). */
+:root{--paper:#f6f4ef;--card:#fffdf9;--ink:#1f2a30;--muted:#5d686d;--rule:#ddd8cd;--accent:#2f5d6e;--warn-bg:#fff4d1;--warn-ink:#3b3000;--warn-rule:#d9bd5e;--tag:#e3ecee;
+  --good:#2e7d5b;--bad:#b4472f;--pps:#8a6d3b;--ours:#2f5d6e;--today:#7a8388}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#15191b;--card:#1d2326;--ink:#e6e9ea;--muted:#a3adb1;--rule:#33393c;--accent:#8cc3d6;--warn-bg:#3a3214;--warn-ink:#f4e8bf;--warn-rule:#7a6528;--tag:#26343a;
+  --good:#6cc49a;--bad:#e8876f;--pps:#d2b277;--ours:#8cc3d6;--today:#9aa3a8}}
+:root[data-theme="dark"]{--paper:#15191b;--card:#1d2326;--ink:#e6e9ea;--muted:#a3adb1;--rule:#33393c;--accent:#8cc3d6;--warn-bg:#3a3214;--warn-ink:#f4e8bf;--warn-rule:#7a6528;--tag:#26343a;
+  --good:#6cc49a;--bad:#e8876f;--pps:#d2b277;--ours:#8cc3d6;--today:#9aa3a8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+main{max-width:960px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:clamp(26px,5vw,34px);line-height:1.15;margin:8px 0 8px}
+h2{font-size:20px;margin:36px 0 12px}
+h3{font-size:17px;margin:24px 0 8px}
+p.lede{color:var(--muted);font-size:18px;margin:0 0 20px}
+a{color:var(--accent)}
+.muted{color:var(--muted)}
+small,.small{font-size:13px}
+
+/* Site nav: same markup on every page (see SITE_NAV in build/export/README or any page) */
+.site-nav{border-bottom:1px solid var(--rule);background:var(--card)}
+.site-nav .in{max-width:960px;margin:0 auto;padding:10px 16px;display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline}
+.site-nav .brand{font-weight:700;color:var(--ink);text-decoration:none;margin-right:8px}
+.site-nav a{text-decoration:none;font-size:15px}
+.site-nav a[aria-current="page"]{color:var(--ink);font-weight:600;text-decoration:underline;text-underline-offset:4px}
+
+/* Notices */
+.warn{background:var(--warn-bg);color:var(--warn-ink);border:1px solid var(--warn-rule);border-radius:8px;padding:12px 14px;font-size:15px}
+.warn a{color:inherit}
+/* landing + map: the plans are modeled examples, not proposals */
+.notreal{margin:4px 0 12px;font-weight:800;font-size:17px;color:var(--warn-ink);line-height:1.35}
+.note{border-left:3px solid var(--rule);padding:4px 12px;color:var(--muted);font-size:14px}
+
+/* Level switch: K-5 is primary; 6-8 and 9-12 sit behind it */
+.levels{display:inline-flex;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--card)}
+.levels button{font:inherit;font-size:14px;border:0;background:none;color:var(--ink);padding:6px 14px;cursor:pointer}
+.levels button+button{border-left:1px solid var(--rule)}
+.levels button[aria-pressed="true"]{background:var(--accent);color:var(--paper);font-weight:600}
+
+/* Cards, tags, tables */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{display:block;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;text-decoration:none;color:var(--ink)}
+.card:hover{border-color:var(--accent)}
+.card b{display:block;color:var(--accent);margin-bottom:4px}
+.card span{color:var(--muted);font-size:14px}
+.tag{display:inline-block;background:var(--tag);border-radius:4px;padding:0 6px;font-size:12px;margin-left:6px;vertical-align:2px;color:var(--ink);font-weight:500}
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:right;font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+thead th{font-weight:600;color:var(--muted);vertical-align:bottom}
+tr:last-child td{border-bottom:0}
+td.best{font-weight:700}
+
+/* Citations: every figure links to the file it came from */
+.cite{font-size:12px;color:var(--muted)}
+.cite a{color:var(--muted)}
+sup.src a{text-decoration:none;font-size:11px;color:var(--muted)}
+
+ul{padding-left:20px}
+li{margin:4px 0}
+footer{margin-top:40px;color:var(--muted);font-size:14px;border-top:1px solid var(--rule);padding-top:14px}
+@media (max-width:600px){main{padding:16px 16px 40px}table{font-size:13px}th,td{padding:6px 7px}}
+
+/* long inline paths must wrap on narrow screens; leave table cells alone */
+p code,li code,summary code,details>div code{overflow-wrap:anywhere}
+td code,th code{overflow-wrap:normal}
+/* phones: 12px text floor on every page (map review 3, N11): small labels, chips, version tags, code, chart text */
+@media (max-width:600px){html body :is(.who,.vl,.why,.chip,.ver,.vtag,tr.grp td,sup.src,sup.src a,code,.sr.h span){font-size:12px!important}html body svg:not(#map) text{font-size:12px!important}}
+
+/* review 6: bigger nav tap targets on touch screens */
+@media (pointer:coarse){.site-nav .in{gap:0 16px}.site-nav a{display:inline-block;padding:10px 0}}
+/* Trade-offs at a glance (pages/matrix.js) */
+:root{--mx-g:#2e8b57;--mx-y:#c99a06;--mx-r:#c0392b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--mx-g:#5cc28a;--mx-y:#e0b93a;--mx-r:#ec7a6a}}
+:root[data-theme="dark"]{--mx-g:#5cc28a;--mx-y:#e0b93a;--mx-r:#ec7a6a}
+.mx{font-size:13.5px}
+.mx-wrap{position:relative}.mx td{position:relative}
+.mx th,.mx td{white-space:nowrap}
+.mx thead th{vertical-align:bottom;text-align:right;white-space:normal;min-width:70px;font-size:12.5px;line-height:1.25}
+.mx th,.mx td{padding:6px 5px}
+.mx thead th:first-child,.mx tbody th{text-align:left}
+.mx tbody th{font-weight:400;white-space:normal;min-width:150px;max-width:200px;padding-left:8px}
+.mx thead th:first-child,.mx tbody th{position:sticky;left:0;z-index:1;background:var(--card)}
+.mx td{text-align:right;font-variant-numeric:tabular-nums}
+.mx th.ref,.mx td.mx-none{color:var(--muted)}
+.mx .mx-tag{display:block;font-weight:400;font-size:11px;color:var(--muted)}
+.mx .mx-vsA{display:block;font-weight:400;font-size:11px;line-height:1.2;color:var(--muted);margin-top:2px}
+.mx td.mx-green{background:color-mix(in srgb,var(--mx-g) 16%,transparent)}
+.mx td.mx-yellow{background:color-mix(in srgb,var(--mx-y) 18%,transparent)}
+.mx td.mx-red{background:color-mix(in srgb,var(--mx-r) 16%,transparent)}
+.mx-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px;vertical-align:1px}
+.mx-green .mx-dot{background:var(--mx-g)}.mx-yellow .mx-dot{background:var(--mx-y)}.mx-red .mx-dot{background:var(--mx-r)}
+.mx-key .mx-k{white-space:nowrap;margin-right:8px;color:var(--ink)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[hidden]{display:none!important}
+@media (max-width:600px){.mx{font-size:13px}.mx tbody th{min-width:150px;max-width:170px}.mx thead th{min-width:84px}}
+.chips{margin:-4px 0 8px;display:flex;flex-wrap:wrap;gap:6px}.chips .chip{background:var(--tag);border-radius:4px;padding:1px 8px;font-size:13px;white-space:nowrap}
+.mx tr.mx-stress th,.mx tr.mx-stress td{color:var(--muted);font-size:13px;border-top:2px solid var(--rule)}
+div.card b a{color:inherit;text-decoration:none}
+.mx-tog{display:inline-flex;border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--card);margin:0 0 8px}
+.mx-tog button{font:inherit;font-size:14px;border:0;background:none;color:var(--ink);padding:6px 14px;cursor:pointer}
+.mx-tog button+button{border-left:1px solid var(--rule)}
+.mx-tog button[aria-pressed="true"]{background:var(--accent);color:var(--paper);font-weight:600}
+
+/* mobile pass (QA, 2026-10-14): 44px tap targets, scroll-edge fade on wide tables, 14px table text, narrower sticky first column */
+@media (max-width:600px),(pointer:coarse){
+ .site-nav .in{gap:0 16px}
+ .site-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0}
+ .levels button,.mx-tog button,.pick button,.flip button,.legend button,#clv button,#lvl button,#fl button,#levels button,#scen button,#grp button,#plset button,#srcset button,#modes button{min-height:44px}
+ .pick button,.legend button{padding-top:6px;padding-bottom:6px}
+ main details>summary{padding-block:10px}
+ .links a{display:inline-block;padding:11px 0}
+ #row select,#row label,.row select{min-height:44px}
+ #row label,.row label{display:inline-flex;align-items:center}
+}
+.tbl{background:linear-gradient(to left,var(--card) 30%,transparent) right/24px 100% no-repeat local,linear-gradient(to left,color-mix(in srgb,var(--ink) 26%,transparent),transparent) right/16px 100% no-repeat scroll,var(--card)}
+@media (max-width:600px){
+ table{font-size:14px}
+ .mx,.mx thead th,.mx tr.mx-stress th,.mx tr.mx-stress td{font-size:14px}
+ .mx .mx-tag{font-size:12px}
+ .mx tbody th{min-width:110px;max-width:120px}
+ .mx thead th{min-width:84px}
+ .mx thead th:first-child{min-width:110px;max-width:120px}
+}
+@media (max-width:600px){
+ .tbl table.cmp th:first-child,.tbl table.cmp td:first-child,.tbl #tbl tbody th:first-child,.tbl #tbl tbody td:first-child,.tbl #tbl thead th:first-child{min-width:110px;max-width:120px;white-space:normal}
+ .tbl table.wk td,.tbl table.wk td:first-child{font-size:14px}
+ #row label,.row label{min-height:44px}
+}
+
+/* Key measures view (pages/matrix.js renderKeyView): bars from zero scaled within each row, PPS A tick, filled/half/empty rating marker.
+   Reuses the --mx-g/y/r rating tokens above; the marker shape carries the rating too (red vs green fails deutan CVD on color alone). */
+.mxk-how{margin:0 0 8px;color:var(--muted)}
+.mxk-how .mxk-k{white-space:nowrap;margin-left:6px;color:var(--ink)}
+.mxk-best{font-weight:700;color:var(--ink)}
+.mxk-wrap{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--card)}
+.mxk{width:100%;border-collapse:collapse;table-layout:fixed;font-size:14px}
+.mxk th,.mxk td{text-align:left;padding:8px 7px;border-bottom:1px solid var(--rule);vertical-align:top}
+.mxk tbody tr:last-child>*{border-bottom:0}
+.mxk thead th{vertical-align:bottom;text-align:left;font-size:12.5px;line-height:1.25;font-weight:600;padding-top:10px}
+.mxk .mxk-mcol{width:24%;color:var(--muted);font-weight:400}
+.mxk .mx-tag{display:block;font-weight:400;font-size:11.5px;color:var(--muted)}
+.mxk tbody th{text-align:left;font-weight:400;line-height:1.3}
+.mxk-lab{display:block;font-size:14px;color:var(--ink)}
+.mxk-hint{display:block;margin-top:3px;font-size:12px;color:var(--muted);letter-spacing:.01em}
+.mxk-pn{display:none}
+.mxk-v{display:block;font-variant-numeric:tabular-nums;white-space:nowrap;font-size:14px;line-height:1.2}
+.mxk-ref .mxk-v,.mxk th.mxk-ref{color:var(--muted)}
+/* track: bar from zero, 4px rounded data-end, PPS A tick */
+.mxk-track{position:relative;display:block;height:8px;margin-top:6px;border-radius:2px;background:color-mix(in srgb,var(--ink) 7%,transparent)}
+.mxk-bar{position:absolute;left:0;top:0;bottom:0;border-radius:0 4px 4px 0;background:color-mix(in srgb,var(--muted) 55%,transparent)}
+.mxk-r-green .mxk-bar{background:var(--mx-g)}.mxk-r-yellow .mxk-bar{background:var(--mx-y)}.mxk-r-red .mxk-bar{background:var(--mx-r)}
+.mxk-a{position:absolute;top:-3px;bottom:-3px;width:2px;margin-left:-1px;background:var(--ink);border-radius:1px;box-shadow:0 0 0 1px var(--card)}
+.mxk-a-key{position:relative;display:inline-block;height:12px;top:2px;margin:0 5px 0 2px}
+/* rating marker: filled = better, half = middle, empty ring = worse, dashed = not rated */
+.mxk-mk{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:5px;vertical-align:0;box-sizing:border-box;border:2px solid currentColor}
+.mxk-green{color:var(--mx-g);background:var(--mx-g)}
+.mxk-yellow{color:var(--mx-y);background:linear-gradient(90deg,var(--mx-y) 50%,transparent 50%)}
+.mxk-red{color:var(--mx-r);background:transparent}
+.mxk-none{border:0;width:0;margin-right:0}
+.mx-key .mxk-mk{vertical-align:-1px}
+/* lead example: a subtle column band; status quo stays muted as the baseline */
+.mxk .mxk-lead{background:color-mix(in srgb,var(--accent) 9%,transparent)}
+.mxk thead .mxk-lead{box-shadow:inset 0 3px 0 var(--accent)}
+.mxk thead .mxk-lead .mx-tag{color:var(--accent);font-weight:600}
+
+/* phones and tablets: one card per measure, every plan as a labeled bar row (thead hidden; each cell shows its plan name) */
+@media (max-width:859px){
+ .mxk-wrap{overflow:visible;border:0;background:none}
+ .mxk,.mxk tbody{display:block}
+ .mxk thead{display:none}
+ .mxk tbody{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));gap:12px}
+ .mxk tr{display:block;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:4px 0 6px}
+ .mxk tbody th{display:block;width:auto;padding:8px 12px 8px;border-bottom:1px solid var(--rule)}
+ .mxk-lab{font-weight:600}
+ .mxk td{display:grid;grid-template-columns:minmax(0,1fr) minmax(64px,34%) auto;grid-template-areas:"pn tr v";align-items:center;column-gap:10px;padding:5px 12px;border:0}
+ .mxk tbody tr:last-child>*{border-bottom:0}
+ .mxk tbody tr>th{border-bottom:1px solid var(--rule)!important}
+ .mxk-pn{display:block;grid-area:pn;text-align:left;font-size:13px;line-height:1.25;color:var(--ink)}
+ .mxk-pt{font-size:12px;color:var(--muted);white-space:nowrap}
+ .mxk-lead .mxk-pt{color:var(--accent);font-weight:600}
+ .mxk-ref .mxk-pn{color:var(--muted)}
+ .mxk-track{grid-area:tr;margin-top:0}
+ .mxk-v{grid-area:v;text-align:right;min-width:68px}
+ .mxk td.mxk-lead{box-shadow:inset 3px 0 0 var(--accent)}
+}

@@ -1,0 +1,297 @@
+SELECTED: Franklin
+RETRIEVED: 2026-10-09T19:15:52.029Z
+SOURCE: https://app.powerbi.com/view?r=eyJrIjoiOWZlNmJhYjQtYzc5YS00MzY5LTk3ODYtMWYxMmQ0YWMyMjIxIiwidCI6ImQwOGRmYzk0LWEyM2MtNDRlNC04YjhkLTRhYmM0MGRkYTlhZSIsImMiOjZ9&pageName=52fe3db4b36f375bbf95
+
+Show keyboard shortcuts
+Show screen reader tips
+Skip to main content
+Power BI Report
+
+School Profiles
+
+2025 - 2026
+
+School
+Abernethy
+Access Academy
+Ainsworth
+Alameda
+Alliance
+Arleta
+Astor
+Atkinson
+Beach
+Beaumont
+Benson
+Beverly Cleary
+Boise-Eliot/Humboldt
+Brentwood
+Bridger Creative Science
+Bridlemile
+Buckman
+Capitol Hill
+Cesar Chavez
+Chapman
+Chief Joseph
+Clark
+Cleveland
+Creston
+DaVinci Arts
+Dr Martin Luther King Jr
+Duniway
+Faubion
+Forest Park
+Franklin
+George
+Glencoe
+Grant
+Grout
+Harriet Tubman
+Harrison Park
+Hayhurst
+Hosford
+Ida B Wells
+Irvington
+Jackson
+James John
+Jefferson
+Kellogg
+Kelly
+Laurelhurst
+Lent
+Lewis
+Lincoln
+Llewellyn
+Maplewood
+Markham
+Marysville
+McDaniel
+MLC K12
+Mt Tabor
+Ockley Green
+Odyssey Program
+Peninsula
+Richmond
+Rieke
+Rigler
+Robert Gray
+Roosevelt
+Rosa Parks
+Rose City Park
+Roseway Heights
+Sabin
+Scott
+Sellwood
+Sitton
+Skyline
+Stephenson
+Sunnyside Environmental
+Sunrise
+Vernon
+Vestal
+West Sylvan
+Whitman
+Winterhaven
+Woodlawn
+Woodmere
+Woodstock
+
+Franklin
+
+Map panned south east 14.06 kilometers.
+
+Location: SE Woodward St & SE 54th Ave, Sellwood.
+
+Map style: grayscale_light.
+
+Map shortcuts: Zoom out: hyphen. Zoom in: plus. Pan right 100 pixels: right arrow. Pan left 100 pixels: left arrow. Pan up 100 pixels: up arrow. Pan down 100 pixels: down arrow. Rotate 15 degrees clockwise: shift + right arrow. Rotate 15 degrees counter clockwise: shift + left arrow. Increase pitch 10 degrees: shift + up arrow. Decrease pitch 10 degrees: shift + down arrow. Jump focus to the map: Escape.
+Road
+Satellite
+Hybrid
+Grayscale (Dark)
+Night
+Grayscale (Light)
+Terra
+Blank
+Blank (Accessible)
+High contrast (Dark)
+High contrast (Light)
+Grayscale (Light)
+©2026 TomTom©2026 OSM
+Feedback
+
+Address: 5405 SE WOODWARD ST
+Originally Built For: High
+HS Cluster: FRANKLIN
+Primary Use: High
+
+BUILDING INFORMATION
+
+Grades: HS
+Year Built: 2017
+Square Footage: 292,223
+
+Enrollment
+
+2K
+
+=
+
+Utilization Rate
+
+107%
+
+÷
+
+Functional Capacity
+
+1670
+
+Functional
+Capacity
+
+1670.4
+
+2025-2026 Utilization Rate
+
+107%
+
+Enrollment
+
+Direct Cert. indicates percentage of students qualifying for direct certification. 
+
+2026 - 2027 Projected
+
+1725
+
+2025 - 2026 Enrollment
+
+1780
+
+2025 - 2026 Direct Cert.
+
+32.8%
+
+Students in Neighborhood School
+
+2K
+
+PPS Students Live in Zone
+
+2K
+
+In District Capture Rate
+
+73.0%
+
+Historical and Projected Enrollment
+0
+500
+1000
+1500
+2000
+School Year
+2019-2020
+2020-2021
+2021-2022
+2022-2023
+2023-2024
+2024-2025
+2025-2026
+2026-2027
+2027-2028
+2028-2029
+2029-2030
+2030-2031
+2031-2032
+1936
+1492
+1811
+2010
+1689
+1530
+1968
+1567
+1607
+1780
+2014
+1809
+1725
+Historical Demographics
+0
+500
+1000
+1500
+2000
+School Year
+2018-19
+2019-20
+2020-21
+2021-22
+2022-23
+2023-24
+2024-25
+2025-26
+944
+1036
+1058
+1072
+1032
+962
+950
+951
+169
+185
+197
+193
+176
+193
+187
+373
+363
+389
+388
+383
+356
+367
+352
+266
+258
+261
+232
+227
+200
+192
+185
+Race
+Asian
+Black
+Latino
+Multiple
+Native
+Pacific Islander
+White
+
+Programs
+
+Program Type
+
+Neighborhood / Immersion
+
+Title 1
+
+No
+
+Immersion Language
+
+Spanish
+
+Immersion Language 2
+
+Russian
+
+-
++
+107%
+Microsoft Power BI
+Report Zoomed To 107%

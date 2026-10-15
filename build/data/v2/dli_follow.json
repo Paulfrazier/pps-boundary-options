@@ -1,0 +1,127 @@
+{
+ "_note": "Arrival share of a moved DLI strand, IMPLIED by PPS Family Guide projections (p. 4, guides dated 2026-10-08) and PSU PRC July 24 2026 Table 5.5 strand forecasts; NOT a PPS-stated rate. Non-arrivals stay at the sending school (PPS numbers: arrive + stay ~100%); if the sending building does not serve those grades in the plan, they return to their home blocks. Years after 2031-32 hold the 2031-32 share. Moves with no measurable share keep v1's 1.0 (see \"_default\").",
+ "_default": 1.0,
+ "moves": {
+  "Atkinson|Spanish": {
+   "to": "Lent",
+   "by_year": {
+    "2027": 0.7967,
+    "2028": 0.7968,
+    "2029": 0.8053,
+    "2030": 0.8033,
+    "2031": 0.8033
+   },
+   "basis": "(Lent A - No changes) / PSU Atkinson Spanish",
+   "source": "build/pps-texts/family-guide-*.md (Lent) p.4; PSU PRC Table 5.5 pp.37-40",
+   "note": ""
+  },
+  "Scott|Spanish": {
+   "to": "Rigler",
+   "by_year": {
+    "2027": 0.8117,
+    "2028": 0.8194,
+    "2029": 0.8251,
+    "2030": 0.8251,
+    "2031": 0.8251
+   },
+   "basis": "(Rigler A - No changes) / PSU Scott Spanish",
+   "source": "build/pps-texts/family-guide-*.md (Rigler) p.4; PSU PRC Table 5.5 pp.37-40",
+   "note": "Rigler row is \"Options A and B\""
+  },
+  "Clark|Mandarin": {
+   "to": "Woodstock",
+   "by_year": {
+    "2027": 0.84,
+    "2028": 0.8617,
+    "2029": 0.8817,
+    "2030": 0.9022,
+    "2031": 0.931
+   },
+   "basis": "(Woodstock A - No changes) / PSU Clark Mandarin",
+   "source": "build/pps-texts/family-guide-*.md (Woodstock) p.4; PSU PRC Table 5.5 pp.37-40",
+   "note": ""
+  },
+  "Rose City Park|Vietnamese": {
+   "to": "Vestal",
+   "by_year": {
+    "2027": 1.0,
+    "2028": 1.0,
+    "2029": 1.0,
+    "2030": 1.0,
+    "2031": 1.0
+   },
+   "basis": "(Vestal A - No changes) / PSU RoseCityPark Vietnamese",
+   "source": "build/pps-texts/family-guide-*.md (Vestal) p.4; PSU PRC Table 5.5 pp.37-40",
+   "note": "implied 102-105%, capped at 1.0 (Vestal also gains other students)"
+  },
+  "MLK Jr|Mandarin": {
+   "to": "Boise-Eliot/Humboldt",
+   "by_year": {
+    "2027": 1.0,
+    "2028": 1.0,
+    "2029": 1.0,
+    "2030": 1.0,
+    "2031": 1.0
+   },
+   "basis": "(Boise-Eliot Humboldt A - No changes) / PSU MLKJr Mandarin",
+   "source": "build/pps-texts/family-guide-*.md (Boise-Eliot Humboldt) p.4; PSU PRC Table 5.5 pp.37-40",
+   "note": "implied 103-104%, capped at 1.0"
+  },
+  "Beaumont|Spanish": {
+   "to": "Roseway Heights",
+   "by_year": {
+    "2027": 0.8783,
+    "2028": 0.9083,
+    "2029": 0.928,
+    "2030": 0.9023,
+    "2031": 0.8966
+   },
+   "basis": "(Roseway Heights A - No changes) / PSU Beaumont Spanish",
+   "source": "build/pps-texts/family-guide-*.md (Roseway Heights) p.4; PSU PRC Table 5.5 pp.37-40",
+   "note": "Roseway Heights has no boundary change in A (memo); gain attributed to the Beaumont strand. Our own inference, not in the follow-rate report"
+  },
+  "Beach|Spanish": {
+   "to": "Cesar Chavez",
+   "by_year": {
+    "2027": 0.8953,
+    "2028": 0.8797,
+    "2029": 0.8713,
+    "2030": 0.8741,
+    "2031": 0.8916
+   },
+   "basis": "(Chavez A - 195/300 x PSU Chavez Spanish) / (PSU Beach + James John + Sitton Spanish)",
+   "source": "family-guide-cesar-chavez.md p.4; PSU Table 5.5; K-5 share 195/300 from PPS Enrollment by Grade and Program Type Oct 2025 via pps-dli-explorer (second-hand)",
+   "note": "rough: depends on the K-5 share guess and on Chavez losing its neighborhood program"
+  },
+  "James John|Spanish": {
+   "to": "Cesar Chavez",
+   "by_year": {
+    "2027": 0.8953,
+    "2028": 0.8797,
+    "2029": 0.8713,
+    "2030": 0.8741,
+    "2031": 0.8916
+   },
+   "basis": "(Chavez A - 195/300 x PSU Chavez Spanish) / (PSU Beach + James John + Sitton Spanish)",
+   "source": "family-guide-cesar-chavez.md p.4; PSU Table 5.5; K-5 share 195/300 from PPS Enrollment by Grade and Program Type Oct 2025 via pps-dli-explorer (second-hand)",
+   "note": "rough: depends on the K-5 share guess and on Chavez losing its neighborhood program"
+  },
+  "Sitton|Spanish": {
+   "to": "Cesar Chavez",
+   "by_year": {
+    "2027": 0.8953,
+    "2028": 0.8797,
+    "2029": 0.8713,
+    "2030": 0.8741,
+    "2031": 0.8916
+   },
+   "basis": "(Chavez A - 195/300 x PSU Chavez Spanish) / (PSU Beach + James John + Sitton Spanish)",
+   "source": "family-guide-cesar-chavez.md p.4; PSU Table 5.5; K-5 share 195/300 from PPS Enrollment by Grade and Program Type Oct 2025 via pps-dli-explorer (second-hand)",
+   "note": "rough: depends on the K-5 share guess and on Chavez losing its neighborhood program"
+  }
+ },
+ "not_measurable": {
+  "Ockley Green|Spanish": "George also gains Chavez 6-8, Peninsula area: cannot separate; 1.0 (v1) kept",
+  "Cesar Chavez|Spanish 6-8": "same as above; 1.0 kept"
+ }
+}
