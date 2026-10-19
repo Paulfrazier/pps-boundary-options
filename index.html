@@ -40,6 +40,32 @@ main{max-width:900px;padding-top:28px}
 .kf-catch{border-left:4px solid var(--bad)!important}
 .kf h3{margin:0 0 8px;font-size:16px}.kf ul{margin:0;padding-left:18px}.kf li,.kf p{font-size:14px;line-height:1.5}.kf p{margin:0 0 8px}
 @media (max-width:700px){.kf{grid-template-columns:1fr}}
+/* Number strip + before/after map */
+.hero{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 6px}
+.hn{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+.hn .q{font-size:13px;line-height:1.35;color:var(--muted);margin:0}
+.hn .big{font-size:30px;font-weight:700;line-height:1.05;font-variant-numeric:tabular-nums;color:var(--ours)}
+.hn .vs{font-size:13px;line-height:1.35;margin:0}
+.hn .vs b{font-variant-numeric:tabular-nums}
+.hn.cost{border-left:4px solid var(--bad)}
+.hn.cost .big{color:var(--ink)}
+.hn-foot{font-size:12px;color:var(--muted);margin:2px 0 18px}
+@media (max-width:760px){.hero{grid-template-columns:1fr 1fr}.hn .big{font-size:26px}}
+.ba{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 14px 10px;margin:4px 0 8px}
+.ba h3{margin:0 0 2px;font-size:16px}
+.ba .sub{margin:0 0 8px;font-size:13px;color:var(--muted)}
+.ba-wrap{position:relative;width:min(100%,535px);margin:0 auto;aspect-ratio:.955;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize}
+.ba-wrap svg{position:absolute;inset:0;width:100%;height:100%}
+.ba-wrap .ba-l{clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0)}
+.ba-wrap.nochg .chg{display:none}
+.ba-bar{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:3px;margin-left:-1.5px;background:var(--ink);pointer-events:none}
+.ba-bar::after{content:"\2194";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--card);display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.ba-lbl{position:absolute;top:8px;font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--card);border:1px solid var(--rule);pointer-events:none}
+.ba-lbl.l{left:8px;color:var(--ours)}.ba-lbl.r{right:8px;color:var(--pps)}
+.ba input[type=range]{width:100%;margin:8px 0 2px}
+.ba .key{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted);margin:4px 0 0;align-items:center}
+.ba .key label{cursor:pointer}
+.ba .sw{display:inline-block;width:16px;height:12px;border-radius:2px;vertical-align:-2px;margin-right:5px;border:2px dashed #1b2a3a}
 </style>
 </head>
 <body>
@@ -49,7 +75,35 @@ main{max-width:900px;padding-top:28px}
 <p class="notreal">These are best effort boundaries. NOT REAL PLANS, yet.</p>
 <div class="warn" id="pps-disclaimer" style="margin:10px 0 16px"><b>Independent analysis by a PPS parent, not an official Portland Public Schools product.</b> It may contain errors; check PPS&rsquo;s <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">rightsizing scenarios</a> and the <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 board materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
 <p class="lede">PPS has shared two scenarios, PPS A and PPS B. This site models what other options could look like, with different boundaries and the trade-offs each one makes. The goal: to encourage PPS to release more of its data and present more options. Keeping PPS A&rsquo;s closures but redrawing the lines puts more kids within walking distance and keeps more schools at their size target. Under the best example we modeled, <b>67.6% of elementary kids live within a 1-mile walk of their school</b>, against 62.7% under PPS A (72.2% with no closures). On our model, all 35 neighborhood elementary schools stay at their size target every year to 2031-32, many with thin margins (see the costs below). PPS A keeps 21 at target on our model, and 18 on PPS&rsquo;s own projections.</p>
+<div class="hero" aria-label="The best example we modeled, compared with PPS A">
+<div class="hn"><p class="q">Elementary kids within a 1-mile walk of school</p><span class="big" data-m="K-5_within1" data-p="option2_ms460">67.6%</span><p class="vs">vs <b data-m="K-5_within1" data-p="scenario_A">62.7%</b> under PPS A</p></div>
+<div class="hn"><p class="q">Neighborhood elementary schools at size target every year to 2031-32</p><span class="big"><span data-m="K-5_at_target" data-p="option2_ms460" data-f="n">35</span> of <span data-m="K-5_at_target" data-p="option2_ms460" data-f="d">35</span></span><p class="vs">vs <b>21</b> under PPS A on our model (<b data-m="K-5_at_target" data-p="scenario_A" data-f="n">18</b> on PPS&rsquo;s own)</p></div>
+<div class="hn"><p class="q">Elementary kids assigned past a closer open school</p><span class="big" data-m="K-5_past_closer" data-p="option2_ms460">932</span><p class="vs">vs <b data-m="K-5_past_closer" data-p="scenario_A">1,970</b> under PPS A</p></div>
+<div class="hn cost"><p class="q">The cost: kids reassigned (K-5 + 6-8)</p><span class="big" data-m="moved" data-p="option2_ms460">7,182</span><p class="vs">vs <b data-m="moved" data-p="scenario_A">4,907</b> under PPS A</p></div>
+</div>
+<p class="hn-foot">The best example we modeled, against PPS A. Model estimates from Census blocks, not PPS&rsquo;s student records; they may not hold up on PPS&rsquo;s real data. <a href="pages/options.html">All the numbers, every plan</a> &middot; <a href="pages/method.html">Method</a></p>
+<div class="ba" id="ba" hidden>
+<h3>See the lines move</h3>
+<p class="sub">Elementary attendance areas. Drag across the map: the best example we modeled on the left, PPS A on the right, as on the full map.</p>
+<div class="ba-wrap" id="baw" style="--pos:50%"><div class="ba-bar"></div><span class="ba-lbl l">Best we modeled</span><span class="ba-lbl r">PPS A</span></div>
+<input type="range" id="bar" min="0" max="100" value="50" aria-label="Slide between the best example we modeled and PPS A">
+<div class="key"><label><input type="checkbox" id="bachg" checked> <span class="sw"></span>Outline areas assigned to a different school in the two plans (about <span id="ban">3,007</span> elementary kids)</label><span>Each color is one school&rsquo;s area</span><a href="pages/map.html#a=option2_ms460">Open the full map: any two plans, tap any spot</a></div>
+</div>
+
 <p><b>What it costs:</b> smaller middle schools, cleaner feeder paths and more moves. The best example we modeled balances middle schools with a minimum of 460, below PPS&rsquo;s 500 goal: four dip below 500 in their low year, so 9 of 13 meet PPS&rsquo;s 500 every year to 2031-32 (5 under PPS A). In return, only 3 elementary schools split between two middle schools (1 under PPS A) and no middle school is over capacity on our model. 77% of a middle-school class goes on to the same high school (90% under PPS A), slightly fewer middle schoolers live within a mile (28.9% vs 30.3%), and about 7,200 elementary and middle schoolers change schools compared with PPS Status Quo, against about 4,900 under PPS A. A sibling version, <b>Boundary changes, same closures</b>, uses the same elementary lines and holds middle schools to PPS&rsquo;s 500: 12 of 13 meet it every year, but 13 elementary schools split between middle schools.</p>
+
+<h2 id="glance">Trade-offs</h2>
+<p>No plan wins every row: that is the trade-off.</p>
+<div id="mx"></div>
+<p>Every number by level, with bus lines and racial mix: <a href="pages/options.html#compare">Options, side by side</a>.</p>
+
+<h3>What the trade-offs show</h3>
+<ul>
+<li><b>PPS&rsquo;s closures can work with other lines.</b> Starting from PPS A&rsquo;s closures, every example plan keeps at least as many schools at target as PPS A every year to 2031-32, on our model.</li>
+<li><b>Shorter walks move more kids.</b> Whether that&rsquo;s worth it is the district&rsquo;s call.</li>
+<li><b>Walking and feeders pull against each other.</b> Walkable middle-school lines split more feeders. Redrawing every level together didn&rsquo;t fix it: the Ida B. Wells and Grant areas have too few middle schoolers for their buildings, under PPS A too.</li>
+<li><b>Sizing to one year is fragile.</b> Enrollment keeps falling after 2031-32; see <a href="pages/durability.html">Durability</a>.</li>
+</ul>
 
 <h2 id="goals">Our goals</h2>
 <ol>
@@ -93,19 +147,6 @@ main{max-width:900px;padding-top:28px}
 <div class="plans" id="plans-pps"></div>
 <h3 class="pg">Example plans <span>PPS A&rsquo;s closures and programs, lines drawn differently</span></h3>
 <div class="plans" id="plans-ours"></div>
-
-<h2 id="glance">Trade-offs</h2>
-<p>No plan wins every row: that is the trade-off.</p>
-<div id="mx"></div>
-<p>Every number by level, with bus lines and racial mix: <a href="pages/options.html#compare">Options, side by side</a>.</p>
-
-<h3>What the trade-offs show</h3>
-<ul>
-<li><b>PPS&rsquo;s closures can work with other lines.</b> Starting from PPS A&rsquo;s closures, every example plan keeps at least as many schools at target as PPS A every year to 2031-32, on our model.</li>
-<li><b>Shorter walks move more kids.</b> Whether that&rsquo;s worth it is the district&rsquo;s call.</li>
-<li><b>Walking and feeders pull against each other.</b> Walkable middle-school lines split more feeders. Redrawing every level together didn&rsquo;t fix it: the Ida B. Wells and Grant areas have too few middle schoolers for their buildings, under PPS A too.</li>
-<li><b>Sizing to one year is fragile.</b> Enrollment keeps falling after 2031-32; see <a href="pages/durability.html">Durability</a>.</li>
-</ul>
 
 <h2>Options we&rsquo;d like the district to present</h2>
 <p>Two scenarios are two points in a wide space. Options like these would show the trade-offs; where we modeled one, it&rsquo;s linked.</p>
@@ -183,6 +224,26 @@ if(!D.placeholder_note)$('lim-prelim').textContent='All plan results use the cal
 [].forEach.call(document.querySelectorAll('.idea[data-key]'),function(el){var k=el.dataset.key,o=by[k],st=el.querySelector('.st');
  st.innerHTML=o?'<span class="chip on">Modeled</span><a href="pages/options.html#opt-'+esc(k)+'">'+esc(o.short)+'</a> &middot; <a href="pages/map.html#level=K-5&amp;view=overlay&amp;a=scenario_A&amp;b='+esc(k)+'&amp;color=past">map vs PPS A</a>'
   :'<span class="chip">Being modeled</span>'});
+})();
+</script>
+<script src="pages/map_data/landing_ba.js"></script>
+<script>
+(function(){
+var D=window.SITE_DATA;
+if(D&&D.matrix){var C={};D.matrix.plans.forEach(function(p){C[p.name]=p.cells});
+document.querySelectorAll('[data-m]').forEach(function(e){var c=(C[e.dataset.p]||{})[e.dataset.m],t=c&&c.text;if(!t)return;
+var f=e.dataset.f;if(f){var s=t.split('/');t=f==='n'?s[0]:s[1]}if(t)e.textContent=t})}
+var B=window.LANDING_BA,box=document.getElementById('ba'),w=document.getElementById('baw'),r=document.getElementById('bar');
+if(!B||!box)return;
+w.insertAdjacentHTML('afterbegin',B.right+B.left);w.style.aspectRatio=B.ar;w.style.width='min(100%,'+Math.round(560*B.ar)+'px)';
+document.getElementById('ban').textContent=B.n.toLocaleString('en-US');box.hidden=false;
+function set(p){p=Math.max(0,Math.min(100,p));w.style.setProperty('--pos',p+'%');r.value=p}
+r.addEventListener('input',function(){set(+r.value)});
+document.getElementById('bachg').addEventListener('change',function(e){w.classList.toggle('nochg',!e.target.checked)});
+var drag=false;function at(e){var b=w.getBoundingClientRect();set((e.clientX-b.left)/b.width*100)}
+w.addEventListener('pointerdown',function(e){drag=true;try{w.setPointerCapture(e.pointerId)}catch(_){}at(e)});
+w.addEventListener('pointermove',function(e){if(drag)at(e)});
+w.addEventListener('pointerup',function(){drag=false});w.addEventListener('pointercancel',function(){drag=false});
 })();
 </script>
 </body>
