@@ -42,7 +42,8 @@ import stats as ST                                                     # noqa: E
 import scorebasis as SB                                                # noqa: E402
 
 FORCE = '--force' in sys.argv
-METHOD = 'site-map-4'          # bump to invalidate every cached plan/pair (2: scorecard kid basis + reconnect pass; 4: grid snap, reconnect lock, neck widening)
+METHOD = 'site-map-5'          # bump to invalidate every cached plan/pair (2: scorecard kid basis + reconnect pass; 4: grid snap, reconnect lock, neck widening; 5: big empty faces split on reference lines)
+PAIR_METHOD = 'pair-2'      # pair cache only (2: changed-area pieces carry their own kids, not the whole flow each)
 CACHE = os.path.join(WORK, 'site_cache')
 OUT = os.path.join(KIT, 'pages', 'map.html')
 OUTD = os.path.join(KIT, 'pages', 'map_data')
@@ -98,7 +99,7 @@ PTS = shapely.points(block_xy())
 CELLS = np.array(voronoi_cells(), dtype=object)
 POC = np.asarray(SB.solver()[1].poc_share(), dtype=float)   # as the scorecards (build/solver/common.poc_share)
 HU = B['hu'].values.astype(float)
-OPTS = [o for o in SD['options'] if o.get('assign')]
+OPTS = [o for o in SD['options'] + SD.get('request_options', []) if o.get('assign')]   # requested runs: own group on the map
 log('plans:', [o['name'] for o in OPTS])
 
 
@@ -359,7 +360,7 @@ for lv in LEVELS:
     pairs = {}
     order = [o['name'] for o in OPTS if o['name'] in plans]
     for a, c in itertools.combinations(order, 2):
-        ck = os.path.join(CACHE, 'pair_%s.json' % sha(('%s|%s|%s' % (keys[a], keys[c], METHOD)).encode(),
+        ck = os.path.join(CACHE, 'pair_%s.json' % sha(('%s|%s|%s|%s' % (keys[a], keys[c], METHOD, PAIR_METHOD)).encode(),
                                                      np.round(KW[c], 4).tobytes()))   # flows use plan c's kids
         if os.path.exists(ck) and not FORCE:
             pairs['%s|%s' % (a, c)] = json.load(open(ck)); continue
@@ -378,17 +379,30 @@ for lv in LEVELS:
                 ix = g.intersection(gc[m])
                 if not ix.is_empty and ix.area > 1:
                     groups[(n, m)].append(ix)
+        moved = collections.defaultdict(list)          # (school under a, school under c) -> moved blocks
+        for i, (x, y) in enumerate(zip(labs[a], labs[c])):
+            if x != y and KW[c][i] > 0:
+                moved[(x, y)].append(i)
         regs = []; tot_area = 0.0
         for (n, m), ps in groups.items():
-            if round(flows.get((n, m), 0)) < 1:
+            fk = flows.get((n, m), 0)
+            if round(fk) < 1:
                 continue
             U = unary_union(ps).buffer(-14).buffer(14).simplify(4.0)
             polys = [U] if U.geom_type == 'Polygon' else [p for p in getattr(U, 'geoms', []) if p.geom_type == 'Polygon']
-            polys = [p for p in polys if p.area >= 3000]
-            for p in polys:
-                e = enc_geom(p)
-                if e:
-                    regs.append([n, m, round(flows.get((n, m), 0)), e]); tot_area += p.area
+            polys = [(p, e) for p in polys if p.area >= 3000 for e in [enc_geom(p)] if e]
+            if not polys:
+                continue
+            # each piece carries the kids of the moved blocks inside it (a block outside every drawn piece goes to the
+            # nearest one), rounded so a move's pieces add up to its flow; before, every piece repeated the whole flow
+            share = np.zeros(len(polys)); tr = shapely.STRtree([p for p, _ in polys])
+            for i in moved.get((n, m), []):
+                hit = [j for j in tr.query(PTS[i]) if polys[j][0].covers(PTS[i])]
+                j = hit[0] if hit else int(np.argmin([p.distance(PTS[i]) for p, _ in polys]))
+                share[j] += KW[c][i]
+            cnt = lr_round({j: share[j] / max(share.sum(), 1e-9) * fk for j in range(len(polys))}, round(fk))
+            for j, (p, e) in enumerate(polys):
+                regs.append([n, m, cnt[j], e]); tot_area += p.area
         fl = sorted(([x, y, round(v)] for (x, y), v in flows.items() if round(v) >= 3), key=lambda r: -r[2])[:100]
         pairs['%s|%s' % (a, c)] = P = {'n': round(diff), 'tot': round(float(KW[c].sum())), 'regs': regs, 'flows': fl, 'km2': round(tot_area / 1e6, 2)}
         json.dump(P, open(ck, 'w'), separators=(',', ':'))
@@ -429,7 +443,7 @@ for o in OPTS:
                   'lines': 'official' if o['name'] in OFFICIAL else 'crisp', 'src': o['source'], 'schools': o.get('schools_source'),
                   'assign': o['assign'], 'trade': o.get('tradeoffs'), 'basis': o.get('basis'), 'caveat': o.get('caveat') or None,
                   'linesrc': {lv: OF.SOURCE[o['name']][lv] for lv in LEVELS} if o['name'] in OFFICIAL else None,
-                  'rank': o.get('brief_rank'), 'whatif': bool(o.get('what_if'))})   # brief_rank 0 = the lead plan (tagged "lead plan" on the map)
+                  'rank': o.get('brief_rank'), 'whatif': bool(o.get('what_if')), 'req': bool(o.get('request'))})   # brief_rank 0 = the lead plan (tagged "lead plan" on the map)
 META = {'plans': PLANS, 'note': SD.get('placeholder_note'), 'model_version': SD.get('model_version'),
         'calibrated': SD.get('calibrated'), 'generated': SD.get('generated'), 'levels': SD.get('levels'),
         'ppsproj': PPSPROJ, 'method_source': SD.get('method_source'), 'targets_source': SD.get('targets_source')}

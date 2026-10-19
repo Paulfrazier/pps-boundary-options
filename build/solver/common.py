@@ -585,6 +585,9 @@ HORIZONS = {
     'psu2041': {'years': YEARS, 'required': YEARS, 'label': '2031-32 to 2040-41 (all required)'},
     'pps2031': {'years': [_yr(y) for y in range(2027, 2036)], 'required': [_yr(y) for y in range(2027, 2032)],
                 'label': 'required 2027-28 to 2031-32 (PPS Family Guide window); reported to 2035-36 (PSU Table 5.5)'},
+    # (2026-10-16 night, test only) every year to 2035-36 required: what later-year durability costs
+    'pps2035': {'years': [_yr(y) for y in range(2027, 2036)], 'required': [_yr(y) for y in range(2027, 2036)],
+                'label': 'TEST: required 2027-28 to 2035-36 (PSU Table 5.5)'},
 }
 
 

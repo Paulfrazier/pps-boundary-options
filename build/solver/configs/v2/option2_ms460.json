@@ -232,7 +232,14 @@
    "group_by": "K-5",
    "parent_split_by": "6-8",
    "fixed_assign": "A_hs",
-   "note": "Paul 2026-10-12: keep Scenario A's official 9-12 lines in all options (feeder splits did not pay in v1 Option 1-durable)"
+   "note": "Paul 2026-10-12: keep Scenario A's official 9-12 lines in all options (feeder splits did not pay in v1 Option 1-durable)",
+   "fixed_reassign": [
+    {
+     "by": "es_cur",
+     "area": "Skyline",
+     "to": "Lincoln"
+    }
+   ]
   }
  },
  "weights": {
@@ -317,5 +324,6 @@
   "ms_split_note": "soft (Paul 2026-10-12 ~15:15): ~200 kid-miles per extra HS, no floor"
  },
  "horizon": "pps2031",
- "program_note": "necessary moves (kept): Atkinson Spanish -> Lent, Scott Spanish -> Rigler; avoided: MLK Jr Mandarin, Beaumont Spanish 6-8 (Paul 2026-10-12 ~15:15)"
+ "program_note": "necessary moves (kept): Atkinson Spanish -> Lent, Scott Spanish -> Rigler; avoided: MLK Jr Mandarin, Beaumont Spanish 6-8 (Paul 2026-10-12 ~15:15)",
+ "skyline_note": "2026-10-19 Paul: fold in the Skyline fix (Skyline area to Lincoln, not over the St. Johns Bridge to Roosevelt)"
 }

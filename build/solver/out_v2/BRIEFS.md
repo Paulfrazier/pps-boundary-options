@@ -42,7 +42,7 @@ Models track, 2026-10-12 (numbers refreshed overnight after the line cleanup), f
 
 ## Boundary changes, balanced middle schools (`option2_ms460`) — the best example we modeled
 
-**How it works.** PPS A's closures, programs and high-school lines. Elementary and middle-school lines are redrawn for the shortest walks under the one firm rule: at least PPS A's number of schools at target, every year to 2031-32. Middle schools are balanced with a minimum of 460 (PPS's goal is 500), and at most 3 elementary schools may be split between middle schools; these middle-school lines are proven best under those rules (the solver closed the optimality gap to 0%). Two immersion moves that PPS A makes are avoided:
+**How it works.** PPS A's closures, programs and high-school lines, with one change to the high-school lines: the Skyline area (about 93 high schoolers) stays at Lincoln, as today, instead of crossing the St. Johns Bridge to Roosevelt. Elementary and middle-school lines are redrawn for the shortest walks under the one firm rule: at least PPS A's number of schools at target, every year to 2031-32. Middle schools are balanced with a minimum of 460 (PPS's goal is 500), and at most 3 elementary schools may be split between middle schools; these middle-school lines are proven best under those rules (the solver closed the optimality gap to 0%). Two immersion moves that PPS A makes are avoided:
 - **MLK Jr Mandarin** stays at MLK Jr (PPS A moves it to Boise-Eliot/Humboldt).
 - **Beaumont Spanish 6-8** stays at Beaumont (PPS A moves it to Roseway Heights).
 
@@ -56,12 +56,15 @@ Two other moves are kept because they're needed: without them, Lent would have 2
 - Every school in range in 2031-32, and no middle school over capacity in any year 2027-28 to 2031-32: the fullest are Hosford 710 of 711 and Lane 763 of 763 (2027-28), and Beaumont 724 of 737 (capacity: PPS 2025-26 school profiles).
 - Classes stay together: 3 elementary zones split between middle schools (PPS A 1); 97% of K-5 kids go to the same middle school as most of their class (PPS A 99%).
 - Shorter walks than PPS A at both levels. K-5: 932 kids assigned to a farther school, past a closer one (PPS A 1,970); average 0.93 mi (0.98). Middle: 1,082 (PPS A 1,259); average 1.71 mi (1.76).
+- Ends Roosevelt's crowding in 2027-28: PPS A's high-school lines put 1,421 students in its 1,395 seats that year; with Skyline at Lincoln, Roosevelt has 1,313 [our model].
 - Sunnyside's and Abernethy's areas stay entirely south of I-84. PPS A gives Sunnyside about 21 K-5 kids from north of I-84, Buckman's old crossing (our model on PPS's Scenario A K-5 map; the Sunnyside Family Guide, p. 3, sends Buckman's area "north of Burnside" to Sunnyside).
 
 **The bad.**
 - Smaller middle schools: three run in the 460s, below PPS's 500 goal (see the call-out).
 - About 4,870 K-5 and 2,315 middle schoolers reassigned vs PPS Status Quo (PPS A 2,935 and 1,972).
 - 40% of middle zones feed one high school (PPS A 80%).
+- Roosevelt drops below its 1,100 minimum from 2032-33 (1,075, falling to 1,027 in 2035-36), years PPS doesn't project; PPS A's lines keep it above 1,100 through 2035-36 (1,104) [our model].
+- The gap between the largest and smallest high school grows from 362 to 424 students (the target is under 350), and the average high-school walk from 1.93 to 1.98 mi.
 - Fragile to a 9% enrollment miss (15 of 41 open K-5 schools stay in range at −9%, vs PPS A's 25 of 41; at forecast 41 vs 27).
 - 2,779 middle schoolers over the 1.5-mi bus line (PPS A 2,731).
 - The elementary lines weren't cleaned after their last re-solve (a cleanup made them worse): 147 one-block notches, still fewer than PPS A's 197.
@@ -70,7 +73,7 @@ Two other moves are kept because they're needed: without them, Lent would have 2
 
 ## Boundary changes, same closures (`option2`)
 
-**How it works.** The same closures, immersion programs, high-school lines and elementary lines as Boundary changes, balanced middle schools. Only middle school differs: the minimum is PPS's 500, with no cap on elementary schools split between middle schools.
+**How it works.** The same closures, immersion programs and elementary lines as Boundary changes, balanced middle schools, with PPS A's high-school lines unchanged (Skyline goes to Roosevelt, as in PPS A). Middle school also differs: the minimum is PPS's 500, with no cap on elementary schools split between middle schools.
 
 **The good.**
 - 12 of 13 middle schools at target every year at 500 (balanced middle schools 9 at 500; PPS A 5 by PPS's own figures); the smallest middle school is 500.

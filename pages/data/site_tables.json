@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15T21:16:19+00:00",
+ "generated": "2026-10-19T23:47:56+00:00",
  "basis": "2031-32 (PSU forecast), kids of color from Census 2020 under-18 race by block",
  "diversity": {
   "levels": {
@@ -1244,9 +1244,9 @@
       "Grant": 0.29,
       "Ida B. Wells": 0.334,
       "Jefferson": 0.489,
-      "Lincoln": 0.428,
+      "Lincoln": 0.416,
       "McDaniel": 0.557,
-      "Roosevelt": 0.575
+      "Roosevelt": 0.61
      },
      "option2": {
       "Cleveland": 0.337,
@@ -1349,21 +1349,21 @@
      },
      "option2_ms460": {
       "poc_share_district": 0.426,
-      "dissimilarity_index": 0.18,
-      "dissimilarity_from_schools_csv": 0.18,
+      "dissimilarity_index": 0.185,
+      "dissimilarity_from_schools_csv": 0.185,
       "n_schools": 8,
-      "n_within_15": 8,
+      "n_within_15": 7,
       "min": 0.29,
-      "max": 0.575,
+      "max": 0.61,
       "kids": {
        "Cleveland": 1126.1,
        "Franklin": 1293.2,
        "Grant": 1266.0,
        "Ida B. Wells": 1461.3,
        "Jefferson": 1169.9,
-       "Lincoln": 1133.9,
+       "Lincoln": 1226.7,
        "McDaniel": 933.6,
-       "Roosevelt": 876.9
+       "Roosevelt": 784.1
       }
      },
      "option2": {

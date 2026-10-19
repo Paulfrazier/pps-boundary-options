@@ -197,7 +197,79 @@
    },
    "n_split_feeders_ms_to_hs": 8,
    "pct_ms_feeders_to_one_hs": 46.7,
-   "hs_range": 362
+   "hs_range": 362,
+   "split_feeders_es_to_hs": {
+    "Ainsworth": {
+     "Ida B. Wells": 35.3,
+     "Lincoln": 222.4
+    },
+    "Alameda": {
+     "Grant": 406.2,
+     "Jefferson": 43.1
+    },
+    "Arleta": {
+     "Cleveland": 17.8,
+     "Franklin": 173.7
+    },
+    "Beverly Cleary": {
+     "Grant": 448.4,
+     "McDaniel": 40.8
+    },
+    "Boise-Eliot/Humboldt": {
+     "Grant": 22.8,
+     "Jefferson": 187.7
+    },
+    "Bridlemile": {
+     "Ida B. Wells": 225.4,
+     "Lincoln": 47.8
+    },
+    "Chief Joseph": {
+     "Jefferson": 142.6,
+     "Roosevelt": 56.4
+    },
+    "Clark": {
+     "Franklin": 46.5,
+     "McDaniel": 205.2
+    },
+    "Faubion": {
+     "Jefferson": 138.9,
+     "McDaniel": 34.9
+    },
+    "Glencoe": {
+     "Franklin": 182.1,
+     "McDaniel": 62.0
+    },
+    "Grout": {
+     "Cleveland": 232.6,
+     "Franklin": 13.1
+    },
+    "Laurelhurst": {
+     "Franklin": 24.4,
+     "Grant": 223.0
+    },
+    "MLK Jr": {
+     "Grant": 48.4,
+     "Jefferson": 245.6
+    },
+    "Scott": {
+     "Grant": 69.9,
+     "McDaniel": 310.1
+    },
+    "Sunnyside": {
+     "Cleveland": 133.4,
+     "Franklin": 34.6,
+     "Grant": 13.3
+    },
+    "Vernon": {
+     "Grant": 32.7,
+     "Jefferson": 216.5
+    },
+    "Woodstock": {
+     "Cleveland": 78.7,
+     "Franklin": 13.9
+    }
+   },
+   "n_split_feeders_es_to_hs": 17
   }
  },
  "programs": {

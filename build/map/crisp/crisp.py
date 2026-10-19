@@ -32,6 +32,8 @@ SIMPLIFY_M = 2.0     # coverage simplification tolerance (metres); street geomet
 NECK_M = 10.0       # neck widening reach (metres), about one encoding grid cell
 NECK_MAX_M2 = 20000.0   # ...taking only kid-free atoms up to this size
 GRID_DEG = 1e-4      # the page's polygon encoding grid (common.enc_ring rounds lon/lat to 1e-4 degree)
+SPLIT_SHARE = 0.25   # a kid-free face whose minority reference share is at least this...
+SPLIT_M2 = 20000.0   # ...and at least this many m2 is cut on the reference lines, not given whole to the majority
 
 
 def _groups(keys, n):
@@ -75,7 +77,7 @@ def crisp(lab, w, verbose=False):
     for i in np.where(pop)[0]:
         fs.setdefault(int(face_of[ca[i]]), set()).add(labc[i])
     sch = np.full(n, -1)
-    deferred = []; nmixed = 0
+    deferred = []; nmixed = 0; nsplit = 0
     for f, at in enumerate(A['face_atoms']):
         if not len(at):
             continue
@@ -90,7 +92,11 @@ def crisp(lab, w, verbose=False):
                 deferred.append(f); continue
             c = labc[cell_of[at]]
             tot = np.bincount(c, weights=area[at], minlength=len(names))
-            sch[at] = int(tot.argmax())
+            mx = int(tot.argmax()); minor = tot.sum() - tot[mx]
+            if minor >= SPLIT_SHARE * tot.sum() and minor >= SPLIT_M2:
+                sch[at] = c; nsplit += 1      # big empty face split between schools (e.g. the Rosa Parks spike into Astor)
+            else:
+                sch[at] = mx
     # thin empty faces -> school sharing most border
     P = A['pairs']; L = A['lens']
     left = deferred
@@ -196,7 +202,7 @@ def crisp(lab, w, verbose=False):
                              'blocks': int(np.isin(ca[pop], at).sum()), 'lonlat': [round(ctr.x, 5), round(ctr.y, 5)],
                              # true = the block assignment itself is detached here (its Voronoi area is a separate piece)
                              'assignment_exclave': bool(c in mains)})
-    qa = {'mixed_faces': nmixed, 'thin_empty_faces': len(deferred), 'empty_fragments_merged': moved_frag,
+    qa = {'split_empty_faces': nsplit, 'mixed_faces': nmixed, 'thin_empty_faces': len(deferred), 'empty_fragments_merged': moved_frag,
           'reconnect': dict(nrec, flipped_km2=round(nrec['flipped_km2'], 4), log=log),
           'n_assignment_exclaves_with_kids': sum(1 for e in exclaves if e['kids'] > 0 and e['assignment_exclave']),
           'exclaves_with_kids': [e for e in exclaves if e['kids'] > 0],

@@ -74,6 +74,7 @@ const lblFull=k=>PM[k]?(PM[k].full||PM[k].short)+(isOpt(k)?` (${PM[k].ver})`:PM[
 const LEAD=(META.plans.find(p=>p.rank===0)||{k:"option2_ms460"}).k;   // the best example we modeled (site_data brief_rank 0: option2_ms460, "Boundary changes, balanced middle schools")
 const leadT=k=>k===LEAD?`<span class="lead" title="The best example we modeled">best we modeled</span>`:isWif(k)?`<span class="lead wif" title="A what-if, not one of the example plans">what-if</span>`:"";
 const isWif=k=>!!(PM[k]&&PM[k].whatif);
+const isReq=k=>!!(PM[k]&&PM[k].req);   // requested runs (pages/requests.html): their own group in the plan lists
 const vtag=k=>(isOpt(k)?`<span class="vtag" title="The model version that produced this example plan">${esc(PM[k].ver)}</span>`:`<span class="vtag off" title="PPS's own lines, traced from its published maps">PPS's official lines</span>`)+leadT(k);
 const SCH=()=>LD().sch;
 // optional per-option caveat (site_data options[].caveat): side panel + plan menu tooltip; nothing when absent
@@ -235,7 +236,7 @@ function drawAreas(){hideTip();[gA,gA2,gFade,gS,gDiff,gOv,gPast,gE1,gE2,gFoc].fo
   I=pairInfo(p1,p2);if(I){const pd=r=>ringsD(r[3]);
    if(hatchOn()&&I.regs.length)gDiff.append(mk("path",{d:I.regs.map(pd).join(""),"fill-rule":"evenodd",fill:"url(#hatch)","pointer-events":"none"}));
    // changed areas: invisible hover/tap targets (no fade/highlight; the two plans' lines carry the comparison)
-   I.regs.forEach(r=>{const p=mk("path",{d:pd(r),"fill-rule":"evenodd",fill:"#000","fill-opacity":"0",class:"chg",role:"img","aria-label":`${nm(r[0])} to ${nm(r[1])}, ${fmt(r[2])} kids`,"data-tip":`${nm(r[0])} → ${nm(r[1])}, ${fmt(r[2])} kids move`});
+   I.regs.forEach(r=>{const p=mk("path",{d:pd(r),"fill-rule":"evenodd",fill:"#000","fill-opacity":"0",class:"chg",role:"img","aria-label":`${nm(r[0])} to ${nm(r[1])}, ${r[2]?"about "+fmt(r[2])+" kids in this area":"no kids live in this area"}`,"data-tip":r[2]?`${nm(r[0])} → ${nm(r[1])}: about ${fmt(r[2])} kids in this area move`:`${nm(r[0])} → ${nm(r[1])}: the line moves here, but no kids live in this area (model)`});
     p.addEventListener("click",()=>select(r[0]));gDiff.append(p)})}}
  $("lgH").hidden=!(I&&I.n&&hatchOn());$("lhfw").hidden=!c||!hatchTheme();
  impSet();viewHook();updateLabels();drawPin();
@@ -375,7 +376,8 @@ function spotPill(){const el=$("spotpill");if(!el)return;document.querySelector(
 
 // ---- tables
 const coarse=matchMedia("(pointer:coarse)");
-function tables(){const A=avail(),hl=new Set(cmpOn()?[p1,p2]:[scn]);const L=LVN[lv],bus=(META.levels[lv]||{}).bus_threshold_mi;
+// a requested run joins the comparison table only while it is on the map
+function tables(){const hl=new Set(cmpOn()?[p1,p2]:[scn]),A=avail().filter(k=>!isReq(k)||hl.has(k));const L=LVN[lv],bus=(META.levels[lv]||{}).bus_threshold_mi;
  $("cmpH").textContent=`How the plans compare, ${L}`;
  // trade-off columns first (past a closer school, at target, reassigned); Lines and Source hide on phones (map.css), where the
  // short header (.hs) replaces the long one (.hl)
@@ -385,10 +387,10 @@ function tables(){const A=avail(),hl=new Set(cmpOn()?[p1,p2]:[scn]);const L=LVN[
  const C=[[s=>s.kids_past_closer_school,-1,v=>fmt(v)],[(s,k)=>{const d=durOf(k);return d&&d.n?d.at/d.n:null},1,(v,k)=>atTxt(k)],[(s,k)=>k===BASELINE?null:s.kids_reassigned_vs_status_quo,-1,(v,k)=>k===BASELINE?"–":fmt(v)],
   [s=>s.avg_walk_mi,-1,v=>fx(v,2)],[s=>s["pct_within_1.0mi"],1,v=>fx(v,1)+"%"],[s=>s.kids_over_bus_threshold,-1,v=>fmt(v)],[s=>s.dissimilarity_index,-1,v=>fx(v,3)]];
  const V=A.map(k=>C.map(c=>{const v=c[0](PD(k).sum||{},k);return v==null||isNaN(v)?null:+v}));
- const best=C.map((c,j)=>{const x=A.map((k,i)=>PM[k].kind==="reference"?null:V[i][j]).filter(v=>v!=null);return x.length>1?(c[1]>0?Math.max(...x):Math.min(...x)):null});
+ const best=C.map((c,j)=>{const x=A.map((k,i)=>PM[k].kind==="reference"||isReq(k)?null:V[i][j]).filter(v=>v!=null);return x.length>1?(c[1]>0?Math.max(...x):Math.min(...x)):null});
  $("ctab").innerHTML=A.map((k,i)=>{const pm=PM[k];
   // the plan name is a button: it puts that plan on the map (as plan 2 when comparing) and scrolls up to it
-  return `<tr class="pick${hl.has(k)?" hl":""}" data-row="${esc(k)}"><th scope="row"><button type="button" data-plan="${esc(k)}" title="Show ${esc(lblFull(k))} on the map">${esc(pm.short)}</button>${leadT(k)}<small>${isOpt(k)?esc(pm.ver):k===BASELINE?"baseline":"PPS plan"}</small></th>${C.map((c,j)=>{const v=V[i][j],b=v!=null&&best[j]!=null&&pm.kind!=="reference"&&Math.abs(v-best[j])<1e-9;
+  return `<tr class="pick${hl.has(k)?" hl":""}" data-row="${esc(k)}"><th scope="row"><button type="button" data-plan="${esc(k)}" title="Show ${esc(lblFull(k))} on the map">${esc(pm.short)}</button>${leadT(k)}<small>${isOpt(k)?esc(pm.ver):k===BASELINE?"baseline":"PPS plan"}</small></th>${C.map((c,j)=>{const v=V[i][j],b=v!=null&&best[j]!=null&&pm.kind!=="reference"&&!isReq(k)&&Math.abs(v-best[j])<1e-9;
    return `<td class="num${b?" best":""}">${v==null&&!(j===2&&k===BASELINE)?"—":c[2](v,k)}</td>`}).join("")}<td class="c-lines">${pm.lines==="official"?"PPS official":"street-following, derived"}</td><td class="c-src">${src(pm.src,"scorecard")}</td></tr>`}).join("");
  $("ctabn").innerHTML=`Figures are each plan's model scorecard at ${L} (2031-32 basis; ${esc(PM[A[0]].ver)} unless labeled)<span class="tlong">, linked in the last column</span><span class="tshort">; scorecards are linked on the options page</span>. <b>Bold</b> = best in the column among PPS A, PPS B and the example plans (Status Quo is the baseline). Tap a plan's name to show it on the map. “Sent to a farther school” counts kids whose assigned school is at least 0.25 mi farther on foot than another open school reachable without a new I-84 or Willamette crossing. Schools at target: zoned schools inside their target size range in 2031-32, exempt schools left out (the options page's figure). “Moved” = kids assigned to a different school than under PPS Status Quo. Dissimilarity: 0 = every school matches the district mix of kids of color.${META.note?" "+esc(META.note):""}`;
  // a row click loads that plan; on touch only the plan-name cell does (reading a number must not jump the page)
@@ -416,7 +418,7 @@ document.querySelectorAll("[data-w]").forEach(b=>b.onclick=()=>{wk=b.dataset.w;d
 function fillSelects(){const A=avail(),lt=innerWidth<=430?" (best)":" (best we modeled)";[["sel0",scn],["sel1",p1],["sel2",p2]].forEach(([id,v])=>{const s=$(id);s.replaceChildren();
   // short names keep the one-row selects narrow (full name + version in the tooltip); the best example we modeled is tagged
   const grp=(t,ks)=>{if(!ks.length)return;const g=document.createElement("optgroup");g.label=t;ks.forEach(k=>{const o=new Option(lblShort(k)+(k===LEAD?lt:isWif(k)?" (what-if)":""),k);o.title=lblFull(k)+(cavOf(k)?" — "+cavOf(k):"");g.append(o)});s.append(g)};
-  grp("PPS plans",A.filter(k=>!isOpt(k)));grp("Example plans",A.filter(k=>isOpt(k)&&!isWif(k)));grp("What-if",A.filter(isWif));s.value=v})}
+  grp("PPS plans",A.filter(k=>!isOpt(k)));grp("Example plans",A.filter(k=>isOpt(k)&&!isWif(k)&&!isReq(k)));grp("What-if",A.filter(k=>isWif(k)&&!isReq(k)));grp("Requested runs",A.filter(isReq));s.value=v})}
 // round 8 ("only do pre filled compare on a few"): three presets with short labels; any other pair is in
 // the two plan selects. [plan 1 (left), plan 2 (right), label, tooltip]
 const QUICK=()=>[[BASELINE,"scenario_A","PPS A vs no closures"],[BASELINE,"scenario_B","PPS B vs no closures"],[LEAD,"scenario_A","PPS A vs best we modeled"]];

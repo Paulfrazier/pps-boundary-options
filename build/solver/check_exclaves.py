@@ -6,6 +6,35 @@ from collections import deque
 import numpy as np, pandas as pd
 import common as C, metrics as MX
 
+def check_pieces(asg, NB, roots, b, kids):
+    seen = np.zeros(len(asg), bool)
+    bys = {}
+    for i in range(len(asg)):
+        if seen[i]:
+            continue
+        s = asg[i]; q = deque([i]); seen[i] = True; comp = []
+        while q:
+            k = q.popleft(); comp.append(k)
+            for j in NB[k]:
+                if not seen[j] and asg[j] == s:
+                    seen[j] = True; q.append(j)
+        bys.setdefault(s, []).append(comp)
+    bad = []
+    for s, comps in bys.items():
+        if len(comps) < 2:
+            continue
+        r = roots.get(s)
+        main = next((ci for ci, cm in enumerate(comps) if r in cm), None)
+        if main is None:
+            main = max(range(len(comps)), key=lambda ci: kids[comps[ci]].sum())
+        for ci, cm in enumerate(comps):
+            if ci == main:
+                continue
+            kk = float(kids[cm].sum())
+            bad.append({'school': s, 'blocks': len(cm), 'kids_2031': round(kk, 1),
+                        'lon': round(float(b['x'].values[cm].mean()), 4), 'lat': round(float(b['y'].values[cm].mean()), 4)})
+    return bad
+
 def check(run_dir, cfg=None):
     NB = C.adjacency()[0]
     roots = C.school_block()
@@ -22,37 +51,20 @@ def check(run_dir, cfg=None):
             continue
         asg = pd.read_parquet(f)['school'].values
         fa = cfg['levels'][lev].get('fixed_assign') if cfg else None
-        if fa and (b[fa].values == asg).all():
-            out[lev] = 'fixed to PPS column %s (PPS traced lines; pieces there are PPS\'s, not checked)' % fa
-            continue
-        kids = K[lev] if K is not None else np.ones(len(asg))
-        seen = np.zeros(len(asg), bool)
-        bys = {}
-        for i in range(len(asg)):
-            if seen[i]:
-                continue
-            s = asg[i]; q = deque([i]); seen[i] = True; comp = []
-            while q:
-                k = q.popleft(); comp.append(k)
-                for j in NB[k]:
-                    if not seen[j] and asg[j] == s:
-                        seen[j] = True; q.append(j)
-            bys.setdefault(s, []).append(comp)
-        bad = []
-        for s, comps in bys.items():
-            if len(comps) < 2:
-                continue
-            r = roots.get(s)
-            main = next((ci for ci, cm in enumerate(comps) if r in cm), None)
-            if main is None:
-                main = max(range(len(comps)), key=lambda ci: kids[comps[ci]].sum())
-            for ci, cm in enumerate(comps):
-                if ci == main:
+        if fa:
+            ref = b[fa].values.astype(object).copy()
+            ras = cfg['levels'][lev].get('fixed_reassign', [])
+            for ra in ras:                    # whole PPS areas moved to another school (solve.py fixed_reassign)
+                ref[b[ra['by']].values == ra['area']] = ra['to']
+            if (ref == asg).all():
+                if not ras:
+                    out[lev] = 'fixed to PPS column %s (PPS traced lines; pieces there are PPS\'s, not checked)' % fa
                     continue
-                kk = float(kids[cm].sum())
-                bad.append({'school': s, 'blocks': len(cm), 'kids_2031': round(kk, 1),
-                            'lon': round(float(b['x'].values[cm].mean()), 4), 'lat': round(float(b['y'].values[cm].mean()), 4)})
-        out[lev] = bad
+                pps = {(x['school'], x['blocks']) for x in check_pieces(b[fa].values, NB, roots, b, K[lev] if K is not None else np.ones(len(asg)))}
+                out[lev] = [x for x in check_pieces(asg, NB, roots, b, K[lev] if K is not None else np.ones(len(asg)))
+                            if (x['school'], x['blocks']) not in pps]   # only pieces the reassignment made
+                continue
+        out[lev] = check_pieces(asg, NB, roots, b, K[lev] if K is not None else np.ones(len(asg)))
     return out
 
 if __name__ == '__main__':

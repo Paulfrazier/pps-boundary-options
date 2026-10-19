@@ -177,7 +177,30 @@
    },
    "n_split_feeders_ms_to_hs": 5,
    "pct_ms_feeders_to_one_hs": 78.3,
-   "hs_range": 375
+   "hs_range": 375,
+   "split_feeders_es_to_hs": {
+    "Bridlemile": {
+     "Ida B. Wells": 167.8,
+     "Lincoln": 121.3
+    },
+    "Vestal": {
+     "Franklin": 28.6,
+     "McDaniel": 131.4
+    },
+    "Whitman": {
+     "Cleveland": 144.5,
+     "Franklin": 28.7
+    },
+    "Woodmere": {
+     "Cleveland": 25.2,
+     "Franklin": 100.4
+    },
+    "Woodstock": {
+     "Cleveland": 84.8,
+     "Franklin": 7.5
+    }
+   },
+   "n_split_feeders_es_to_hs": 5
   }
  },
  "programs": {

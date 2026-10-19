@@ -45,10 +45,12 @@ def metric_table(names, lev):
             continue
         out.append(f'| {lab} | ' + ' | '.join(fmt(float(v) if isinstance(v, (int, float)) and d else v, d) for v in vals) + ' |')
     return '\n'.join(out)
+def dur(d):   # scorecards name the all-years count by their horizon (2040-41 or 2035-36)
+    return d.get('durable_through_2040_41', d.get('at_target_all_years_to_2035_36'))
 def dur_table(names):
     S = {n: sc(n) for n in names}
     yrs = S[names[0]]['durability']['years']
-    out = ['| Level | Plan | ' + ' | '.join(y[2:] for y in yrs) + ' | At target all 10 years |', '|---|---|' + '---|' * (len(yrs) + 1)]
+    out = ['| Level | Plan | ' + ' | '.join(y[2:] for y in yrs) + ' | At target every year |', '|---|---|' + '---|' * (len(yrs) + 1)]
     for lev in C.LEVELS:
         for k, n in enumerate(names):
             if not S[n]:
@@ -56,7 +58,7 @@ def dur_table(names):
             d = S[n]['durability']['levels'][lev]
             at = [d['at_target_zoned'][y] for y in yrs]
             out.append(f'| {lev + " (" + str(d["n_zoned_non_exempt"]) + ")" if k == 0 else ""} | {LABEL.get(n, n)} | '
-                       + ' | '.join(str(a) for a in at) + f' | {d["durable_through_2040_41"]} |')
+                       + ' | '.join(str(a) for a in at) + f' | {dur(d)} |')
     return '\n'.join(out)
 def meets_ref(n, ref='scenario_A'):
     a, b = sc(n)['durability'], sc(ref)['durability']
@@ -113,16 +115,16 @@ def frontier(narrative=''):
     if narrative:
         L += [narrative.strip(), '']
     for lev in ('K-5', '6-8'):
-        L += [f'## {lev}', '', '| Plan | At target all 10 years | Avg walk (mi) | % within 1 mi | Over the bus line | '
+        L += [f'## {lev}', '', '| Plan | At target every year | Avg walk (mi) | % within 1 mi | Over the bus line | '
               'Past a closer school | Kids reassigned vs No changes | Size shortfall left in 2031-32 (kids) |', '|---|---|---|---|---|---|---|---|']
         rows = []
         for n in pts:
             s_ = sc(n); m = s_['levels'][lev]; d = s_['durability']['levels'][lev]
             comps = (infeas(n).get('solver_slack') or {}).get(lev, []) if n != 'scenario_A' else []
             slack = sum(v for c in comps for k, v in c.items() if k.endswith((':lo', ':hi')))
-            rows.append((n, d['durable_through_2040_41'], m['avg_walk_mi'], m['pct_within_1.0mi'], m['kids_over_bus_threshold'],
+            rows.append((n, dur(d), m['avg_walk_mi'], m['pct_within_1.0mi'], m['kids_over_bus_threshold'],
                          m['kids_past_closer_school'], m['kids_reassigned_vs_status_quo']))
-            L.append(f'| {LABEL.get(n, n)} | {d["durable_through_2040_41"]} of {d["n_zoned_non_exempt"]} | {m["avg_walk_mi"]:.3f} | '
+            L.append(f'| {LABEL.get(n, n)} | {dur(d)} of {d["n_zoned_non_exempt"]} | {m["avg_walk_mi"]:.3f} | '
                      f'{m["pct_within_1.0mi"]:.1f} | {m["kids_over_bus_threshold"]:,.0f} | {m["kids_past_closer_school"]:,.0f} | '
                      f'{m["kids_reassigned_vs_status_quo"]:,.0f} | {"–" if n == "scenario_A" else (round(slack, 1) if slack else 0)} |')
         ours = [r for r in rows if r[0] != 'scenario_A']
@@ -130,7 +132,7 @@ def frontier(narrative=''):
             a0, a1 = ours[0], ours[-1]
             dn = a1[1] - a0[1]
             if dn > 0:
-                L += ['', f'**What each extra {lev} school at target all 10 years costs** (from {LABEL.get(a0[0])} to {LABEL.get(a1[0])}, '
+                L += ['', f'**What each extra {lev} school at target every year costs** (from {LABEL.get(a0[0])} to {LABEL.get(a1[0])}, '
                       f'+{dn} schools): about {(a1[4] - a0[4]) / dn:+,.0f} kids over the bus line, '
                       f'{(a1[5] - a0[5]) / dn:+,.0f} kids past a closer school, {(a1[2] - a0[2]) / dn * 5280:+,.0f} ft '
                       f'of average walk and {(a1[6] - a0[6]) / dn:+,.0f} kids reassigned, per extra school.']

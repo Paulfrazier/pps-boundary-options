@@ -225,6 +225,27 @@ def solve_component(P, schools, blks, rooted, allow_split, cfg_solver, log, cuts
         soft = []   # everything except size slack, durability-count slack and splits
         if yopen and getattr(P, 'w_open', 0):
             soft.extend(P.w_open * v for v in yopen.values())
+        # (2026-10-18, Paul: no big gaps when a school closes) spacing: a cost per kid on a block left with no open
+        # school within levels.<lev>.coverage.miles; blocks with no school that close even today are exempt
+        # (2026-10-18, hard version) every block keeps an open school within max(min_mi, its distance under the reference
+        # run + slack_mi): no kid ends up much farther from a school than under PPS A, and the gaps PPS A leaves can close
+        for i, nr0 in (getattr(P, 'cov_hard', None) or {}).items() if yopen else []:
+            if i not in bset:
+                continue
+            nr_ = [s for s in nr0 if s in sset]
+            if not nr_ or any(s not in yopen for s in nr_):
+                continue
+            m.AddBoolOr([yopen[s] for s in nr_])
+        # (tiers, 2026-10-18: a flat cost at one distance let the solver leave Forest Park kids 4.5 mi away) each tier
+        # (miles, cost) is charged separately, so a kid with nothing within 3 mi pays all three
+        for cov, w_cov in (getattr(P, 'cov_tiers', None) or []) if yopen else []:
+            for i in blks:
+                nr_ = [s for s in cov[i] if s in sset]
+                if not nr_ or any(s not in yopen for s in nr_) or not P.kids[i]:
+                    continue
+                z_ = m.NewBoolVar('')
+                m.AddBoolOr([yopen[s] for s in nr_] + [z_])
+                soft.append(int(round(w_cov * P.kids[i])) * z_)
         for (u, d), v in pmv.items():
             if d != u and P.punits[u]['size']:
                 # (2026-10-13) cost grows with the distance moved: program_move kid-miles per student per mile (min 1 mi)
@@ -1029,7 +1050,11 @@ def run_problem(P, rooted, cfg_solver, log):
             info2['phase'] = 'splits allowed'
             info2['phase1'] = info1
             chosen, info = phase2, info2
-            if warm and sum(info2['final']['slack'].values()) >= sum(info1['final']['slack'].values()) - 1e-9:
+            s1_, s2_ = sum(info1['final']['slack'].values()), sum(info2['final']['slack'].values())
+            # (2026-10-16) with phase2_always the split step is run for walking, not slack: keep it unless it is worse on
+            # slack (both are often 0; the old rule then threw away the better-walking split plan)
+            keep2 = cfg_solver.get('phase2_always') and s2_ <= s1_ + 1e-9
+            if warm and not keep2 and s2_ >= s1_ - 1e-9:
                 log('  phase 2 did not reduce slack below phase 1 -> keeping the whole-zone phase-1 assignment')
                 chosen, info = phase1, dict(info1, phase2_rejected=info2['final'])
         for i, s in chosen.items():
@@ -1052,6 +1077,14 @@ def _base(cfg, lev, prev, refs):
     W = C.dist('walk', names)
     ref_plans = [refs[r][lev] for r in ('today', 'status_quo')]
     E = MX.eligible_mask(lev, names, ref_plans, lc.get('same_side', ()))
+    nh = lc.get('nest_hard')
+    if nh:
+        # (2026-10-15, Paul: fewer middle->high and elementary->high splits) hard nesting: blocks only to schools whose
+        # building lies in the block's PPS A high-school area (metrics.apply_nest_hard; allow / free exceptions)
+        before = int(E.sum())
+        E = MX.apply_nest_hard(E, names, nh)
+        print(f' {lev}: nest_hard on {nh.get("column", "A_hs")}: {before} -> {int(E.sum())} eligible (block, school) pairs',
+              flush=True)
     return lc, names, sidx, P, W, E
 
 
@@ -1064,12 +1097,22 @@ def _costs(cfg, P, W, E, sq_names, sidx):
     dmin = Wm.min(axis=1)
     sq_idx = np.array([sidx.get(s, -1) for s in sq_names])
     K = P.kids
+    # (2026-10-19, Paul: lines that follow busy streets) kid-miles per unsignalized busy-street crossing on the
+    # shortest walk (build/safe_routes/FOR_MODELS.md). Charged out to 1.5 walk miles at every level, not just to the
+    # bus line, so the solver can't dodge it by pushing kids just past 1.0 mi; NaN (not routed, >1.5 mi) = 0
+    hx = w.get('hard_crossing', 0.0)
+    if hx:
+        sys.path.insert(0, os.path.join(C.SOLVER, '..', 'safe_routes'))
+        import crossings as X
+        H = np.nan_to_num(X.hard(P.names), nan=0.0)
     cost = []
     for i, c in enumerate(P.cand):
         row = []
         for s in c:
             d = float(W[i, s])
             v = w['walk'] * K[i] * d
+            if hx:
+                v += hx * K[i] * float(H[i, s])
             if d - dmin[i] >= margin:
                 v += w['past'] * K[i]
             if s != sq_idx[i]:
@@ -1381,6 +1424,12 @@ def run(cfg_path, start_level='K-5'):
         fa = cfg['levels'][lev].get('fixed_assign')
         if fa:
             plan[lev] = C.blocks()[fa].values.astype(object)
+            # (2026-10-18, Paul: don't send Skyline over the St. Johns Bridge) levels.<lev>.fixed_reassign: a list of
+            # {"by": block column, "area": value, "to": school}; those blocks go to "to" instead of the column's school
+            for ra in cfg['levels'][lev].get('fixed_reassign', []):
+                m_ = C.blocks()[ra['by']].values == ra['area']
+                plan[lev][m_] = ra['to']
+                log(f' {lev}: {int(m_.sum())} blocks with {ra["by"]} = {ra["area"]} -> {ra["to"]}')
             times[lev] = 0.0
             infos[lev] = [{'final': {'slack': {}, 'splits': 0}, 'phase': f'fixed: column {fa} (not solved)'}]
             log(f' {lev}: fixed to block column {fa} (not solved)')
@@ -1595,6 +1644,22 @@ def run(cfg_path, start_level='K-5'):
             area_col = {'K-5': 'es_cur', '6-8': 'ms_cur', '9-12': 'sq_hs'}[lev]
             ac = C.blocks()[area_col].values
             P.closure_area = {s: list(np.nonzero(ac == P.names[s])[0]) for s in P.optional}
+            cvc = cfg['levels'][lev].get('coverage')
+            if cvc:
+                Dc = np.nan_to_num(C.dist(cvc.get('mode', 'walk'), P.names), nan=99.0)
+                tiers = cvc.get('tiers') or [[cvc['miles'], cvc['kid_miles_per_kid']]]
+                P.cov_tiers = [([list(np.nonzero(Dc[i] <= mi)[0]) for i in range(len(Dc))], float(w) * COST) for mi, w in tiers]
+                log(f' {lev}: spacing cost per kid with no open school within (miles, kid-miles): {tiers} ({cvc.get("mode", "walk")})')
+                hv = cvc.get('hard_vs')
+                if hv:
+                    import pandas as _pd
+                    ref_ = _pd.read_csv(os.path.join(C.SOLVER, 'out_v2', hv['run'], 'schools.csv'))
+                    ref_ = sorted(ref_[ref_['zoned_K-5'] == True].school)
+                    dref = np.nan_to_num(C.dist(cvc.get('mode', 'walk'), ref_), nan=99.0).min(1)
+                    lim = np.maximum(hv.get('min_mi', 1.25), dref + hv.get('slack_mi', 0.25))
+                    P.cov_hard = {i: list(np.nonzero(Dc[i] <= lim[i])[0]) for i in range(len(Dc)) if P.kids[i] > 0}
+                    log(f' {lev}: hard spacing rule: every block keeps an open school within max({hv.get("min_mi", 1.25)} mi, '
+                        f'its distance under {hv["run"]} + {hv.get("slack_mi", 0.25)} mi)')
         mf = cfg.get('ms_hs_feeder')
         if lev == '6-8' and mf:
             K912 = MX.level_kids(cfg, '2031')['9-12']
@@ -1631,7 +1696,7 @@ def run(cfg_path, start_level='K-5'):
             bb_ = C.blocks()
             sqz = refs['status_quo'][lev]
             lab = np.array([f'{z}|{g[:12]}|{h}' for z, g, h in zip(sqz, bb_['GEOID'].astype(str).values,
-                                                                   bb_['A_hs'].values)], dtype=object)
+                                                                   bb_[cfg['levels']['9-12'].get('fixed_assign') or 'A_hs'].values)], dtype=object)  # (2026-10-16) the run's own HS lines
             rts = {P.root[s] for s in range(P.S) if P.root[s] is not None}
             NBt = C.adjacency()[0]
             seen_, ties = set(), []

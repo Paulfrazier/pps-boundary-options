@@ -55,8 +55,9 @@ def run(name, cfgname=None, max_extra=0.15, src_staging=False, max_passes=25, to
         names = sorted(cfg['levels'][lev]['zoned'])
         refs = MX.load_refs(os.path.join(C.SOLVER, 'configs', 'v2'))
         lv[lev] = {'names': names, 'idx': {n: k for k, n in enumerate(names)}, 'W': C.dist('walk', names),
-                   'E': MX.eligible_mask(lev, names, [refs['today'][lev], refs['status_quo'][lev]],
-                                         cfg['levels'][lev].get('same_side', ())),
+                   'E': MX.apply_nest_hard(MX.eligible_mask(lev, names, [refs['today'][lev], refs['status_quo'][lev]],
+                                                            cfg['levels'][lev].get('same_side', ())),
+                                           names, cfg['levels'][lev].get('nest_hard')),
                    'cap': cfg['levels'][lev].get('max_walk_mi')}
 
     def walk_ok(lev, i, a, b):

@@ -133,7 +133,14 @@
    },
    "n_split_feeders_ms_to_hs": 3,
    "pct_ms_feeders_to_one_hs": 80.0,
-   "hs_range": 362
+   "hs_range": 362,
+   "split_feeders_es_to_hs": {
+    "Bridlemile": {
+     "Ida B. Wells": 172.1,
+     "Lincoln": 117.0
+    }
+   },
+   "n_split_feeders_es_to_hs": 1
   }
  },
  "programs": {

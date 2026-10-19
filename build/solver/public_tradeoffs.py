@@ -22,11 +22,21 @@ INTRO = {
                 "families PPS's own projections imply would have followed; inferred from the PPS Family Guide, not stated "
                 "by PPS). 1,226 program students still move (PPS A 1,567)."),
     'option2_ms460': ("Boundary changes, balanced middle schools",
-                      "The same closures, immersion programs, high-school lines and elementary lines as Boundary changes, "
-                      "same closures. The only difference is middle school: the minimum middle-school size is lowered "
+                      "The same closures, immersion programs and elementary lines as Boundary changes, same closures. "
+                      "Middle school differs: the minimum middle-school size is lowered "
                       "from 500 (PPS's goal) to 460 so fewer elementary schools are split between middle schools (3 "
                       "instead of 13) and no middle school is over capacity. At PPS's 500 minimum, 9 of 13 middle "
-                      "schools are at target every year; at 460, all 13."),
+                      "schools are at target every year; at 460, all 13. High school differs too, by one change to PPS A's "
+                      "lines (Boundary changes, same closures keeps them unchanged): "
+                      "the Skyline area (about 93 high-school students in 2031-32) stays at Lincoln, as today, instead of "
+                      "crossing the St. Johns Bridge to Roosevelt. Lincoln has room (1,407 students for 1,984 seats in "
+                      "2031-32) and Roosevelt stays above its 1,100 minimum every year 2027-28 to 2031-32 (1,119 in "
+                      "2031-32). It also ends Roosevelt's 2027-28 crowding (1,421 students for 1,395 seats without the "
+                      "change). The costs: Roosevelt falls below 1,100 from 2032-33 (1,075, then 1,027 by 2035-36, "
+                      "years reported but not required); the gap between the largest and smallest high school in "
+                      "2031-32 grows from 362 to 424 students; and the average high-school walk rises from 1.93 to "
+                      "1.98 miles, since Roosevelt is the closer school by road for the Skyline area. All figures: our "
+                      "model (v2) on PSU July 2026 Table 5.5; seats from PPS 2025-26 school profiles."),
     'option1_durable': ("Redrawn K-8 lines",
                         "PPS A's closures, programs (every immersion move kept) and high-school lines. Elementary and "
                         "middle-school lines are redrawn for the shortest walks that keep every school in range and at "

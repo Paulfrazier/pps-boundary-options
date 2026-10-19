@@ -494,3 +494,6 @@ header h1{font-size:clamp(1.4rem,3vw,2rem)}
  .ctab thead th,.ctab td,.ctab tbody th,.bt td,.bt th,.bt thead th{font-size:14px}
  .ctab tbody th{min-width:110px;max-width:130px;white-space:normal}
 }
+/* embed (?embed=1, pages/requests.html): the map and its controls only; the host page carries the header, notes and tables */
+.embed .site-nav,.embed #pps-disclaimer,.embed header,.embed .skip,.embed .sect,.embed #method,.embed footer{display:none}
+.embed .wrap{padding-top:8px}

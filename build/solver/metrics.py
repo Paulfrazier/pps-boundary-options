@@ -74,6 +74,46 @@ def eligible_mask(lev, names, ref_plans=(), same_side=()):
     return M
 
 
+def apply_nest_hard(E, names, nh):
+    """(2026-10-15) levels.<lev>.nest_hard as in solve.py: keep (block, school) only when the school's building lies in
+    the block's area of nh['column'] (default A_hs), plus nh['allow'][school] areas; nh['free'] schools unrestricted.
+    A block left with no school keeps its original row."""
+    if not nh:
+        return E
+    col = C.blocks()[nh.get('column', 'A_hs')].values
+    roots_ = C.school_block()
+    E0 = E.copy()
+    for k, n in enumerate(names):
+        if n in set(nh.get('free', [])) or n not in roots_:
+            continue
+        ok = {col[roots_[n]]} | set(nh.get('allow', {}).get(n, []))
+        E[:, k] &= np.isin(col, list(ok))
+    # a block must reach one of its allowed schools through blocks that may also take that school; blocks with
+    # none (cut off inside their area) keep their original row, repeated until stable
+    NB = C.adjacency()[0]
+    for _ in range(10):
+        reach = np.zeros_like(E)
+        for k, n in enumerate(names):
+            r = roots_.get(n)
+            if r is None or not E[r, k]:
+                reach[:, k] = E[:, k]
+                continue
+            seen = {r}
+            stack = [r]
+            while stack:
+                x = stack.pop()
+                for j in NB[x]:
+                    if j not in seen and E[j, k]:
+                        seen.add(j)
+                        stack.append(j)
+            reach[list(seen), k] = True
+        bad = np.where(~reach.any(axis=1))[0]
+        if not len(bad):
+            break
+        E[bad] = E0[bad]
+    return E
+
+
 def program_totals(cfg, lev, year='2031'):
     if is_v2(cfg):
         return V2.fixed(cfg, lev, year)
@@ -155,7 +195,7 @@ def durability(cfg, plan, bt=None, horizon=None):
         out['basis'] = ('model v2: every population scaled by its own PSU July 2026 Table 5.5 row by year (2031-32 to '
                         '2035-36); 2036-37 to 2040-41 extend each row with the PSU medium district trend (Table 5.2)')
         BTY = {y: building_table(cfg, plan, year=y[:4]).set_index('school') for y in YRS}
-    if hname == 'pps2031':
+    if hname in ('pps2031', 'pps2035'):
         out['basis'] = ('model v2: every population scaled by its own PSU July 2026 Table 5.5 row by year. Required '
                         'window 2027-28 to 2031-32 = PPS Family Guide projection years (p. 1, "Estimates cover 2027-28 '
                         'through 2031-32"); 2032-33 to 2035-36 reported only (last year of PSU Table 5.5). No '
@@ -189,7 +229,7 @@ def durability(cfg, plan, bt=None, horizon=None):
                                   'program_only': bool(r['program_only']), 'size_2031': round(r['total'], 1),
                                   # site request 2026-10-12: aligned with durability.years
                                   'in_range_by_year': inr}
-            if hname == 'pps2031':
+            if hname in ('pps2031', 'pps2035'):
                 first[r['school']]['in_range_all_required_years'] = all(
                     ok for y, ok in zip(YRS, inr) if y in REQ)
                 first[r['school']]['in_range_all_years'] = all(inr)
@@ -333,6 +373,11 @@ def scorecard(cfg, plan, refs):
     sc['levels']['6-8']['n_split_feeders_es_to_ms'] = len(split_es)
     sc['levels']['9-12']['split_feeders_ms_to_hs'] = split_ms
     sc['levels']['9-12']['n_split_feeders_ms_to_hs'] = len(split_ms)
+    # (2026-10-16, site request) elementary areas whose high-school-age kids go to 2+ high schools (same >=5%/>=5 rule)
+    f_es_hs = _feeders(plan['K-5'], plan['9-12'], K['9-12'])
+    split_eh = {a: d for a, d in f_es_hs.items() if a in zoned_es and len(d) > 1}
+    sc['levels']['9-12']['split_feeders_es_to_hs'] = split_eh
+    sc['levels']['9-12']['n_split_feeders_es_to_hs'] = len(split_eh)
     sc['levels']['9-12']['pct_ms_feeders_to_one_hs'] = round(100 * (1 - len(split_ms) / max(len(zoned_ms), 1)), 1)
     hs = bt[bt['type'] == '9-12']
     hs = hs[hs['zoned_9-12']]
@@ -346,7 +391,7 @@ def scorecard(cfg, plan, refs):
         sc['model_v2_notes'] = pop['notes']
         sc['model_version'] = 'v2'
     sc['durability'] = durability(cfg, plan, bt)
-    if C.horizon(cfg)[0] == 'pps2031':
+    if C.horizon(cfg)[0] in ('pps2031', 'pps2035'):
         vr = durability_vs_reference(cfg, sc['durability'])
         if vr:
             sc['durability']['reference'] = vr

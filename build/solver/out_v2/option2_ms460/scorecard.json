@@ -76,32 +76,32 @@
   },
   "9-12": {
    "kids": 9261.0,
-   "avg_walk_mi": 1.933,
+   "avg_walk_mi": 1.975,
    "pct_within_0.5mi": 5.7,
    "pct_within_1.0mi": 23.4,
    "pct_within_1.5mi": 46.7,
    "pct_within_2.0mi": 61.8,
    "kids_over_bus_threshold": 4936.0,
    "bus_threshold_mi": 1.5,
-   "avg_bike_mi": 2.001,
+   "avg_bike_mi": 2.043,
    "kids_past_closer_school": 751.0,
    "past_margin_mi": 0.25,
-   "kids_reassigned_vs_status_quo": 388.0,
-   "poc_share_of_movers_vs_status_quo": 0.421,
-   "kids_reassigned_vs_today": 1565.0,
+   "kids_reassigned_vs_status_quo": 295.0,
+   "poc_share_of_movers_vs_status_quo": 0.468,
+   "kids_reassigned_vs_today": 1472.0,
    "poc_share_district": 0.426,
-   "dissimilarity_index": 0.18,
+   "dissimilarity_index": 0.185,
    "schools_open": 8,
    "schools_in_range": 8,
    "schools_evaluated_non_exempt": 8,
    "schools_in_range_non_exempt": 8,
    "below_floor": {},
    "above_ceiling": {},
-   "avg_utilization": 0.784,
-   "min_size": 1181,
+   "avg_utilization": 0.781,
+   "min_size": 1119,
    "max_size": 1543,
-   "schools_in_range_2025_26_basis": 7,
-   "schools_in_range_at_minus9pct": 7,
+   "schools_in_range_2025_26_basis": 6,
+   "schools_in_range_at_minus9pct": 6,
    "split_feeders_ms_to_hs": {
     "Beaumont": {
      "Grant": 448.3,
@@ -143,8 +143,67 @@
     }
    },
    "n_split_feeders_ms_to_hs": 9,
+   "split_feeders_es_to_hs": {
+    "Alameda": {
+     "Grant": 448.3,
+     "Jefferson": 44.2
+    },
+    "Arleta": {
+     "Cleveland": 11.7,
+     "Franklin": 181.6
+    },
+    "Beverly Cleary": {
+     "Grant": 478.8,
+     "McDaniel": 26.2
+    },
+    "Boise-Eliot/Humboldt": {
+     "Grant": 66.6,
+     "Jefferson": 222.6
+    },
+    "Bridlemile": {
+     "Ida B. Wells": 218.1,
+     "Lincoln": 50.9
+    },
+    "Chief Joseph": {
+     "Jefferson": 125.3,
+     "Roosevelt": 67.5
+    },
+    "Clark": {
+     "Franklin": 16.7,
+     "McDaniel": 231.9
+    },
+    "Faubion": {
+     "Jefferson": 142.4,
+     "McDaniel": 36.9
+    },
+    "Glencoe": {
+     "Franklin": 206.7,
+     "McDaniel": 40.1
+    },
+    "Grout": {
+     "Cleveland": 216.1,
+     "Franklin": 29.9
+    },
+    "Laurelhurst": {
+     "Cleveland": 31.0,
+     "Grant": 237.5
+    },
+    "Scott": {
+     "Grant": 34.8,
+     "McDaniel": 316.1
+    },
+    "Sunnyside": {
+     "Cleveland": 173.1,
+     "Franklin": 22.0
+    },
+    "Woodstock": {
+     "Cleveland": 74.4,
+     "Franklin": 14.3
+    }
+   },
+   "n_split_feeders_es_to_hs": 14,
    "pct_ms_feeders_to_one_hs": 40.0,
-   "hs_range": 362
+   "hs_range": 424
   }
  },
  "programs": {
@@ -1947,15 +2006,15 @@
    "9-12": {
     "n_zoned_non_exempt": 8,
     "at_target_zoned": {
-     "2027-28": 5,
+     "2027-28": 6,
      "2028-29": 7,
      "2029-30": 7,
      "2030-31": 8,
      "2031-32": 8,
-     "2032-33": 8,
-     "2033-34": 8,
-     "2034-35": 7,
-     "2035-36": 7
+     "2032-33": 7,
+     "2033-34": 7,
+     "2034-35": 6,
+     "2035-36": 6
     },
     "n_program_only": 0,
     "at_target_program_only": {
@@ -2124,18 +2183,18 @@
       "first_year_out": null,
       "by": null,
       "sizes_by_year": {
-       "2027-28": 1485.0,
-       "2028-29": 1476.9,
-       "2029-30": 1400.4,
-       "2030-31": 1341.7,
-       "2031-32": 1313.9,
-       "2032-33": 1259.8,
-       "2033-34": 1208.9,
-       "2034-35": 1147.1,
-       "2035-36": 1125.4
+       "2027-28": 1593.0,
+       "2028-29": 1584.0,
+       "2029-30": 1501.3,
+       "2030-31": 1437.6,
+       "2031-32": 1406.7,
+       "2032-33": 1347.9,
+       "2033-34": 1293.1,
+       "2034-35": 1226.3,
+       "2035-36": 1202.4
       },
       "program_only": false,
-      "size_2031": 1313.9,
+      "size_2031": 1406.7,
       "in_range_by_year": [
        true,
        true,
@@ -2181,37 +2240,37 @@
       "in_range_all_years": true
      },
      "Roosevelt": {
-      "first_year_out": "2027-28",
-      "by": 26.0,
+      "first_year_out": "2032-33",
+      "by": -24.9,
       "sizes_by_year": {
-       "2027-28": 1421.0,
-       "2028-29": 1358.6,
-       "2029-30": 1281.6,
-       "2030-31": 1261.9,
-       "2031-32": 1211.9,
-       "2032-33": 1163.3,
-       "2033-34": 1154.3,
-       "2034-35": 1119.3,
-       "2035-36": 1104.1
+       "2027-28": 1313.0,
+       "2028-29": 1251.4,
+       "2029-30": 1180.8,
+       "2030-31": 1166.1,
+       "2031-32": 1119.1,
+       "2032-33": 1075.1,
+       "2033-34": 1070.1,
+       "2034-35": 1040.1,
+       "2035-36": 1027.1
       },
       "program_only": false,
-      "size_2031": 1211.9,
+      "size_2031": 1119.1,
       "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
        false,
-       true,
-       true,
-       true,
-       true,
-       true,
-       true,
-       true,
-       true
+       false,
+       false,
+       false
       ],
-      "in_range_all_required_years": false,
+      "in_range_all_required_years": true,
       "in_range_all_years": false
      }
     },
-    "at_target_all_required_years": 5,
+    "at_target_all_required_years": 6,
     "at_target_all_years_to_2035_36": 4
    }
   },

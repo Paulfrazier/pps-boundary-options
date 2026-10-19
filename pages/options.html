@@ -312,7 +312,7 @@ function renderOptions(){
     if(!o.brief_md) out += '<p>'+esc(o.label)+'</p>';   // the brief's "How it works" replaces the scorecard label
     var p = o.programs;
     var keeps = '<div><b>Keeps</b>'+(o.name==='option3a'?'PPS A\'s closures, K-8 conversions, program moves and high-school lines. Also closes Winterhaven (K-8 STEM) and da Vinci (6-8 arts); their students return to neighborhood schools.':(o.name==='option2'||o.name==='option2_ms460')?'PPS A\'s closures and K-8 conversions, and its program moves except two: MLK Jr Mandarin and Beaumont Spanish 6-8 stay in their buildings.':'PPS A\'s closures, K-8 conversions and program set.')+'</div>';
-    var changes = '<div><b>Changes</b>The K-5 and 6-8 attendance lines (PPS A\'s high-school lines are kept)'+(p&&p.dli_kids_moved_total!=null?'; '+fmtInt(p.dli_kids_moved_total)+' program kids ('+fmtInt(p.because_building_closes)+' because a building closes, '+fmtInt(p.because_program_moves)+' because a program moves)':'')+'.</div>';
+    var changes = '<div><b>Changes</b>The K-5 and 6-8 attendance lines'+(o.hs_change?'. '+esc(o.hs_change).replace(/\.$/,''):' (PPS A\'s high-school lines are kept)')+(p&&p.dli_kids_moved_total!=null?'; '+fmtInt(p.dli_kids_moved_total)+' program kids ('+fmtInt(p.because_building_closes)+' because a building closes, '+fmtInt(p.because_program_moves)+' because a program moves)':'')+'.</div>';
     var k = L(o);
     var rule = o.split_feeder_rule ? '<div><b>Feeder rule</b>'+esc(typeof o.split_feeder_rule==='string'?o.split_feeder_rule:JSON.stringify(o.split_feeder_rule)).replace(/&gt;=/g,'&ge;').replace(/&lt;=/g,'&le;')+'</div>' : '';
     if(o.brief_md) out += '<div class="md brief">'+md(o.brief_md,4)+'</div>';

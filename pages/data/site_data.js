@@ -1,6 +1,6 @@
 window.SITE_DATA = {
- "generated": "2026-10-15T21:16:17+00:00",
- "generated_label": "October 15, 2026",
+ "generated": "2026-10-19T23:47:54+00:00",
+ "generated_label": "October 19, 2026",
  "model_version": "v2",
  "calibrated": true,
  "v2_available": true,
@@ -41,6 +41,7 @@ window.SITE_DATA = {
    "name": "status_quo",
    "short": "PPS Status Quo",
    "caveat": "Lent is all Spanish immersion, so the model counts K-5 kids living in Lent's area at Marysville; the map still draws PPS's Lent line. PPS reports 117 of 254 Lent-area students (46%) attend another neighborhood school (PPS enrollment summary, October 2025); which school is our assumption.",
+   "hs_change": null,
    "full": "PPS Status Quo (2027-28, no closures)",
    "kind": "reference",
    "label": "Status Quo 2027-28 (PPS map; Jefferson dual assignment ended)",
@@ -226,7 +227,30 @@ window.SITE_DATA = {
      },
      "n_split_feeders_ms_to_hs": 5,
      "pct_ms_feeders_to_one_hs": 78.3,
-     "hs_range": 375
+     "hs_range": 375,
+     "split_feeders_es_to_hs": {
+      "Bridlemile": {
+       "Ida B. Wells": 167.8,
+       "Lincoln": 121.3
+      },
+      "Vestal": {
+       "Franklin": 28.6,
+       "McDaniel": 131.4
+      },
+      "Whitman": {
+       "Cleveland": 144.5,
+       "Franklin": 28.7
+      },
+      "Woodmere": {
+       "Cleveland": 25.2,
+       "Franklin": 100.4
+      },
+      "Woodstock": {
+       "Cleveland": 84.8,
+       "Franklin": 7.5
+      }
+     },
+     "n_split_feeders_es_to_hs": 5
     }
    },
    "programs": {
@@ -4607,6 +4631,7 @@ window.SITE_DATA = {
    "name": "scenario_A",
    "short": "PPS A",
    "caveat": null,
+   "hs_change": null,
    "full": "PPS Scenario A",
    "kind": "pps",
    "label": "PPS Scenario A (digitized PPS maps)",
@@ -4748,7 +4773,14 @@ window.SITE_DATA = {
      },
      "n_split_feeders_ms_to_hs": 3,
      "pct_ms_feeders_to_one_hs": 80.0,
-     "hs_range": 362
+     "hs_range": 362,
+     "split_feeders_es_to_hs": {
+      "Bridlemile": {
+       "Ida B. Wells": 172.1,
+       "Lincoln": 117.0
+      }
+     },
+     "n_split_feeders_es_to_hs": 1
     }
    },
    "programs": {
@@ -8427,6 +8459,7 @@ window.SITE_DATA = {
    "name": "scenario_B",
    "short": "PPS B",
    "caveat": null,
+   "hs_change": null,
    "full": "PPS Scenario B",
    "kind": "pps",
    "label": "PPS Scenario B (digitized PPS maps)",
@@ -8576,7 +8609,14 @@ window.SITE_DATA = {
      },
      "n_split_feeders_ms_to_hs": 3,
      "pct_ms_feeders_to_one_hs": 80.0,
-     "hs_range": 306
+     "hs_range": 306,
+     "split_feeders_es_to_hs": {
+      "Bridlemile": {
+       "Ida B. Wells": 172.1,
+       "Lincoln": 117.0
+      }
+     },
+     "n_split_feeders_es_to_hs": 1
     }
    },
    "programs": {
@@ -12483,7 +12523,8 @@ window.SITE_DATA = {
   {
    "name": "option2_ms460",
    "short": "Balanced middle schools",
-   "caveat": "The middle-school minimum is 460, not PPS's 500. Four middle schools dip below 500 in their low year: Harrison Park 461 (2030-31), Ockley Green 461 (2028-29), West Sylvan 460 (2031-32) and George 498 (2031-32). So at PPS's 500, 9 of 13 are at target every year 2027-28 to 2031-32; West Sylvan falls to 443 in 2032-33, a year PPS doesn't project. In return, only 3 elementary schools split between middle schools (best example we modeled: 13) and no middle school is over capacity (our model).",
+   "caveat": "The middle-school minimum is 460, not PPS's 500. Four middle schools dip below 500 in their low year: Harrison Park 461 (2030-31), Ockley Green 461 (2028-29), West Sylvan 460 (2031-32) and George 498 (2031-32). So at PPS's 500, 9 of 13 are at target every year 2027-28 to 2031-32; West Sylvan falls to 443 in 2032-33, a year PPS doesn't project. In return, only 3 elementary schools split between middle schools (best example we modeled: 13) and no middle school is over capacity (our model). One change to PPS A's high-school lines: the Skyline area (about 93 high-school students in 2031-32) stays at Lincoln, as today, instead of crossing the St. Johns Bridge to Roosevelt. It ends Roosevelt's 2027-28 crowding (1,421 students for 1,395 seats without it). The costs: Roosevelt falls below its 1,100 minimum from 2032-33 (1,075, then 1,027 by 2035-36, years reported but not required); the gap between the largest and smallest high school in 2031-32 grows from 362 to 424 students (PPS's goal: under 350); and the average high-school walk rises from 1.93 to 1.98 miles (our model).",
+   "hs_change": "One change to PPS A's high-school lines: the Skyline area (about 93 high-school students in 2031-32) stays at Lincoln, as today, instead of crossing the St. Johns Bridge to Roosevelt. It ends Roosevelt's 2027-28 crowding (1,421 students for 1,395 seats without it). The costs: Roosevelt falls below its 1,100 minimum from 2032-33 (1,075, then 1,027 by 2035-36, years reported but not required); the gap between the largest and smallest high school in 2031-32 grows from 362 to 424 students (PPS's goal: under 350); and the average high-school walk rises from 1.93 to 1.98 miles (our model).",
    "full": "Boundary changes, balanced middle schools",
    "kind": "option",
    "label": "Boundary changes, smaller middle schools: as Boundary changes, same closures, with a middle-school minimum of 460 and at most 3 elementary schools split between middle schools",
@@ -12493,7 +12534,7 @@ window.SITE_DATA = {
    "source": "build/solver/out_v2/option2_ms460/scorecard.json",
    "schools_source": "build/solver/out_v2/option2_ms460/schools.csv",
    "tradeoffs": "build/solver/out_v2/option2_ms460/TRADEOFFS_public.md",
-   "tradeoffs_md": "# Boundary changes, balanced middle schools: trade-offs\n\n**Basis.** Our model (v2) on PSU's per-school forecast (PSU July 2026, Table 5.5) [inferred: our model on PPS/PSU numbers, not PPS figures]. \"At target\" = a school between its minimum (360 K-5; 500 K-8 and 6-8; 1,100 9-12) and its building capacity (PPS 2025-26 school profiles). Required years are 2027-28 to 2031-32, PPS's projection window (PPS Family Guide p. 1: \"Estimates cover 2027-28 through 2031-32\"); 2032-33 to 2035-36 are reported only (last year of PSU Table 5.5). Comparisons are with PPS Scenario A (\"PPS A\").\n\n**What this plan is.** The same closures, immersion programs, high-school lines and elementary lines as Boundary changes, same closures. The only difference is middle school: the minimum middle-school size is lowered from 500 (PPS's goal) to 460 so fewer elementary schools are split between middle schools (3 instead of 13) and no middle school is over capacity. At PPS's 500 minimum, 9 of 13 middle schools are at target every year; at 460, all 13.\n\n**Lines.** The elementary lines come from a longer re-solve that keeps Sunnyside's and Abernethy's areas entirely south of I-84. They were not put through the line cleanup: a cleanup re-solve made them worse (one more school short of its minimum, more kids sent past a closer school), so they have more one-block notches than the earlier lines (147 vs 100). Line counts: `out_v2/LINES_QA.md`.\n\n**Middle-school minimum.** This plan uses 460, not 500, as the middle-school minimum, so its middle-school \"at target\" counts below use 460. Four middle schools dip below 500 in their low year: Harrison Park 461 (2030-31), Ockley Green 461 (2028-29), West Sylvan 460 (2031-32) and George 498 (2031-32). At 500, 9 of 13 are at target every year 2027-28 to 2031-32. West Sylvan falls to 443 in 2032-33, a year PPS doesn't project.\n\n## Schools at target, year by year\n\n`*` = required year. \"PPS figures\" = PPS's own enrollment estimates (Family Guide p. 4, guides dated 2026-10-08), counted with the same targets; PPS publishes none past 2031-32. \"Our model\" = PPS A's lines scored the same way as this plan. High-school lines are PPS A's in every plan, so a 9-12 difference between the two PPS A rows comes from the estimates, not the lines.\n\n| Level | Plan | 27-28* | 28-29* | 29-30* | 30-31* | 31-32* | 32-33 | 33-34 | 34-35 | 35-36 | All required years | All years to 2035-36 |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| K-5 (35) | PPS A, PPS figures | 20 | 21 | 23 | 23 | 22 | — | — | — | — | 18 | — |\n|  | PPS A, our model | 23 | 23 | 22 | 22 | 21 | 21 | 20 | 19 | 18 | 21 | 17 |\n|  | Boundary changes, balanced middle schools | 35 | 35 | 35 | 35 | 35 | 21 | 19 | 15 | 13 | 35 | 13 |\n| 6-8 (13) | PPS A, PPS figures | 11 | 10 | 9 | 7 | 7 | — | — | — | — | 5 | — |\n|  | PPS A, our model | 10 | 9 | 9 | 7 | 7 | 7 | 7 | 8 | 8 | 5 | 5 |\n|  | Boundary changes, balanced middle schools | 13 | 13 | 13 | 13 | 13 | 12 | 12 | 13 | 13 | 13 | 12 |\n| 9-12 (8) | PPS A, PPS figures | 6 | 7 | 7 | 8 | 8 | — | — | — | — | 6 | — |\n|  | PPS A, our model | 5 | 7 | 7 | 8 | 8 | 8 | 8 | 7 | 7 | 5 | 4 |\n|  | Boundary changes, balanced middle schools | 5 | 7 | 7 | 8 | 8 | 8 | 8 | 7 | 7 | 5 | 4 |\n\n- Boundary changes, balanced middle schools: meets or beats PPS A (our model) in every required year at every level.\n\n## Walking, moves and feeders (2031-32 basis)\n\n| Level | Measure | PPS A | Boundary changes, balanced middle schools |\n|---|---|---|---|\n| K-5 | Avg walk (mi) | 0.975 | 0.927 |\n|  | % within 1 mi | 62.7 | 67.6 |\n|  | Assigned to a farther school, past a closer one | 1,970 | 932 |\n|  | Over the bus line | 4,703 | 4,117 |\n|  | Kids reassigned vs PPS Status Quo | 2,935 | 4,867 |\n|  | Non-exempt schools in range, 2031-32 | 25 | 39 |\n|  | Segregation (dissimilarity) index | 0.204 | 0.213 |\n| 6-8 | Avg walk (mi) | 1.758 | 1.710 |\n|  | % within 1 mi | 30.3 | 28.9 |\n|  | Assigned to a farther school, past a closer one | 1,259 | 1,082 |\n|  | Over the bus line | 2,731 | 2,779 |\n|  | Kids reassigned vs PPS Status Quo | 1,972 | 2,315 |\n|  | Non-exempt schools in range, 2031-32 | 7 | 13 |\n|  | Segregation (dissimilarity) index | 0.181 | 0.166 |\n| 9-12 | Avg walk (mi) | 1.933 | 1.933 |\n|  | % within 1 mi | 23.4 | 23.4 |\n|  | Assigned to a farther school, past a closer one | 751 | 751 |\n|  | Over the bus line | 4,936 | 4,936 |\n|  | Kids reassigned vs PPS Status Quo | 388 | 388 |\n|  | Non-exempt schools in range, 2031-32 | 8 | 8 |\n|  | Segregation (dissimilarity) index | 0.180 | 0.180 |\n| 9-12 | High schoolers reassigned vs PPS A | 0 | 0 |\n| 9-12 | HS range, 2031-32 (largest − smallest; KPI < 350) | 362 | 362 |\n| 6-8 | K-5 zones split between middle schools (ES→MS splits) | 1 | 3 |\n| 9-12 | Middle zones feeding one high school (%) | 80% (12 of 15) | 40% (6 of 15) |\n\nBus line = 1 mi K-5, 1.5 mi 6-8/9-12 (ORS 327.043 / PPS). Assigned to a farther school, past a closer one = 0.25 mi margin, no new I-84/river crossing. Kids = neighborhood-program kids on the 2031-32 basis.\n\n**Split feeders in this plan** (a destination counts at ≥5% and ≥5 kids):\n\n- Middle → high: Beaumont → Grant 448, Jefferson 427; Gray → Ida B. Wells 515, Lincoln 424; Harrison Park → Franklin 108, McDaniel 310; Kellogg → Cleveland 65, Franklin 408; Lane → Cleveland 298, Franklin 545; Mt Tabor → Cleveland 31, Franklin 207, Grant 238, McDaniel 40; Ockley Green → Jefferson 306, Roosevelt 240; Roseway Heights → Grant 35, McDaniel 520; Tubman → Grant 545, Jefferson 430\n- Elementary → middle: Chapman → Gray 38, West Sylvan 166; Grout → Hosford 72, Kellogg 54, Lane 24; Rosa Parks → George 72, Ockley Green 121\n- Elementary → high (high-school-age kids): Ainsworth → Lincoln 220, Ida B. Wells 5; Alameda → Grant 448, Jefferson 44; Arleta → Franklin 182, Cleveland 12; Beverly Cleary → Grant 479, McDaniel 26; Boise-Eliot/Humboldt → Jefferson 223, Grant 67; Bridlemile → Ida B. Wells 218, Lincoln 51; Chief Joseph → Jefferson 125, Roosevelt 68; Clark → McDaniel 232, Franklin 17; Faubion → Jefferson 142, McDaniel 37; Glencoe → Franklin 207, McDaniel 40; Grout → Cleveland 216, Franklin 30; Laurelhurst → Grant 238, Cleveland 31; Rieke → Ida B. Wells 291, Lincoln 10; Scott → McDaniel 316, Grant 35, Jefferson 7; Sunnyside → Cleveland 173, Franklin 22; Woodstock → Cleveland 74, Franklin 14\n\n## 2031-32 size problems by school\n\n| Plan | Schools outside their range in 2031-32 (kids short of floor / over capacity) |\n|---|---|\n| PPS A | Lee −106, Forest Park −102, Clark −98, Jackson −91, Grout −80, Sunnyside −80, Tubman −77, Vernon −72, Woodlawn −68, Bridger −67, Lane −52, Laurelhurst −37, Beaumont −36, Glencoe −33, Gray −28, Chapman −24, Abernethy −5, George +50 over capacity, Sitton +14 over capacity, Whitman +45 over capacity |\n| Boundary changes, balanced middle schools | none |\n\nFocus options are not counted. Program-only buildings (no neighborhood area) are sized by program placement, not lines.\n\nPlain-language summary of every plan: `out_v2/BRIEFS.md`.\n",
+   "tradeoffs_md": "# Boundary changes, balanced middle schools: trade-offs\n\n**Basis.** Our model (v2) on PSU's per-school forecast (PSU July 2026, Table 5.5) [inferred: our model on PPS/PSU numbers, not PPS figures]. \"At target\" = a school between its minimum (360 K-5; 500 K-8 and 6-8; 1,100 9-12) and its building capacity (PPS 2025-26 school profiles). Required years are 2027-28 to 2031-32, PPS's projection window (PPS Family Guide p. 1: \"Estimates cover 2027-28 through 2031-32\"); 2032-33 to 2035-36 are reported only (last year of PSU Table 5.5). Comparisons are with PPS Scenario A (\"PPS A\").\n\n**What this plan is.** The same closures, immersion programs and elementary lines as Boundary changes, same closures. Middle school differs: the minimum middle-school size is lowered from 500 (PPS's goal) to 460 so fewer elementary schools are split between middle schools (3 instead of 13) and no middle school is over capacity. At PPS's 500 minimum, 9 of 13 middle schools are at target every year; at 460, all 13. High school differs too, by one change to PPS A's lines (Boundary changes, same closures keeps them unchanged): the Skyline area (about 93 high-school students in 2031-32) stays at Lincoln, as today, instead of crossing the St. Johns Bridge to Roosevelt. Lincoln has room (1,407 students for 1,984 seats in 2031-32) and Roosevelt stays above its 1,100 minimum every year 2027-28 to 2031-32 (1,119 in 2031-32). It also ends Roosevelt's 2027-28 crowding (1,421 students for 1,395 seats without the change). The costs: Roosevelt falls below 1,100 from 2032-33 (1,075, then 1,027 by 2035-36, years reported but not required); the gap between the largest and smallest high school in 2031-32 grows from 362 to 424 students; and the average high-school walk rises from 1.93 to 1.98 miles, since Roosevelt is the closer school by road for the Skyline area. All figures: our model (v2) on PSU July 2026 Table 5.5; seats from PPS 2025-26 school profiles.\n\n**Lines.** The elementary lines come from a longer re-solve that keeps Sunnyside's and Abernethy's areas entirely south of I-84. They were not put through the line cleanup: a cleanup re-solve made them worse (one more school short of its minimum, more kids sent past a closer school), so they have more one-block notches than the earlier lines (147 vs 100). Line counts: `out_v2/LINES_QA.md`.\n\n**Middle-school minimum.** This plan uses 460, not 500, as the middle-school minimum, so its middle-school \"at target\" counts below use 460. Four middle schools dip below 500 in their low year: Harrison Park 461 (2030-31), Ockley Green 461 (2028-29), West Sylvan 460 (2031-32) and George 498 (2031-32). At 500, 9 of 13 are at target every year 2027-28 to 2031-32. West Sylvan falls to 443 in 2032-33, a year PPS doesn't project.\n\n## Schools at target, year by year\n\n`*` = required year. \"PPS figures\" = PPS's own enrollment estimates (Family Guide p. 4, guides dated 2026-10-08), counted with the same targets; PPS publishes none past 2031-32. \"Our model\" = PPS A's lines scored the same way as this plan. High-school lines are PPS A's in every plan, so a 9-12 difference between the two PPS A rows comes from the estimates, not the lines.\n\n| Level | Plan | 27-28* | 28-29* | 29-30* | 30-31* | 31-32* | 32-33 | 33-34 | 34-35 | 35-36 | All required years | All years to 2035-36 |\n|---|---|---|---|---|---|---|---|---|---|---|---|---|\n| K-5 (35) | PPS A, PPS figures | 20 | 21 | 23 | 23 | 22 | — | — | — | — | 18 | — |\n|  | PPS A, our model | 23 | 23 | 22 | 22 | 21 | 21 | 20 | 19 | 18 | 21 | 17 |\n|  | Boundary changes, balanced middle schools | 35 | 35 | 35 | 35 | 35 | 21 | 19 | 15 | 13 | 35 | 13 |\n| 6-8 (13) | PPS A, PPS figures | 11 | 10 | 9 | 7 | 7 | — | — | — | — | 5 | — |\n|  | PPS A, our model | 10 | 9 | 9 | 7 | 7 | 7 | 7 | 8 | 8 | 5 | 5 |\n|  | Boundary changes, balanced middle schools | 13 | 13 | 13 | 13 | 13 | 12 | 12 | 13 | 13 | 13 | 12 |\n| 9-12 (8) | PPS A, PPS figures | 6 | 7 | 7 | 8 | 8 | — | — | — | — | 6 | — |\n|  | PPS A, our model | 5 | 7 | 7 | 8 | 8 | 8 | 8 | 7 | 7 | 5 | 4 |\n|  | Boundary changes, balanced middle schools | 6 | 7 | 7 | 8 | 8 | 7 | 7 | 6 | 6 | 6 | 4 |\n\n- Boundary changes, balanced middle schools: meets or beats PPS A (our model) in every required year at every level.\n\n## Walking, moves and feeders (2031-32 basis)\n\n| Level | Measure | PPS A | Boundary changes, balanced middle schools |\n|---|---|---|---|\n| K-5 | Avg walk (mi) | 0.975 | 0.927 |\n|  | % within 1 mi | 62.7 | 67.6 |\n|  | Assigned to a farther school, past a closer one | 1,970 | 932 |\n|  | Over the bus line | 4,703 | 4,117 |\n|  | Kids reassigned vs PPS Status Quo | 2,935 | 4,867 |\n|  | Non-exempt schools in range, 2031-32 | 25 | 39 |\n|  | Segregation (dissimilarity) index | 0.204 | 0.213 |\n| 6-8 | Avg walk (mi) | 1.758 | 1.710 |\n|  | % within 1 mi | 30.3 | 28.9 |\n|  | Assigned to a farther school, past a closer one | 1,259 | 1,082 |\n|  | Over the bus line | 2,731 | 2,779 |\n|  | Kids reassigned vs PPS Status Quo | 1,972 | 2,315 |\n|  | Non-exempt schools in range, 2031-32 | 7 | 13 |\n|  | Segregation (dissimilarity) index | 0.181 | 0.166 |\n| 9-12 | Avg walk (mi) | 1.933 | 1.975 |\n|  | % within 1 mi | 23.4 | 23.4 |\n|  | Assigned to a farther school, past a closer one | 751 | 751 |\n|  | Over the bus line | 4,936 | 4,936 |\n|  | Kids reassigned vs PPS Status Quo | 388 | 295 |\n|  | Non-exempt schools in range, 2031-32 | 8 | 8 |\n|  | Segregation (dissimilarity) index | 0.180 | 0.185 |\n| 9-12 | High schoolers reassigned vs PPS A | 0 | 93 |\n| 9-12 | HS range, 2031-32 (largest − smallest; KPI < 350) | 362 | 424 |\n| 6-8 | K-5 zones split between middle schools (ES→MS splits) | 1 | 3 |\n| 9-12 | Middle zones feeding one high school (%) | 80% (12 of 15) | 40% (6 of 15) |\n\nBus line = 1 mi K-5, 1.5 mi 6-8/9-12 (ORS 327.043 / PPS). Assigned to a farther school, past a closer one = 0.25 mi margin, no new I-84/river crossing. Kids = neighborhood-program kids on the 2031-32 basis.\n\n**Split feeders in this plan** (a destination counts at ≥5% and ≥5 kids):\n\n- Middle → high: Beaumont → Grant 448, Jefferson 427; Gray → Ida B. Wells 515, Lincoln 424; Harrison Park → Franklin 108, McDaniel 310; Kellogg → Cleveland 65, Franklin 408; Lane → Cleveland 298, Franklin 545; Mt Tabor → Cleveland 31, Franklin 207, Grant 238, McDaniel 40; Ockley Green → Jefferson 306, Roosevelt 240; Roseway Heights → Grant 35, McDaniel 520; Tubman → Grant 545, Jefferson 430\n- Elementary → middle: Chapman → Gray 38, West Sylvan 166; Grout → Hosford 72, Kellogg 54, Lane 24; Rosa Parks → George 72, Ockley Green 121\n- Elementary → high (high-school-age kids): Ainsworth → Lincoln 220, Ida B. Wells 5; Alameda → Grant 448, Jefferson 44; Arleta → Franklin 182, Cleveland 12; Beverly Cleary → Grant 479, McDaniel 26; Boise-Eliot/Humboldt → Jefferson 223, Grant 67; Bridlemile → Ida B. Wells 218, Lincoln 51; Chief Joseph → Jefferson 125, Roosevelt 68; Clark → McDaniel 232, Franklin 17; Faubion → Jefferson 142, McDaniel 37; Glencoe → Franklin 207, McDaniel 40; Grout → Cleveland 216, Franklin 30; Laurelhurst → Grant 238, Cleveland 31; Rieke → Ida B. Wells 291, Lincoln 10; Scott → McDaniel 316, Grant 35, Jefferson 7; Sunnyside → Cleveland 173, Franklin 22; Woodstock → Cleveland 74, Franklin 14\n\n## 2031-32 size problems by school\n\n| Plan | Schools outside their range in 2031-32 (kids short of floor / over capacity) |\n|---|---|\n| PPS A | Lee −106, Forest Park −102, Clark −98, Jackson −91, Grout −80, Sunnyside −80, Tubman −77, Vernon −72, Woodlawn −68, Bridger −67, Lane −52, Laurelhurst −37, Beaumont −36, Glencoe −33, Gray −28, Chapman −24, Abernethy −5, George +50 over capacity, Sitton +14 over capacity, Whitman +45 over capacity |\n| Boundary changes, balanced middle schools | none |\n\nFocus options are not counted. Program-only buildings (no neighborhood area) are sized by program placement, not lines.\n\nPlain-language summary of every plan: `out_v2/BRIEFS.md`.\n",
    "levels": {
     "K-5": {
      "kids": 12715.0,
@@ -12573,32 +12614,32 @@ window.SITE_DATA = {
     },
     "9-12": {
      "kids": 9261.0,
-     "avg_walk_mi": 1.933,
+     "avg_walk_mi": 1.975,
      "pct_within_0.5mi": 5.7,
      "pct_within_1.0mi": 23.4,
      "pct_within_1.5mi": 46.7,
      "pct_within_2.0mi": 61.8,
      "kids_over_bus_threshold": 4936.0,
      "bus_threshold_mi": 1.5,
-     "avg_bike_mi": 2.001,
+     "avg_bike_mi": 2.043,
      "kids_past_closer_school": 751.0,
      "past_margin_mi": 0.25,
-     "kids_reassigned_vs_status_quo": 388.0,
-     "poc_share_of_movers_vs_status_quo": 0.421,
-     "kids_reassigned_vs_today": 1565.0,
+     "kids_reassigned_vs_status_quo": 295.0,
+     "poc_share_of_movers_vs_status_quo": 0.468,
+     "kids_reassigned_vs_today": 1472.0,
      "poc_share_district": 0.426,
-     "dissimilarity_index": 0.18,
+     "dissimilarity_index": 0.185,
      "schools_open": 8,
      "schools_in_range": 8,
      "schools_evaluated_non_exempt": 8,
      "schools_in_range_non_exempt": 8,
      "below_floor": {},
      "above_ceiling": {},
-     "avg_utilization": 0.784,
-     "min_size": 1181,
+     "avg_utilization": 0.781,
+     "min_size": 1119,
      "max_size": 1543,
-     "schools_in_range_2025_26_basis": 7,
-     "schools_in_range_at_minus9pct": 7,
+     "schools_in_range_2025_26_basis": 6,
+     "schools_in_range_at_minus9pct": 6,
      "split_feeders_ms_to_hs": {
       "Beaumont": {
        "Grant": 448.3,
@@ -12640,8 +12681,67 @@ window.SITE_DATA = {
       }
      },
      "n_split_feeders_ms_to_hs": 9,
+     "split_feeders_es_to_hs": {
+      "Alameda": {
+       "Grant": 448.3,
+       "Jefferson": 44.2
+      },
+      "Arleta": {
+       "Cleveland": 11.7,
+       "Franklin": 181.6
+      },
+      "Beverly Cleary": {
+       "Grant": 478.8,
+       "McDaniel": 26.2
+      },
+      "Boise-Eliot/Humboldt": {
+       "Grant": 66.6,
+       "Jefferson": 222.6
+      },
+      "Bridlemile": {
+       "Ida B. Wells": 218.1,
+       "Lincoln": 50.9
+      },
+      "Chief Joseph": {
+       "Jefferson": 125.3,
+       "Roosevelt": 67.5
+      },
+      "Clark": {
+       "Franklin": 16.7,
+       "McDaniel": 231.9
+      },
+      "Faubion": {
+       "Jefferson": 142.4,
+       "McDaniel": 36.9
+      },
+      "Glencoe": {
+       "Franklin": 206.7,
+       "McDaniel": 40.1
+      },
+      "Grout": {
+       "Cleveland": 216.1,
+       "Franklin": 29.9
+      },
+      "Laurelhurst": {
+       "Cleveland": 31.0,
+       "Grant": 237.5
+      },
+      "Scott": {
+       "Grant": 34.8,
+       "McDaniel": 316.1
+      },
+      "Sunnyside": {
+       "Cleveland": 173.1,
+       "Franklin": 22.0
+      },
+      "Woodstock": {
+       "Cleveland": 74.4,
+       "Franklin": 14.3
+      }
+     },
+     "n_split_feeders_es_to_hs": 14,
      "pct_ms_feeders_to_one_hs": 40.0,
-     "hs_range": 362
+     "hs_range": 424
     }
    },
    "programs": {
@@ -14435,15 +14535,15 @@ window.SITE_DATA = {
      "9-12": {
       "n_zoned_non_exempt": 8,
       "at_target_zoned": {
-       "2027-28": 5,
+       "2027-28": 6,
        "2028-29": 7,
        "2029-30": 7,
        "2030-31": 8,
        "2031-32": 8,
-       "2032-33": 8,
-       "2033-34": 8,
-       "2034-35": 7,
-       "2035-36": 7
+       "2032-33": 7,
+       "2033-34": 7,
+       "2034-35": 6,
+       "2035-36": 6
       },
       "n_program_only": 0,
       "at_target_program_only": {
@@ -14612,18 +14712,18 @@ window.SITE_DATA = {
         "first_year_out": null,
         "by": null,
         "sizes_by_year": {
-         "2027-28": 1485.0,
-         "2028-29": 1476.9,
-         "2029-30": 1400.4,
-         "2030-31": 1341.7,
-         "2031-32": 1313.9,
-         "2032-33": 1259.8,
-         "2033-34": 1208.9,
-         "2034-35": 1147.1,
-         "2035-36": 1125.4
+         "2027-28": 1593.0,
+         "2028-29": 1584.0,
+         "2029-30": 1501.3,
+         "2030-31": 1437.6,
+         "2031-32": 1406.7,
+         "2032-33": 1347.9,
+         "2033-34": 1293.1,
+         "2034-35": 1226.3,
+         "2035-36": 1202.4
         },
         "program_only": false,
-        "size_2031": 1313.9,
+        "size_2031": 1406.7,
         "in_range_by_year": [
          true,
          true,
@@ -14669,37 +14769,37 @@ window.SITE_DATA = {
         "in_range_all_years": true
        },
        "Roosevelt": {
-        "first_year_out": "2027-28",
-        "by": 26.0,
+        "first_year_out": "2032-33",
+        "by": -24.9,
         "sizes_by_year": {
-         "2027-28": 1421.0,
-         "2028-29": 1358.6,
-         "2029-30": 1281.6,
-         "2030-31": 1261.9,
-         "2031-32": 1211.9,
-         "2032-33": 1163.3,
-         "2033-34": 1154.3,
-         "2034-35": 1119.3,
-         "2035-36": 1104.1
+         "2027-28": 1313.0,
+         "2028-29": 1251.4,
+         "2029-30": 1180.8,
+         "2030-31": 1166.1,
+         "2031-32": 1119.1,
+         "2032-33": 1075.1,
+         "2033-34": 1070.1,
+         "2034-35": 1040.1,
+         "2035-36": 1027.1
         },
         "program_only": false,
-        "size_2031": 1211.9,
+        "size_2031": 1119.1,
         "in_range_by_year": [
+         true,
+         true,
+         true,
+         true,
+         true,
          false,
-         true,
-         true,
-         true,
-         true,
-         true,
-         true,
-         true,
-         true
+         false,
+         false,
+         false
         ],
-        "in_range_all_required_years": false,
+        "in_range_all_required_years": true,
         "in_range_all_years": false
        }
       },
-      "at_target_all_required_years": 5,
+      "at_target_all_required_years": 6,
       "at_target_all_years_to_2035_36": 4
      }
     },
@@ -15456,11 +15556,11 @@ window.SITE_DATA = {
      "school": "Lincoln",
      "type": "9-12",
      "program_only": false,
-     "total": 1313.874,
+     "total": 1406.696,
      "capacity": 1984,
      "floor": 1100,
      "ceiling": 1984,
-     "utilization": 0.662,
+     "utilization": 0.709,
      "floor_exempt": false,
      "in_range": true,
      "short_by": 0,
@@ -15469,8 +15569,8 @@ window.SITE_DATA = {
      "kids_over_bus_K-5": null,
      "avg_walk_6-8": null,
      "kids_over_bus_6-8": null,
-     "avg_walk_9-12": 2.65,
-     "kids_over_bus_9-12": 654.7
+     "avg_walk_9-12": 3.282,
+     "kids_over_bus_9-12": 747.5
     },
     {
      "school": "McDaniel",
@@ -15496,11 +15596,11 @@ window.SITE_DATA = {
      "school": "Roosevelt",
      "type": "9-12",
      "program_only": false,
-     "total": 1211.938,
+     "total": 1119.116,
      "capacity": 1395,
      "floor": 1100,
      "ceiling": 1395,
-     "utilization": 0.869,
+     "utilization": 0.802,
      "floor_exempt": false,
      "in_range": true,
      "short_by": 0,
@@ -15509,8 +15609,8 @@ window.SITE_DATA = {
      "kids_over_bus_K-5": null,
      "avg_walk_6-8": null,
      "kids_over_bus_6-8": null,
-     "avg_walk_9-12": 1.934,
-     "kids_over_bus_9-12": 353.9
+     "avg_walk_9-12": 1.359,
+     "kids_over_bus_9-12": 261.1
     },
     {
      "school": "Abernethy",
@@ -16333,7 +16433,7 @@ window.SITE_DATA = {
      "kids_over_bus_9-12": null
     }
    ],
-   "brief_md": "**How it works.** PPS A's closures, programs and high-school lines. Elementary and middle-school lines are redrawn for the shortest walks under the one firm rule: at least PPS A's number of schools at target, every year to 2031-32. Middle schools are balanced with a minimum of 460 (PPS's goal is 500), and at most 3 elementary schools may be split between middle schools; these middle-school lines are proven best under those rules (the solver closed the optimality gap to 0%). Two immersion moves that PPS A makes are avoided:\n- **MLK Jr Mandarin** stays at MLK Jr (PPS A moves it to Boise-Eliot/Humboldt).\n- **Beaumont Spanish 6-8** stays at Beaumont (PPS A moves it to Roseway Heights).\n\nTwo other moves are kept because they're needed: without them, Lent would have 274 kids and Rigler 321, both below 360.\n\n**Call-out: middle schools below PPS's 500 goal.** The middle-school minimum is 460, not PPS's 500. Four middle schools dip below 500 in their low year: Harrison Park 461 (2030-31), Ockley Green 461 (2028-29), West Sylvan 460 (2031-32) and George 498 (2031-32). So at PPS's 500, 9 of 13 middle schools are at target every year 2027-28 to 2031-32 (PPS A 5 by PPS's own figures). West Sylvan falls to 443 in 2032-33, a year PPS doesn't project. In return, only 3 elementary schools split between middle schools and no middle school is over capacity [our model].\n\n**The good.**\n- Spares 341 immersion students a program move in 2031-32, about 326 counting only families PPS's own projections imply would have followed. (These follow shares are inferred from the PPS Family Guide, not stated by PPS.)\n- 35 of 35 K-5 schools at target every year (PPS A 18 by PPS's own figures, 21 on our model).\n- Every school in range in 2031-32, and no middle school over capacity in any year 2027-28 to 2031-32: the fullest are Hosford 710 of 711 and Lane 763 of 763 (2027-28), and Beaumont 724 of 737 (capacity: PPS 2025-26 school profiles).\n- Classes stay together: 3 elementary zones split between middle schools (PPS A 1); 97% of K-5 kids go to the same middle school as most of their class (PPS A 99%).\n- Shorter walks than PPS A at both levels. K-5: 932 kids assigned to a farther school, past a closer one (PPS A 1,970); average 0.93 mi (0.98). Middle: 1,082 (PPS A 1,259); average 1.71 mi (1.76).\n- Sunnyside's and Abernethy's areas stay entirely south of I-84. PPS A gives Sunnyside about 21 K-5 kids from north of I-84, Buckman's old crossing (our model on PPS's Scenario A K-5 map; the Sunnyside Family Guide, p. 3, sends Buckman's area \"north of Burnside\" to Sunnyside).\n\n**The bad.**\n- Balanced middle schools: three run in the 460s, below PPS's 500 goal (see the call-out).\n- About 4,870 K-5 and 2,315 middle schoolers reassigned vs PPS Status Quo (PPS A 2,935 and 1,972).\n- 40% of middle zones feed one high school (PPS A 80%).\n- Fragile to a 9% enrollment miss (15 of 41 open K-5 schools stay in range at −9%, vs PPS A's 25 of 41; at forecast 41 vs 27).\n- 2,779 middle schoolers over the 1.5-mi bus line (PPS A 2,731).\n- The elementary lines weren't cleaned after their last re-solve (a cleanup made them worse): 147 one-block notches, still fewer than PPS A's 197.\n\n**Trade-off in one line.** Keeps two immersion programs in their buildings, keeps elementary classes together and fits every middle school in its building, with shorter walks than PPS A, by accepting middle schools of about 460 instead of 500 and more moves.",
+   "brief_md": "**How it works.** PPS A's closures, programs and high-school lines, with one change to the high-school lines: the Skyline area (about 93 high schoolers) stays at Lincoln, as today, instead of crossing the St. Johns Bridge to Roosevelt. Elementary and middle-school lines are redrawn for the shortest walks under the one firm rule: at least PPS A's number of schools at target, every year to 2031-32. Middle schools are balanced with a minimum of 460 (PPS's goal is 500), and at most 3 elementary schools may be split between middle schools; these middle-school lines are proven best under those rules (the solver closed the optimality gap to 0%). Two immersion moves that PPS A makes are avoided:\n- **MLK Jr Mandarin** stays at MLK Jr (PPS A moves it to Boise-Eliot/Humboldt).\n- **Beaumont Spanish 6-8** stays at Beaumont (PPS A moves it to Roseway Heights).\n\nTwo other moves are kept because they're needed: without them, Lent would have 274 kids and Rigler 321, both below 360.\n\n**Call-out: middle schools below PPS's 500 goal.** The middle-school minimum is 460, not PPS's 500. Four middle schools dip below 500 in their low year: Harrison Park 461 (2030-31), Ockley Green 461 (2028-29), West Sylvan 460 (2031-32) and George 498 (2031-32). So at PPS's 500, 9 of 13 middle schools are at target every year 2027-28 to 2031-32 (PPS A 5 by PPS's own figures). West Sylvan falls to 443 in 2032-33, a year PPS doesn't project. In return, only 3 elementary schools split between middle schools and no middle school is over capacity [our model].\n\n**The good.**\n- Spares 341 immersion students a program move in 2031-32, about 326 counting only families PPS's own projections imply would have followed. (These follow shares are inferred from the PPS Family Guide, not stated by PPS.)\n- 35 of 35 K-5 schools at target every year (PPS A 18 by PPS's own figures, 21 on our model).\n- Every school in range in 2031-32, and no middle school over capacity in any year 2027-28 to 2031-32: the fullest are Hosford 710 of 711 and Lane 763 of 763 (2027-28), and Beaumont 724 of 737 (capacity: PPS 2025-26 school profiles).\n- Classes stay together: 3 elementary zones split between middle schools (PPS A 1); 97% of K-5 kids go to the same middle school as most of their class (PPS A 99%).\n- Shorter walks than PPS A at both levels. K-5: 932 kids assigned to a farther school, past a closer one (PPS A 1,970); average 0.93 mi (0.98). Middle: 1,082 (PPS A 1,259); average 1.71 mi (1.76).\n- Ends Roosevelt's crowding in 2027-28: PPS A's high-school lines put 1,421 students in its 1,395 seats that year; with Skyline at Lincoln, Roosevelt has 1,313 [our model].\n- Sunnyside's and Abernethy's areas stay entirely south of I-84. PPS A gives Sunnyside about 21 K-5 kids from north of I-84, Buckman's old crossing (our model on PPS's Scenario A K-5 map; the Sunnyside Family Guide, p. 3, sends Buckman's area \"north of Burnside\" to Sunnyside).\n\n**The bad.**\n- Balanced middle schools: three run in the 460s, below PPS's 500 goal (see the call-out).\n- About 4,870 K-5 and 2,315 middle schoolers reassigned vs PPS Status Quo (PPS A 2,935 and 1,972).\n- 40% of middle zones feed one high school (PPS A 80%).\n- Roosevelt drops below its 1,100 minimum from 2032-33 (1,075, falling to 1,027 in 2035-36), years PPS doesn't project; PPS A's lines keep it above 1,100 through 2035-36 (1,104) [our model].\n- The gap between the largest and smallest high school grows from 362 to 424 students (the target is under 350), and the average high-school walk from 1.93 to 1.98 mi.\n- Fragile to a 9% enrollment miss (15 of 41 open K-5 schools stay in range at −9%, vs PPS A's 25 of 41; at forecast 41 vs 27).\n- 2,779 middle schoolers over the 1.5-mi bus line (PPS A 2,731).\n- The elementary lines weren't cleaned after their last re-solve (a cleanup made them worse): 147 one-block notches, still fewer than PPS A's 197.\n\n**Trade-off in one line.** Keeps two immersion programs in their buildings, keeps elementary classes together and fits every middle school in its building, with shorter walks than PPS A, by accepting middle schools of about 460 instead of 500 and more moves.",
    "brief_rank": 0,
    "what_if": false
   },
@@ -16341,6 +16441,7 @@ window.SITE_DATA = {
    "name": "option2",
    "short": "Boundary changes, same closures",
    "caveat": null,
+   "hs_change": null,
    "full": "Boundary changes, same closures",
    "kind": "option",
    "label": "Boundary changes, same closures: PPS A's closures, programs and high-school lines; new elementary lines (Sunnyside and Abernethy south of I-84); middle lines as before (minimum 500)",
@@ -16535,7 +16636,66 @@ window.SITE_DATA = {
      },
      "n_split_feeders_ms_to_hs": 9,
      "pct_ms_feeders_to_one_hs": 40.0,
-     "hs_range": 362
+     "hs_range": 362,
+     "split_feeders_es_to_hs": {
+      "Alameda": {
+       "Grant": 448.3,
+       "Jefferson": 44.2
+      },
+      "Arleta": {
+       "Cleveland": 11.7,
+       "Franklin": 181.6
+      },
+      "Beverly Cleary": {
+       "Grant": 478.8,
+       "McDaniel": 26.2
+      },
+      "Boise-Eliot/Humboldt": {
+       "Grant": 66.6,
+       "Jefferson": 222.6
+      },
+      "Bridlemile": {
+       "Ida B. Wells": 218.1,
+       "Lincoln": 50.9
+      },
+      "Chief Joseph": {
+       "Jefferson": 125.3,
+       "Roosevelt": 67.5
+      },
+      "Clark": {
+       "Franklin": 16.7,
+       "McDaniel": 231.9
+      },
+      "Faubion": {
+       "Jefferson": 142.4,
+       "McDaniel": 36.9
+      },
+      "Glencoe": {
+       "Franklin": 206.7,
+       "McDaniel": 40.1
+      },
+      "Grout": {
+       "Cleveland": 216.1,
+       "Franklin": 29.9
+      },
+      "Laurelhurst": {
+       "Cleveland": 31.0,
+       "Grant": 237.5
+      },
+      "Scott": {
+       "Grant": 34.8,
+       "McDaniel": 316.1
+      },
+      "Sunnyside": {
+       "Cleveland": 173.1,
+       "Franklin": 22.0
+      },
+      "Woodstock": {
+       "Cleveland": 74.4,
+       "Franklin": 14.3
+      }
+     },
+     "n_split_feeders_es_to_hs": 14
     }
    },
    "programs": {
@@ -20223,7 +20383,7 @@ window.SITE_DATA = {
      "kids_over_bus_9-12": null
     }
    ],
-   "brief_md": "**How it works.** The same closures, immersion programs, high-school lines and elementary lines as Boundary changes, balanced middle schools. Only middle school differs: the minimum is PPS's 500, with no cap on elementary schools split between middle schools.\n\n**The good.**\n- 12 of 13 middle schools at target every year at 500 (balanced middle schools 9 at 500; PPS A 5 by PPS's own figures); the smallest middle school is 500.\n- Everything the best example we modeled gets at K-5: 35 of 35 at target every year; 932 kids assigned to a farther school, past a closer one; the same two immersion programs stay put.\n- 2,274 middle schoolers reassigned vs PPS Status Quo (balanced middle schools 2,315; PPS A 1,972).\n\n**The bad.**\n- Hosford is over capacity in its first two years: 823 and 776 students in a 711-seat building, 2027-28 and 2028-29 (the one middle school not at target).\n- 13 elementary zones split between middle schools (balanced middle schools 3, PPS A 1); 89% of K-5 kids go to the same middle school as most of their class (97%, 99%).\n- Longer middle-school walks than balanced middle schools and PPS A: 1,233 assigned to a farther school, past a closer one (1,082; 1,259); average 1.74 mi (1.71; 1.76); 2,938 over the 1.5-mi bus line (2,779; 2,731).\n\n**Trade-off in one line.** Meets PPS's 500 middle-school goal at 12 of 13 schools, at the cost of an overcrowded Hosford early, more split elementary classes and longer middle-school walks.",
+   "brief_md": "**How it works.** The same closures, immersion programs and elementary lines as Boundary changes, balanced middle schools, with PPS A's high-school lines unchanged (Skyline goes to Roosevelt, as in PPS A). Middle school also differs: the minimum is PPS's 500, with no cap on elementary schools split between middle schools.\n\n**The good.**\n- 12 of 13 middle schools at target every year at 500 (balanced middle schools 9 at 500; PPS A 5 by PPS's own figures); the smallest middle school is 500.\n- Everything the best example we modeled gets at K-5: 35 of 35 at target every year; 932 kids assigned to a farther school, past a closer one; the same two immersion programs stay put.\n- 2,274 middle schoolers reassigned vs PPS Status Quo (balanced middle schools 2,315; PPS A 1,972).\n\n**The bad.**\n- Hosford is over capacity in its first two years: 823 and 776 students in a 711-seat building, 2027-28 and 2028-29 (the one middle school not at target).\n- 13 elementary zones split between middle schools (balanced middle schools 3, PPS A 1); 89% of K-5 kids go to the same middle school as most of their class (97%, 99%).\n- Longer middle-school walks than balanced middle schools and PPS A: 1,233 assigned to a farther school, past a closer one (1,082; 1,259); average 1.74 mi (1.71; 1.76); 2,938 over the 1.5-mi bus line (2,779; 2,731).\n\n**Trade-off in one line.** Meets PPS's 500 middle-school goal at 12 of 13 schools, at the cost of an overcrowded Hosford early, more split elementary classes and longer middle-school walks.",
    "brief_rank": 1,
    "what_if": false
   },
@@ -20231,6 +20391,7 @@ window.SITE_DATA = {
    "name": "option1_durable",
    "short": "Redrawn K-8 lines",
    "caveat": null,
+   "hs_change": null,
    "full": "Redrawn K-8 lines",
    "kind": "option",
    "label": "Option 1-durable: Scenario A schools and programs; lines drawn so at least as many schools as A are at target every year 2027-28..2031-32 (reported to 2035-36) [line cleanup: option1_durable_tidy]",
@@ -20436,7 +20597,79 @@ window.SITE_DATA = {
      },
      "n_split_feeders_ms_to_hs": 8,
      "pct_ms_feeders_to_one_hs": 46.7,
-     "hs_range": 362
+     "hs_range": 362,
+     "split_feeders_es_to_hs": {
+      "Ainsworth": {
+       "Ida B. Wells": 35.3,
+       "Lincoln": 222.4
+      },
+      "Alameda": {
+       "Grant": 406.2,
+       "Jefferson": 43.1
+      },
+      "Arleta": {
+       "Cleveland": 17.8,
+       "Franklin": 173.7
+      },
+      "Beverly Cleary": {
+       "Grant": 448.4,
+       "McDaniel": 40.8
+      },
+      "Boise-Eliot/Humboldt": {
+       "Grant": 22.8,
+       "Jefferson": 187.7
+      },
+      "Bridlemile": {
+       "Ida B. Wells": 225.4,
+       "Lincoln": 47.8
+      },
+      "Chief Joseph": {
+       "Jefferson": 142.6,
+       "Roosevelt": 56.4
+      },
+      "Clark": {
+       "Franklin": 46.5,
+       "McDaniel": 205.2
+      },
+      "Faubion": {
+       "Jefferson": 138.9,
+       "McDaniel": 34.9
+      },
+      "Glencoe": {
+       "Franklin": 182.1,
+       "McDaniel": 62.0
+      },
+      "Grout": {
+       "Cleveland": 232.6,
+       "Franklin": 13.1
+      },
+      "Laurelhurst": {
+       "Franklin": 24.4,
+       "Grant": 223.0
+      },
+      "MLK Jr": {
+       "Grant": 48.4,
+       "Jefferson": 245.6
+      },
+      "Scott": {
+       "Grant": 69.9,
+       "McDaniel": 310.1
+      },
+      "Sunnyside": {
+       "Cleveland": 133.4,
+       "Franklin": 34.6,
+       "Grant": 13.3
+      },
+      "Vernon": {
+       "Grant": 32.7,
+       "Jefferson": 216.5
+      },
+      "Woodstock": {
+       "Cleveland": 78.7,
+       "Franklin": 13.9
+      }
+     },
+     "n_split_feeders_es_to_hs": 17
     }
    },
    "programs": {
@@ -24164,6 +24397,7 @@ window.SITE_DATA = {
    "name": "option4",
    "short": "Rebalanced PPS A",
    "caveat": "Moves more K-5 kids than PPS A (3,594 vs 2,935): getting PPS A's 20 schools that miss their size range into range takes extra moves. Still misses three 2031-32 sizes: Forest Park K-5 101 short (PPS A: 102 short; no fix within the 2-mile walk cap), Jackson 6-8 78 short, Roseway Heights 6-8 35 short.",
+   "hs_change": null,
    "full": "Rebalanced PPS A",
    "kind": "option",
    "label": "Option 4: fewest moves (A closures/programs; minimise kids reassigned vs today; 2.0-mile K-5 walk cap)",
@@ -24304,7 +24538,59 @@ window.SITE_DATA = {
      },
      "n_split_feeders_ms_to_hs": 8,
      "pct_ms_feeders_to_one_hs": 46.7,
-     "hs_range": 362
+     "hs_range": 362,
+     "split_feeders_es_to_hs": {
+      "Alameda": {
+       "Grant": 447.8,
+       "Jefferson": 30.2
+      },
+      "Boise-Eliot/Humboldt": {
+       "Grant": 25.3,
+       "Jefferson": 223.5
+      },
+      "Bridlemile": {
+       "Ida B. Wells": 172.1,
+       "Lincoln": 116.8
+      },
+      "Chief Joseph": {
+       "Jefferson": 132.8,
+       "Roosevelt": 47.6
+      },
+      "Faubion": {
+       "Jefferson": 145.8,
+       "McDaniel": 73.9
+      },
+      "Glencoe": {
+       "Franklin": 226.8,
+       "McDaniel": 31.8
+      },
+      "Laurelhurst": {
+       "Cleveland": 13.6,
+       "Franklin": 17.7,
+       "Grant": 230.2
+      },
+      "MLK Jr": {
+       "Grant": 73.2,
+       "Jefferson": 254.8
+      },
+      "Scott": {
+       "Grant": 30.6,
+       "McDaniel": 291.3
+      },
+      "Sunnyside": {
+       "Cleveland": 122.3,
+       "Franklin": 37.2
+      },
+      "Whitman": {
+       "Cleveland": 13.9,
+       "Franklin": 253.2
+      },
+      "Woodlawn": {
+       "Jefferson": 140.2,
+       "Roosevelt": 15.0
+      }
+     },
+     "n_split_feeders_es_to_hs": 12
     }
    },
    "programs": {
@@ -28032,6 +28318,7 @@ window.SITE_DATA = {
    "name": "option3a",
    "short": "Close 2 focus options",
    "caveat": "A what-if, not one of the example plans. Assumes every returning Winterhaven and da Vinci student attends their neighborhood school; home areas come from a per-catchment sheet of 2025-26 focus students (second-hand; per-program source not stated); 21 students living outside PPS are not placed.",
+   "hs_change": null,
    "full": "Close 2 focus options (Winterhaven, da Vinci)",
    "kind": "option",
    "label": "Close 2 focus options (Winterhaven, da Vinci): PPS A closures/programs/9-12 lines; Winterhaven and da Vinci students return to their neighborhood schools, placed by the per-catchment spreadsheet; lines redrawn as option1_durable (pps2031, walkable K-5, soft feeders) [line cleanup: option3a_tidy]",
@@ -28209,7 +28496,74 @@ window.SITE_DATA = {
      },
      "n_split_feeders_ms_to_hs": 10,
      "pct_ms_feeders_to_one_hs": 33.3,
-     "hs_range": 362
+     "hs_range": 362,
+     "split_feeders_es_to_hs": {
+      "Ainsworth": {
+       "Ida B. Wells": 31.9,
+       "Lincoln": 202.9
+      },
+      "Alameda": {
+       "Grant": 458.1,
+       "Jefferson": 48.5
+      },
+      "Beverly Cleary": {
+       "Grant": 420.7,
+       "McDaniel": 46.3
+      },
+      "Boise-Eliot/Humboldt": {
+       "Grant": 22.4,
+       "Jefferson": 196.9
+      },
+      "Bridlemile": {
+       "Ida B. Wells": 202.7,
+       "Lincoln": 67.1
+      },
+      "Chief Joseph": {
+       "Jefferson": 136.0,
+       "Roosevelt": 58.0
+      },
+      "Clark": {
+       "Franklin": 33.2,
+       "McDaniel": 211.8
+      },
+      "Faubion": {
+       "Jefferson": 136.7,
+       "McDaniel": 63.9
+      },
+      "Glencoe": {
+       "Franklin": 179.5,
+       "McDaniel": 56.9
+      },
+      "Grout": {
+       "Cleveland": 212.5,
+       "Franklin": 20.9
+      },
+      "Laurelhurst": {
+       "Franklin": 18.0,
+       "Grant": 232.4
+      },
+      "MLK Jr": {
+       "Grant": 52.9,
+       "Jefferson": 231.0
+      },
+      "Scott": {
+       "Grant": 49.5,
+       "McDaniel": 275.9
+      },
+      "Sunnyside": {
+       "Cleveland": 149.3,
+       "Franklin": 27.6
+      },
+      "Vernon": {
+       "Grant": 24.8,
+       "Jefferson": 222.5
+      },
+      "Woodstock": {
+       "Cleveland": 111.9,
+       "Franklin": 19.9
+      }
+     },
+     "n_split_feeders_es_to_hs": 16
     }
    },
    "programs": {
@@ -41041,6 +41395,8 @@ window.SITE_DATA = {
    ]
   }
  },
+ "request_options": [],
+ "requests": [],
  "preview_plans": [],
  "warnings": [],
  "skipped_mixed_horizon": []
