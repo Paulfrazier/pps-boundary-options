@@ -47,6 +47,16 @@
       "low"
     ],
     [
+      "K-5_over_bus",
+      "K-5 kids living past the 1-mile bus line",
+      "low"
+    ],
+    [
+      "6-8_over_bus",
+      "6-8 kids living past the 1.5-mile bus line",
+      "low"
+    ],
+    [
       "K-5->6-8_together_pct",
       "Elementary class kept together into middle school (%)",
       "high"
@@ -123,6 +133,16 @@
           "text": "1.55",
           "rating": ""
         },
+        "K-5_over_bus": {
+          "value": 3496.0,
+          "text": "3,496",
+          "rating": ""
+        },
+        "6-8_over_bus": {
+          "value": 2320.0,
+          "text": "2,320",
+          "rating": ""
+        },
         "K-5->6-8_together_pct": {
           "value": 98.6,
           "text": "98.6",
@@ -156,6 +176,7 @@
         "K-5_avg_walk": 0.874,
         "K-5_within_1mi_pct": 72.2,
         "K-5_past_closer": 1861.0,
+        "K-5_over_bus": 3496.0,
         "K-5_reassigned": 0.0,
         "K-5_open": 54,
         "K-5_dissimilarity": 0.217,
@@ -165,6 +186,7 @@
         "6-8_avg_walk": 1.555,
         "6-8_within_1mi_pct": 39.9,
         "6-8_past_closer": 1407.0,
+        "6-8_over_bus": 2320.0,
         "6-8_reassigned": 0.0,
         "6-8_open": 23,
         "6-8_dissimilarity": 0.188,
@@ -227,6 +249,16 @@
           "text": "1.76",
           "rating": "yellow"
         },
+        "K-5_over_bus": {
+          "value": 4703.0,
+          "text": "4,703",
+          "rating": "red"
+        },
+        "6-8_over_bus": {
+          "value": 2731.0,
+          "text": "2,731",
+          "rating": "green"
+        },
         "K-5->6-8_together_pct": {
           "value": 98.6,
           "text": "98.6",
@@ -260,6 +292,7 @@
         "K-5_avg_walk": 0.975,
         "K-5_within_1mi_pct": 62.7,
         "K-5_past_closer": 1970.0,
+        "K-5_over_bus": 4703.0,
         "K-5_reassigned": 2935.0,
         "K-5_open": 41,
         "K-5_dissimilarity": 0.204,
@@ -269,6 +302,7 @@
         "6-8_avg_walk": 1.758,
         "6-8_within_1mi_pct": 30.3,
         "6-8_past_closer": 1259.0,
+        "6-8_over_bus": 2731.0,
         "6-8_reassigned": 1972.0,
         "6-8_open": 15,
         "6-8_dissimilarity": 0.181,
@@ -331,6 +365,16 @@
           "text": "1.75",
           "rating": "yellow"
         },
+        "K-5_over_bus": {
+          "value": 4376.0,
+          "text": "4,376",
+          "rating": "yellow"
+        },
+        "6-8_over_bus": {
+          "value": 2731.0,
+          "text": "2,731",
+          "rating": "green"
+        },
         "K-5->6-8_together_pct": {
           "value": 98.5,
           "text": "98.5",
@@ -364,6 +408,7 @@
         "K-5_avg_walk": 0.949,
         "K-5_within_1mi_pct": 65.3,
         "K-5_past_closer": 2144.0,
+        "K-5_over_bus": 4376.0,
         "K-5_reassigned": 2305.0,
         "K-5_open": 44,
         "K-5_dissimilarity": 0.205,
@@ -373,6 +418,7 @@
         "6-8_avg_walk": 1.754,
         "6-8_within_1mi_pct": 30.3,
         "6-8_past_closer": 1216.0,
+        "6-8_over_bus": 2731.0,
         "6-8_reassigned": 1972.0,
         "6-8_open": 15,
         "6-8_dissimilarity": 0.181,
@@ -435,6 +481,16 @@
           "text": "1.74",
           "rating": "yellow"
         },
+        "K-5_over_bus": {
+          "value": 4117.0,
+          "text": "4,117",
+          "rating": "green"
+        },
+        "6-8_over_bus": {
+          "value": 2938.0,
+          "text": "2,938",
+          "rating": "yellow"
+        },
         "K-5->6-8_together_pct": {
           "value": 89.1,
           "text": "89.1",
@@ -468,6 +524,7 @@
         "K-5_avg_walk": 0.927,
         "K-5_within_1mi_pct": 67.6,
         "K-5_past_closer": 932.0,
+        "K-5_over_bus": 4117.0,
         "K-5_reassigned": 4867.0,
         "K-5_open": 41,
         "K-5_dissimilarity": 0.213,
@@ -477,6 +534,7 @@
         "6-8_avg_walk": 1.739,
         "6-8_within_1mi_pct": 27.6,
         "6-8_past_closer": 1233.0,
+        "6-8_over_bus": 2938.0,
         "6-8_reassigned": 2274.0,
         "6-8_open": 15,
         "6-8_dissimilarity": 0.164,
@@ -538,6 +596,16 @@
           "text": "1.71",
           "rating": "green"
         },
+        "K-5_over_bus": {
+          "value": 4117.0,
+          "text": "4,117",
+          "rating": "green"
+        },
+        "6-8_over_bus": {
+          "value": 2779.0,
+          "text": "2,779",
+          "rating": "green"
+        },
         "K-5->6-8_together_pct": {
           "value": 96.9,
           "text": "96.9",
@@ -571,6 +639,7 @@
         "K-5_avg_walk": 0.927,
         "K-5_within_1mi_pct": 67.6,
         "K-5_past_closer": 932.0,
+        "K-5_over_bus": 4117.0,
         "K-5_reassigned": 4867.0,
         "K-5_open": 41,
         "K-5_dissimilarity": 0.213,
@@ -580,6 +649,7 @@
         "6-8_avg_walk": 1.71,
         "6-8_within_1mi_pct": 28.9,
         "6-8_past_closer": 1082.0,
+        "6-8_over_bus": 2779.0,
         "6-8_reassigned": 2315.0,
         "6-8_open": 15,
         "6-8_dissimilarity": 0.166,
@@ -643,6 +713,16 @@
           "text": "1.67",
           "rating": "green"
         },
+        "K-5_over_bus": {
+          "value": 4366.0,
+          "text": "4,366",
+          "rating": "yellow"
+        },
+        "6-8_over_bus": {
+          "value": 2661.0,
+          "text": "2,661",
+          "rating": "green"
+        },
         "K-5->6-8_together_pct": {
           "value": 89.8,
           "text": "89.8",
@@ -676,6 +756,7 @@
         "K-5_avg_walk": 0.947,
         "K-5_within_1mi_pct": 65.7,
         "K-5_past_closer": 1285.0,
+        "K-5_over_bus": 4366.0,
         "K-5_reassigned": 4914.0,
         "K-5_open": 41,
         "K-5_dissimilarity": 0.211,
@@ -685,6 +766,7 @@
         "6-8_avg_walk": 1.667,
         "6-8_within_1mi_pct": 30.1,
         "6-8_past_closer": 882.0,
+        "6-8_over_bus": 2661.0,
         "6-8_reassigned": 2435.0,
         "6-8_open": 15,
         "6-8_dissimilarity": 0.164,
@@ -746,6 +828,16 @@
           "text": "1.75",
           "rating": "yellow"
         },
+        "K-5_over_bus": {
+          "value": 4136.0,
+          "text": "4,136",
+          "rating": "green"
+        },
+        "6-8_over_bus": {
+          "value": 2961.0,
+          "text": "2,961",
+          "rating": "red"
+        },
         "K-5->6-8_together_pct": {
           "value": 93.3,
           "text": "93.3",
@@ -779,6 +871,7 @@
         "K-5_avg_walk": 0.929,
         "K-5_within_1mi_pct": 67.5,
         "K-5_past_closer": 995.0,
+        "K-5_over_bus": 4136.0,
         "K-5_reassigned": 4815.0,
         "K-5_open": 41,
         "K-5_dissimilarity": 0.212,
@@ -788,6 +881,7 @@
         "6-8_avg_walk": 1.751,
         "6-8_within_1mi_pct": 28.1,
         "6-8_past_closer": 1267.0,
+        "6-8_over_bus": 2961.0,
         "6-8_reassigned": 2598.0,
         "6-8_open": 15,
         "6-8_dissimilarity": 0.171,
@@ -849,6 +943,16 @@
           "text": "1.90",
           "rating": "red"
         },
+        "K-5_over_bus": {
+          "value": 4655.0,
+          "text": "4,655",
+          "rating": "red"
+        },
+        "6-8_over_bus": {
+          "value": 3092.0,
+          "text": "3,092",
+          "rating": "red"
+        },
         "K-5->6-8_together_pct": {
           "value": 100.0,
           "text": "100.0",
@@ -882,6 +986,7 @@
         "K-5_avg_walk": 0.969,
         "K-5_within_1mi_pct": 63.4,
         "K-5_past_closer": 1838.0,
+        "K-5_over_bus": 4655.0,
         "K-5_reassigned": 3594.0,
         "K-5_open": 41,
         "K-5_dissimilarity": 0.214,
@@ -891,6 +996,7 @@
         "6-8_avg_walk": 1.898,
         "6-8_within_1mi_pct": 26.1,
         "6-8_past_closer": 1614.0,
+        "6-8_over_bus": 3092.0,
         "6-8_reassigned": 2762.0,
         "6-8_open": 15,
         "6-8_dissimilarity": 0.137,
@@ -952,6 +1058,16 @@
           "text": "1.66",
           "rating": "green"
         },
+        "K-5_over_bus": {
+          "value": 4156.0,
+          "text": "4,156",
+          "rating": "green"
+        },
+        "6-8_over_bus": {
+          "value": 2828.0,
+          "text": "2,828",
+          "rating": "yellow"
+        },
         "K-5->6-8_together_pct": {
           "value": 92.8,
           "text": "92.8",
@@ -985,6 +1101,7 @@
         "K-5_avg_walk": 0.928,
         "K-5_within_1mi_pct": 67.7,
         "K-5_past_closer": 1001.0,
+        "K-5_over_bus": 4156.0,
         "K-5_reassigned": 4888.0,
         "K-5_open": 41,
         "K-5_dissimilarity": 0.212,
@@ -994,6 +1111,7 @@
         "6-8_avg_walk": 1.657,
         "6-8_within_1mi_pct": 30.3,
         "6-8_past_closer": 1044.0,
+        "6-8_over_bus": 2828.0,
         "6-8_reassigned": 2637.0,
         "6-8_open": 15,
         "6-8_dissimilarity": 0.186,
@@ -1055,6 +1173,16 @@
           "text": "1.73",
           "rating": "green"
         },
+        "K-5_over_bus": {
+          "value": 4269.0,
+          "text": "4,269",
+          "rating": "green"
+        },
+        "6-8_over_bus": {
+          "value": 2837.0,
+          "text": "2,837",
+          "rating": "yellow"
+        },
         "K-5->6-8_together_pct": {
           "value": 95.9,
           "text": "95.9",
@@ -1088,6 +1216,7 @@
         "K-5_avg_walk": 0.943,
         "K-5_within_1mi_pct": 66.4,
         "K-5_past_closer": 1200.0,
+        "K-5_over_bus": 4269.0,
         "K-5_reassigned": 4703.0,
         "K-5_open": 41,
         "K-5_dissimilarity": 0.21,
@@ -1097,6 +1226,7 @@
         "6-8_avg_walk": 1.725,
         "6-8_within_1mi_pct": 28.8,
         "6-8_past_closer": 1159.0,
+        "6-8_over_bus": 2837.0,
         "6-8_reassigned": 2143.0,
         "6-8_open": 15,
         "6-8_dissimilarity": 0.176,
@@ -1158,6 +1288,16 @@
           "text": "1.68",
           "rating": "green"
         },
+        "K-5_over_bus": {
+          "value": 4211.0,
+          "text": "4,211",
+          "rating": "green"
+        },
+        "6-8_over_bus": {
+          "value": 2878.0,
+          "text": "2,878",
+          "rating": "yellow"
+        },
         "K-5->6-8_together_pct": {
           "value": 90.6,
           "text": "90.6",
@@ -1191,6 +1331,7 @@
         "K-5_avg_walk": 0.936,
         "K-5_within_1mi_pct": 66.9,
         "K-5_past_closer": 1097.0,
+        "K-5_over_bus": 4211.0,
         "K-5_reassigned": 4923.0,
         "K-5_open": 41,
         "K-5_dissimilarity": 0.213,
@@ -1200,6 +1341,7 @@
         "6-8_avg_walk": 1.676,
         "6-8_within_1mi_pct": 29.1,
         "6-8_past_closer": 1234.0,
+        "6-8_over_bus": 2878.0,
         "6-8_reassigned": 1831.0,
         "6-8_open": 16,
         "6-8_dissimilarity": 0.19,
@@ -1261,6 +1403,16 @@
           "text": "1.72",
           "rating": "green"
         },
+        "K-5_over_bus": {
+          "value": 4097.0,
+          "text": "4,097",
+          "rating": "green"
+        },
+        "6-8_over_bus": {
+          "value": 2632.0,
+          "text": "2,632",
+          "rating": "green"
+        },
         "K-5->6-8_together_pct": {
           "value": 86.1,
           "text": "86.1",
@@ -1294,6 +1446,7 @@
         "K-5_avg_walk": 0.97,
         "K-5_within_1mi_pct": 68.0,
         "K-5_past_closer": 706.0,
+        "K-5_over_bus": 4097.0,
         "K-5_reassigned": 5490.0,
         "K-5_open": 38,
         "K-5_dissimilarity": 0.214,
@@ -1303,6 +1456,7 @@
         "6-8_avg_walk": 1.723,
         "6-8_within_1mi_pct": 30.0,
         "6-8_past_closer": 315.0,
+        "6-8_over_bus": 2632.0,
         "6-8_reassigned": 2194.0,
         "6-8_open": 14,
         "6-8_dissimilarity": 0.16,
@@ -1364,6 +1518,16 @@
           "text": "1.75",
           "rating": "yellow"
         },
+        "K-5_over_bus": {
+          "value": 4211.0,
+          "text": "4,211",
+          "rating": "green"
+        },
+        "6-8_over_bus": {
+          "value": 2828.0,
+          "text": "2,828",
+          "rating": "yellow"
+        },
         "K-5->6-8_together_pct": {
           "value": 100.0,
           "text": "100.0",
@@ -1397,6 +1561,7 @@
         "K-5_avg_walk": 0.936,
         "K-5_within_1mi_pct": 66.9,
         "K-5_past_closer": 1097.0,
+        "K-5_over_bus": 4211.0,
         "K-5_reassigned": 4923.0,
         "K-5_open": 41,
         "K-5_dissimilarity": 0.213,
@@ -1406,6 +1571,7 @@
         "6-8_avg_walk": 1.745,
         "6-8_within_1mi_pct": 28.3,
         "6-8_past_closer": 1166.0,
+        "6-8_over_bus": 2828.0,
         "6-8_reassigned": 2475.0,
         "6-8_open": 15,
         "6-8_dissimilarity": 0.173,

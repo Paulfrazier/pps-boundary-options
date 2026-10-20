@@ -71,6 +71,7 @@ def row(run, folder):
         r[f'{lev}_avg_walk'] = L[lev]['avg_walk_mi']
         r[f'{lev}_within_1mi_pct'] = L[lev]['pct_within_1.0mi']
         r[f'{lev}_past_closer'] = L[lev]['kids_past_closer_school']
+        r[f'{lev}_over_bus'] = L[lev]['kids_over_bus_threshold']             # (2026-10-19, Paul) metrics.BUS
         r[f'{lev}_reassigned'] = L[lev]['kids_reassigned_vs_status_quo']      # vs PPS Status Quo (2027-28)
         r[f'{lev}_open'] = L[lev]['schools_open']
         r[f'{lev}_dissimilarity'] = L[lev]['dissimilarity_index']
@@ -115,6 +116,8 @@ MEASURES = [
     ('6-8_past_closer', '6-8 kids assigned to a farther school, past a closer one', 'low'),
     ('K-5_avg_walk', 'K-5 average walk (mi)', 'low'),
     ('6-8_avg_walk', '6-8 average walk (mi)', 'low'),
+    ('K-5_over_bus', 'K-5 kids living past the 1-mile bus line', 'low'),
+    ('6-8_over_bus', '6-8 kids living past the 1.5-mile bus line', 'low'),
     ('K-5->6-8_together_pct', 'Elementary class kept together into middle school (%)', 'high'),
     ('K-5->6-8_splits', 'Elementary schools split between middle schools', 'low'),
     ('6-8->9-12_together_pct', 'Middle-school class kept together into high school (%)', 'high'),

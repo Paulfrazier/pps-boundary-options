@@ -15,7 +15,7 @@ What every number in this project means. The code that computes each one is name
 - **Walk distance.** The shortest walking route on OpenStreetMap streets and paths, from each Census block's center to the school, computed with OSRM's foot profile. Freeways, rail and the river are crossed only at real bridges and overpasses. Bike distance uses OSRM's bicycle profile.
 - **Average walk.** Walk distance averaged over every kid at that level, weighted by kids per block.
 - **Within ½ / 1 / 1½ / 2 miles.** Share of kids whose assigned school is that close on foot (the map also shows 2 miles at every level).
-- **Past busing distance.** Kids whose walk is over the distance at which Oregon law (ORS 327.043) and PPS's transportation guidelines provide a bus: more than 1 mile for K-5, more than 1.5 miles for 6-8 and 9-12. For high school we ignore PPS's extra TriMet-stop test, so this overstates yellow-bus riders there.
+- **Past busing distance.** Kids whose walk is over the distance at which Oregon law (ORS 327.043) and PPS's transportation guidelines provide a bus: more than 1 mile for K-5, more than 1.5 miles for 6-8 and 9-12. For high school we ignore PPS's extra TriMet-stop test, so this overstates yellow-bus riders there. The trade-offs table's "past the bus line" rows use this count for K-5 and 6-8 (`levels.<level>.kids_over_bus_threshold` in each scorecard).
 
 ## Kids assigned to a farther school, past a closer one
 

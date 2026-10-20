@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-19T23:47:54+00:00",
+ "generated": "2026-10-20T04:26:39+00:00",
  "generated_label": "October 19, 2026",
  "model_version": "v2",
  "calibrated": true,
@@ -32344,6 +32344,16 @@
     "kind": "high"
    },
    {
+    "key": "K-5_over_bus",
+    "label": "K-5 kids living past the 1-mile bus line",
+    "kind": "low"
+   },
+   {
+    "key": "6-8_over_bus",
+    "label": "6-8 kids living past the 1.5-mile bus line",
+    "kind": "low"
+   },
+   {
     "key": "K-5->6-8_together_pct",
     "label": "Elementary class kept together into middle school (%)",
     "kind": "high"
@@ -32412,6 +32422,14 @@
      },
      "6-8_avg_walk": {
       "text": "1.56",
+      "rating": ""
+     },
+     "K-5_over_bus": {
+      "text": "3,496",
+      "rating": ""
+     },
+     "6-8_over_bus": {
+      "text": "2,320",
       "rating": ""
      },
      "K-5->6-8_together_pct": {
@@ -32483,6 +32501,14 @@
       "text": "1.76",
       "rating": "yellow"
      },
+     "K-5_over_bus": {
+      "text": "4,703",
+      "rating": "red"
+     },
+     "6-8_over_bus": {
+      "text": "2,731",
+      "rating": "green"
+     },
      "K-5->6-8_together_pct": {
       "text": "98.6",
       "rating": "green"
@@ -32552,6 +32578,14 @@
       "text": "1.75",
       "rating": "yellow"
      },
+     "K-5_over_bus": {
+      "text": "4,376",
+      "rating": "yellow"
+     },
+     "6-8_over_bus": {
+      "text": "2,731",
+      "rating": "green"
+     },
      "K-5->6-8_together_pct": {
       "text": "98.5",
       "rating": "green"
@@ -32619,6 +32653,14 @@
      },
      "6-8_avg_walk": {
       "text": "1.71",
+      "rating": "green"
+     },
+     "K-5_over_bus": {
+      "text": "4,117",
+      "rating": "green"
+     },
+     "6-8_over_bus": {
+      "text": "2,779",
       "rating": "green"
      },
      "K-5->6-8_together_pct": {
@@ -32690,6 +32732,14 @@
       "text": "1.74",
       "rating": "yellow"
      },
+     "K-5_over_bus": {
+      "text": "4,117",
+      "rating": "green"
+     },
+     "6-8_over_bus": {
+      "text": "2,938",
+      "rating": "yellow"
+     },
      "K-5->6-8_together_pct": {
       "text": "89.1",
       "rating": "red"
@@ -32757,6 +32807,14 @@
      },
      "6-8_avg_walk": {
       "text": "1.67",
+      "rating": "green"
+     },
+     "K-5_over_bus": {
+      "text": "4,366",
+      "rating": "yellow"
+     },
+     "6-8_over_bus": {
+      "text": "2,661",
       "rating": "green"
      },
      "K-5->6-8_together_pct": {
@@ -32828,6 +32886,14 @@
       "text": "1.90",
       "rating": "red"
      },
+     "K-5_over_bus": {
+      "text": "4,655",
+      "rating": "red"
+     },
+     "6-8_over_bus": {
+      "text": "3,092",
+      "rating": "red"
+     },
      "K-5->6-8_together_pct": {
       "text": "100.0",
       "rating": "green"
@@ -32896,6 +32962,14 @@
      "6-8_avg_walk": {
       "text": "1.66",
       "rating": "green"
+     },
+     "K-5_over_bus": {
+      "text": "4,156",
+      "rating": "green"
+     },
+     "6-8_over_bus": {
+      "text": "2,828",
+      "rating": "yellow"
      },
      "K-5->6-8_together_pct": {
       "text": "92.8",
