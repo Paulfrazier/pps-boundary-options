@@ -71,6 +71,29 @@ Two other moves are kept because they're needed: without them, Lent would have 2
 
 **Trade-off in one line.** Keeps two immersion programs in their buildings, keeps elementary classes together and fits every middle school in its building, with shorter walks than PPS A, by accepting middle schools of about 460 instead of 500 and more moves.
 
+## Balanced middle schools, Sellwood open (`option2_ms460_sellwood_home`)
+
+**How it works.** The best example we modeled (`option2_ms460`), with one building change: Sellwood Middle stays open instead of closing as in PPS A. Elementary lines, immersion programs and high-school lines are the same as `option2_ms460`. Sellwood serves about its own neighborhood, the Duniway and Llewellyn areas plus a few Grout-area blocks, and is exempt from the 460 middle-school minimum, so the solver doesn't pull kids from farther away to fill it. The other 13 middle schools are redrawn under the same rules as `option2_ms460` (minimum 460, few elementary schools split between middle schools). Kids sent past a closer middle school count four times as heavily here as in `option2_ms460`. The middle-school lines are proven best under those rules (optimality gap 0%).
+
+**Call-out: Sellwood is a small middle school.** About 312 middle schoolers in 2031-32, in a building with room for 683 (46% full; capacity: PPS 2025-26 school profiles). That's below PPS's 500 goal; Sellwood is left out of the at-target counts as an exempt school. At PPS's 500, 7 of the other 13 middle schools are at target every year 2027-28 to 2031-32 (`option2_ms460` 9, PPS A 5 by PPS's own figures); in their low year Lane is at 460 (2031-32), Harrison Park 461 (2030-31), Ockley Green 461 (2028-29), West Sylvan 460 (2031-32), Kellogg 467 (2030-31) and George 498 (2031-32) [our model].
+
+**The good.**
+- Sellwood-area families keep a middle school close to home: Sellwood's middle schoolers average a 1.32-mi walk.
+- Shortest middle-school walks of any plan: average 1.68 mi (`option2_ms460` 1.71, PPS A 1.76); 2,754 middle schoolers past the 1.5-mi bus line (2,779; PPS A 2,731).
+- Fewer moves: about 2,074 middle schoolers reassigned vs PPS Status Quo (`option2_ms460` 2,315); 6,941 K-5 and 6-8 together (7,182).
+- Middle schools feed high schools a little more cleanly: 50% of middle zones feed one high school (`option2_ms460` 40%, PPS A 80%); 8 middle schools split between high schools (9; PPS A 3).
+- Hosford and Lane stop running near full: Hosford 626 of 711 seats at its fullest (`option2_ms460` 710), Lane 547 of 763 (763).
+- Everything at the elementary level matches `option2_ms460`: 35 of 35 K-5 schools at target every year, 932 K-5 kids past a closer school (PPS A 1,970), average walk 0.93 mi, and 341 immersion students spared a program move in 2031-32.
+
+**The bad.**
+- One more middle-school building to run, for about 312 students.
+- Smaller middle schools elsewhere: six of the other 13 dip below PPS's 500 goal in their low year (see the call-out).
+- 1,164 middle schoolers assigned past a closer middle school (`option2_ms460` 1,082; PPS A 1,259). About 94 of them live nearer Lane but are in Sellwood's area today and stay at Sellwood.
+- 4 elementary schools split between middle schools (`option2_ms460` 3; PPS A 1).
+- K-5 and high-school drawbacks are the same as `option2_ms460`, including 15 of 41 K-5 schools in range at −9% (PPS A 25).
+
+**Trade-off in one line.** Keeps Sellwood Middle open for its neighborhood, giving the shortest middle-school walks and fewer moves than `option2_ms460`, at the cost of a half-full building and more middle schools below PPS's 500 goal.
+
 ## Boundary changes, same closures (`option2`)
 
 **How it works.** The same closures, immersion programs and elementary lines as Boundary changes, balanced middle schools, with PPS A's high-school lines unchanged (Skyline goes to Roosevelt, as in PPS A). Middle school also differs: the minimum is PPS's 500, with no cap on elementary schools split between middle schools.

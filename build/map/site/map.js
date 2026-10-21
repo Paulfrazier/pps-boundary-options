@@ -20,7 +20,7 @@ const P=([x,y])=>((x-lon0)*kx*S).toFixed(1)+","+((lat1-y)*S).toFixed(1);
 const NS="http://www.w3.org/2000/svg";const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
 const svg=$("map");   // aspect ratio and viewBox: see "pan / zoom" (pickAR / fitVB)
 const G=()=>mk("g");
-const gA=G(),gA2=G(),gFade=G(),gPin=G(),gPast=G(),gSt=G(),gPri=G(),gRail=G(),gRiv=G(),gFwy=G(),gE1=G(),gE2=G(),gB=G(),gCur=G(),gOv=G(),gDiff=G(),gFoc=G(),gStN=G(),gS=G(),gTop=G();
+const gA=G(),gA2=G(),gDen=G(),gFade=G(),gPin=G(),gPast=G(),gSt=G(),gPri=G(),gRail=G(),gRiv=G(),gFwy=G(),gE1=G(),gE2=G(),gB=G(),gCur=G(),gOv=G(),gDiff=G(),gFoc=G(),gStN=G(),gS=G(),gTop=G();
 {const defs=mk("defs");const c1=mk("clipPath",{id:"swc"});c1.append(mk("rect",{id:"swr",x:0,y:0,width:1,height:1}));const c2=mk("clipPath",{id:"swcL"});c2.append(mk("rect",{id:"swrL",x:0,y:0,width:1,height:1}));
  // rev7 (declutter): the change hatch is quiet: 8px apart, hairline, faint (it covered much of the map at 6px / 60%)
  const pt=mk("pattern",{id:"hatch",patternUnits:"userSpaceOnUse",width:8,height:8});pt.append(mk("path",{d:"M-1,1 L1,-1 M0,8 L8,0 M7,9 L9,7",class:"hatchl",style:"fill:none"}));
@@ -28,7 +28,7 @@ const gA=G(),gA2=G(),gFade=G(),gPin=G(),gPast=G(),gSt=G(),gPri=G(),gRail=G(),gRi
  const ex=mk("pattern",{id:"exh",patternUnits:"userSpaceOnUse",width:6,height:6});ex.append(mk("rect",{width:6,height:6,style:"fill:var(--sz-in)"}),mk("circle",{cx:3,cy:3,r:.9,style:"fill:var(--muted);opacity:.7"}));
  defs.append(c1,c2,pt,ex);svg.append(defs)}
 [gFade,gPin,gSt,gPri,gRail,gRiv,gFwy,gCur,gOv,gFoc,gStN].forEach(g=>g.setAttribute("pointer-events","none"));gFwy.setAttribute("class","fwyg");
-svg.append(gA,gA2,gFade,gPast,gSt,gPri,gRail,gRiv,gFwy,gE1,gE2,gB,gCur,gOv,gDiff,gFoc,gStN,gS,gTop,gPin);
+svg.append(gA,gA2,gDen,gFade,gPast,gSt,gPri,gRail,gRiv,gFwy,gE1,gE2,gB,gCur,gOv,gDiff,gFoc,gStN,gS,gTop,gPin);
 const lines=s=>dec(s).filter(r=>r.length>1).map(r=>"M"+r.map(P).join("L")).join("");
 const ringsD=enc=>dec(enc).map(r=>"M"+r.map(P).join("L")+"Z").join("");
 const base={};BASE.split("\n").forEach(l=>{const i=l.indexOf("#");base[l.slice(0,i)]=l.slice(i+1)});
@@ -95,7 +95,7 @@ function colsFor(a,b){const k=lv+"|"+a+"|"+(b||"");if(colOf[k])return colOf[k];i
 // "Color areas by" = the map's ONE theme (one encoding at a time, each with its own key and panel list):
 // "" school colors · "chg" changes only (plain fill; the lines and the hatch carry it) · "size" size vs target range (2031-32)
 // · "past" past a closer school (plain fill + the past regions) · "race" racial mix
-const colBy=()=>$("lcol").value,dvOn=()=>colBy()==="race",szOn=()=>colBy()==="size",pastOn=()=>colBy()==="past";
+const colBy=()=>$("lcol").value,dvOn=()=>colBy()==="race",szOn=()=>colBy()==="size",pastOn=()=>colBy()==="past",denOn=()=>colBy()==="dens",mvOn=()=>colBy()==="mv";
 // schools at target, 2031-32, as on the options and landing pages (scorecard durability: zoned, non-exempt schools)
 const durOf=k=>(PD(k)||{}).dur;
 const szCls=(k,n)=>{const d=durOf(k);if(!d)return null;const x=d.s[n];return x?x[1]:"x"};   // -1 under floor, 0 at target, 1 over ceiling, "x" exempt
@@ -210,6 +210,35 @@ function impFor(side,sw){const m=new Map(),add=L=>L.slice(0,12).forEach((n,i)=>{
  else if(pastOn())add(sw?top(pastBy(side[0]),40):two?top(dif(pastBy(p1),pastBy(p2)),40):top(pastBy(cmpOn()?p1:scn),40));
  else if(two)add(top(dif(PD(p1).size,PD(p2).size),100));
  return m}
+// "Where kids live" / "Where kids move": kids per km2 in five steps (LD().den: the baseline's neighborhood kids on a 400 m
+// grid, step breaks from the build). Live shades the grid; move shades each changed area by its movers per km2 of that area,
+// on the same steps, for plan 1 -> plan 2 (one plan: PPS Status Quo -> that plan). Drawn under the lines and streets.
+const DENP=[14,30,48,68,88],denFill=b=>`color-mix(in srgb,var(--den) ${DENP[b]}%,var(--plate))`;
+const denBin=v=>LD().den.b.filter(x=>v>=x).length;
+const denRng=b=>{const B=LD().den.b;return b===0?`under ${fmt(B[0])}`:b===B.length?`${fmt(B[b-1])} or more`:`${fmt(B[b-1])}–${fmt(B[b])}`};
+const mvPair=()=>cmpOn()?(p1!==p2?[p1,p2]:null):scn!==BASELINE?[BASELINE,scn]:null;
+const upm=()=>LD().den.dy*S/LD().den.m;   // map units per metre
+const ringA=r=>{let a=0;for(let i=0;i<r.length;i++){const[x0,y0]=r[i],[x1,y1]=r[(i+1)%r.length];a+=(x0*y1-x1*y0)}return Math.abs(a/2)*kx*S*S};
+const regKm2=enc=>{const R=dec(enc).map(ringA);return Math.max(1,R[0]-R.slice(1).reduce((a,b)=>a+b,0))/upm()**2/1e6};
+// a tap on a shaded cell selects the school area under it
+const passSel=e=>{const a=document.elementsFromPoint(e.clientX,e.clientY).find(x=>x.classList&&x.classList.contains("area"));if(a)select(a.dataset.n)};
+function drawDen(){gDen.replaceChildren();if(!denOn()&&!mvOn())return;const D=LD().den;if(!D)return;
+ const paths=D.b.map(()=>"").concat("");
+ if(denOn()){const w=D.dx*kx*S,h=D.dy*S;D.cells.forEach(([i,j,k])=>{const x=(i*D.dx-lon0)*kx*S,y=(lat1-(j+1)*D.dy)*S;paths[denBin(k/(D.m*D.m/1e6))]+=`M${x.toFixed(1)},${y.toFixed(1)}h${w.toFixed(2)}v${h.toFixed(2)}h${(-w).toFixed(2)}z`});
+  paths.forEach((d,b)=>{if(!d)return;const p=mk("path",{d,style:`fill:${denFill(b)}`,"data-tip":`About ${denRng(b)} ${LVN[lv]} kids per square km here (our model, 2031-32)`});p.addEventListener("click",passSel);gDen.append(p)});return}
+ const pr=mvPair(),I=pr&&pairInfo(pr[0],pr[1]);if(!I)return;
+ I.regs.forEach(r=>{const d=ringsD(r[3]);const p=mk("path",{d,"fill-rule":"evenodd",style:r[2]?`fill:${denFill(denBin(r[2]/regKm2(r[3])))}`:"fill:none;stroke:var(--den);stroke-opacity:.5;stroke-dasharray:3 3","vector-effect":"non-scaling-stroke"});
+  if(!cmpOn()){p.dataset.tip=r[2]?`${nm(r[0])} → ${nm(r[1])}: about ${fmt(r[2])} kids in this area move`:`${nm(r[0])} → ${nm(r[1])}: the line moves here, but no kids live in this area (model)`;p.addEventListener("click",()=>select(r[0]))}
+  else p.setAttribute("pointer-events","none");gDen.append(p)})}
+function denLegend(){const el=$("dnl"),on=denOn()||mvOn();el.hidden=!on;if(!on)return;const D=LD().den;
+ const sw=D.b.map((_,b)=>b).concat(D.b.length).map(b=>`<span><i class="densw" style="background:${denFill(b)}"></i>${denRng(b)}</span>`).join(" ");
+ if(denOn()){el.innerHTML=`<span class="szh">Where ${LVN[lv]} kids live: neighborhood kids per square km, on a 400 m grid (our model, 2031-32). The same in every plan; the lines show which school each area goes to.</span><span class="dnr">${sw}</span><a href="sources.html#def-neighborhood-kids">what this counts</a>`;return}
+ const pr=mvPair(),I=pr&&pairInfo(pr[0],pr[1]);
+ if(!I){el.innerHTML=`<span class="szh">Where kids move: pick a plan other than PPS Status Quo, or compare two plans.</span>`;return}
+ const top=I.flows.slice(0,5).map(f=>`<li>${esc(nm(f[0]))} → ${esc(nm(f[1]))}: ${fmt(f[2])}</li>`).join(""),t5=I.flows.slice(0,5).reduce((a,f)=>a+f[2],0);
+ el.innerHTML=`<span class="szh">Where ${LVN[lv]} kids move, ${esc(lblShort(pr[0]))} → ${esc(lblShort(pr[1]))}: each changed area shaded by the kids in it who change school, per square km of that area (our model, 2031-32). ${fmt(I.n)} kids change school in all.</span><span class="dnr">${sw}</span>`+
+  (I.n&&!cmpOn()?`<span class="szh">Biggest moves (${I.n?Math.round(100*t5/I.n):0}% of all moved kids):</span><ul class="dnt">${top}</ul>`:"")}
+
 // the change hatch belongs to the School colors and Changes only themes (round 5: it cluttered past, size and racial mix)
 const hatchTheme=()=>colBy()===""||colBy()==="chg",hatchOn=()=>showHatch&&hatchTheme();
 function drawAreas(){hideTip();[gA,gA2,gFade,gS,gDiff,gOv,gPast,gE1,gE2,gFoc].forEach(g=>g.replaceChildren());cavTitles();
@@ -221,7 +250,7 @@ function drawAreas(){hideTip();[gA,gA2,gFade,gS,gDiff,gOv,gPast,gE1,gE2,gFoc].fo
  $("lgP").hidden=!pastOn();
  if(pastOn()){if(mode==="swipe"){const L=G(),R=G();pastLayer(L,p1,true);pastLayer(R,p2,true);L.setAttribute("clip-path","url(#swcL)");R.setAttribute("clip-path","url(#swc)");gPast.append(L,R)}
   else if(c&&p1!==p2&&pairInfo(p1,p2))pastPair();else pastLayer(gPast,a)}
- themeKey();szLegend();
+ themeKey();szLegend();denLegend();drawDen();
  let I=null;
  if(c){const polys2=polysOf(p2);
   if(mode==="swipe"){drawPlan(gA2,gE2,p2,cols,false);gA2.setAttribute("clip-path","url(#swc)");gE2.setAttribute("clip-path","url(#swc)");gE1.setAttribute("clip-path","url(#swcL)");
@@ -475,7 +504,7 @@ function setLevel(l){loadLevel(l,()=>{lv=l;const A=avail();
 //                   layers=hatch is still read).
 //   Legacy: layers=past (old checkbox) = color=past, layers=race = color=race (an explicit color key wins); #6-8 / #9-12.
 //   Every read starts from the defaults (also on hashchange), so a missing or unknown key never keeps the last view's value.
-const VIEWS=["single","swipe","overlay"],THEMES=["chg","size","past","race"];let lastHash="";
+const VIEWS=["single","swipe","overlay"],THEMES=["chg","size","past","race","dens","mv"];let lastHash="";
 const henc=v=>encodeURIComponent(v).replace(/%2C/g,",").replace(/%20/g,"+");
 // round 8: the default view (K-5, swipe, PPS Status Quo | PPS A) writes no hash; any key that differs from its default is written
 const DEF={level:"K-5",view:"swipe",a:BASELINE,b:"scenario_A",plan:"scenario_A"};

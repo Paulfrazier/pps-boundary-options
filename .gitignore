@@ -18,3 +18,5 @@ cowork/crisp/faces.pkl
 .env
 *.key
 census_api_key
+# PPS dashboard data model pulled 2026-10-20 (unpublished scenarios): never commit (Paul 2026-10-20)
+build/pps-texts/pps-rightsizing-dashboard-model-2026-10-20/

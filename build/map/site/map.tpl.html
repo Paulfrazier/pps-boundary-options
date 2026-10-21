@@ -38,7 +38,7 @@
   <details class="mopt" id="mopt"><summary aria-label="Map options: colors, hatching, streets and rail"><svg class="ico" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h7M13 4h1M2 12h1M7 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="11" cy="4" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="5" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span class="mt">Map options</span><span class="mts">Options</span><i class="mdot" id="mdot" hidden></i><span class="sr" id="mdotT"></span></summary>
   <div class="mpop" role="group" aria-label="Map options">
    <label class="sel cby" for="lcol">Color areas by</label>
-   <select id="lcol"><option value="">School colors</option><option value="chg">Changes only (plain fill)</option><option value="size">Size vs target range</option><option value="past">Sent to a farther school</option><option value="race">Racial mix</option></select>
+   <select id="lcol"><option value="">School colors</option><option value="chg">Changes only (plain fill)</option><option value="size">Size vs target range</option><option value="past">Sent to a farther school</option><option value="race">Racial mix</option><option value="dens">Where kids live</option><option value="mv">Where kids move</option></select>
    <label class="chk" id="lhfw" hidden><input type="checkbox" id="lhf" checked> Hatch changed areas</label>
    <p class="mh">Layers</p>
    <label class="chk" id="lcurw"><input type="checkbox" id="lcur"> PPS Status Quo lines on top</label>
@@ -78,6 +78,7 @@
 <span class="lg2" id="lg2" hidden><span id="lgO" hidden><span><svg width="26" height="10"><line x1="1" y1="5" x2="25" y2="5" stroke="var(--ink)" stroke-opacity=".7" stroke-width="1.6"/></svg><span id="lgO1T">Plan 1 lines</span></span> <span><svg width="26" height="10"><line x1="1" y1="5" x2="25" y2="5" stroke="var(--cmp)" stroke-width="2.4" stroke-dasharray="7 4"/></svg><span id="lgO2T">Plan 2 lines</span></span></span><span id="lgS" hidden>◂ plan 1 | plan 2 ▸</span><span id="lgH" hidden><i class="chgsw"></i>Hatched: area changes school (plan 1 → plan 2)</span></span>
 <span id="lgP" class="lgp" hidden></span>
 <span class="szl" id="szl" hidden></span>
+<span class="dnl" id="dnl" hidden></span>
 <span class="dvl" id="dvl"><span class="dvs">Share of kids of color in each school's area, compared with the district.</span><span class="dvr">lower<b aria-hidden="true"></b>higher<i class="dsep" aria-hidden="true">·</i><span id="dvlP"></span><i class="dsep" aria-hidden="true">·</i><a href="sources.html#def-kids-of-color-share">what this counts</a></span></span>
    </div><div id="sidec"></div>
    <details class="gloss" id="glossd"><summary>Terms: DLI, plan 1 / plan 2, target range, exempt</summary><p><b>Terms:</b> DLI = Dual Language Immersion · plan 1 / plan 2 = the two plans compared (left / right in swipe) · target range = a school's size floor (PPS's minimum) to ceiling (building capacity) · <span title="Astor and Skyline: small K-8s PPS keeps below the floor in every scenario">exempt</span> = not counted against the target (<a href="sources.html#def-size-target-floor">definitions</a>)</p></details>

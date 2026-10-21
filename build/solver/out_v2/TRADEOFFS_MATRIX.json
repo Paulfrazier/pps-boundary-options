@@ -664,6 +664,123 @@
       }
     },
     {
+      "run": "option2_ms460_sellwood_home",
+      "name": "Balanced middle schools, Sellwood open",
+      "status": "pick",
+      "cells": {
+        "K-5_at_target": {
+          "value": 35,
+          "text": "35/35",
+          "rating": "green"
+        },
+        "6-8_at_target": {
+          "value": 7,
+          "text": "7/13",
+          "rating": "red"
+        },
+        "K-5_in_range_minus9": {
+          "value": 15,
+          "text": "15/41",
+          "rating": "red"
+        },
+        "moved": {
+          "value": 6941.0,
+          "text": "6,941",
+          "rating": "red"
+        },
+        "dli_moved": {
+          "value": 1226,
+          "text": "1,226",
+          "rating": "green"
+        },
+        "K-5_past_closer": {
+          "value": 932.0,
+          "text": "932",
+          "rating": "green"
+        },
+        "6-8_past_closer": {
+          "value": 1164.0,
+          "text": "1,164",
+          "rating": "yellow"
+        },
+        "K-5_avg_walk": {
+          "value": 0.927,
+          "text": "0.93",
+          "rating": "green"
+        },
+        "6-8_avg_walk": {
+          "value": 1.675,
+          "text": "1.68",
+          "rating": "green"
+        },
+        "K-5_over_bus": {
+          "value": 4117.0,
+          "text": "4,117",
+          "rating": "green"
+        },
+        "6-8_over_bus": {
+          "value": 2754.0,
+          "text": "2,754",
+          "rating": "green"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 96.7,
+          "text": "96.7",
+          "rating": "green"
+        },
+        "K-5->6-8_splits": {
+          "value": 4,
+          "text": "4",
+          "rating": "green"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 81.2,
+          "text": "81.2",
+          "rating": "yellow"
+        },
+        "6-8->9-12_splits": {
+          "value": 8,
+          "text": "8",
+          "rating": "red"
+        },
+        "K-5_open": {
+          "value": 41,
+          "text": "41",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 35,
+        "K-5_zoned": 35,
+        "K-5_in_range_minus9": 15,
+        "K-5_avg_walk": 0.927,
+        "K-5_within_1mi_pct": 67.6,
+        "K-5_past_closer": 932.0,
+        "K-5_over_bus": 4117.0,
+        "K-5_reassigned": 4867.0,
+        "K-5_open": 41,
+        "K-5_dissimilarity": 0.213,
+        "6-8_at_target_all_req": 7,
+        "6-8_zoned": 13,
+        "6-8_in_range_minus9": 8,
+        "6-8_avg_walk": 1.675,
+        "6-8_within_1mi_pct": 30.4,
+        "6-8_past_closer": 1164.0,
+        "6-8_over_bus": 2754.0,
+        "6-8_reassigned": 2074.0,
+        "6-8_open": 16,
+        "6-8_dissimilarity": 0.19,
+        "dli_moved": 1226,
+        "hs_reassigned": 295.0,
+        "K-5->6-8_together_pct": 96.7,
+        "K-5->6-8_splits": 4,
+        "6-8->9-12_together_pct": 81.2,
+        "6-8->9-12_splits": 8,
+        "6-8_at_target_own_floor": 13,
+        "6-8_own_floor": 460
+      }
+    },
+    {
       "run": "option1_durable",
       "name": "Redrawn K-8 lines",
       "status": "pick",

@@ -20,11 +20,11 @@
     },
     "scenario_A": {
       "status": "done",
-      "finished": "2026-10-12T15:16:16"
+      "finished": "2026-10-20T12:08:20"
     },
     "scenario_B": {
       "status": "done",
-      "finished": "2026-10-12T15:16:16"
+      "finished": "2026-10-20T12:08:20"
     },
     "option2": {
       "status": "done",
@@ -33,6 +33,10 @@
     "option2_ms460": {
       "status": "done",
       "finished": "2026-10-19T11:40:30"
+    },
+    "option2_ms460_sellwood_home": {
+      "status": "done",
+      "finished": "2026-10-20T14:49:20"
     },
     "option1_durable": {
       "status": "done",
@@ -45,6 +49,18 @@
     "option3a": {
       "status": "done",
       "finished": "2026-10-12T23:59:56"
+    },
+    "req_jj_chz_sky": {
+      "status": "done",
+      "finished": "2026-10-19T22:51:14"
+    },
+    "option2_nested": {
+      "status": "done",
+      "finished": "2026-10-16T03:43:02"
+    },
+    "option2_ms500": {
+      "status": "done",
+      "finished": "2026-10-15T12:57:51"
     }
   }
 }

@@ -49,6 +49,7 @@ OUT = os.path.join(KIT, 'pages', 'map.html')
 OUTD = os.path.join(KIT, 'pages', 'map_data')
 LEVELS = ['K-5', '6-8', '9-12']
 WCOL = {'K-5': 'k5', '6-8': 'm68', '9-12': 'h912'}
+DEN_M = 400.0                # density grid cell, metres (map themes "Where kids live" / "Where kids move")
 TYPES = {'K-5': ('K-5', 'K-8'), '6-8': ('6-8', 'K-8'), '9-12': ('9-12',)}
 OFFICIAL = set(OF.COL)
 os.makedirs(CACHE, exist_ok=True); os.makedirs(OUTD, exist_ok=True)
@@ -425,7 +426,18 @@ for lv in LEVELS:
                     sch[n] = c
     w0 = KW[order[0]]          # district kid total / kids-of-color share: first plan (the baseline) on the scorecard basis
     kocd = round(100 * float((w0 * POC).sum() / w0.sum()), 1)
-    LVDATA[lv] = {'plans': plans, 'pairs': pairs, 'total': round(float(w0.sum())), 'sch': sch, 'kocd': kocd}
+    # where kids live: the baseline's kids summed on a 400 m grid (cells with under half a kid left out); the map's
+    # "Where kids live" and "Where kids move" themes shade by kids per km2 in steps (den.b, rounded cell quantiles)
+    XY = block_xy(); ix = np.floor(XY[:, 0] / DEN_M).astype(int); iy = np.floor(XY[:, 1] / DEN_M).astype(int)
+    cell = collections.Counter()
+    for i, j, ww in zip(ix, iy, w0):
+        cell[(int(i), int(j))] += float(ww)
+    cells = sorted([i, j, round(v, 1)] for (i, j), v in cell.items() if v >= 0.5)
+    dk = np.array([c[2] for c in cells]) / (DEN_M * DEN_M / 1e6)
+    nice = lambda v: float('%.2g' % v) if v < 100 else float(round(v, -1))
+    br = sorted({nice(np.quantile(dk, q)) for q in (0.2, 0.4, 0.6, 0.8)})
+    den = {'dx': DEN_M / MX, 'dy': DEN_M / LAT_M, 'm': DEN_M, 'b': br, 'cells': cells}
+    LVDATA[lv] = {'plans': plans, 'pairs': pairs, 'total': round(float(w0.sum())), 'sch': sch, 'kocd': kocd, 'den': den}
 
 json.dump(QA, open(os.path.join(CACHE, 'qa_report.json'), 'w'), indent=1)
 

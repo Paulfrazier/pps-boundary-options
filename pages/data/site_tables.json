@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-20T04:26:39+00:00",
+ "generated": "2026-10-21T20:07:54+00:00",
  "basis": "2031-32 (PSU forecast), kids of color from Census 2020 under-18 race by block",
  "diversity": {
   "levels": {
@@ -195,6 +195,45 @@
       "Skyline": 0.272
      },
      "option2_ms460": {
+      "Abernethy": 0.366,
+      "Ainsworth": 0.366,
+      "Alameda": 0.257,
+      "Arleta": 0.467,
+      "Atkinson": 0.378,
+      "Beverly Cleary": 0.319,
+      "Boise-Eliot/Humboldt": 0.528,
+      "Bridger": 0.487,
+      "Bridlemile": 0.295,
+      "Capitol Hill": 0.299,
+      "Chapman": 0.469,
+      "Chief Joseph": 0.407,
+      "Clark": 0.645,
+      "Duniway": 0.245,
+      "Faubion": 0.464,
+      "Forest Park": 0.397,
+      "Glencoe": 0.341,
+      "Grout": 0.359,
+      "Hayhurst": 0.305,
+      "Kelly": 0.658,
+      "Laurelhurst": 0.305,
+      "Lee": 0.506,
+      "Llewellyn": 0.293,
+      "MLK Jr": 0.566,
+      "Markham": 0.377,
+      "Rieke": 0.362,
+      "Rosa Parks": 0.662,
+      "Scott": 0.497,
+      "Sitton": 0.578,
+      "Sunnyside": 0.359,
+      "Vernon": 0.374,
+      "Vestal": 0.463,
+      "Whitman": 0.569,
+      "Woodlawn": 0.632,
+      "Woodstock": 0.396,
+      "Astor": 0.478,
+      "Skyline": 0.261
+     },
+     "option2_ms460_sellwood_home": {
       "Abernethy": 0.366,
       "Ainsworth": 0.366,
       "Alameda": 0.257,
@@ -601,6 +640,54 @@
        "Skyline": 114.8
       }
      },
+     "option2_ms460_sellwood_home": {
+      "poc_share_district": 0.426,
+      "dissimilarity_index": 0.213,
+      "dissimilarity_from_schools_csv": 0.213,
+      "n_schools": 37,
+      "n_within_15": 29,
+      "min": 0.245,
+      "max": 0.662,
+      "kids": {
+       "Abernethy": 297.1,
+       "Ainsworth": 216.4,
+       "Alameda": 517.5,
+       "Arleta": 382.0,
+       "Atkinson": 350.1,
+       "Beverly Cleary": 379.4,
+       "Boise-Eliot/Humboldt": 370.3,
+       "Bridger": 167.1,
+       "Bridlemile": 362.5,
+       "Capitol Hill": 366.7,
+       "Chapman": 376.8,
+       "Chief Joseph": 425.4,
+       "Clark": 354.7,
+       "Duniway": 361.7,
+       "Faubion": 360.9,
+       "Forest Park": 368.9,
+       "Glencoe": 378.4,
+       "Grout": 360.5,
+       "Hayhurst": 361.8,
+       "Kelly": 389.6,
+       "Laurelhurst": 360.6,
+       "Lee": 374.5,
+       "Llewellyn": 381.5,
+       "MLK Jr": 291.8,
+       "Markham": 514.2,
+       "Rieke": 454.8,
+       "Rosa Parks": 419.9,
+       "Scott": 322.9,
+       "Sitton": 348.5,
+       "Sunnyside": 271.4,
+       "Vernon": 361.0,
+       "Vestal": 151.3,
+       "Whitman": 388.5,
+       "Woodlawn": 379.6,
+       "Woodstock": 151.4,
+       "Astor": 280.6,
+       "Skyline": 114.8
+      }
+     },
      "option2": {
       "poc_share_district": 0.426,
       "dissimilarity_index": 0.213,
@@ -903,6 +990,24 @@
       "Astor": 0.482,
       "Skyline": 0.272
      },
+     "option2_ms460_sellwood_home": {
+      "Beaumont": 0.374,
+      "George": 0.649,
+      "Gray": 0.352,
+      "Harrison Park": 0.571,
+      "Hosford": 0.361,
+      "Jackson": 0.336,
+      "Kellogg": 0.399,
+      "Lane": 0.584,
+      "Mt Tabor": 0.321,
+      "Ockley Green": 0.556,
+      "Roseway Heights": 0.536,
+      "Sellwood": 0.268,
+      "Tubman": 0.41,
+      "West Sylvan": 0.415,
+      "Astor": 0.482,
+      "Skyline": 0.272
+     },
      "option2": {
       "Beaumont": 0.392,
       "George": 0.656,
@@ -1085,6 +1190,33 @@
        "Skyline": 56.8
       }
      },
+     "option2_ms460_sellwood_home": {
+      "poc_share_district": 0.428,
+      "dissimilarity_index": 0.19,
+      "dissimilarity_from_schools_csv": 0.19,
+      "n_schools": 16,
+      "n_within_15": 12,
+      "min": 0.268,
+      "max": 0.649,
+      "kids": {
+       "Beaumont": 557.5,
+       "George": 227.8,
+       "Gray": 500.1,
+       "Harrison Park": 285.3,
+       "Hosford": 503.0,
+       "Jackson": 542.9,
+       "Kellogg": 228.4,
+       "Lane": 430.4,
+       "Mt Tabor": 405.8,
+       "Ockley Green": 497.0,
+       "Roseway Heights": 435.6,
+       "Sellwood": 311.8,
+       "Tubman": 480.1,
+       "West Sylvan": 327.5,
+       "Astor": 144.3,
+       "Skyline": 56.8
+      }
+     },
      "option2": {
       "poc_share_district": 0.428,
       "dissimilarity_index": 0.164,
@@ -1248,6 +1380,16 @@
       "McDaniel": 0.557,
       "Roosevelt": 0.61
      },
+     "option2_ms460_sellwood_home": {
+      "Cleveland": 0.337,
+      "Franklin": 0.488,
+      "Grant": 0.29,
+      "Ida B. Wells": 0.334,
+      "Jefferson": 0.489,
+      "Lincoln": 0.416,
+      "McDaniel": 0.557,
+      "Roosevelt": 0.61
+     },
      "option2": {
       "Cleveland": 0.337,
       "Franklin": 0.488,
@@ -1348,6 +1490,25 @@
       }
      },
      "option2_ms460": {
+      "poc_share_district": 0.426,
+      "dissimilarity_index": 0.185,
+      "dissimilarity_from_schools_csv": 0.185,
+      "n_schools": 8,
+      "n_within_15": 7,
+      "min": 0.29,
+      "max": 0.61,
+      "kids": {
+       "Cleveland": 1126.1,
+       "Franklin": 1293.2,
+       "Grant": 1266.0,
+       "Ida B. Wells": 1461.3,
+       "Jefferson": 1169.9,
+       "Lincoln": 1226.7,
+       "McDaniel": 933.6,
+       "Roosevelt": 784.1
+      }
+     },
+     "option2_ms460_sellwood_home": {
       "poc_share_district": 0.426,
       "dissimilarity_index": 0.185,
       "dissimilarity_from_schools_csv": 0.185,
@@ -1484,6 +1645,14 @@
     "schools_source": "build/solver/out_v2/option2_ms460/schools.csv"
    },
    {
+    "name": "option2_ms460_sellwood_home",
+    "short": "Balanced, Sellwood open",
+    "kind": "option",
+    "version_label": "model v2",
+    "source": "build/solver/out_v2/option2_ms460_sellwood_home/scorecard.json",
+    "schools_source": "build/solver/out_v2/option2_ms460_sellwood_home/schools.csv"
+   },
+   {
     "name": "option2",
     "short": "Boundary changes, same closures",
     "kind": "option",
@@ -1583,6 +1752,34 @@
         "share_to_nearest": 1.0
        },
        "option2_ms460": {
+        "kids": 163.1,
+        "avg_walk_mi": 1.029,
+        "avg_straight_mi": 0.778,
+        "kids_over_1mi": 88.2,
+        "destinations": [
+         {
+          "school": "Chief Joseph",
+          "kids": 80.5
+         },
+         {
+          "school": "Boise-Eliot/Humboldt",
+          "kids": 63.0
+         },
+         {
+          "school": "MLK Jr",
+          "kids": 19.5
+         },
+         {
+          "school": "Astor",
+          "kids": 0.1
+         }
+        ],
+        "n_destinations": 4,
+        "nearest_walk_school": "Chief Joseph",
+        "nearest_walk_avg_mi": 1.014,
+        "share_to_nearest": 0.493
+       },
+       "option2_ms460_sellwood_home": {
         "kids": 163.1,
         "avg_walk_mi": 1.029,
         "avg_straight_mi": 0.778,
@@ -1821,6 +2018,34 @@
         "nearest_walk_avg_mi": 1.1,
         "share_to_nearest": 0.584
        },
+       "option2_ms460_sellwood_home": {
+        "kids": 112.3,
+        "avg_walk_mi": 1.252,
+        "avg_straight_mi": 1.053,
+        "kids_over_1mi": 73.0,
+        "destinations": [
+         {
+          "school": "Abernethy",
+          "kids": 65.6
+         },
+         {
+          "school": "Laurelhurst",
+          "kids": 30.3
+         },
+         {
+          "school": "Sunnyside",
+          "kids": 12.3
+         },
+         {
+          "school": "Boise-Eliot/Humboldt",
+          "kids": 4.0
+         }
+        ],
+        "n_destinations": 5,
+        "nearest_walk_school": "Abernethy",
+        "nearest_walk_avg_mi": 1.1,
+        "share_to_nearest": 0.584
+       },
        "option2": {
         "kids": 112.3,
         "avg_walk_mi": 1.252,
@@ -2024,6 +2249,34 @@
         "nearest_walk_avg_mi": 0.811,
         "share_to_nearest": 0.665
        },
+       "option2_ms460_sellwood_home": {
+        "kids": 207.8,
+        "avg_walk_mi": 0.918,
+        "avg_straight_mi": 0.71,
+        "kids_over_1mi": 71.5,
+        "destinations": [
+         {
+          "school": "Atkinson",
+          "kids": 138.3
+         },
+         {
+          "school": "Grout",
+          "kids": 59.3
+         },
+         {
+          "school": "Arleta",
+          "kids": 7.3
+         },
+         {
+          "school": "Glencoe",
+          "kids": 2.1
+         }
+        ],
+        "n_destinations": 5,
+        "nearest_walk_school": "Atkinson",
+        "nearest_walk_avg_mi": 0.811,
+        "share_to_nearest": 0.665
+       },
        "option2": {
         "kids": 207.8,
         "avg_walk_mi": 0.918,
@@ -2200,6 +2453,30 @@
         "share_to_nearest": 1.0
        },
        "option2_ms460": {
+        "kids": 223.0,
+        "avg_walk_mi": 0.903,
+        "avg_straight_mi": 0.733,
+        "kids_over_1mi": 90.2,
+        "destinations": [
+         {
+          "school": "Beverly Cleary",
+          "kids": 141.1
+         },
+         {
+          "school": "Boise-Eliot/Humboldt",
+          "kids": 48.8
+         },
+         {
+          "school": "Alameda",
+          "kids": 33.1
+         }
+        ],
+        "n_destinations": 3,
+        "nearest_walk_school": "Beverly Cleary",
+        "nearest_walk_avg_mi": 0.893,
+        "share_to_nearest": 0.633
+       },
+       "option2_ms460_sellwood_home": {
         "kids": 223.0,
         "avg_walk_mi": 0.903,
         "avg_straight_mi": 0.733,
@@ -2430,6 +2707,30 @@
         "nearest_walk_avg_mi": 1.077,
         "share_to_nearest": 0.65
        },
+       "option2_ms460_sellwood_home": {
+        "kids": 219.5,
+        "avg_walk_mi": 1.093,
+        "avg_straight_mi": 0.885,
+        "kids_over_1mi": 145.2,
+        "destinations": [
+         {
+          "school": "Sitton",
+          "kids": 142.7
+         },
+         {
+          "school": "Astor",
+          "kids": 49.2
+         },
+         {
+          "school": "Rosa Parks",
+          "kids": 27.7
+         }
+        ],
+        "n_destinations": 3,
+        "nearest_walk_school": "Sitton",
+        "nearest_walk_avg_mi": 1.077,
+        "share_to_nearest": 0.65
+       },
        "option2": {
         "kids": 219.5,
         "avg_walk_mi": 1.093,
@@ -2621,6 +2922,30 @@
         "nearest_walk_avg_mi": 1.104,
         "share_to_nearest": 0.658
        },
+       "option2_ms460_sellwood_home": {
+        "kids": 247.9,
+        "avg_walk_mi": 1.114,
+        "avg_straight_mi": 0.772,
+        "kids_over_1mi": 140.6,
+        "destinations": [
+         {
+          "school": "Hayhurst",
+          "kids": 163.1
+         },
+         {
+          "school": "Capitol Hill",
+          "kids": 59.7
+         },
+         {
+          "school": "Rieke",
+          "kids": 25.0
+         }
+        ],
+        "n_destinations": 3,
+        "nearest_walk_school": "Hayhurst",
+        "nearest_walk_avg_mi": 1.104,
+        "share_to_nearest": 0.658
+       },
        "option2": {
         "kids": 247.9,
         "avg_walk_mi": 1.114,
@@ -2785,6 +3110,34 @@
         "share_to_nearest": 1.0
        },
        "option2_ms460": {
+        "kids": 202.8,
+        "avg_walk_mi": 0.988,
+        "avg_straight_mi": 0.772,
+        "kids_over_1mi": 102.5,
+        "destinations": [
+         {
+          "school": "Arleta",
+          "kids": 155.2
+         },
+         {
+          "school": "Bridger",
+          "kids": 35.5
+         },
+         {
+          "school": "Kelly",
+          "kids": 8.9
+         },
+         {
+          "school": "Whitman",
+          "kids": 3.3
+         }
+        ],
+        "n_destinations": 4,
+        "nearest_walk_school": "Arleta",
+        "nearest_walk_avg_mi": 0.961,
+        "share_to_nearest": 0.765
+       },
+       "option2_ms460_sellwood_home": {
         "kids": 202.8,
         "avg_walk_mi": 0.988,
         "avg_straight_mi": 0.772,
@@ -3003,6 +3356,26 @@
         "nearest_walk_avg_mi": 0.834,
         "share_to_nearest": 0.529
        },
+       "option2_ms460_sellwood_home": {
+        "kids": 238.9,
+        "avg_walk_mi": 0.855,
+        "avg_straight_mi": 0.659,
+        "kids_over_1mi": 65.9,
+        "destinations": [
+         {
+          "school": "Chief Joseph",
+          "kids": 126.5
+         },
+         {
+          "school": "Rosa Parks",
+          "kids": 112.4
+         }
+        ],
+        "n_destinations": 2,
+        "nearest_walk_school": "Chief Joseph",
+        "nearest_walk_avg_mi": 0.834,
+        "share_to_nearest": 0.529
+       },
        "option2": {
         "kids": 238.9,
         "avg_walk_mi": 0.855,
@@ -3155,6 +3528,34 @@
         "share_to_nearest": 0.0
        },
        "option2_ms460": {
+        "kids": 235.9,
+        "avg_walk_mi": 0.725,
+        "avg_straight_mi": 0.578,
+        "kids_over_1mi": 37.8,
+        "destinations": [
+         {
+          "school": "Vernon",
+          "kids": 121.3
+         },
+         {
+          "school": "MLK Jr",
+          "kids": 79.1
+         },
+         {
+          "school": "Alameda",
+          "kids": 31.6
+         },
+         {
+          "school": "Boise-Eliot/Humboldt",
+          "kids": 3.9
+         }
+        ],
+        "n_destinations": 4,
+        "nearest_walk_school": "Alameda",
+        "nearest_walk_avg_mi": 0.587,
+        "share_to_nearest": 0.134
+       },
+       "option2_ms460_sellwood_home": {
         "kids": 235.9,
         "avg_walk_mi": 0.725,
         "avg_straight_mi": 0.578,
@@ -3350,6 +3751,34 @@
         "share_to_nearest": 1.0
        },
        "option2_ms460": {
+        "kids": 234.9,
+        "avg_walk_mi": 0.736,
+        "avg_straight_mi": 0.532,
+        "kids_over_1mi": 11.4,
+        "destinations": [
+         {
+          "school": "Whitman",
+          "kids": 139.6
+         },
+         {
+          "school": "Kelly",
+          "kids": 40.7
+         },
+         {
+          "school": "Arleta",
+          "kids": 29.2
+         },
+         {
+          "school": "Woodstock",
+          "kids": 25.5
+         }
+        ],
+        "n_destinations": 4,
+        "nearest_walk_school": "Whitman",
+        "nearest_walk_avg_mi": 0.701,
+        "share_to_nearest": 0.594
+       },
+       "option2_ms460_sellwood_home": {
         "kids": 234.9,
         "avg_walk_mi": 0.736,
         "avg_straight_mi": 0.532,
@@ -3584,6 +4013,30 @@
         "nearest_walk_avg_mi": 0.717,
         "share_to_nearest": 0.647
        },
+       "option2_ms460_sellwood_home": {
+        "kids": 203.3,
+        "avg_walk_mi": 0.739,
+        "avg_straight_mi": 0.579,
+        "kids_over_1mi": 19.0,
+        "destinations": [
+         {
+          "school": "Duniway",
+          "kids": 131.5
+         },
+         {
+          "school": "Woodstock",
+          "kids": 69.9
+         },
+         {
+          "school": "Grout",
+          "kids": 2.0
+         }
+        ],
+        "n_destinations": 3,
+        "nearest_walk_school": "Duniway",
+        "nearest_walk_avg_mi": 0.717,
+        "share_to_nearest": 0.647
+       },
        "option2": {
         "kids": 203.3,
         "avg_walk_mi": 0.739,
@@ -3744,6 +4197,30 @@
         "share_to_nearest": 1.0
        },
        "option2_ms460": {
+        "kids": 160.0,
+        "avg_walk_mi": 1.606,
+        "avg_straight_mi": 1.408,
+        "kids_over_1mi": 149.2,
+        "destinations": [
+         {
+          "school": "Lee",
+          "kids": 115.4
+         },
+         {
+          "school": "Beverly Cleary",
+          "kids": 23.4
+         },
+         {
+          "school": "Scott",
+          "kids": 21.2
+         }
+        ],
+        "n_destinations": 3,
+        "nearest_walk_school": "Laurelhurst",
+        "nearest_walk_avg_mi": 1.214,
+        "share_to_nearest": 0.0
+       },
+       "option2_ms460_sellwood_home": {
         "kids": 160.0,
         "avg_walk_mi": 1.606,
         "avg_straight_mi": 1.408,
@@ -3958,6 +4435,26 @@
         "nearest_walk_avg_mi": 1.612,
         "share_to_nearest": 0.568
        },
+       "option2_ms460_sellwood_home": {
+        "kids": 261.0,
+        "avg_walk_mi": 1.617,
+        "avg_straight_mi": 1.109,
+        "kids_over_1mi": 245.2,
+        "destinations": [
+         {
+          "school": "Markham",
+          "kids": 148.2
+         },
+         {
+          "school": "Capitol Hill",
+          "kids": 112.8
+         }
+        ],
+        "n_destinations": 2,
+        "nearest_walk_school": "Markham",
+        "nearest_walk_avg_mi": 1.612,
+        "share_to_nearest": 0.568
+       },
        "option2": {
         "kids": 261.0,
         "avg_walk_mi": 1.617,
@@ -4108,6 +4605,34 @@
         "share_to_nearest": 1.0
        },
        "option2_ms460": {
+        "kids": 163.1,
+        "avg_walk_mi": 1.029,
+        "avg_straight_mi": 0.778,
+        "kids_over_1mi": 88.2,
+        "destinations": [
+         {
+          "school": "Chief Joseph",
+          "kids": 80.5
+         },
+         {
+          "school": "Boise-Eliot/Humboldt",
+          "kids": 63.0
+         },
+         {
+          "school": "MLK Jr",
+          "kids": 19.5
+         },
+         {
+          "school": "Astor",
+          "kids": 0.1
+         }
+        ],
+        "n_destinations": 4,
+        "nearest_walk_school": "Chief Joseph",
+        "nearest_walk_avg_mi": 1.014,
+        "share_to_nearest": 0.493
+       },
+       "option2_ms460_sellwood_home": {
         "kids": 163.1,
         "avg_walk_mi": 1.029,
         "avg_straight_mi": 0.778,
@@ -4346,6 +4871,34 @@
         "nearest_walk_avg_mi": 1.1,
         "share_to_nearest": 0.584
        },
+       "option2_ms460_sellwood_home": {
+        "kids": 112.3,
+        "avg_walk_mi": 1.252,
+        "avg_straight_mi": 1.053,
+        "kids_over_1mi": 73.0,
+        "destinations": [
+         {
+          "school": "Abernethy",
+          "kids": 65.6
+         },
+         {
+          "school": "Laurelhurst",
+          "kids": 30.3
+         },
+         {
+          "school": "Sunnyside",
+          "kids": 12.3
+         },
+         {
+          "school": "Boise-Eliot/Humboldt",
+          "kids": 4.0
+         }
+        ],
+        "n_destinations": 5,
+        "nearest_walk_school": "Abernethy",
+        "nearest_walk_avg_mi": 1.1,
+        "share_to_nearest": 0.584
+       },
        "option2": {
         "kids": 112.3,
         "avg_walk_mi": 1.252,
@@ -4549,6 +5102,34 @@
         "nearest_walk_avg_mi": 0.811,
         "share_to_nearest": 0.665
        },
+       "option2_ms460_sellwood_home": {
+        "kids": 207.8,
+        "avg_walk_mi": 0.918,
+        "avg_straight_mi": 0.71,
+        "kids_over_1mi": 71.5,
+        "destinations": [
+         {
+          "school": "Atkinson",
+          "kids": 138.3
+         },
+         {
+          "school": "Grout",
+          "kids": 59.3
+         },
+         {
+          "school": "Arleta",
+          "kids": 7.3
+         },
+         {
+          "school": "Glencoe",
+          "kids": 2.1
+         }
+        ],
+        "n_destinations": 5,
+        "nearest_walk_school": "Atkinson",
+        "nearest_walk_avg_mi": 0.811,
+        "share_to_nearest": 0.665
+       },
        "option2": {
         "kids": 207.8,
         "avg_walk_mi": 0.918,
@@ -4725,6 +5306,30 @@
         "share_to_nearest": 1.0
        },
        "option2_ms460": {
+        "kids": 223.0,
+        "avg_walk_mi": 0.903,
+        "avg_straight_mi": 0.733,
+        "kids_over_1mi": 90.2,
+        "destinations": [
+         {
+          "school": "Beverly Cleary",
+          "kids": 141.1
+         },
+         {
+          "school": "Boise-Eliot/Humboldt",
+          "kids": 48.8
+         },
+         {
+          "school": "Alameda",
+          "kids": 33.1
+         }
+        ],
+        "n_destinations": 3,
+        "nearest_walk_school": "Beverly Cleary",
+        "nearest_walk_avg_mi": 0.893,
+        "share_to_nearest": 0.633
+       },
+       "option2_ms460_sellwood_home": {
         "kids": 223.0,
         "avg_walk_mi": 0.903,
         "avg_straight_mi": 0.733,
@@ -4955,6 +5560,30 @@
         "nearest_walk_avg_mi": 1.077,
         "share_to_nearest": 0.65
        },
+       "option2_ms460_sellwood_home": {
+        "kids": 219.5,
+        "avg_walk_mi": 1.093,
+        "avg_straight_mi": 0.885,
+        "kids_over_1mi": 145.2,
+        "destinations": [
+         {
+          "school": "Sitton",
+          "kids": 142.7
+         },
+         {
+          "school": "Astor",
+          "kids": 49.2
+         },
+         {
+          "school": "Rosa Parks",
+          "kids": 27.7
+         }
+        ],
+        "n_destinations": 3,
+        "nearest_walk_school": "Sitton",
+        "nearest_walk_avg_mi": 1.077,
+        "share_to_nearest": 0.65
+       },
        "option2": {
         "kids": 219.5,
         "avg_walk_mi": 1.093,
@@ -5146,6 +5775,30 @@
         "nearest_walk_avg_mi": 1.104,
         "share_to_nearest": 0.658
        },
+       "option2_ms460_sellwood_home": {
+        "kids": 247.9,
+        "avg_walk_mi": 1.114,
+        "avg_straight_mi": 0.772,
+        "kids_over_1mi": 140.6,
+        "destinations": [
+         {
+          "school": "Hayhurst",
+          "kids": 163.1
+         },
+         {
+          "school": "Capitol Hill",
+          "kids": 59.7
+         },
+         {
+          "school": "Rieke",
+          "kids": 25.0
+         }
+        ],
+        "n_destinations": 3,
+        "nearest_walk_school": "Hayhurst",
+        "nearest_walk_avg_mi": 1.104,
+        "share_to_nearest": 0.658
+       },
        "option2": {
         "kids": 247.9,
         "avg_walk_mi": 1.114,
@@ -5310,6 +5963,34 @@
         "share_to_nearest": 1.0
        },
        "option2_ms460": {
+        "kids": 202.8,
+        "avg_walk_mi": 0.988,
+        "avg_straight_mi": 0.772,
+        "kids_over_1mi": 102.5,
+        "destinations": [
+         {
+          "school": "Arleta",
+          "kids": 155.2
+         },
+         {
+          "school": "Bridger",
+          "kids": 35.5
+         },
+         {
+          "school": "Kelly",
+          "kids": 8.9
+         },
+         {
+          "school": "Whitman",
+          "kids": 3.3
+         }
+        ],
+        "n_destinations": 4,
+        "nearest_walk_school": "Arleta",
+        "nearest_walk_avg_mi": 0.961,
+        "share_to_nearest": 0.765
+       },
+       "option2_ms460_sellwood_home": {
         "kids": 202.8,
         "avg_walk_mi": 0.988,
         "avg_straight_mi": 0.772,
@@ -5528,6 +6209,26 @@
         "nearest_walk_avg_mi": 0.834,
         "share_to_nearest": 0.529
        },
+       "option2_ms460_sellwood_home": {
+        "kids": 238.9,
+        "avg_walk_mi": 0.855,
+        "avg_straight_mi": 0.659,
+        "kids_over_1mi": 65.9,
+        "destinations": [
+         {
+          "school": "Chief Joseph",
+          "kids": 126.5
+         },
+         {
+          "school": "Rosa Parks",
+          "kids": 112.4
+         }
+        ],
+        "n_destinations": 2,
+        "nearest_walk_school": "Chief Joseph",
+        "nearest_walk_avg_mi": 0.834,
+        "share_to_nearest": 0.529
+       },
        "option2": {
         "kids": 238.9,
         "avg_walk_mi": 0.855,
@@ -5680,6 +6381,34 @@
         "share_to_nearest": 0.0
        },
        "option2_ms460": {
+        "kids": 235.9,
+        "avg_walk_mi": 0.725,
+        "avg_straight_mi": 0.578,
+        "kids_over_1mi": 37.8,
+        "destinations": [
+         {
+          "school": "Vernon",
+          "kids": 121.3
+         },
+         {
+          "school": "MLK Jr",
+          "kids": 79.1
+         },
+         {
+          "school": "Alameda",
+          "kids": 31.6
+         },
+         {
+          "school": "Boise-Eliot/Humboldt",
+          "kids": 3.9
+         }
+        ],
+        "n_destinations": 4,
+        "nearest_walk_school": "Alameda",
+        "nearest_walk_avg_mi": 0.587,
+        "share_to_nearest": 0.134
+       },
+       "option2_ms460_sellwood_home": {
         "kids": 235.9,
         "avg_walk_mi": 0.725,
         "avg_straight_mi": 0.578,
@@ -5902,6 +6631,34 @@
         "nearest_walk_avg_mi": 0.701,
         "share_to_nearest": 0.594
        },
+       "option2_ms460_sellwood_home": {
+        "kids": 234.9,
+        "avg_walk_mi": 0.736,
+        "avg_straight_mi": 0.532,
+        "kids_over_1mi": 11.4,
+        "destinations": [
+         {
+          "school": "Whitman",
+          "kids": 139.6
+         },
+         {
+          "school": "Kelly",
+          "kids": 40.7
+         },
+         {
+          "school": "Arleta",
+          "kids": 29.2
+         },
+         {
+          "school": "Woodstock",
+          "kids": 25.5
+         }
+        ],
+        "n_destinations": 4,
+        "nearest_walk_school": "Whitman",
+        "nearest_walk_avg_mi": 0.701,
+        "share_to_nearest": 0.594
+       },
        "option2": {
         "kids": 234.9,
         "avg_walk_mi": 0.736,
@@ -6055,6 +6812,14 @@
     "config_source": "build/solver/configs/v2/option2_ms460.json"
    },
    {
+    "name": "option2_ms460_sellwood_home",
+    "short": "Balanced, Sellwood open",
+    "kind": "option",
+    "version_label": "model v2",
+    "source": "build/solver/out_v2/option2_ms460_sellwood_home/assign_K-5.parquet",
+    "config_source": "build/solver/configs/v2/option2_ms460_sellwood_home.json"
+   },
+   {
     "name": "option2",
     "short": "Boundary changes, same closures",
     "kind": "option",
@@ -6101,6 +6866,10 @@
     "dissimilarity_scorecard": 0.205
    },
    "option2_ms460": {
+    "dissimilarity_from_blocks": 0.213,
+    "dissimilarity_scorecard": 0.213
+   },
+   "option2_ms460_sellwood_home": {
     "dissimilarity_from_blocks": 0.213,
     "dissimilarity_scorecard": 0.213
    },

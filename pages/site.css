@@ -63,6 +63,7 @@ footer{margin-top:40px;color:var(--muted);font-size:14px;border-top:1px solid va
 
 /* long inline paths must wrap on narrow screens; leave table cells alone */
 p code,li code,summary code,details>div code{overflow-wrap:anywhere}
+.cite a{overflow-wrap:anywhere}
 td code,th code{overflow-wrap:normal}
 /* phones: 12px text floor on every page (map review 3, N11): small labels, chips, version tags, code, chart text */
 @media (max-width:600px){html body :is(.who,.vl,.why,.chip,.ver,.vtag,tr.grp td,sup.src,sup.src a,code,.sr.h span){font-size:12px!important}html body svg:not(#map) text{font-size:12px!important}}

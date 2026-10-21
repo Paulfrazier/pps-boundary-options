@@ -136,7 +136,24 @@ def building_table(cfg, plan, year='2031', scale=1.0):
         asg = plan[lev]
         prog = program_totals(cfg, lev, year)
         names = set(cfg['levels'][lev]['zoned']) | set(prog)
+        # (2026-10-20, Paul) cfg 'phase_in': a closing school keeps its old area until it closes, e.g. Sellwood MS
+        # closes in 2028 (Hosford Family Guide p. 3), so in 2027-28 its Status Quo 6-8 area still attends Sellwood
+        for ph in cfg.get('phase_in', []):
+            if ph['level'] == lev and ph.get('kind', 'area') == 'area' and int(year) <= int(ph['through']):
+                asg = np.where(C.blocks()[ph['area_col']].values == ph['area'], ph['school'], asg).astype(object)
+                names.add(ph['school'])
         df = pd.DataFrame({'s': asg, 'k': K[lev]}).groupby('s')['k'].sum()
+        # (2026-10-20, Paul: "do it like PPS does") kind 'enrolled_stay': where a line moves kids between two schools
+        # that both stay open at this level, a schedule share of them (the grades already enrolled) stays at the
+        # old school; closures and K-8 grade changes move everyone (old school not zoned at this level)
+        for ph in cfg.get('phase_in', []):
+            sh = float(ph.get('schedule', {}).get(str(year)[:4], 0.0)) if ph.get('kind') == 'enrolled_stay' else 0.0
+            if ph['level'] == lev and sh > 0:
+                old = C.blocks()[ph['area_col']].values
+                zl = list(cfg['levels'][lev]['zoned'])
+                m = (old != asg) & np.isin(old, zl) & np.isin(asg, zl)
+                mv = pd.DataFrame({'o': old[m], 'n': asg[m], 'k': K[lev][m] * sh})
+                df = df.add(mv.groupby('o')['k'].sum(), fill_value=0.0).sub(mv.groupby('n')['k'].sum(), fill_value=0.0)
         for n in names:
             r = rows.setdefault(n, {'school': n})
             r[f'nbhd_{lev}'] = float(df.get(n, 0.0)) * scale

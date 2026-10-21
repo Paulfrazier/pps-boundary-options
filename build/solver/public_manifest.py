@@ -6,11 +6,15 @@ OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'out_v2')
 import json as _json, os as _os
 _PREV = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), '..', 'export', 'preview_plans.json')
 # local-only preview plans (build/export/preview_plans.json never ships) are added after their 'after' plan
-RELEASED = ['status_quo', 'scenario_A', 'scenario_B', 'option2', 'option2_ms460', 'option1_durable', 'option4', 'option3a']
+RELEASED = ['status_quo', 'scenario_A', 'scenario_B', 'option2', 'option2_ms460', 'option2_ms460_sellwood_home', 'option1_durable', 'option4', 'option3a']
 if _os.path.exists(_PREV):
     for _p in _json.load(open(_PREV)).get('plans', []):
         if _p['name'] not in RELEASED:
             RELEASED.insert(RELEASED.index(_p['after']) + 1 if _p.get('after') in RELEASED else len(RELEASED), _p['name'])
+# requested runs on the Requests page (build/export/requests.json, site-owned; read only) are listed after the plans
+_REQ = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), '..', 'export', 'requests.json')
+if _os.path.exists(_REQ):
+    RELEASED += [_r['name'] for _r in _json.load(open(_REQ)).get('requests', []) if _r['name'] not in RELEASED]
 
 
 def clean(s):

@@ -111,6 +111,17 @@ out = {
 # implementation ...", Marysville Family Guide p. 3).  Options assign them by where they live.
 for n in ('scenario_A', 'scenario_B'):
     out[n]['v2']['lent_nondli'] = dict(LENT, baseline_to='Arleta')
+# PPS baselines: Sellwood MS closes in 2028 (Hosford Family Guide p. 3; Sellwood guide shows 523 in 2027-28), so its
+# Status Quo 6-8 area stays at Sellwood in 2027-28 (Paul 2026-10-20).  Options assign by their own lines.
+SELLWOOD_2028 = [{'level': '6-8', 'through': 2027, 'area_col': 'sq_ms', 'area': 'Sellwood', 'school': 'Sellwood',
+                  'source': 'PPS Family Guide, Hosford p. 3 ("planned closure in 2028"); Sellwood guide 2027-28 = 523'},
+                 # enrolled 7th/8th graders stay when a 6-8 line moves between open middle schools; new 6th graders
+                 # follow the new line (fitted to PPS's 2027-32 guide numbers, Paul 2026-10-20 "do it like PPS does")
+                 {'level': '6-8', 'kind': 'enrolled_stay', 'area_col': 'sq_ms', 'schedule': {'2027': 2 / 3, '2028': 1 / 3},
+                  'source': 'fitted to PPS Family Guide 6-8 projections 2027-28..2031-32 (A and B): cuts squared '
+                            'gap vs PPS 78% (Jackson->Gray, Kellogg/Harrison Park, Ockley Green->George, Hosford->Kellogg)'}]
+for n in ('scenario_A', 'scenario_B'):
+    out[n]['phase_in'] = SELLWOOD_2028
 A_HS = {'fixed_assign': 'A_hs', 'note': ('Paul 2026-10-12: keep Scenario A\'s official 9-12 lines in all options '
                                           '(feeder splits did not pay in v1 Option 1-durable)')}
 for n in ('option1_durable', 'option2', 'option3a', 'option3b', 'option4', 'option5'):

@@ -17,6 +17,7 @@ PLANS = [  # (run, folder, display name, status)
     ('scenario_B', 'scenario_B', 'PPS B', 'reference'),
     ('option2', 'option2', 'Boundary changes, same closures', 'pick'),
     ('option2_ms460', 'option2_ms460', 'Balanced middle schools', 'pick'),
+    ('option2_ms460_sellwood_home', 'option2_ms460_sellwood_home', 'Balanced middle schools, Sellwood open', 'pick'),  # Paul 2026-10-20: promote
     ('option1_durable', 'option1_durable', 'Redrawn K-8 lines', 'pick'),
     ('frontier_k17', 'frontier_k17', 'Shortest walks', 'dropped'),
     ('option4', 'option4', 'Rebalanced PPS A', 'pick'),
@@ -188,7 +189,9 @@ if __name__ == '__main__':
                                                for t in table) + ' |')
     md += ['', 'At-target rows for PPS Status Quo, PPS A and PPS B use PPS\'s own Family Guide enrollment figures (p. 4, '
            'guides dated 2026-10-08); every other number is our model (v2) on PSU July 2026 Table 5.5. '
-           '"Balanced middle schools" uses a 460 middle-school minimum; its middle-school at-target count here uses '
-           'the 500 minimum like every other plan (13/13 at its own 460 minimum).']
+           '"Balanced middle schools" and "Balanced middle schools, Sellwood open" use a 460 middle-school minimum; '
+           'their middle-school at-target counts here use the 500 minimum like every other plan (13/13 at their own 460 '
+           'minimum). Sellwood is exempt from the minimum in "Balanced middle schools, Sellwood open", so its count is '
+           'out of 13.']
     open(os.path.join(OUT, 'TRADEOFFS_MATRIX.md'), 'w').write('\n'.join(md) + '\n')
     print('\n'.join(md))

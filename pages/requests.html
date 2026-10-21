@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Model requests | PPS boundary options</title>
+<meta name="description" content="Runs made because someone asked for them, each compared with PPS Status Quo, PPS A, PPS B and the best example we modeled, on a map and in a table.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23245c9e%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23fff%27/%3E%3Crect x=%2713.5%27 y=%2718%27 width=%275%27 height=%277%27 fill=%27%23245c9e%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css">
+<style>
+.ask{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 16px;margin:16px 0;max-width:72ch}
+.ask p{margin:4px 0}
+.picker{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.picker button{font:inherit;font-size:15px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer}
+.picker button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper);font-weight:600}
+.req{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 18px;margin:12px 0 18px}
+.req h2{margin:0 0 2px;font-size:22px}
+.req .when{color:var(--muted);font-size:14px;margin:0 0 10px}
+.req dl{margin:0;display:grid;grid-template-columns:150px 1fr;gap:8px 16px;max-width:90ch}
+.req dt{font-weight:700;color:var(--muted);font-size:14px;padding-top:2px}
+.req dd{margin:0}
+.req ul.nums{margin:4px 0 0;padding-left:18px}
+.req .links{margin:12px 0 0;font-size:14px}
+.row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:22px 0 10px}
+.row h2{margin:0}
+.vs{display:inline-flex;flex-wrap:wrap;gap:6px}
+.vs button{font:inherit;font-size:14px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer}
+.vs button[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);font-weight:600}
+.mapbox{border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:var(--card)}
+.mapbox iframe{display:block;width:100%;height:860px;border:0}
+.maplink{font-size:14px;margin:6px 0 0}
+#cmp th.sel,#cmp td.sel{background:var(--tag)}
+#cmp thead th small{display:block;font-weight:500}
+#cmp td small{display:block;color:var(--muted);font-weight:400}
+#cmp td:first-child{min-width:150px}
+.empty{color:var(--muted)}
+@media (max-width:640px){
+  .req dl{grid-template-columns:1fr;gap:2px}
+  .req dt{padding-top:8px}
+  .mapbox iframe{height:760px}
+}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="requests.html" aria-current="page">Requests</a><a href="schools.html">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
+<main>
+<div class="warn" id="pps-disclaimer"><b>Independent analysis by a PPS parent, not an official Portland Public Schools product.</b> It may contain errors. Check PPS's own materials: the <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">Rightsizing scenarios page</a> and the <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
+
+<h1>Model requests</h1>
+<p class="notreal">These are best effort boundaries. NOT REAL PLANS, yet.</p>
+<p class="lede">People ask us to try specific ideas. Each run here was made because someone asked for it. It uses the same model, data and size rules as the example plans, and is compared below with PPS&rsquo;s plans and the best example we modeled.</p>
+
+<div class="ask">
+<p><b>A requested run answers one question.</b> It isn&rsquo;t a recommendation and isn&rsquo;t one of the example plans. Some requests trade away walking or school sizes to get something else, and the table shows what each one gives up.</p>
+<p><b>Want a run?</b> Describe the idea in a <a href="https://github.com/paulfrazier/pps-boundary-options/issues" rel="noopener">GitHub issue</a>, for example which closures to keep, what to hold fixed and what you&rsquo;d like improved.</p>
+</div>
+
+<div id="body"></div>
+
+<footer><p><a href="options.html">Every plan side by side</a> &middot; <a href="map.html">Every option on one map</a> &middot; <a href="method.html">How the model works</a></p><p id="ai"><b>Built with AI.</b> The research, data work, modeling and writing were done by AI (Claude, from Anthropic), directed and guided by Paul Frazier, a PPS parent, who made every judgment call and checked results against PPS&rsquo;s documents. Best effort; it will have errors. <a href="how.html">How we did this</a> &middot; <a href="method.html">Method</a>.</p>
+<p><a href="../LICENSE">License</a>: code MIT, analysis CC BY 4.0, OpenStreetMap-derived data &copy; OpenStreetMap contributors, ODbL. &copy; 2026 Paul Frazier.</p>
+</footer>
+</main>
+<script src="data/site_data.js"></script>
+<script>
+(function(){
+var D = window.SITE_DATA || {}, REQ = D.requests || [], RO = D.request_options || [];
+var body = document.getElementById('body');
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function fx(v,d){return Number(v).toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d,useGrouping:false});}
+function fmtInt(v){return v==null?'–':Math.round(v).toLocaleString('en-US');}
+function dateLabel(s){var p=(s||'').split('-');if(p.length!==3)return s||'';return ['January','February','March','April','May','June','July','August','September','October','November','December'][+p[1]-1]+' '+(+p[2])+', '+p[0];}
+if(!REQ.length){body.innerHTML='<p class="empty">No requested runs are published yet.</p>';return;}
+
+var byName = {}; (D.options||[]).concat(RO).forEach(function(o){byName[o.name]=o;});
+var BEST = (D.options||[]).filter(function(o){return o.brief_rank===0;})[0];
+var BASE = ['status_quo','scenario_A','scenario_B'].concat(BEST?[BEST.name]:[]);
+var LEVELS = ['K-5','6-8','9-12'];
+var st = {req: REQ[0].name, level: 'K-5', vs: 'scenario_A'};
+(function(){var h=location.hash.slice(1).split('&');h.forEach(function(kv){var i=kv.indexOf('=');if(i<0)return;var k=kv.slice(0,i),v=decodeURIComponent(kv.slice(i+1));
+  if(k==='run'&&REQ.some(function(r){return r.name===v;}))st.req=v; if(k==='level'&&LEVELS.indexOf(v)>=0)st.level=v; if(k==='vs'&&BASE.indexOf(v)>=0)st.vs=v;});})();
+
+// same definitions as the options page: PPS's own Family Guide figures for PPS plans where they exist, else our durability
+function durLv(o, lv){var P=D.pps_figures&&D.pps_figures.plans&&D.pps_figures.plans[o.name];if(P&&P.levels[lv])return P.levels[lv];return o.durability&&o.durability.levels&&o.durability.levels[lv];}
+function inRange(o, lv){var d=durLv(o,lv);if(!d)return null;var a=d.at_target_zoned&&d.at_target_zoned['2031-32'];return a==null?null:{a:a,n:d.n_zoned_non_exempt};}
+function durable(o, lv){var d=durLv(o,lv);if(!d)return null;var a=d.at_target_all_required_years!=null?d.at_target_all_required_years:d.durable_through_2040_41;return a==null?null:{a:a,n:d.n_zoned_non_exempt};}
+function L(o, lv){return (o.levels&&o.levels[lv])||{};}
+function reqYears(){var o=(D.options||[]).find(function(x){return x.durability&&x.durability.required_years;});var y=o&&o.durability.required_years;return y?y[0]+' to '+y[y.length-1]:'every required year';}
+
+function metrics(lv){
+  var thr=(D.levels&&D.levels[lv]||{}).bus_threshold_mi, fl=(D.levels&&D.levels[lv]||{}).floor, m=[];
+  var sf=function(o){var s=o.solved_floor&&o.solved_floor[lv];return s?'<small>solved at '+s+'</small>':'';};
+  var frac=function(get){return {get:function(o){var r=get(o);return r?r.a:null;},f:function(v,o){var r=get(o);return r?r.a+' of '+r.n+sf(o):'–';}};};
+  m.push({label:'Kids sent to a farther school, past a closer one',dir:-1,get:function(o){return L(o,lv).kids_past_closer_school;},f:fmtInt});
+  var a=frac(function(o){return inRange(o,lv);}); m.push({label:'Schools at target, 2031-32',note:'floor '+fl,dir:1,get:a.get,f:a.f});
+  var b=frac(function(o){return durable(o,lv);}); m.push({label:'At target every year, '+reqYears(),dir:1,get:b.get,f:b.f});
+  m.push({label:'Kids reassigned from their PPS Status Quo school',dir:-1,skip:'status_quo',get:function(o){return L(o,lv).kids_reassigned_vs_status_quo;},f:fmtInt});
+  m.push({label:'Average walk (mi)',dir:-1,get:function(o){return L(o,lv).avg_walk_mi;},f:function(v){return fx(v,2);}});
+  m.push({label:'Living within 1 mile',dir:1,get:function(o){return L(o,lv)['pct_within_1.0mi'];},f:function(v){return fx(v,1)+'%';}});
+  m.push({label:'Kids over the bus line ('+thr+' mi)',dir:-1,get:function(o){return L(o,lv).kids_over_bus_threshold;},f:fmtInt});
+  if(lv==='6-8') m.push({label:'Elementary schools split between middle schools',dir:-1,get:function(o){return L(o,'6-8').n_split_feeders_es_to_ms;},f:fmtInt});
+  if(lv==='9-12'){
+    m.push({label:'Elementary areas split between high schools',dir:-1,opt:1,get:function(o){return L(o,'9-12').n_split_feeders_es_to_hs;},f:fmtInt});
+    m.push({label:'Middle schools split between high schools',dir:-1,get:function(o){return L(o,'9-12').n_split_feeders_ms_to_hs;},f:fmtInt});
+    m.push({label:'Middle zones feeding one high school',dir:1,get:function(o){return L(o,'9-12').pct_ms_feeders_to_one_hs;},f:function(v){return Math.round(v)+'%';}});
+  }
+  m.push({label:'Dissimilarity index',note:'lower = more evenly mixed',dir:-1,get:function(o){return L(o,lv).dissimilarity_index;},f:function(v){return fx(v,3);}});
+  return m;
+}
+
+function headName(o){return o.name===(BEST&&BEST.name)?esc(o.short)+'<small>best we modeled</small>':o.request?esc(o.short)+'<small>requested</small>':o.kind==='reference'?esc(o.short)+'<small>baseline</small>':esc(o.short)+'<small>PPS plan</small>';}
+
+function table(){
+  var lv=st.level, cols=[st.req].concat(BASE,REQ.map(function(r){return r.name;}).filter(function(n){return n!==st.req;})).map(function(n){return byName[n];}).filter(function(o){return o&&o.levels&&o.levels[lv];});
+  var ms=metrics(lv).filter(function(m){return !m.opt||cols.some(function(o){return m.get(o)!=null;});});
+  var h='<thead><tr><th>Measure, '+esc(lv)+'</th>'+cols.map(function(o){return '<th class="'+(o.name===st.req?'sel':'')+'">'+headName(o)+'</th>';}).join('')+'</tr></thead><tbody>';
+  ms.forEach(function(m){
+    var best=null; cols.forEach(function(o){if(o.kind==='reference')return;var v=m.get(o);if(v==null)return;if(best==null||(m.dir>0?v>best:v<best))best=v;});
+    h+='<tr><td>'+esc(m.label)+(m.note?'<small>'+esc(m.note)+'</small>':'')+'</td>'+cols.map(function(o){var v=m.get(o),base=m.skip===o.name;
+      var c=[];if(o.name===st.req)c.push('sel');if(v!=null&&!base&&o.kind!=='reference'&&v===best)c.push('best');
+      return '<td'+(c.length?' class="'+c.join(' ')+'"':'')+'>'+(v==null||base?'–':m.f(v,o))+'</td>';}).join('')+'</tr>';
+  });
+  document.getElementById('cmp').innerHTML=h+'</tbody>';
+  document.getElementById('cmpcite').innerHTML='Our model (v2), 2031-32 basis, from each plan&rsquo;s scorecard: '+cols.map(function(o){return esc(o.short)+': <a href="../'+esc(o.source)+'">'+esc(o.source.split('/').slice(-2).join('/'))+'</a>';}).join('; ')+
+    '. PPS A and PPS B &ldquo;at target&rdquo; counts use PPS&rsquo;s own Family Guide figures where PPS published them, as on the <a href="options.html">options page</a>. <b>Bold</b> = best in the row, not counting Status Quo.';
+}
+
+function mapSrc(){var h='a='+encodeURIComponent(st.req)+'&b='+encodeURIComponent(st.vs);if(st.level!=='K-5')h+='&level='+encodeURIComponent(st.level);return h;}
+function setMap(){var f=document.getElementById('rmap'),h=mapSrc();
+  document.getElementById('fullmap').href='map.html#'+h;
+  try{if(f.contentWindow&&f.contentWindow.location.pathname.indexOf('map.html')>=0){f.contentWindow.location.hash=h;return;}}catch(_){}
+  f.src='map.html?embed=1#'+h;}
+
+function card(){
+  var r=REQ.filter(function(x){return x.name===st.req;})[0], o=byName[r.name];
+  var html='<section class="req" aria-live="polite"><h2>'+esc(r.title)+'</h2><p class="when">Asked '+esc(dateLabel(r.date))+' &middot; shown on the map as &ldquo;'+esc(o.short)+'&rdquo;</p><dl>'+
+    '<dt>The request</dt><dd>'+esc(r.asked)+'</dd><dt>What we ran</dt><dd>'+esc(r.ran)+'</dd><dt>What it shows</dt><dd>'+esc(r.shows)+headline(o)+'</dd>'+
+    ((r.notes||[]).length?'<dt>Notes</dt><dd>'+r.notes.map(esc).join('<br>')+'</dd>':'')+'</dl>'+
+    '<p class="links">Sources: <a href="../'+esc(o.source)+'">scorecard</a>'+(o.tradeoffs?' &middot; <a href="../'+esc(o.tradeoffs)+'">trade-offs</a>':'')+(o.schools_source?' &middot; <a href="../'+esc(o.schools_source)+'">school sizes</a>':'')+'</p></section>';
+  document.getElementById('card').innerHTML=html;
+}
+// the key numbers, read from the data (K-5 and middle school), against PPS A and the best example we modeled
+function headline(o){
+  var A=byName.scenario_A, B=BEST, rows=[];
+  function trio(lab,get,f){var v=get(o);if(v==null)return;var t=[];if(A&&get(A)!=null)t.push('PPS A '+f(get(A),A));if(B&&get(B)!=null)t.push(esc(B.short)+' '+f(get(B),B));rows.push('<li>'+lab+': <b>'+f(v,o)+'</b>'+(t.length?' (vs '+t.join(', ')+')':'')+'</li>');}
+  trio('K-5 kids sent past a closer school',function(x){return L(x,'K-5').kids_past_closer_school;},fmtInt);
+  trio('K-5 schools at target, 2031-32',function(x){var r=inRange(x,'K-5');return r?r.a:null;},function(v,x){var r=inRange(x,'K-5');return r.a+' of '+r.n;});
+  trio('Middle schools at PPS&rsquo;s 500, 2031-32',function(x){var r=inRange(x,'6-8');return r?r.a:null;},function(v,x){var r=inRange(x,'6-8');return r.a+' of '+r.n;});
+  trio('Elementary areas split between high schools',function(x){return L(x,'9-12').n_split_feeders_es_to_hs;},fmtInt);
+  trio('Middle schools split between high schools',function(x){return L(x,'9-12').n_split_feeders_ms_to_hs;},fmtInt);
+  return rows.length?'<ul class="nums">'+rows.join('')+'</ul>':'';
+}
+function hashOut(){var h='run='+encodeURIComponent(st.req)+(st.level!=='K-5'?'&level='+encodeURIComponent(st.level):'')+(st.vs!=='scenario_A'?'&vs='+encodeURIComponent(st.vs):'');try{history.replaceState(null,'','#'+h);}catch(_){}}
+
+var vsLab={status_quo:'vs PPS Status Quo',scenario_A:'vs PPS A',scenario_B:'vs PPS B'}; if(BEST) vsLab[BEST.name]='vs best we modeled';
+body.innerHTML=
+  (REQ.length>1?'<div class="picker" role="group" aria-label="Requested runs">'+REQ.map(function(r){return '<button type="button" data-r="'+esc(r.name)+'">'+esc(r.title)+'</button>';}).join('')+'</div>':'')+
+  '<div id="card"></div>'+
+  '<div class="row"><h2>On the map</h2><div class="vs" role="group" aria-label="Compare with">'+BASE.filter(function(n){return byName[n];}).map(function(n){return '<button type="button" data-vs="'+esc(n)+'">'+esc(vsLab[n])+'</button>';}).join('')+'</div></div>'+
+  '<p class="small muted">Left of the handle: the requested run. Right: the plan you compare it with. Drag the handle, or tap a spot to see its school under each plan.</p>'+
+  '<div class="mapbox"><iframe id="rmap" title="Map of the requested run compared with another plan" loading="lazy"></iframe></div>'+
+  '<p class="maplink"><a id="fullmap" href="map.html">Open this comparison on the full map</a></p>'+
+  '<div class="row"><h2>Side by side</h2><div class="levels" role="group" aria-label="Grade level">'+LEVELS.map(function(l){return '<button type="button" data-l="'+l+'">'+l+'</button>';}).join('')+'</div></div>'+
+  '<div class="tbl"><table id="cmp"></table></div><p class="cite" id="cmpcite"></p>';
+
+function sync(){
+  document.querySelectorAll('[data-r]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.r===st.req);});
+  document.querySelectorAll('[data-vs]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.vs===st.vs);});
+  document.querySelectorAll('[data-l]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===st.level);});
+  card(); table(); setMap(); hashOut();
+}
+body.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+  if(b.dataset.r)st.req=b.dataset.r; else if(b.dataset.vs)st.vs=b.dataset.vs; else if(b.dataset.l)st.level=b.dataset.l; else return; sync();});
+sync();
+})();
+</script>
+</body>
+</html>

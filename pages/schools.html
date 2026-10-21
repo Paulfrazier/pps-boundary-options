@@ -9,10 +9,10 @@
 <link rel="stylesheet" href="site.css">
 <style>
 /* plan colors match the Durability page (pages/durability.html) */
-:root{--s-status_quo:#7a8388;--s-option2_ms460:#2a78d6;--s-option2:#1baf7a;--s-scenario_A:#eb6834;--s-frontier_k17:#1baf7a;--s-scenario_B:#eda100;--s-option4:#e87ba4;--s-option3a:#008300;--s-option1_durable:#6250d6;--s-other:#556b2f;
+:root{--s-status_quo:#7a8388;--s-option2_ms460:#2a78d6;--s-option2_ms460_sellwood_home:#1b8ea6;--s-option2:#1baf7a;--s-scenario_A:#eb6834;--s-frontier_k17:#1baf7a;--s-scenario_B:#eda100;--s-option4:#e87ba4;--s-option3a:#008300;--s-option1_durable:#6250d6;--s-other:#556b2f;
  --s-hist:#1f2a30;--s-psu:#8a6d3b;--grid:#e6e2d8;--in:#2e7d5b}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--s-status_quo:#9aa3a8;--s-option2_ms460:#3987e5;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#2ea52e;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--s-hist:#e6e9ea;--s-psu:#d2b277;--grid:#2c3235;--in:#6cc49a}}
-:root[data-theme="dark"]{--s-status_quo:#9aa3a8;--s-option2_ms460:#3987e5;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#2ea52e;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--s-hist:#e6e9ea;--s-psu:#d2b277;--grid:#2c3235;--in:#6cc49a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--s-status_quo:#9aa3a8;--s-option2_ms460:#3987e5;--s-option2_ms460_sellwood_home:#4cb4cb;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#2ea52e;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--s-hist:#e6e9ea;--s-psu:#d2b277;--grid:#2c3235;--in:#6cc49a}}
+:root[data-theme="dark"]{--s-status_quo:#9aa3a8;--s-option2_ms460:#3987e5;--s-option2_ms460_sellwood_home:#4cb4cb;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#2ea52e;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--s-hist:#e6e9ea;--s-psu:#d2b277;--grid:#2c3235;--in:#6cc49a}
 .row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:12px 0}
 select{font:inherit;font-size:15px;padding:6px 8px;border:1px solid var(--rule);border-radius:6px;background:var(--card);color:var(--ink);max-width:100%;min-height:40px}
 .levels button.tog{white-space:nowrap}
@@ -44,7 +44,7 @@ select{font:inherit;font-size:15px;padding:6px 8px;border:1px solid var(--rule);
 </style>
 </head>
 <body>
-<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="schools.html" aria-current="page">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
+<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="requests.html">Requests</a><a href="schools.html" aria-current="page">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
 <main>
 <div class="warn" id="pps-disclaimer">Independent analysis by a PPS parent, not an official Portland Public Schools product. Official material: <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">PPS rightsizing scenarios</a> and <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
 
@@ -371,7 +371,7 @@ function table(s,ser){
 
 // a plan's caveat only where it concerns this school: it names the school, or (balanced middle schools) any 6-8 school
 function relevant(o,s){var c=o.caveat||'';if(!c)return false;var nm=s.disp.replace(/ \(.*\)$/,'');
-  return c.indexOf(nm)>=0||c.indexOf(s.k)>=0||(o.name==='option2_ms460'&&s.lvl==='6-8')}
+  return c.indexOf(nm)>=0||c.indexOf(s.k)>=0||((o.name==='option2_ms460'||o.name==='option2_ms460_sellwood_home')&&s.lvl==='6-8')}
 function cites(s,ser,band){
   var C=[],off=X.psu_page_offset||0;
   if(s.h)C.push('<b>Actual enrollment</b> (second-hand): the <a href="'+esc(X.history_url)+'">PPS Data Explorer project</a>, a community project, row &ldquo;'+esc(s.hn)+'&rdquo;. '+X.history_basis);

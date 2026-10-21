@@ -255,5 +255,25 @@
   "psu_by_year": "build/data/v2/psu_table5_5_by_year.csv",
   "returner_weighting": "residents"
  },
- "horizon": "pps2031"
+ "horizon": "pps2031",
+ "phase_in": [
+  {
+   "level": "6-8",
+   "through": 2027,
+   "area_col": "sq_ms",
+   "area": "Sellwood",
+   "school": "Sellwood",
+   "source": "PPS Family Guide, Hosford p. 3 (\"planned closure in 2028\"); Sellwood guide 2027-28 = 523"
+  },
+  {
+   "level": "6-8",
+   "kind": "enrolled_stay",
+   "area_col": "sq_ms",
+   "schedule": {
+    "2027": 0.6666666666666666,
+    "2028": 0.3333333333333333
+   },
+   "source": "fitted to PPS Family Guide 6-8 projections 2027-28..2031-32 (A and B): cuts squared gap vs PPS 78% (Jackson->Gray, Kellogg/Harrison Park, Ockley Green->George, Hosford->Kellogg)"
+  }
+ ]
 }

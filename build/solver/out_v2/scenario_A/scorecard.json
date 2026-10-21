@@ -132,15 +132,15 @@
     }
    },
    "n_split_feeders_ms_to_hs": 3,
-   "pct_ms_feeders_to_one_hs": 80.0,
-   "hs_range": 362,
    "split_feeders_es_to_hs": {
     "Bridlemile": {
      "Ida B. Wells": 172.1,
      "Lincoln": 117.0
     }
    },
-   "n_split_feeders_es_to_hs": 1
+   "n_split_feeders_es_to_hs": 1,
+   "pct_ms_feeders_to_one_hs": 80.0,
+   "hs_range": 362
   }
  },
  "programs": {
@@ -1555,8 +1555,8 @@
    "6-8": {
     "n_zoned_non_exempt": 13,
     "at_target_zoned": {
-     "2027-28": 10,
-     "2028-29": 9,
+     "2027-28": 9,
+     "2028-29": 10,
      "2029-30": 9,
      "2030-31": 7,
      "2031-32": 7,
@@ -1579,11 +1579,11 @@
     },
     "schools": {
      "Beaumont": {
-      "first_year_out": "2028-29",
-      "by": -14.2,
+      "first_year_out": "2027-28",
+      "by": -72.1,
       "sizes_by_year": {
-       "2027-28": 523.9,
-       "2028-29": 485.8,
+       "2027-28": 427.9,
+       "2028-29": 443.3,
        "2029-30": 467.9,
        "2030-31": 454.2,
        "2031-32": 463.7,
@@ -1595,7 +1595,7 @@
       "program_only": false,
       "size_2031": 463.7,
       "in_range_by_year": [
-       true,
+       false,
        false,
        false,
        false,
@@ -1610,10 +1610,10 @@
      },
      "George": {
       "first_year_out": "2027-28",
-      "by": 83.6,
+      "by": 21.8,
       "sizes_by_year": {
-       "2027-28": 706.6,
-       "2028-29": 700.1,
+       "2027-28": 644.8,
+       "2028-29": 671.4,
        "2029-30": 700.8,
        "2030-31": 679.7,
        "2031-32": 672.6,
@@ -1639,11 +1639,11 @@
       "in_range_all_years": false
      },
      "Gray": {
-      "first_year_out": "2030-31",
-      "by": -12.9,
+      "first_year_out": "2027-28",
+      "by": -30.0,
       "sizes_by_year": {
-       "2027-28": 560.7,
-       "2028-29": 545.3,
+       "2027-28": 470.0,
+       "2028-29": 500.0,
        "2029-30": 529.1,
        "2030-31": 487.1,
        "2031-32": 472.0,
@@ -1655,7 +1655,7 @@
       "program_only": false,
       "size_2031": 472.0,
       "in_range_by_year": [
-       true,
+       false,
        true,
        true,
        false,
@@ -1672,8 +1672,8 @@
       "first_year_out": null,
       "by": null,
       "sizes_by_year": {
-       "2027-28": 698.5,
-       "2028-29": 673.8,
+       "2027-28": 629.1,
+       "2028-29": 643.0,
        "2029-30": 667.7,
        "2030-31": 637.0,
        "2031-32": 644.9,
@@ -1699,11 +1699,11 @@
       "in_range_all_years": true
      },
      "Hosford": {
-      "first_year_out": "2027-28",
-      "by": 30.8,
+      "first_year_out": "2028-29",
+      "by": 11.9,
       "sizes_by_year": {
-       "2027-28": 741.8,
-       "2028-29": 691.5,
+       "2027-28": 548.0,
+       "2028-29": 722.9,
        "2029-30": 622.9,
        "2030-31": 582.9,
        "2031-32": 565.6,
@@ -1715,8 +1715,8 @@
       "program_only": false,
       "size_2031": 565.6,
       "in_range_by_year": [
-       false,
        true,
+       false,
        true,
        true,
        true,
@@ -1732,8 +1732,8 @@
       "first_year_out": "2029-30",
       "by": -5.9,
       "sizes_by_year": {
-       "2027-28": 524.3,
-       "2028-29": 522.7,
+       "2027-28": 615.0,
+       "2028-29": 567.9,
        "2029-30": 494.1,
        "2030-31": 435.5,
        "2031-32": 408.5,
@@ -1762,8 +1762,8 @@
       "first_year_out": null,
       "by": null,
       "sizes_by_year": {
-       "2027-28": 661.5,
-       "2028-29": 641.2,
+       "2027-28": 576.2,
+       "2028-29": 598.7,
        "2029-30": 612.5,
        "2030-31": 590.4,
        "2031-32": 613.1,
@@ -1789,11 +1789,11 @@
       "in_range_all_years": true
      },
      "Lane": {
-      "first_year_out": "2030-31",
-      "by": -25.1,
+      "first_year_out": "2027-28",
+      "by": -97.8,
       "sizes_by_year": {
-       "2027-28": 578.7,
-       "2028-29": 549.0,
+       "2027-28": 402.2,
+       "2028-29": 590.9,
        "2029-30": 519.2,
        "2030-31": 474.9,
        "2031-32": 448.2,
@@ -1805,7 +1805,7 @@
       "program_only": false,
       "size_2031": 448.2,
       "in_range_by_year": [
-       true,
+       false,
        true,
        true,
        false,
@@ -1849,11 +1849,11 @@
       "in_range_all_years": true
      },
      "Ockley Green": {
-      "first_year_out": "2028-29",
-      "by": -17.1,
+      "first_year_out": null,
+      "by": null,
       "sizes_by_year": {
-       "2027-28": 507.7,
-       "2028-29": 482.9,
+       "2027-28": 569.5,
+       "2028-29": 511.6,
        "2029-30": 514.6,
        "2030-31": 513.1,
        "2031-32": 520.8,
@@ -1866,7 +1866,7 @@
       "size_2031": 520.8,
       "in_range_by_year": [
        true,
-       false,
+       true,
        true,
        true,
        true,
@@ -1875,8 +1875,8 @@
        true,
        true
       ],
-      "in_range_all_required_years": false,
-      "in_range_all_years": false
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
      },
      "Roseway Heights": {
       "first_year_out": null,
@@ -1909,11 +1909,11 @@
       "in_range_all_years": true
      },
      "Tubman": {
-      "first_year_out": "2027-28",
-      "by": -9.7,
+      "first_year_out": "2029-30",
+      "by": -60.1,
       "sizes_by_year": {
-       "2027-28": 490.3,
-       "2028-29": 462.5,
+       "2027-28": 586.3,
+       "2028-29": 505.0,
        "2029-30": 439.9,
        "2030-31": 422.7,
        "2031-32": 423.3,
@@ -1925,8 +1925,8 @@
       "program_only": false,
       "size_2031": 423.3,
       "in_range_by_year": [
-       false,
-       false,
+       true,
+       true,
        false,
        false,
        false,
@@ -1969,8 +1969,8 @@
       "in_range_all_years": true
      }
     },
-    "at_target_all_required_years": 5,
-    "at_target_all_years_to_2035_36": 5
+    "at_target_all_required_years": 6,
+    "at_target_all_years_to_2035_36": 6
    },
    "9-12": {
     "n_zoned_non_exempt": 8,
