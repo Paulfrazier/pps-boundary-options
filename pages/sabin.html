@@ -210,6 +210,9 @@ var WHY={
   sabin_all:function(p){var v=nsz(p,'Vernon'),bc=nsz(p,'Beverly Cleary'),i=nsz(p,'Irvington');
     return 'Distance and size, inside fixed limits. Sabin- and Irvington-area kids could only go to Irvington, Beverly Cleary, Alameda, Vernon or King, and King&rsquo;s, Boise-Eliot/Humboldt&rsquo;s and Vernon&rsquo;s own areas stay whole, so those five schools take in the closed Sabin area. Irvington may stay below 360'+(i?' ('+n0(i)+' in 2031-32)':'')+'. Within that, kids go to whichever school is closer and has room'+(near360(v)&&near360(bc)?'; Vernon ('+n0(v)+') and Beverly Cleary ('+n0(bc)+') end just above 360, so they take the kids they need to stay there':'')+'. It also uses the same big-school relief as the current best.'+tl(p);}
 };
+  // irv_sabin: out_v2/irv_sabin/TRADEOFFS.md "What this plan is"; Sabin exempt and Alameda 450 in configs/v2/irv_sabin.json
+WHY.irv_sabin=function(p){var sb=nsz(p,'Sabin'),a=nsz(p,'Alameda'),v=nsz(p,'Vernon');
+  return 'Distance and size, the mirror of &ldquo;Sabin into Irvington&rdquo;. Sabin stays open and may stay below 360'+(sb?' ('+n0(sb)+' in 2031-32)':'')+'; Irvington closes. Sabin- and Irvington-area kids could only go to Sabin, Beverly Cleary, Alameda, Vernon or King, and the model picks by distance and size'+(near360(a)&&near360(v)?'; Alameda ('+n0(a)+') and Vernon ('+n0(v)+') end just above 360, so they take the kids they need to stay there':'')+'. It also uses the same big-school relief as the current best.'+tl(p);};
 WHY.equity_noswap_alameda_rig=WHY.equity_noswap_alameda_rig_hs;
 function whyHtml(list){
   var C=S.capacity||{};

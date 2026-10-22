@@ -35,7 +35,7 @@ def check_pieces(asg, NB, roots, b, kids):
                         'lon': round(float(b['x'].values[cm].mean()), 4), 'lat': round(float(b['y'].values[cm].mean()), 4)})
     return bad
 
-def check(run_dir, cfg=None):
+def check(run_dir, cfg=None, _seen=()):
     NB = C.adjacency()[0]
     roots = C.school_block()
     b = C.blocks()
@@ -70,6 +70,16 @@ def check(run_dir, cfg=None):
                 pps = {(x['school'], x['blocks']) for x in check_pieces(b[fa].values, NB, roots, b, K[lev] if K is not None else np.ones(len(asg)))}
                 out[lev] = [x for x in check_pieces(asg, NB, roots, b, K[lev] if K is not None else np.ones(len(asg)))
                             if (x['school'], x['blocks']) not in pps]   # only pieces the reassignment made
+                continue
+        # a level copied unchanged from another run (solve.py fixed_run) gets that run's verdict, so PPS-traced
+        # pieces the source run was cleared for are not re-flagged here
+        fr = cfg['levels'][lev].get('fixed_run') if cfg else None
+        if fr:
+            src = os.path.join(C.SOLVER, 'out_v2', fr)
+            sf = os.path.join(src, f'assign_{lev}.parquet')
+            same_run = os.path.realpath(src) in _seen or os.path.realpath(src) == os.path.realpath(run_dir)
+            if not same_run and os.path.exists(sf) and (pd.read_parquet(sf)['school'].values == asg).all():
+                out[lev] = check(src, _seen=_seen + (os.path.realpath(run_dir),))[lev]
                 continue
         out[lev] = check_pieces(asg, NB, roots, b, K[lev] if K is not None else np.ones(len(asg)))
     return out

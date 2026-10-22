@@ -62,7 +62,9 @@ label.sel select,#sel0{font:600 .88rem var(--sans);color:var(--ink);background:v
 .legend [hidden]{display:none}
 .legend .dvl:not(.on){display:none}
 .wrap .lede{font-size:1rem}
-.grid{grid-template-columns:minmax(0,1fr) 340px}@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.grid{grid-template-columns:minmax(0,1fr) 340px}@media (max-width:900px){.grid{grid-template-columns:1fr}#sidet{display:none}}
+/* side panel collapsed (#sidet): the map takes the full width; phones stack the panel under the map, so no toggle there */
+@media (min-width:901px){.grid.noside{grid-template-columns:minmax(0,1fr)}.grid.noside>.side{display:none}}
 .side .caveat{font-size:.8rem;line-height:1.45;margin:8px 0 2px;padding:6px 9px;border-left:3px solid var(--accent);background:var(--accent-soft);color:var(--ink);border-radius:0 4px 4px 0}
 
 /* ---- comparison UX pass (MAP_UX_AUDIT.md) ---- */

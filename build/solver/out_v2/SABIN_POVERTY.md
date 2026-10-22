@@ -13,6 +13,7 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Scenario D buildings, every school at target | 100% / 100% | 0.68 / 0.76 | +0.20 / +0.32 | 85% / 76% | 15% / 24% | 100% / 100% |
 | Current best: fewer DLI moves, sustainable schools | 100% / 100% | 0.64 / 0.69 | +0.16 / +0.24 | 92% / 90% | 8% / 10% | 100% / 100% |
 | Sabin into Irvington, all ideas | 100% / 100% | 0.60 / 0.62 | +0.12 / +0.18 | 99% / 99% | 1% / 1% | 84% / 77% |
+| Irvington into Sabin | 42% / 37% | 0.45 / 0.46 | -0.02 / +0.01 | 99% / 98% | 1% / 2% | 42% / 37% |
 
 ## Middle school (6-8)
 
@@ -25,6 +26,7 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Scenario D buildings, every school at target | 46% / 57% | 1.20 / 1.16 | -0.55 / -0.65 | 24% / 18% | 54% / 43% |
 | Current best: fewer DLI moves, sustainable schools | 54% / 75% | 1.44 / 1.39 | -0.30 / -0.42 | 41% / 35% | 100% / 100% |
 | Sabin into Irvington, all ideas | 13% / 22% | 1.65 / 1.64 | -0.09 / -0.18 | 57% / 53% | 100% / 100% |
+| Irvington into Sabin | 42% / 35% | 1.66 / 1.61 | -0.09 / -0.21 | 69% / 62% | 100% / 100% |
 
 ## High school (9-12)
 
@@ -37,6 +39,7 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Scenario D buildings, every school at target | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Current best: fewer DLI moves, sustainable schools | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Sabin into Irvington, all ideas | 14% / 23% | -0.11 / -0.16 | 14% / 23% |
+| Irvington into Sabin | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 
 ## Sabin-area kids in a sustainable school (PPS definition: at or above 360 / 500 / 1,100 in 2031-32)
 
@@ -49,6 +52,7 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Scenario D buildings, every school at target | 100% / 100% | 89% / 84% | 100% / 100% |
 | Current best: fewer DLI moves, sustainable schools | 100% / 100% | 100% / 100% | 100% / 100% |
 | Sabin into Irvington, all ideas | 84% / 77% | 100% / 100% | 100% / 100% |
+| Irvington into Sabin | 42% / 37% | 100% / 100% | 100% / 100% |
 
 ## District: PPS dashboard sustainability (all levels, 2031-32)
 
@@ -61,6 +65,7 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Scenario D buildings, every school at target | 70 | 73% | 83% |
 | Current best: fewer DLI moves, sustainable schools | 62 | 97% | 98% |
 | Sabin into Irvington, all ideas | 63 | 92% | 95% |
+| Irvington into Sabin | 63 | 94% | 96% |
 
 ## Where Sabin-area kids go
 
@@ -87,6 +92,9 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Sabin into Irvington, all ideas | K-5 | Vernon 73 (20 in poverty), MLK Jr 63 (27 in poverty), Alameda 50 (9 in poverty), Irvington 50 (11 in poverty) |
 | Sabin into Irvington, all ideas | 6-8 | Tubman 75 (20 in poverty), Beaumont 18 (3 in poverty) |
 | Sabin into Irvington, all ideas | 9-12 | Jefferson 175 (61 in poverty), Grant 45 (10 in poverty) |
+| Irvington into Sabin | K-5 | Sabin 146 (39 in poverty), Vernon 52 (14 in poverty), MLK Jr 29 (12 in poverty), Alameda 9 (2 in poverty) |
+| Irvington into Sabin | 6-8 | Tubman 59 (13 in poverty), Beaumont 23 (5 in poverty), Ockley Green 12 (4 in poverty) |
+| Irvington into Sabin | 9-12 | Jefferson 221 (71 in poverty) |
 
 # Irvington-area families: students experiencing poverty vs all others
 
@@ -103,6 +111,7 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Scenario D buildings, every school at target | 100% / 100% | 0.92 / 0.97 | +0.32 / +0.45 | 57% / 55% | 43% / 45% | 42% / 60% |
 | Current best: fewer DLI moves, sustainable schools | 100% / 100% | 0.89 / 0.90 | +0.29 / +0.38 | 58% / 60% | 42% / 40% | 100% / 100% |
 | Sabin into Irvington, all ideas | 39% / 28% | 0.49 / 0.45 | -0.11 / -0.07 | 100% / 100% | 0% / 0% | 39% / 28% |
+| Irvington into Sabin | 100% / 100% | 0.91 / 0.84 | +0.31 / +0.32 | 61% / 76% | 39% / 24% | 69% / 57% |
 
 ## Middle school (6-8)
 
@@ -115,6 +124,7 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Scenario D buildings, every school at target | 67% / 59% | 0.78 / 0.98 | -0.42 / -0.29 | 2% / 8% | 33% / 41% |
 | Current best: fewer DLI moves, sustainable schools | 11% / 42% | 1.24 / 1.38 | +0.04 / +0.12 | 36% / 44% | 100% / 100% |
 | Sabin into Irvington, all ideas | 41% / 29% | 1.30 / 1.27 | +0.10 / +0.01 | 39% / 24% | 100% / 100% |
+| Irvington into Sabin | 2% / 10% | 1.20 / 1.26 | -0.00 / -0.01 | 30% / 25% | 100% / 100% |
 
 ## High school (9-12)
 
@@ -127,6 +137,7 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Scenario D buildings, every school at target | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
 | Current best: fewer DLI moves, sustainable schools | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
 | Sabin into Irvington, all ideas | 54% / 69% | +0.39 / +0.57 | 46% / 31% |
+| Irvington into Sabin | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
 
 ## Irvington-area kids in a sustainable school (PPS definition: at or above 360 / 500 / 1,100 in 2031-32)
 
@@ -139,6 +150,7 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Scenario D buildings, every school at target | 100% / 100% | 95% / 82% | 100% / 100% |
 | Current best: fewer DLI moves, sustainable schools | 100% / 100% | 100% / 100% | 100% / 100% |
 | Sabin into Irvington, all ideas | 39% / 28% | 100% / 100% | 100% / 100% |
+| Irvington into Sabin | 69% / 57% | 100% / 100% | 100% / 100% |
 
 ## Where Irvington-area kids go
 
@@ -165,3 +177,6 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Sabin into Irvington, all ideas | K-5 | Irvington 155 (28 in poverty), Beverly Cleary 66 (18 in poverty), Alameda 1 (0 in poverty) |
 | Sabin into Irvington, all ideas | 6-8 | Tubman 77 (19 in poverty), Beaumont 37 (13 in poverty) |
 | Sabin into Irvington, all ideas | 9-12 | Jefferson 219 (27 in poverty), Grant 109 (23 in poverty) |
+| Irvington into Sabin | K-5 | Beverly Cleary 115 (31 in poverty), Sabin 91 (14 in poverty), Alameda 18 (1 in poverty) |
+| Irvington into Sabin | 6-8 | Tubman 105 (31 in poverty), Beaumont 9 (1 in poverty) |
+| Irvington into Sabin | 9-12 | Grant 328 (51 in poverty) |

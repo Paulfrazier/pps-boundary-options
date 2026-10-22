@@ -1744,6 +1744,266 @@ window.SABIN_DATA = {
      }
     }
    }
+  },
+  {
+   "run": "irv_sabin",
+   "label": "Irvington into Sabin",
+   "data_label": "Irvington into Sabin",
+   "note": "Built on the current best. Irvington closes; Sabin's building stays open.",
+   "caveat": "Sabin stays open below PPS's 360 (exempt from the size floor), so Sabin-area kids stay close to home but most are not in a school PPS counts as sustainable (see the table below).",
+   "on_map": true,
+   "scorecard": "build/solver/out_v2/irv_sabin/scorecard.json",
+   "schools_csv": "build/solver/out_v2/irv_sabin/schools.csv",
+   "tradeoffs": "build/solver/out_v2/irv_sabin/TRADEOFFS.md",
+   "district": {
+    "schools_open": 63,
+    "pct_sustainable_schools": 93.7,
+    "pct_students_in_sustainable": 96.2
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 237,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 405,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    },
+    "Beverly Cleary": {
+     "total_2031": 417,
+     "at_target_every_year": true
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 377,
+     "at_target_every_year": true
+    },
+    "Rigler": {
+     "total_2031": 496,
+     "at_target_every_year": true
+    },
+    "Woodlawn": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    }
+   },
+   "areas": {
+    "Sabin": {
+     "groups": {
+      "K-5": {
+       "pov": {
+        "n": 66.6409,
+        "mv": 42.1554,
+        "walk": 0.4533,
+        "dwalk": -0.0236,
+        "in1": 99.1979,
+        "bus": 0.8021,
+        "sust": 42.1554,
+        "pps": 42.1554
+       },
+       "oth": {
+        "n": 169.2329,
+        "mv": 36.7216,
+        "walk": 0.4554,
+        "dwalk": 0.0098,
+        "in1": 97.6641,
+        "bus": 2.3359,
+        "sust": 36.7216,
+        "pps": 36.7216
+       }
+      },
+      "6-8": {
+       "pov": {
+        "n": 23.0294,
+        "mv": 42.2584,
+        "walk": 1.6567,
+        "dwalk": -0.0865,
+        "in1": 1.4278,
+        "bus": 68.5168,
+        "sust": 100.0,
+        "pps": 100.0
+       },
+       "oth": {
+        "n": 70.1338,
+        "mv": 35.3367,
+        "walk": 1.607,
+        "dwalk": -0.2099,
+        "in1": 3.8939,
+        "bus": 61.5506,
+        "sust": 100.0,
+        "pps": 100.0
+       }
+      },
+      "9-12": {
+       "pov": {
+        "n": 70.6614,
+        "mv": 0.0,
+        "walk": 1.5527,
+        "dwalk": 0.0,
+        "sust": 0.0,
+        "pps": 100.0
+       },
+       "oth": {
+        "n": 149.8511,
+        "mv": 0.0,
+        "walk": 1.7818,
+        "dwalk": 0.0,
+        "sust": 0.0,
+        "pps": 100.0
+       }
+      }
+     },
+     "destinations": {
+      "K-5": {
+       "Sabin": {
+        "kids": 146,
+        "poverty": 39
+       },
+       "Vernon": {
+        "kids": 52,
+        "poverty": 14
+       },
+       "MLK Jr": {
+        "kids": 29,
+        "poverty": 12
+       },
+       "Alameda": {
+        "kids": 9,
+        "poverty": 2
+       }
+      },
+      "6-8": {
+       "Tubman": {
+        "kids": 59,
+        "poverty": 13
+       },
+       "Beaumont": {
+        "kids": 23,
+        "poverty": 5
+       },
+       "Ockley Green": {
+        "kids": 12,
+        "poverty": 4
+       }
+      },
+      "9-12": {
+       "Jefferson": {
+        "kids": 221,
+        "poverty": 71
+       }
+      }
+     }
+    },
+    "Irvington": {
+     "groups": {
+      "K-5": {
+       "pov": {
+        "n": 46.4941,
+        "mv": 100.0,
+        "walk": 0.9143,
+        "dwalk": 0.3146,
+        "in1": 60.617,
+        "bus": 39.383,
+        "sust": 69.1556,
+        "pps": 69.1556
+       },
+       "oth": {
+        "n": 176.5054,
+        "mv": 100.0,
+        "walk": 0.8389,
+        "dwalk": 0.3178,
+        "in1": 75.6549,
+        "bus": 24.3451,
+        "sust": 56.8309,
+        "pps": 56.8309
+       }
+      },
+      "6-8": {
+       "pov": {
+        "n": 32.067,
+        "mv": 2.4384,
+        "walk": 1.1952,
+        "dwalk": -0.0026,
+        "in1": 33.1396,
+        "bus": 29.9668,
+        "sust": 100.0,
+        "pps": 100.0
+       },
+       "oth": {
+        "n": 81.8647,
+        "mv": 10.3287,
+        "walk": 1.2572,
+        "dwalk": -0.0111,
+        "in1": 20.637,
+        "bus": 24.5434,
+        "sust": 100.0,
+        "pps": 100.0
+       }
+      },
+      "9-12": {
+       "pov": {
+        "n": 50.8122,
+        "mv": 0.0,
+        "walk": 1.2861,
+        "dwalk": 0.0,
+        "sust": 100.0,
+        "pps": 100.0
+       },
+       "oth": {
+        "n": 277.1536,
+        "mv": 0.0,
+        "walk": 1.2693,
+        "dwalk": 0.0,
+        "sust": 100.0,
+        "pps": 100.0
+       }
+      }
+     },
+     "destinations": {
+      "K-5": {
+       "Beverly Cleary": {
+        "kids": 115,
+        "poverty": 31
+       },
+       "Sabin": {
+        "kids": 91,
+        "poverty": 14
+       },
+       "Alameda": {
+        "kids": 18,
+        "poverty": 1
+       }
+      },
+      "6-8": {
+       "Tubman": {
+        "kids": 105,
+        "poverty": 31
+       },
+       "Beaumont": {
+        "kids": 9,
+        "poverty": 1
+       }
+      },
+      "9-12": {
+       "Grant": {
+        "kids": 328,
+        "poverty": 51
+       }
+      }
+     }
+    }
+   }
   }
  ],
  "pending": 0,

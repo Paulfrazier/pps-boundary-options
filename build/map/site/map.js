@@ -691,6 +691,11 @@ svg.addEventListener("click",e=>{if(e.target.closest&&e.target.closest(".swipe")
 $("zin").onclick=()=>zoomAt(1.5,vb[0]+vb[2]/2,vb[1]+vb[3]/2);
 $("zout").onclick=()=>zoomAt(1/1.5,vb[0]+vb[2]/2,vb[1]+vb[3]/2);
 $("zres").onclick=()=>{vb=[...VB0];setVB()};
+// side panel toggle (desktop): collapsing it widens the map; the choice is remembered per browser
+function setSide(open){const g=$("side").parentNode,b=$("sidet");g.classList.toggle("noside",!open);b.textContent=open?"⇥":"⇤";b.setAttribute("aria-expanded",String(open));
+ const t=open?"Hide the side panel for a bigger map":"Show the side panel";b.setAttribute("aria-label",t);b.title=t;setVB(true)}
+$("sidet").onclick=()=>{const open=$("side").parentNode.classList.contains("noside");setSide(open);try{localStorage.setItem("mapSide",open?"1":"0")}catch(e){}};
+try{if(localStorage.getItem("mapSide")==="0"&&!document.documentElement.classList.contains("embed"))setSide(false)}catch(e){}
 // ---- swipe handle
 const swb=$("swipe").querySelector("button");
 function setSwipe(f){swf=Math.max(0,Math.min(1,f));$("swipe").style.left=(swf*100)+"%";swb.setAttribute("aria-valuenow",Math.round(swf*100));swb.setAttribute("aria-valuetext",Math.round(swf*100)+"% from the left");updateLabels()}
