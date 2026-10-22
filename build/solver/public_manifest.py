@@ -6,7 +6,8 @@ OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'out_v2')
 import json as _json, os as _os
 _PREV = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), '..', 'export', 'preview_plans.json')
 # local-only preview plans (build/export/preview_plans.json never ships) are added after their 'after' plan
-RELEASED = ['status_quo', 'scenario_A', 'scenario_B', 'option2', 'option2_ms460', 'option2_ms460_sellwood_home', 'option1_durable', 'option4', 'option3a']
+# (2026-10-22) equity_noswap_alameda_rig_hs = the site's current best (approved); option2_ms460 = previous best
+RELEASED = ['status_quo', 'scenario_A', 'scenario_B', 'option2', 'equity_noswap_alameda_rig_hs', 'option2_ms460', 'option2_ms460_sellwood_home', 'option1_durable', 'option4', 'option3a']
 if _os.path.exists(_PREV):
     for _p in _json.load(open(_PREV)).get('plans', []):
         if _p['name'] not in RELEASED:
@@ -15,6 +16,14 @@ if _os.path.exists(_PREV):
 _REQ = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), '..', 'export', 'requests.json')
 if _os.path.exists(_REQ):
     RELEASED += [_r['name'] for _r in _json.load(open(_REQ)).get('requests', []) if _r['name'] not in RELEASED]
+# runs the Sabin options page shows (pages/sabin.html, site track): every run in out_v2/SABIN_OPTIONS.json, listed in
+# __main__ only once MANIFEST.json marks it done; not added to the site's main plan lists
+_SAB = _os.path.join(OUT, 'SABIN_OPTIONS.json')
+SABIN = []
+if _os.path.exists(_SAB):
+    for _p in _json.load(open(_SAB)).get('plans', []):
+        if _p['run'] not in RELEASED and _p['run'] not in SABIN:
+            SABIN.append(_p['run'])
 
 
 def clean(s):
@@ -36,5 +45,7 @@ if __name__ == '__main__':
            'changes_vs_v1': [clean(c) for c in m.get('changes_vs_v1', []) if not c.startswith('scorecard.json')],
            'runs': {r: {'status': m['runs'][r]['status'], 'finished': m['runs'][r].get('finished')}
                     for r in RELEASED if r in m['runs']}}
+    pub['runs'].update({r: {'status': 'done', 'finished': m['runs'][r].get('finished')}
+                        for r in SABIN if (m['runs'].get(r) or {}).get('status') == 'done'})
     json.dump(pub, open(os.path.join(OUT, 'MANIFEST_public.json'), 'w'), indent=1)
     print(json.dumps(pub, indent=1)[:3000])

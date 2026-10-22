@@ -66,7 +66,7 @@ details.full{margin:.6em 0 1em}details.full>summary{cursor:pointer;font-weight:6
 </style>
 </head>
 <body>
-<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html" aria-current="page">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="requests.html">Requests</a><a href="schools.html">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
+<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html" aria-current="page">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="requests.html">Requests</a><a href="sabin.html">Sabin options</a><a href="schools.html">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
 <main>
 <div class="warn" id="pps-disclaimer"><b>Independent analysis by a PPS parent, not an official Portland Public Schools product.</b> It may contain errors. Check PPS's own materials: the <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">Rightsizing scenarios page</a> and the <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
 <div id="prelim"></div>
@@ -332,11 +332,11 @@ function renderOptions(){
     var ra=a.brief_rank==null?99:a.brief_rank, rb=b.brief_rank==null?99:b.brief_rank; return ra-rb;
   }).forEach(function(o){
     var id = 'opt-'+o.name;
-    out += '<section class="opt" id="'+esc(id)+'"><h3>'+esc(o.full||o.short)+(o.brief_rank===0?'<span class="tag">best we modeled</span>':'')+(o.what_if?'<span class="tag">what-if, not one of the example plans</span>':'')+'</h3>';
+    out += '<section class="opt" id="'+esc(id)+'"><h3>'+esc(o.full||o.short)+(o.what_if?'<span class="tag">what-if, not one of the example plans</span>':'')+'</h3>';
     if(o.caveat) out += '<p class="note"><b>Caveat.</b> '+esc(o.caveat)+'</p>';
     if(!o.brief_md) out += '<p>'+esc(o.label)+'</p>';   // the brief's "How it works" replaces the scorecard label
     var p = o.programs;
-    var keeps = '<div><b>Keeps</b>'+(o.name==='option3a'?'PPS A\'s closures, K-8 conversions, program moves and high-school lines. Also closes Winterhaven (K-8 STEM) and da Vinci (6-8 arts); their students return to neighborhood schools.':(o.name==='option2'||o.name==='option2_ms460')?'PPS A\'s closures and K-8 conversions, and its program moves except two: MLK Jr Mandarin and Beaumont Spanish 6-8 stay in their buildings.':'PPS A\'s closures, K-8 conversions and program set.')+'</div>';
+    var keeps = '<div><b>Keeps</b>'+(o.name==='option3a'?'PPS A\'s closures, K-8 conversions, program moves and high-school lines. Also closes Winterhaven (K-8 STEM) and da Vinci (6-8 arts); their students return to neighborhood schools.':(o.name==='option2'||o.name==='option2_ms460')?'PPS A\'s closures and K-8 conversions, and its program moves except two: MLK Jr Mandarin and Beaumont Spanish 6-8 stay in their buildings.':o.name==='equity_noswap_alameda_rig_hs'?'PPS A\'s closures and K-8 conversions, but none of its program swaps: immersion programs whose buildings stay open stay where they are (Atkinson Spanish, Scott Spanish, MLK Jr Mandarin, Beaumont Spanish 6-8), and Lent, Rigler and C\u00e9sar Ch\u00e1vez are neighborhood K-5 schools that keep their Spanish programs.':'PPS A\'s closures, K-8 conversions and program set.')+'</div>';
     var changes = '<div><b>Changes</b>The K-5 and 6-8 attendance lines'+(o.hs_change?'. '+esc(o.hs_change).replace(/\.$/,''):' (PPS A\'s high-school lines are kept)')+(p&&p.dli_kids_moved_total!=null?'; '+fmtInt(p.dli_kids_moved_total)+' program kids ('+fmtInt(p.because_building_closes)+' because a building closes, '+fmtInt(p.because_program_moves)+' because a program moves)':'')+'.</div>';
     var k = L(o);
     var rule = o.split_feeder_rule ? '<div><b>Feeder rule</b>'+esc(typeof o.split_feeder_rule==='string'?o.split_feeder_rule:JSON.stringify(o.split_feeder_rule)).replace(/&gt;=/g,'&ge;').replace(/&lt;=/g,'&le;')+'</div>' : '';
@@ -392,7 +392,7 @@ function renderPrograms(){
 // ---- diversity + closing-area walks (window.SITE_TABLES, from build/export/site_tables.py) ----
 var T = window.SITE_TABLES, scen = 'A';
 function hdName(o){return esc(o.short).replace(/K-8/g,'K&#8209;8');}
-function hdTag(o){return o.brief_rank===0?'<span class="ver">best we modeled</span>':o.what_if?'<span class="ver">what-if</span>':'';}
+function hdTag(o){return o.what_if?'<span class="ver">what-if</span>':'';}
 function tint(diff){ // diff = share - district, in fraction; +/-0.30 saturates
   var a = Math.min(1, Math.abs(diff)/0.30)*45;
   return 'color-mix(in srgb,'+(diff>=0?'#d9822b':'#2f6db5')+' '+a.toFixed(0)+'%,transparent)';
@@ -461,10 +461,12 @@ function noneShown(id, clear){
 }
 function parsePlans(v){var ok = planNames(), out = {}; String(v).split(',').forEach(function(n){if(ok.indexOf(n)>=0) out[n]=1;}); return out;}
 function bestName(){var b = D.options.filter(function(o){return o.brief_rank===0;})[0]; return b && b.name;}
+function prevName(){var b = D.options.filter(function(o){return o.prev_best && o.brief_rank!==0;})[0]; return b && b.name;}
 var PRESETS = [
   {id:'all', label:'All plans', names:function(){return planNames();}},
-  {id:'avb', label:'PPS A vs best we modeled', names:function(){return ['scenario_A', bestName()].filter(Boolean);}},
-  {id:'pps', label:'PPS plans + best we modeled', names:function(){return ['status_quo','scenario_A','scenario_B', bestName()].filter(Boolean);}},
+  {id:'avb', label:'PPS A vs current best', names:function(){return ['scenario_A', bestName()].filter(Boolean);}},
+  {id:'pps', label:'PPS plans + current best', names:function(){return ['status_quo','scenario_A','scenario_B', bestName()].filter(Boolean);}},
+  {id:'cvp', label:'PPS A, current and previous best', names:function(){return ['scenario_A', bestName(), prevName()].filter(Boolean);}},
   {id:'none', label:'Clear', names:function(){return [];}}
 ];
 function readPlans(){

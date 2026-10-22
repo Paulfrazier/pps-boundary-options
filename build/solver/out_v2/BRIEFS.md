@@ -34,13 +34,40 @@ Models track, 2026-10-12 (numbers refreshed overnight after the line cleanup), f
 - **In short:** the example plans are better on the forecast and more fragile to a miss. A size buffer (aiming for 380 instead of 360) didn't help: that version kept only 14 of 41 open K-5 schools in range at −9%, because 380 × 0.91 = 346 is still under 360. Surviving a 9% miss needs about 396 per school.
 
 **Costs every redraw shares.**
-- The walk redraws (both Boundary changes plans; Redrawn K-8 lines) reassign about 1,950 more K-5 kids than PPS A (about 4,870–4,910 vs 2,935, vs PPS Status Quo). "Rebalanced PPS A" reassigns about 660 more (3,594).
-- Middle zones feed one high school less often: 40–47% for the example plans above (33% for the focus-option what-if below), vs PPS A's 80%. Two feeder measures appear on the site: "middle zones feed one high school" is the share of middle schools whose students go to one high school; "class kept together into high school" is the share of middle schoolers who go to the high school most of their classmates go to (best example we modeled 77%, PPS A 90%).
+- The walk redraws (the current best; both Boundary changes plans; Redrawn K-8 lines) reassign about 1,900–2,000 more K-5 kids than PPS A (about 4,820–4,910 vs 2,935, vs PPS Status Quo). "Rebalanced PPS A" reassigns about 660 more (3,594).
+- Middle zones feed one high school less often: 40–47% for the example plans above (33% for the focus-option what-if below), vs PPS A's 80%. Two feeder measures appear on the site: "middle zones feed one high school" is the share of middle schools whose students go to one high school; "class kept together into high school" is the share of middle schoolers who go to the high school most of their classmates go to (current best 76%, previous best 77%, PPS A 90%).
 - Lines: the example plans' elementary lines are cleaner than PPS's: 141–147 one-block notches (blocks mostly surrounded by another school's area), vs 197 under PPS A, and no real pockets (PPS A has five, one of 71 blocks at Faubion). Measured by `build/solver/lines_qa.py`; before/after in `out_v2/LINES_QA.md`. "Rebalanced PPS A" is the exception (303), because cleaning its lines moves more kids.
 
 ---
 
-## Boundary changes, balanced middle schools (`option2_ms460`) — the best example we modeled
+## Current best: fewer DLI moves, sustainable schools (`equity_noswap_alameda_rig_hs`) — the current best
+
+**How it works.** PPS A's 14 closures, with elementary and middle-school lines redrawn for the shortest walks under the one firm rule (at least PPS A's number of schools at target, every year to 2031-32), and no program swaps: an immersion program whose building stays open stays home. So Atkinson Spanish, Scott Spanish, MLK Jr Mandarin and Beaumont Spanish 6-8 stay put, and Lent, Rigler and Cesar Chavez stay neighborhood K-5 schools with their Spanish programs. Two targeted fixes follow the redraw: big-school relief (an elementary school over 450 kids gets a soft ceiling of 450, and moving kids off it costs less), moving at most 300 elementary kids; and Rigler-area kids who aren't in Rigler's Spanish program are counted where PPS reports they attend (105 at Scott; PPS Oct 2025 enrollment by program and residence). High-school lines are PPS A's, with one change: the Skyline area stays at Lincoln, as today, instead of crossing the St. Johns Bridge to Roosevelt (as in the previous best). Middle schools use PPS's 500 minimum.
+
+**The good.**
+- Every elementary school at target every year 2027-28 to 2031-32: 38 of 38 (PPS A 18 of 35 by PPS's own figures, 21 on our model). Middle: 12 of 13 at PPS's 500 every year, 13 of 13 in 2031-32 (PPS A 5 by PPS's own figures).
+- On PPS's own dashboard measures (2031-32, our model): 97% of schools sustainable (PPS A 69%, previous best 90%), and 98% of students in sustainable schools (PPS A 81%, previous best 93%); 65% of buildings efficiently used (PPS A 53%).
+- Fewest immersion students moved of any plan that closes schools: 820 (PPS A 1,567; previous best 1,226).
+- Shorter elementary trips than PPS A and the previous best: 70% of K-5 kids within 1 mile (PPS A 63%, previous best 68%); 3,805 past the 1-mile bus line (PPS A 4,703, previous best 4,117); 890 assigned to a farther school, past a closer one (PPS A 1,970, previous best 932).
+- Shorter middle-school walks than PPS A: 1,037 middle schoolers assigned past a closer school (PPS A 1,259, previous best 1,082); average 1.72 mi (1.76).
+- Classes stay together into middle school: 4 elementary zones split between middle schools (PPS A 1, previous best 3); 97% of K-5 kids go to the same middle school as most of their class (PPS A 99%).
+- Ends Roosevelt's crowding: in range every year 2027-28 to 2031-32 (1,313 in 2027-28; PPS A's lines put 1,421 students in its 1,395 seats that year). High schools at target 6, 7, 7, 8, 8 (PPS A 5, 7, 7, 8, 8). Jefferson is below 1,100 in 2027-28 to 2029-30 (563, 804, 979) in every plan, PPS A included.
+
+**The bad.**
+- More students change schools than under PPS A: 38% of K-8 students on PPS's measure (PPS A 27%); 4,818 K-5 and 2,271 middle schoolers reassigned vs PPS Status Quo (PPS A 2,935 and 1,972).
+- Fewer middle schoolers go to the same high school as most of their classmates: 76% (PPS A 90%, previous best 77%), and 40% of middle zones feed one high school (PPS A 80%). The middle lines were redrawn while the high-school lines are PPS A's, apart from Skyline.
+- George is over its 623 seats in 2027-28 to 2030-31 (652, 650, 649, 628); PPS's own Family Guide projects George over 623 under PPS A too (George guide p. 60). Two middle schools sit right at 500 in 2031-32 (Gray, Jackson).
+- 2,830 middle schoolers past the 1.5-mi bus line (PPS A 2,731, previous best 2,779).
+- High schools: the gap between the largest and smallest grows from 362 to 424 students (target under 350) and the average walk from 1.93 to 1.98 mi; Roosevelt drops below 1,100 from 2032-33, a year PPS doesn't project (as in the previous best).
+- Fragile to a 9% enrollment miss: 17 of 41 open K-5 schools stay in range at −9% (PPS A 25 of 41; at forecast 41 vs 27).
+
+**Trade-off in one line.** Every elementary school at target every year, the fewest immersion moves, and shorter elementary trips than PPS A or the previous best, at the cost of more students changing schools than PPS A and weaker middle-to-high-school feeders.
+
+Sources: `out_v2/equity_noswap_alameda_rig_hs/scorecard.json`, `schools.csv` and `TRADEOFFS.md`; `out_v2/PPS_SCORECARD_public.md` (row "Current best: fewer DLI moves, sustainable schools"; PPS dashboard measures computed from this run's `schools.csv` and `scorecard.json` by `build/solver/pps_scorecard.py`); `out_v2/TRADEOFFS_MATRIX.json` (classmates and split counts) [our model v2 on PSU July 2026 Table 5.5, not PPS figures, except where marked].
+
+## Boundary changes, balanced middle schools (`option2_ms460`) — the previous best
+
+**Previous best.** This was the best example we modeled until 2026-10-22. The current best (`equity_noswap_alameda_rig_hs`, above) beats it on PPS's sustainability measures (97% of schools and 98% of students in sustainable schools in 2031-32, vs 90% and 93%), moves fewer immersion students (820 vs 1,226), and puts fewer K-5 kids past the 1-mile bus line (3,805 vs 4,117). This plan keeps every middle school in its building every year (the current best has George over its 623 seats in 2027-28 to 2030-31), but only by using a 460 middle-school minimum: at PPS's 500, 9 of its 13 middle schools are at target every year, vs 12 of 13 in the current best. It also splits one fewer elementary zone between middle schools (3 vs 4), has fewer middle schoolers past the 1.5-mi bus line (2,779 vs 2,830), keeps slightly more middle schoolers with their classmates into high school (77% vs 76%), and uses more buildings efficiently (68% vs 65%). Both reassign 38% of K-8 students on PPS's measure, and both use the same high-school lines.
 
 **How it works.** PPS A's closures, programs and high-school lines, with one change to the high-school lines: the Skyline area (about 93 high schoolers) stays at Lincoln, as today, instead of crossing the St. Johns Bridge to Roosevelt. Elementary and middle-school lines are redrawn for the shortest walks under the one firm rule: at least PPS A's number of schools at target, every year to 2031-32. Middle schools are balanced with a minimum of 460 (PPS's goal is 500), and at most 3 elementary schools may be split between middle schools; these middle-school lines are proven best under those rules (the solver closed the optimality gap to 0%). Two immersion moves that PPS A makes are avoided:
 - **MLK Jr Mandarin** stays at MLK Jr (PPS A moves it to Boise-Eliot/Humboldt).
@@ -73,7 +100,7 @@ Two other moves are kept because they're needed: without them, Lent would have 2
 
 ## Balanced middle schools, Sellwood open (`option2_ms460_sellwood_home`)
 
-**How it works.** The best example we modeled (`option2_ms460`), with one building change: Sellwood Middle stays open instead of closing as in PPS A. Elementary lines, immersion programs and high-school lines are the same as `option2_ms460`. Sellwood serves about its own neighborhood, the Duniway and Llewellyn areas plus a few Grout-area blocks, and is exempt from the 460 middle-school minimum, so the solver doesn't pull kids from farther away to fill it. The other 13 middle schools are redrawn under the same rules as `option2_ms460` (minimum 460, few elementary schools split between middle schools). Kids sent past a closer middle school count four times as heavily here as in `option2_ms460`. The middle-school lines are proven best under those rules (optimality gap 0%).
+**How it works.** The previous best (`option2_ms460`), with one building change: Sellwood Middle stays open instead of closing as in PPS A. Elementary lines, immersion programs and high-school lines are the same as `option2_ms460`. Sellwood serves about its own neighborhood, the Duniway and Llewellyn areas plus a few Grout-area blocks, and is exempt from the 460 middle-school minimum, so the solver doesn't pull kids from farther away to fill it. The other 13 middle schools are redrawn under the same rules as `option2_ms460` (minimum 460, few elementary schools split between middle schools). Kids sent past a closer middle school count four times as heavily here as in `option2_ms460`. The middle-school lines are proven best under those rules (optimality gap 0%).
 
 **Call-out: Sellwood is a small middle school.** About 312 middle schoolers in 2031-32, in a building with room for 683 (46% full; capacity: PPS 2025-26 school profiles). That's below PPS's 500 goal; Sellwood is left out of the at-target counts as an exempt school. At PPS's 500, 7 of the other 13 middle schools are at target every year 2027-28 to 2031-32 (`option2_ms460` 9, PPS A 5 by PPS's own figures); in their low year Lane is at 460 (2031-32), Harrison Park 461 (2030-31), Ockley Green 461 (2028-29), West Sylvan 460 (2031-32), Kellogg 467 (2030-31) and George 498 (2031-32) [our model].
 
@@ -100,7 +127,7 @@ Two other moves are kept because they're needed: without them, Lent would have 2
 
 **The good.**
 - 12 of 13 middle schools at target every year at 500 (balanced middle schools 9 at 500; PPS A 5 by PPS's own figures); the smallest middle school is 500.
-- Everything the best example we modeled gets at K-5: 35 of 35 at target every year; 932 kids assigned to a farther school, past a closer one; the same two immersion programs stay put.
+- Everything the previous best gets at K-5: 35 of 35 at target every year; 932 kids assigned to a farther school, past a closer one; the same two immersion programs stay put.
 - 2,274 middle schoolers reassigned vs PPS Status Quo (balanced middle schools 2,315; PPS A 1,972).
 
 **The bad.**
@@ -125,7 +152,7 @@ Two other moves are kept because they're needed: without them, Lent would have 2
 **The bad.**
 - About 4,910 K-5 kids reassigned.
 - 17 elementary zones split between middle schools.
-- Longer K-5 walks than the best example we modeled (1,285 vs 932 assigned to a farther school, past a closer one).
+- Longer K-5 walks than the previous best (1,285 vs 932 assigned to a farther school, past a closer one).
 - Fragile to a 9% enrollment miss (16 of 41 open K-5 schools stay in range at −9%; PPS A 25 of 41).
 
 **Trade-off in one line.** The pick if middle-school walking matters most, keeping PPS's immersion plan.
@@ -155,7 +182,7 @@ Two other moves are kept because they're needed: without them, Lent would have 2
 
 **The good.**
 - 35 of 35 K-5 and **13 of 13 middle schools** at target every year (PPS A 18 / 5 by PPS's own figures; 21 / 5 on our model). The returning students fill middle schools that are short in the other plans.
-- Short K-5 walks: 1,001 assigned to a farther school, past a closer one (best example we modeled 932); average 0.93 mi. Middle: 1,044 (PPS A 1,259).
+- Short K-5 walks: 1,001 assigned to a farther school, past a closer one (previous best 932); average 0.93 mi. Middle: 1,044 (PPS A 1,259).
 
 **The bad.**
 - Assumes every returning student attends their neighborhood school; none leave PPS or pick another option.
@@ -165,7 +192,7 @@ Two other moves are kept because they're needed: without them, Lent would have 2
 
 **Trade-off in one line.** The most schools at target and among the shortest walks, bought by closing two choice programs and assuming their families stay in PPS. It also moves the most students (7,525 K-5 and 6-8) and has the fewest middle zones feeding one high school (33%).
 
-**Friend groups.** 93% of K-5 kids go to the same middle school as most of their class (best example we modeled 97%, PPS A 99%); 81% of middle schoolers go to the same high school as most of their class (best example we modeled 77%, PPS A 90%). Smallest groups split off: about 7 per grade (Vestal → Mt Tabor) and 8 per grade (Woodstock → Kellogg); Faubion splits three ways (29 / 16 / 15 per grade). [inferred: traced block by block from `option3a/assign_*.parquet` on PSU 2031-32 kids, K-5 ÷ 6 and 6-8 ÷ 3 per grade]
+**Friend groups.** 93% of K-5 kids go to the same middle school as most of their class (previous best 97%, PPS A 99%); 81% of middle schoolers go to the same high school as most of their class (previous best 77%, PPS A 90%). Smallest groups split off: about 7 per grade (Vestal → Mt Tabor) and 8 per grade (Woodstock → Kellogg); Faubion splits three ways (29 / 16 / 15 per grade). [inferred: traced block by block from `option3a/assign_*.parquet` on PSU 2031-32 kids, K-5 ÷ 6 and 6-8 ÷ 3 per grade]
 
 
 ## PPS Scenario A (`scenario_A`)
@@ -173,7 +200,7 @@ Two other moves are kept because they're needed: without them, Lent would have 2
 **How it works.** PPS's own plan. It closes elementary schools and assigns each closing school's area to one or two nearby receivers, with few other line changes. Several immersion programs move with their families. Its middle and high-school lines keep most middle schools feeding one high school. Size and at-target figures below are PPS's own (Family Guide p. 4, guides dated 2026-10-08); walking, moves and feeders are our model on PPS's map, since PPS doesn't publish them.
 
 **The good.**
-- Fewer students reassigned than any example plan, on our model: 2,935 K-5 and 1,972 6-8 vs PPS Status Quo (the best example we modeled 4,867 and 2,315).
+- Fewer students reassigned than any example plan, on our model: 2,935 K-5 and 1,972 6-8 vs PPS Status Quo (the previous best 4,867 and 2,315; the current best 4,818 and 2,271).
 - Strong feeders: 80% of middle zones feed one high school, and 90% of middle schoolers go to the high school most of their classmates go to (our model on PPS's lines). Only 3 middle schools split between high schools.
 - The most robust plan to an enrollment miss: 25 of 41 open K-5 schools stay in range if enrollment comes in 9% below forecast (our stress test, not a PPS standard).
 

@@ -11,7 +11,7 @@ function renderMatrix(el, D, base, keep){
   var word = {green:'better', yellow:'middle', red:'worse'};
   var head = '<tr><th scope="col">Measure</th>'+P.map(function(p){var o=by[p.name]||{};
     return '<th scope="col"'+(p.name==='status_quo'?' class="ref"':'')+'>'+esc(o.short||p.name).replace(/K-8/g,'K&#8209;8')
-      +(o.brief_rank===0?'<span class="mx-tag">best we modeled</span>':o.what_if?'<span class="mx-tag">what-if</span>':o.kind==='pps'||o.kind==='reference'?'<span class="mx-tag">'+(p.name==='status_quo'?'baseline':'PPS')+'</span>':'')+'</th>'}).join('')+'</tr>';
+      +(o.what_if?'<span class="mx-tag">what-if</span>':o.kind==='pps'||o.kind==='reference'?'<span class="mx-tag">'+(p.name==='status_quo'?'baseline':'PPS')+'</span>':'')+'</th>'}).join('')+'</tr>';
   // one table, all measures, colored boxes; no Key / All switch
   // site wording for rows whose models label reads awkwardly ("going to a farther school")
   var LABEL = {'K-5_past_closer':'K-5 kids assigned to a farther school, past a closer one','6-8_past_closer':'6-8 kids assigned to a farther school, past a closer one'};

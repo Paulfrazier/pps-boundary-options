@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Model requests | PPS boundary options</title>
-<meta name="description" content="Runs made because someone asked for them, each compared with PPS Status Quo, PPS A, PPS B and the best example we modeled, on a map and in a table.">
+<meta name="description" content="Runs made because someone asked for them, each compared with PPS Status Quo, PPS A, PPS B and the current and previous best examples we modeled, on a map and in a table.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23245c9e%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23fff%27/%3E%3Crect x=%2713.5%27 y=%2718%27 width=%275%27 height=%277%27 fill=%27%23245c9e%27/%3E%3C/svg%3E">
 <link rel="stylesheet" href="site.css">
 <style>
@@ -45,13 +45,13 @@
 </style>
 </head>
 <body>
-<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="requests.html" aria-current="page">Requests</a><a href="schools.html">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
+<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="requests.html" aria-current="page">Requests</a><a href="sabin.html">Sabin options</a><a href="schools.html">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
 <main>
 <div class="warn" id="pps-disclaimer"><b>Independent analysis by a PPS parent, not an official Portland Public Schools product.</b> It may contain errors. Check PPS's own materials: the <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">Rightsizing scenarios page</a> and the <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
 
 <h1>Model requests</h1>
 <p class="notreal">These are best effort boundaries. NOT REAL PLANS, yet.</p>
-<p class="lede">People ask us to try specific ideas. Each run here was made because someone asked for it. It uses the same model, data and size rules as the example plans, and is compared below with PPS&rsquo;s plans and the best example we modeled.</p>
+<p class="lede">People ask us to try specific ideas. Each run here was made because someone asked for it. It uses the same model, data and size rules as the example plans, and is compared below with PPS&rsquo;s plans and the current and previous best examples we modeled.</p>
 
 <div class="ask">
 <p><b>A requested run answers one question.</b> It isn&rsquo;t a recommendation and isn&rsquo;t one of the example plans. Some requests trade away walking or school sizes to get something else, and the table shows what each one gives up.</p>
@@ -77,7 +77,9 @@ if(!REQ.length){body.innerHTML='<p class="empty">No requested runs are published
 
 var byName = {}; (D.options||[]).concat(RO).forEach(function(o){byName[o.name]=o;});
 var BEST = (D.options||[]).filter(function(o){return o.brief_rank===0;})[0];
-var BASE = ['status_quo','scenario_A','scenario_B'].concat(BEST?[BEST.name]:[]);
+// the previous best stays in the comparison: several requests were built on it
+var PREV = (D.options||[]).filter(function(o){return o.prev_best&&o.brief_rank!==0;})[0];
+var BASE = ['status_quo','scenario_A','scenario_B'].concat(BEST?[BEST.name]:[]).concat(PREV?[PREV.name]:[]);
 var LEVELS = ['K-5','6-8','9-12'];
 var st = {req: REQ[0].name, level: 'K-5', vs: 'scenario_A'};
 (function(){var h=location.hash.slice(1).split('&');h.forEach(function(kv){var i=kv.indexOf('=');if(i<0)return;var k=kv.slice(0,i),v=decodeURIComponent(kv.slice(i+1));
@@ -111,7 +113,7 @@ function metrics(lv){
   return m;
 }
 
-function headName(o){return o.name===(BEST&&BEST.name)?esc(o.short)+'<small>best we modeled</small>':o.request?esc(o.short)+'<small>requested</small>':o.kind==='reference'?esc(o.short)+'<small>baseline</small>':esc(o.short)+'<small>PPS plan</small>';}
+function headName(o){return (o.name===(BEST&&BEST.name)||o.name===(PREV&&PREV.name))?esc(o.short)+'<small>example plan</small>':o.request?esc(o.short)+'<small>requested</small>':o.kind==='reference'?esc(o.short)+'<small>baseline</small>':esc(o.short)+'<small>PPS plan</small>';}
 
 function table(){
   var lv=st.level, cols=[st.req].concat(BASE,REQ.map(function(r){return r.name;}).filter(function(n){return n!==st.req;})).map(function(n){return byName[n];}).filter(function(o){return o&&o.levels&&o.levels[lv];});
@@ -142,10 +144,10 @@ function card(){
     '<p class="links">Sources: <a href="../'+esc(o.source)+'">scorecard</a>'+(o.tradeoffs?' &middot; <a href="../'+esc(o.tradeoffs)+'">trade-offs</a>':'')+(o.schools_source?' &middot; <a href="../'+esc(o.schools_source)+'">school sizes</a>':'')+'</p></section>';
   document.getElementById('card').innerHTML=html;
 }
-// the key numbers, read from the data (K-5 and middle school), against PPS A and the best example we modeled
+// the key numbers, read from the data (K-5 and middle school), against PPS A, the current best and the previous best
 function headline(o){
-  var A=byName.scenario_A, B=BEST, rows=[];
-  function trio(lab,get,f){var v=get(o);if(v==null)return;var t=[];if(A&&get(A)!=null)t.push('PPS A '+f(get(A),A));if(B&&get(B)!=null)t.push(esc(B.short)+' '+f(get(B),B));rows.push('<li>'+lab+': <b>'+f(v,o)+'</b>'+(t.length?' (vs '+t.join(', ')+')':'')+'</li>');}
+  var A=byName.scenario_A, B=BEST, C=PREV, rows=[];
+  function trio(lab,get,f){var v=get(o);if(v==null)return;var t=[];if(A&&get(A)!=null)t.push('PPS A '+f(get(A),A));if(B&&get(B)!=null)t.push(esc(B.short)+' '+f(get(B),B));if(C&&get(C)!=null)t.push(esc(C.short)+' '+f(get(C),C));rows.push('<li>'+lab+': <b>'+f(v,o)+'</b>'+(t.length?' (vs '+t.join(', ')+')':'')+'</li>');}
   trio('K-5 kids sent past a closer school',function(x){return L(x,'K-5').kids_past_closer_school;},fmtInt);
   trio('K-5 schools at target, 2031-32',function(x){var r=inRange(x,'K-5');return r?r.a:null;},function(v,x){var r=inRange(x,'K-5');return r.a+' of '+r.n;});
   trio('Middle schools at PPS&rsquo;s 500, 2031-32',function(x){var r=inRange(x,'6-8');return r?r.a:null;},function(v,x){var r=inRange(x,'6-8');return r.a+' of '+r.n;});
@@ -163,7 +165,7 @@ function pickerHtml(){
   return (secs.length&&loose.length?'<h3>Other requests</h3>':'')+loose.map(btn).join('')+
     secs.map(function(s){return '<h3>'+esc(s)+'</h3>'+REQ.filter(function(r){return r.section===s;}).map(btn).join('');}).join('');
 }
-var vsLab={status_quo:'vs PPS Status Quo',scenario_A:'vs PPS A',scenario_B:'vs PPS B'}; if(BEST) vsLab[BEST.name]='vs best we modeled';
+var vsLab={status_quo:'vs PPS Status Quo',scenario_A:'vs PPS A',scenario_B:'vs PPS B'}; if(BEST) vsLab[BEST.name]='vs current best'; if(PREV) vsLab[PREV.name]='vs previous best';
 body.innerHTML=
   (REQ.length>1?'<div class="picker" role="group" aria-label="Requested runs">'+pickerHtml()+'</div>':'')+
   '<div id="card"></div>'+

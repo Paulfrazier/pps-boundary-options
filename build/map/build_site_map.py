@@ -100,7 +100,7 @@ PTS = shapely.points(block_xy())
 CELLS = np.array(voronoi_cells(), dtype=object)
 POC = np.asarray(SB.solver()[1].poc_share(), dtype=float)   # as the scorecards (build/solver/common.poc_share)
 HU = B['hu'].values.astype(float)
-OPTS = [o for o in SD['options'] + SD.get('request_options', []) if o.get('assign')]   # requested runs: own group on the map
+OPTS = [o for o in SD['options'] + SD.get('request_options', []) + SD.get('sabin_options', []) if o.get('assign')]   # requested and Sabin runs: own groups on the map
 log('plans:', [o['name'] for o in OPTS])
 
 
@@ -466,7 +466,7 @@ for o in OPTS:
                   'lines': 'official' if o['name'] in OFFICIAL else 'crisp', 'src': o['source'], 'schools': o.get('schools_source'),
                   'assign': o['assign'], 'trade': o.get('tradeoffs'), 'basis': o.get('basis'), 'caveat': o.get('caveat') or None,
                   'linesrc': {lv: OF.SOURCE[o['name']][lv] for lv in LEVELS} if o['name'] in OFFICIAL else None,
-                  'rank': o.get('brief_rank'), 'whatif': bool(o.get('what_if')), 'req': bool(o.get('request'))})   # brief_rank 0 = the lead plan (tagged "lead plan" on the map)
+                  'rank': o.get('brief_rank'), 'whatif': bool(o.get('what_if')), 'req': bool(o.get('request') or o.get('sabin')), 'sab': bool(o.get('sabin'))})   # brief_rank 0 = the lead plan (tagged "lead plan" on the map)
 META = {'plans': PLANS, 'note': SD.get('placeholder_note'), 'model_version': SD.get('model_version'),
         'calibrated': SD.get('calibrated'), 'generated': SD.get('generated'), 'levels': SD.get('levels'),
         'ppsproj': PPSPROJ, 'method_source': SD.get('method_source'), 'targets_source': SD.get('targets_source')}

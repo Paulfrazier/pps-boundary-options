@@ -9,10 +9,10 @@
 <link rel="stylesheet" href="site.css">
 <style>
 /* plan colors match the Durability page (pages/durability.html) */
-:root{--s-status_quo:#7a8388;--s-option2_ms460:#2a78d6;--s-option2_ms460_sellwood_home:#1b8ea6;--s-option2:#1baf7a;--s-scenario_A:#eb6834;--s-frontier_k17:#1baf7a;--s-scenario_B:#eda100;--s-option4:#e87ba4;--s-option3a:#008300;--s-option1_durable:#6250d6;--s-other:#556b2f;
+:root{--s-status_quo:#7a8388;--s-equity_noswap_alameda_rig_hs:#2a78d6;--s-option2_ms460:#6a90c4;--s-option2_ms460_sellwood_home:#1b8ea6;--s-option2:#1baf7a;--s-scenario_A:#eb6834;--s-frontier_k17:#1baf7a;--s-scenario_B:#eda100;--s-option4:#e87ba4;--s-option3a:#008300;--s-option1_durable:#6250d6;--s-other:#556b2f;
  --s-hist:#1f2a30;--s-psu:#8a6d3b;--grid:#e6e2d8;--in:#2e7d5b}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--s-status_quo:#9aa3a8;--s-option2_ms460:#3987e5;--s-option2_ms460_sellwood_home:#4cb4cb;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#2ea52e;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--s-hist:#e6e9ea;--s-psu:#d2b277;--grid:#2c3235;--in:#6cc49a}}
-:root[data-theme="dark"]{--s-status_quo:#9aa3a8;--s-option2_ms460:#3987e5;--s-option2_ms460_sellwood_home:#4cb4cb;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#2ea52e;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--s-hist:#e6e9ea;--s-psu:#d2b277;--grid:#2c3235;--in:#6cc49a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--s-status_quo:#9aa3a8;--s-equity_noswap_alameda_rig_hs:#3987e5;--s-option2_ms460:#8bb0de;--s-option2_ms460_sellwood_home:#4cb4cb;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#2ea52e;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--s-hist:#e6e9ea;--s-psu:#d2b277;--grid:#2c3235;--in:#6cc49a}}
+:root[data-theme="dark"]{--s-status_quo:#9aa3a8;--s-equity_noswap_alameda_rig_hs:#3987e5;--s-option2_ms460:#8bb0de;--s-option2_ms460_sellwood_home:#4cb4cb;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#2ea52e;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--s-hist:#e6e9ea;--s-psu:#d2b277;--grid:#2c3235;--in:#6cc49a}
 .row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:12px 0}
 select{font:inherit;font-size:15px;padding:6px 8px;border:1px solid var(--rule);border-radius:6px;background:var(--card);color:var(--ink);max-width:100%;min-height:40px}
 .levels button.tog{white-space:nowrap}
@@ -44,7 +44,7 @@ select{font:inherit;font-size:15px;padding:6px 8px;border:1px solid var(--rule);
 </style>
 </head>
 <body>
-<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="requests.html">Requests</a><a href="schools.html" aria-current="page">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
+<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="requests.html">Requests</a><a href="sabin.html">Sabin options</a><a href="schools.html" aria-current="page">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
 <main>
 <div class="warn" id="pps-disclaimer">Independent analysis by a PPS parent, not an official Portland Public Schools product. Official material: <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">PPS rightsizing scenarios</a> and <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
 
@@ -134,7 +134,7 @@ function build(s){
     else{var ms=modelSchool(o,s.k);
       if(ms&&ms.total!=null){v[iY('2031-32')]=Math.round(ms.total);only31.push(o.short)}
       else{if(inModel&&!(isPPS&&(s.closes||[]).indexOf(o.name)>=0))closedModel.push(o.short+(o.what_if?' (what-if)':''));return}}
-    ser.push({id:'m-'+o.name,plan:o.name,lab:o.short+(isPPS?' on our model':'')+(o.what_if?' (what-if)':'')+(o.brief_rank===0?' (best we modeled)':''),tag:'our model',c:col(o.name),w:o.brief_rank===0?3.5:isPPS?1.5:2,dash:o.what_if?'3 3':'',mk:'dot',v:v,grp:isPPS?'pm':'ex',o:o})});
+    ser.push({id:'m-'+o.name,plan:o.name,lab:o.short+(isPPS?' on our model':'')+(o.what_if?' (what-if)':''),tag:'our model',c:col(o.name),w:o.brief_rank===0?3.5:isPPS?1.5:2,dash:o.what_if?'3 3':'',mk:'dot',v:v,grp:isPPS?'pm':'ex',o:o})});
   return {ser:ser,closedPPS:closedPPS,closedModel:closedModel,whatIfCloses:whatIfCloses,progOnly:progOnly,only31:only31,inModel:inModel};
 }
 
@@ -179,7 +179,7 @@ function render(){
 var GORD={a:0,ex:1,pm:2,p:3};
 function yrsOf(sr){var r=[];sr.v.forEach(function(v,i){if(v!=null)r.push(i)});return r}
 function joinAnd(a){return a.length<2?a.join(''):a.slice(0,-1).join(', ')+' and '+a[a.length-1]}
-function shortOne(x){if(x.id==='hist')return 'Actual';if(x.id==='psu')return 'PSU';if(x.grp==='p')return x.base;if(x.o&&x.o.brief_rank===0)return 'Best we modeled';return x.o?(x.grp==='pm'?'Model: '+x.o.short.replace(/^PPS (?=[AB]$)/,'PPS '):x.o.short):x.lab}
+function shortOne(x){if(x.id==='hist')return 'Actual';if(x.id==='psu')return 'PSU';if(x.grp==='p')return x.base;if(x.o&&x.o.brief_rank===0)return 'Current best';return x.o?(x.grp==='pm'?'Model: '+x.o.short.replace(/^PPS (?=[AB]$)/,'PPS '):x.o.short):x.lab}
 function shortLab(g,nEx){ // [line1, line2] for the label at the end of a line
   var all=[g.main].concat(g.same,g.sub),pf=all.filter(function(x){return x.grp==='p'}),mod=all.filter(function(x){return x!==g.main&&x.grp!=='p'});
   var L=['Status Quo','A','B'],let=function(xs){var l=xs.map(function(x){return {status_quo:'Status Quo',scenario_A:'A',scenario_B:'B'}[x.plan]});l.sort(function(a,b){return L.indexOf(a)-L.indexOf(b)});return 'PPS '+(l.length<2?l[0]:l.slice(0,-1).join(', ')+' & '+l[l.length-1])};
@@ -237,7 +237,7 @@ function sym(kind,c){var s='<svg width="26" height="14" aria-hidden="true" style
   if(kind==='hist')s+='<line x1="1" x2="25" y1="7" y2="7" stroke="var(--s-hist)" stroke-width="3"/><circle cx="13" cy="7" r="3.5" fill="var(--s-hist)"/>';
   else if(kind==='psu')s+='<line x1="1" x2="25" y1="7" y2="7" stroke="var(--s-psu)" stroke-width="2.5" stroke-dasharray="6 3"/><path d="M13 2L17.5 10.5L8.5 10.5Z" fill="var(--s-psu)"/>';
   else if(kind==='sq')s+='<rect x="8.5" y="2.5" width="9" height="9" fill="var(--card)" stroke="var(--muted)" stroke-width="2"/>';
-  else if(kind==='ex')s+='<line x1="1" x2="25" y1="7" y2="7" stroke="var(--s-option2_ms460)" stroke-width="2.5"/><circle cx="13" cy="7" r="3.2" fill="var(--s-option2_ms460)"/>';
+  else if(kind==='ex')s+='<line x1="1" x2="25" y1="7" y2="7" stroke="var(--s-equity_noswap_alameda_rig_hs)" stroke-width="2.5"/><circle cx="13" cy="7" r="3.2" fill="var(--s-equity_noswap_alameda_rig_hs)"/>';
   else if(kind==='band')s+='<rect x="1" y="2" width="24" height="10" fill="var(--in)" opacity="0.18"/><line x1="1" x2="25" y1="12" y2="12" stroke="var(--in)" stroke-width="1.5"/><line x1="1" x2="25" y1="2" y2="2" stroke="var(--in)" stroke-width="1.5" stroke-dasharray="4 3"/>';
   else if(kind==='div')s+='<line x1="13" x2="13" y1="0" y2="14" stroke="var(--muted)" stroke-dasharray="2 3"/>';
   else if(kind==='cap')s+='<line x1="1" x2="25" y1="7" y2="7" stroke="var(--muted)" stroke-width="1.2" stroke-dasharray="1 3"/>';
@@ -369,7 +369,7 @@ function table(s,ser){
   $('tblnote').innerHTML='Years up to 2025-26 are actual; 2026-27 on are projections. PSU&rsquo;s figures for '+psuHist[0]+' to '+psuHist[psuHist.length-1]+' (in italics) are its historic counts, PPS&rsquo;s October enrollment; the chart starts PSU&rsquo;s line at 2025-26. Model figures are rounded to whole students. &ndash; = no figure.';
 }
 
-// a plan's caveat only where it concerns this school: it names the school, or (balanced middle schools) any 6-8 school
+// a plan's caveat only where it concerns this school: it names the school, or (the previous best's 460 minimum) any 6-8 school
 function relevant(o,s){var c=o.caveat||'';if(!c)return false;var nm=s.disp.replace(/ \(.*\)$/,'');
   return c.indexOf(nm)>=0||c.indexOf(s.k)>=0||((o.name==='option2_ms460'||o.name==='option2_ms460_sellwood_home')&&s.lvl==='6-8')}
 function cites(s,ser,band){

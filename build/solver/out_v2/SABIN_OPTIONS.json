@@ -1,0 +1,2030 @@
+{
+ "note": "Model v2 estimates, 2031-32 projected kids, by today's attendance area. pov = students experiencing poverty (Census <185% of poverty anchored to each school's direct-certification rate in PPS's Status Quo dashboard; rough for areas this small), oth = all other students. mv/in1/bus/sust/pps are percents; walk/dwalk are miles. Render only plans whose status is \"done\".",
+ "source": "build/solver/sabin_poverty.py",
+ "plans": [
+  {
+   "area": "Sabin",
+   "run": "status_quo",
+   "label": "Today (Status Quo)",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 66.6409,
+      "mv": 0.0,
+      "walk": 0.477,
+      "dwalk": 0.0,
+      "in1": 100.0,
+      "bus": 0.0,
+      "sust": 0.0,
+      "pps": 0.0
+     },
+     "oth": {
+      "n": 169.2329,
+      "mv": 0.0,
+      "walk": 0.4456,
+      "dwalk": 0.0,
+      "in1": 100.0,
+      "bus": 0.0,
+      "sust": 0.0,
+      "pps": 0.0
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 23.0294,
+      "mv": 0.0,
+      "walk": 1.7432,
+      "dwalk": 0.0,
+      "in1": 0.0,
+      "bus": 69.857,
+      "sust": 0.0,
+      "pps": 0.0
+     },
+     "oth": {
+      "n": 70.1338,
+      "mv": 0.0,
+      "walk": 1.817,
+      "dwalk": 0.0,
+      "in1": 0.0,
+      "bus": 74.8626,
+      "sust": 0.0,
+      "pps": 0.0
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 70.6614,
+      "mv": 0.0,
+      "walk": 1.5527,
+      "dwalk": 0.0,
+      "sust": 0.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 149.8511,
+      "mv": 0.0,
+      "walk": 1.7818,
+      "dwalk": 0.0,
+      "sust": 0.0,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "Sabin": {
+      "kids": 236,
+      "poverty": 67
+     }
+    },
+    "6-8": {
+     "Tubman": {
+      "kids": 93,
+      "poverty": 23
+     }
+    },
+    "9-12": {
+     "Jefferson": {
+      "kids": 221,
+      "poverty": 71
+     }
+    }
+   },
+   "district": {
+    "schools_open": 76,
+    "pct_sustainable_schools": 27.6,
+    "pct_students_in_sustainable": 50.0
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 236,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 223,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 337,
+     "at_target_every_year": false
+    },
+    "Alameda": {
+     "total_2031": 490,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 451,
+     "at_target_every_year": false
+    },
+    "Beverly Cleary": {
+     "total_2031": 394,
+     "at_target_every_year": false
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 309,
+     "at_target_every_year": false
+    },
+    "Rigler": {
+     "total_2031": 327,
+     "at_target_every_year": false
+    },
+    "Woodlawn": {
+     "total_2031": 289,
+     "at_target_every_year": false
+    }
+   }
+  },
+  {
+   "area": "Sabin",
+   "run": "scenario_A",
+   "label": "PPS Scenario A",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 66.6409,
+      "mv": 100.0,
+      "walk": 0.7979,
+      "dwalk": 0.321,
+      "in1": 74.0581,
+      "bus": 25.9419,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 169.2329,
+      "mv": 100.0,
+      "walk": 0.9835,
+      "dwalk": 0.5379,
+      "in1": 46.2286,
+      "bus": 53.7714,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 23.0294,
+      "mv": 0.0,
+      "walk": 1.7432,
+      "dwalk": 0.0,
+      "in1": 0.0,
+      "bus": 69.857,
+      "sust": 0.0,
+      "pps": 0.0
+     },
+     "oth": {
+      "n": 70.1338,
+      "mv": 0.0,
+      "walk": 1.817,
+      "dwalk": 0.0,
+      "in1": 0.0,
+      "bus": 74.8626,
+      "sust": 0.0,
+      "pps": 0.0
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 70.6614,
+      "mv": 0.0,
+      "walk": 1.5527,
+      "dwalk": 0.0,
+      "sust": 0.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 149.8511,
+      "mv": 0.0,
+      "walk": 1.7818,
+      "dwalk": 0.0,
+      "sust": 0.0,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "MLK Jr": {
+      "kids": 236,
+      "poverty": 67
+     }
+    },
+    "6-8": {
+     "Tubman": {
+      "kids": 93,
+      "poverty": 23
+     }
+    },
+    "9-12": {
+     "Jefferson": {
+      "kids": 221,
+      "poverty": 71
+     }
+    }
+   },
+   "district": {
+    "schools_open": 62,
+    "pct_sustainable_schools": 69.4,
+    "pct_students_in_sustainable": 81.4
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 377,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 490,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 288,
+     "at_target_every_year": false
+    },
+    "Beverly Cleary": {
+     "total_2031": 451,
+     "at_target_every_year": true
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 505,
+     "at_target_every_year": true
+    },
+    "Rigler": {
+     "total_2031": 505,
+     "at_target_every_year": true
+    },
+    "Woodlawn": {
+     "total_2031": 292,
+     "at_target_every_year": false
+    }
+   }
+  },
+  {
+   "area": "Sabin",
+   "run": "planD",
+   "label": "Scenario D as written",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 66.6409,
+      "mv": 100.0,
+      "walk": 0.7006,
+      "dwalk": 0.2236,
+      "in1": 84.7219,
+      "bus": 15.2781,
+      "sust": 64.091,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 169.2329,
+      "mv": 100.0,
+      "walk": 0.8365,
+      "dwalk": 0.3909,
+      "in1": 67.0566,
+      "bus": 32.9434,
+      "sust": 46.6387,
+      "pps": 100.0
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 23.0294,
+      "mv": 0.0,
+      "walk": 1.7432,
+      "dwalk": 0.0,
+      "in1": 0.0,
+      "bus": 69.857,
+      "sust": 0.0,
+      "pps": 0.0
+     },
+     "oth": {
+      "n": 70.1338,
+      "mv": 0.0,
+      "walk": 1.817,
+      "dwalk": 0.0,
+      "in1": 0.0,
+      "bus": 74.8626,
+      "sust": 0.0,
+      "pps": 0.0
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 70.6614,
+      "mv": 0.0,
+      "walk": 1.5527,
+      "dwalk": 0.0,
+      "sust": 0.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 149.8511,
+      "mv": 0.0,
+      "walk": 1.7818,
+      "dwalk": 0.0,
+      "sust": 0.0,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "MLK Jr": {
+      "kids": 122,
+      "poverty": 43
+     },
+     "Vernon": {
+      "kids": 114,
+      "poverty": 24
+     }
+    },
+    "6-8": {
+     "Tubman": {
+      "kids": 93,
+      "poverty": 23
+     }
+    },
+    "9-12": {
+     "Jefferson": {
+      "kids": 221,
+      "poverty": 71
+     }
+    }
+   },
+   "district": {
+    "schools_open": 70,
+    "pct_sustainable_schools": 40.0,
+    "pct_students_in_sustainable": 60.1
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 459,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 490,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 566,
+     "at_target_every_year": false
+    },
+    "Beverly Cleary": {
+     "total_2031": 617,
+     "at_target_every_year": false
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 309,
+     "at_target_every_year": false
+    },
+    "Rigler": {
+     "total_2031": 327,
+     "at_target_every_year": false
+    },
+    "Woodlawn": {
+     "total_2031": 289,
+     "at_target_every_year": false
+    }
+   }
+  },
+  {
+   "area": "Sabin",
+   "run": "planD_redraw_ms",
+   "label": "Scenario D re-drawn",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 66.6409,
+      "mv": 100.0,
+      "walk": 0.5849,
+      "dwalk": 0.1079,
+      "in1": 100.0,
+      "bus": 0.0,
+      "sust": 98.7997,
+      "pps": 98.7997
+     },
+     "oth": {
+      "n": 169.2329,
+      "mv": 100.0,
+      "walk": 0.6106,
+      "dwalk": 0.165,
+      "in1": 100.0,
+      "bus": 0.0,
+      "sust": 99.3617,
+      "pps": 99.3617
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 23.0294,
+      "mv": 46.7146,
+      "walk": 1.2599,
+      "dwalk": -0.4833,
+      "in1": 24.3643,
+      "bus": 30.0731,
+      "sust": 0.0,
+      "pps": 22.9365
+     },
+     "oth": {
+      "n": 70.1338,
+      "mv": 73.3816,
+      "walk": 1.2474,
+      "dwalk": -0.5696,
+      "in1": 25.8556,
+      "bus": 28.1713,
+      "sust": 0.0,
+      "pps": 21.9618
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 70.6614,
+      "mv": 0.0,
+      "walk": 1.5527,
+      "dwalk": 0.0,
+      "sust": 0.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 149.8511,
+      "mv": 0.0,
+      "walk": 1.7818,
+      "dwalk": 0.0,
+      "sust": 0.0,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "Alameda": {
+      "kids": 101,
+      "poverty": 16
+     },
+     "MLK Jr": {
+      "kids": 78,
+      "poverty": 34
+     },
+     "Vernon": {
+      "kids": 55,
+      "poverty": 15
+     },
+     "Boise-Eliot/Humboldt": {
+      "kids": 2,
+      "poverty": 1
+     }
+    },
+    "6-8": {
+     "Beaumont": {
+      "kids": 42,
+      "poverty": 5
+     },
+     "Tubman": {
+      "kids": 31,
+      "poverty": 12
+     },
+     "Vernon": {
+      "kids": 21,
+      "poverty": 5
+     }
+    },
+    "9-12": {
+     "Jefferson": {
+      "kids": 221,
+      "poverty": 71
+     }
+    }
+   },
+   "district": {
+    "schools_open": 70,
+    "pct_sustainable_schools": 42.9,
+    "pct_students_in_sustainable": 63.0
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 485,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 556,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 501,
+     "at_target_every_year": true
+    },
+    "Beverly Cleary": {
+     "total_2031": 530,
+     "at_target_every_year": false
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 310,
+     "at_target_every_year": false
+    },
+    "Rigler": {
+     "total_2031": 356,
+     "at_target_every_year": false
+    },
+    "Woodlawn": {
+     "total_2031": 399,
+     "at_target_every_year": true
+    }
+   }
+  },
+  {
+   "area": "Sabin",
+   "run": "planD_sust",
+   "label": "Scenario D buildings, every school at target",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 66.6409,
+      "mv": 100.0,
+      "walk": 0.6754,
+      "dwalk": 0.1985,
+      "in1": 84.9246,
+      "bus": 15.0754,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 169.2329,
+      "mv": 100.0,
+      "walk": 0.7646,
+      "dwalk": 0.3189,
+      "in1": 76.3482,
+      "bus": 23.6518,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 23.0294,
+      "mv": 45.7488,
+      "walk": 1.1974,
+      "dwalk": -0.5459,
+      "in1": 30.4745,
+      "bus": 24.1082,
+      "sust": 54.2512,
+      "pps": 89.1138
+     },
+     "oth": {
+      "n": 70.1338,
+      "mv": 56.7271,
+      "walk": 1.1642,
+      "dwalk": -0.6527,
+      "in1": 34.8944,
+      "bus": 18.1354,
+      "sust": 43.2729,
+      "pps": 84.3099
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 70.6614,
+      "mv": 0.0,
+      "walk": 1.5527,
+      "dwalk": 0.0,
+      "sust": 0.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 149.8511,
+      "mv": 0.0,
+      "walk": 1.7818,
+      "dwalk": 0.0,
+      "sust": 0.0,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "Vernon": {
+      "kids": 99,
+      "poverty": 24
+     },
+     "MLK Jr": {
+      "kids": 51,
+      "poverty": 23
+     },
+     "Boise-Eliot/Humboldt": {
+      "kids": 49,
+      "poverty": 13
+     },
+     "Alameda": {
+      "kids": 37,
+      "poverty": 8
+     }
+    },
+    "6-8": {
+     "Tubman": {
+      "kids": 43,
+      "poverty": 12
+     },
+     "Vernon": {
+      "kids": 37,
+      "poverty": 8
+     },
+     "Beaumont": {
+      "kids": 14,
+      "poverty": 3
+     }
+    },
+    "9-12": {
+     "Jefferson": {
+      "kids": 221,
+      "poverty": 71
+     }
+    }
+   },
+   "district": {
+    "schools_open": 70,
+    "pct_sustainable_schools": 72.9,
+    "pct_students_in_sustainable": 83.0
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 367,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 409,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 500,
+     "at_target_every_year": true
+    },
+    "Beverly Cleary": {
+     "total_2031": 505,
+     "at_target_every_year": false
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    },
+    "Rigler": {
+     "total_2031": 381,
+     "at_target_every_year": true
+    },
+    "Woodlawn": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    }
+   }
+  },
+  {
+   "area": "Sabin",
+   "run": "equity_noswap_alameda_rig_hs",
+   "label": "Current best: fewer DLI moves, sustainable schools",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 66.6409,
+      "mv": 100.0,
+      "walk": 0.6393,
+      "dwalk": 0.1623,
+      "in1": 92.1661,
+      "bus": 7.8339,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 169.2329,
+      "mv": 100.0,
+      "walk": 0.6882,
+      "dwalk": 0.2425,
+      "in1": 90.1886,
+      "bus": 9.8114,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 23.0294,
+      "mv": 54.0735,
+      "walk": 1.4422,
+      "dwalk": -0.3011,
+      "in1": 1.4278,
+      "bus": 41.4669,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 70.1338,
+      "mv": 74.644,
+      "walk": 1.3929,
+      "dwalk": -0.4241,
+      "in1": 3.8939,
+      "bus": 35.0981,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 70.6614,
+      "mv": 0.0,
+      "walk": 1.5527,
+      "dwalk": 0.0,
+      "sust": 0.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 149.8511,
+      "mv": 0.0,
+      "walk": 1.7818,
+      "dwalk": 0.0,
+      "sust": 0.0,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "Vernon": {
+      "kids": 105,
+      "poverty": 27
+     },
+     "MLK Jr": {
+      "kids": 66,
+      "poverty": 29
+     },
+     "Alameda": {
+      "kids": 61,
+      "poverty": 10
+     },
+     "Boise-Eliot/Humboldt": {
+      "kids": 5,
+      "poverty": 1
+     }
+    },
+    "6-8": {
+     "Beaumont": {
+      "kids": 65,
+      "poverty": 12
+     },
+     "Tubman": {
+      "kids": 28,
+      "poverty": 11
+     }
+    },
+    "9-12": {
+     "Jefferson": {
+      "kids": 221,
+      "poverty": 71
+     }
+    }
+   },
+   "district": {
+    "schools_open": 62,
+    "pct_sustainable_schools": 96.8,
+    "pct_students_in_sustainable": 98.3
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 487,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 436,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    },
+    "Beverly Cleary": {
+     "total_2031": 438,
+     "at_target_every_year": true
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 368,
+     "at_target_every_year": true
+    },
+    "Rigler": {
+     "total_2031": 523,
+     "at_target_every_year": true
+    },
+    "Woodlawn": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    }
+   }
+  },
+  {
+   "area": "Sabin",
+   "run": "sabin_all",
+   "label": "Sabin into Irvington, all ideas",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 66.6409,
+      "mv": 100.0,
+      "walk": 0.5993,
+      "dwalk": 0.1223,
+      "in1": 98.8607,
+      "bus": 1.1393,
+      "sust": 83.8122,
+      "pps": 83.8122
+     },
+     "oth": {
+      "n": 169.2329,
+      "mv": 100.0,
+      "walk": 0.623,
+      "dwalk": 0.1774,
+      "in1": 98.798,
+      "bus": 1.202,
+      "sust": 76.8253,
+      "pps": 76.8253
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 23.0294,
+      "mv": 12.6977,
+      "walk": 1.6536,
+      "dwalk": -0.0897,
+      "in1": 1.4278,
+      "bus": 57.1594,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 70.1338,
+      "mv": 22.0952,
+      "walk": 1.6383,
+      "dwalk": -0.1787,
+      "in1": 3.8939,
+      "bus": 52.7674,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 70.6614,
+      "mv": 14.1876,
+      "walk": 1.4455,
+      "dwalk": -0.1072,
+      "sust": 14.1876,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 149.8511,
+      "mv": 23.3555,
+      "walk": 1.6231,
+      "dwalk": -0.1587,
+      "sust": 23.3555,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "Vernon": {
+      "kids": 73,
+      "poverty": 20
+     },
+     "MLK Jr": {
+      "kids": 63,
+      "poverty": 27
+     },
+     "Alameda": {
+      "kids": 50,
+      "poverty": 9
+     },
+     "Irvington": {
+      "kids": 50,
+      "poverty": 11
+     }
+    },
+    "6-8": {
+     "Tubman": {
+      "kids": 75,
+      "poverty": 20
+     },
+     "Beaumont": {
+      "kids": 18,
+      "poverty": 3
+     }
+    },
+    "9-12": {
+     "Jefferson": {
+      "kids": 175,
+      "poverty": 61
+     },
+     "Grant": {
+      "kids": 45,
+      "poverty": 10
+     }
+    }
+   },
+   "district": {
+    "schools_open": 63,
+    "pct_sustainable_schools": 92.1,
+    "pct_students_in_sustainable": 94.8
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 224,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 440,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 387,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 362,
+     "at_target_every_year": true
+    },
+    "Beverly Cleary": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 369,
+     "at_target_every_year": true
+    },
+    "Rigler": {
+     "total_2031": 496,
+     "at_target_every_year": true
+    },
+    "Woodlawn": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    }
+   }
+  },
+  {
+   "area": "Irvington",
+   "run": "status_quo",
+   "label": "Today (Status Quo)",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 46.4941,
+      "mv": 0.0,
+      "walk": 0.5997,
+      "dwalk": 0.0,
+      "in1": 87.2829,
+      "bus": 12.7171,
+      "sust": 0.0,
+      "pps": 0.0
+     },
+     "oth": {
+      "n": 176.5054,
+      "mv": 0.0,
+      "walk": 0.5211,
+      "dwalk": 0.0,
+      "in1": 93.9852,
+      "bus": 6.0148,
+      "sust": 0.0,
+      "pps": 0.0
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 32.067,
+      "mv": 0.0,
+      "walk": 1.1978,
+      "dwalk": 0.0,
+      "in1": 33.1396,
+      "bus": 31.0805,
+      "sust": 0.0,
+      "pps": 0.0
+     },
+     "oth": {
+      "n": 81.8647,
+      "mv": 0.0,
+      "walk": 1.2683,
+      "dwalk": 0.0,
+      "in1": 20.637,
+      "bus": 29.2609,
+      "sust": 0.0,
+      "pps": 0.0
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 50.8122,
+      "mv": 0.0,
+      "walk": 1.2861,
+      "dwalk": 0.0,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 277.1536,
+      "mv": 0.0,
+      "walk": 1.2693,
+      "dwalk": 0.0,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "Irvington": {
+      "kids": 223,
+      "poverty": 46
+     }
+    },
+    "6-8": {
+     "Tubman": {
+      "kids": 114,
+      "poverty": 32
+     }
+    },
+    "9-12": {
+     "Grant": {
+      "kids": 328,
+      "poverty": 51
+     }
+    }
+   },
+   "district": {
+    "schools_open": 76,
+    "pct_sustainable_schools": 27.6,
+    "pct_students_in_sustainable": 50.0
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 236,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 223,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 337,
+     "at_target_every_year": false
+    },
+    "Alameda": {
+     "total_2031": 490,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 451,
+     "at_target_every_year": false
+    },
+    "Beverly Cleary": {
+     "total_2031": 394,
+     "at_target_every_year": false
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 309,
+     "at_target_every_year": false
+    },
+    "Rigler": {
+     "total_2031": 327,
+     "at_target_every_year": false
+    },
+    "Woodlawn": {
+     "total_2031": 289,
+     "at_target_every_year": false
+    }
+   }
+  },
+  {
+   "area": "Irvington",
+   "run": "scenario_A",
+   "label": "PPS Scenario A",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 46.4941,
+      "mv": 100.0,
+      "walk": 1.0342,
+      "dwalk": 0.4345,
+      "in1": 50.8415,
+      "bus": 49.1585,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 176.5054,
+      "mv": 100.0,
+      "walk": 1.0827,
+      "dwalk": 0.5617,
+      "in1": 41.622,
+      "bus": 58.378,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 32.067,
+      "mv": 100.0,
+      "walk": 2.0384,
+      "dwalk": 0.8406,
+      "in1": 0.0,
+      "bus": 94.4728,
+      "sust": 0.0,
+      "pps": 0.0
+     },
+     "oth": {
+      "n": 81.8647,
+      "mv": 100.0,
+      "walk": 1.825,
+      "dwalk": 0.5566,
+      "in1": 0.0,
+      "bus": 81.4632,
+      "sust": 0.0,
+      "pps": 0.0
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 50.8122,
+      "mv": 0.0,
+      "walk": 1.2861,
+      "dwalk": 0.0,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 277.1536,
+      "mv": 0.0,
+      "walk": 1.2693,
+      "dwalk": 0.0,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "Beverly Cleary": {
+      "kids": 223,
+      "poverty": 46
+     }
+    },
+    "6-8": {
+     "Beaumont": {
+      "kids": 114,
+      "poverty": 32
+     }
+    },
+    "9-12": {
+     "Grant": {
+      "kids": 328,
+      "poverty": 51
+     }
+    }
+   },
+   "district": {
+    "schools_open": 62,
+    "pct_sustainable_schools": 69.4,
+    "pct_students_in_sustainable": 81.4
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 377,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 490,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 288,
+     "at_target_every_year": false
+    },
+    "Beverly Cleary": {
+     "total_2031": 451,
+     "at_target_every_year": true
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 505,
+     "at_target_every_year": true
+    },
+    "Rigler": {
+     "total_2031": 505,
+     "at_target_every_year": true
+    },
+    "Woodlawn": {
+     "total_2031": 292,
+     "at_target_every_year": false
+    }
+   }
+  },
+  {
+   "area": "Irvington",
+   "run": "planD",
+   "label": "Scenario D as written",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 46.4941,
+      "mv": 100.0,
+      "walk": 1.0342,
+      "dwalk": 0.4345,
+      "in1": 50.8415,
+      "bus": 49.1585,
+      "sust": 0.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 176.5054,
+      "mv": 100.0,
+      "walk": 1.0827,
+      "dwalk": 0.5617,
+      "in1": 41.622,
+      "bus": 58.378,
+      "sust": 0.0,
+      "pps": 100.0
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 32.067,
+      "mv": 0.0,
+      "walk": 1.1978,
+      "dwalk": 0.0,
+      "in1": 33.1396,
+      "bus": 31.0805,
+      "sust": 0.0,
+      "pps": 0.0
+     },
+     "oth": {
+      "n": 81.8647,
+      "mv": 0.0,
+      "walk": 1.2683,
+      "dwalk": 0.0,
+      "in1": 20.637,
+      "bus": 29.2609,
+      "sust": 0.0,
+      "pps": 0.0
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 50.8122,
+      "mv": 0.0,
+      "walk": 1.2861,
+      "dwalk": 0.0,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 277.1536,
+      "mv": 0.0,
+      "walk": 1.2693,
+      "dwalk": 0.0,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "Beverly Cleary": {
+      "kids": 223,
+      "poverty": 46
+     }
+    },
+    "6-8": {
+     "Tubman": {
+      "kids": 114,
+      "poverty": 32
+     }
+    },
+    "9-12": {
+     "Grant": {
+      "kids": 328,
+      "poverty": 51
+     }
+    }
+   },
+   "district": {
+    "schools_open": 70,
+    "pct_sustainable_schools": 40.0,
+    "pct_students_in_sustainable": 60.1
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 459,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 490,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 566,
+     "at_target_every_year": false
+    },
+    "Beverly Cleary": {
+     "total_2031": 617,
+     "at_target_every_year": false
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 309,
+     "at_target_every_year": false
+    },
+    "Rigler": {
+     "total_2031": 327,
+     "at_target_every_year": false
+    },
+    "Woodlawn": {
+     "total_2031": 289,
+     "at_target_every_year": false
+    }
+   }
+  },
+  {
+   "area": "Irvington",
+   "run": "planD_redraw_ms",
+   "label": "Scenario D re-drawn",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 46.4941,
+      "mv": 100.0,
+      "walk": 0.8944,
+      "dwalk": 0.2948,
+      "in1": 57.7995,
+      "bus": 42.2005,
+      "sust": 12.3319,
+      "pps": 72.8985
+     },
+     "oth": {
+      "n": 176.5054,
+      "mv": 100.0,
+      "walk": 0.9038,
+      "dwalk": 0.3827,
+      "in1": 58.2614,
+      "bus": 41.7386,
+      "sust": 42.279,
+      "pps": 79.2791
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 32.067,
+      "mv": 76.0924,
+      "walk": 0.8566,
+      "dwalk": -0.3412,
+      "in1": 74.0405,
+      "bus": 10.6642,
+      "sust": 0.0,
+      "pps": 62.2529
+     },
+     "oth": {
+      "n": 81.8647,
+      "mv": 83.0913,
+      "walk": 1.2122,
+      "dwalk": -0.0562,
+      "in1": 40.2484,
+      "bus": 36.4338,
+      "sust": 0.0,
+      "pps": 33.6519
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 50.8122,
+      "mv": 0.0,
+      "walk": 1.2861,
+      "dwalk": 0.0,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 277.1536,
+      "mv": 0.0,
+      "walk": 1.2693,
+      "dwalk": 0.0,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "Beverly Cleary": {
+      "kids": 93,
+      "poverty": 28
+     },
+     "Alameda": {
+      "kids": 80,
+      "poverty": 6
+     },
+     "Boise-Eliot/Humboldt": {
+      "kids": 49,
+      "poverty": 13
+     }
+    },
+    "6-8": {
+     "Beverly Cleary": {
+      "kids": 48,
+      "poverty": 20
+     },
+     "Beaumont": {
+      "kids": 45,
+      "poverty": 4
+     },
+     "Tubman": {
+      "kids": 22,
+      "poverty": 8
+     }
+    },
+    "9-12": {
+     "Grant": {
+      "kids": 328,
+      "poverty": 51
+     }
+    }
+   },
+   "district": {
+    "schools_open": 70,
+    "pct_sustainable_schools": 42.9,
+    "pct_students_in_sustainable": 63.0
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 485,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 556,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 501,
+     "at_target_every_year": true
+    },
+    "Beverly Cleary": {
+     "total_2031": 530,
+     "at_target_every_year": false
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 310,
+     "at_target_every_year": false
+    },
+    "Rigler": {
+     "total_2031": 356,
+     "at_target_every_year": false
+    },
+    "Woodlawn": {
+     "total_2031": 399,
+     "at_target_every_year": true
+    }
+   }
+  },
+  {
+   "area": "Irvington",
+   "run": "planD_sust",
+   "label": "Scenario D buildings, every school at target",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 46.4941,
+      "mv": 100.0,
+      "walk": 0.9229,
+      "dwalk": 0.3232,
+      "in1": 57.3824,
+      "bus": 42.6176,
+      "sust": 41.5047,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 176.5054,
+      "mv": 100.0,
+      "walk": 0.9726,
+      "dwalk": 0.4515,
+      "in1": 55.3003,
+      "bus": 44.6997,
+      "sust": 59.6462,
+      "pps": 100.0
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 32.067,
+      "mv": 66.9124,
+      "walk": 0.7754,
+      "dwalk": -0.4225,
+      "in1": 80.0522,
+      "bus": 2.3905,
+      "sust": 33.0876,
+      "pps": 95.0088
+     },
+     "oth": {
+      "n": 81.8647,
+      "mv": 58.7837,
+      "walk": 0.975,
+      "dwalk": -0.2933,
+      "in1": 52.804,
+      "bus": 8.4457,
+      "sust": 41.2163,
+      "pps": 81.7275
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 50.8122,
+      "mv": 0.0,
+      "walk": 1.2861,
+      "dwalk": 0.0,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 277.1536,
+      "mv": 0.0,
+      "walk": 1.2693,
+      "dwalk": 0.0,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "Beverly Cleary": {
+      "kids": 98,
+      "poverty": 27
+     },
+     "Boise-Eliot/Humboldt": {
+      "kids": 95,
+      "poverty": 17
+     },
+     "Alameda": {
+      "kids": 30,
+      "poverty": 2
+     }
+    },
+    "6-8": {
+     "Beverly Cleary": {
+      "kids": 53,
+      "poverty": 20
+     },
+     "Tubman": {
+      "kids": 44,
+      "poverty": 11
+     },
+     "Beaumont": {
+      "kids": 17,
+      "poverty": 2
+     }
+    },
+    "9-12": {
+     "Grant": {
+      "kids": 328,
+      "poverty": 51
+     }
+    }
+   },
+   "district": {
+    "schools_open": 70,
+    "pct_sustainable_schools": 72.9,
+    "pct_students_in_sustainable": 83.0
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 367,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 409,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 500,
+     "at_target_every_year": true
+    },
+    "Beverly Cleary": {
+     "total_2031": 505,
+     "at_target_every_year": false
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    },
+    "Rigler": {
+     "total_2031": 381,
+     "at_target_every_year": true
+    },
+    "Woodlawn": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    }
+   }
+  },
+  {
+   "area": "Irvington",
+   "run": "equity_noswap_alameda_rig_hs",
+   "label": "Current best: fewer DLI moves, sustainable schools",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 46.4941,
+      "mv": 100.0,
+      "walk": 0.893,
+      "dwalk": 0.2933,
+      "in1": 58.3577,
+      "bus": 41.6423,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 176.5054,
+      "mv": 100.0,
+      "walk": 0.9013,
+      "dwalk": 0.3802,
+      "in1": 59.8862,
+      "bus": 40.1138,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 32.067,
+      "mv": 11.2314,
+      "walk": 1.2351,
+      "dwalk": 0.0373,
+      "in1": 32.2598,
+      "bus": 35.9131,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 81.8647,
+      "mv": 41.7502,
+      "walk": 1.3835,
+      "dwalk": 0.1152,
+      "in1": 18.4798,
+      "bus": 44.4835,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 50.8122,
+      "mv": 0.0,
+      "walk": 1.2861,
+      "dwalk": 0.0,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 277.1536,
+      "mv": 0.0,
+      "walk": 1.2693,
+      "dwalk": 0.0,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "Beverly Cleary": {
+      "kids": 137,
+      "poverty": 32
+     },
+     "Boise-Eliot/Humboldt": {
+      "kids": 50,
+      "poverty": 12
+     },
+     "Alameda": {
+      "kids": 36,
+      "poverty": 2
+     }
+    },
+    "6-8": {
+     "Tubman": {
+      "kids": 76,
+      "poverty": 28
+     },
+     "Beaumont": {
+      "kids": 38,
+      "poverty": 4
+     }
+    },
+    "9-12": {
+     "Grant": {
+      "kids": 328,
+      "poverty": 51
+     }
+    }
+   },
+   "district": {
+    "schools_open": 62,
+    "pct_sustainable_schools": 96.8,
+    "pct_students_in_sustainable": 98.3
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 487,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 436,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    },
+    "Beverly Cleary": {
+     "total_2031": 438,
+     "at_target_every_year": true
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 368,
+     "at_target_every_year": true
+    },
+    "Rigler": {
+     "total_2031": 523,
+     "at_target_every_year": true
+    },
+    "Woodlawn": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    }
+   }
+  },
+  {
+   "area": "Irvington",
+   "run": "sabin_all",
+   "label": "Sabin into Irvington, all ideas",
+   "status": "done",
+   "groups": {
+    "K-5": {
+     "pov": {
+      "n": 46.4941,
+      "mv": 38.9189,
+      "walk": 0.4858,
+      "dwalk": -0.1138,
+      "in1": 100.0,
+      "bus": 0.0,
+      "sust": 38.9189,
+      "pps": 38.9189
+     },
+     "oth": {
+      "n": 176.5054,
+      "mv": 28.118,
+      "walk": 0.4514,
+      "dwalk": -0.0697,
+      "in1": 100.0,
+      "bus": 0.0,
+      "sust": 28.118,
+      "pps": 28.118
+     }
+    },
+    "6-8": {
+     "pov": {
+      "n": 32.067,
+      "mv": 41.2287,
+      "walk": 1.2951,
+      "dwalk": 0.0973,
+      "in1": 33.1396,
+      "bus": 38.9101,
+      "sust": 100.0,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 81.8647,
+      "mv": 28.7671,
+      "walk": 1.2748,
+      "dwalk": 0.0064,
+      "in1": 20.637,
+      "bus": 23.8218,
+      "sust": 100.0,
+      "pps": 100.0
+     }
+    },
+    "9-12": {
+     "pov": {
+      "n": 50.8122,
+      "mv": 54.0117,
+      "walk": 1.6806,
+      "dwalk": 0.3945,
+      "sust": 45.9883,
+      "pps": 100.0
+     },
+     "oth": {
+      "n": 277.1536,
+      "mv": 69.206,
+      "walk": 1.8346,
+      "dwalk": 0.5652,
+      "sust": 30.794,
+      "pps": 100.0
+     }
+    }
+   },
+   "destinations": {
+    "K-5": {
+     "Irvington": {
+      "kids": 155,
+      "poverty": 28
+     },
+     "Beverly Cleary": {
+      "kids": 66,
+      "poverty": 18
+     },
+     "Alameda": {
+      "kids": 1,
+      "poverty": 0
+     }
+    },
+    "6-8": {
+     "Tubman": {
+      "kids": 77,
+      "poverty": 19
+     },
+     "Beaumont": {
+      "kids": 37,
+      "poverty": 13
+     }
+    },
+    "9-12": {
+     "Jefferson": {
+      "kids": 219,
+      "poverty": 27
+     },
+     "Grant": {
+      "kids": 109,
+      "poverty": 23
+     }
+    }
+   },
+   "district": {
+    "schools_open": 63,
+    "pct_sustainable_schools": 92.1,
+    "pct_students_in_sustainable": 94.8
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 224,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 440,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 387,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 362,
+     "at_target_every_year": true
+    },
+    "Beverly Cleary": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 369,
+     "at_target_every_year": true
+    },
+    "Rigler": {
+     "total_2031": 496,
+     "at_target_every_year": true
+    },
+    "Woodlawn": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    }
+   }
+  }
+ ],
+ "capacity": {
+  "schools": [
+   "Sabin",
+   "Irvington",
+   "MLK Jr",
+   "Alameda",
+   "Vernon",
+   "Beverly Cleary",
+   "Boise-Eliot/Humboldt"
+  ],
+  "year": "2031-32",
+  "neighborhood_k5_kids": 1915,
+  "program_k5_kids": 196,
+  "total_k5_kids": 2111,
+  "floor": 360,
+  "kids_needed": {
+   "5": 1800,
+   "6": 2160,
+   "7": 2520
+  },
+  "note": "K-5 kids living in these seven schools' current attendance areas plus the K-5 immersion program housed there (King's Mandarin, as in the featured plan); compares with 360 per open school. Model v2, 2031-32."
+ }
+}

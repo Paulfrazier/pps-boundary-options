@@ -71,10 +71,11 @@ const avail=()=>ORD.filter(k=>LD().plans[k]);
 const isOpt=k=>PM[k]&&PM[k].kind==="option";
 const lblShort=k=>PM[k]?PM[k].short:k;
 const lblFull=k=>PM[k]?(PM[k].full||PM[k].short)+(isOpt(k)?` (${PM[k].ver})`:PM[k].lines==="official"&&k!==BASELINE?" (PPS lines)":""):k;
-const LEAD=(META.plans.find(p=>p.rank===0)||{k:"option2_ms460"}).k;   // the best example we modeled (site_data brief_rank 0: option2_ms460, "Boundary changes, balanced middle schools")
-const leadT=k=>k===LEAD?`<span class="lead" title="The best example we modeled">best we modeled</span>`:isWif(k)?`<span class="lead wif" title="A what-if, not one of the example plans">what-if</span>`:"";
+const LEAD=(META.plans.find(p=>p.rank===0)||{k:"equity_noswap_alameda_rig_hs"}).k;   // the current best (site_data brief_rank 0); its name already says "Current best", so it gets no extra tag
+const leadT=k=>isWif(k)?`<span class="lead wif" title="A what-if, not one of the example plans">what-if</span>`:"";
 const isWif=k=>!!(PM[k]&&PM[k].whatif);
-const isReq=k=>!!(PM[k]&&PM[k].req);   // requested runs (pages/requests.html): their own group in the plan lists
+const isReq=k=>!!(PM[k]&&PM[k].req);   // requested runs (pages/requests.html) and Sabin runs: their own groups in the plan lists
+const isSab=k=>!!(PM[k]&&PM[k].sab);   // Sabin options (pages/sabin.html)
 const vtag=k=>(isOpt(k)?`<span class="vtag" title="The model version that produced this example plan">${esc(PM[k].ver)}</span>`:`<span class="vtag off" title="PPS's own lines, traced from its published maps">PPS's official lines</span>`)+leadT(k);
 const SCH=()=>LD().sch;
 // optional per-option caveat (site_data options[].caveat): side panel + plan menu tooltip; nothing when absent
@@ -226,7 +227,7 @@ const passSel=e=>{const a=document.elementsFromPoint(e.clientX,e.clientY).find(x
 // "Walk to assigned school": each 400 m cell shaded by its kids' average walk to the school the plan assigns (PD(k).wk,
 // hundredths of a mile in den.cells order, -1 = no kids). One plan, or each side of swipe: miles in five steps per level.
 // Overlay of two plans: the change, plan 1 -> plan 2, closer (blue) or farther (red) in diverging steps.
-// (2026-10-22, Paul) green -> yellow -> red; red starts past 1 mi for K-5, 1.5 mi for 6-8 / 9-12 (the bus line).
+// green -> yellow -> red; red starts past 1 mi for K-5, 1.5 mi for 6-8 / 9-12 (the bus line).
 // Overlay: green closer, red farther.
 const WKB={"K-5":[.5,1,1.5,2],"6-8":[.75,1.5,2,3],"9-12":[.75,1.5,2,3]},WKD=[-.5,-.25,-.1,.1,.25,.5];
 const wkBin=v=>WKB[lv].filter(x=>v>=x).length,wkFill=b=>`var(--wk${b})`;
@@ -354,7 +355,7 @@ function selectOne(n){sel=n;markSel();const pd=PD(scn),pm=PM[scn];
  if(past.length)h+=bars(past.map(r=>[r[1],r[2]]),"Sent to a farther school: the nearer school");
  if(pm.lines==="official")h+=`<p class="hint">PPS's lines, traced from its published 2027-28 map and may be off by about 70 feet. ${src(pm.linesrc[lv],"Traced source")}.</p>`;
  else h+=`<p class="hint">Lines follow streets and are derived from the option's block assignment (crisp method).</p>`;
- // (2026-10-22, Paul) the clicked school leads; the whole-district tables follow it
+ // the clicked school leads; the whole-district tables follow it
  $("sidec").innerHTML=`<div class="tag">${esc(pm.short)} · ${LVN[lv]}</div><div class="vline">${vtag(scn)}</div>`+spotHtml()+h+`<div class="tag">Whole district, ${LVN[lv]}</div>`+rest+progPanel();sideWire()}
 function markSel(){[gA,gA2].forEach(g=>g.querySelectorAll(".area").forEach(p=>{p.classList.toggle("sel",p.dataset.n===sel)}));rove();
  [[gE1,cmpOn()?p1:scn],[gE2,p2]].forEach(([g,pl])=>{g.querySelectorAll("[data-sel]").forEach(o=>o.remove());if(!g.childNodes.length)return;selEdge(g,polysOf(pl)[sel])});
@@ -388,7 +389,7 @@ function cmpSide(n){const I=pairInfo(p1,p2),s1=PD(p1).size,s2=PD(p2).size,in1=po
  if(I&&I.n){h+=`<div class="tag">Change in kids living in each area</div><div class="dscroll" tabindex="0" role="region" aria-label="School size change table, scrollable"><table class="dtab"><thead><tr><th>School</th><th class="num">${esc(lblShort(p1))}</th><th class="num">${esc(lblShort(p2))}</th><th class="num">Change</th></tr></thead><tbody>${capRows(chg.map(r=>`<tr${r[0]===n?' class="hl"':""}><th scope="row">${selBtn(r[0])}</th><td class="num">${cell(r[1],r[0],po1)}</td><td class="num">${cell(r[2],r[0],po2)}</td><td class="num ${r[3]>0?"pos":"neg"}">${sg(r[3])}</td></tr>`))}</tbody></table></div>${moreBtn(chg.length)}`;
   const top=I.flows.slice(0,6);if(top.length)h+=`<div class="from"><div class="tag">Biggest moves</div>${top.map(f=>`<div class="bar"><span>${esc(nm(f[0]))} → ${esc(nm(f[1]))}</span><em>${fmt(f[2])}</em></div>`).join("")}</div>`;
   const un=rows.length-chg.length;h+=`<p class="hint">${un?`${un} school${un===1?"'s area is":"s' areas are"} unchanged.`:"Every school's area changes."} Moves (and the headline) count the modeled kids of ${(k=>esc(lblShort(k)))(ORD.indexOf(p1)<ORD.indexOf(p2)?p2:p1)}, as its scorecard does; each column above counts its own plan's kids (each plan leaves out its own program kids, such as DLI), so a school's moves and its column can differ by a few kids. Counts are modeled ${L} neighborhood kids by 2020 Census block (${src("build/data/blocks.parquet","blocks.parquet")}); program seats are left out, so they run lower than enrollment.${n?"":" Tap an area for one school."}</p>`}
- // (2026-10-22, Paul) the clicked school leads (right under the plan names and any tapped spot), then the district numbers
+ // the clicked school leads (right under the plan names and any tapped spot), then the district numbers
  $("sidec").innerHTML=top+spotHtml()+sch+hd+h+"</div>"+progPanel();sideWire()}
 function sideWire(){const sd=$("sidec");sd.querySelectorAll("[data-sel]").forEach(b=>b.onclick=()=>select(b.dataset.sel));
  const x=sd.querySelector("#spotx");if(x)x.onclick=()=>{pin=null;drawPin();select(sel)};
@@ -475,13 +476,13 @@ function bandsTable(){const L=LVN[lv];const pl=cmpOn()?(p1===p2?[p1]:[p1,p2]):[s
 document.querySelectorAll("[data-w]").forEach(b=>b.onclick=()=>{wk=b.dataset.w;document.querySelectorAll("[data-w]").forEach(x=>x.setAttribute("aria-pressed",x===b));bandsTable()});
 
 // ---- controls
-function fillSelects(){const A=avail(),lt=innerWidth<=430?" (best)":" (best we modeled)";[["sel0",scn],["sel1",p1],["sel2",p2]].forEach(([id,v])=>{const s=$(id);s.replaceChildren();
-  // short names keep the one-row selects narrow (full name + version in the tooltip); the best example we modeled is tagged
-  const grp=(t,ks)=>{if(!ks.length)return;const g=document.createElement("optgroup");g.label=t;ks.forEach(k=>{const o=new Option(lblShort(k)+(k===LEAD?lt:isWif(k)?" (what-if)":""),k);o.title=lblFull(k)+(cavOf(k)?" — "+cavOf(k):"");g.append(o)});s.append(g)};
-  grp("PPS plans",A.filter(k=>!isOpt(k)));grp("Example plans",A.filter(k=>isOpt(k)&&!isWif(k)&&!isReq(k)));grp("What-if",A.filter(k=>isWif(k)&&!isReq(k)));grp("Requested runs",A.filter(isReq));s.value=v})}
+function fillSelects(){const A=avail();[["sel0",scn],["sel1",p1],["sel2",p2]].forEach(([id,v])=>{const s=$(id);s.replaceChildren();
+  // short names keep the one-row selects narrow (full name + version in the tooltip); what-ifs are tagged
+  const grp=(t,ks)=>{if(!ks.length)return;const g=document.createElement("optgroup");g.label=t;ks.forEach(k=>{const o=new Option(lblShort(k)+(isWif(k)?" (what-if)":""),k);o.title=lblFull(k)+(cavOf(k)?" — "+cavOf(k):"");g.append(o)});s.append(g)};
+  grp("PPS plans",A.filter(k=>!isOpt(k)));grp("Example plans",A.filter(k=>isOpt(k)&&!isWif(k)&&!isReq(k)));grp("What-if",A.filter(k=>isWif(k)&&!isReq(k)));grp("Requested runs",A.filter(k=>isReq(k)&&!isSab(k)));grp("Sabin options",A.filter(isSab));s.value=v})}
 // round 8 ("only do pre filled compare on a few"): three presets with short labels; any other pair is in
 // the two plan selects. [plan 1 (left), plan 2 (right), label, tooltip]
-const QUICK=()=>[[BASELINE,"scenario_A","PPS A vs no closures"],[BASELINE,"scenario_B","PPS B vs no closures"],[LEAD,"scenario_A","PPS A vs best we modeled"]];
+const QUICK=()=>[[BASELINE,"scenario_A","PPS A vs no closures"],[BASELINE,"scenario_B","PPS B vs no closures"],[LEAD,"scenario_A","PPS A vs current best"]];
 // the chip row scrolls sideways on phones: a right-edge fade shows while more chips are hidden
 const quickFade=()=>{const q=$("quick");q.classList.toggle("more",q.scrollLeft+q.clientWidth<q.scrollWidth-2)};
 $("quick").addEventListener("scroll",quickFade,{passive:true});
@@ -502,12 +503,12 @@ function setMode(m){const was=mode;mode=m;const c=m!=="single";
  if(!c&&was!=="single")scn=p2;
  if(!c){sel=null}
  modeUI();drawAreas()}
-// map chips: the "best we modeled" tag ("best attempt" on phones) goes first so a truncated name never hides it
+// map chips: the what-if tag goes first so a truncated name never hides it ("Current best" / "Previous best" lead the names)
 // "X lines", unless the plan name already ends with "lines"; names with a comma get "(lines)" ("Boundary changes, same closures (lines)")
 const lnT=k=>{const s=lblShort(k);return /\blines$/i.test(s)?s:/,/.test(s)?s+" (lines)":s+" lines"};
-// a plan named in running text where a possessive would follow: "the best example we modeled" for the best example we modeled, else its name
+// a plan named in running text where a possessive would follow: its short name
 const pRef=k=>esc(lblShort(k));
-function chips(){const lt=k=>k===LEAD?`<span class="lead">${innerWidth<=430?"best attempt":"best we modeled"}</span> `:isWif(k)?'<span class="lead wif">what-if</span> ':"";$("chipL").innerHTML=(mode==="overlay"?`<i class="p1"></i>`:"")+lt(p1)+esc(lblShort(p1));if($("lgO1T")){$("lgO1T").textContent=lnT(p1)+" (plan 1)";$("lgO2T").textContent=lnT(p2)+" (plan 2)"}$("chipR").innerHTML=(mode==="overlay"?`<i class="p2"></i>`:"")+lt(p2)+esc(lblShort(p2));
+function chips(){const lt=k=>isWif(k)?'<span class="lead wif">what-if</span> ':"";$("chipL").innerHTML=(mode==="overlay"?`<i class="p1"></i>`:"")+lt(p1)+esc(lblShort(p1));if($("lgO1T")){$("lgO1T").textContent=lnT(p1)+" (plan 1)";$("lgO2T").textContent=lnT(p2)+" (plan 2)"}$("chipR").innerHTML=(mode==="overlay"?`<i class="p2"></i>`:"")+lt(p2)+esc(lblShort(p2));
  $("chipL").title=lblFull(p1);$("chipR").title=lblFull(p2);
  $("swipe").querySelector("button").setAttribute("aria-label",`Swipe divider: left shows ${lblShort(p1)}, right shows ${lblShort(p2)}`)}
 document.querySelectorAll("[data-m]").forEach(b=>b.onclick=()=>setMode(b.dataset.m));
@@ -533,6 +534,9 @@ function setLevel(l){loadLevel(l,()=>{lv=l;const A=avail();
 //   [&color=chg|size|past|race]  the "Color areas by" theme (no key = school colors)
 //   [&layers=none]  hatch changed areas off (on by default; written only in a compare view under School colors / Changes only;
 //                   layers=hatch is still read).
+//   [&fit=Sabin,Irvington,...]  open zoomed on these school areas (their PPS Status Quo outlines where they have one, else
+//                   the first plan at this level that draws them); read only, never written back, so a later pan or zoom stays put.
+//                   Used by the Sabin options page's embedded map (pages/sabin.html).
 //   Legacy: layers=past (old checkbox) = color=past, layers=race = color=race (an explicit color key wins); #6-8 / #9-12.
 //   Every read starts from the defaults (also on hashchange), so a missing or unknown key never keeps the last view's value.
 const VIEWS=["single","swipe","overlay"],THEMES=["chg","size","past","race","dens","mv","walk"];let lastHash="";
@@ -550,13 +554,23 @@ function hashRead(){const h=(location.hash||"").slice(1);if(!h)return{};if(LVN[h
 // defaults (DEF, round 8; view single since 2026-10-22): K-5, single plan PPS A; compare pair PPS Status Quo (left) | PPS A (right), school colors, hatch on, no school, no spot
 function restore(st,done){const L=LVN[st.level]?st.level:"K-5";loadLevel(L,()=>{lv=L;const A=avail(),ok=k=>A.includes(k),pick=(k,i)=>ok(k)?k:A[Math.min(i,A.length-1)];
  scn=ok(st.plan)?st.plan:pick(DEF.plan,0);p1=ok(st.a)?st.a:pick(DEF.a,0);p2=ok(st.b)?st.b:pick(DEF.b,1);   // default pair: PPS Status Quo | PPS A (was PPS A vs the best example we modeled)
- mode=VIEWS.includes(st.view)?st.view:(st.a||st.b)?"swipe":DEF.view;   // (2026-10-22, Paul) opens in single plan; a link naming a/b with no view = swipe (the old default; landing and Requests links)
+ mode=VIEWS.includes(st.view)?st.view:(st.a||st.b)?"swipe":DEF.view;   // opens in single plan; a link naming a/b with no view = swipe (the old default; landing and Requests links)
  sel=st.school&&(polysOf(cmpOn()?p1:scn)[st.school]||(cmpOn()&&polysOf(p2)[st.school]))?st.school:null;
  const at=(st.at||"").split(",").map(Number);pin=at.length===2&&at.every(isFinite)&&at[0]>lon0&&at[0]<lon1&&at[1]>lat0&&at[1]<lat1?at:null;
  const ly=st.layers!=null?st.layers.split(","):null;$("lhf").checked=showHatch=ly?ly.includes("hatch"):true;
  $("lcol").value=st.color!=null?(THEMES.includes(st.color)?st.color:""):ly&&ly.includes("past")?"past":ly&&ly.includes("race")?"race":"";
  $("dvl").classList.toggle("on",dvOn());
- initLoad=true;levelUI();modeUI();drawAreas();initLoad=false;hashWrite();if(done)requestAnimationFrame(done)})}
+ initLoad=true;levelUI();modeUI();drawAreas();initLoad=false;hashWrite();
+ if(st.fit){fitTo(st.fit);requestAnimationFrame(()=>fitTo(st.fit))}   // again after the first layout (the aspect ratio can change)
+ if(done)requestAnimationFrame(done)})}
+// fit=: the view box around the named school areas (union of outlines), with a margin; false if none is drawn at this level
+function fitTo(list){const N=String(list).split(",").map(s=>s.trim()).filter(Boolean),PL=MAPLV[lv].plans,ks=[BASELINE,...Object.keys(PL)];
+ let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
+ N.forEach(n=>{const k=ks.find(k=>PL[k]&&PL[k].poly&&PL[k].poly[n]);if(!k)return;
+  dec(PL[k].poly[n]).forEach(r=>r.forEach(p=>{const[x,y]=P(p).split(",").map(Number);if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y}))});
+ if(!(x1>x0&&y1>y0))return false;
+ const m=.08,w=Math.max((x1-x0)*(1+2*m),(y1-y0)*(1+2*m)/AR,W/16),cx=(x0+x1)/2,cy=(y0+y1)/2;
+ vb=[cx-w/2,cy-w*AR/2,w,w*AR];setVB();return true}
 // copy a link to this view (the hash holds level, view, plans, school, spot and layers)
 $("copyl").onclick=()=>{hashWrite();const u=location.href,b=$("copyl"),t=$("copylT"),done=ok=>{t.textContent=ok?"Link copied":"Copy failed";b.classList.add("msg");setTimeout(()=>{t.textContent="Copy link";b.classList.remove("msg")},1800)};
  const fb=()=>{const t=document.createElement("textarea");t.value=u;t.setAttribute("readonly","");t.style.position="fixed";t.style.opacity="0";document.body.append(t);t.select();let ok=false;try{ok=document.execCommand("copy")}catch(_){}t.remove();done(ok)};

@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sabin options | PPS boundary options</title>
+<meta name="description" content="Rightsizing plans compared for families in today's Sabin and Irvington K-5 areas in NE Portland: where kids go, how far they walk, and whether their schools are sustainable, for students experiencing poverty and all other students.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23245c9e%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23fff%27/%3E%3Crect x=%2713.5%27 y=%2718%27 width=%275%27 height=%277%27 fill=%27%23245c9e%27/%3E%3C/svg%3E">
+<link rel="stylesheet" href="site.css">
+<style>
+.ask{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 16px;margin:16px 0;max-width:72ch}
+.ask p{margin:4px 0}
+.ctl{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:18px 0 6px}
+.ctl .lab{font-weight:700;color:var(--muted);font-size:14px}
+.picker{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 6px}
+.picker button{font:inherit;font-size:15px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer;text-align:left}
+.picker button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper);font-weight:600}
+.row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:30px 0 10px}
+.row h2{margin:0}
+.key{font-size:14px;color:var(--muted);margin:0 0 8px}
+.key i,.pv::before,.ot::before{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:5px;vertical-align:0}
+.key i.p,.pv::before{content:"";background:var(--accent)}
+.key i.o,.ot::before{content:"";background:transparent;border:2px solid var(--muted);box-sizing:border-box}
+.key i.o{border:2px solid var(--muted);box-sizing:border-box}
+td .pv,td .ot{display:block;white-space:nowrap}
+td .ot{color:var(--muted)}
+.tbl td,.tbl th{vertical-align:top}
+.tbl thead th{min-width:92px}
+.tbl th:first-child,.tbl td:first-child{min-width:150px;max-width:220px;white-space:normal}
+.tbl td.dest{text-align:left;min-width:170px}
+.dest span{display:block;white-space:nowrap}
+.dest small,.tbl td small{color:var(--muted)}
+td.closed{color:var(--muted)}
+td.small360{color:var(--bad)}
+.ok{color:var(--good);font-weight:700}
+.notes{margin:8px 0 0;padding-left:18px;font-size:14px;color:var(--muted)}
+.maps{margin:6px 0 0;padding-left:18px}
+.empty{color:var(--muted)}
+.vs{display:inline-flex;flex-wrap:wrap;gap:6px;margin:4px 0 8px}
+.vs button{font:inherit;font-size:14px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:8px;padding:5px 10px;cursor:pointer;text-align:left}
+.vs button[aria-pressed="true"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);font-weight:600}
+.mapbox{border:1px solid var(--rule);border-radius:10px;overflow:hidden;background:var(--card)}
+.mapbox iframe{display:block;width:100%;height:820px;border:0}
+.maplink{font-size:14px;margin:6px 0 0}
+.why{max-width:72ch}
+.why p{margin:6px 0}
+.why ul{margin:6px 0 0;padding-left:18px}
+.why li{margin:4px 0}
+@media (max-width:600px){
+  .mapbox iframe{height:720px}
+  .vs button{min-height:44px}
+  .tbl th:first-child,.tbl td:first-child{min-width:118px;max-width:130px}
+  .tbl thead th{min-width:84px}
+  .tbl td.dest{min-width:150px}
+  .picker button{min-height:44px}
+}
+</style>
+</head>
+<body>
+<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="requests.html">Requests</a><a href="sabin.html" aria-current="page">Sabin options</a><a href="schools.html">Schools</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
+<main>
+<div class="warn" id="pps-disclaimer"><b>Independent analysis by a PPS parent, not an official Portland Public Schools product.</b> It may contain errors. Check PPS's own materials: the <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">Rightsizing scenarios page</a> and the <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
+
+<h1>Sabin options</h1>
+<p class="notreal">These are best effort boundaries. NOT REAL PLANS, yet.</p>
+<p class="lede" id="lede">This page compares rightsizing plans for families in today&rsquo;s Sabin and Irvington K-5 attendance areas in NE Portland: where their kids would go to school, how far they would walk, and whether those schools would be big enough to last.</p>
+<p id="tradeoff"></p>
+
+<div class="ask" id="pov"></div>
+
+<div id="body"></div>
+
+<footer><p><a href="options.html">Every plan side by side</a> &middot; <a href="map.html">Every option on one map</a> &middot; <a href="method.html">How the model works</a></p><p id="ai"><b>Built with AI.</b> The research, data work, modeling and writing were done by AI (Claude, from Anthropic), directed and guided by Paul Frazier, a PPS parent, who made every judgment call and checked results against PPS&rsquo;s documents. Best effort; it will have errors. <a href="how.html">How we did this</a> &middot; <a href="method.html">Method</a>.</p>
+<p><a href="../LICENSE">License</a>: code MIT, analysis CC BY 4.0, OpenStreetMap-derived data &copy; OpenStreetMap contributors, ODbL. &copy; 2026 Paul Frazier.</p>
+</footer>
+</main>
+<script src="data/sabin_data.js"></script>
+<script src="data/site_data.js"></script>
+<script>
+(function(){
+var S = window.SABIN_DATA || {}, P = S.plans || [], SD = window.SITE_DATA || {};
+P = P.filter(function(p){return /^(sabin_|irv_)/.test(p.run);}).concat(P.filter(function(p){return !/^(sabin_|irv_)/.test(p.run);}));   // Sabin options first
+var body = document.getElementById('body');
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+function pct(v){return v==null?'–':Math.round(v)+'%';}
+function mi(v){return v==null?'–':Number(v).toFixed(2);}
+function dmi(v){if(v==null)return '–';var x=Math.round(Number(v)*100)/100;return (x<0?'−':'+')+Math.abs(x).toFixed(2);}
+function n0(v){return v==null?'–':Math.round(v).toLocaleString('en-US');}
+function src(p){return '../'+p;}
+function fileLink(p,lab){return p?'<a href="'+esc(src(p))+'">'+esc(lab||p.split('/').slice(-2).join('/'))+'</a>':'';}
+if(!P.length){document.getElementById('tradeoff').innerHTML='';body.innerHTML='<p class="empty">No plans for this area are published yet.</p>';document.getElementById('pov').hidden=true;return;}
+
+var LEVELS = ['K-5','6-8','9-12'], AREAS = S.areas && S.areas.length ? S.areas : ['Sabin','Irvington'];
+var byRun = {}; P.forEach(function(p){byRun[p.run]=p;});
+var BASE = byRun.status_quo || P[0];
+var st = {area: AREAS[0], level: 'K-5', plans: P.map(function(p){return p.run;}), map: null};
+(function(){var h=location.hash.slice(1).split('&');h.forEach(function(kv){var i=kv.indexOf('=');if(i<0)return;var k=kv.slice(0,i),v=decodeURIComponent(kv.slice(i+1));
+  if(k==='area'&&AREAS.indexOf(v)>=0)st.area=v; if(k==='level'&&LEVELS.indexOf(v)>=0)st.level=v;
+  if(k==='plans'){var l=v.split(',').filter(function(r){return byRun[r];});if(l.length)st.plans=l;}
+  if(k==='map'&&byRun[v])st.map=v;});})();
+
+var CITE_DATA = 'From '+fileLink(S.source,'SABIN_OPTIONS.json')+(S.source_md?' (the same tables: '+fileLink(S.source_md,'SABIN_POVERTY.md')+')':'')+(S.script?', built by '+fileLink(S.script,'sabin_poverty.py'):'');
+function citeRuns(list){return 'Each plan&rsquo;s scorecard: '+list.map(function(p){return esc(p.label)+': '+(p.scorecard?fileLink(p.scorecard,p.scorecard.split('/').slice(-2).join('/')):'not available');}).join('; ')+'.';}
+function g(p,area,lv,grp){var a=p.areas[area];return a&&a.groups&&a.groups[lv]&&a.groups[lv][grp];}
+
+// lede: the trade-off. The cluster's K-5 kids against 360 per open school (SABIN_OPTIONS.json "capacity"), then
+// Sabin's and Irvington's own projected sizes under PPS Status Quo
+(function(){
+  var C=S.capacity, ns=BASE.neighbor_schools||{}, s=ns.Sabin&&ns.Sabin.total_2031, i=ns.Irvington&&ns.Irvington.total_2031, h='';
+  var r10=function(v){return n0(Math.round(v/10)*10);};
+  if(C&&C.total_k5_kids&&C.kids_needed&&C.floor){
+    var t=C.total_k5_kids, k=Object.keys(C.kids_needed).map(Number).sort(function(a,b){return a-b;});
+    var fits=k.filter(function(x){return C.kids_needed[x]<=t;}), short=k.filter(function(x){return C.kids_needed[x]>t;});
+    var parts=[];
+    if(fits.length)parts.push('room for '+fits[fits.length-1]+' schools');
+    short.forEach(function(x){parts.push('about '+r10(C.kids_needed[x]-t)+' kids short for '+x);});
+    h+='<b>The trade-off.</b> Today&rsquo;s attendance areas of '+(C.schools||[]).map(esc).join(', ').replace(/, ([^,]*)$/,' and $1')+' hold about '+n0(C.neighborhood_k5_kids)+' K-5 kids in '+esc(C.year||'2031-32')+
+      (C.program_k5_kids?', plus '+n0(C.program_k5_kids)+' in King&rsquo;s Mandarin immersion program, '+n0(t)+' in all':'')+'. At PPS&rsquo;s '+n0(C.floor)+' per school, that is '+parts.join(', ')+
+      '. So there is room to keep one of Sabin and Irvington open, not both, and even one runs small: the &ldquo;Sabin into Irvington&rdquo; plan keeps Irvington open, below 360 (exempt from the size floor), and closes Sabin. Every other plan here closes both.';
+  }
+  if(s&&i)h+=(h?' ':'<b>The trade-off.</b> ')+'Under '+esc(BASE.label)+', Sabin would have about '+n0(s)+' K-5 students and Irvington about '+n0(i)+', both below PPS&rsquo;s 360-student minimum; closing both sends every family in these areas to a neighboring school, and most walks get longer.';
+  if(!h){document.getElementById('tradeoff').hidden=true;return;}
+  document.getElementById('tradeoff').innerHTML=h+' <span class="cite">Model v2, 2031-32. '+CITE_DATA+'; '+esc(BASE.label)+' scorecard: '+fileLink(BASE.scorecard)+'.</span>';
+})();
+
+// poverty note, with each area's estimate
+(function(){
+  var parts=AREAS.map(function(a){var pv=g(BASE,a,'K-5','pov'),ot=g(BASE,a,'K-5','oth');return pv&&ot?'about '+n0(pv.n)+' of '+n0(pv.n+ot.n)+' '+esc(a)+' K-5 kids':null;}).filter(Boolean);
+  document.getElementById('pov').innerHTML='<p><b>&ldquo;Students experiencing poverty&rdquo;</b> is PPS&rsquo;s dashboard term, and we use it here. Every figure below is shown twice: for students experiencing poverty, and for all other students.</p>'+
+    '<p><b>The poverty split is a rough estimate for areas this small.</b> It uses Census counts of people living under 185% of the poverty line (table C17002) to spread kids within each attendance area, scaled so each area&rsquo;s average matches that school&rsquo;s direct-certification rate on <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/dashboard">PPS&rsquo;s rightsizing dashboard</a> (Status Quo)'+(parts.length?': '+parts.join(' and ')+' in 2031-32':'')+
+    '. With so few kids, a share can swing by several points on a handful of families. <span class="cite">Model v2. '+CITE_DATA+'.</span></p>';
+})();
+
+function sel(){return st.plans.map(function(r){return byRun[r];}).filter(Boolean);}
+function both(p,lv,k,f){var a=g(p,st.area,lv,'pov'),b=g(p,st.area,lv,'oth');if(!a||!b||a[k]==null)return '<td>–</td>';
+  return '<td><span class="pv" title="Students experiencing poverty">'+f(a[k])+'</span><span class="ot" title="All other students">'+f(b[k])+'</span></td>';}
+var KEY='<p class="key"><i class="p"></i>Top: students experiencing poverty &middot; <i class="o"></i>Bottom: all other students</p>';
+
+function plansNotes(list){var n=list.filter(function(p){return p.note||p.caveat;});if(!n.length)return '';
+  return '<ul class="notes">'+n.map(function(p){return '<li><b>'+esc(p.label)+':</b> '+esc([p.note,p.caveat].filter(Boolean).join(' '))+'</li>';}).join('')+'</ul>';}
+
+function destTable(list){
+  var h='<thead><tr><th>Plan</th>'+LEVELS.map(function(l){return '<th style="text-align:left">'+l+'</th>';}).join('')+'</tr></thead><tbody>';
+  list.forEach(function(p){var a=p.areas[st.area];if(!a)return;
+    h+='<tr><td>'+esc(p.label)+'</td>'+LEVELS.map(function(l){var d=(a.destinations||{})[l]||{};var ks=Object.keys(d);
+      return '<td class="dest">'+(ks.length?ks.map(function(s){return '<span>'+esc(s)+' '+n0(d[s].kids)+' <small>('+n0(d[s].poverty)+' in poverty)</small></span>';}).join(''):'–')+'</td>';}).join('')+'</tr>';});
+  return h+'</tbody>';
+}
+function measTable(list){
+  var lv=st.level, bus=lv==='K-5'?'1-mile':'1.5-mile', cols=[
+    ['mv','Moved from today&rsquo;s school',pct],['walk','Average walk (mi)',mi],['dwalk','Walk change vs today (mi)',dmi]];
+  if(lv!=='9-12'){cols.push(['in1','Within 1 mile',pct]);cols.push(['bus','Past the '+bus+' bus line',pct]);}
+  cols.push(['sust','In a school at target every year, 2027-28 to 2031-32',pct]);
+  cols.push(['pps','In a PPS-sustainable school, 2031-32',pct]);
+  var h='<thead><tr><th>Plan</th>'+cols.map(function(c){return '<th>'+c[1]+'</th>';}).join('')+'</tr></thead><tbody>';
+  list.forEach(function(p){if(!p.areas[st.area])return;h+='<tr><td>'+esc(p.label)+'</td>'+cols.map(function(c){return both(p,lv,c[0],c[2]);}).join('')+'</tr>';});
+  return h+'</tbody>';
+}
+function neighTable(list){
+  var names=[];list.forEach(function(p){Object.keys(p.neighbor_schools||{}).forEach(function(s){if(names.indexOf(s)<0)names.push(s);});});
+  var h='<thead><tr><th>School</th>'+list.map(function(p){return '<th>'+esc(p.label)+'</th>';}).join('')+'</tr></thead><tbody>';
+  names.forEach(function(s){h+='<tr><td>'+esc(s)+'</td>'+list.map(function(p){var v=(p.neighbor_schools||{})[s];if(!v)return '<td>–</td>';
+    if(!v.total_2031)return '<td class="closed">closed</td>';
+    return '<td'+(v.total_2031<360?' class="small360"':'')+'>'+n0(v.total_2031)+(v.at_target_every_year?' <span class="ok" title="At target every year, 2027-28 to 2031-32">✓</span>':'')+'</td>';}).join('')+'</tr>';});
+  return h+'</tbody>';
+}
+function distTable(list){
+  var h='<thead><tr><th>Plan</th><th>Schools open</th><th>Schools that are sustainable</th><th>Students in sustainable schools</th></tr></thead><tbody>';
+  list.forEach(function(p){var d=p.district||{};h+='<tr><td>'+esc(p.label)+'</td><td>'+n0(d.schools_open)+'</td><td>'+pct(d.pct_sustainable_schools)+'</td><td>'+pct(d.pct_students_in_sustainable)+'</td></tr>';});
+  return h+'</tbody>';
+}
+// ---- the map (embedded full map, ?embed=1): PPS Status Quo (left) against one picked plan (right), K-5, zoomed on the
+// cluster's schools (map.js hash key fit=). It follows the plan picker: a plan switched on there becomes the map's plan.
+var FIT=((S.capacity&&S.capacity.schools)||['Sabin','Irvington','MLK Jr','Alameda','Vernon','Beverly Cleary','Boise-Eliot/Humboldt']).join(',');
+var MAP_DEF=['sabin_all','equity_noswap_alameda_rig_hs'];
+var SCH_NM={'MLK Jr':'King'};
+function mapChoices(){return P.filter(function(p){return p.on_map&&p.run!==BASE.run&&st.plans.indexOf(p.run)>=0;});}
+function mapDefault(){var c=mapChoices().map(function(p){return p.run;});for(var i=0;i<MAP_DEF.length;i++)if(c.indexOf(MAP_DEF[i])>=0)return MAP_DEF[i];return c[0]||null;}
+function mapHash(fit){var h=st.map?'view=swipe&a='+encodeURIComponent(BASE.run)+'&b='+encodeURIComponent(st.map):'view=single&plan='+encodeURIComponent(BASE.run);
+  h+='&school='+encodeURIComponent(st.area);return fit?h+'&fit='+encodeURIComponent(FIT).replace(/%2C/g,','):h;}
+function setMap(){var f=document.getElementById('smap');if(!f)return;
+  document.getElementById('fullmap').href='map.html#'+mapHash(true);
+  try{if(f.contentWindow&&f.contentWindow.location.pathname.indexOf('map.html')>=0){f.contentWindow.location.hash=mapHash(false);return;}}catch(_){}
+  f.src='map.html?embed=1#'+mapHash(true);}
+function mapCtl(){
+  var c=mapChoices(), off=P.filter(function(p){return !p.on_map&&p.run!==BASE.run&&st.plans.indexOf(p.run)>=0;}), m=byRun[st.map];
+  document.getElementById('mapvs').innerHTML=c.length>1?c.map(function(p){return '<button type="button" data-m="'+esc(p.run)+'" aria-pressed="'+(p.run===st.map)+'">'+esc(p.label)+'</button>';}).join(''):'';
+  document.getElementById('mapnote').innerHTML=(m?'Left of the handle: '+esc(BASE.label)+'. Right: '+esc(m.label)+(c.length>1?' (pick another plan below; a plan you switch on under the map also shows here)':'')+'. Drag the handle, or tap a spot to see its school under each plan.':
+    'Showing '+esc(BASE.label)+' only; switch on another plan above to compare it here.')+' Elementary (K-5) lines, opened on today&rsquo;s '+FIT.split(',').map(function(n){return esc(SCH_NM[n]||n);}).join(', ').replace(/, ([^,]*)$/,' and $1')+' areas.'+
+    (off.length?' Not on the map yet: '+off.map(function(p){return esc(p.label);}).join(', ')+'.':'');
+}
+
+// ---- why the kids are split: the solver's rules (METHOD.md), the cluster's kids vs seats (SABIN_OPTIONS.json capacity),
+// and per plan its trade-offs file. Sizes and kid counts are read from the data, so they follow a re-solve.
+var WS=S.why_sources||{};
+function nsz(p,s){var v=(p.neighbor_schools||{})[s];return v&&v.total_2031?Math.round(v.total_2031):null;}
+function dk(p,area,s){var a=p.areas[area],d=a&&a.destinations&&a.destinations['K-5'];return d&&d[s]?Math.round(d[s].kids):null;}
+function near360(v){return v!=null&&v>=360&&v<=380;}
+function tl(p){return p.tradeoffs?' <span class="cite">'+fileLink(p.tradeoffs,'trade-offs')+'</span>':'';}
+var BIG='big-school relief (an elementary school over 450 kids gets a soft ceiling of 450, and moving kids off it costs less)';
+var WHY={
+  status_quo:function(p){return 'No split: no school closes, so each area keeps its own school.';},
+  scenario_A:function(p){return 'No split: PPS&rsquo;s own lines send every Sabin-area kid to King and every Irvington-area kid to Beverly Cleary.';},
+  planD:function(p){return 'The newspaper report of this plan says some Sabin kids go to Vernon and the rest to King, without saying which blocks, so the model drew that line by shortest walk [second-hand: newspaper report]. Irvington kids all go to Beverly Cleary, an assumption taken from PPS A because the report names no school for them.'+tl(p);},
+  planD_redraw_ms:function(p){return 'Mostly distance. The lines were redrawn for shorter walks with only Vernon (a K-8 in this plan, 500 students) and King (360) required to be at PPS&rsquo;s target every year; every other school just had to stay at or above its Status Quo size. So kids go mostly to their closest school, which for Sabin-area kids is Alameda, King or Vernon.'+tl(p);},
+  planD_sust:function(p){var b=nsz(p,'Boise-Eliot/Humboldt'),k=nsz(p,'MLK Jr'),v=nsz(p,'Vernon');
+    return 'Mostly size. Every open school had to reach 360 (500 for Vernon, a K-8 here) every year, so Sabin and Irvington kids are spread out to fill neighbors'+(b&&k&&v?' (in 2031-32: Boise-Eliot/Humboldt '+n0(b)+', King '+n0(k)+', Vernon '+n0(v)+')':'')+', and more of them pass their closest school. Its walk and move costs are also weighted by neighborhood poverty, which changes which kids are moved.'+tl(p);},
+  equity_noswap_alameda_rig_hs:function(p){var v=nsz(p,'Vernon'),vk=dk(p,'Sabin','Vernon');
+    return 'Distance and size together. Every open school must stay at 360 every year, and the plan uses '+BIG+'. '+(near360(v)&&vk?'Vernon needs kids to stay at 360 (it ends at '+n0(v)+' in 2031-32), so it takes about '+n0(vk)+' Sabin-area kids, more than live closest to it [inferred: our closest-school check]; the rest go mostly to their closest school.':'Within those rules, kids go mostly to their closest school.')+tl(p);},
+  sabin_all:function(p){var v=nsz(p,'Vernon'),bc=nsz(p,'Beverly Cleary'),i=nsz(p,'Irvington');
+    return 'Distance and size, inside fixed limits. Sabin- and Irvington-area kids could only go to Irvington, Beverly Cleary, Alameda, Vernon or King, and King&rsquo;s, Boise-Eliot/Humboldt&rsquo;s and Vernon&rsquo;s own areas stay whole, so those five schools take in the closed Sabin area. Irvington may stay below 360'+(i?' ('+n0(i)+' in 2031-32)':'')+'. Within that, kids go to whichever school is closer and has room'+(near360(v)&&near360(bc)?'; Vernon ('+n0(v)+') and Beverly Cleary ('+n0(bc)+') end just above 360, so they take the kids they need to stay there':'')+'. It also uses the same big-school relief as the current best.'+tl(p);}
+};
+WHY.equity_noswap_alameda_rig=WHY.equity_noswap_alameda_rig_hs;
+function whyHtml(list){
+  var C=S.capacity||{};
+  var h='<p><b>Why the kids are split among several schools.</b> In the model&rsquo;s example plans it comes from two rules working together. <b>Shortest walks:</b> the model&rsquo;s main cost is walking distance, so each block goes to the closest open school it can. Sabin&rsquo;s area sits between Alameda, King (&ldquo;MLK Jr&rdquo; in the tables) and Vernon, so once Sabin closes, the closest open school changes from block to block [inferred: our check of the walking-distance table]. '+
+    '<b>School size:</b> every open school must have at least 360 K-5 students in each year 2027-28 to 2031-32 and stay under its building&rsquo;s capacity, and one kid short counts as much as 10,000 miles of walking, so in practice it is a firm rule. '+
+    (C.total_k5_kids?'This corner is short of kids (about '+n0(C.total_k5_kids)+' K-5 kids in '+esc(C.year||'2031-32')+': room for 5 schools at 360, not 7), ':'This corner is short of kids, ')+
+    'so the schools that stay open sit near 360, and some kids are sent past their closest school to keep a neighbor at 360 or under its ceiling. '+
+    'Immersion rules don&rsquo;t drive the split: in the example plans here, King&rsquo;s Mandarin immersion program stays at King, and its students count toward King&rsquo;s size. Each school&rsquo;s area must also be one connected piece.</p>';
+  var items=list.filter(function(p){return WHY[p.run];});
+  if(items.length)h+='<ul>'+items.map(function(p){return '<li><b>'+esc(p.label)+':</b> '+WHY[p.run](p)+'</li>';}).join('')+'</ul>';
+  var best=byRun.equity_noswap_alameda_rig_hs, pd=byRun.planD;
+  h+='<p class="cite">Rules: '+fileLink(WS.method,'METHOD.md')+' (&sect;2 size limits and the 10,000-per-kid cost; &sect;3 walk cost and one connected area per school; &sect;3b and &sect;7 every year 2027-28 to 2031-32). Kids and seats: '+fileLink(S.source,'SABIN_OPTIONS.json')+' (&ldquo;capacity&rdquo;). '+
+    'King&rsquo;s program: '+(best&&best.tradeoffs?fileLink(best.tradeoffs,'current best trade-offs')+(pd&&pd.tradeoffs?' and '+fileLink(pd.tradeoffs,'Scenario D trade-offs'):''):'each plan&rsquo;s trade-offs')+'. '+
+    (WS.big_school?'Big-school relief: '+fileLink(WS.big_school,'trade-offs of the run that added it')+'. ':'')+
+    'Sizes and kid counts: each plan&rsquo;s schools.csv, via SABIN_OPTIONS.json. Closest-school check: '+(WS.walk?fileLink(WS.walk,'walk_miles.parquet'):'the walking-distance table')+' with each plan&rsquo;s assign_K-5.parquet; our reading, not a model output.</p>';
+  return h;
+}
+
+body.innerHTML=
+  '<div id="pnotes"></div>'+
+  '<div class="row"><h2>On the map</h2></div><p class="small muted" id="mapnote"></p><div class="vs" id="mapvs" role="group" aria-label="Plan on the right of the map"></div>'+
+  '<div class="mapbox"><iframe id="smap" title="Map of the elementary lines around Sabin and Irvington: PPS Status Quo against the plan picked" loading="lazy"></iframe></div>'+
+  '<p class="maplink"><a id="fullmap" href="map.html">Open the full map</a></p>'+
+  '<div class="ctl"><span class="lab">Families in today&rsquo;s</span><div class="levels" role="group" aria-label="Attendance area">'+AREAS.map(function(a){return '<button type="button" data-a="'+esc(a)+'">'+esc(a)+' area</button>';}).join('')+'</div></div>'+
+  '<p class="lab small muted" style="margin:14px 0 0">Plans to show</p><div class="picker" role="group" aria-label="Plans to show">'+P.map(function(p){return '<button type="button" data-p="'+esc(p.run)+'">'+esc(p.label)+'</button>';}).join('')+'</div>'+
+  (S.pending?'<p class="small muted">'+S.pending+' more run'+(S.pending>1?'s':'')+' for this area '+(S.pending>1?'are':'is')+' still running; '+(S.pending>1?'they appear':'it appears')+' here when done.</p>':'')+
+  '<div class="row"><h2>Where the kids go</h2></div><div class="why" id="why"></div><p class="small muted" id="destnote"></p><div class="tbl"><table id="dest"></table></div><p class="cite" id="destcite"></p>'+
+  '<div class="row"><h2>Walks, bus line and school size</h2><div class="levels" role="group" aria-label="Grade level">'+LEVELS.map(function(l){return '<button type="button" data-l="'+l+'">'+l+'</button>';}).join('')+'</div></div>'+
+  KEY+'<div class="tbl"><table id="meas"></table></div><p class="cite" id="meascite"></p>'+
+  '<div class="row"><h2>Neighbor school sizes</h2></div><p class="small muted">Projected students at each nearby elementary school in 2031-32. <span class="ok">✓</span> = at target every year, 2027-28 to 2031-32. Red = below PPS&rsquo;s 360. These don&rsquo;t depend on the area picked above.</p><div class="tbl"><table id="neigh"></table></div><p class="cite" id="neighcite"></p>'+
+  '<div class="row"><h2>District-wide, on PPS&rsquo;s measures</h2></div><p class="small muted">PPS&rsquo;s dashboard measures for the whole district, all grade levels, 2031-32. PPS counts a school as sustainable at 360 students (K-5), 500 (middle and K-8) or 1,100 (high school).</p><div class="tbl"><table id="dist"></table></div><p class="cite" id="distcite"></p>';
+
+function sync(){
+  document.querySelectorAll('[data-a]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.a===st.area);});
+  document.querySelectorAll('[data-l]').forEach(function(b){b.setAttribute('aria-pressed',b.dataset.l===st.level);});
+  document.querySelectorAll('[data-p]').forEach(function(b){b.setAttribute('aria-pressed',st.plans.indexOf(b.dataset.p)>=0);});
+  var list=P.filter(function(p){return st.plans.indexOf(p.run)>=0;});
+  document.getElementById('pnotes').innerHTML=plansNotes(list);
+  var a0=BASE.areas[st.area], pv=g(BASE,st.area,'K-5','pov'), ot=g(BASE,st.area,'K-5','oth');
+  document.getElementById('destnote').innerHTML='Schools each plan assigns to the kids living in today&rsquo;s '+esc(st.area)+' area, by grade level: projected kids in 2031-32, and how many of them are estimated to be students experiencing poverty.';
+  document.getElementById('dest').innerHTML=destTable(list);
+  document.getElementById('meas').innerHTML=measTable(list);
+  document.getElementById('neigh').innerHTML=neighTable(list);
+  document.getElementById('dist').innerHTML=distTable(list);
+  var c='Model v2 estimates, 2031-32 projected kids. '+CITE_DATA+'. '+citeRuns(list);
+  document.getElementById('destcite').innerHTML=c;
+  document.getElementById('meascite').innerHTML=c+' Walks are network walking distances to the assigned building; &ldquo;today&rsquo;s school&rdquo; and &ldquo;today&rdquo; mean '+esc(BASE.label)+'. At target = between the size floor and the building&rsquo;s capacity, in that plan&rsquo;s scorecard. PPS-sustainable = at or above 360 / 500 / 1,100 students in 2031-32 (PPS&rsquo;s dashboard definition). Bus line: 1 mile for K-5, 1.5 miles for 6-8.';
+  document.getElementById('neighcite').innerHTML=c+' Sizes from each plan&rsquo;s '+list.filter(function(p){return p.schools_csv;}).map(function(p){return fileLink(p.schools_csv,esc(p.label)+' schools.csv');}).join(', ')+'.';
+  document.getElementById('distcite').innerHTML='Model v2, 2031-32. '+CITE_DATA+', from each plan&rsquo;s schools.csv.';
+  document.getElementById('why').innerHTML=whyHtml(list);
+  if(!st.map||mapChoices().map(function(p){return p.run;}).indexOf(st.map)<0)st.map=mapDefault();
+  mapCtl();setMap();
+  var h='area='+encodeURIComponent(st.area)+(st.level!=='K-5'?'&level='+st.level:'')+(st.plans.length!==P.length?'&plans='+st.plans.map(encodeURIComponent).join(','):'')+(st.map&&st.map!==mapDefault()?'&map='+encodeURIComponent(st.map):'');
+  try{history.replaceState(null,'','#'+h);}catch(_){}
+}
+body.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;
+  if(b.dataset.a)st.area=b.dataset.a; else if(b.dataset.l)st.level=b.dataset.l;
+  else if(b.dataset.m)st.map=b.dataset.m;
+  else if(b.dataset.p){var i=st.plans.indexOf(b.dataset.p);if(i>=0){if(st.plans.length>1)st.plans.splice(i,1);}else{st.plans.push(b.dataset.p);st.plans=P.map(function(p){return p.run;}).filter(function(r){return st.plans.indexOf(r)>=0;});
+    var q=byRun[b.dataset.p];if(q&&q.on_map&&q.run!==BASE.run)st.map=q.run;}}
+  else return; sync();});
+sync();
+})();
+</script>
+</body>
+</html>

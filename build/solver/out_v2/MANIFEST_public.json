@@ -30,6 +30,10 @@
       "status": "done",
       "finished": "2026-10-15T10:10:53"
     },
+    "equity_noswap_alameda_rig_hs": {
+      "status": "done",
+      "finished": "2026-10-22T11:43:51"
+    },
     "option2_ms460": {
       "status": "done",
       "finished": "2026-10-19T11:40:30"
@@ -73,6 +77,10 @@
     "planD_sust": {
       "status": "done",
       "finished": "2026-10-22T10:49:53"
+    },
+    "sabin_all": {
+      "status": "done",
+      "finished": "2026-10-22T12:52:45"
     }
   }
 }

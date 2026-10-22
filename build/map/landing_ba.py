@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Landing-page before/after map: the best example we modeled vs PPS A, elementary areas.
+"""Landing-page before/after map: the current best example we modeled vs PPS A, elementary areas.
 
     python3 build/map/landing_ba.py      (build_site.py runs it after the map build)
 
@@ -7,7 +7,7 @@ Reads pages/map_data/level_K-5.js (the map page's own K-5 data: plan polygons an
 changed areas) and writes pages/map_data/landing_ba.js, which sets window.LANDING_BA = {left, right, n, ar}:
 two SVGs (same school = same color on both sides) with the changed areas outlined, the kids in them
 (the pair's n, as on the map page), and the drawing's aspect ratio. Sides match the map page's
-"PPS A vs best we modeled" preset: best on the left, PPS A on the right.
+"PPS A vs current best" preset: the current best (site_data brief_rank 0) on the left, PPS A on the right.
 """
 import json
 import math
@@ -16,7 +16,19 @@ import os
 KIT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 SRC = os.path.join(KIT, 'pages', 'map_data', 'level_K-5.js')
 OUT = os.path.join(KIT, 'pages', 'map_data', 'landing_ba.js')
-LEFT, RIGHT = 'option2_ms460', 'scenario_A'   # best we modeled | PPS A
+SITE = os.path.join(KIT, 'pages', 'data', 'site_data.json')
+
+
+def current_best():
+    """The plan site_data ranks first (BRIEFS.md order), as the map page's LEAD does."""
+    try:
+        opts = json.load(open(SITE)).get('options', [])
+    except (OSError, ValueError):
+        opts = []
+    return next((o['name'] for o in opts if o.get('brief_rank') == 0), 'equity_noswap_alameda_rig_hs')
+
+
+LEFT, RIGHT = current_best(), 'scenario_A'   # current best | PPS A
 KX = math.cos(45.54 * math.pi / 180)          # same projection as the map page
 PAL = ['#c9d9ec', '#f3d9b1', '#cfe5c8', '#ead0e4', '#f6e7a6', '#cde8e6', '#e8cfc6', '#d9d4ee']
 
@@ -81,7 +93,7 @@ def main():
                 f'<g stroke="#fff" stroke-width="5" stroke-linejoin="round">{areas}</g>'
                 f'<g class="chg" fill="none" stroke="#1b2a3a" stroke-width="5" stroke-dasharray="14 8" stroke-linejoin="round">{chg}</g></svg>')
 
-    data = {'left': svg(LEFT, 'ba-l', 'best example we modeled'), 'right': svg(RIGHT, 'ba-r', 'PPS A'),
+    data = {'left': svg(LEFT, 'ba-l', 'current best example we modeled'), 'right': svg(RIGHT, 'ba-r', 'PPS A'),
             'n': pair['n'], 'ar': round(w / h, 3)}
     with open(OUT, 'w') as f:
         f.write('window.LANDING_BA=' + json.dumps(data, separators=(',', ':')) + ';\n')
