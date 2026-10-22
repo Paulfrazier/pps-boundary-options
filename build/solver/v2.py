@@ -9,6 +9,10 @@ this module, so v1 results stay reproducible.
   fix 2  ~117 Lent-area non-DLI kids (PPS capture report Oct 2025) live on Lent-area blocks; they are Marysville
          students today (taken out of Marysville's calibration) and follow the Lent area's line in a plan
                                                                                            -> cfg v2.lent_nondli
+  fix 2b (2026-10-22, Paul: Rigler-area non-DLI kids) the Rigler analog: ~152 Rigler-area PPS students attend another
+         neighborhood school (capture report Oct 2025, Rigler row); per destination school they are put on Rigler-area
+         blocks and taken out of that school's own area (Scott 105 per PPS data; the rest a walk stand-in)
+                                                                                           -> cfg v2.rigler_nondli
   fix 3  per-move, per-year DLI arrival shares implied by PPS projections (build/data/v2/dli_follow.json);
          non-arrivals stay at the sending building if it still serves those grades, else go home
   fix 4  capacities: PPS School Profiles 2025-26 functional capacity (build/data/v2/capacity_2025_26.csv)
@@ -166,8 +170,12 @@ def _serves(cfg, bldg, lev):
 
 
 @functools.lru_cache(maxsize=None)
-def _homes():
-    return pd.read_parquet(os.path.join(C.DATA, 'focus_dli_homes.parquet'))
+def _homes(observed_lr=False):
+    # (2026-10-22, Paul: fix Lent DLI overcount) cfg v2.lent_observed -> data/focus_dli_homes_lentobs.parquet, where the
+    # Lent and Rigler columns use PPS's observed Oct 2025 home mix (Lent 80 of 256 own area, Rigler 215 of 289) instead
+    # of 'own_area' (data/scripts/06c_lent_rigler_observed_homes.py); all other columns identical
+    f = 'focus_dli_homes_lentobs.parquet' if observed_lr else 'focus_dli_homes.parquet'
+    return pd.read_parquet(os.path.join(C.DATA, f))
 
 
 def _home_col(key):
@@ -179,8 +187,8 @@ def _home_col(key):
     raise KeyError(key)
 
 
-def _home_vec(key):
-    v = _homes()[_home_col(key)].values.astype(float)
+def _home_vec(key, observed_lr=False):
+    v = _homes(bool(observed_lr))[_home_col(key)].values.astype(float)
     return v / max(v.sum(), 1e-9)
 
 
@@ -243,11 +251,42 @@ def population(cfg):
             notes.append(f'fix 2: {n_ln:.0f} Lent-area non-DLI kids on Lent-area blocks; Marysville area {mt:.0f} -> {mt - n_ln:.0f}')
     else:
         fixed_ln, to = None, None
+    # fix 2b (2026-10-22, Paul: Rigler-area non-DLI kids): Rigler is whole-school Spanish DLI, so its area keeps only
+    # lr_nbhd_share of its k5 as neighborhood kids; the Rigler-area residents who attend another neighborhood school
+    # today were calibrated onto the blocks of the schools they attend.  Mirror fix 2: per destination d, take n_d out
+    # of d's own (es_cur) area and put n_d on Rigler-area blocks (Census raw_k5 weighted), scaled by d's own area
+    # factor (the population they are part of in PSU's base, so Status Quo stays = PSU).  With baseline_hold (Status
+    # Quo / baselines, where Rigler stays whole-school DLI and these kids keep attending d) they are held at d as a
+    # fixed population instead of going on Rigler blocks, which leaves every school total unchanged.
+    rn = v2.get('rigler_nondli')
+    fixed_rn = {}
+    if rn:
+        rig = (b['es_cur'] == 'Rigler').values
+        wr = b['raw_k5'].values * rig
+        wr = wr / wr.sum()
+        moved = []
+        for d, n_d in rn['to'].items():
+            n_d = float(n_d)
+            dm = (b['es_cur'] == d).values
+            dt = base['K-5'][dm].sum()
+            base['K-5'][dm] *= (dt - n_d) / dt
+            ser_d = {y: fac['K-5'][d][y] for y in YEARS_ALL}
+            if rn.get('baseline_hold'):
+                fixed_rn[d] = {y: n_d * ser_d[y] for y in YEARS_ALL}
+            else:
+                comps.append(('K-5', wr * n_d, ser_d, 'blocks'))
+            moved.append(f'{d} {n_d:.0f} (area {dt:.0f} -> {dt - n_d:.0f})')
+        where = 'held at today\'s schools (baseline)' if rn.get('baseline_hold') else 'on Rigler-area blocks'
+        notes.append(f'fix 2b: {sum(float(v) for v in rn["to"].values()):.0f} Rigler-area non-DLI kids {where}; '
+                     + ', '.join(moved))
     # fix 1: focus-lottery split
     fixed = {lev: {y: {} for y in YEARS_ALL} for lev in C.LEVELS}
     if fixed_ln:
         for y in YEARS_ALL:
             fixed['K-5'][y][to] = fixed['K-5'][y].get(to, 0.0) + fixed_ln[y]
+    for d, sd in fixed_rn.items():
+        for y in YEARS_ALL:
+            fixed['K-5'][y][d] = fixed['K-5'][y].get(d, 0.0) + sd[y]
     for host, spec in (v2.get('focus_lottery') or {}).items():
         share_in = spec['in_zone_2025_26'] / spec['enrollment_2025_26']
         for lev in ('K-5', '6-8'):
@@ -318,7 +357,7 @@ def population(cfg):
                                   'non_arrivals_go_to': where})
                     if f31 < 1.0 and not _serves(cfg, src, lev):
                         ser = {y: (1 - follow_rate(k, y)) * s[y] for y in YEARS_ALL}
-                        comps.append((lev, _home_vec(k), ser, 'blocks_abs'))
+                        comps.append((lev, _home_vec(k, v2.get('lent_observed')), ser, 'blocks_abs'))
     # dissolved focus programs (options 3a/3b): kids return to their home blocks
     for p in cfg.get('dissolve_programs', []):
         d25 = C.dissolved_program_kids(p, '2025', homes=v2.get('focus_homes', 'census'))

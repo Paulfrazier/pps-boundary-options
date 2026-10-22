@@ -55,7 +55,14 @@ def check(run_dir, cfg=None):
             ref = b[fa].values.astype(object).copy()
             ras = cfg['levels'][lev].get('fixed_reassign', [])
             for ra in ras:                    # whole PPS areas moved to another school (solve.py fixed_reassign)
-                ref[b[ra['by']].values == ra['area']] = ra['to']
+                # (2026-10-22) rules may key off the run's own K-5 lines ("by_plan") or another run ("by_run")
+                if 'by_plan' in ra:
+                    vals = pd.read_parquet(os.path.join(run_dir, f"assign_{ra['by_plan']}.parquet")).sort_values('idx')['school'].values
+                elif 'by_run' in ra:
+                    vals = pd.read_parquet(os.path.join(C.SOLVER, 'out_v2', ra['by_run']['run'], f"assign_{ra['by_run']['level']}.parquet")).sort_values('idx')['school'].values
+                else:
+                    vals = b[ra['by']].values
+                ref[np.isin(vals, ra['area'] if isinstance(ra['area'], list) else [ra['area']])] = ra['to']
             if (ref == asg).all():
                 if not ras:
                     out[lev] = 'fixed to PPS column %s (PPS traced lines; pieces there are PPS\'s, not checked)' % fa

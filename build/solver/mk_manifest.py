@@ -37,7 +37,7 @@ if __name__ == '__main__':
         run, st = a[1], a[2]
         note = a[3] if len(a) > 3 else m['runs'].get(run, {}).get('notes', '')
         if st == 'done':
-            need = NEED if run in ('today', 'status_quo', 'scenario_A', 'scenario_B') else NEED_OPT
+            need = NEED if run in ('today', 'status_quo', 'scenario_A', 'scenario_B', 'planD') else NEED_OPT   # planD: scored, not solved (build_planD.py)
             miss = [f for f in need if not os.path.exists(os.path.join(OUT, run, f))]
             if miss:
                 raise SystemExit(f'{run}: missing {miss}; not marking done')

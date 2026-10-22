@@ -1,0 +1,68 @@
+== equity_noswap K-5
+ K-5: each kid placed across a A_hs line (hs_nest) costs 0.1 kid-miles
+ K-5: warm start from build/solver/out_v2/option2/assign_K-5.parquet (9295/9295 blocks hinted); relaxation round skipped
+ durability mode (all, horizon pps2031: 2027-28..2031-32): required at target by year [38, 38, 38, 38, 38] (reference scenario_A); 38 countable schools
+ 40 schools, 9295 blocks, 65066 assignment vars, avg 7.0 candidates/block
+ pruned 229 unreachable (block, school) candidates
+ component: 40 schools, 9295 blocks
+  (round 0: 1819s wall, det=3375.7 work units)
+  round 0: FEASIBLE 1819s obj=-11987645 bound=-11989781 gap=0.02% islands=0 (0.0 kids) slack={} splits=0
+   at target in every modeled year (pps2031): 38/38; at target by year [38, 38, 38, 38, 38] (required [38, 38, 38, 38, 38])
+ K-5 done in 1822.4s
+== equity_noswap 6-8
+ 6-8: warm start from build/solver/out_v2/option2/assign_6-8.parquet (9262/9295 blocks hinted); relaxation round skipped
+ middle->high feeders vs A_hs: soft (Paul 2026-10-12 ~15:15): ~200 kid-miles per extra HS, no floor penalty 1000.0 per high school fed; floor 0% of 15 middle zones feed one HS
+ durability mode (all, horizon pps2031: 2027-28..2031-32): required at target by year [13, 13, 13, 13, 13] (reference scenario_A); 13 countable schools
+ 15 schools, 9295 blocks, 41413 assignment vars, avg 4.5 candidates/block
+ pruned 0 unreachable (block, school) candidates
+ component: 15 schools, 9295 blocks
+  (round 0: 1s wall, det=0.5 work units)
+   middle zones feeding one high school: 5/15 (floor 0%); split: {'Beaumont': ['Grant', 'Jefferson'], 'Gray': ['Lincoln', 'Ida B. Wells'], 'Harrison Park': ['Franklin', 'McDaniel'], 'Hosford': ['Cleveland', 'Franklin'], 'Jackson': ['Lincoln', 'Ida B. Wells'], 'Kellogg': ['Cleveland', 'Franklin'], 'Lane': ['Cleveland', 'Franklin'], 'Mt Tabor': ['Cleveland', 'Grant', 'Franklin', 'McDaniel'], 'Ockley Green': ['McDaniel', 'Jefferson', 'Roosevelt'], 'Tubman': ['McDaniel', 'Grant', 'Jefferson', 'Cleveland']}
+  round 0: OPTIMAL 1s obj=94904178 bound=94904178 gap=0.00% islands=0 (0.0 kids) slack={'Gray:lo': 35.14, 'durability_count_short:2027-28': 1, 'durability_count_short:2028-29': 1, 'durability_count_short:2029-30': 1, 'durability_count_short:2030-31': 2, 'durability_count_short:2031-32': 1} splits=0
+   at target in every modeled year (pps2031): 11/13; at target by year [12, 12, 12, 11, 12] (required [13, 13, 13, 13, 13])
+  whole-zone feeders leave a size violation -> phase 2: allow penalized splits
+  phase-2a warm start: phase-1 plan repaired to the block-level rule (40 blocks moved, 0 violations left)
+  phase 2a: minimise size slack + number of splits only (at most 3 splits) (warm start from phase 1)
+  (round 0: 603s wall, det=1262.1 work units)
+   middle zones feeding one high school: 6/15 (floor 0%); split: {'Beaumont': ['Grant', 'Jefferson'], 'Gray': ['Lincoln', 'Ida B. Wells'], 'Harrison Park': ['Franklin', 'McDaniel'], 'Hosford': ['Cleveland', 'Franklin'], 'Kellogg': ['Cleveland', 'Franklin'], 'Lane': ['Cleveland', 'Franklin'], 'Mt Tabor': ['Cleveland', 'Grant', 'Franklin', 'McDaniel'], 'Ockley Green': ['McDaniel', 'Grant', 'Jefferson', 'Roosevelt'], 'Tubman': ['McDaniel', 'Grant', 'Jefferson', 'Cleveland']}
+  round 0: FEASIBLE 603s obj=59810000 bound=1510000 gap=97.48% islands=0 (0.0 kids) slack={'Gray:lo': 0.81, 'durability_count_short:2027-28': 1, 'durability_count_short:2028-29': 1, 'durability_count_short:2029-30': 1, 'durability_count_short:2030-31': 1, 'durability_count_short:2031-32': 1} splits=3
+   at target in every modeled year (pps2031): 0/13; at target by year [12, 12, 12, 12, 12] (required [13, 13, 13, 13, 13])
+  phase 2b: full objective with splits <= 3, warm-started from 2a
+  (round 0: 1806s wall, det=4437.5 work units)
+   middle zones feeding one high school: 6/15 (floor 0%); split: {'Beaumont': ['McDaniel', 'Grant', 'Jefferson'], 'Gray': ['Lincoln', 'Ida B. Wells'], 'Harrison Park': ['Franklin', 'McDaniel'], 'Hosford': ['Cleveland', 'Franklin'], 'Kellogg': ['Cleveland', 'Franklin'], 'Lane': ['Cleveland', 'Franklin'], 'Mt Tabor': ['Cleveland', 'Grant', 'Franklin', 'McDaniel'], 'Ockley Green': ['McDaniel', 'Jefferson', 'Roosevelt'], 'Tubman': ['McDaniel', 'Grant', 'Jefferson', 'Cleveland']}
+  round 0: FEASIBLE 1806s obj=55847629 bound=6461082 gap=88.43% islands=0 (0.0 kids) slack={'Gray:lo': 0.15, 'durability_count_short:2027-28': 1, 'durability_count_short:2028-29': 1, 'durability_count_short:2029-30': 1, 'durability_count_short:2030-31': 1, 'durability_count_short:2031-32': 1} splits=3
+   at target in every modeled year (pps2031): 11/13; at target by year [12, 12, 12, 12, 12] (required [13, 13, 13, 13, 13])
+ 6-8 done in 2417.3s
+== equity_noswap 9-12
+ 9-12: fixed to block column A_hs (not solved)
+                                         K-5       6-8      9-12
+kids                               12715.000  5934.400  9261.000
+avg_walk_mi                            0.913     1.718     1.933
+pct_within_0.5mi                      25.300     7.100     5.700
+pct_within_1.0mi                      70.300    28.300    23.400
+pct_within_1.5mi                      89.700    52.300    46.700
+kids_over_bus_threshold             3776.000  2830.000  4936.000
+bus_threshold_mi                       1.000     1.500     1.500
+kids_past_closer_school              885.000  1037.000   751.000
+past_margin_mi                         0.250     0.250     0.250
+kids_reassigned_vs_status_quo       4685.000  2271.000   388.000
+poc_share_of_movers_vs_status_quo      0.433     0.402     0.421
+kids_reassigned_vs_today            4681.000  2270.000  1565.000
+poc_share_district                     0.426     0.428     0.426
+dissimilarity_index                    0.213     0.167     0.180
+schools_open                          41.000    15.000     8.000
+schools_in_range                      41.000    15.000     8.000
+schools_evaluated_non_exempt          39.000    13.000     8.000
+schools_in_range_non_exempt           39.000    13.000     8.000
+avg_utilization                        0.748     0.733     0.784
+min_size                             178.000   178.000  1181.000
+max_size                             549.000   621.000  1543.000
+schools_in_range_2025_26_basis        36.000    12.000     7.000
+schools_in_range_at_minus9pct         16.000     9.000     7.000
+avg_bike_mi                              NaN     1.774     2.001
+n_split_feeders_es_to_ms                 NaN     2.000       NaN
+pct_within_2.0mi                         NaN       NaN    61.800
+n_split_feeders_ms_to_hs                 NaN       NaN     9.000
+n_split_feeders_es_to_hs                 NaN       NaN    14.000
+pct_ms_feeders_to_one_hs                 NaN       NaN    40.000
+hs_range                                 NaN       NaN   362.000

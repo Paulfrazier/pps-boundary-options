@@ -206,6 +206,10 @@ def solve_component(P, schools, blks, rooted, allow_split, cfg_solver, log, cuts
         for (i, s), v in x.items():
             if s in yopen:
                 m.AddImplication(v, yopen[s])
+        # (2026-10-20, Paul via site chat: "keep james john and one more school, model can pick") optional_max_open.<lev>:
+        # at most this many optional schools stay open (per component; the K-5 problem is one component)
+        if yopen and getattr(P, 'max_open', None) is not None:
+            m.Add(sum(yopen.values()) <= int(P.max_open))
         # (Paul 2026-10-13, capstone) program units: a host's whole fixed population (immersion strands, focus
         # lottery group) stays or moves as one unit to one of a few nearby schools; the receiving school must be open
         pmv = {}
@@ -1053,7 +1057,11 @@ def run_problem(P, rooted, cfg_solver, log):
             s1_, s2_ = sum(info1['final']['slack'].values()), sum(info2['final']['slack'].values())
             # (2026-10-16) with phase2_always the split step is run for walking, not slack: keep it unless it is worse on
             # slack (both are often 0; the old rule then threw away the better-walking split plan)
-            keep2 = cfg_solver.get('phase2_always') and s2_ <= s1_ + 1e-9
+            # (2026-10-20, Paul via site chat: focus2 ms3 test) solver.phase2_slack_tol: keep the split plan even if it
+            # adds up to this many kids of size slack (reported, not hidden: the slack shows in the scorecard)
+            keep2 = cfg_solver.get('phase2_always') and s2_ <= s1_ + float(cfg_solver.get('phase2_slack_tol', 0)) + 1e-9
+            if keep2 and s2_ > s1_ + 1e-9:
+                log(f'  phase 2 kept despite {s2_ - s1_:.1f} more slack (phase2_slack_tol)')
             if warm and not keep2 and s2_ >= s1_ - 1e-9:
                 log('  phase 2 did not reduce slack below phase 1 -> keeping the whole-zone phase-1 assignment')
                 chosen, info = phase1, dict(info1, phase2_rejected=info2['final'])
@@ -1088,6 +1096,21 @@ def _base(cfg, lev, prev, refs):
     return lc, names, sidx, P, W, E
 
 
+def _equity_mult(K, e, src='block_poverty.npy'):
+    """1 + e*(2r - 1) per block; r = kid-weighted midpoint percentile of block poverty (ties share one rank).
+    src (weights.equity_source): block_poverty.npy = ACS B17010 (the original; noisy, 338 of 1,240 block groups at 0);
+    block_poverty_dc.npy = ACS C17002 <185% anchored to PPS's Status Quo school DC rates (2026-10-21 fix)."""
+    pov = np.load(os.path.join(C.SOLVER, '..', 'research', 'equity', src))
+    k = np.clip(np.asarray(K, float), 0, None)
+    u, inv = np.unique(pov, return_inverse=True)
+    ku = np.bincount(inv, weights=k, minlength=len(u))
+    cum = np.cumsum(ku)
+    r_u = (cum - ku / 2) / max(cum[-1], 1e-9)
+    r = r_u[inv]
+    print(f'  equity weight e={e}: multiplier {1 - e:.2f}..{1 + e:.2f} by kid-weighted poverty rank ({src})', flush=True)
+    return 1 + e * (2 * r - 1)
+
+
 def _costs(cfg, P, W, E, sq_names, sidx):
     """Per (block, candidate) cost in COST units: walk + past-closer + move-vs-SQ."""
     # optional per-level override (2026-10-12, Paul: closeness matters most at K-5): levels.<lev>.weights
@@ -1105,18 +1128,53 @@ def _costs(cfg, P, W, E, sq_names, sidx):
         sys.path.insert(0, os.path.join(C.SOLVER, '..', 'safe_routes'))
         import crossings as X
         H = np.nan_to_num(X.hard(P.names), nan=0.0)
+    # (2026-10-21, Paul: equity-first plan, build/research/equity/EQUITY_PLAN_SPEC.md) weights.equity = e scales block i's
+    # walk, past and move terms by 1 + e*(2*r_i - 1), r_i = kid-weighted percentile rank of the block's neighborhood
+    # poverty (ACS B17010, smoothed; this level's kids). Poverty only; race is never an input. e = 0 (default) = off
+    eq = float(w.get('equity', 0.0))
+    EQ = _equity_mult(K, eq, w.get('equity_source', 'block_poverty.npy')) if eq else np.ones(len(K))
+    # weights.move_relief
+    # = {"<level>": size, "mult": m}: a block whose Status Quo school has more than `size` of this level's kids pays
+    # m x the move cost to leave it (default m 0.2). Other blocks unchanged
+    MR = np.ones(len(K))
+    mr = w.get('move_relief') or {}
+    if mr.get(P.level):
+        sqn = np.asarray(sq_names, dtype=object)
+        big = {n for n in set(sqn) if K[sqn == n].sum() > float(mr[P.level])}
+        MR[np.isin(sqn, list(big))] = float(mr.get('mult', 0.2))
+        print(f' move_relief {P.level}: leaving {sorted(big)} costs {mr.get("mult", 0.2)}x the move cost', flush=True)
+    # (2026-10-21, Paul: "big school and non in poverty school tweak") weights.move_relief_lowpov = {"share": q, "mult": m}:
+    # a block whose Status Quo school is in the lowest-poverty q of this level's schools (q of kids, default 1/3; school
+    # rates from research/equity/school_dc_rate_sq.json) pays m x the move cost to leave it (default 0.5). Stacks with
+    # move_relief. Poverty only; race is never an input
+    ml = w.get('move_relief_lowpov') or {}
+    if ml:
+        # school rate = PPS's own Status Quo share of Students Experiencing Poverty (dashboard "Free by DC"), not the
+        # ACS block estimate, which is too noisy at school level (it puts Atkinson at 0%)
+        rate = json.load(open(os.path.join(C.SOLVER, '..', 'research', 'equity', 'school_dc_rate_sq.json')))['rates'][P.level]
+        sqn = np.asarray(sq_names, dtype=object)
+        kk = np.clip(np.asarray(K, float), 0, None)
+        sch = [(float(rate[n]), n, float(kk[sqn == n].sum())) for n in set(sqn) if n in rate and kk[sqn == n].sum() > 0]
+        sch.sort()
+        tot = sum(x[2] for x in sch); acc = 0.0; low = []
+        for pv, n, kn in sch:
+            if acc + kn / 2 > float(ml.get('share', 1 / 3)) * tot:
+                break
+            low.append(n); acc += kn
+        MR[np.isin(sqn, low)] *= float(ml.get('mult', 0.5))
+        print(f' move_relief_lowpov {P.level}: leaving {sorted(low)} costs {ml.get("mult", 0.5)}x the move cost', flush=True)
     cost = []
     for i, c in enumerate(P.cand):
         row = []
         for s in c:
             d = float(W[i, s])
-            v = w['walk'] * K[i] * d
+            v = w['walk'] * K[i] * d * EQ[i]
             if hx:
                 v += hx * K[i] * float(H[i, s])
             if d - dmin[i] >= margin:
-                v += w['past'] * K[i]
+                v += w['past'] * K[i] * EQ[i]
             if s != sq_idx[i]:
-                v += w['move'] * K[i]
+                v += w['move'] * K[i] * EQ[i] * MR[i]
             row.append(int(round(v * COST)))
         cost.append(row)
     return cost
@@ -1166,6 +1224,16 @@ def _weights(cfg, P):
     P.w_split = int(w['split'] * COST)
     P.w_range = int(w['hs_range'] * COST / KID)
     P.w_div = int(w.get('diversity', 0) * COST / KID)
+
+
+def _by_values(ra):
+    # (2026-10-22, Paul: Irvington kids -> Tubman/Jefferson) a rule's blocks by a block column ("by") or by a finished
+    # run's assignment at a level ("by_run": {"run": folder in out_v2, "level": "K-5"}), in block order
+    if 'by_run' in ra:
+        br = ra['by_run']
+        fp = os.path.join(C.SOLVER, 'out_v2', br['run'], f'assign_{br["level"]}.parquet')
+        return pd.read_parquet(fp).sort_values('idx')['school'].values
+    return C.blocks()[ra['by']].values
 
 
 def _hint(lc, sidx, P, fallback_cols):
@@ -1249,6 +1317,29 @@ def build_k5(cfg, refs):
         if s not in cand[r]:
             cand[r].append(s)
         P.root[s] = r
+    # (2026-10-21, Paul: "don't make mlk jr boundary any smaller than today, only expand it") levels.<lev>.keep_area:
+    # {school: block column}; every block that column gives to the school stays with it (its only candidate), so the
+    # school's area can grow but never shrink
+    for kn, kcol in (lc.get('keep_area') or {}).items():
+        if kn not in sidx:
+            continue
+        km = np.where(C.blocks()[kcol].values == kn)[0]
+        for i in km:
+            cand[i] = [sidx[kn]]
+        print(f' {lev}: keep_area {kn}: {len(km)} blocks of its {kcol} area fixed to it (it may only grow)', flush=True)
+    # (2026-10-22, Paul: "sabin move into irvington ... edges going to beverly or alameda based on distance")
+    # levels.<lev>.area_allow: [{"by": block column, "area": [values], "to": [schools]}]; those blocks may only go to
+    # the listed schools (eligible ones, nearest first); a block with none of them eligible keeps its list
+    for ra in lc.get('area_allow') or []:
+        am = np.where(np.isin(_by_values(ra), list(ra['area'])))[0]
+        tos = {sidx[t] for t in ra['to'] if t in sidx}
+        kept = 0
+        for i in am:
+            c = [int(s) for s in orders[i] if s in tos]
+            if c:
+                cand[i] = c
+                kept += 1
+        print(f' {lev}: area_allow {list(ra["area"])} -> {list(ra["to"])}: {kept} of {len(am)} blocks restricted', flush=True)
     P.cand = cand
     P.order = orders
     sqcfg = C.load_config(os.path.join(cfg.get('_cfgdir', os.path.join(C.SOLVER, 'configs')), 'status_quo.json'))
@@ -1330,6 +1421,18 @@ def build_grouped(cfg, refs, lev, prev_asg, ms_k8=()):
             cand_g[gi].append(s_)
         used.add(gi)
         P.root[s_] = r
+    # (2026-10-22, Paul: Irvington kids -> Tubman/Jefferson) area_allow at a grouped level: "by_prev": true keys the rule
+    # off this solve's own lower-level zones (the groups), so a whole zone's candidates become the listed schools
+    for ra in lc.get('area_allow') or []:
+        if not ra.get('by_prev'):
+            continue
+        tos = [sidx[t] for t in ra['to'] if t in sidx]
+        hit = 0
+        for gi, gn in enumerate(gnames):
+            if gn in ra['area']:
+                cand_g[gi] = [s for s in cand_g[gi] if s in tos] or tos
+                hit += 1
+        print(f' {lev}: area_allow zones {list(ra["area"])} -> {list(ra["to"])}: {hit} zones restricted', flush=True)
     P.cand = [list(cand_g[group[i]]) for i in range(P.n)]
     P.group = group
     gm = defaultdict(list)
@@ -1427,9 +1530,29 @@ def run(cfg_path, start_level='K-5'):
             # (2026-10-18, Paul: don't send Skyline over the St. Johns Bridge) levels.<lev>.fixed_reassign: a list of
             # {"by": block column, "area": value, "to": school}; those blocks go to "to" instead of the column's school
             for ra in cfg['levels'][lev].get('fixed_reassign', []):
-                m_ = C.blocks()[ra['by']].values == ra['area']
+                vals_ = plan[ra['by_plan']] if 'by_plan' in ra else _by_values(ra)
+                m_ = np.isin(vals_, ra['area'] if isinstance(ra['area'], list) else [ra['area']])
                 plan[lev][m_] = ra['to']
-                log(f' {lev}: {int(m_.sum())} blocks with {ra["by"]} = {ra["area"]} -> {ra["to"]}')
+                log(f' {lev}: {int(m_.sum())} blocks with {ra.get("by", ra.get("by_run"))} = {ra["area"]} -> {ra["to"]}')
+            if cfg['levels'][lev].get('k8_follow_k5') and lev == '6-8' and 'K-5' in plan:
+                # (2026-10-21, Paul: Plan D redraw) fixed middle lines, but a K-8's middle grades follow its re-drawn
+                # elementary area: blocks zoned to a K-8 at K-5 go to it at 6-8; blocks that left a K-8 go to the
+                # middle school most of their new elementary's other blocks feed (its Status-Quo feeder)
+                k8s_ = set(cfg['levels']['K-5'].get('k8', []))
+                e_ = plan['K-5']; m_ = plan[lev]
+                into = np.isin(e_, list(k8s_))
+                out_ = np.isin(m_, list(k8s_)) & ~into
+                feed = {}
+                for es_ in set(e_[out_]):
+                    v_ = pd.Series(m_[(e_ == es_) & ~np.isin(m_, list(k8s_))]).value_counts()
+                    feed[es_] = v_.index[0] if len(v_) else None
+                n_out = 0
+                for i_ in np.where(out_)[0]:
+                    if feed.get(e_[i_]):
+                        m_[i_] = feed[e_[i_]]; n_out += 1
+                m_[into] = e_[into]
+                log(f' {lev}: K-8 middle grades follow K-5: {int(into.sum())} blocks to their K-8, {n_out} blocks that left a K-8 '
+                    f'to their new elementary\'s feeder')
             times[lev] = 0.0
             infos[lev] = [{'final': {'slack': {}, 'splits': 0}, 'phase': f'fixed: column {fa} (not solved)'}]
             log(f' {lev}: fixed to block column {fa} (not solved)')
@@ -1641,6 +1764,7 @@ def run(cfg_path, start_level='K-5'):
             P.optional = {P.names.index(n) for n in opt_names if n in P.names}
             P.w_open = int(cfg['weights'].get('open_school', 0) * COST)
             P.cap_receivers = cfg.get('cap_receivers_per_closure')
+            P.max_open = (cfg.get('optional_max_open') or {}).get(lev)
             area_col = {'K-5': 'es_cur', '6-8': 'ms_cur', '9-12': 'sq_hs'}[lev]
             ac = C.blocks()[area_col].values
             P.closure_area = {s: list(np.nonzero(ac == P.names[s])[0]) for s in P.optional}
