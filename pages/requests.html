@@ -11,6 +11,9 @@
 .ask{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 16px;margin:16px 0;max-width:72ch}
 .ask p{margin:4px 0}
 .picker{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px}
+.picker h3{flex-basis:100%;margin:10px 0 0;font-size:15px;color:var(--muted);font-weight:700}
+.picker h3:first-child{margin-top:0}
+.req .sec{color:var(--muted);font-size:14px;font-weight:700;margin:0}
 .picker button{font:inherit;font-size:15px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer}
 .picker button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--paper);font-weight:600}
 .req{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 18px;margin:12px 0 18px}
@@ -133,7 +136,7 @@ function setMap(){var f=document.getElementById('rmap'),h=mapSrc();
 
 function card(){
   var r=REQ.filter(function(x){return x.name===st.req;})[0], o=byName[r.name];
-  var html='<section class="req" aria-live="polite"><h2>'+esc(r.title)+'</h2><p class="when">Asked '+esc(dateLabel(r.date))+' &middot; shown on the map as &ldquo;'+esc(o.short)+'&rdquo;</p><dl>'+
+  var html='<section class="req" aria-live="polite">'+(r.section?'<p class="sec">'+esc(r.section)+'</p>':'')+'<h2>'+esc(r.title)+'</h2><p class="when">Asked '+esc(dateLabel(r.date))+' &middot; shown on the map as &ldquo;'+esc(o.short)+'&rdquo;</p><dl>'+
     '<dt>The request</dt><dd>'+esc(r.asked)+'</dd><dt>What we ran</dt><dd>'+esc(r.ran)+'</dd><dt>What it shows</dt><dd>'+esc(r.shows)+headline(o)+'</dd>'+
     ((r.notes||[]).length?'<dt>Notes</dt><dd>'+r.notes.map(esc).join('<br>')+'</dd>':'')+'</dl>'+
     '<p class="links">Sources: <a href="../'+esc(o.source)+'">scorecard</a>'+(o.tradeoffs?' &middot; <a href="../'+esc(o.tradeoffs)+'">trade-offs</a>':'')+(o.schools_source?' &middot; <a href="../'+esc(o.schools_source)+'">school sizes</a>':'')+'</p></section>';
@@ -152,9 +155,17 @@ function headline(o){
 }
 function hashOut(){var h='run='+encodeURIComponent(st.req)+(st.level!=='K-5'?'&level='+encodeURIComponent(st.level):'')+(st.vs!=='scenario_A'?'&vs='+encodeURIComponent(st.vs):'');try{history.replaceState(null,'','#'+h);}catch(_){}}
 
+// requests without a section first, then one labeled group per section (e.g. "Plan D"), in first-seen order
+function pickerHtml(){
+  var btn=function(r){return '<button type="button" data-r="'+esc(r.name)+'">'+esc(r.title)+'</button>';};
+  var secs=[]; REQ.forEach(function(r){if(r.section&&secs.indexOf(r.section)<0)secs.push(r.section);});
+  var loose=REQ.filter(function(r){return !r.section;});
+  return (secs.length&&loose.length?'<h3>Other requests</h3>':'')+loose.map(btn).join('')+
+    secs.map(function(s){return '<h3>'+esc(s)+'</h3>'+REQ.filter(function(r){return r.section===s;}).map(btn).join('');}).join('');
+}
 var vsLab={status_quo:'vs PPS Status Quo',scenario_A:'vs PPS A',scenario_B:'vs PPS B'}; if(BEST) vsLab[BEST.name]='vs best we modeled';
 body.innerHTML=
-  (REQ.length>1?'<div class="picker" role="group" aria-label="Requested runs">'+REQ.map(function(r){return '<button type="button" data-r="'+esc(r.name)+'">'+esc(r.title)+'</button>';}).join('')+'</div>':'')+
+  (REQ.length>1?'<div class="picker" role="group" aria-label="Requested runs">'+pickerHtml()+'</div>':'')+
   '<div id="card"></div>'+
   '<div class="row"><h2>On the map</h2><div class="vs" role="group" aria-label="Compare with">'+BASE.filter(function(n){return byName[n];}).map(function(n){return '<button type="button" data-vs="'+esc(n)+'">'+esc(vsLab[n])+'</button>';}).join('')+'</div></div>'+
   '<p class="small muted">Left of the handle: the requested run. Right: the plan you compare it with. Drag the handle, or tap a spot to see its school under each plan.</p>'+

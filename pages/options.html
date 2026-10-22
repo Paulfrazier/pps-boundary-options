@@ -45,6 +45,24 @@
 .mv td:nth-child(4),.mv th:nth-child(4){text-align:right}
 details.full{margin:.6em 0 1em}details.full>summary{cursor:pointer;font-weight:600;color:var(--accent)}
 .md.brief{border-left:3px solid var(--ours);padding-left:12px}
+/* plan picker: which plans the tables below show (2026-10-22) */
+.pk{margin:18px 0 4px;padding:10px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+.pk-h{display:flex;flex-wrap:wrap;gap:2px 10px;align-items:baseline;margin:0 0 6px}
+.pk-h b{font-size:15px}
+.pk-chips,.pk-act{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.pk-act{margin-top:8px;padding-top:8px;border-top:1px solid var(--rule)}
+.pk .g{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600;margin:0 2px 0 6px}
+.pk .g1{display:inline-flex;align-items:center;gap:6px;max-width:100%}
+.pk .g{white-space:nowrap}
+.pk .g1:first-child .g{margin-left:0}
+.pk button{font:inherit;font-size:14px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:999px;padding:4px 12px;cursor:pointer}
+.pk-chips button[aria-pressed="true"]{background:var(--accent);color:var(--paper);border-color:var(--accent);font-weight:600}
+.pk-chips button[aria-pressed="true"]::before{content:"\2713\00a0"}
+.pk-act button{border-style:dashed;font-size:13px}
+.pk-act button[aria-pressed="true"]{border-style:solid;border-color:var(--accent);color:var(--accent);font-weight:600}
+.pk button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (max-width:600px),(pointer:coarse){.pk button{min-height:44px}}
+@media print{.pk{display:none}}
 </style>
 </head>
 <body>
@@ -56,6 +74,12 @@ details.full{margin:.6em 0 1em}details.full>summary{cursor:pointer;font-weight:6
 <h1>Options compared</h1>
 <p class="lede" id="lede">Loading data...</p>
 
+
+<div class="pk" id="pk" role="group" aria-labelledby="pk-t">
+  <div class="pk-h"><b id="pk-t">Plans to show</b><span class="small muted" id="pk-n" aria-live="polite"></span></div>
+  <div class="pk-chips" id="pk-chips"></div>
+  <div class="pk-act" id="pk-act"></div>
+</div>
 
 <h2 id="glance">Every measure</h2>
 <p class="muted">Every plan, rated from better to worse, across levels. For one level at a time, see &ldquo;Side by side&rdquo; below.</p>
@@ -72,7 +96,7 @@ details.full{margin:.6em 0 1em}details.full>summary{cursor:pointer;font-weight:6
 </div>
 <div class="tbl"><table class="cmp" id="cmp"></table></div>
 <p class="cite" id="cmpcite"></p>
-<p class="note">Green and bold marks the best value in a row among the plans (PPS Status Quo is the baseline, not a contender). Terms are defined on <a href="sources.html#definitions">Sources &amp; definitions</a>.</p>
+<p class="note">Green and bold marks the best value in a row among the plans shown (PPS Status Quo is the baseline, not a contender). Terms are defined on <a href="sources.html#definitions">Sources &amp; definitions</a>.</p>
 
 <h2 id="why">Shorter walks and more schools at target: what&rsquo;s the catch?</h2>
 <div class="md" id="why-out"></div>
@@ -123,7 +147,6 @@ details.full{margin:.6em 0 1em}details.full>summary{cursor:pointer;font-weight:6
 (function(){
 'use strict';
 var D = window.SITE_DATA;
-if(D && window.renderMatrix) renderMatrix(document.getElementById('mx'), D, '../');
 var LEVELS = ['K-5','6-8','9-12'];
 var level = 'K-5';
 
@@ -253,7 +276,8 @@ function groups(opts){
 var GNAME = {reference:'Baseline',pps:'PPS plans',option:'Example plans',whatif:'What-if'};
 function grpKey(o){return o.what_if?'whatif':o.kind;}
 function renderTable(){
-  var opts = D.options.filter(function(o){return o.levels && o.levels[level];});
+  var opts = D.options.filter(function(o){return o.levels && o.levels[level] && isShown(o.name);});
+  if(noneShown('cmp', ['cmpcite','lvnote'])) return;
   var ms = metrics(level).filter(function(m){
     if(!m.opt) return true;
     return opts.some(function(o){return m.get(o)!=null;});
@@ -378,7 +402,8 @@ function renderDiversity(){
   var el = document.getElementById('dv');
   if(!T){el.innerHTML='<tbody><tr><td>Table data failed to load (data/site_tables.js).</td></tr></tbody>';return;}
   var dl = T.diversity.levels[level], names = Object.keys(dl.poc_share);
-  var opts = optsFor(names);
+  var opts = optsFor(names).filter(function(o){return isShown(o.name);});
+  if(noneShown('dv', ['dvcite','dvnote'])) return;
   var h = '<thead><tr><th>School</th>'+opts.map(function(o){return '<th class="'+(o.kind==='reference'?'today':'')+'">'+hdName(o)+hdTag(o)+'</th>';}).join('')+'</tr></thead><tbody>';
   function sum(label, f){
     return '<tr class="sum"><td>'+label+'</td>'+opts.map(function(o){return '<td class="n">'+f(dl.summary[o.name])+'</td>';}).join('')+'</tr>';
@@ -405,7 +430,8 @@ function renderWalks(){
   var el = document.getElementById('wk');
   if(!T){el.innerHTML='<tbody><tr><td>Table data failed to load (data/site_tables.js).</td></tr></tbody>';return;}
   var W = T.walks, sc = W.scenarios[scen], plans = W.plans;
-  var opts = optsFor(plans.map(function(p){return p.name;}));
+  var opts = optsFor(plans.map(function(p){return p.name;})).filter(function(o){return isShown(o.name);});
+  if(noneShown('wk', ['wkcite'])) return;
   var h = '<thead><tr><th>Closing area</th>'+opts.map(function(o){return '<th class="'+(o.kind==='reference'?'today':'')+'">'+hdName(o)+hdTag(o)+'</th>';}).join('')+'</tr></thead><tbody>';
   sc.closing.forEach(function(a){
     var recv = a.ppsrecv.map(function(r){return esc(r.to)+(r.group?' ('+esc(r.group)+')':'');}).join('; ');
@@ -420,6 +446,74 @@ function renderWalks(){
   });
   el.innerHTML = h+'</tbody>';
   document.getElementById('wkcite').innerHTML = 'Sources: closures and PPS receivers from '+srcLink(sc.source,'scenarios.json')+', <code>'+esc(sc.source_keys)+'</code>. Each plan\'s destinations from its '+opts.map(function(o){var p=plans.filter(function(q){return q.name===o.name;})[0];return esc(o.short)+' '+srcLink(p.source,'assign_K-5.parquet');}).join(', ')+', joined to <code>build/data/blocks.parquet</code> (<code>es_cur</code> = the closing school) and foot-routed distances in <code>build/routing/walk_miles.parquet</code>. Block kids are 2031-32 neighborhood K-5 kids.';
+}
+
+// ---- plan picker: which plans the tables show. URL ?plans=a,b (shareable; absent = all); localStorage remembers it per viewer ----
+var PK_KEY = 'pps-options-plans', sel = {};
+function planNames(){return D.options.map(function(o){return o.name;});}
+function isShown(n){return !!sel[n];}
+function nShown(){return planNames().filter(isShown).length;}
+function noneShown(id, clear){
+  if(nShown()) return false;
+  document.getElementById(id).innerHTML = '<tbody><tr><td class="muted">No plans picked. Choose at least one plan above.</td></tr></tbody>';
+  clear.forEach(function(c){var e=document.getElementById(c); if(e) e.textContent='';});
+  return true;
+}
+function parsePlans(v){var ok = planNames(), out = {}; String(v).split(',').forEach(function(n){if(ok.indexOf(n)>=0) out[n]=1;}); return out;}
+function bestName(){var b = D.options.filter(function(o){return o.brief_rank===0;})[0]; return b && b.name;}
+var PRESETS = [
+  {id:'all', label:'All plans', names:function(){return planNames();}},
+  {id:'avb', label:'PPS A vs best we modeled', names:function(){return ['scenario_A', bestName()].filter(Boolean);}},
+  {id:'pps', label:'PPS plans + best we modeled', names:function(){return ['status_quo','scenario_A','scenario_B', bestName()].filter(Boolean);}},
+  {id:'none', label:'Clear', names:function(){return [];}}
+];
+function readPlans(){
+  var m = /[?&]plans=([^&#]*)/.exec(location.search||'');
+  if(m) return parsePlans(decodeURIComponent(m[1]));
+  var saved = null; try{saved = localStorage.getItem(PK_KEY);}catch(e){}
+  if(saved!=null) return parsePlans(saved);
+  return parsePlans(planNames().join(','));
+}
+function writePlans(){
+  var on = planNames().filter(isShown), all = on.length===planNames().length;
+  var q = (location.search||'').replace(/^\?/,'').split('&').filter(function(x){return x && !/^plans=/.test(x);});
+  if(!all) q.push('plans='+on.join(','));
+  try{history.replaceState(null,'',location.pathname+(q.length?'?'+q.join('&'):'')+location.hash);}catch(e){}
+  try{ if(all) localStorage.removeItem(PK_KEY); else localStorage.setItem(PK_KEY, on.join(',')); }catch(e){}
+}
+function sameSet(a){var on = planNames().filter(isShown); return a.length===on.length && a.every(isShown);}
+function renderPicker(){
+  var h = '', last = null;
+  D.options.forEach(function(o){
+    var g = grpKey(o);
+    var btn = '<button type="button" data-plan="'+esc(o.name)+'" aria-pressed="'+(isShown(o.name)?'true':'false')+'">'+hdName(o)+'</button>';
+    if(g!==last){h += '<span class="g1"><span class="g">'+GNAME[g]+'</span>'+btn+'</span>'; last = g;}   // label stays with its first chip when the row wraps
+    else h += btn;
+  });
+  document.getElementById('pk-chips').innerHTML = h;
+  document.getElementById('pk-act').innerHTML = PRESETS.map(function(p){
+    return '<button type="button" data-preset="'+p.id+'" aria-pressed="'+(sameSet(p.names())?'true':'false')+'">'+esc(p.label)+'</button>';}).join('');
+  var n = nShown(), t = planNames().length;
+  document.getElementById('pk-n').textContent = n===t ? 'Showing all '+t+' plans in every table below.' : 'Showing '+n+' of '+t+' plans in the tables below.';
+}
+function renderPlans(){
+  renderPicker();
+  if(window.renderMatrix) renderMatrix(document.getElementById('mx'), D, '../', isShown);
+  renderTable(); renderDiversity(); renderWalks();
+}
+function initPicker(){
+  sel = readPlans();
+  var pk = document.getElementById('pk');
+  pk.addEventListener('click', function(ev){
+    var b = ev.target.closest && ev.target.closest('button'); if(!b) return;
+    var n = b.getAttribute('data-plan'), p = b.getAttribute('data-preset');
+    if(n){ if(sel[n]) delete sel[n]; else sel[n]=1; }
+    else if(p){ sel = parsePlans(PRESETS.filter(function(x){return x.id===p;})[0].names().join(',')); }
+    else return;
+    writePlans(); renderPlans();
+    var again = pk.querySelector(n ? '[data-plan="'+n+'"]' : '[data-preset="'+p+'"]'); if(again) again.focus();
+  });
+  if(nShown()!==planNames().length) writePlans();   // a remembered filter shows in the URL, so it can be shared
 }
 
 function readHash(){
@@ -442,7 +536,8 @@ function init(){
     scen = b.getAttribute('data-sc');
     Array.prototype.forEach.call(document.querySelectorAll('#scen button'),function(x){x.setAttribute('aria-pressed', x===b?'true':'false');});
     renderWalks();});});
-  setLevel(readHash(),false); renderWalks();
+  initPicker();
+  setLevel(readHash(),false); renderPicker(); if(window.renderMatrix) renderMatrix(document.getElementById('mx'), D, '../', isShown); renderWalks();
 }
 init();
 })();
