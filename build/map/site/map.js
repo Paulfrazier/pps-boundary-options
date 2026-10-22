@@ -226,10 +226,12 @@ const passSel=e=>{const a=document.elementsFromPoint(e.clientX,e.clientY).find(x
 // "Walk to assigned school": each 400 m cell shaded by its kids' average walk to the school the plan assigns (PD(k).wk,
 // hundredths of a mile in den.cells order, -1 = no kids). One plan, or each side of swipe: miles in five steps per level.
 // Overlay of two plans: the change, plan 1 -> plan 2, closer (blue) or farther (red) in diverging steps.
-const WKB={"K-5":[.5,1,1.5,2],"6-8":[1,1.5,2,3],"9-12":[1,2,3,4]},WKP=[10,28,46,66,88],WKD=[-.5,-.25,-.1,.1,.25,.5];
-const wkBin=v=>WKB[lv].filter(x=>v>=x).length,wkFill=b=>`color-mix(in srgb,var(--wk) ${WKP[b]}%,var(--plate))`;
-const wkRng=b=>{const B=WKB[lv],f=x=>x.toFixed(x%1?1:0);return b===0?`under ${f(B[0])} mi`:b===B.length?`${f(B[b-1])} mi or more`:`${f(B[b-1])}–${f(B[b])} mi`};
-const wdBin=v=>WKD.filter(x=>v>=x).length,wdFill=b=>b===3?"transparent":`color-mix(in srgb,var(${b<3?"--wkc":"--wkf"}) ${[70,46,24][b<3?b:6-b]}%,var(--plate))`;
+// (2026-10-22, Paul) green -> yellow -> red; red starts past 1 mi for K-5, 1.5 mi for 6-8 / 9-12 (the bus line).
+// Overlay: green closer, red farther.
+const WKB={"K-5":[.5,1,1.5,2],"6-8":[.75,1.5,2,3],"9-12":[.75,1.5,2,3]},WKD=[-.5,-.25,-.1,.1,.25,.5];
+const wkBin=v=>WKB[lv].filter(x=>v>=x).length,wkFill=b=>`var(--wk${b})`;
+const wkRng=b=>{const B=WKB[lv],f=x=>String(x);return b===0?`under ${f(B[0])} mi`:b===B.length?`${f(B[b-1])} mi or more`:`${f(B[b-1])}–${f(B[b])} mi`};
+const wdBin=v=>WKD.filter(x=>v>=x).length,wdFill=b=>b===3?"transparent":`color-mix(in srgb,var(${b<3?"--wkc":"--wkf"}) ${[88,62,36][b<3?b:6-b]}%,var(--plate))`;
 const WDL=["0.5 mi or more closer","0.25–0.5 mi closer","0.1–0.25 mi closer","about the same (within 0.1 mi)","0.1–0.25 mi farther","0.25–0.5 mi farther","0.5 mi or more farther"];
 const wkDiff=()=>cmpOn()&&mode==="overlay"&&p1!==p2;
 const mi2=v=>(v/100).toFixed(2)+" mi";
@@ -244,7 +246,7 @@ function drawWalk(){if(wkDiff()){walkCells(gDen,p2,p1);return}
  walkCells(gDen,cmpOn()?p1:scn)}
 function walkLegend(el){const avg=k=>{const s=(PD(k)||{}).sum||{};return s.avg_walk_mi!=null?`; average for all kids ${(+s.avg_walk_mi).toFixed(2)} mi`:""};
  const src=`each 400 m square shaded by its ${LVN[lv]} kids' average walk to their assigned school, on foot along OpenStreetMap routes (our model, 2031-32 kids)`;
- if(wkDiff()){el.innerHTML=`<span class="szh">Change in walk to the assigned school, ${esc(lblShort(p1))} → ${esc(lblShort(p2))}: ${src}. Blue squares get closer, red get farther${avg(p1)?` (average ${esc(lblShort(p1))}${avg(p1).replace("; average for all kids","")}, ${esc(lblShort(p2))}${avg(p2).replace("; average for all kids","")})`:""}.</span><span class="dnr">${WDL.map((t,b)=>`<span><i class="densw" style="background:${wdFill(b)}"></i>${t}</span>`).join(" ")}</span><a href="sources.html#def-walk-distance">how walks are measured</a>`;return}
+ if(wkDiff()){el.innerHTML=`<span class="szh">Change in walk to the assigned school, ${esc(lblShort(p1))} → ${esc(lblShort(p2))}: ${src}. Green squares get closer, red get farther${avg(p1)?` (average ${esc(lblShort(p1))}${avg(p1).replace("; average for all kids","")}, ${esc(lblShort(p2))}${avg(p2).replace("; average for all kids","")})`:""}.</span><span class="dnr">${WDL.map((t,b)=>`<span><i class="densw" style="background:${wdFill(b)}"></i>${t}</span>`).join(" ")}</span><a href="sources.html#def-walk-distance">how walks are measured</a>`;return}
  const ks=cmpOn()&&mode==="swipe"?[p1,p2]:[cmpOn()?p1:scn];
  el.innerHTML=`<span class="szh">Walk to the assigned school, ${ks.map((k,i)=>(ks.length>1?(i?"right: ":"left: "):"")+esc(lblShort(k))+avg(k)).join("; ")}: ${src}.</span><span class="dnr">${WKB[lv].map((_,b)=>b).concat(WKB[lv].length).map(b=>`<span><i class="densw" style="background:${wkFill(b)}"></i>${wkRng(b)}</span>`).join(" ")}</span><a href="sources.html#def-walk-distance">how walks are measured</a>`}
 function drawDen(){gDen.replaceChildren();if(walkOn()){drawWalk();return}if(!denOn()&&!mvOn())return;const D=LD().den;if(!D)return;
@@ -335,7 +337,8 @@ function pastTbl(){const two=cmpOn()&&p1!==p2;
  if(!L.length)return"";const has=n=>polysOf(p1)[n]||polysOf(p2)[n];
  return `<div class="tag">Sent to a farther school, by assigned school</div><div class="dscroll" tabindex="0" role="region" aria-label="Sent to a farther school by school, plan 1 vs plan 2, scrollable"><table class="dtab"><thead><tr><th>School</th><th class="num">${esc(lblShort(p1))}</th><th class="num">${esc(lblShort(p2))}</th><th class="num">Change</th></tr></thead><tbody>${capRows(L.map(r=>`<tr${r[0]===sel?' class="hl"':""}><th scope="row">${has(r[0])?selBtn(r[0]):esc(nm(r[0]))}</th><td class="num">${fmt(r[1])}</td><td class="num">${fmt(r[2])}</td><td class="num ${r[3]<0?"pos":"neg"}">${sg(r[3])}</td></tr>`))}</tbody></table></div>${moreBtn(L.length)}<p class="cite">Kids assigned to each school who live at least ${PD(p1).past.margin} mi closer on foot to another open school (each plan's scorecard rule). Negative = fewer under ${esc(lblShort(p2))}.</p>`}
 function selectOne(n){sel=n;markSel();const pd=PD(scn),pm=PM[scn];
- const head=`<div class="tag">${esc(pm.short)} · ${LVN[lv]}, whole district</div><div class="vline">${vtag(scn)}</div>`+spotHtml()+scoreTbl([scn])+cav(scn)+(pastOn()?pastTbl()+oorHtml([scn]):oorHtml([scn]));
+ const rest=scoreTbl([scn])+cav(scn)+(pastOn()?pastTbl()+oorHtml([scn]):oorHtml([scn]));
+ const head=`<div class="tag">${esc(pm.short)} · ${LVN[lv]}, whole district</div><div class="vline">${vtag(scn)}</div>`+spotHtml()+rest;
  if(!n||!polysOf(scn)[n]){$("sidec").innerHTML=head+`<p class="hint">Tap an area for one school's numbers (hover shows its name).</p>`+progPanel();sideWire();return}
  const c=(colsFor(scn)||{})[n],st=(pd.st||{})[n];
  const past=pd.past.regs.filter(r=>r[0]===n);const pastK=pastBy(scn)[n]||0;
@@ -351,7 +354,8 @@ function selectOne(n){sel=n;markSel();const pd=PD(scn),pm=PM[scn];
  if(past.length)h+=bars(past.map(r=>[r[1],r[2]]),"Sent to a farther school: the nearer school");
  if(pm.lines==="official")h+=`<p class="hint">PPS's lines, traced from its published 2027-28 map and may be off by about 70 feet. ${src(pm.linesrc[lv],"Traced source")}.</p>`;
  else h+=`<p class="hint">Lines follow streets and are derived from the option's block assignment (crisp method).</p>`;
- $("sidec").innerHTML=head+h+progPanel();sideWire()}
+ // (2026-10-22, Paul) the clicked school leads; the whole-district tables follow it
+ $("sidec").innerHTML=`<div class="tag">${esc(pm.short)} · ${LVN[lv]}</div><div class="vline">${vtag(scn)}</div>`+spotHtml()+h+`<div class="tag">Whole district, ${LVN[lv]}</div>`+rest+progPanel();sideWire()}
 function markSel(){[gA,gA2].forEach(g=>g.querySelectorAll(".area").forEach(p=>{p.classList.toggle("sel",p.dataset.n===sel)}));rove();
  [[gE1,cmpOn()?p1:scn],[gE2,p2]].forEach(([g,pl])=>{g.querySelectorAll("[data-sel]").forEach(o=>o.remove());if(!g.childNodes.length)return;selEdge(g,polysOf(pl)[sel])});
  updateLabels()}   // updateLabels un-hides the selected school's name
@@ -362,15 +366,15 @@ function cmpSide(n){const I=pairInfo(p1,p2),s1=PD(p1).size,s2=PD(p2).size,in1=po
  const chg=rows.filter(r=>r[3]!==0);const po1=new Set(progList(p1).map(p=>p.n)),po2=new Set(progList(p2).map(p=>p.n));
  const cell=(v,k,po)=>v==null?(po.has(k)?'<span title="program only, no neighborhood area">program</span>':'<span title="no area in this plan">none</span>'):fmt(v);
  let h=`<div class="cside"><div class="tag">Comparing · ${L}</div><div class="cmpn"><h3>${esc(lblShort(p1))}</h3><span class="vline">${vtag(p1)}</span></div>${p1!==p2?`<div class="cmpvs">vs</div><div class="cmpn"><h3 style="color:var(--cmp)">${esc(lblShort(p2))}</h3><span class="vline">${vtag(p2)}</span></div>`:""}`;
+ const top=h;h="";
  const oo=oorHtml(p1!==p2?[p1,p2]:[p1]),notes=cav(p1,true)+(p1!==p2?cav(p2,true):"")+(pastOn()?pastTbl()+oo:oo+(szOn()?szMoves():""));   // the active theme's table leads
  // a tapped spot's answer goes right under the headline (round 5: it used to render ~2,000px down on desktop)
- if(!I){h+=`<p class="hint">Pick two different plans to see what changes.</p>`+spotHtml()+scoreTbl(p1!==p2?[p1,p2]:[p1])+notes}
+ if(!I){h+=`<p class="hint">Pick two different plans to see what changes.</p>`+scoreTbl(p1!==p2?[p1,p2]:[p1])+notes}
  else{const tot=I.tot||LD().total,pc=fx(I.n/tot*100,1),basis=`Out of ${fmt(tot)} modeled ${L} neighborhood kids (2031-32, ${(k=>`the ${esc(lblShort(k))}`)(ORD.indexOf(p1)<ORD.indexOf(p2)?p2:p1)} scorecard basis).`;
   // headline = plan 1 vs plan 2 directly; the scorecard row counts each plan against Status Quo instead
   h+=I.n?`<div class="big">${fmt(I.n)}</div><p class="hint" style="color:var(--ink);font-size:.9rem;margin-top:-4px"><b>kids (${pc}%)</b> would go to a different ${L} school under ${esc(lblShort(p2))} than under ${esc(lblShort(p1))}.</p>`:
    `<p class="hint" style="color:var(--ink);font-size:.95rem"><b>Same ${L} lines.</b> ${esc(lblShort(p2))} keeps the same ${L} boundaries as ${esc(lblShort(p1))}, so no kid changes school between them.</p>`;
-  h+=spotHtml();
-  h+=`<div class="tag" style="margin-top:10px">Whole district, ${L}</div>`+scoreTbl([p1,p2])+
+    h+=`<div class="tag" style="margin-top:10px">Whole district, ${L}</div>`+scoreTbl([p1,p2])+
   (I.n?`<p class="hint">${basis} The headline compares the two plans directly; “Kids moved from their Status Quo school” counts each plan against PPS Status Quo. ${mode==="swipe"?"Drag the handle across: where the lines change, kids change school":`Where the thin solid and ${W2s} differ, kids change school`} (about ${(m=>fx(m,m>=10?0:1))(I.km2*0.386102)} sq mi in all). ${hatchOn()?"Hatched areas change school; hover or tap one to see the move.":hatchTheme()?"Hover or tap there to see the move, or turn on “Hatch changed areas” to mark them.":"Hover or tap there to see the move (the hatch shows under School colors or Changes only)."}</p>`:"")+notes}
  const hd=h;h="";
  if(n){const r=rows.find(x=>x[0]===n);
@@ -380,10 +384,12 @@ function cmpSide(n){const I=pairInfo(p1,p2),s1=PD(p1).size,s2=PD(p2).size,in1=po
    const st1=(PD(p1).st||{})[n],st2=(PD(p2).st||{})[n];
    const at=k=>({"-1":"no, under floor","0":"yes","1":"no, over ceiling",x:`<span ${EXT_T}>exempt</span>`})[szCls(k,n)]||"—";
    if(st1||st2)h+=`<div class="tag">Whole school, 2031-32 (model)</div>`+kvs([["Students: "+esc(lblShort(p1)),fmt(st1&&st1.total)],["Students: "+esc(lblShort(p2)),fmt(st2&&st2.total)],["At target: "+esc(lblShort(p1)),polysOf(p1)[n]?at(p1):"no area"],["At target: "+esc(lblShort(p2)),polysOf(p2)[n]?at(p2):"no area"]])+`<p class="cite">Sources: ${src(PM[p1].schools,lblShort(p1)+" schools.csv")} · ${src(PM[p2].schools,lblShort(p2)+" schools.csv")}</p>`}}
+ const sch=h?`<div class="tag sch">School area</div><h3>${esc(nm(n))}</h3>`+h:"";h="";
  if(I&&I.n){h+=`<div class="tag">Change in kids living in each area</div><div class="dscroll" tabindex="0" role="region" aria-label="School size change table, scrollable"><table class="dtab"><thead><tr><th>School</th><th class="num">${esc(lblShort(p1))}</th><th class="num">${esc(lblShort(p2))}</th><th class="num">Change</th></tr></thead><tbody>${capRows(chg.map(r=>`<tr${r[0]===n?' class="hl"':""}><th scope="row">${selBtn(r[0])}</th><td class="num">${cell(r[1],r[0],po1)}</td><td class="num">${cell(r[2],r[0],po2)}</td><td class="num ${r[3]>0?"pos":"neg"}">${sg(r[3])}</td></tr>`))}</tbody></table></div>${moreBtn(chg.length)}`;
   const top=I.flows.slice(0,6);if(top.length)h+=`<div class="from"><div class="tag">Biggest moves</div>${top.map(f=>`<div class="bar"><span>${esc(nm(f[0]))} → ${esc(nm(f[1]))}</span><em>${fmt(f[2])}</em></div>`).join("")}</div>`;
   const un=rows.length-chg.length;h+=`<p class="hint">${un?`${un} school${un===1?"'s area is":"s' areas are"} unchanged.`:"Every school's area changes."} Moves (and the headline) count the modeled kids of ${(k=>esc(lblShort(k)))(ORD.indexOf(p1)<ORD.indexOf(p2)?p2:p1)}, as its scorecard does; each column above counts its own plan's kids (each plan leaves out its own program kids, such as DLI), so a school's moves and its column can differ by a few kids. Counts are modeled ${L} neighborhood kids by 2020 Census block (${src("build/data/blocks.parquet","blocks.parquet")}); program seats are left out, so they run lower than enrollment.${n?"":" Tap an area for one school."}</p>`}
- $("sidec").innerHTML=hd+h+"</div>"+progPanel();sideWire()}
+ // (2026-10-22, Paul) the clicked school leads (right under the plan names and any tapped spot), then the district numbers
+ $("sidec").innerHTML=top+spotHtml()+sch+hd+h+"</div>"+progPanel();sideWire()}
 function sideWire(){const sd=$("sidec");sd.querySelectorAll("[data-sel]").forEach(b=>b.onclick=()=>select(b.dataset.sel));
  const x=sd.querySelector("#spotx");if(x)x.onclick=()=>{pin=null;drawPin();select(sel)};
  sd.querySelectorAll("[data-plan]").forEach(b=>b.onclick=()=>{showPlan(b.dataset.plan);if(innerWidth<=900)toMap()});

@@ -508,6 +508,6 @@ header h1{font-size:clamp(1.4rem,3vw,2rem)}
 .dnl .dnt{margin:0;padding-left:18px;font-size:12px}
 .dnl a{font-size:12px}
 /* "Walk to assigned school" theme: miles (one plan) and closer / farther (two plans overlaid) */
-:root{--wk:#3b4cc0;--wkc:#1f6fb4;--wkf:#c0392b}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--wk:#9aa8ff;--wkc:#6fb4ff;--wkf:#ff7a6b}}
-:root[data-theme="dark"]{--wk:#9aa8ff;--wkc:#6fb4ff;--wkf:#ff7a6b}
+:root{--wk0:#2e9e55;--wk1:#c7e27a;--wk2:#f2a03d;--wk3:#d9442f;--wk4:#9e1420;--wkc:#1f8a4c;--wkf:#c0392b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--wk0:#3fbf6c;--wk1:#a9c95c;--wk2:#e8913a;--wk3:#e0523c;--wk4:#ff6b6b;--wkc:#45c47a;--wkf:#ff7a6b}}
+:root[data-theme="dark"]{--wk0:#3fbf6c;--wk1:#a9c95c;--wk2:#e8913a;--wk3:#e0523c;--wk4:#ff6b6b;--wkc:#45c47a;--wkf:#ff7a6b}
