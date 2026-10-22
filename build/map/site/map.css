@@ -507,3 +507,7 @@ header h1{font-size:clamp(1.4rem,3vw,2rem)}
 .dnl .densw{display:inline-block;width:14px;height:10px;margin-right:4px;vertical-align:-1px;border:1px solid color-mix(in srgb,var(--ink) 20%,transparent)}
 .dnl .dnt{margin:0;padding-left:18px;font-size:12px}
 .dnl a{font-size:12px}
+/* "Walk to assigned school" theme: miles (one plan) and closer / farther (two plans overlaid) */
+:root{--wk:#3b4cc0;--wkc:#1f6fb4;--wkf:#c0392b}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--wk:#9aa8ff;--wkc:#6fb4ff;--wkf:#ff7a6b}}
+:root[data-theme="dark"]{--wk:#9aa8ff;--wkc:#6fb4ff;--wkf:#ff7a6b}

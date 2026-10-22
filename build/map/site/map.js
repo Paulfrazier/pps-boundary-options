@@ -95,7 +95,7 @@ function colsFor(a,b){const k=lv+"|"+a+"|"+(b||"");if(colOf[k])return colOf[k];i
 // "Color areas by" = the map's ONE theme (one encoding at a time, each with its own key and panel list):
 // "" school colors · "chg" changes only (plain fill; the lines and the hatch carry it) · "size" size vs target range (2031-32)
 // · "past" past a closer school (plain fill + the past regions) · "race" racial mix
-const colBy=()=>$("lcol").value,dvOn=()=>colBy()==="race",szOn=()=>colBy()==="size",pastOn=()=>colBy()==="past",denOn=()=>colBy()==="dens",mvOn=()=>colBy()==="mv";
+const colBy=()=>$("lcol").value,dvOn=()=>colBy()==="race",szOn=()=>colBy()==="size",pastOn=()=>colBy()==="past",denOn=()=>colBy()==="dens",mvOn=()=>colBy()==="mv",walkOn=()=>colBy()==="walk";
 // schools at target, 2031-32, as on the options and landing pages (scorecard durability: zoned, non-exempt schools)
 const durOf=k=>(PD(k)||{}).dur;
 const szCls=(k,n)=>{const d=durOf(k);if(!d)return null;const x=d.s[n];return x?x[1]:"x"};   // -1 under floor, 0 at target, 1 over ceiling, "x" exempt
@@ -208,6 +208,7 @@ function impFor(side,sw){const m=new Map(),add=L=>L.slice(0,12).forEach((n,i)=>{
  const dif=(a,b)=>{const o={};new Set([...Object.keys(a),...Object.keys(b)]).forEach(n=>o[n]=(b[n]||0)-(a[n]||0));return o},two=cmpOn()&&p1!==p2;
  if(szOn())add((side||(cmpOn()?[p1]:[scn])).flatMap(k=>{const d=durOf(k);return d?Object.keys(d.s).filter(n=>d.s[n][1]):[]}));
  else if(pastOn())add(sw?top(pastBy(side[0]),40):two?top(dif(pastBy(p1),pastBy(p2)),40):top(pastBy(cmpOn()?p1:scn),40));
+ else if(walkOn()){const aw=k=>(PD(k)||{}).avgw||{};add(sw?top(aw(side[0]),0):two&&mode==="overlay"?top(dif(aw(p1),aw(p2)),.1):top(aw(cmpOn()?p1:scn),0))}
  else if(two)add(top(dif(PD(p1).size,PD(p2).size),100));
  return m}
 // "Where kids live" / "Where kids move": kids per km2 in five steps (LD().den: the baseline's neighborhood kids on a 400 m
@@ -222,7 +223,31 @@ const ringA=r=>{let a=0;for(let i=0;i<r.length;i++){const[x0,y0]=r[i],[x1,y1]=r[
 const regKm2=enc=>{const R=dec(enc).map(ringA);return Math.max(1,R[0]-R.slice(1).reduce((a,b)=>a+b,0))/upm()**2/1e6};
 // a tap on a shaded cell selects the school area under it
 const passSel=e=>{const a=document.elementsFromPoint(e.clientX,e.clientY).find(x=>x.classList&&x.classList.contains("area"));if(a)select(a.dataset.n)};
-function drawDen(){gDen.replaceChildren();if(!denOn()&&!mvOn())return;const D=LD().den;if(!D)return;
+// "Walk to assigned school": each 400 m cell shaded by its kids' average walk to the school the plan assigns (PD(k).wk,
+// hundredths of a mile in den.cells order, -1 = no kids). One plan, or each side of swipe: miles in five steps per level.
+// Overlay of two plans: the change, plan 1 -> plan 2, closer (blue) or farther (red) in diverging steps.
+const WKB={"K-5":[.5,1,1.5,2],"6-8":[1,1.5,2,3],"9-12":[1,2,3,4]},WKP=[10,28,46,66,88],WKD=[-.5,-.25,-.1,.1,.25,.5];
+const wkBin=v=>WKB[lv].filter(x=>v>=x).length,wkFill=b=>`color-mix(in srgb,var(--wk) ${WKP[b]}%,var(--plate))`;
+const wkRng=b=>{const B=WKB[lv],f=x=>x.toFixed(x%1?1:0);return b===0?`under ${f(B[0])} mi`:b===B.length?`${f(B[b-1])} mi or more`:`${f(B[b-1])}–${f(B[b])} mi`};
+const wdBin=v=>WKD.filter(x=>v>=x).length,wdFill=b=>b===3?"transparent":`color-mix(in srgb,var(${b<3?"--wkc":"--wkf"}) ${[70,46,24][b<3?b:6-b]}%,var(--plate))`;
+const WDL=["0.5 mi or more closer","0.25–0.5 mi closer","0.1–0.25 mi closer","about the same (within 0.1 mi)","0.1–0.25 mi farther","0.25–0.5 mi farther","0.5 mi or more farther"];
+const wkDiff=()=>cmpOn()&&mode==="overlay"&&p1!==p2;
+const mi2=v=>(v/100).toFixed(2)+" mi";
+function walkCells(g,k,base){const D=LD().den,a=(PD(k)||{}).wk,b=base&&(PD(base)||{}).wk;if(!D||!a||(base&&!b))return;
+ const w=D.dx*kx*S,h=D.dy*S;
+ D.cells.forEach(([i,j],n)=>{const v=a[n];if(v<0||(b&&b[n]<0))return;const x=(i*D.dx-lon0)*kx*S,y=(lat1-(j+1)*D.dy)*S;
+  const dv=b?(v-b[n])/100:0,fill=b?wdFill(wdBin(dv)):wkFill(wkBin(v/100));
+  const tip=b?`Average walk here: ${lblShort(base)} ${mi2(b[n])} → ${lblShort(k)} ${mi2(v)} (${dv>0?"+":""}${dv.toFixed(2)} mi)`:`${lblShort(k)}: kids here walk about ${mi2(v)} on average to their assigned school`;
+  const r=mk("rect",{x:x.toFixed(1),y:y.toFixed(1),width:w.toFixed(2),height:h.toFixed(2),style:`fill:${fill}`,"data-tip":tip});r.addEventListener("click",passSel);g.append(r)})}
+function drawWalk(){if(wkDiff()){walkCells(gDen,p2,p1);return}
+ if(cmpOn()&&mode==="swipe"){const L=G(),R=G();walkCells(L,p1);walkCells(R,p2);L.setAttribute("clip-path","url(#swcL)");R.setAttribute("clip-path","url(#swc)");gDen.append(L,R);return}
+ walkCells(gDen,cmpOn()?p1:scn)}
+function walkLegend(el){const avg=k=>{const s=(PD(k)||{}).sum||{};return s.avg_walk_mi!=null?`; average for all kids ${(+s.avg_walk_mi).toFixed(2)} mi`:""};
+ const src=`each 400 m square shaded by its ${LVN[lv]} kids' average walk to their assigned school, on foot along OpenStreetMap routes (our model, 2031-32 kids)`;
+ if(wkDiff()){el.innerHTML=`<span class="szh">Change in walk to the assigned school, ${esc(lblShort(p1))} → ${esc(lblShort(p2))}: ${src}. Blue squares get closer, red get farther${avg(p1)?` (average ${esc(lblShort(p1))}${avg(p1).replace("; average for all kids","")}, ${esc(lblShort(p2))}${avg(p2).replace("; average for all kids","")})`:""}.</span><span class="dnr">${WDL.map((t,b)=>`<span><i class="densw" style="background:${wdFill(b)}"></i>${t}</span>`).join(" ")}</span><a href="sources.html#def-walk-distance">how walks are measured</a>`;return}
+ const ks=cmpOn()&&mode==="swipe"?[p1,p2]:[cmpOn()?p1:scn];
+ el.innerHTML=`<span class="szh">Walk to the assigned school, ${ks.map((k,i)=>(ks.length>1?(i?"right: ":"left: "):"")+esc(lblShort(k))+avg(k)).join("; ")}: ${src}.</span><span class="dnr">${WKB[lv].map((_,b)=>b).concat(WKB[lv].length).map(b=>`<span><i class="densw" style="background:${wkFill(b)}"></i>${wkRng(b)}</span>`).join(" ")}</span><a href="sources.html#def-walk-distance">how walks are measured</a>`}
+function drawDen(){gDen.replaceChildren();if(walkOn()){drawWalk();return}if(!denOn()&&!mvOn())return;const D=LD().den;if(!D)return;
  const paths=D.b.map(()=>"").concat("");
  if(denOn()){const w=D.dx*kx*S,h=D.dy*S;D.cells.forEach(([i,j,k])=>{const x=(i*D.dx-lon0)*kx*S,y=(lat1-(j+1)*D.dy)*S;paths[denBin(k/(D.m*D.m/1e6))]+=`M${x.toFixed(1)},${y.toFixed(1)}h${w.toFixed(2)}v${h.toFixed(2)}h${(-w).toFixed(2)}z`});
   paths.forEach((d,b)=>{if(!d)return;const p=mk("path",{d,style:`fill:${denFill(b)}`,"data-tip":`About ${denRng(b)} ${LVN[lv]} kids per square km here (our model, 2031-32)`});p.addEventListener("click",passSel);gDen.append(p)});return}
@@ -230,7 +255,7 @@ function drawDen(){gDen.replaceChildren();if(!denOn()&&!mvOn())return;const D=LD
  I.regs.forEach(r=>{const d=ringsD(r[3]);const p=mk("path",{d,"fill-rule":"evenodd",style:r[2]?`fill:${denFill(denBin(r[2]/regKm2(r[3])))}`:"fill:none;stroke:var(--den);stroke-opacity:.5;stroke-dasharray:3 3","vector-effect":"non-scaling-stroke"});
   if(!cmpOn()){p.dataset.tip=r[2]?`${nm(r[0])} → ${nm(r[1])}: about ${fmt(r[2])} kids in this area move`:`${nm(r[0])} → ${nm(r[1])}: the line moves here, but no kids live in this area (model)`;p.addEventListener("click",()=>select(r[0]))}
   else p.setAttribute("pointer-events","none");gDen.append(p)})}
-function denLegend(){const el=$("dnl"),on=denOn()||mvOn();el.hidden=!on;if(!on)return;const D=LD().den;
+function denLegend(){const el=$("dnl"),on=denOn()||mvOn()||walkOn();el.hidden=!on;if(!on)return;if(walkOn()){walkLegend(el);return}const D=LD().den;
  const sw=D.b.map((_,b)=>b).concat(D.b.length).map(b=>`<span><i class="densw" style="background:${denFill(b)}"></i>${denRng(b)}</span>`).join(" ");
  if(denOn()){el.innerHTML=`<span class="szh">Where ${LVN[lv]} kids live: neighborhood kids per square km, on a 400 m grid (our model, 2031-32). The same in every plan; the lines show which school each area goes to.</span><span class="dnr">${sw}</span><a href="sources.html#def-neighborhood-kids">what this counts</a>`;return}
  const pr=mvPair(),I=pr&&pairInfo(pr[0],pr[1]);
@@ -504,7 +529,7 @@ function setLevel(l){loadLevel(l,()=>{lv=l;const A=avail();
 //                   layers=hatch is still read).
 //   Legacy: layers=past (old checkbox) = color=past, layers=race = color=race (an explicit color key wins); #6-8 / #9-12.
 //   Every read starts from the defaults (also on hashchange), so a missing or unknown key never keeps the last view's value.
-const VIEWS=["single","swipe","overlay"],THEMES=["chg","size","past","race","dens","mv"];let lastHash="";
+const VIEWS=["single","swipe","overlay"],THEMES=["chg","size","past","race","dens","mv","walk"];let lastHash="";
 const henc=v=>encodeURIComponent(v).replace(/%2C/g,",").replace(/%20/g,"+");
 // round 8: the default view (K-5, swipe, PPS Status Quo | PPS A) writes no hash; any key that differs from its default is written
 const DEF={level:"K-5",view:"swipe",a:BASELINE,b:"scenario_A",plan:"scenario_A"};

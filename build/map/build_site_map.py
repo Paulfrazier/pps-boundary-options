@@ -437,6 +437,17 @@ for lv in LEVELS:
     nice = lambda v: float('%.2g' % v) if v < 100 else float(round(v, -1))
     br = sorted({nice(np.quantile(dk, q)) for q in (0.2, 0.4, 0.6, 0.8)})
     den = {'dx': DEN_M / MX, 'dy': DEN_M / LAT_M, 'm': DEN_M, 'b': br, 'cells': cells}
+    # "Walk to assigned school" theme: per plan, each density cell's kid-weighted average walk to the school that plan
+    # assigns (scorebasis d = metrics.py walk miles, the plan's own scorecard kids), in hundredths of a mile, in den.cells
+    # order; -1 = under 0.05 of the plan's kids in the cell
+    cidx = {(c[0], c[1]): n for n, c in enumerate(cells)}
+    bc = np.array([cidx.get((int(i), int(j)), -1) for i, j in zip(ix, iy)])
+    for k in plans:
+        w, d = KW[k], SBP[k]['d']
+        ok = (bc >= 0) & np.isfinite(d) & (w > 0)
+        sw = np.bincount(bc[ok], weights=w[ok], minlength=len(cells))
+        swd = np.bincount(bc[ok], weights=(w * d)[ok], minlength=len(cells))
+        plans[k]['wk'] = [int(round(100 * a / b)) if b >= 0.05 else -1 for a, b in zip(swd, sw)]
     LVDATA[lv] = {'plans': plans, 'pairs': pairs, 'total': round(float(w0.sum())), 'sch': sch, 'kocd': kocd, 'den': den}
 
 json.dump(QA, open(os.path.join(CACHE, 'qa_report.json'), 'w'), indent=1)
