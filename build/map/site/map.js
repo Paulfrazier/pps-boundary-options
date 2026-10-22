@@ -532,7 +532,7 @@ function setLevel(l){loadLevel(l,()=>{lv=l;const A=avail();
 const VIEWS=["single","swipe","overlay"],THEMES=["chg","size","past","race","dens","mv","walk"];let lastHash="";
 const henc=v=>encodeURIComponent(v).replace(/%2C/g,",").replace(/%20/g,"+");
 // round 8: the default view (K-5, swipe, PPS Status Quo | PPS A) writes no hash; any key that differs from its default is written
-const DEF={level:"K-5",view:"swipe",a:BASELINE,b:"scenario_A",plan:"scenario_A"};
+const DEF={level:"K-5",view:"single",a:BASELINE,b:"scenario_A",plan:"scenario_A"};
 const defPick=(k,i)=>{const A=avail();return A.includes(k)?k:A[Math.min(i,A.length-1)]};
 function hashWrite(){if(initLoad)return;const q=[];if(lv!==DEF.level)q.push(["level",lv]);if(mode!==DEF.view)q.push(["view",mode]);
  if(cmpOn()){if(p1!==defPick(DEF.a,0))q.push(["a",p1]);if(p2!==defPick(DEF.b,1))q.push(["b",p2])}else if(scn!==defPick(DEF.plan,0))q.push(["plan",scn]);
@@ -541,10 +541,10 @@ function hashWrite(){if(initLoad)return;const q=[];if(lv!==DEF.level)q.push(["le
  const h=q.length?"#"+q.map(([k,v])=>k+"="+henc(v)).join("&"):"";if(h===location.hash)return;lastHash=h;try{history.replaceState(null,"",h||location.pathname+location.search)}catch(_){}}
 function hashRead(){const h=(location.hash||"").slice(1);if(!h)return{};if(LVN[h])return{level:h};const o={};
  h.split("&").forEach(kv=>{const i=kv.indexOf("=");if(i>0)try{o[kv.slice(0,i)]=decodeURIComponent(kv.slice(i+1).replace(/\+/g," "))}catch(_){}});return o}
-// defaults (DEF, round 8): K-5, swipe, PPS Status Quo (left) | PPS A (right), school colors, hatch on, no school, no spot
+// defaults (DEF, round 8; view single since 2026-10-22): K-5, single plan PPS A; compare pair PPS Status Quo (left) | PPS A (right), school colors, hatch on, no school, no spot
 function restore(st,done){const L=LVN[st.level]?st.level:"K-5";loadLevel(L,()=>{lv=L;const A=avail(),ok=k=>A.includes(k),pick=(k,i)=>ok(k)?k:A[Math.min(i,A.length-1)];
  scn=ok(st.plan)?st.plan:pick(DEF.plan,0);p1=ok(st.a)?st.a:pick(DEF.a,0);p2=ok(st.b)?st.b:pick(DEF.b,1);   // default pair: PPS Status Quo | PPS A (was PPS A vs the best example we modeled)
- mode=VIEWS.includes(st.view)?st.view:(st.plan&&!st.a?"single":DEF.view);
+ mode=VIEWS.includes(st.view)?st.view:(st.a||st.b)?"swipe":DEF.view;   // (2026-10-22, Paul) opens in single plan; a link naming a/b with no view = swipe (the old default; landing and Requests links)
  sel=st.school&&(polysOf(cmpOn()?p1:scn)[st.school]||(cmpOn()&&polysOf(p2)[st.school]))?st.school:null;
  const at=(st.at||"").split(",").map(Number);pin=at.length===2&&at.every(isFinite)&&at[0]>lon0&&at[0]<lon1&&at[1]>lat0&&at[1]<lat1?at:null;
  const ly=st.layers!=null?st.layers.split(","):null;$("lhf").checked=showHatch=ly?ly.includes("hatch"):true;
