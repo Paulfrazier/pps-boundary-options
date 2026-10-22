@@ -1,0 +1,44 @@
+== planD_redraw_ms K-5
+ K-5: fixed to build/solver/out_v2/planD_redraw.staging/assign_K-5.parquet (not solved)
+== planD_redraw_ms 6-8
+ 6-8: warm start from build/solver/out_v2/planD_redraw.staging/assign_6-8.parquet (9272/9295 blocks hinted); relaxation round skipped
+ durability mode (all, horizon pps2031: 2027-28..2031-32): required at target by year [0, 0, 0, 0, 0] (reference scenario_A); 0 countable schools
+ 23 schools, 9295 blocks, 39023 assignment vars, avg 4.2 candidates/block
+ pruned 3609 unreachable (block, school) candidates
+ component: 23 schools, 9295 blocks
+  (round 0: 0s wall, det=0.1 work units)
+  round 0: OPTIMAL 0s obj=558616 bound=558616 gap=0.00% islands=0 (0.0 kids) slack={} splits=0
+ 6-8 done in 1.7s
+== planD_redraw_ms 9-12
+ 9-12: fixed to block column sq_hs (not solved)
+                                         K-5       6-8      9-12
+kids                               12555.800  5830.700  9261.000
+avg_walk_mi                            0.846     1.494     2.000
+pct_within_0.5mi                      29.000    14.000     5.700
+pct_within_1.0mi                      75.000    41.700    23.400
+pct_within_1.5mi                      91.300    62.600    46.500
+kids_over_bus_threshold             3140.000  2182.000  4959.000
+bus_threshold_mi                       1.000     1.500     1.500
+kids_past_closer_school              820.000  1140.000   971.000
+past_margin_mi                         0.250     0.250     0.250
+kids_reassigned_vs_status_quo       2324.000  1165.000     0.000
+poc_share_of_movers_vs_status_quo      0.433     0.427     0.000
+kids_reassigned_vs_today            2330.000  1169.000  1181.000
+poc_share_district                     0.425     0.428     0.426
+dissimilarity_index                    0.213     0.185     0.173
+schools_open                          48.000    23.000     8.000
+schools_in_range                      47.000    23.000     8.000
+schools_evaluated_non_exempt           4.000     1.000     8.000
+schools_in_range_non_exempt            3.000     1.000     8.000
+avg_utilization                        0.692     0.669     0.781
+min_size                             178.000   178.000  1117.000
+max_size                             570.000   621.000  1492.000
+schools_in_range_2025_26_basis        42.000    18.000     6.000
+schools_in_range_at_minus9pct         46.000    22.000     6.000
+avg_bike_mi                              NaN     1.545     2.063
+n_split_feeders_es_to_ms                 NaN     0.000       NaN
+pct_within_2.0mi                         NaN       NaN    61.200
+n_split_feeders_ms_to_hs                 NaN       NaN    11.000
+n_split_feeders_es_to_hs                 NaN       NaN    13.000
+pct_ms_feeders_to_one_hs                 NaN       NaN    52.200
+hs_range                                 NaN       NaN   375.000

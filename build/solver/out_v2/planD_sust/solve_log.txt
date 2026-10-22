@@ -1,0 +1,65 @@
+== planD_sust K-5
+ K-5: each kid placed across a sq_hs line (hs_nest) costs 0.1 kid-miles
+ K-5: warm start from build/solver/out_v2/planD.staging/assign_K-5.parquet (9259/9295 blocks hinted); relaxation round skipped
+ durability mode (all, horizon pps2031: 2027-28..2031-32): required at target by year [44, 44, 44, 44, 44] (reference scenario_A); 44 countable schools
+ 46 schools, 9295 blocks, 65076 assignment vars, avg 7.0 candidates/block
+ pruned 131 unreachable (block, school) candidates
+ component: 46 schools, 9295 blocks
+  (round 0: 1801s wall, det=5717.3 work units)
+  round 0: FEASIBLE 1801s obj=1251510191 bound=698148103 gap=44.22% islands=0 (0.0 kids) slack={'Clark:lo': 73.06, 'Duniway:lo': 97.9, 'Lewis:lo': 122.69, 'Maplewood:lo': 160.52, 'Markham:lo': 119.55, 'Sitton:lo': 86.27, 'Skyline:lo': 88.21, 'Sunnyside:lo': 9.14, 'Vestal:lo': 44.5, 'durability_count_short:2027-28': 11, 'durability_count_short:2028-29': 10, 'durability_count_short:2029-30': 9, 'durability_count_short:2030-31': 8, 'durability_count_short:2031-32': 8} splits=0
+   at target in every modeled year (pps2031): 33/44; at target by year [33, 34, 35, 36, 36] (required [44, 44, 44, 44, 44])
+ K-5 done in 1804.3s
+== planD_sust 6-8
+ 6-8: warm start from build/solver/out_v2/planD.staging/assign_6-8.parquet (8390/9295 blocks hinted); relaxation round skipped
+ durability mode (all, horizon pps2031: 2027-28..2031-32): required at target by year [14, 14, 14, 14, 14] (reference scenario_A); 14 countable schools
+ 23 schools, 9295 blocks, 39195 assignment vars, avg 4.2 candidates/block
+ pruned 3428 unreachable (block, school) candidates
+ component: 23 schools, 9295 blocks
+  (round 0: 1s wall, det=3.5 work units)
+  round 0: OPTIMAL 1s obj=1571149756 bound=1571149756 gap=0.00% islands=0 (0.0 kids) slack={'Beaumont:lo': 92.7, 'George:lo': 202.71, 'Hosford:lo': 11.16, 'Lane:lo': 382.07, 'Ockley Green:lo': 153.99, 'Roseway Heights:lo': 39.42, 'Sellwood:lo': 348.02, 'West Sylvan:lo': 22.35, 'durability_count_short:2027-28': 6, 'durability_count_short:2028-29': 6, 'durability_count_short:2029-30': 5, 'durability_count_short:2030-31': 7, 'durability_count_short:2031-32': 8} splits=0
+   at target in every modeled year (pps2031): 5/14; at target by year [8, 8, 9, 7, 6] (required [14, 14, 14, 14, 14])
+  whole-zone feeders leave a size violation -> phase 2: allow penalized splits
+  phase-2a warm start: phase-1 plan repaired to the block-level rule (104 blocks moved, 3 violations left)
+  phase 2a: minimise size slack + number of splits only (at most 3 splits) (warm start from phase 1)
+  (round 0: 600s wall, det=2148.1 work units)
+  round 0: FEASIBLE 600s obj=1919050000 bound=1262240000 gap=34.23% islands=0 (0.0 kids) slack={'Beaumont:lo': 92.7, 'George:lo': 202.71, 'Gray:lo': 334.3, 'Harrison Park:lo': 196.13, 'Hosford:lo': 342.65, 'Kellogg:lo': 153.1, 'Ockley Green:lo': 162.04, 'Roseway Heights:lo': 39.42, 'durability_count_short:2027-28': 8, 'durability_count_short:2028-29': 8, 'durability_count_short:2029-30': 7, 'durability_count_short:2030-31': 8, 'durability_count_short:2031-32': 8} splits=3
+   at target in every modeled year (pps2031): 0/14; at target by year [6, 6, 7, 6, 6] (required [14, 14, 14, 14, 14])
+  phase 2b: full objective with splits <= 3, warm-started from 2a
+  (round 0: 1802s wall, det=6260.2 work units)
+  round 0: FEASIBLE 1802s obj=1683970884 bound=1277527289 gap=24.14% islands=0 (0.0 kids) slack={'Beaumont:lo': 92.7, 'George:lo': 202.71, 'Gray:lo': 47.18, 'Harrison Park:lo': 314.64, 'Hosford:lo': 342.65, 'Kellogg:lo': 117.87, 'Ockley Green:lo': 162.04, 'Roseway Heights:lo': 39.42, 'durability_count_short:2027-28': 7, 'durability_count_short:2028-29': 7, 'durability_count_short:2029-30': 6, 'durability_count_short:2030-31': 8, 'durability_count_short:2031-32': 8} splits=3
+   at target in every modeled year (pps2031): 5/14; at target by year [7, 7, 8, 6, 6] (required [14, 14, 14, 14, 14])
+  phase 2 did not reduce slack below phase 1 -> keeping the whole-zone phase-1 assignment
+ 6-8 done in 2408.9s
+== planD_sust 9-12
+ 9-12: fixed to block column sq_hs (not solved)
+                                         K-5       6-8      9-12
+kids                               12555.800  5830.700  9261.000
+avg_walk_mi                            0.910     1.681     2.000
+pct_within_0.5mi                      27.700    13.300     5.700
+pct_within_1.0mi                      69.000    38.700    23.400
+pct_within_1.5mi                      88.300    57.000    46.500
+kids_over_bus_threshold             3897.000  2506.000  4959.000
+bus_threshold_mi                       1.000     1.500     1.500
+kids_past_closer_school             1759.000  1814.000   971.000
+past_margin_mi                         0.250     0.250     0.250
+kids_reassigned_vs_status_quo       4460.000  2248.000     0.000
+poc_share_of_movers_vs_status_quo      0.425     0.479     0.000
+kids_reassigned_vs_today            4462.000  2232.000  1181.000
+poc_share_district                     0.425     0.428     0.426
+dissimilarity_index                    0.209     0.180     0.173
+schools_open                          48.000    23.000     8.000
+schools_in_range                      39.000    14.000     8.000
+schools_evaluated_non_exempt          46.000    21.000     8.000
+schools_in_range_non_exempt           37.000    12.000     8.000
+avg_utilization                        0.696     0.655     0.781
+min_size                              89.000    89.000  1117.000
+max_size                             505.000   536.000  1492.000
+schools_in_range_2025_26_basis        32.000    13.000     6.000
+schools_in_range_at_minus9pct          5.000     2.000     6.000
+avg_bike_mi                              NaN     1.736     2.063
+n_split_feeders_es_to_ms                 NaN     0.000       NaN
+pct_within_2.0mi                         NaN       NaN    61.200
+n_split_feeders_ms_to_hs                 NaN       NaN    16.000
+n_split_feeders_es_to_hs                 NaN       NaN    21.000
+pct_ms_feeders_to_one_hs                 NaN       NaN    30.400
+hs_range                                 NaN       NaN   375.000

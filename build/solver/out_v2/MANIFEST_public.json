@@ -61,6 +61,18 @@
     "option2_ms500": {
       "status": "done",
       "finished": "2026-10-15T12:57:51"
+    },
+    "planD": {
+      "status": "done",
+      "finished": "2026-10-22T10:49:52"
+    },
+    "planD_redraw_ms": {
+      "status": "done",
+      "finished": "2026-10-22T10:49:52"
+    },
+    "planD_sust": {
+      "status": "done",
+      "finished": "2026-10-22T10:49:53"
     }
   }
 }

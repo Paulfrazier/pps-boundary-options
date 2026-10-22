@@ -1,0 +1,97 @@
+{
+ "schools_out_of_range_2031_32": [
+  {
+   "school": "Lent",
+   "type": "K-5",
+   "size": 274.0,
+   "floor": 360,
+   "ceiling": 600.0,
+   "short_by": 86.0,
+   "over_by": 0.0,
+   "program_only": true
+  }
+ ],
+ "solver_slack": {
+  "K-5": [
+   {}
+  ],
+  "6-8": [
+   {}
+  ],
+  "9-12": [
+   {}
+  ]
+ },
+ "feeder_splits_used": {
+  "K-5": [
+   0
+  ],
+  "6-8": [
+   0
+  ],
+  "9-12": [
+   0
+  ]
+ },
+ "exempt_from_floor": [
+  "Abernethy",
+  "Ainsworth",
+  "Alameda",
+  "Arleta",
+  "Astor",
+  "Atkinson",
+  "Beach",
+  "Beaumont",
+  "Beverly Cleary",
+  "Boise-Eliot/Humboldt",
+  "Bridger",
+  "Bridlemile",
+  "Capitol Hill",
+  "Cesar Chavez",
+  "Chapman",
+  "Chief Joseph",
+  "Clark",
+  "Duniway",
+  "Faubion",
+  "Forest Park",
+  "George",
+  "Glencoe",
+  "Gray",
+  "Grout",
+  "Harrison Park",
+  "Hayhurst",
+  "Hosford",
+  "Jackson",
+  "James John",
+  "Kellogg",
+  "Kelly",
+  "Lane",
+  "Laurelhurst",
+  "Lee",
+  "Lewis",
+  "Llewellyn",
+  "Maplewood",
+  "Markham",
+  "Marysville",
+  "Mt Tabor",
+  "Ockley Green",
+  "Rieke",
+  "Rigler",
+  "Rosa Parks",
+  "Rose City Park",
+  "Roseway Heights",
+  "Scott",
+  "Sellwood",
+  "Sitton",
+  "Skyline",
+  "Stephenson",
+  "Sunnyside",
+  "Tubman",
+  "Vestal",
+  "West Sylvan",
+  "Whitman",
+  "Woodlawn",
+  "Woodstock"
+ ],
+ "note": "Slack is in kids; non-zero slack means no plan with these schools/programs can meet that bound given the candidate sets and contiguity. Program-only buildings have fixed sizes set by the program placement, not by lines."
+}

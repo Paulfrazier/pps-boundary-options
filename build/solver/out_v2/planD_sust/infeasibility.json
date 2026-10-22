@@ -1,0 +1,230 @@
+{
+ "schools_out_of_range_2031_32": [
+  {
+   "school": "Beaumont",
+   "type": "6-8",
+   "size": 408.0,
+   "floor": 500,
+   "ceiling": 737.0,
+   "short_by": 92.0,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "George",
+   "type": "6-8",
+   "size": 297.7,
+   "floor": 500,
+   "ceiling": 623.0,
+   "short_by": 202.3,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Hosford",
+   "type": "6-8",
+   "size": 489.5,
+   "floor": 500,
+   "ceiling": 711.0,
+   "short_by": 10.5,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Lane",
+   "type": "6-8",
+   "size": 118.4,
+   "floor": 500,
+   "ceiling": 763.0,
+   "short_by": 381.6,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Ockley Green",
+   "type": "6-8",
+   "size": 346.5,
+   "floor": 500,
+   "ceiling": 657.0,
+   "short_by": 153.5,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Roseway Heights",
+   "type": "6-8",
+   "size": 461.1,
+   "floor": 500,
+   "ceiling": 806.0,
+   "short_by": 38.9,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Sellwood",
+   "type": "6-8",
+   "size": 152.4,
+   "floor": 500,
+   "ceiling": 683.0,
+   "short_by": 347.6,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "West Sylvan",
+   "type": "6-8",
+   "size": 478.1,
+   "floor": 500,
+   "ceiling": 987.0,
+   "short_by": 21.9,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Clark",
+   "type": "K-5",
+   "size": 287.5,
+   "floor": 360,
+   "ceiling": 459.0,
+   "short_by": 72.5,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Duniway",
+   "type": "K-5",
+   "size": 262.6,
+   "floor": 360,
+   "ceiling": 552.0,
+   "short_by": 97.4,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Lent",
+   "type": "K-5",
+   "size": 274.0,
+   "floor": 360,
+   "ceiling": 600.0,
+   "short_by": 86.0,
+   "over_by": 0.0,
+   "program_only": true
+  },
+  {
+   "school": "Lewis",
+   "type": "K-5",
+   "size": 237.8,
+   "floor": 360,
+   "ceiling": 420.0,
+   "short_by": 122.2,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Maplewood",
+   "type": "K-5",
+   "size": 200.0,
+   "floor": 360,
+   "ceiling": 426.0,
+   "short_by": 160.0,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Markham",
+   "type": "K-5",
+   "size": 241.0,
+   "floor": 360,
+   "ceiling": 561.0,
+   "short_by": 119.0,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Sitton",
+   "type": "K-5",
+   "size": 274.2,
+   "floor": 360,
+   "ceiling": 419.0,
+   "short_by": 85.8,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Vestal",
+   "type": "K-5",
+   "size": 316.0,
+   "floor": 360,
+   "ceiling": 516.0,
+   "short_by": 44.0,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Sunnyside",
+   "type": "K-8",
+   "size": 491.4,
+   "floor": 500,
+   "ceiling": 492.0,
+   "short_by": 8.6,
+   "over_by": 0.0,
+   "program_only": false
+  }
+ ],
+ "solver_slack": {
+  "K-5": [
+   {
+    "Clark:lo": 73.06,
+    "Duniway:lo": 97.9,
+    "Lewis:lo": 122.69,
+    "Maplewood:lo": 160.52,
+    "Markham:lo": 119.55,
+    "Sitton:lo": 86.27,
+    "Skyline:lo": 88.21,
+    "Sunnyside:lo": 9.14,
+    "Vestal:lo": 44.5,
+    "durability_count_short:2027-28": 11,
+    "durability_count_short:2028-29": 10,
+    "durability_count_short:2029-30": 9,
+    "durability_count_short:2030-31": 8,
+    "durability_count_short:2031-32": 8
+   }
+  ],
+  "6-8": [
+   {
+    "Beaumont:lo": 92.7,
+    "George:lo": 202.71,
+    "Hosford:lo": 11.16,
+    "Lane:lo": 382.07,
+    "Ockley Green:lo": 153.99,
+    "Roseway Heights:lo": 39.42,
+    "Sellwood:lo": 348.02,
+    "West Sylvan:lo": 22.35,
+    "durability_count_short:2027-28": 6,
+    "durability_count_short:2028-29": 6,
+    "durability_count_short:2029-30": 5,
+    "durability_count_short:2030-31": 7,
+    "durability_count_short:2031-32": 8
+   }
+  ],
+  "9-12": [
+   {}
+  ]
+ },
+ "feeder_splits_used": {
+  "K-5": [
+   0
+  ],
+  "6-8": [
+   0
+  ],
+  "9-12": [
+   0
+  ]
+ },
+ "exempt_from_floor": [
+  "Astor",
+  "Skyline"
+ ],
+ "note": "Slack is in kids; non-zero slack means no plan with these schools/programs can meet that bound given the candidate sets and contiguity. Program-only buildings have fixed sizes set by the program placement, not by lines."
+}

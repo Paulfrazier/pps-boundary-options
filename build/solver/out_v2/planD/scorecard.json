@@ -1,0 +1,2510 @@
+{
+ "name": "planD",
+ "label": "Plan D (a board member's alternative, per the Oregonian 2026-10-20), as written: Status Quo lines, grade setups and immersion programs; closes Creston, Buckman, Woodmere, Sabin, Irvington, Peninsula",
+ "basis": "2031-32 (PSU forecast; block kids scaled by area, see METHOD.md)",
+ "levels": {
+  "K-5": {
+   "kids": 12555.8,
+   "avg_walk_mi": 0.925,
+   "pct_within_0.5mi": 28.0,
+   "pct_within_1.0mi": 67.8,
+   "pct_within_1.5mi": 87.4,
+   "kids_over_bus_threshold": 4042.0,
+   "bus_threshold_mi": 1.0,
+   "kids_past_closer_school": 2230.0,
+   "past_margin_mi": 0.25,
+   "kids_reassigned_vs_status_quo": 1223.0,
+   "poc_share_of_movers_vs_status_quo": 0.428,
+   "kids_reassigned_vs_today": 1244.0,
+   "poc_share_district": 0.425,
+   "dissimilarity_index": 0.215,
+   "schools_open": 48,
+   "schools_in_range": 16,
+   "schools_evaluated_non_exempt": 46,
+   "schools_in_range_non_exempt": 14,
+   "below_floor": {
+    "Abernethy": 355,
+    "Beach": 287,
+    "Boise-Eliot/Humboldt": 309,
+    "Capitol Hill": 320,
+    "Chapman": 336,
+    "Chief Joseph": 243,
+    "Clark": 343,
+    "Duniway": 348,
+    "Forest Park": 258,
+    "Glencoe": 301,
+    "Grout": 280,
+    "Hayhurst": 266,
+    "James John": 354,
+    "Lee": 254,
+    "Lent": 274,
+    "Lewis": 232,
+    "Llewellyn": 312,
+    "Maplewood": 248,
+    "Markham": 345,
+    "Marysville": 309,
+    "Rieke": 313,
+    "Rigler": 327,
+    "Sitton": 309,
+    "Stephenson": 260,
+    "Vestal": 282,
+    "Woodlawn": 289,
+    "Woodstock": 325,
+    "Bridger": 417,
+    "Cesar Chavez": 392
+   },
+   "above_ceiling": {
+    "Beverly Cleary": 617,
+    "Sunnyside": 600,
+    "Vernon": 566
+   },
+   "avg_utilization": 0.691,
+   "min_size": 177,
+   "max_size": 617,
+   "schools_in_range_2025_26_basis": 21,
+   "schools_in_range_at_minus9pct": 13
+  },
+  "6-8": {
+   "kids": 5830.7,
+   "avg_walk_mi": 1.555,
+   "pct_within_0.5mi": 13.7,
+   "pct_within_1.0mi": 39.9,
+   "pct_within_1.5mi": 60.2,
+   "kids_over_bus_threshold": 2320.0,
+   "bus_threshold_mi": 1.5,
+   "avg_bike_mi": 1.6,
+   "kids_past_closer_school": 1407.0,
+   "past_margin_mi": 0.25,
+   "kids_reassigned_vs_status_quo": 0.0,
+   "poc_share_of_movers_vs_status_quo": 0.0,
+   "kids_reassigned_vs_today": 126.0,
+   "poc_share_district": 0.428,
+   "dissimilarity_index": 0.188,
+   "schools_open": 23,
+   "schools_in_range": 7,
+   "schools_evaluated_non_exempt": 21,
+   "schools_in_range_non_exempt": 5,
+   "below_floor": {
+    "Beaumont": 313,
+    "George": 389,
+    "Gray": 366,
+    "Harrison Park": 417,
+    "Hosford": 375,
+    "Kellogg": 470,
+    "Lane": 357,
+    "Mt Tabor": 350,
+    "Ockley Green": 436,
+    "Sellwood": 351,
+    "Tubman": 374,
+    "Bridger": 417,
+    "Cesar Chavez": 392
+   },
+   "above_ceiling": {
+    "Beverly Cleary": 617,
+    "Sunnyside": 600,
+    "Vernon": 566
+   },
+   "avg_utilization": 0.687,
+   "min_size": 177,
+   "max_size": 622,
+   "schools_in_range_2025_26_basis": 10,
+   "schools_in_range_at_minus9pct": 6,
+   "split_feeders_es_to_ms": {
+    "Arleta": {
+     "Hosford": 69.3,
+     "Kellogg": 76.5
+    },
+    "Beverly Cleary": {
+     "Beverly Cleary": 166.5,
+     "Tubman": 113.9
+    },
+    "Bridlemile": {
+     "Gray": 102.2,
+     "West Sylvan": 51.7
+    },
+    "Lewis": {
+     "Lane": 6.2,
+     "Sellwood": 76.5
+    },
+    "Rosa Parks": {
+     "George": 80.3,
+     "Ockley Green": 98.8
+    },
+    "Sunnyside": {
+     "Hosford": 33.5,
+     "Sunnyside": 85.4
+    },
+    "Vernon": {
+     "Tubman": 43.4,
+     "Vernon": 163.3
+    }
+   },
+   "n_split_feeders_es_to_ms": 7
+  },
+  "9-12": {
+   "kids": 9261.0,
+   "avg_walk_mi": 2.0,
+   "pct_within_0.5mi": 5.7,
+   "pct_within_1.0mi": 23.4,
+   "pct_within_1.5mi": 46.5,
+   "pct_within_2.0mi": 61.2,
+   "kids_over_bus_threshold": 4959.0,
+   "bus_threshold_mi": 1.5,
+   "avg_bike_mi": 2.063,
+   "kids_past_closer_school": 971.0,
+   "past_margin_mi": 0.25,
+   "kids_reassigned_vs_status_quo": 0.0,
+   "poc_share_of_movers_vs_status_quo": 0.0,
+   "kids_reassigned_vs_today": 1181.0,
+   "poc_share_district": 0.426,
+   "dissimilarity_index": 0.173,
+   "schools_open": 8,
+   "schools_in_range": 8,
+   "schools_evaluated_non_exempt": 8,
+   "schools_in_range_non_exempt": 8,
+   "below_floor": {},
+   "above_ceiling": {},
+   "avg_utilization": 0.781,
+   "min_size": 1117,
+   "max_size": 1492,
+   "schools_in_range_2025_26_basis": 6,
+   "schools_in_range_at_minus9pct": 6,
+   "split_feeders_ms_to_hs": {
+    "Harrison Park": {
+     "Franklin": 157.9,
+     "McDaniel": 321.7
+    },
+    "Hosford": {
+     "Cleveland": 486.2,
+     "Franklin": 106.9
+    },
+    "Lane": {
+     "Cleveland": 253.8,
+     "Franklin": 284.6
+    },
+    "Ockley Green": {
+     "Jefferson": 319.6,
+     "Roosevelt": 115.3
+    },
+    "Tubman": {
+     "Grant": 328.0,
+     "Jefferson": 523.7
+    }
+   },
+   "n_split_feeders_ms_to_hs": 5,
+   "split_feeders_es_to_hs": {
+    "Bridlemile": {
+     "Ida B. Wells": 167.8,
+     "Lincoln": 121.3
+    },
+    "Sunnyside": {
+     "Cleveland": 48.8,
+     "Franklin": 82.8
+    },
+    "Vestal": {
+     "Franklin": 28.6,
+     "McDaniel": 131.4
+    },
+    "Whitman": {
+     "Cleveland": 157.4,
+     "Franklin": 129.2
+    },
+    "Woodstock": {
+     "Cleveland": 84.8,
+     "Franklin": 7.5
+    }
+   },
+   "n_split_feeders_es_to_hs": 5,
+   "pct_ms_feeders_to_one_hs": 78.3,
+   "hs_range": 375
+  }
+ },
+ "programs": {
+  "dli_kids_moved_total": 0,
+  "because_building_closes": 0,
+  "because_program_moves": 0,
+  "moves": [],
+  "v2_follow": [],
+  "dli_kids_arriving_2031": 0
+ },
+ "model_v2_notes": [
+  "fix 2: 117 Lent-area non-DLI kids on Lent-area blocks; Marysville area 304 -> 187",
+  "fix 1: Sunnyside K-5: in-zone share 0.452; 160 lottery kids (2025-26) -> host",
+  "fix 1: Sunnyside 6-8: in-zone share 0.452; 106 lottery kids (2025-26) -> host",
+  "fix 1: Bridger K-5: in-zone share 0.321; 208 lottery kids (2025-26) -> host",
+  "fix 1: Bridger 6-8: in-zone share 0.321; 95 lottery kids (2025-26) -> host",
+  "fix 1: Buckman K-5: in-zone share 0.470; 150 lottery kids (2025-26) -> Abernethy 50%, Sunnyside 50%"
+ ],
+ "model_version": "v2",
+ "durability": {
+  "years": [
+   "2027-28",
+   "2028-29",
+   "2029-30",
+   "2030-31",
+   "2031-32",
+   "2032-33",
+   "2033-34",
+   "2034-35",
+   "2035-36"
+  ],
+  "basis": "model v2: every population scaled by its own PSU July 2026 Table 5.5 row by year. Required window 2027-28 to 2031-32 = PPS Family Guide projection years (p. 1, \"Estimates cover 2027-28 through 2031-32\"); 2032-33 to 2035-36 reported only (last year of PSU Table 5.5). No extension past 2035-36.",
+  "levels": {
+   "K-5": {
+    "n_zoned_non_exempt": 44,
+    "at_target_zoned": {
+     "2027-28": 14,
+     "2028-29": 14,
+     "2029-30": 15,
+     "2030-31": 14,
+     "2031-32": 13,
+     "2032-33": 13,
+     "2033-34": 12,
+     "2034-35": 11,
+     "2035-36": 12
+    },
+    "n_program_only": 2,
+    "at_target_program_only": {
+     "2027-28": 1,
+     "2028-29": 1,
+     "2029-30": 1,
+     "2030-31": 1,
+     "2031-32": 1,
+     "2032-33": 1,
+     "2033-34": 1,
+     "2034-35": 1,
+     "2035-36": 1
+    },
+    "schools": {
+     "Abernethy": {
+      "first_year_out": "2027-28",
+      "by": -1.5,
+      "sizes_by_year": {
+       "2027-28": 358.5,
+       "2028-29": 359.0,
+       "2029-30": 365.4,
+       "2030-31": 361.4,
+       "2031-32": 355.1,
+       "2032-33": 348.2,
+       "2033-34": 342.3,
+       "2034-35": 332.4,
+       "2035-36": 329.0
+      },
+      "program_only": false,
+      "size_2031": 355.1,
+      "in_range_by_year": [
+       false,
+       false,
+       true,
+       true,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Ainsworth": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 555.0,
+       "2028-29": 568.0,
+       "2029-30": 551.0,
+       "2030-31": 551.0,
+       "2031-32": 557.0,
+       "2032-33": 550.0,
+       "2033-34": 540.0,
+       "2034-35": 527.0,
+       "2035-36": 516.0
+      },
+      "program_only": false,
+      "size_2031": 557.0,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Alameda": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 495.7,
+       "2028-29": 500.7,
+       "2029-30": 504.6,
+       "2030-31": 499.7,
+       "2031-32": 489.7,
+       "2032-33": 483.7,
+       "2033-34": 473.8,
+       "2034-35": 462.8,
+       "2035-36": 458.9
+      },
+      "program_only": false,
+      "size_2031": 489.7,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Arleta": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 419.7,
+       "2028-29": 410.4,
+       "2029-30": 406.3,
+       "2030-31": 409.3,
+       "2031-32": 402.3,
+       "2032-33": 397.1,
+       "2033-34": 388.9,
+       "2034-35": 378.8,
+       "2035-36": 374.7
+      },
+      "program_only": false,
+      "size_2031": 402.3,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Atkinson": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 363.0,
+       "2028-29": 375.0,
+       "2029-30": 378.0,
+       "2030-31": 386.0,
+       "2031-32": 386.0,
+       "2032-33": 389.0,
+       "2033-34": 384.0,
+       "2034-35": 370.0,
+       "2035-36": 364.0
+      },
+      "program_only": false,
+      "size_2031": 386.0,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Beach": {
+      "first_year_out": "2027-28",
+      "by": -75.8,
+      "sizes_by_year": {
+       "2027-28": 284.2,
+       "2028-29": 288.2,
+       "2029-30": 291.3,
+       "2030-31": 297.2,
+       "2031-32": 287.2,
+       "2032-33": 278.2,
+       "2033-34": 269.2,
+       "2034-35": 260.2,
+       "2035-36": 253.2
+      },
+      "program_only": false,
+      "size_2031": 287.2,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Boise-Eliot/Humboldt": {
+      "first_year_out": "2027-28",
+      "by": -44.9,
+      "sizes_by_year": {
+       "2027-28": 315.1,
+       "2028-29": 334.1,
+       "2029-30": 325.1,
+       "2030-31": 323.1,
+       "2031-32": 309.0,
+       "2032-33": 293.0,
+       "2033-34": 279.9,
+       "2034-35": 267.9,
+       "2035-36": 265.9
+      },
+      "program_only": false,
+      "size_2031": 309.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Bridlemile": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 412.6,
+       "2028-29": 407.6,
+       "2029-30": 407.6,
+       "2030-31": 415.6,
+       "2031-32": 406.7,
+       "2032-33": 403.7,
+       "2033-34": 397.7,
+       "2034-35": 389.7,
+       "2035-36": 384.7
+      },
+      "program_only": false,
+      "size_2031": 406.7,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Capitol Hill": {
+      "first_year_out": "2027-28",
+      "by": -41.3,
+      "sizes_by_year": {
+       "2027-28": 318.7,
+       "2028-29": 309.8,
+       "2029-30": 314.8,
+       "2030-31": 328.1,
+       "2031-32": 320.0,
+       "2032-33": 316.8,
+       "2033-34": 309.6,
+       "2034-35": 300.2,
+       "2035-36": 294.1
+      },
+      "program_only": false,
+      "size_2031": 320.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Chapman": {
+      "first_year_out": "2027-28",
+      "by": -41.1,
+      "sizes_by_year": {
+       "2027-28": 318.9,
+       "2028-29": 341.1,
+       "2029-30": 336.0,
+       "2030-31": 326.9,
+       "2031-32": 336.0,
+       "2032-33": 330.0,
+       "2033-34": 320.9,
+       "2034-35": 302.7,
+       "2035-36": 297.7
+      },
+      "program_only": false,
+      "size_2031": 336.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Chief Joseph": {
+      "first_year_out": "2027-28",
+      "by": -109.9,
+      "sizes_by_year": {
+       "2027-28": 250.1,
+       "2028-29": 253.1,
+       "2029-30": 245.0,
+       "2030-31": 238.8,
+       "2031-32": 242.9,
+       "2032-33": 238.8,
+       "2033-34": 233.7,
+       "2034-35": 228.6,
+       "2035-36": 225.6
+      },
+      "program_only": false,
+      "size_2031": 242.9,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Clark": {
+      "first_year_out": "2027-28",
+      "by": -0.0,
+      "sizes_by_year": {
+       "2027-28": 360.0,
+       "2028-29": 355.0,
+       "2029-30": 356.0,
+       "2030-31": 350.0,
+       "2031-32": 343.0,
+       "2032-33": 338.0,
+       "2033-34": 333.0,
+       "2034-35": 326.0,
+       "2035-36": 323.0
+      },
+      "program_only": false,
+      "size_2031": 343.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Duniway": {
+      "first_year_out": "2027-28",
+      "by": -19.2,
+      "sizes_by_year": {
+       "2027-28": 340.8,
+       "2028-29": 349.6,
+       "2029-30": 346.7,
+       "2030-31": 350.6,
+       "2031-32": 347.5,
+       "2032-33": 342.5,
+       "2033-34": 339.4,
+       "2034-35": 331.4,
+       "2035-36": 327.3
+      },
+      "program_only": false,
+      "size_2031": 347.5,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Forest Park": {
+      "first_year_out": "2027-28",
+      "by": -100.0,
+      "sizes_by_year": {
+       "2027-28": 260.0,
+       "2028-29": 260.0,
+       "2029-30": 257.0,
+       "2030-31": 252.0,
+       "2031-32": 258.0,
+       "2032-33": 253.0,
+       "2033-34": 251.0,
+       "2034-35": 246.0,
+       "2035-36": 243.0
+      },
+      "program_only": false,
+      "size_2031": 258.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Glencoe": {
+      "first_year_out": "2027-28",
+      "by": -43.8,
+      "sizes_by_year": {
+       "2027-28": 316.2,
+       "2028-29": 297.0,
+       "2029-30": 299.8,
+       "2030-31": 305.8,
+       "2031-32": 300.6,
+       "2032-33": 294.6,
+       "2033-34": 287.4,
+       "2034-35": 278.3,
+       "2035-36": 273.2
+      },
+      "program_only": false,
+      "size_2031": 300.6,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Grout": {
+      "first_year_out": "2027-28",
+      "by": -57.0,
+      "sizes_by_year": {
+       "2027-28": 303.0,
+       "2028-29": 300.0,
+       "2029-30": 297.0,
+       "2030-31": 285.0,
+       "2031-32": 280.0,
+       "2032-33": 275.0,
+       "2033-34": 267.0,
+       "2034-35": 260.0,
+       "2035-36": 255.0
+      },
+      "program_only": false,
+      "size_2031": 280.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Hayhurst": {
+      "first_year_out": "2027-28",
+      "by": -86.0,
+      "sizes_by_year": {
+       "2027-28": 274.0,
+       "2028-29": 270.0,
+       "2029-30": 266.0,
+       "2030-31": 263.0,
+       "2031-32": 266.0,
+       "2032-33": 264.0,
+       "2033-34": 262.0,
+       "2034-35": 256.0,
+       "2035-36": 252.0
+      },
+      "program_only": false,
+      "size_2031": 266.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "James John": {
+      "first_year_out": "2030-31",
+      "by": -3.9,
+      "sizes_by_year": {
+       "2027-28": 361.1,
+       "2028-29": 368.0,
+       "2029-30": 371.1,
+       "2030-31": 356.1,
+       "2031-32": 354.1,
+       "2032-33": 350.1,
+       "2033-34": 342.0,
+       "2034-35": 335.0,
+       "2035-36": 329.9
+      },
+      "program_only": false,
+      "size_2031": 354.1,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Kelly": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 402.0,
+       "2028-29": 402.0,
+       "2029-30": 403.0,
+       "2030-31": 394.0,
+       "2031-32": 391.0,
+       "2032-33": 388.0,
+       "2033-34": 382.0,
+       "2034-35": 374.0,
+       "2035-36": 372.0
+      },
+      "program_only": false,
+      "size_2031": 391.0,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Lee": {
+      "first_year_out": "2027-28",
+      "by": -115.0,
+      "sizes_by_year": {
+       "2027-28": 245.0,
+       "2028-29": 249.0,
+       "2029-30": 239.0,
+       "2030-31": 252.0,
+       "2031-32": 254.0,
+       "2032-33": 252.0,
+       "2033-34": 250.0,
+       "2034-35": 243.0,
+       "2035-36": 239.0
+      },
+      "program_only": false,
+      "size_2031": 254.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Lent": {
+      "first_year_out": "2027-28",
+      "by": -104.0,
+      "sizes_by_year": {
+       "2027-28": 256.0,
+       "2028-29": 268.0,
+       "2029-30": 271.0,
+       "2030-31": 283.0,
+       "2031-32": 274.0,
+       "2032-33": 270.0,
+       "2033-34": 265.0,
+       "2034-35": 254.0,
+       "2035-36": 249.0
+      },
+      "program_only": true,
+      "size_2031": 274.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Lewis": {
+      "first_year_out": "2027-28",
+      "by": -104.9,
+      "sizes_by_year": {
+       "2027-28": 255.1,
+       "2028-29": 236.8,
+       "2029-30": 244.0,
+       "2030-31": 232.1,
+       "2031-32": 232.2,
+       "2032-33": 227.7,
+       "2033-34": 222.0,
+       "2034-35": 217.0,
+       "2035-36": 212.8
+      },
+      "program_only": false,
+      "size_2031": 232.2,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Llewellyn": {
+      "first_year_out": "2027-28",
+      "by": -48.0,
+      "sizes_by_year": {
+       "2027-28": 312.0,
+       "2028-29": 303.0,
+       "2029-30": 313.0,
+       "2030-31": 316.0,
+       "2031-32": 312.0,
+       "2032-33": 310.0,
+       "2033-34": 304.0,
+       "2034-35": 297.0,
+       "2035-36": 291.0
+      },
+      "program_only": false,
+      "size_2031": 312.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "MLK Jr": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 459.2,
+       "2028-29": 471.4,
+       "2029-30": 470.2,
+       "2030-31": 471.1,
+       "2031-32": 458.6,
+       "2032-33": 450.1,
+       "2033-34": 438.5,
+       "2034-35": 422.4,
+       "2035-36": 416.9
+      },
+      "program_only": false,
+      "size_2031": 458.6,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Maplewood": {
+      "first_year_out": "2027-28",
+      "by": -81.0,
+      "sizes_by_year": {
+       "2027-28": 279.0,
+       "2028-29": 265.9,
+       "2029-30": 258.9,
+       "2030-31": 261.9,
+       "2031-32": 247.9,
+       "2032-33": 245.9,
+       "2033-34": 240.8,
+       "2034-35": 235.8,
+       "2035-36": 231.8
+      },
+      "program_only": false,
+      "size_2031": 247.9,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Markham": {
+      "first_year_out": "2027-28",
+      "by": -50.2,
+      "sizes_by_year": {
+       "2027-28": 309.8,
+       "2028-29": 337.6,
+       "2029-30": 344.5,
+       "2030-31": 350.5,
+       "2031-32": 344.5,
+       "2032-33": 336.6,
+       "2033-34": 326.7,
+       "2034-35": 312.8,
+       "2035-36": 306.8
+      },
+      "program_only": false,
+      "size_2031": 344.5,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Marysville": {
+      "first_year_out": "2027-28",
+      "by": -62.9,
+      "sizes_by_year": {
+       "2027-28": 297.1,
+       "2028-29": 305.0,
+       "2029-30": 313.9,
+       "2030-31": 313.9,
+       "2031-32": 309.0,
+       "2032-33": 303.0,
+       "2033-34": 294.1,
+       "2034-35": 284.2,
+       "2035-36": 276.3
+      },
+      "program_only": false,
+      "size_2031": 309.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Richmond": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 504.0,
+       "2028-29": 502.0,
+       "2029-30": 506.0,
+       "2030-31": 498.0,
+       "2031-32": 497.0,
+       "2032-33": 493.0,
+       "2033-34": 489.0,
+       "2034-35": 484.0,
+       "2035-36": 478.0
+      },
+      "program_only": true,
+      "size_2031": 497.0,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Rieke": {
+      "first_year_out": "2027-28",
+      "by": -105.9,
+      "sizes_by_year": {
+       "2027-28": 254.1,
+       "2028-29": 298.2,
+       "2029-30": 316.3,
+       "2030-31": 319.3,
+       "2031-32": 313.3,
+       "2032-33": 300.2,
+       "2033-34": 284.2,
+       "2034-35": 258.1,
+       "2035-36": 250.0
+      },
+      "program_only": false,
+      "size_2031": 313.3,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Rigler": {
+      "first_year_out": "2027-28",
+      "by": -47.8,
+      "sizes_by_year": {
+       "2027-28": 312.2,
+       "2028-29": 335.6,
+       "2029-30": 332.6,
+       "2030-31": 326.4,
+       "2031-32": 327.5,
+       "2032-33": 322.4,
+       "2033-34": 316.2,
+       "2034-35": 308.1,
+       "2035-36": 304.0
+      },
+      "program_only": false,
+      "size_2031": 327.5,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Rosa Parks": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 409.0,
+       "2028-29": 414.0,
+       "2029-30": 404.0,
+       "2030-31": 400.0,
+       "2031-32": 404.0,
+       "2032-33": 403.0,
+       "2033-34": 394.0,
+       "2034-35": 383.0,
+       "2035-36": 376.0
+      },
+      "program_only": false,
+      "size_2031": 404.0,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Rose City Park": {
+      "first_year_out": "2033-34",
+      "by": -1.0,
+      "sizes_by_year": {
+       "2027-28": 391.0,
+       "2028-29": 366.0,
+       "2029-30": 368.0,
+       "2030-31": 364.0,
+       "2031-32": 370.0,
+       "2032-33": 365.0,
+       "2033-34": 359.0,
+       "2034-35": 349.0,
+       "2035-36": 345.0
+      },
+      "program_only": false,
+      "size_2031": 370.0,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": false
+     },
+     "Scott": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 500.0,
+       "2028-29": 490.0,
+       "2029-30": 485.0,
+       "2030-31": 476.0,
+       "2031-32": 470.0,
+       "2032-33": 456.0,
+       "2033-34": 447.0,
+       "2034-35": 431.0,
+       "2035-36": 424.0
+      },
+      "program_only": false,
+      "size_2031": 470.0,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Sitton": {
+      "first_year_out": "2027-28",
+      "by": -29.4,
+      "sizes_by_year": {
+       "2027-28": 330.6,
+       "2028-29": 316.7,
+       "2029-30": 314.7,
+       "2030-31": 312.6,
+       "2031-32": 308.7,
+       "2032-33": 305.7,
+       "2033-34": 298.7,
+       "2034-35": 288.8,
+       "2035-36": 283.8
+      },
+      "program_only": false,
+      "size_2031": 308.7,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Stephenson": {
+      "first_year_out": "2027-28",
+      "by": -90.5,
+      "sizes_by_year": {
+       "2027-28": 269.5,
+       "2028-29": 262.7,
+       "2029-30": 249.8,
+       "2030-31": 258.8,
+       "2031-32": 259.7,
+       "2032-33": 255.7,
+       "2033-34": 251.7,
+       "2034-35": 245.8,
+       "2035-36": 240.8
+      },
+      "program_only": false,
+      "size_2031": 259.7,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Vestal": {
+      "first_year_out": "2027-28",
+      "by": -62.9,
+      "sizes_by_year": {
+       "2027-28": 297.1,
+       "2028-29": 293.1,
+       "2029-30": 295.1,
+       "2030-31": 290.0,
+       "2031-32": 282.0,
+       "2032-33": 280.9,
+       "2033-34": 272.9,
+       "2034-35": 269.8,
+       "2035-36": 264.8
+      },
+      "program_only": false,
+      "size_2031": 282.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Whitman": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 395.6,
+       "2028-29": 404.9,
+       "2029-30": 406.7,
+       "2030-31": 406.6,
+       "2031-32": 414.4,
+       "2032-33": 414.0,
+       "2033-34": 408.7,
+       "2034-35": 396.7,
+       "2035-36": 385.0
+      },
+      "program_only": false,
+      "size_2031": 414.4,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Woodlawn": {
+      "first_year_out": "2027-28",
+      "by": -60.0,
+      "sizes_by_year": {
+       "2027-28": 300.0,
+       "2028-29": 315.0,
+       "2029-30": 298.0,
+       "2030-31": 291.0,
+       "2031-32": 289.0,
+       "2032-33": 283.0,
+       "2033-34": 279.0,
+       "2034-35": 270.0,
+       "2035-36": 265.0
+      },
+      "program_only": false,
+      "size_2031": 289.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Woodstock": {
+      "first_year_out": "2027-28",
+      "by": -18.0,
+      "sizes_by_year": {
+       "2027-28": 342.0,
+       "2028-29": 344.0,
+       "2029-30": 337.0,
+       "2030-31": 336.0,
+       "2031-32": 325.0,
+       "2032-33": 319.0,
+       "2033-34": 309.0,
+       "2034-35": 303.0,
+       "2035-36": 301.0
+      },
+      "program_only": false,
+      "size_2031": 325.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Beverly Cleary": {
+      "first_year_out": "2027-28",
+      "by": 144.6,
+      "sizes_by_year": {
+       "2027-28": 675.6,
+       "2028-29": 653.5,
+       "2029-30": 641.5,
+       "2030-31": 623.4,
+       "2031-32": 617.4,
+       "2032-33": 619.4,
+       "2033-34": 602.3,
+       "2034-35": 595.2,
+       "2035-36": 589.2
+      },
+      "program_only": false,
+      "size_2031": 617.4,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Bridger": {
+      "first_year_out": "2027-28",
+      "by": -47.4,
+      "sizes_by_year": {
+       "2027-28": 452.6,
+       "2028-29": 446.8,
+       "2029-30": 442.5,
+       "2030-31": 423.3,
+       "2031-32": 417.0,
+       "2032-33": 420.0,
+       "2033-34": 420.2,
+       "2034-35": 413.2,
+       "2035-36": 405.2
+      },
+      "program_only": false,
+      "size_2031": 417.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Cesar Chavez": {
+      "first_year_out": "2027-28",
+      "by": -86.7,
+      "sizes_by_year": {
+       "2027-28": 413.3,
+       "2028-29": 403.3,
+       "2029-30": 404.3,
+       "2030-31": 405.3,
+       "2031-32": 392.3,
+       "2032-33": 387.3,
+       "2033-34": 386.3,
+       "2034-35": 380.3,
+       "2035-36": 376.3
+      },
+      "program_only": false,
+      "size_2031": 392.3,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Faubion": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 619.3,
+       "2028-29": 607.2,
+       "2029-30": 607.2,
+       "2030-31": 607.2,
+       "2031-32": 603.3,
+       "2032-33": 590.3,
+       "2033-34": 584.3,
+       "2034-35": 573.3,
+       "2035-36": 559.3
+      },
+      "program_only": false,
+      "size_2031": 603.3,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Laurelhurst": {
+      "first_year_out": "2034-35",
+      "by": -6.5,
+      "sizes_by_year": {
+       "2027-28": 610.0,
+       "2028-29": 590.0,
+       "2029-30": 562.8,
+       "2030-31": 544.6,
+       "2031-32": 527.3,
+       "2032-33": 518.3,
+       "2033-34": 500.4,
+       "2034-35": 493.5,
+       "2035-36": 473.4
+      },
+      "program_only": false,
+      "size_2031": 527.3,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       false,
+       false
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": false
+     },
+     "Sunnyside": {
+      "first_year_out": "2027-28",
+      "by": 119.5,
+      "sizes_by_year": {
+       "2027-28": 611.5,
+       "2028-29": 609.0,
+       "2029-30": 603.6,
+       "2030-31": 606.6,
+       "2031-32": 599.9,
+       "2032-33": 604.8,
+       "2033-34": 605.7,
+       "2034-35": 594.6,
+       "2035-36": 592.0
+      },
+      "program_only": false,
+      "size_2031": 599.9,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Vernon": {
+      "first_year_out": "2027-28",
+      "by": 52.9,
+      "sizes_by_year": {
+       "2027-28": 604.9,
+       "2028-29": 606.8,
+       "2029-30": 591.9,
+       "2030-31": 575.0,
+       "2031-32": 565.6,
+       "2032-33": 559.1,
+       "2033-34": 553.7,
+       "2034-35": 553.7,
+       "2035-36": 549.3
+      },
+      "program_only": false,
+      "size_2031": 565.6,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       true
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     }
+    },
+    "at_target_all_required_years": 13,
+    "at_target_all_years_to_2035_36": 11
+   },
+   "6-8": {
+    "n_zoned_non_exempt": 14,
+    "at_target_zoned": {
+     "2027-28": 5,
+     "2028-29": 3,
+     "2029-30": 3,
+     "2030-31": 3,
+     "2031-32": 3,
+     "2032-33": 3,
+     "2033-34": 4,
+     "2034-35": 4,
+     "2035-36": 4
+    },
+    "n_program_only": 0,
+    "at_target_program_only": {
+     "2027-28": 0,
+     "2028-29": 0,
+     "2029-30": 0,
+     "2030-31": 0,
+     "2031-32": 0,
+     "2032-33": 0,
+     "2033-34": 0,
+     "2034-35": 0,
+     "2035-36": 0
+    },
+    "schools": {
+     "Beaumont": {
+      "first_year_out": "2027-28",
+      "by": -203.1,
+      "sizes_by_year": {
+       "2027-28": 296.9,
+       "2028-29": 281.1,
+       "2029-30": 288.7,
+       "2030-31": 291.7,
+       "2031-32": 313.2,
+       "2032-33": 316.5,
+       "2033-34": 320.7,
+       "2034-35": 327.9,
+       "2035-36": 323.2
+      },
+      "program_only": false,
+      "size_2031": 313.2,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "George": {
+      "first_year_out": "2027-28",
+      "by": -109.7,
+      "sizes_by_year": {
+       "2027-28": 390.3,
+       "2028-29": 404.2,
+       "2029-30": 401.3,
+       "2030-31": 395.3,
+       "2031-32": 389.3,
+       "2032-33": 386.3,
+       "2033-34": 379.3,
+       "2034-35": 384.3,
+       "2035-36": 387.3
+      },
+      "program_only": false,
+      "size_2031": 389.3,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Gray": {
+      "first_year_out": "2027-28",
+      "by": -75.4,
+      "sizes_by_year": {
+       "2027-28": 424.6,
+       "2028-29": 409.6,
+       "2029-30": 400.8,
+       "2030-31": 374.1,
+       "2031-32": 366.0,
+       "2032-33": 357.0,
+       "2033-34": 376.7,
+       "2034-35": 393.7,
+       "2035-36": 395.7
+      },
+      "program_only": false,
+      "size_2031": 366.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Harrison Park": {
+      "first_year_out": "2027-28",
+      "by": -73.1,
+      "sizes_by_year": {
+       "2027-28": 426.9,
+       "2028-29": 415.9,
+       "2029-30": 418.9,
+       "2030-31": 399.9,
+       "2031-32": 416.9,
+       "2032-33": 408.9,
+       "2033-34": 433.9,
+       "2034-35": 433.9,
+       "2035-36": 436.9
+      },
+      "program_only": false,
+      "size_2031": 416.9,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Hosford": {
+      "first_year_out": "2027-28",
+      "by": -16.3,
+      "sizes_by_year": {
+       "2027-28": 483.7,
+       "2028-29": 446.6,
+       "2029-30": 391.4,
+       "2030-31": 376.3,
+       "2031-32": 375.3,
+       "2032-33": 377.3,
+       "2033-34": 372.4,
+       "2034-35": 372.4,
+       "2035-36": 371.5
+      },
+      "program_only": false,
+      "size_2031": 375.3,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Jackson": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 660.4,
+       "2028-29": 658.3,
+       "2029-30": 622.4,
+       "2030-31": 548.5,
+       "2031-32": 514.5,
+       "2032-33": 512.5,
+       "2033-34": 544.5,
+       "2034-35": 548.5,
+       "2035-36": 543.5
+      },
+      "program_only": false,
+      "size_2031": 514.5,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Kellogg": {
+      "first_year_out": "2028-29",
+      "by": -7.8,
+      "sizes_by_year": {
+       "2027-28": 512.1,
+       "2028-29": 492.2,
+       "2029-30": 469.3,
+       "2030-31": 449.4,
+       "2031-32": 470.4,
+       "2032-33": 481.3,
+       "2033-34": 505.3,
+       "2034-35": 524.2,
+       "2035-36": 531.2
+      },
+      "program_only": false,
+      "size_2031": 470.4,
+      "in_range_by_year": [
+       true,
+       false,
+       false,
+       false,
+       false,
+       false,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Lane": {
+      "first_year_out": "2027-28",
+      "by": -83.1,
+      "sizes_by_year": {
+       "2027-28": 416.9,
+       "2028-29": 401.9,
+       "2029-30": 392.9,
+       "2030-31": 371.9,
+       "2031-32": 356.9,
+       "2032-33": 351.9,
+       "2033-34": 351.9,
+       "2034-35": 369.9,
+       "2035-36": 371.9
+      },
+      "program_only": false,
+      "size_2031": 356.9,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Mt Tabor": {
+      "first_year_out": "2027-28",
+      "by": -99.5,
+      "sizes_by_year": {
+       "2027-28": 400.5,
+       "2028-29": 405.3,
+       "2029-30": 380.8,
+       "2030-31": 369.3,
+       "2031-32": 349.9,
+       "2032-33": 354.8,
+       "2033-34": 360.4,
+       "2034-35": 361.4,
+       "2035-36": 366.4
+      },
+      "program_only": false,
+      "size_2031": 349.9,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Ockley Green": {
+      "first_year_out": "2027-28",
+      "by": -58.1,
+      "sizes_by_year": {
+       "2027-28": 441.9,
+       "2028-29": 405.0,
+       "2029-30": 439.9,
+       "2030-31": 422.9,
+       "2031-32": 435.9,
+       "2032-33": 419.9,
+       "2033-34": 434.9,
+       "2034-35": 443.8,
+       "2035-36": 444.8
+      },
+      "program_only": false,
+      "size_2031": 435.9,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Roseway Heights": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 665.3,
+       "2028-29": 648.1,
+       "2029-30": 654.6,
+       "2030-31": 631.6,
+       "2031-32": 601.1,
+       "2032-33": 600.8,
+       "2033-34": 620.5,
+       "2034-35": 645.3,
+       "2035-36": 637.0
+      },
+      "program_only": false,
+      "size_2031": 601.1,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Sellwood": {
+      "first_year_out": "2028-29",
+      "by": -14.3,
+      "sizes_by_year": {
+       "2027-28": 524.9,
+       "2028-29": 485.7,
+       "2029-30": 440.6,
+       "2030-31": 383.4,
+       "2031-32": 351.2,
+       "2032-33": 363.3,
+       "2033-34": 365.3,
+       "2034-35": 381.3,
+       "2035-36": 381.3
+      },
+      "program_only": false,
+      "size_2031": 351.2,
+      "in_range_by_year": [
+       true,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Tubman": {
+      "first_year_out": "2027-28",
+      "by": -43.0,
+      "sizes_by_year": {
+       "2027-28": 457.0,
+       "2028-29": 414.0,
+       "2029-30": 389.0,
+       "2030-31": 368.0,
+       "2031-32": 374.0,
+       "2032-33": 377.0,
+       "2033-34": 386.0,
+       "2034-35": 391.0,
+       "2035-36": 381.0
+      },
+      "program_only": false,
+      "size_2031": 374.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "West Sylvan": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 689.1,
+       "2028-29": 649.1,
+       "2029-30": 671.9,
+       "2030-31": 646.6,
+       "2031-32": 621.7,
+       "2032-33": 596.8,
+       "2033-34": 602.0,
+       "2034-35": 647.0,
+       "2035-36": 651.0
+      },
+      "program_only": false,
+      "size_2031": 621.7,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     }
+    },
+    "at_target_all_required_years": 3,
+    "at_target_all_years_to_2035_36": 3
+   },
+   "9-12": {
+    "n_zoned_non_exempt": 8,
+    "at_target_zoned": {
+     "2027-28": 6,
+     "2028-29": 7,
+     "2029-30": 7,
+     "2030-31": 8,
+     "2031-32": 8,
+     "2032-33": 7,
+     "2033-34": 7,
+     "2034-35": 7,
+     "2035-36": 7
+    },
+    "n_program_only": 0,
+    "at_target_program_only": {
+     "2027-28": 0,
+     "2028-29": 0,
+     "2029-30": 0,
+     "2030-31": 0,
+     "2031-32": 0,
+     "2032-33": 0,
+     "2033-34": 0,
+     "2034-35": 0,
+     "2035-36": 0
+    },
+    "schools": {
+     "Cleveland": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 1460.0,
+       "2028-29": 1467.0,
+       "2029-30": 1419.0,
+       "2030-31": 1403.0,
+       "2031-32": 1318.0,
+       "2032-33": 1231.0,
+       "2033-34": 1179.0,
+       "2034-35": 1139.0,
+       "2035-36": 1127.0
+      },
+      "program_only": false,
+      "size_2031": 1318.0,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Franklin": {
+      "first_year_out": "2027-28",
+      "by": 19.0,
+      "sizes_by_year": {
+       "2027-28": 1689.0,
+       "2028-29": 1607.0,
+       "2029-30": 1567.0,
+       "2030-31": 1530.0,
+       "2031-32": 1492.0,
+       "2032-33": 1424.0,
+       "2033-34": 1338.0,
+       "2034-35": 1296.0,
+       "2035-36": 1276.0
+      },
+      "program_only": false,
+      "size_2031": 1492.0,
+      "in_range_by_year": [
+       false,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Grant": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 1935.0,
+       "2028-29": 1822.0,
+       "2029-30": 1713.0,
+       "2030-31": 1576.0,
+       "2031-32": 1487.0,
+       "2032-33": 1394.0,
+       "2033-34": 1332.0,
+       "2034-35": 1263.0,
+       "2035-36": 1237.0
+      },
+      "program_only": false,
+      "size_2031": 1487.0,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Ida B. Wells": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 1524.0,
+       "2028-29": 1513.0,
+       "2029-30": 1486.0,
+       "2030-31": 1488.0,
+       "2031-32": 1457.0,
+       "2032-33": 1400.0,
+       "2033-34": 1308.0,
+       "2034-35": 1266.0,
+       "2035-36": 1222.0
+      },
+      "program_only": false,
+      "size_2031": 1457.0,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Jefferson": {
+      "first_year_out": "2027-28",
+      "by": -536.0,
+      "sizes_by_year": {
+       "2027-28": 564.0,
+       "2028-29": 805.0,
+       "2029-30": 981.0,
+       "2030-31": 1158.0,
+       "2031-32": 1183.0,
+       "2032-33": 1178.0,
+       "2033-34": 1173.0,
+       "2034-35": 1159.0,
+       "2035-36": 1175.0
+      },
+      "program_only": false,
+      "size_2031": 1183.0,
+      "in_range_by_year": [
+       false,
+       false,
+       false,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": false,
+      "in_range_all_years": false
+     },
+     "Lincoln": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 1598.0,
+       "2028-29": 1589.0,
+       "2029-30": 1506.0,
+       "2030-31": 1442.0,
+       "2031-32": 1411.0,
+       "2032-33": 1352.0,
+       "2033-34": 1297.0,
+       "2034-35": 1230.0,
+       "2035-36": 1206.0
+      },
+      "program_only": false,
+      "size_2031": 1411.0,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "McDaniel": {
+      "first_year_out": null,
+      "by": null,
+      "sizes_by_year": {
+       "2027-28": 1528.0,
+       "2028-29": 1476.0,
+       "2029-30": 1346.0,
+       "2030-31": 1292.0,
+       "2031-32": 1261.0,
+       "2032-33": 1220.0,
+       "2033-34": 1199.0,
+       "2034-35": 1167.0,
+       "2035-36": 1157.0
+      },
+      "program_only": false,
+      "size_2031": 1261.0,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true,
+       true
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": true
+     },
+     "Roosevelt": {
+      "first_year_out": "2032-33",
+      "by": -27.0,
+      "sizes_by_year": {
+       "2027-28": 1312.0,
+       "2028-29": 1250.0,
+       "2029-30": 1179.0,
+       "2030-31": 1164.0,
+       "2031-32": 1117.0,
+       "2032-33": 1073.0,
+       "2033-34": 1068.0,
+       "2034-35": 1038.0,
+       "2035-36": 1025.0
+      },
+      "program_only": false,
+      "size_2031": 1117.0,
+      "in_range_by_year": [
+       true,
+       true,
+       true,
+       true,
+       true,
+       false,
+       false,
+       false,
+       false
+      ],
+      "in_range_all_required_years": true,
+      "in_range_all_years": false
+     }
+    },
+    "at_target_all_required_years": 6,
+    "at_target_all_years_to_2035_36": 5
+   }
+  },
+  "horizon": "pps2031",
+  "required_years": [
+   "2027-28",
+   "2028-29",
+   "2029-30",
+   "2030-31",
+   "2031-32"
+  ],
+  "reported_years": [
+   "2032-33",
+   "2033-34",
+   "2034-35",
+   "2035-36"
+  ],
+  "reference": {
+   "reference": "scenario_A",
+   "levels": {
+    "K-5": {
+     "at_target_zoned": {
+      "2027-28": 23,
+      "2028-29": 23,
+      "2029-30": 22,
+      "2030-31": 22,
+      "2031-32": 21,
+      "2032-33": 21,
+      "2033-34": 21,
+      "2034-35": 19,
+      "2035-36": 18
+     },
+     "at_target_all_required_years": 21
+    },
+    "6-8": {
+     "at_target_zoned": {
+      "2027-28": 9,
+      "2028-29": 10,
+      "2029-30": 9,
+      "2030-31": 7,
+      "2031-32": 7,
+      "2032-33": 7,
+      "2033-34": 7,
+      "2034-35": 8,
+      "2035-36": 8
+     },
+     "at_target_all_required_years": 6
+    },
+    "9-12": {
+     "at_target_zoned": {
+      "2027-28": 5,
+      "2028-29": 7,
+      "2029-30": 7,
+      "2030-31": 8,
+      "2031-32": 8,
+      "2032-33": 8,
+      "2033-34": 8,
+      "2034-35": 7,
+      "2035-36": 7
+     },
+     "at_target_all_required_years": 5
+    }
+   },
+   "short_in_required_years": [
+    {
+     "level": "K-5",
+     "year": "2027-28",
+     "plan": 14,
+     "reference": 23
+    },
+    {
+     "level": "K-5",
+     "year": "2028-29",
+     "plan": 14,
+     "reference": 23
+    },
+    {
+     "level": "K-5",
+     "year": "2029-30",
+     "plan": 15,
+     "reference": 22
+    },
+    {
+     "level": "K-5",
+     "year": "2030-31",
+     "plan": 14,
+     "reference": 22
+    },
+    {
+     "level": "K-5",
+     "year": "2031-32",
+     "plan": 13,
+     "reference": 21
+    },
+    {
+     "level": "6-8",
+     "year": "2027-28",
+     "plan": 5,
+     "reference": 9
+    },
+    {
+     "level": "6-8",
+     "year": "2028-29",
+     "plan": 3,
+     "reference": 10
+    },
+    {
+     "level": "6-8",
+     "year": "2029-30",
+     "plan": 3,
+     "reference": 9
+    },
+    {
+     "level": "6-8",
+     "year": "2030-31",
+     "plan": 3,
+     "reference": 7
+    },
+    {
+     "level": "6-8",
+     "year": "2031-32",
+     "plan": 3,
+     "reference": 7
+    }
+   ],
+   "meets_reference_every_required_year": false
+  }
+ },
+ "split_feeder_rule": "a destination counts if it gets >=5% of the feeder's kids and >=5 kids"
+}
