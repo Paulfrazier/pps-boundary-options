@@ -178,6 +178,8 @@ function mapChoices(){return P.filter(function(p){return p.on_map&&p.run!==BASE.
 function mapDefault(){var c=mapChoices().map(function(p){return p.run;});for(var i=0;i<MAP_DEF.length;i++)if(c.indexOf(MAP_DEF[i])>=0)return MAP_DEF[i];return c[0]||null;}
 function mapHash(fit){var h=st.map?'view=swipe&a='+encodeURIComponent(BASE.run)+'&b='+encodeURIComponent(st.map):'view=single&plan='+encodeURIComponent(BASE.run);
   h+='&school='+encodeURIComponent(st.area);return fit?h+'&fit='+encodeURIComponent(FIT).replace(/%2C/g,','):h;}
+// the embedded map reports its height, so the iframe fits it and never scrolls inside itself
+window.addEventListener('message',function(e){var f=document.getElementById('smap');if(f&&e.source===f.contentWindow&&e.data&&e.data.ppsMapH>0)f.style.height=Math.min(e.data.ppsMapH,6000)+'px';});
 function setMap(){var f=document.getElementById('smap');if(!f)return;
   document.getElementById('fullmap').href='map.html#'+mapHash(true);
   try{if(f.contentWindow&&f.contentWindow.location.pathname.indexOf('map.html')>=0){f.contentWindow.location.hash=mapHash(false);return;}}catch(_){}

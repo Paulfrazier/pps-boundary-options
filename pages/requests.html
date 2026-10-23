@@ -131,6 +131,8 @@ function table(){
 }
 
 function mapSrc(){var h='a='+encodeURIComponent(st.req)+'&b='+encodeURIComponent(st.vs);if(st.level!=='K-5')h+='&level='+encodeURIComponent(st.level);return h;}
+// the embedded map reports its height, so the iframe fits it and never scrolls inside itself
+window.addEventListener('message',function(e){var f=document.getElementById('rmap');if(f&&e.source===f.contentWindow&&e.data&&e.data.ppsMapH>0)f.style.height=Math.min(e.data.ppsMapH,6000)+'px';});
 function setMap(){var f=document.getElementById('rmap'),h=mapSrc();
   document.getElementById('fullmap').href='map.html#'+h;
   try{if(f.contentWindow&&f.contentWindow.location.pathname.indexOf('map.html')>=0){f.contentWindow.location.hash=h;return;}}catch(_){}

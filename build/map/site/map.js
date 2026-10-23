@@ -154,7 +154,7 @@ function areaFocus(p){rove.last=p.dataset.n;gA.querySelectorAll(".area").forEach
  const r=svg.getBoundingClientRect(),cx=Math.max(vb[0],Math.min(vb[0]+vb[2],b.x+b.width/2)),cy=Math.max(vb[1],Math.min(vb[1]+vb[3],b.y+b.height/2));
  showTip({clientX:r.left+(cx-vb[0])/vb[2]*r.width,clientY:r.top+(cy-vb[1])/vb[3]*r.height},p.dataset.tip)}
 function areaKey(e){const p=e.currentTarget;if(e.key==="Enter"||e.key===" "){e.preventDefault();select(p.dataset.n);return}
- const D={ArrowRight:[1,0],ArrowLeft:[-1,0],ArrowDown:[0,1],ArrowUp:[0,-1]}[e.key];if(!D)return;e.preventDefault();
+ const D={ArrowRight:[1,0],ArrowLeft:[-1,0],ArrowDown:[0,1],ArrowUp:[0,-1]}[e.key];if(!D||e.shiftKey)return;e.preventDefault();   // Shift+arrows pan (map keydown)
  const c=q=>{const b=q.getBBox();return[b.x+b.width/2,b.y+b.height/2]},[x0,y0]=c(p);let best=null,bs=1e18;
  gA.querySelectorAll(".area").forEach(q=>{if(q===p)return;const[x,y]=c(q),dx=x-x0,dy=y-y0,along=dx*D[0]+dy*D[1];if(along<=0)return;const off=Math.abs(dx*D[1]-dy*D[0]),sc=along+2.5*off;if(sc<bs){bs=sc;best=q}});
  if(best)best.focus()}
@@ -561,7 +561,7 @@ function restore(st,done){const L=LVN[st.level]?st.level:"K-5";loadLevel(L,()=>{
  $("lcol").value=st.color!=null?(THEMES.includes(st.color)?st.color:""):ly&&ly.includes("past")?"past":ly&&ly.includes("race")?"race":"";
  $("dvl").classList.toggle("on",dvOn());
  initLoad=true;levelUI();modeUI();drawAreas();initLoad=false;hashWrite();
- if(st.fit){fitTo(st.fit);requestAnimationFrame(()=>fitTo(st.fit))}   // again after the first layout (the aspect ratio can change)
+ fitHome=st.fit||null;if(st.fit){fitTo(st.fit);requestAnimationFrame(()=>fitTo(st.fit))}   // again after the first layout (the aspect ratio can change)
  if(done)requestAnimationFrame(done)})}
 // fit=: the view box around the named school areas (union of outlines), with a margin; false if none is drawn at this level
 function fitTo(list){const N=String(list).split(",").map(s=>s.trim()).filter(Boolean),PL=MAPLV[lv].plans,ks=[BASELINE,...Object.keys(PL)];
@@ -583,16 +583,18 @@ function showTip(e,txt){const r=$("map").getBoundingClientRect(),touch=e.pointer
  clearTimeout(tipT);if(touch)tipT=setTimeout(hideTip,4000)}   // touch: centred well above the finger, stays ~4 s
 function hideTip(){clearTimeout(tipT);tip.hidden=true}
 // one delegated hover / tap tooltip: every data-tip under the pointer (area name, then moves, past regions, program schools)
-function tipAt(e){if(moved||ptrs.size>1)return;const L=document.elementsFromPoint(e.clientX,e.clientY).filter(x=>x.dataset&&x.dataset.tip&&svg.contains(x));
- if(!L.length){if(e.pointerType!=="touch")hideTip();return}
+function tipAt(e){if(moved||tp||ptrs.size>1)return;const L=document.elementsFromPoint(e.clientX,e.clientY).filter(x=>x.dataset&&x.dataset.tip&&svg.contains(x));
+ if(!L.length){hideTip();return}
  const ar=L.filter(x=>x.classList.contains("area")).slice(0,1),rest=L.filter(x=>!x.classList.contains("area"));
  // past difference (overlay): say which part the pointer is in (fixed / new / both) before the regions' own lines
  const ph=rest.filter(x=>x.dataset.pp),h1=ph.some(x=>x.dataset.pp==="1"),h2=ph.some(x=>x.dataset.pp==="2");
  const st=!ph.length?"":h1&&h2?`Under both plans: sent to a farther school in ${lblShort(p1)} and in ${lblShort(p2)}`:h1?`Fixed by ${lblShort(p2)}: sent to a farther school in ${lblShort(p1)} only`:`New under ${lblShort(p2)}: sent to a farther school in ${lblShort(p2)} only`;
  showTip(e,[...new Set([...ar.map(x=>x.dataset.tip),st,...rest.map(x=>x.dataset.tip)])].filter(Boolean).join("\n"))}
-svg.addEventListener("pointermove",e=>{if(e.pointerType!=="touch")tipAt(e)});
-svg.addEventListener("pointerdown",e=>{if(e.pointerType==="touch"){moved=false;tipAt(e)}});
-svg.addEventListener("pointerleave",e=>{if(e.pointerType!=="touch")hideTip()});
+// hover (mouse, pen): one tooltip pass per frame, however many pointermoves arrive. Touch: the tip shows on a tap (the map's
+// click handler), not on finger-down, so a finger that starts a page scroll or a pinch never pops one
+let tipEv=null,tipRaf=0;
+svg.addEventListener("pointermove",e=>{if(e.pointerType==="touch")return;tipEv=e;if(!tipRaf)tipRaf=requestAnimationFrame(()=>{tipRaf=0;if(tipEv)tipAt(tipEv)})});
+svg.addEventListener("pointerleave",e=>{if(e.pointerType!=="touch"){tipEv=null;hideTip()}});
 
 // ---- pan / zoom
 // The aspect ratio adapts to the screen (pickAR): as tall as the whole district where there is room, but never taller than
@@ -608,7 +610,9 @@ let AR=0.78,VB0=[0,0,W,W*AR],WMAX=W,vb=[...VB0],arW=0,arH=0;
 // in view and sizes the map to the window space below it (at least 440px), so the whole district shows without scrolling;
 // a deep link scrolls the controls to the top instead (init) and gets the taller map. Decided once per page load.
 const fitTop=false;   // "map should be big as reasonable": every visit gets the tall map (plain visits still don't scroll)
-function pickAR(){const w=svg.parentNode.clientWidth||1000,sm=innerWidth<=600||innerHeight<=560,ch=($("ctl")||{}).offsetHeight||0;
+// embedded, the frame grows to fit its content (below), so size the map against the host page's window, not the frame's
+const VH=()=>{if(document.documentElement.classList.contains("embed"))try{if(top.innerHeight)return top.innerHeight}catch(_){}return innerHeight};
+function pickAR(){const innerHeight=VH(),w=svg.parentNode.clientWidth||1000,sm=innerWidth<=600||innerHeight<=560,ch=($("ctl")||{}).offsetHeight||0;
  const h=sm?innerHeight*(innerWidth<=600?0.62:0.7):fitTop&&innerWidth>900?Math.max(440,innerHeight-(svg.getBoundingClientRect().top+scrollY)-12):Math.max(520,innerHeight-ch-40);return Math.max(0.3,Math.min((EXT[3]-EXT[1])/(EXT[2]-EXT[0]),h/w))}
 function fitVB(){const w=Math.max(EXT[2]-EXT[0],(EXT[3]-EXT[1])/AR);return[(EXT[0]+EXT[2]-w)/2,(EXT[1]+EXT[3]-w*AR)/2,w,w*AR]}
 function setAR(reset){const a=pickAR();arW=innerWidth;arH=innerHeight;if(!reset&&Math.abs(a-AR)<.004)return;const home=Math.abs(vb[2]-VB0[2])<1,cy=vb[1]+vb[3]/2;
@@ -619,7 +623,8 @@ setAR(true);svg.setAttribute("viewBox",vb.map(v=>v.toFixed(1)).join(" "));
 // pan/zoom: vb is clamped at once (all screen-to-map math reads it), but the viewBox write and the label/marker pass run
 // at most once per animation frame, however many pointer or wheel events arrive
 let vbRaf=0;
-const setVB=re=>{if(re===true||innerWidth!==arW||(Math.abs(innerHeight-arH)>40&&!matchMedia("(pointer:coarse)").matches))setAR();clampVB();if(!vbRaf)vbRaf=requestAnimationFrame(()=>{vbRaf=0;svg.setAttribute("viewBox",vb.map(v=>v.toFixed(1)).join(" "));updateLabels()})};
+const setVB=re=>{if(re===true||innerWidth!==arW||(Math.abs(innerHeight-arH)>40&&!matchMedia("(pointer:coarse)").matches))setAR();clampVB();if(!vbRaf)vbRaf=requestAnimationFrame(()=>{vbRaf=0;svg.setAttribute("viewBox",vb.map(v=>v.toFixed(1)).join(" "));updateLabels();zLim()})};
+const zLim=()=>{const a=vb[2]<=W/16*1.001,b=vb[2]>=WMAX*.999;[["zin",a],["zout",b]].forEach(([id,d])=>{const e=$(id);if(e&&(e.getAttribute("aria-disabled")==="true")!==d)e.setAttribute("aria-disabled",String(d))})};
 // markers and labels are sized in screen pixels (PX = the old desktop scale, ~0.93 px per map unit), not in map units,
 // so they stay readable on a 356px-wide phone map; school names show once the map is zoomed in far enough (px per unit)
 const PX=0.93,mk1=()=>PX*vb[2]/(svg.getBoundingClientRect().width||W);
@@ -642,11 +647,11 @@ function updateLabels(){const r=svg.getBoundingClientRect(),pxPer=(r.width||W)/v
  // round 6: and to the swipe handle (line + knob), so no name is cut in half at the divider
  const scr=(X,Y)=>[(X-vb[0])*pxPer,(Y-vb[1])*pxPer];
  gS.querySelectorAll("circle").forEach(c=>{if(c.closest('[data-side]')&&mode==="swipe"&&((c.closest('[data-side]').dataset.side==="L")!==(+c.dataset.x<swx)))return;const[x,y]=scr(+c.dataset.x,+c.dataset.y),q=4.2*(+c.dataset.rm||1);box.push([x-q,y-q,2*q,2*q])});
- // freeway shields: skipped where they would sit on a school marker (round 6)
- const nm0=box.length;gTop.querySelectorAll(".shield").forEach(g=>{const[x,y]=scr(+g.dataset.x,+g.dataset.y),w=+g.querySelector("rect").getAttribute("width")*PX,b=[x-w/2-1,y-8.5,w+2,17];
-  const on=!box.slice(0,nm0).some(q=>b[0]<q[0]+q[2]&&b[0]+b[2]>q[0]&&b[1]<q[1]+q[3]&&b[1]+b[3]>q[1]);g.style.display=on?"":"none";if(on)box.push(b)});
+ // freeway shields: skipped where they would sit on a school marker, a chip, the zoom buttons or the scale
  ["chipL","chipR","spotpill"].forEach(id=>{const e=$(id);if(e&&!e.hidden){const b=e.getBoundingClientRect();if(b.width)box.push([b.left-r.left,b.top-r.top,b.width,b.height])}});
  document.querySelectorAll(".mapbox .zoom,.mapbox .scale").forEach(e=>{const b=e.getBoundingClientRect();if(b.width)box.push([b.left-r.left,b.top-r.top,b.width,b.height])});
+ const nm0=box.length;gTop.querySelectorAll(".shield").forEach(g=>{const[x,y]=scr(+g.dataset.x,+g.dataset.y),w=+g.querySelector("rect").getAttribute("width")*PX,b=[x-w/2-1,y-8.5,w+2,17];
+  const on=!box.slice(0,nm0).some(q=>b[0]<q[0]+q[2]&&b[0]+b[2]>q[0]&&b[1]<q[1]+q[3]&&b[1]+b[3]>q[1]);g.style.display=on?"":"none";if(on)box.push(b)});
  if(mode==="swipe"){const hx=swf*(r.width||W);box.push([hx-3,0,6,r.height],[hx-24,r.height/2-24,48,48])}
  const T=[...gS.querySelectorAll("text")].map((t,i)=>{t.style.fontSize=(LFS*u)+"px";t.style.strokeWidth=(3.4*u)+"px";t.setAttribute("y",+t.dataset.y+4.3*u);
   const n=t.dataset.n,sd=t.parentNode.dataset.side,clip=mode==="swipe"&&sd&&((sd==="L")!==(+t.dataset.x<swx)),im=sd&&IMPS[sd]?IMPS[sd]:IMP;
@@ -663,45 +668,103 @@ function updateLabels(){const r=svg.getBoundingClientRect(),pxPer=(r.width||W)/v
  const mi=S/69.05*pxPer,sm=innerWidth<=600;let m=1;if(mi>260)m=0.5;if(mi>520)m=0.25;if(mi>1300)m=0.1;if(mi<60)m=2;if(mi<30)m=5;$("scbar").style.width=(mi*m).toFixed(0)+"px";$("sclab").textContent=m<0.5?(m===0.25?"¼ mile":"0.1 mile"):m===0.5?"½ mile"+(sm?"":" · about 10 min walk"):m===1?"1 mile"+(sm?"":" · about 20 min walk"):m+" miles"}
 function zoomAt(f,cx,cy){const nw=Math.min(WMAX,Math.max(W/16,vb[2]/f)),nh=nw*AR;vb=[cx-(cx-vb[0])*nw/vb[2],cy-(cy-vb[1])*nh/vb[3],nw,nh];setVB()}
 const toSvg=ev=>{const r=svg.getBoundingClientRect();return[vb[0]+(ev.clientX-r.left)/r.width*vb[2],vb[1]+(ev.clientY-r.top)/r.height*vb[3]]};
-svg.addEventListener("wheel",e=>{e.preventDefault();const[x,y]=toSvg(e);zoomAt(e.deltaY<0?1.25:0.8,x,y)},{passive:false});
-// pointers: one finger/mouse pans (after 3px, or 10px for touch, so finger jitter still counts as a tap); two fingers pinch-zoom
-// around their midpoint and pan with it; when one finger of a pinch lifts, the other re-anchors (it used to jump the map)
-const ptrs=new Map();let last=null,down=null,pinch=null,moved=false;
-const pinchOf=()=>{const[a,b]=[...ptrs.values()];return{d:Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY),x:(a.clientX+b.clientX)/2,y:(a.clientY+b.clientY)/2}};
-svg.addEventListener("pointerdown",e=>{ptrs.set(e.pointerId,e);if(ptrs.size===1){moved=false;down=[e.clientX,e.clientY]}last=[e.clientX,e.clientY];if(ptrs.size===2)pinch=pinchOf()});
-// touch screens (coarse pointer): one finger scrolls the page (CSS touch-action:pan-y) and two fingers move/zoom the map; a one-finger
-// drag on the map shows a brief "Use two fingers" hint. Mouse, pen and fine-pointer touch keep one-pointer panning.
+// animated steps (buttons, keys, double-click / double-tap, reset): ~220ms ease-out, applied as per-frame factors so quick
+// repeats compose (two + presses = 2.25x, no jump); reset and Shift+arrow pans fly the view box. A drag, pinch or wheel
+// stops them. Reduced motion: instant.
+const RM=matchMedia("(prefers-reduced-motion: reduce)");let anims=[],fly=null,aRaf=0;
+const stopAnim=()=>{anims=[];fly=null},ez=(a,now)=>{const p=Math.max(0,Math.min(1,(now-a.t)/a.ms));return[p,1-(1-p)**3]};
+function tick(now){aRaf=0;anims=anims.filter(a=>{const[p,e]=ez(a,now);zoomAt(Math.exp(a.l*(e-a.d)),a.x,a.y);a.d=e;return p<1});
+ if(fly){const[p,e]=ez(fly,now),A=fly.a,B=fly.b,w=A[2]*(B[2]/A[2])**e,cx=A[0]+A[2]/2+(B[0]+B[2]/2-A[0]-A[2]/2)*e,cy=A[1]+A[3]/2+(B[1]+B[3]/2-A[1]-A[3]/2)*e;
+  vb=[cx-w/2,cy-w*AR/2,w,w*AR];setVB();if(p>=1)fly=null}
+ if(anims.length||fly)aRaf=requestAnimationFrame(tick)}
+function zoomBy(f,x,y){fly=null;if(x==null){x=vb[0]+vb[2]/2;y=vb[1]+vb[3]/2}if(RM.matches){zoomAt(f,x,y);return}
+ anims.push({l:Math.log(f),x,y,t:performance.now(),ms:220,d:0});if(!aRaf)aRaf=requestAnimationFrame(tick)}
+function flyTo(b){anims=[];if(RM.matches){vb=[...b];setVB();return}fly={a:[...vb],b:[...b],t:performance.now(),ms:320};if(!aRaf)aRaf=requestAnimationFrame(tick)}
+// home = the view the page opened on: the fit= schools (Sabin page embed) or the whole district
+let fitHome=null;
+function homeVB(){if(fitHome){const s=[...vb];if(fitTo(fitHome)){const h=[...vb];vb=s;setVB();return h}vb=s}return[...VB0]}
+// wheel and trackpad: zoom toward the pointer by the scroll amount (a mouse-wheel notch ~1.25x; a trackpad scroll or pinch,
+// which arrives as ctrl+wheel, follows the fingers; Safari's pinch comes as gesture events, below). Embedded in another page
+// (?embed=1) a plain wheel scrolls that page, so the map never traps it: Ctrl/⌘ + wheel zooms, or a click on the map turns
+// wheel zoom on until the pointer leaves the map. Full page: a wheel-down that starts with the map all the way out scrolls
+// the page (one that runs into the limit mid-gesture doesn't, so a zoom-out flick never yanks the page).
+const EMB=document.documentElement.classList.contains("embed"),MAC=/Mac|iPhone|iPad/.test(navigator.platform||navigator.userAgent);
+let wArm=false,wT=-1e9,wPass=false,wS=0;
+svg.addEventListener("wheel",e=>{const zk=e.ctrlKey||e.metaKey,sg=Math.sign(e.deltaY),fresh=e.timeStamp-wT>250||(sg&&sg!==wS);wT=e.timeStamp;if(sg)wS=sg;
+ if(EMB&&!zk&&!wArm){if(fresh)showMH((MAC?"⌘":"Ctrl")+" + scroll to zoom, or click the map first");return}
+ const u=e.deltaMode===1?33:e.deltaMode===2?400:1,dy=e.deltaY*u,dx=e.deltaX*u;if(fresh)wPass=!EMB&&!zk&&dy>0&&Math.abs(dy)>=Math.abs(dx)&&vb[2]>=WMAX*.999;if(wPass)return;
+ e.preventDefault();stopAnim();
+ if(!zk&&Math.abs(dx)>Math.abs(dy)){const r=svg.getBoundingClientRect();vb[0]+=dx/r.width*vb[2];setVB();return}   // a sideways trackpad swipe pans
+ if(!dy)return;const[x,y]=toSvg(e);zoomAt(Math.exp(-Math.max(-150,Math.min(150,dy))*(e.ctrlKey?.01:.0022)),x,y)},{passive:false});
+if(window.GestureEvent&&!("ontouchend" in document)){let gs=1;   // desktop Safari trackpad pinch
+ svg.addEventListener("gesturestart",e=>{e.preventDefault();gs=1;stopAnim()});
+ svg.addEventListener("gesturechange",e=>{e.preventDefault();const[x,y]=toSvg(e);zoomAt(e.scale/gs,x,y);gs=e.scale});svg.addEventListener("gestureend",e=>e.preventDefault())}
+// pointers: mouse and pen pan with the main button (after 3px, so a wobbly click is still a click), and so does touch where
+// the main pointer is fine (touch laptops; touch-action:none there). Phones and tablets (coarse): one finger scrolls the
+// page (CSS touch-action:pan-y) and taps; a one-finger sideways drag shows a brief "Use two fingers" hint (also the first
+// couple of times a finger scroll starts on the map). Two fingers move and zoom the map (touch events, below), anchored
+// at their midpoint, on every touch screen.
+const ptrs=new Map();let last=null,down=null,moved=false,lastPT="mouse",cHint=0;
 const coarseMQ=matchMedia("(pointer:coarse)"),oneFinger=e=>e.pointerType==="touch"&&coarseMQ.matches;
-const mbox=svg.parentNode,mhint=document.createElement("div");mhint.className="mhint";mhint.setAttribute("role","status");mhint.textContent="Use two fingers to move the map";mbox.appendChild(mhint);
-let mhT=0;const showMH=()=>{mhint.classList.add("on");clearTimeout(mhT);mhT=setTimeout(()=>mhint.classList.remove("on"),1500)};
-mbox.addEventListener("touchstart",e=>{if(e.touches.length>=2&&e.cancelable)e.preventDefault()},{passive:false});
-mbox.addEventListener("touchmove",e=>{if(e.touches.length>=2&&e.cancelable)e.preventDefault()},{passive:false});
-svg.addEventListener("pointermove",e=>{if(!ptrs.has(e.pointerId))return;ptrs.set(e.pointerId,e);const r=svg.getBoundingClientRect();
- if(ptrs.size===1&&oneFinger(e)){if(!moved&&down&&Math.hypot(e.clientX-down[0],e.clientY-down[1])>10)showMH();return}
- if(ptrs.size===2&&pinch){const q=pinchOf();vb[0]-=(q.x-pinch.x)/r.width*vb[2];vb[1]-=(q.y-pinch.y)/r.height*vb[3];const[x,y]=toSvg({clientX:q.x,clientY:q.y});zoomAt(pinch.d>0?q.d/pinch.d:1,x,y);pinch=q;moved=true;hideTip();return}
- if(ptrs.size===1&&last){if(!moved&&down&&Math.hypot(e.clientX-down[0],e.clientY-down[1])>(e.pointerType==="touch"?10:3)){moved=true;svg.classList.add("drag");hideTip();try{svg.setPointerCapture(e.pointerId)}catch(_){}}
-  if(moved){vb[0]-=(e.clientX-last[0])/r.width*vb[2];vb[1]-=(e.clientY-last[1])/r.height*vb[3];setVB()}last=[e.clientX,e.clientY]}});
-const up=e=>{if(e.type==="pointercancel"&&ptrs.size===1&&oneFinger(e)&&!pinch)showMH();ptrs.delete(e.pointerId);if(ptrs.size<2)pinch=null;if(ptrs.size===1){const p=[...ptrs.values()][0];last=[p.clientX,p.clientY]}if(!ptrs.size){last=null;svg.classList.remove("drag")}};
+const mbox=svg.parentNode,mhint=document.createElement("div");mhint.className="mhint";mhint.setAttribute("role","status");mbox.appendChild(mhint);
+let mhT=0;const showMH=t=>{mhint.textContent=t||"Use two fingers to move the map";mhint.classList.add("on");clearTimeout(mhT);mhT=setTimeout(()=>mhint.classList.remove("on"),t?2200:1500)};
+svg.addEventListener("pointerdown",e=>{lastPT=e.pointerType;if(e.button>0)return;moved=false;down=[e.clientX,e.clientY];if(oneFinger(e))return;
+ stopAnim();if(e.pointerType==="mouse")wArm=true;ptrs.set(e.pointerId,e);last=[e.clientX,e.clientY]});
+mbox.addEventListener("pointerleave",e=>{if(e.pointerType==="mouse")wArm=false});
+svg.addEventListener("mousedown",e=>{if(e.detail>1)e.preventDefault()});   // a double-click zooms; it shouldn't select text
+svg.addEventListener("pointermove",e=>{
+ if(oneFinger(e)){if(!moved&&down&&Math.hypot(e.clientX-down[0],e.clientY-down[1])>10){moved=true;hideTip();showMH()}return}
+ if(!ptrs.has(e.pointerId))return;ptrs.set(e.pointerId,e);if(tp||ptrs.size>1){last=null;return}if(!last){last=[e.clientX,e.clientY];return}
+ if(!moved&&down&&Math.hypot(e.clientX-down[0],e.clientY-down[1])>(e.pointerType==="touch"?10:3)){moved=true;svg.classList.add("drag");hideTip();try{svg.setPointerCapture(e.pointerId)}catch(_){}}
+ if(moved){const r=svg.getBoundingClientRect();vb[0]-=(e.clientX-last[0])/r.width*vb[2];vb[1]-=(e.clientY-last[1])/r.height*vb[3];setVB()}last=[e.clientX,e.clientY]});
+const up=e=>{if(e.type==="pointercancel"&&oneFinger(e)){hideTip();if(!tp&&cHint++<2)showMH()}ptrs.delete(e.pointerId);if(!ptrs.size){last=null;if(!tp)svg.classList.remove("drag")}};
 svg.addEventListener("pointerup",up);svg.addEventListener("pointercancel",up);
-svg.addEventListener("click",e=>{if(moved){e.stopPropagation();e.preventDefault();moved=false}},true);
-let lastPT="mouse";svg.addEventListener("pointerdown",e=>{lastPT=e.pointerType},true);
+// two fingers (touch events: they keep coming after the browser cancels a finger's pointer): pan with the midpoint, zoom with
+// the spread. The page neither scrolls nor zooms under them; a second finger landing mid page-scroll is left to the browser.
+let tp=null,tpEnd=-1e9;const tmid=t=>({d:Math.hypot(t[0].clientX-t[1].clientX,t[0].clientY-t[1].clientY),x:(t[0].clientX+t[1].clientX)/2,y:(t[0].clientY+t[1].clientY)/2});
+mbox.addEventListener("touchstart",e=>{if(e.touches.length<2||!e.cancelable||(e.target.closest&&e.target.closest(".swipe,.zoom")))return;e.preventDefault();
+ stopAnim();hideTip();mhint.classList.remove("on");tp=tmid(e.touches);moved=true;svg.classList.add("drag")},{passive:false});
+mbox.addEventListener("touchmove",e=>{if(!tp||e.touches.length<2)return;if(e.cancelable)e.preventDefault();const q=tmid(e.touches),r=svg.getBoundingClientRect();
+ vb[0]-=(q.x-tp.x)/r.width*vb[2];vb[1]-=(q.y-tp.y)/r.height*vb[3];const[x,y]=toSvg({clientX:q.x,clientY:q.y});zoomAt(tp.d>0&&q.d>0?q.d/tp.d:1,x,y);tp=q},{passive:false});
+const tEnd=e=>{if(!tp)return;if(e.touches.length>=2){tp=tmid(e.touches);return}tp=null;tpEnd=e.timeStamp;svg.classList.remove("drag")};
+mbox.addEventListener("touchend",tEnd);mbox.addEventListener("touchcancel",tEnd);
+// a click right after a drag or a pinch is not a tap
+svg.addEventListener("click",e=>{if(moved||e.timeStamp-tpEnd<400){e.stopPropagation();e.preventDefault();moved=false}},true);
+// double-click / double-tap: zoom in 2x on that spot (Shift: out). Touch taps are paired here (no dblclick on iOS); the first
+// tap has already pinned the spot. A tap also shows the tooltip there (touch has no hover).
+let tap0=null;
+svg.addEventListener("dblclick",e=>{if(lastPT==="touch"||(e.target.closest&&e.target.closest(".swipe")))return;e.preventDefault();const[x,y]=toSvg(e);zoomBy(e.shiftKey?.5:2,x,y)});
 // a tap on a changed or past area pins that spot too (round 5: skipping it left the last spot's pin and pill on screen)
 svg.addEventListener("click",e=>{if(e.target.closest&&e.target.closest(".swipe"))return;
+ if(lastPT==="touch"){const t=e.timeStamp;if(tap0&&t-tap0.t<350&&Math.hypot(e.clientX-tap0.x,e.clientY-tap0.y)<30){tap0=null;const[x,y]=toSvg(e);zoomBy(2,x,y)}else tap0={t,x:e.clientX,y:e.clientY};
+  tipAt({clientX:e.clientX,clientY:e.clientY,pointerType:"touch"})}
  const ll=toLL(toSvg(e));if(!avail().some(k=>schoolAt(k,ll[0],ll[1])))return;pin=ll;drawPin();select(sel)});   // no auto-scroll: the in-map pill has "details ↓"
-$("zin").onclick=()=>zoomAt(1.5,vb[0]+vb[2]/2,vb[1]+vb[3]/2);
-$("zout").onclick=()=>zoomAt(1/1.5,vb[0]+vb[2]/2,vb[1]+vb[3]/2);
-$("zres").onclick=()=>{vb=[...VB0];setVB()};
+$("zin").onclick=()=>zoomBy(1.5);
+$("zout").onclick=()=>zoomBy(1/1.5);
+$("zres").onclick=()=>flyTo(homeVB());
+// keys, with focus anywhere in the map (a school area, a zoom button): + / − zoom, 0 resets, Shift+arrows pan a fifth of the
+// view (plain arrows move between school areas, areaKey; the swipe knob keeps its own arrows)
+mbox.addEventListener("keydown",e=>{if(e.altKey||e.ctrlKey||e.metaKey||(e.target.closest&&e.target.closest(".swipe")))return;const k=e.key;
+ if(k==="+"||k==="=")zoomBy(1.5);else if(k==="-"||k==="_")zoomBy(1/1.5);else if(k==="0")flyTo(homeVB());
+ else{const D={ArrowRight:[1,0],ArrowLeft:[-1,0],ArrowDown:[0,1],ArrowUp:[0,-1]}[k];if(!D||!e.shiftKey)return;flyTo([vb[0]+D[0]*vb[2]*.2,vb[1]+D[1]*vb[3]*.2,vb[2],vb[3]])}
+ e.preventDefault()});
 // side panel toggle (desktop): collapsing it widens the map; the choice is remembered per browser
-function setSide(open){const g=$("side").parentNode,b=$("sidet");g.classList.toggle("noside",!open);b.textContent=open?"⇥":"⇤";b.setAttribute("aria-expanded",String(open));
- const t=open?"Hide the side panel for a bigger map":"Show the side panel";b.setAttribute("aria-label",t);b.title=t;setVB(true)}
+function setSide(open){const g=$("side").parentNode,b=$("sidet"),w0=svg.getBoundingClientRect().width;g.classList.toggle("noside",!open);b.textContent=open?"⇥":"⇤";b.setAttribute("aria-expanded",String(open));
+ const t=open?"Hide the side panel for a bigger map":"Show the side panel";b.setAttribute("aria-label",t);b.title=t;
+ const w1=svg.getBoundingClientRect().width;if(w0&&w1&&vb[2]<WMAX*.999){const cx=vb[0]+vb[2]/2;vb[2]*=w1/w0;vb[0]=cx-vb[2]/2}setVB(true)}   // a wider map shows more ground, not a bigger zoom
 $("sidet").onclick=()=>{const open=$("side").parentNode.classList.contains("noside");setSide(open);try{localStorage.setItem("mapSide",open?"1":"0")}catch(e){}};
 try{if(localStorage.getItem("mapSide")==="0"&&!document.documentElement.classList.contains("embed"))setSide(false)}catch(e){}
 // ---- swipe handle
-const swb=$("swipe").querySelector("button");
-function setSwipe(f){swf=Math.max(0,Math.min(1,f));$("swipe").style.left=(swf*100)+"%";swb.setAttribute("aria-valuenow",Math.round(swf*100));swb.setAttribute("aria-valuetext",Math.round(swf*100)+"% from the left");updateLabels()}
-swb.addEventListener("pointerdown",e=>{e.preventDefault();e.stopPropagation();swb.setPointerCapture(e.pointerId);swb.dataset.drag=1;swb.focus()});
-swb.addEventListener("pointermove",e=>{if(!swb.dataset.drag)return;const r=svg.getBoundingClientRect();setSwipe((e.clientX-r.left)/r.width)});
-const swEnd=()=>{delete swb.dataset.drag};swb.addEventListener("pointerup",swEnd);swb.addEventListener("pointercancel",swEnd);
+const sw=$("swipe"),swb=sw.querySelector("button");let swRaf=0;
+function setSwipe(f){swf=Math.max(0,Math.min(1,f));sw.style.left=(swf*100)+"%";swb.setAttribute("aria-valuenow",Math.round(swf*100));swb.setAttribute("aria-valuetext",Math.round(swf*100)+"% from the left");
+ if(!swRaf)swRaf=requestAnimationFrame(()=>{swRaf=0;updateLabels()})}   // label pass once per frame while dragging
+// drag the knob or anywhere on the line (a 24px strip, map.css .swipe:after); the knob keeps its grab offset, a press on the
+// line jumps there. Mouse and touch alike; the strip lets a vertical finger drag scroll the page (touch-action:pan-y)
+let swOff=0;
+sw.addEventListener("pointerdown",e=>{if(e.button>0)return;e.preventDefault();e.stopPropagation();hideTip();const r=svg.getBoundingClientRect();
+ swOff=e.target===swb?e.clientX-(r.left+swf*r.width):0;try{sw.setPointerCapture(e.pointerId)}catch(_){}sw.dataset.drag=1;swb.focus({preventScroll:true});if(!swOff)setSwipe((e.clientX-r.left)/r.width)});
+sw.addEventListener("pointermove",e=>{if(!sw.dataset.drag)return;const r=svg.getBoundingClientRect();setSwipe((e.clientX-swOff-r.left)/r.width)});
+const swEnd=()=>{delete sw.dataset.drag};sw.addEventListener("pointerup",swEnd);sw.addEventListener("pointercancel",swEnd);sw.addEventListener("click",e=>e.stopPropagation());
 swb.addEventListener("keydown",e=>{const st=e.shiftKey?.1:.02;if(e.key==="ArrowLeft"||e.key==="ArrowDown"){setSwipe(swf-st)}else if(e.key==="ArrowRight"||e.key==="ArrowUp"){setSwipe(swf+st)}else if(e.key==="Home"){setSwipe(0)}else if(e.key==="End"){setSwipe(1)}else return;e.preventDefault()});
 function viewHook(){const r=svg.getBoundingClientRect(),ppu=(r.width||W)/vb[2];
  if(mode==="swipe"){const x=vb[0]+swf*vb[2];const a=$("swr"),b=$("swrL");a.setAttribute("x",x);a.setAttribute("y",vb[1]-50);a.setAttribute("width",vb[2]*2);a.setAttribute("height",vb[3]+100);
@@ -734,7 +797,17 @@ function layoutNames(){if(!nmOn||!SL.length)return;const r=svg.getBoundingClient
   let bad=false;for(const b of placed){if(Math.abs(b[0]-cx)<b[2]+hw&&Math.abs(b[1]-cy)<b[3]+hh){bad=true;break}}if(bad)continue;placed.push([cx,cy,hw,hh]);
   const t=mk("text",{class:"stn"+(a.c==="r"?"":" m"),transform:`translate(${a.x.toFixed(1)} ${a.y.toFixed(1)}) rotate(${-a.a}) scale(${(1/ppu).toFixed(5)})`,dy:".35em","font-size":fs});t.textContent=a.name;frag.append(t);if(++cnt>=350)break}
  gStN.replaceChildren(frag)}
-window.addEventListener("resize",()=>{nmReg=null;setVB()});   // setVB re-picks the aspect ratio when the width changes
+window.addEventListener("resize",()=>{nmReg=null;setVB()});
+// embed: the host page sizes the iframe to this document (postMessage {ppsMapH}), so nothing scrolls inside the frame and a
+// page swipe never gets caught in it; the side panel is clipped to the map's height (beside it) or 460px (under it, phones)
+// with a "Show all details" button
+if(document.documentElement.classList.contains("embed")&&parent!==window){const sd=$("side"),mp=sd.parentNode.querySelector(".panel.plate"),mb=document.createElement("button");
+ mb.type="button";mb.className="sidemore";sd.append(mb);let hh=0;const lab=()=>{mb.textContent=sd.classList.contains("clip")?"Show all details":"Show fewer details"};
+ mb.onclick=()=>{const c=sd.classList.toggle("clip");lab();if(c)sd.scrollIntoView({block:"nearest"})};sd.classList.add("clip");lab();
+ const fit=()=>{const ch=innerWidth>900&&mp?mp.offsetHeight:460;sd.style.setProperty("--cliph",ch+"px");mb.hidden=sd.scrollHeight<=ch+4;
+  const b=getComputedStyle(document.body),h=Math.ceil(document.body.getBoundingClientRect().height+parseFloat(b.marginTop)+parseFloat(b.marginBottom));
+  if(h!==hh){hh=h;parent.postMessage({ppsMapH:h},"*")}};
+ if(window.ResizeObserver){const ro=new ResizeObserver(()=>requestAnimationFrame(fit));ro.observe(document.body);ro.observe($("sidec"));if(mp)ro.observe(mp)}addEventListener("load",fit);fit()}   // setVB re-picks the aspect ratio when the width changes
 
 // ---- notes
 function linesNote(){const off=avail().filter(k=>PM[k].lines==="official"),cr=avail().filter(k=>PM[k].lines==="crisp");
