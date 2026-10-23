@@ -176,10 +176,29 @@ var MAP_DEF=['sabin_all','equity_noswap_alameda_rig_hs'];
 var SCH_NM={'MLK Jr':'King'};
 function mapChoices(){return P.filter(function(p){return p.on_map&&p.run!==BASE.run&&st.plans.indexOf(p.run)>=0;});}
 function mapDefault(){var c=mapChoices().map(function(p){return p.run;});for(var i=0;i<MAP_DEF.length;i++)if(c.indexOf(MAP_DEF[i])>=0)return MAP_DEF[i];return c[0]||null;}
-function mapHash(fit){var h=st.map?'view=swipe&a='+encodeURIComponent(BASE.run)+'&b='+encodeURIComponent(st.map):'view=single&plan='+encodeURIComponent(BASE.run);
+// the view the reader has in the embedded map (the map leaves view out of its hash for single plan); null before it loads
+function embView(){var f=document.getElementById('smap');try{var l=f&&f.contentWindow&&f.contentWindow.location;if(!l||l.pathname.indexOf('map.html')<0)return null;var m=/(?:^|[#&])view=(\w+)/.exec(l.hash);return m?m[1]:'single';}catch(_){return null;}}
+function mapHash(fit){var v=embView(),h=!st.map?'view=single&plan='+encodeURIComponent(BASE.run):v==='single'?'view=single&plan='+encodeURIComponent(st.map):'view='+(v==='overlay'?'overlay':'swipe')+'&a='+encodeURIComponent(BASE.run)+'&b='+encodeURIComponent(st.map);
   h+='&school='+encodeURIComponent(st.area);return fit?h+'&fit='+encodeURIComponent(FIT).replace(/%2C/g,','):h;}
 // the embedded map reports its height, so the iframe fits it and never scrolls inside itself
 window.addEventListener('message',function(e){var f=document.getElementById('smap');if(f&&e.source===f.contentWindow&&e.data&&e.data.ppsMapH>0)f.style.height=Math.min(e.data.ppsMapH,6000)+'px';});
+// a plan picked inside the embedded map becomes the page's map plan (buttons and the sizes table follow it)
+window.addEventListener('message',function(e){var f=document.getElementById('smap'),k=e.data&&e.data.ppsMapPlan;if(!f||e.source!==f.contentWindow||!k||k===st.map||k===BASE.run||!byRun[k]||!byRun[k].on_map)return;st.map=k;mapCtl();yrsTable();document.getElementById('fullmap').href='map.html#'+mapHash(true);});
+// sizes by year for the plan on the map (its right side in swipe), nearby elementary, middle and high schools
+var YRS_SCH=[['K-5',['Sabin','Irvington','Beverly Cleary','MLK Jr','Boise-Eliot/Humboldt','Vernon']],['6-8',['Beaumont','Tubman']],['9-12',['Jefferson','Grant']]];
+var YRS_FLOOR={'K-5':360,'K-8':500,'6-8':500,'9-12':1100},YRS_Y=['2027-28','2028-29','2029-30','2030-31','2031-32'];
+function yrsTable(){var p=byRun[st.map]||BASE,sy=p.school_years,sq=BASE.school_years;
+  document.getElementById('yrsh').textContent='School sizes by year: '+p.label;
+  document.getElementById('yrsnote').innerHTML=sy?'Projected students each year in '+esc(p.label)+', the plan on the map'+(p===BASE?'':' (the right side in swipe)')+'. Red = below PPS&rsquo;s size for that kind of school (360 elementary, 500 K-8 and middle, 1,100 high school). The last column is PPS Status Quo in 2031-32. Pick another plan above the map to change it.':'Sizes by year for this plan aren&rsquo;t in the data yet.';
+  if(!sy){document.getElementById('yrs').innerHTML='';document.getElementById('yrscite').innerHTML='';return;}
+  var h='<thead><tr><th>School</th>'+YRS_Y.map(function(y){return '<th>'+y+'</th>';}).join('')+'<th>Status Quo 2031-32</th></tr></thead><tbody>';
+  YRS_SCH.forEach(function(g){h+='<tr><th colspan="'+(YRS_Y.length+2)+'" class="small muted" style="text-align:left">'+(g[0]==='K-5'?'Elementary':g[0]==='6-8'?'Middle':'High school')+'</th></tr>';
+    g[1].forEach(function(s){var r=sy[s],q=sq&&sq[s],shut=!r||YRS_Y.every(function(y){return !(r.years[y]>0);});
+      var f=YRS_FLOOR[(r&&r.type)||g[0]]||360,cell=function(v,ff){return v>0?'<td'+(v<ff-0.5?' class="small360"':'')+'>'+n0(v)+'</td>':'<td class="muted">closed</td>';};
+      h+='<tr><td>'+esc(s==='MLK Jr'?'King (MLK Jr)':s)+(r&&r.type&&r.type!==g[0]?' <small>'+esc(r.type)+'</small>':'')+'</td>'+(shut?'<td class="muted" colspan="'+YRS_Y.length+'">closed</td>':YRS_Y.map(function(y){return cell(r.years[y],f);}).join(''))+
+        (q?cell(q.years['2031-32'],YRS_FLOOR[q.type||g[0]]||360):'<td>–</td>')+'</tr>';});});
+  document.getElementById('yrs').innerHTML=h+'</tbody>';
+  document.getElementById('yrscite').innerHTML='Model v2 (each population scaled by its own PSU Table 5.5 row by year). '+CITE_DATA+'.';}
 function setMap(){var f=document.getElementById('smap');if(!f)return;
   document.getElementById('fullmap').href='map.html#'+mapHash(true);
   try{if(f.contentWindow&&f.contentWindow.location.pathname.indexOf('map.html')>=0){f.contentWindow.location.hash=mapHash(false);return;}}catch(_){}
@@ -215,6 +234,16 @@ var WHY={
   // irv_sabin: out_v2/irv_sabin/TRADEOFFS.md "What this plan is"; Sabin exempt and Alameda 450 in configs/v2/irv_sabin.json
 WHY.irv_sabin=function(p){var sb=nsz(p,'Sabin'),a=nsz(p,'Alameda'),v=nsz(p,'Vernon');
   return 'Distance and size, the mirror of &ldquo;Sabin into Irvington&rdquo;. Sabin stays open and may stay below 360'+(sb?' ('+n0(sb)+' in 2031-32)':'')+'; Irvington closes. Sabin- and Irvington-area kids could only go to Sabin, Beverly Cleary, Alameda, Vernon or King, and the model picks by distance and size'+(near360(a)&&near360(v)?'; Alameda ('+n0(a)+') and Vernon ('+n0(v)+') end just above 360, so they take the kids they need to stay there':'')+'. It also uses the same big-school relief as the current best.'+tl(p);};
+  // sabin_all_keepbc: out_v2/sabin_all_keepbc/TRADEOFFS.md "What this plan is" (Beverly Cleary's area stays whole)
+WHY.sabin_all_keepbc=function(p){var bc=nsz(p,'Beverly Cleary'),v=nsz(p,'Vernon'),i=nsz(p,'Irvington');
+  return 'As &ldquo;Sabin into Irvington, close to home&rdquo;, plus one more fixed limit: today&rsquo;s Beverly Cleary area stays whole with Beverly Cleary, so Irvington can&rsquo;t grow by taking Beverly Cleary families. Irvington may stay below 360'+(i?' ('+n0(i)+' in 2031-32)':'')+'. Within that, kids go to whichever school is closer and has room'+(near360(bc)&&near360(v)?'; Beverly Cleary ('+n0(bc)+') and Vernon ('+n0(v)+') end just above 360, so they take the kids they need to stay there':'')+'. The result is nearly the same as &ldquo;close to home&rdquo;.'+tl(p);};
+  // irv_sabin_keep / irv_sabin_whole: out_v2/<run>/TRADEOFFS.md "What this plan is" (Sabin area whole at Sabin; Vernon keeps today's lines)
+WHY.irv_sabin_keep=function(p){var sb=nsz(p,'Sabin'),vn=nsz(p,'Vernon'),bk=dk(p,'Irvington','Beverly Cleary'),sk=dk(p,'Irvington','Sabin'),ak=dk(p,'Irvington','Alameda');
+  return 'No split for Sabin: every family in today&rsquo;s Sabin area stays at Sabin, a fixed limit, and Vernon keeps today&rsquo;s lines (as in PPS A). Both may stay below 360'+(sb&&vn?' (Sabin '+n0(sb)+', Vernon '+n0(vn)+' in 2031-32)':'')+'. Irvington closes, and the model splits its kids by distance and size'+(bk&&sk&&ak?': Beverly Cleary about '+n0(bk)+', Sabin '+n0(sk)+', Alameda '+n0(ak):'')+'. It also uses the same big-school relief as the current best.'+tl(p);};
+WHY.irv_sabin_whole=function(p){return WHY.irv_sabin_keep(p).replace(/(<span class="cite">|$)/,'For high school the whole Sabin area goes to Tubman, then Jefferson, so Sabin families aren&rsquo;t split between Grant and Jefferson. $1');};
+  // irv_sabin_noala: out_v2/irv_sabin_noala/TRADEOFFS.md "What this plan is" (no big-school relief; Alameda and Sabin areas whole)
+WHY.irv_sabin_noala=function(p){var sb=nsz(p,'Sabin'),vn=nsz(p,'Vernon'),al=nsz(p,'Alameda'),bk=dk(p,'Irvington','Beverly Cleary'),sk=dk(p,'Irvington','Sabin'),ak=dk(p,'Irvington','Alameda');
+  return 'No split for Sabin or Alameda: this one drops the current best&rsquo;s big-school relief, so every family in today&rsquo;s Sabin and Alameda areas stays at its own school (fixed limits), and Vernon keeps today&rsquo;s lines. Sabin and Vernon may stay below 360'+(sb&&vn?' (Sabin '+n0(sb)+', Vernon '+n0(vn)+' in 2031-32)':'')+(al?'; Alameda stays big ('+n0(al)+')':'')+'. Irvington closes, and the model splits its kids by distance and size'+(bk&&sk&&ak?': Beverly Cleary about '+n0(bk)+', Sabin '+n0(sk)+', Alameda '+n0(ak):'')+'. For high school the whole Sabin area goes to Tubman, then Jefferson.'+tl(p);};
 WHY.equity_noswap_alameda_rig=WHY.equity_noswap_alameda_rig_hs;
 function whyHtml(list){
   var C=S.capacity||{};
@@ -238,6 +267,7 @@ body.innerHTML=
   '<div class="row"><h2>On the map</h2></div><p class="small muted" id="mapnote"></p><div class="vs" id="mapvs" role="group" aria-label="Plan on the right of the map"></div>'+
   '<div class="mapbox"><iframe id="smap" title="Map of the elementary lines around Sabin and Irvington: PPS Status Quo against the plan picked" loading="lazy"></iframe></div>'+
   '<p class="maplink"><a id="fullmap" href="map.html">Open the full map</a></p>'+
+  '<div class="row"><h2 id="yrsh">School sizes by year</h2></div><p class="small muted" id="yrsnote"></p><div class="tbl"><table id="yrs"></table></div><p class="cite" id="yrscite"></p>'+
   '<div class="ctl"><span class="lab">Families in today&rsquo;s</span><div class="levels" role="group" aria-label="Attendance area">'+AREAS.map(function(a){return '<button type="button" data-a="'+esc(a)+'">'+esc(a)+' area</button>';}).join('')+'</div></div>'+
   '<p class="lab small muted" style="margin:14px 0 0">Plans to show</p><div class="picker" role="group" aria-label="Plans to show">'+P.map(function(p){return '<button type="button" data-p="'+esc(p.run)+'">'+esc(p.label)+'</button>';}).join('')+'</div>'+
   (S.pending?'<p class="small muted">'+S.pending+' more run'+(S.pending>1?'s':'')+' for this area '+(S.pending>1?'are':'is')+' still running; '+(S.pending>1?'they appear':'it appears')+' here when done.</p>':'')+
@@ -266,7 +296,7 @@ function sync(){
   document.getElementById('distcite').innerHTML='Model v2, 2031-32. '+CITE_DATA+', from each plan&rsquo;s schools.csv.';
   document.getElementById('why').innerHTML=whyHtml(list);
   if(!st.map||mapChoices().map(function(p){return p.run;}).indexOf(st.map)<0)st.map=mapDefault();
-  mapCtl();setMap();
+  mapCtl();setMap();yrsTable();
   var h='area='+encodeURIComponent(st.area)+(st.level!=='K-5'?'&level='+st.level:'')+(st.plans.length!==P.length?'&plans='+st.plans.map(encodeURIComponent).join(','):'')+(st.map&&st.map!==mapDefault()?'&map='+encodeURIComponent(st.map):'');
   try{history.replaceState(null,'','#'+h);}catch(_){}
 }

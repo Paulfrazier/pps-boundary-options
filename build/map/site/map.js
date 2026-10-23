@@ -488,7 +488,7 @@ const quickFade=()=>{const q=$("quick");q.classList.toggle("more",q.scrollLeft+q
 $("quick").addEventListener("scroll",quickFade,{passive:true});
 function quick(){const q=$("quick");q.querySelectorAll("button").forEach(b=>b.remove());const A=avail();
  QUICK().filter(([a,b])=>a!==b&&A.includes(a)&&A.includes(b)).forEach(([a,b,t])=>{const bt=document.createElement("button");bt.type="button";bt.textContent=t;bt.title=`${lblFull(a)} (left) vs ${lblFull(b)} (right)`;
-  bt.setAttribute("aria-pressed",cmpOn()&&p1===a&&p2===b);bt.onclick=()=>{p1=a;p2=b;if(!cmpOn()){initLoad=true;setMode("swipe");initLoad=false}else{fillSelects();chips();drawAreas()}quick();hashWrite()};q.append(bt)});quickFade()}
+  bt.setAttribute("aria-pressed",cmpOn()?p1===a&&p2===b:scn===b);bt.onclick=()=>{p1=a;p2=b;if(!cmpOn()){scn=b;$("sel0").value=b;sel=null;drawAreas()}else{fillSelects();chips();drawAreas()}quick();hashWrite()};q.append(bt)});quickFade()}
 // "Map options" (round 8): a dot on the button while anything in it differs from the default, so a hidden setting is never a surprise
 function optInd(){const off=[];if(colBy())off.push("colors: "+$("lcol").selectedOptions[0].text);if(cmpOn()&&hatchTheme()&&!showHatch)off.push("hatch off");
  if($("lcur").checked&&!$("lcurw").hidden)off.push("Status Quo lines on top");[["lpri","major streets"],["lst","collector streets"],["lloc","local streets"],["lnm","street names"],["lrail","rail"]].forEach(([id,t])=>{if(!$(id).checked)off.push(t+" off")});
@@ -544,7 +544,8 @@ const henc=v=>encodeURIComponent(v).replace(/%2C/g,",").replace(/%20/g,"+");
 // round 8: the default view (K-5, swipe, PPS Status Quo | PPS A) writes no hash; any key that differs from its default is written
 const DEF={level:"K-5",view:"single",a:BASELINE,b:"scenario_A",plan:"scenario_A"};
 const defPick=(k,i)=>{const A=avail();return A.includes(k)?k:A[Math.min(i,A.length-1)]};
-function hashWrite(){if(initLoad)return;const q=[];if(lv!==DEF.level)q.push(["level",lv]);if(mode!==DEF.view)q.push(["view",mode]);
+function hashWrite(){if(initLoad)return;if(document.documentElement.classList.contains("embed"))try{parent.postMessage({ppsMapPlan:cmpOn()?p2:scn,ppsMapView:mode},"*")}catch(e){}   // embed: tell the host page which plan is shown
+ const q=[];if(lv!==DEF.level)q.push(["level",lv]);if(mode!==DEF.view)q.push(["view",mode]);
  if(cmpOn()){if(p1!==defPick(DEF.a,0))q.push(["a",p1]);if(p2!==defPick(DEF.b,1))q.push(["b",p2])}else if(scn!==defPick(DEF.plan,0))q.push(["plan",scn]);
  if(colBy())q.push(["color",colBy()]);if(cmpOn()&&hatchTheme()&&!showHatch)q.push(["layers","none"]);   // round 6: off-only, and only where the hatch is drawn
  if(sel)q.push(["school",sel]);if(pin)q.push(["at",pin[0].toFixed(5)+","+pin[1].toFixed(5)]);

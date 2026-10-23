@@ -1,6 +1,5 @@
-"""Sabin- and Irvington-area families under each plan, students experiencing poverty vs all other students (2026-10-22,
-Paul: "compare impact to sabin kids in poverty from Plan A, a Plan D, Sabin all, and irv_sabin"; then "build up a sabin
-options page").
+"""Sabin- and Irvington-area families under each plan, students experiencing poverty vs all other students (the data
+behind the Sabin options page).
 
 Area = today's K-5 attendance area (blocks.sq_es). Poverty = poverty_compare.py's block estimate (Census C17002 <185% of
 poverty, block_poverty185.npy), so counts are estimates. 2031-32 kids. Walk = network walk to the assigned building.
@@ -23,7 +22,7 @@ SPLANS = [('status_quo', 'Today (Status Quo)'), ('scenario_A', 'PPS Scenario A')
           ('planD_redraw_ms', 'Scenario D re-drawn'), ('planD_sust', 'Scenario D buildings, every school at target'),
           ('equity_noswap_alameda_rig_hs', 'Current best: fewer DLI moves, sustainable schools'), ('sabin_all', 'Sabin into Irvington, all ideas'),
           ('sabin_all_keepbc', 'Sabin into Irvington, Beverly Cleary keeps its area'),
-          ('irv_sabin', 'Irvington into Sabin'), ('sabin_irv', 'Sabin into Irvington (small)'),
+          ('irv_sabin', 'Irvington into Sabin'), ('irv_sabin_keep', 'Irvington into Sabin, all of Sabin stays, Vernon as today'), ('irv_sabin_whole', 'Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson'), ('irv_sabin_noala', 'Sabin Stays - less moves'), ('sabin_irv', 'Sabin into Irvington (small)'),
           ('sabin_irv_wide', 'Sabin into Irvington, wider receivers'), ('sabin_irv_both', 'Sabin and Irvington both open')]
 AREAS = ['Sabin', 'Irvington']
 NEIGH = ['Sabin', 'Irvington', 'MLK Jr', 'Alameda', 'Vernon', 'Beverly Cleary', 'Boise-Eliot/Humboldt', 'Rigler', 'Woodlawn']
@@ -101,6 +100,29 @@ JS['capacity'] = {'schools': CLUSTER, 'year': '2031-32', 'neighborhood_k5_kids':
                   'note': "K-5 kids living in these seven schools' current attendance areas plus the K-5 immersion program housed "
                           "there (King's Mandarin, as in the featured plan); compares with 360 per open school. Model v2, 2031-32."}
 JS['note'] = JS['note'].replace('anchored to PPS school rates', "anchored to each school's direct-certification rate in PPS's Status Quo dashboard")
+# (2026-10-22, site chat) by-year building totals for the Sabin page's size table, from the same building_table totals as
+# durability.sizes_by_year, but for exempt schools too (Sabin, Vernon, Irvington); a closed school is left out
+SY_SCHOOLS = ['Sabin', 'Irvington', 'Beverly Cleary', 'MLK Jr', 'Boise-Eliot/Humboldt', 'Vernon', 'Alameda',
+              'Beaumont', 'Tubman', 'Jefferson', 'Grant']
+_SY = {}
+
+
+def school_years(n):
+    if n not in _SY:
+        d = plan_dir(n)
+        cfg = C.load_config(f'configs/v2/{n}.json')
+        plan = {lv: asg(d, lv).astype(object) for lv in C.LEVELS}
+        yrs = json.load(open(f'{d}/scorecard.json'))['durability']['years']
+        out = {}
+        for y in yrs:
+            bt = M.building_table(cfg, plan, year=y[:4]).set_index('school')
+            for s in SY_SCHOOLS:
+                if s in bt.index and bt.loc[s, 'total'] > 0:
+                    out.setdefault(s, {'type': bt.loc[s, 'type'], 'years': {}})['years'][y] = round(float(bt.loc[s, 'total']), 1)
+        _SY[n] = out
+    return _SY[n]
+
+
 MD = []
 for AREA in AREAS:
     m = b['sq_es'].values == AREA
@@ -119,7 +141,7 @@ for AREA in AREAS:
                             'destinations': dests,
                             'district': {'schools_open': int(r['d_n']), 'pct_sustainable_schools': round(r['d_sust'], 1),
                                          'pct_students_in_sustainable': round(r['d_in_sust'], 1)},
-                            'neighbor_schools': neigh})
+                            'neighbor_schools': neigh, 'school_years': school_years(n)})
     q = lambda r, lv, k_, f: f"{f(r[f'{lv}_pov_{k_}'])} / {f(r[f'{lv}_oth_{k_}'])}"
     out = [f'# {AREA}-area families: students experiencing poverty vs all others', '',
            f'Today\'s {AREA} attendance area, 2031-32 projected kids. Estimated {rows[0]["K-5_pov_n"]:.0f} of '

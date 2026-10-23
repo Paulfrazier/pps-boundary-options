@@ -130,7 +130,9 @@ function table(){
     '. PPS A and PPS B &ldquo;at target&rdquo; counts use PPS&rsquo;s own Family Guide figures where PPS published them, as on the <a href="options.html">options page</a>. <b>Bold</b> = best in the row, not counting Status Quo.';
 }
 
-function mapSrc(){var h='a='+encodeURIComponent(st.req)+'&b='+encodeURIComponent(st.vs);if(st.level!=='K-5')h+='&level='+encodeURIComponent(st.level);return h;}
+// keep the view the reader picked in the embedded map (single plan shows the requested run)
+function embView(){var f=document.getElementById('rmap');try{var l=f&&f.contentWindow&&f.contentWindow.location;if(!l||l.pathname.indexOf('map.html')<0)return null;var m=/(?:^|[#&])view=(\w+)/.exec(l.hash);return m?m[1]:'single';}catch(_){return null;}}
+function mapSrc(){var v=embView(),h=v==='single'?'view=single&plan='+encodeURIComponent(st.req):(v==='overlay'?'view=overlay&':'')+'a='+encodeURIComponent(st.req)+'&b='+encodeURIComponent(st.vs);if(st.level!=='K-5')h+='&level='+encodeURIComponent(st.level);return h;}
 // the embedded map reports its height, so the iframe fits it and never scrolls inside itself
 window.addEventListener('message',function(e){var f=document.getElementById('rmap');if(f&&e.source===f.contentWindow&&e.data&&e.data.ppsMapH>0)f.style.height=Math.min(e.data.ppsMapH,6000)+'px';});
 function setMap(){var f=document.getElementById('rmap'),h=mapSrc();
