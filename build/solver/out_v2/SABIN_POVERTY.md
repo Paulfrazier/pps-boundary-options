@@ -9,6 +9,7 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Today (Status Quo) | 0% / 0% | 0.48 / 0.45 | +0.00 / +0.00 | 100% / 100% | 0% / 0% | 0% / 0% |
 | PPS Scenario A | 100% / 100% | 0.80 / 0.98 | +0.32 / +0.54 | 74% / 46% | 26% / 54% | 100% / 100% |
 | Scenario D as written | 100% / 100% | 0.70 / 0.84 | +0.22 / +0.39 | 85% / 67% | 15% / 33% | 64% / 47% |
+| Scenario D as written (current draft, Sabin stays open) | 0% / 0% | 0.48 / 0.45 | +0.00 / +0.00 | 100% / 100% | 0% / 0% | 0% / 0% |
 | Scenario D re-drawn | 100% / 100% | 0.58 / 0.61 | +0.11 / +0.16 | 100% / 100% | 0% / 0% | 99% / 99% |
 | Scenario D buildings, every school at target | 100% / 100% | 0.68 / 0.76 | +0.20 / +0.32 | 85% / 76% | 15% / 24% | 100% / 100% |
 | Current best: fewer DLI moves, sustainable schools | 100% / 100% | 0.64 / 0.69 | +0.16 / +0.24 | 92% / 90% | 8% / 10% | 100% / 100% |
@@ -31,6 +32,7 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Today (Status Quo) | 0% / 0% | 1.74 / 1.82 | +0.00 / +0.00 | 70% / 75% | 0% / 0% |
 | PPS Scenario A | 0% / 0% | 1.74 / 1.82 | +0.00 / +0.00 | 70% / 75% | 0% / 0% |
 | Scenario D as written | 0% / 0% | 1.74 / 1.82 | +0.00 / +0.00 | 70% / 75% | 0% / 0% |
+| Scenario D as written (current draft, Sabin stays open) | 0% / 0% | 1.74 / 1.82 | +0.00 / +0.00 | 70% / 75% | 0% / 0% |
 | Scenario D re-drawn | 47% / 73% | 1.26 / 1.25 | -0.48 / -0.57 | 30% / 28% | 0% / 0% |
 | Scenario D buildings, every school at target | 46% / 57% | 1.20 / 1.16 | -0.55 / -0.65 | 24% / 18% | 54% / 43% |
 | Current best: fewer DLI moves, sustainable schools | 54% / 75% | 1.44 / 1.39 | -0.30 / -0.42 | 41% / 35% | 100% / 100% |
@@ -53,6 +55,7 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Today (Status Quo) | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | PPS Scenario A | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Scenario D as written | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
+| Scenario D as written (current draft, Sabin stays open) | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Scenario D re-drawn | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Scenario D buildings, every school at target | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Current best: fewer DLI moves, sustainable schools | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
@@ -75,6 +78,7 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Today (Status Quo) | 0% / 0% | 0% / 0% | 100% / 100% |
 | PPS Scenario A | 100% / 100% | 0% / 0% | 100% / 100% |
 | Scenario D as written | 100% / 100% | 0% / 0% | 100% / 100% |
+| Scenario D as written (current draft, Sabin stays open) | 0% / 0% | 0% / 0% | 100% / 100% |
 | Scenario D re-drawn | 99% / 99% | 23% / 22% | 100% / 100% |
 | Scenario D buildings, every school at target | 100% / 100% | 89% / 84% | 100% / 100% |
 | Current best: fewer DLI moves, sustainable schools | 100% / 100% | 100% / 100% | 100% / 100% |
@@ -97,6 +101,7 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Today (Status Quo) | 76 | 28% | 50% |
 | PPS Scenario A | 62 | 69% | 81% |
 | Scenario D as written | 70 | 40% | 60% |
+| Scenario D as written (current draft, Sabin stays open) | 71 | 39% | 60% |
 | Scenario D re-drawn | 70 | 43% | 63% |
 | Scenario D buildings, every school at target | 70 | 73% | 83% |
 | Current best: fewer DLI moves, sustainable schools | 62 | 97% | 98% |
@@ -125,6 +130,9 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Scenario D as written | K-5 | MLK Jr 122 (43 in poverty), Vernon 114 (24 in poverty) |
 | Scenario D as written | 6-8 | Tubman 93 (23 in poverty) |
 | Scenario D as written | 9-12 | Jefferson 221 (71 in poverty) |
+| Scenario D as written (current draft, Sabin stays open) | K-5 | Sabin 236 (67 in poverty) |
+| Scenario D as written (current draft, Sabin stays open) | 6-8 | Tubman 93 (23 in poverty) |
+| Scenario D as written (current draft, Sabin stays open) | 9-12 | Jefferson 221 (71 in poverty) |
 | Scenario D re-drawn | K-5 | Alameda 101 (16 in poverty), MLK Jr 78 (34 in poverty), Vernon 55 (15 in poverty), Boise-Eliot/Humboldt 2 (1 in poverty) |
 | Scenario D re-drawn | 6-8 | Beaumont 42 (5 in poverty), Tubman 31 (12 in poverty), Vernon 21 (5 in poverty) |
 | Scenario D re-drawn | 9-12 | Jefferson 221 (71 in poverty) |
@@ -179,6 +187,7 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Today (Status Quo) | 0% / 0% | 0.60 / 0.52 | +0.00 / +0.00 | 87% / 94% | 13% / 6% | 0% / 0% |
 | PPS Scenario A | 100% / 100% | 1.03 / 1.08 | +0.43 / +0.56 | 51% / 42% | 49% / 58% | 100% / 100% |
 | Scenario D as written | 100% / 100% | 1.03 / 1.08 | +0.43 / +0.56 | 51% / 42% | 49% / 58% | 0% / 0% |
+| Scenario D as written (current draft, Sabin stays open) | 100% / 100% | 1.03 / 1.08 | +0.43 / +0.56 | 51% / 42% | 49% / 58% | 100% / 100% |
 | Scenario D re-drawn | 100% / 100% | 0.89 / 0.90 | +0.29 / +0.38 | 58% / 58% | 42% / 42% | 12% / 42% |
 | Scenario D buildings, every school at target | 100% / 100% | 0.92 / 0.97 | +0.32 / +0.45 | 57% / 55% | 43% / 45% | 42% / 60% |
 | Current best: fewer DLI moves, sustainable schools | 100% / 100% | 0.89 / 0.90 | +0.29 / +0.38 | 58% / 60% | 42% / 40% | 100% / 100% |
@@ -201,6 +210,7 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Today (Status Quo) | 0% / 0% | 1.20 / 1.27 | +0.00 / +0.00 | 31% / 29% | 0% / 0% |
 | PPS Scenario A | 100% / 100% | 2.04 / 1.82 | +0.84 / +0.56 | 94% / 81% | 0% / 0% |
 | Scenario D as written | 0% / 0% | 1.20 / 1.27 | +0.00 / +0.00 | 31% / 29% | 0% / 0% |
+| Scenario D as written (current draft, Sabin stays open) | 100% / 100% | 2.04 / 1.82 | +0.84 / +0.56 | 94% / 81% | 0% / 0% |
 | Scenario D re-drawn | 76% / 83% | 0.86 / 1.21 | -0.34 / -0.06 | 11% / 36% | 0% / 0% |
 | Scenario D buildings, every school at target | 67% / 59% | 0.78 / 0.98 | -0.42 / -0.29 | 2% / 8% | 33% / 41% |
 | Current best: fewer DLI moves, sustainable schools | 11% / 42% | 1.24 / 1.38 | +0.04 / +0.12 | 36% / 44% | 100% / 100% |
@@ -223,6 +233,7 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Today (Status Quo) | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
 | PPS Scenario A | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
 | Scenario D as written | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
+| Scenario D as written (current draft, Sabin stays open) | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
 | Scenario D re-drawn | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
 | Scenario D buildings, every school at target | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
 | Current best: fewer DLI moves, sustainable schools | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
@@ -245,6 +256,7 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Today (Status Quo) | 0% / 0% | 0% / 0% | 100% / 100% |
 | PPS Scenario A | 100% / 100% | 0% / 0% | 100% / 100% |
 | Scenario D as written | 100% / 100% | 0% / 0% | 100% / 100% |
+| Scenario D as written (current draft, Sabin stays open) | 100% / 100% | 0% / 0% | 100% / 100% |
 | Scenario D re-drawn | 73% / 79% | 62% / 34% | 100% / 100% |
 | Scenario D buildings, every school at target | 100% / 100% | 95% / 82% | 100% / 100% |
 | Current best: fewer DLI moves, sustainable schools | 100% / 100% | 100% / 100% | 100% / 100% |
@@ -273,6 +285,9 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Scenario D as written | K-5 | Beverly Cleary 223 (46 in poverty) |
 | Scenario D as written | 6-8 | Tubman 114 (32 in poverty) |
 | Scenario D as written | 9-12 | Grant 328 (51 in poverty) |
+| Scenario D as written (current draft, Sabin stays open) | K-5 | Beverly Cleary 223 (46 in poverty) |
+| Scenario D as written (current draft, Sabin stays open) | 6-8 | Beaumont 114 (32 in poverty) |
+| Scenario D as written (current draft, Sabin stays open) | 9-12 | Grant 328 (51 in poverty) |
 | Scenario D re-drawn | K-5 | Beverly Cleary 93 (28 in poverty), Alameda 80 (6 in poverty), Boise-Eliot/Humboldt 49 (13 in poverty) |
 | Scenario D re-drawn | 6-8 | Beverly Cleary 48 (20 in poverty), Beaumont 45 (4 in poverty), Tubman 22 (8 in poverty) |
 | Scenario D re-drawn | 9-12 | Grant 328 (51 in poverty) |

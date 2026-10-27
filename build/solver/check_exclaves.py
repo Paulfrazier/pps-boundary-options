@@ -71,6 +71,12 @@ def check(run_dir, cfg=None, _seen=()):
                 out[lev] = [x for x in check_pieces(asg, NB, roots, b, K[lev] if K is not None else np.ones(len(asg)))
                             if (x['school'], x['blocks']) not in pps]   # only pieces the reassignment made
                 continue
+            # lines patched after the solve (e.g. a stranded piece handed to the school around it): still only flag
+            # pieces that are not in PPS's own column
+            pps = {(x['school'], x['blocks']) for x in check_pieces(b[fa].values, NB, roots, b, K[lev] if K is not None else np.ones(len(asg)))}
+            out[lev] = [x for x in check_pieces(asg, NB, roots, b, K[lev] if K is not None else np.ones(len(asg)))
+                        if (x['school'], x['blocks']) not in pps]
+            continue
         # a level copied unchanged from another run (solve.py fixed_run) gets that run's verdict, so PPS-traced
         # pieces the source run was cleared for are not re-flagged here
         fr = cfg['levels'][lev].get('fixed_run') if cfg else None

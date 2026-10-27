@@ -223,6 +223,8 @@ var WHY={
   status_quo:function(p){return 'No split: no school closes, so each area keeps its own school.';},
   scenario_A:function(p){return 'No split: PPS&rsquo;s own lines send every Sabin-area kid to King and every Irvington-area kid to Beverly Cleary.';},
   planD:function(p){return 'The newspaper report of this plan says some Sabin kids go to Vernon and the rest to King, without saying which blocks, so the model drew that line by shortest walk [second-hand: newspaper report]. Irvington kids all go to Beverly Cleary, an assumption taken from PPS A because the report names no school for them.'+tl(p);},
+  planD_updated:function(p){var bk=dk(p,'Irvington','Beverly Cleary'),sb=nsz(p,'Sabin'),bc=nsz(p,'Beverly Cleary');
+    return 'No split: the draft keeps Sabin open with today&rsquo;s area and sends all of Irvington&rsquo;s area to Beverly Cleary'+(bk?' (about '+n0(bk)+' kids)':'')+'. Lines are not redrawn'+(sb&&bc?'; in 2031-32 Sabin is at '+n0(sb)+', below PPS&rsquo;s 360, and Beverly Cleary at '+n0(bc):'')+'.'+tl(p);},
   planD_redraw_ms:function(p){return 'Mostly distance. The lines were redrawn for shorter walks with only Vernon (a K-8 in this plan, 500 students) and King (360) required to be at PPS&rsquo;s target every year; every other school just had to stay at or above its Status Quo size. So kids go mostly to their closest school, which for Sabin-area kids is Alameda, King or Vernon.'+tl(p);},
   planD_sust:function(p){var b=nsz(p,'Boise-Eliot/Humboldt'),k=nsz(p,'MLK Jr'),v=nsz(p,'Vernon');
     return 'Mostly size. Every open school had to reach 360 (500 for Vernon, a K-8 here) every year, so Sabin and Irvington kids are spread out to fill neighbors'+(b&&k&&v?' (in 2031-32: Boise-Eliot/Humboldt '+n0(b)+', King '+n0(k)+', Vernon '+n0(v)+')':'')+', and more of them pass their closest school. Its walk and move costs are also weighted by neighborhood poverty, which changes which kids are moved.'+tl(p);},
@@ -263,7 +265,7 @@ function whyHtml(list){
     'Immersion rules don&rsquo;t drive the split: in the example plans here, King&rsquo;s Mandarin immersion program stays at King, and its students count toward King&rsquo;s size. Each school&rsquo;s area must also be one connected piece.</p>';
   var items=list.filter(function(p){return WHY[p.run];});
   if(items.length)h+='<ul>'+items.map(function(p){return '<li><b>'+esc(p.label)+':</b> '+WHY[p.run](p)+'</li>';}).join('')+'</ul>';
-  var best=byRun.equity_noswap_alameda_rig_hs, pd=byRun.planD;
+  var best=byRun.equity_noswap_alameda_rig_hs, pd=byRun.planD_updated;
   h+='<p class="cite">Rules: '+fileLink(WS.method,'METHOD.md')+' (&sect;2 size limits and the 10,000-per-kid cost; &sect;3 walk cost and one connected area per school; &sect;3b and &sect;7 every year 2027-28 to 2031-32). Kids and seats: '+fileLink(S.source,'SABIN_OPTIONS.json')+' (&ldquo;capacity&rdquo;). '+
     'King&rsquo;s program: '+(best&&best.tradeoffs?fileLink(best.tradeoffs,'previous best trade-offs')+(pd&&pd.tradeoffs?' and '+fileLink(pd.tradeoffs,'Scenario D trade-offs'):''):'each plan&rsquo;s trade-offs')+'. '+
     (WS.big_school?'Big-school relief: '+fileLink(WS.big_school,'trade-offs of the run that added it')+'. ':'')+

@@ -18,7 +18,7 @@ _src = open('poverty_compare.py').read().split("# ---- PPS's own figures")[0]
 with contextlib.redirect_stdout(io.StringIO()):
     exec(_src)
 
-SPLANS = [('status_quo', 'Today (Status Quo)'), ('scenario_A', 'PPS Scenario A'), ('planD', 'Scenario D as written'),
+SPLANS = [('status_quo', 'Today (Status Quo)'), ('scenario_A', 'PPS Scenario A'), ('planD', 'Scenario D as written'), ('planD_updated', 'Scenario D as written (current draft, Sabin stays open)'),
           ('planD_redraw_ms', 'Scenario D re-drawn'), ('planD_sust', 'Scenario D buildings, every school at target'),
           ('equity_noswap_alameda_rig_hs', 'Current best: fewer DLI moves, sustainable schools'), ('sabin_all', 'Sabin into Irvington, all ideas'),
           ('sabin_all_keepbc', 'Sabin into Irvington, Beverly Cleary keeps its area'),

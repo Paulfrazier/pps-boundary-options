@@ -15,7 +15,7 @@ area=b['sq_es'].values; m=np.isin(area,['Sabin','Irvington']); ix=np.where(m)[0]
 assert (b.index.values[ix]==ix).all() if hasattr(b,'index') else True
 BUS={'K-5':1.0,'6-8':1.5,'9-12':1.5}
 plans={}
-for run,lab in [('status_quo','Today'),('scenario_A','PPS A'),('scenario_B','PPS B'),('planD_updated.staging','Plan D')]:
+for run,lab in [('status_quo','Today'),('scenario_A','PPS A'),('scenario_B','PPS B'),('planD_updated','Plan D')]:
   d='out_v2/'+run if run!='status_quo' else SQ
   plans[lab]={lv:asg(d,lv)[ix].astype(object) for lv in BUS}
 sq9=asg(SQ,'9-12')[ix].astype(object)

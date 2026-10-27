@@ -750,23 +750,23 @@ window.SABIN_DATA = {
    }
   },
   {
-   "run": "planD",
-   "label": "Scenario D as written",
-   "data_label": "Scenario D as written",
-   "note": null,
+   "run": "planD_updated",
+   "label": "Plan D (current draft, Sabin stays open)",
+   "data_label": "Scenario D as written (current draft, Sabin stays open)",
+   "note": "A board member's current draft, as written: five elementary schools close, Sabin stays open with today's area, and Irvington goes to Beverly Cleary. Lines are not redrawn.",
    "caveat": null,
    "on_map": true,
-   "scorecard": "build/solver/out_v2/planD/scorecard.json",
-   "schools_csv": "build/solver/out_v2/planD/schools.csv",
-   "tradeoffs": "build/solver/out_v2/planD/TRADEOFFS.md",
+   "scorecard": "build/solver/out_v2/planD_updated/scorecard.json",
+   "schools_csv": "build/solver/out_v2/planD_updated/schools.csv",
+   "tradeoffs": "build/solver/out_v2/planD_updated/TRADEOFFS.md",
    "district": {
-    "schools_open": 70,
-    "pct_sustainable_schools": 40.0,
-    "pct_students_in_sustainable": 60.1
+    "schools_open": 71,
+    "pct_sustainable_schools": 39.4,
+    "pct_students_in_sustainable": 59.7
    },
    "neighbor_schools": {
     "Sabin": {
-     "total_2031": 0,
+     "total_2031": 236,
      "at_target_every_year": false
     },
     "Irvington": {
@@ -774,20 +774,20 @@ window.SABIN_DATA = {
      "at_target_every_year": false
     },
     "MLK Jr": {
-     "total_2031": 459,
-     "at_target_every_year": true
+     "total_2031": 337,
+     "at_target_every_year": false
     },
     "Alameda": {
      "total_2031": 490,
      "at_target_every_year": true
     },
     "Vernon": {
-     "total_2031": 566,
+     "total_2031": 288,
      "at_target_every_year": false
     },
     "Beverly Cleary": {
-     "total_2031": 617,
-     "at_target_every_year": false
+     "total_2031": 451,
+     "at_target_every_year": true
     },
     "Boise-Eliot/Humboldt": {
      "total_2031": 309,
@@ -803,32 +803,46 @@ window.SABIN_DATA = {
     }
    },
    "school_years": {
-    "Beverly Cleary": {
-     "type": "K-8",
+    "Sabin": {
+     "type": "K-5",
      "years": {
-      "2027-28": 675.6,
-      "2028-29": 653.5,
-      "2029-30": 641.5,
-      "2030-31": 623.4,
-      "2031-32": 617.4,
-      "2032-33": 619.4,
-      "2033-34": 602.3,
-      "2034-35": 595.2,
-      "2035-36": 589.2
+      "2027-28": 236.9,
+      "2028-29": 248.9,
+      "2029-30": 240.9,
+      "2030-31": 234.9,
+      "2031-32": 235.9,
+      "2032-33": 232.9,
+      "2033-34": 229.9,
+      "2034-35": 223.8,
+      "2035-36": 220.8
+     }
+    },
+    "Beverly Cleary": {
+     "type": "K-5",
+     "years": {
+      "2027-28": 491.5,
+      "2028-29": 477.2,
+      "2029-30": 467.4,
+      "2030-31": 453.1,
+      "2031-32": 450.9,
+      "2032-33": 451.5,
+      "2033-34": 440.0,
+      "2034-35": 433.7,
+      "2035-36": 429.0
      }
     },
     "MLK Jr": {
      "type": "K-5",
      "years": {
-      "2027-28": 459.2,
-      "2028-29": 471.4,
-      "2029-30": 470.2,
-      "2030-31": 471.1,
-      "2031-32": 458.6,
-      "2032-33": 450.1,
-      "2033-34": 438.5,
-      "2034-35": 422.4,
-      "2035-36": 416.9
+      "2027-28": 337.0,
+      "2028-29": 343.0,
+      "2029-30": 346.0,
+      "2030-31": 350.0,
+      "2031-32": 337.0,
+      "2032-33": 330.0,
+      "2033-34": 320.0,
+      "2034-35": 307.0,
+      "2035-36": 303.0
      }
     },
     "Boise-Eliot/Humboldt": {
@@ -846,17 +860,17 @@ window.SABIN_DATA = {
      }
     },
     "Vernon": {
-     "type": "K-8",
+     "type": "K-5",
      "years": {
-      "2027-28": 604.9,
-      "2028-29": 606.8,
-      "2029-30": 591.9,
-      "2030-31": 575.0,
-      "2031-32": 565.6,
-      "2032-33": 559.1,
-      "2033-34": 553.7,
-      "2034-35": 553.7,
-      "2035-36": 549.3
+      "2027-28": 312.8,
+      "2028-29": 310.3,
+      "2029-30": 303.3,
+      "2030-31": 294.4,
+      "2031-32": 288.0,
+      "2032-33": 284.9,
+      "2033-34": 282.3,
+      "2034-35": 284.2,
+      "2035-36": 282.3
      }
     },
     "Alameda": {
@@ -876,29 +890,29 @@ window.SABIN_DATA = {
     "Beaumont": {
      "type": "6-8",
      "years": {
-      "2027-28": 296.9,
-      "2028-29": 281.1,
-      "2029-30": 288.7,
-      "2030-31": 291.7,
-      "2031-32": 313.2,
-      "2032-33": 316.5,
-      "2033-34": 320.7,
-      "2034-35": 327.9,
-      "2035-36": 323.2
+      "2027-28": 523.9,
+      "2028-29": 485.8,
+      "2029-30": 467.9,
+      "2030-31": 454.2,
+      "2031-32": 463.7,
+      "2032-33": 468.8,
+      "2033-34": 469.3,
+      "2034-35": 471.8,
+      "2035-36": 463.2
      }
     },
     "Tubman": {
      "type": "6-8",
      "years": {
-      "2027-28": 457.0,
-      "2028-29": 414.0,
-      "2029-30": 389.0,
-      "2030-31": 368.0,
-      "2031-32": 374.0,
-      "2032-33": 377.0,
-      "2033-34": 386.0,
-      "2034-35": 391.0,
-      "2035-36": 381.0
+      "2027-28": 490.3,
+      "2028-29": 462.5,
+      "2029-30": 439.9,
+      "2030-31": 422.7,
+      "2031-32": 423.3,
+      "2032-33": 424.9,
+      "2033-34": 430.7,
+      "2034-35": 434.3,
+      "2035-36": 426.8
      }
     },
     "Jefferson": {
@@ -936,23 +950,23 @@ window.SABIN_DATA = {
       "K-5": {
        "pov": {
         "n": 66.6409,
-        "mv": 100.0,
-        "walk": 0.7006,
-        "dwalk": 0.2236,
-        "in1": 84.7219,
-        "bus": 15.2781,
-        "sust": 64.091,
-        "pps": 100.0
+        "mv": 0.0,
+        "walk": 0.477,
+        "dwalk": 0.0,
+        "in1": 100.0,
+        "bus": 0.0,
+        "sust": 0.0,
+        "pps": 0.0
        },
        "oth": {
         "n": 169.2329,
-        "mv": 100.0,
-        "walk": 0.8365,
-        "dwalk": 0.3909,
-        "in1": 67.0566,
-        "bus": 32.9434,
-        "sust": 46.6387,
-        "pps": 100.0
+        "mv": 0.0,
+        "walk": 0.4456,
+        "dwalk": 0.0,
+        "in1": 100.0,
+        "bus": 0.0,
+        "sust": 0.0,
+        "pps": 0.0
        }
       },
       "6-8": {
@@ -998,13 +1012,9 @@ window.SABIN_DATA = {
      },
      "destinations": {
       "K-5": {
-       "MLK Jr": {
-        "kids": 122,
-        "poverty": 43
-       },
-       "Vernon": {
-        "kids": 114,
-        "poverty": 24
+       "Sabin": {
+        "kids": 236,
+        "poverty": 67
        }
       },
       "6-8": {
@@ -1031,7 +1041,7 @@ window.SABIN_DATA = {
         "dwalk": 0.4345,
         "in1": 50.8415,
         "bus": 49.1585,
-        "sust": 0.0,
+        "sust": 100.0,
         "pps": 100.0
        },
        "oth": {
@@ -1041,28 +1051,28 @@ window.SABIN_DATA = {
         "dwalk": 0.5617,
         "in1": 41.622,
         "bus": 58.378,
-        "sust": 0.0,
+        "sust": 100.0,
         "pps": 100.0
        }
       },
       "6-8": {
        "pov": {
         "n": 32.067,
-        "mv": 0.0,
-        "walk": 1.1978,
-        "dwalk": 0.0,
-        "in1": 33.1396,
-        "bus": 31.0805,
+        "mv": 100.0,
+        "walk": 2.0384,
+        "dwalk": 0.8406,
+        "in1": 0.0,
+        "bus": 94.4728,
         "sust": 0.0,
         "pps": 0.0
        },
        "oth": {
         "n": 81.8647,
-        "mv": 0.0,
-        "walk": 1.2683,
-        "dwalk": 0.0,
-        "in1": 20.637,
-        "bus": 29.2609,
+        "mv": 100.0,
+        "walk": 1.825,
+        "dwalk": 0.5566,
+        "in1": 0.0,
+        "bus": 81.4632,
         "sust": 0.0,
         "pps": 0.0
        }
@@ -1094,793 +1104,9 @@ window.SABIN_DATA = {
        }
       },
       "6-8": {
-       "Tubman": {
+       "Beaumont": {
         "kids": 114,
         "poverty": 32
-       }
-      },
-      "9-12": {
-       "Grant": {
-        "kids": 328,
-        "poverty": 51
-       }
-      }
-     }
-    }
-   }
-  },
-  {
-   "run": "planD_redraw_ms",
-   "label": "Scenario D re-drawn",
-   "data_label": "Scenario D re-drawn",
-   "note": null,
-   "caveat": null,
-   "on_map": true,
-   "scorecard": "build/solver/out_v2/planD_redraw_ms/scorecard_scored360.json",
-   "schools_csv": "build/solver/out_v2/planD_redraw_ms/schools.csv",
-   "tradeoffs": "build/solver/out_v2/planD_redraw_ms/TRADEOFFS.md",
-   "district": {
-    "schools_open": 70,
-    "pct_sustainable_schools": 42.9,
-    "pct_students_in_sustainable": 63.0
-   },
-   "neighbor_schools": {
-    "Sabin": {
-     "total_2031": 0,
-     "at_target_every_year": false
-    },
-    "Irvington": {
-     "total_2031": 0,
-     "at_target_every_year": false
-    },
-    "MLK Jr": {
-     "total_2031": 485,
-     "at_target_every_year": true
-    },
-    "Alameda": {
-     "total_2031": 556,
-     "at_target_every_year": true
-    },
-    "Vernon": {
-     "total_2031": 501,
-     "at_target_every_year": true
-    },
-    "Beverly Cleary": {
-     "total_2031": 530,
-     "at_target_every_year": false
-    },
-    "Boise-Eliot/Humboldt": {
-     "total_2031": 310,
-     "at_target_every_year": false
-    },
-    "Rigler": {
-     "total_2031": 356,
-     "at_target_every_year": false
-    },
-    "Woodlawn": {
-     "total_2031": 399,
-     "at_target_every_year": true
-    }
-   },
-   "school_years": {
-    "Beverly Cleary": {
-     "type": "K-8",
-     "years": {
-      "2027-28": 590.6,
-      "2028-29": 564.1,
-      "2029-30": 553.1,
-      "2030-31": 536.6,
-      "2031-32": 529.7,
-      "2032-33": 531.8,
-      "2033-34": 518.2,
-      "2034-35": 515.0,
-      "2035-36": 509.3
-     }
-    },
-    "MLK Jr": {
-     "type": "K-5",
-     "years": {
-      "2027-28": 486.1,
-      "2028-29": 499.8,
-      "2029-30": 498.5,
-      "2030-31": 500.0,
-      "2031-32": 484.5,
-      "2032-33": 473.2,
-      "2033-34": 459.5,
-      "2034-35": 441.9,
-      "2035-36": 436.2
-     }
-    },
-    "Boise-Eliot/Humboldt": {
-     "type": "K-5",
-     "years": {
-      "2027-28": 318.6,
-      "2028-29": 333.1,
-      "2029-30": 324.4,
-      "2030-31": 320.7,
-      "2031-32": 309.8,
-      "2032-33": 296.5,
-      "2033-34": 285.1,
-      "2034-35": 274.0,
-      "2035-36": 271.5
-     }
-    },
-    "Vernon": {
-     "type": "K-8",
-     "years": {
-      "2027-28": 542.5,
-      "2028-29": 538.2,
-      "2029-30": 525.0,
-      "2030-31": 509.1,
-      "2031-32": 500.8,
-      "2032-33": 495.4,
-      "2033-34": 491.3,
-      "2034-35": 493.0,
-      "2035-36": 488.6
-     }
-    },
-    "Alameda": {
-     "type": "K-5",
-     "years": {
-      "2027-28": 567.6,
-      "2028-29": 575.1,
-      "2029-30": 572.2,
-      "2030-31": 562.6,
-      "2031-32": 556.5,
-      "2032-33": 550.2,
-      "2033-34": 539.9,
-      "2034-35": 527.1,
-      "2035-36": 521.7
-     }
-    },
-    "Beaumont": {
-     "type": "6-8",
-     "years": {
-      "2027-28": 395.9,
-      "2028-29": 368.7,
-      "2029-30": 372.1,
-      "2030-31": 368.7,
-      "2031-32": 390.2,
-      "2032-33": 392.5,
-      "2033-34": 397.4,
-      "2034-35": 406.4,
-      "2035-36": 399.4
-     }
-    },
-    "Tubman": {
-     "type": "6-8",
-     "years": {
-      "2027-28": 273.7,
-      "2028-29": 252.4,
-      "2029-30": 236.2,
-      "2030-31": 227.1,
-      "2031-32": 230.9,
-      "2032-33": 234.1,
-      "2033-34": 240.8,
-      "2034-35": 242.5,
-      "2035-36": 237.4
-     }
-    },
-    "Jefferson": {
-     "type": "9-12",
-     "years": {
-      "2027-28": 564.0,
-      "2028-29": 805.0,
-      "2029-30": 981.0,
-      "2030-31": 1158.0,
-      "2031-32": 1183.0,
-      "2032-33": 1178.0,
-      "2033-34": 1173.0,
-      "2034-35": 1159.0,
-      "2035-36": 1175.0
-     }
-    },
-    "Grant": {
-     "type": "9-12",
-     "years": {
-      "2027-28": 1935.0,
-      "2028-29": 1822.0,
-      "2029-30": 1713.0,
-      "2030-31": 1576.0,
-      "2031-32": 1487.0,
-      "2032-33": 1394.0,
-      "2033-34": 1332.0,
-      "2034-35": 1263.0,
-      "2035-36": 1237.0
-     }
-    }
-   },
-   "areas": {
-    "Sabin": {
-     "groups": {
-      "K-5": {
-       "pov": {
-        "n": 66.6409,
-        "mv": 100.0,
-        "walk": 0.5849,
-        "dwalk": 0.1079,
-        "in1": 100.0,
-        "bus": 0.0,
-        "sust": 98.7997,
-        "pps": 98.7997
-       },
-       "oth": {
-        "n": 169.2329,
-        "mv": 100.0,
-        "walk": 0.6106,
-        "dwalk": 0.165,
-        "in1": 100.0,
-        "bus": 0.0,
-        "sust": 99.3617,
-        "pps": 99.3617
-       }
-      },
-      "6-8": {
-       "pov": {
-        "n": 23.0294,
-        "mv": 46.7146,
-        "walk": 1.2599,
-        "dwalk": -0.4833,
-        "in1": 24.3643,
-        "bus": 30.0731,
-        "sust": 0.0,
-        "pps": 22.9365
-       },
-       "oth": {
-        "n": 70.1338,
-        "mv": 73.3816,
-        "walk": 1.2474,
-        "dwalk": -0.5696,
-        "in1": 25.8556,
-        "bus": 28.1713,
-        "sust": 0.0,
-        "pps": 21.9618
-       }
-      },
-      "9-12": {
-       "pov": {
-        "n": 70.6614,
-        "mv": 0.0,
-        "walk": 1.5527,
-        "dwalk": 0.0,
-        "sust": 0.0,
-        "pps": 100.0
-       },
-       "oth": {
-        "n": 149.8511,
-        "mv": 0.0,
-        "walk": 1.7818,
-        "dwalk": 0.0,
-        "sust": 0.0,
-        "pps": 100.0
-       }
-      }
-     },
-     "destinations": {
-      "K-5": {
-       "Alameda": {
-        "kids": 101,
-        "poverty": 16
-       },
-       "MLK Jr": {
-        "kids": 78,
-        "poverty": 34
-       },
-       "Vernon": {
-        "kids": 55,
-        "poverty": 15
-       },
-       "Boise-Eliot/Humboldt": {
-        "kids": 2,
-        "poverty": 1
-       }
-      },
-      "6-8": {
-       "Beaumont": {
-        "kids": 42,
-        "poverty": 5
-       },
-       "Tubman": {
-        "kids": 31,
-        "poverty": 12
-       },
-       "Vernon": {
-        "kids": 21,
-        "poverty": 5
-       }
-      },
-      "9-12": {
-       "Jefferson": {
-        "kids": 221,
-        "poverty": 71
-       }
-      }
-     }
-    },
-    "Irvington": {
-     "groups": {
-      "K-5": {
-       "pov": {
-        "n": 46.4941,
-        "mv": 100.0,
-        "walk": 0.8944,
-        "dwalk": 0.2948,
-        "in1": 57.7995,
-        "bus": 42.2005,
-        "sust": 12.3319,
-        "pps": 72.8985
-       },
-       "oth": {
-        "n": 176.5054,
-        "mv": 100.0,
-        "walk": 0.9038,
-        "dwalk": 0.3827,
-        "in1": 58.2614,
-        "bus": 41.7386,
-        "sust": 42.279,
-        "pps": 79.2791
-       }
-      },
-      "6-8": {
-       "pov": {
-        "n": 32.067,
-        "mv": 76.0924,
-        "walk": 0.8566,
-        "dwalk": -0.3412,
-        "in1": 74.0405,
-        "bus": 10.6642,
-        "sust": 0.0,
-        "pps": 62.2529
-       },
-       "oth": {
-        "n": 81.8647,
-        "mv": 83.0913,
-        "walk": 1.2122,
-        "dwalk": -0.0562,
-        "in1": 40.2484,
-        "bus": 36.4338,
-        "sust": 0.0,
-        "pps": 33.6519
-       }
-      },
-      "9-12": {
-       "pov": {
-        "n": 50.8122,
-        "mv": 0.0,
-        "walk": 1.2861,
-        "dwalk": 0.0,
-        "sust": 100.0,
-        "pps": 100.0
-       },
-       "oth": {
-        "n": 277.1536,
-        "mv": 0.0,
-        "walk": 1.2693,
-        "dwalk": 0.0,
-        "sust": 100.0,
-        "pps": 100.0
-       }
-      }
-     },
-     "destinations": {
-      "K-5": {
-       "Beverly Cleary": {
-        "kids": 93,
-        "poverty": 28
-       },
-       "Alameda": {
-        "kids": 80,
-        "poverty": 6
-       },
-       "Boise-Eliot/Humboldt": {
-        "kids": 49,
-        "poverty": 13
-       }
-      },
-      "6-8": {
-       "Beverly Cleary": {
-        "kids": 48,
-        "poverty": 20
-       },
-       "Beaumont": {
-        "kids": 45,
-        "poverty": 4
-       },
-       "Tubman": {
-        "kids": 22,
-        "poverty": 8
-       }
-      },
-      "9-12": {
-       "Grant": {
-        "kids": 328,
-        "poverty": 51
-       }
-      }
-     }
-    }
-   }
-  },
-  {
-   "run": "planD_sust",
-   "label": "Scenario D buildings, every school at target",
-   "data_label": "Scenario D buildings, every school at target",
-   "note": null,
-   "caveat": null,
-   "on_map": true,
-   "scorecard": "build/solver/out_v2/planD_sust/scorecard.json",
-   "schools_csv": "build/solver/out_v2/planD_sust/schools.csv",
-   "tradeoffs": "build/solver/out_v2/planD_sust/TRADEOFFS.md",
-   "district": {
-    "schools_open": 70,
-    "pct_sustainable_schools": 72.9,
-    "pct_students_in_sustainable": 83.0
-   },
-   "neighbor_schools": {
-    "Sabin": {
-     "total_2031": 0,
-     "at_target_every_year": false
-    },
-    "Irvington": {
-     "total_2031": 0,
-     "at_target_every_year": false
-    },
-    "MLK Jr": {
-     "total_2031": 367,
-     "at_target_every_year": true
-    },
-    "Alameda": {
-     "total_2031": 409,
-     "at_target_every_year": true
-    },
-    "Vernon": {
-     "total_2031": 500,
-     "at_target_every_year": true
-    },
-    "Beverly Cleary": {
-     "total_2031": 505,
-     "at_target_every_year": false
-    },
-    "Boise-Eliot/Humboldt": {
-     "total_2031": 361,
-     "at_target_every_year": true
-    },
-    "Rigler": {
-     "total_2031": 381,
-     "at_target_every_year": true
-    },
-    "Woodlawn": {
-     "total_2031": 361,
-     "at_target_every_year": true
-    }
-   },
-   "school_years": {
-    "Beverly Cleary": {
-     "type": "K-8",
-     "years": {
-      "2027-28": 563.6,
-      "2028-29": 537.9,
-      "2029-30": 527.2,
-      "2030-31": 511.0,
-      "2031-32": 505.0,
-      "2032-33": 507.0,
-      "2033-34": 494.4,
-      "2034-35": 491.5,
-      "2035-36": 485.7
-     }
-    },
-    "MLK Jr": {
-     "type": "K-5",
-     "years": {
-      "2027-28": 368.6,
-      "2028-29": 376.5,
-      "2029-30": 377.2,
-      "2030-31": 379.1,
-      "2031-32": 367.0,
-      "2032-33": 359.6,
-      "2033-34": 350.1,
-      "2034-35": 337.2,
-      "2035-36": 333.2
-     }
-    },
-    "Boise-Eliot/Humboldt": {
-     "type": "K-5",
-     "years": {
-      "2027-28": 372.4,
-      "2028-29": 386.4,
-      "2029-30": 375.8,
-      "2030-31": 369.5,
-      "2031-32": 361.2,
-      "2032-33": 349.1,
-      "2033-34": 337.6,
-      "2034-35": 325.6,
-      "2035-36": 322.1
-     }
-    },
-    "Vernon": {
-     "type": "K-8",
-     "years": {
-      "2027-28": 540.3,
-      "2028-29": 537.0,
-      "2029-30": 523.3,
-      "2030-31": 507.3,
-      "2031-32": 500.5,
-      "2032-33": 494.9,
-      "2033-34": 490.6,
-      "2034-35": 490.2,
-      "2035-36": 485.0
-     }
-    },
-    "Alameda": {
-     "type": "K-5",
-     "years": {
-      "2027-28": 416.2,
-      "2028-29": 420.5,
-      "2029-30": 420.8,
-      "2030-31": 415.1,
-      "2031-32": 408.7,
-      "2032-33": 404.1,
-      "2033-34": 396.0,
-      "2034-35": 386.9,
-      "2035-36": 383.3
-     }
-    },
-    "Beaumont": {
-     "type": "6-8",
-     "years": {
-      "2027-28": 408.0,
-      "2028-29": 387.6,
-      "2029-30": 396.9,
-      "2030-31": 394.9,
-      "2031-32": 408.0,
-      "2032-33": 410.6,
-      "2033-34": 415.3,
-      "2034-35": 426.9,
-      "2035-36": 420.4
-     }
-    },
-    "Tubman": {
-     "type": "6-8",
-     "years": {
-      "2027-28": 561.0,
-      "2028-29": 524.0,
-      "2029-30": 521.3,
-      "2030-31": 509.2,
-      "2031-32": 516.8,
-      "2032-33": 511.8,
-      "2033-34": 521.3,
-      "2034-35": 524.6,
-      "2035-36": 516.4
-     }
-    },
-    "Jefferson": {
-     "type": "9-12",
-     "years": {
-      "2027-28": 564.0,
-      "2028-29": 805.0,
-      "2029-30": 981.0,
-      "2030-31": 1158.0,
-      "2031-32": 1183.0,
-      "2032-33": 1178.0,
-      "2033-34": 1173.0,
-      "2034-35": 1159.0,
-      "2035-36": 1175.0
-     }
-    },
-    "Grant": {
-     "type": "9-12",
-     "years": {
-      "2027-28": 1935.0,
-      "2028-29": 1822.0,
-      "2029-30": 1713.0,
-      "2030-31": 1576.0,
-      "2031-32": 1487.0,
-      "2032-33": 1394.0,
-      "2033-34": 1332.0,
-      "2034-35": 1263.0,
-      "2035-36": 1237.0
-     }
-    }
-   },
-   "areas": {
-    "Sabin": {
-     "groups": {
-      "K-5": {
-       "pov": {
-        "n": 66.6409,
-        "mv": 100.0,
-        "walk": 0.6754,
-        "dwalk": 0.1985,
-        "in1": 84.9246,
-        "bus": 15.0754,
-        "sust": 100.0,
-        "pps": 100.0
-       },
-       "oth": {
-        "n": 169.2329,
-        "mv": 100.0,
-        "walk": 0.7646,
-        "dwalk": 0.3189,
-        "in1": 76.3482,
-        "bus": 23.6518,
-        "sust": 100.0,
-        "pps": 100.0
-       }
-      },
-      "6-8": {
-       "pov": {
-        "n": 23.0294,
-        "mv": 45.7488,
-        "walk": 1.1974,
-        "dwalk": -0.5459,
-        "in1": 30.4745,
-        "bus": 24.1082,
-        "sust": 54.2512,
-        "pps": 89.1138
-       },
-       "oth": {
-        "n": 70.1338,
-        "mv": 56.7271,
-        "walk": 1.1642,
-        "dwalk": -0.6527,
-        "in1": 34.8944,
-        "bus": 18.1354,
-        "sust": 43.2729,
-        "pps": 84.3099
-       }
-      },
-      "9-12": {
-       "pov": {
-        "n": 70.6614,
-        "mv": 0.0,
-        "walk": 1.5527,
-        "dwalk": 0.0,
-        "sust": 0.0,
-        "pps": 100.0
-       },
-       "oth": {
-        "n": 149.8511,
-        "mv": 0.0,
-        "walk": 1.7818,
-        "dwalk": 0.0,
-        "sust": 0.0,
-        "pps": 100.0
-       }
-      }
-     },
-     "destinations": {
-      "K-5": {
-       "Vernon": {
-        "kids": 99,
-        "poverty": 24
-       },
-       "MLK Jr": {
-        "kids": 51,
-        "poverty": 23
-       },
-       "Boise-Eliot/Humboldt": {
-        "kids": 49,
-        "poverty": 13
-       },
-       "Alameda": {
-        "kids": 37,
-        "poverty": 8
-       }
-      },
-      "6-8": {
-       "Tubman": {
-        "kids": 43,
-        "poverty": 12
-       },
-       "Vernon": {
-        "kids": 37,
-        "poverty": 8
-       },
-       "Beaumont": {
-        "kids": 14,
-        "poverty": 3
-       }
-      },
-      "9-12": {
-       "Jefferson": {
-        "kids": 221,
-        "poverty": 71
-       }
-      }
-     }
-    },
-    "Irvington": {
-     "groups": {
-      "K-5": {
-       "pov": {
-        "n": 46.4941,
-        "mv": 100.0,
-        "walk": 0.9229,
-        "dwalk": 0.3232,
-        "in1": 57.3824,
-        "bus": 42.6176,
-        "sust": 41.5047,
-        "pps": 100.0
-       },
-       "oth": {
-        "n": 176.5054,
-        "mv": 100.0,
-        "walk": 0.9726,
-        "dwalk": 0.4515,
-        "in1": 55.3003,
-        "bus": 44.6997,
-        "sust": 59.6462,
-        "pps": 100.0
-       }
-      },
-      "6-8": {
-       "pov": {
-        "n": 32.067,
-        "mv": 66.9124,
-        "walk": 0.7754,
-        "dwalk": -0.4225,
-        "in1": 80.0522,
-        "bus": 2.3905,
-        "sust": 33.0876,
-        "pps": 95.0088
-       },
-       "oth": {
-        "n": 81.8647,
-        "mv": 58.7837,
-        "walk": 0.975,
-        "dwalk": -0.2933,
-        "in1": 52.804,
-        "bus": 8.4457,
-        "sust": 41.2163,
-        "pps": 81.7275
-       }
-      },
-      "9-12": {
-       "pov": {
-        "n": 50.8122,
-        "mv": 0.0,
-        "walk": 1.2861,
-        "dwalk": 0.0,
-        "sust": 100.0,
-        "pps": 100.0
-       },
-       "oth": {
-        "n": 277.1536,
-        "mv": 0.0,
-        "walk": 1.2693,
-        "dwalk": 0.0,
-        "sust": 100.0,
-        "pps": 100.0
-       }
-      }
-     },
-     "destinations": {
-      "K-5": {
-       "Beverly Cleary": {
-        "kids": 98,
-        "poverty": 27
-       },
-       "Boise-Eliot/Humboldt": {
-        "kids": 95,
-        "poverty": 17
-       },
-       "Alameda": {
-        "kids": 30,
-        "poverty": 2
-       }
-      },
-      "6-8": {
-       "Beverly Cleary": {
-        "kids": 53,
-        "poverty": 20
-       },
-       "Tubman": {
-        "kids": 44,
-        "poverty": 11
-       },
-       "Beaumont": {
-        "kids": 17,
-        "poverty": 2
        }
       },
       "9-12": {
