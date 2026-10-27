@@ -20,7 +20,9 @@ cfg_js['name'] = run
 cfg_js['label'] = label
 cfg_js['label_detail'] = cfg_js.get('label_detail', '') + (
     " Middle school swap: Boise-Eliot/Humboldt goes to Ockley Green; Faubion's main neighborhood goes to the Tubman "
-    "middle school in the Vernon building, and the Bybee Lake shelter area goes to Astor, as Plan D says.")
+    "middle school in the Vernon building, and the Bybee Lake shelter area goes to Astor, as Plan D says. The old Beach and "
+    "Chief Joseph blocks in King's elementary zone go to Ockley Green for middle school, their nearer middle school. "
+    "Vernon-area families go only to Sabin or King for elementary; the east-Vernon part stays at Beaumont for middle school.")
 cfg_js['feed_note'] = f'built by build_tubvern_swap.py from {os.path.basename(bdir)}; 6-8 re-set for Boise-Eliot/Humboldt and Faubion; not solved'
 json.dump(cfg_js, open(os.path.join(CFG_DIR, f'{run}.json'), 'w'), indent=1)
 cfg = C.load_config(os.path.join(CFG_DIR, f'{run}.json'))
@@ -30,6 +32,14 @@ b = C.blocks(); NB = C.adjacency()[0]; roots = C.school_block()
 k5, ms = plan['K-5'], plan['6-8']
 assert 'Vernon' in set(ms) and 'Tubman' not in set(ms), 'base is not a Tubman-at-Vernon run'
 before = ms.copy()
+
+# Vernon-area families go only to Sabin or King for K-5 (agreed with Paul; the base runs also allowed Alameda and Beverly
+# Cleary, which pushed Alameda to ~580): any Vernon-area block elsewhere goes to the nearer of the two. Their 6-8 stays as
+# the base has it (Beaumont, 0.8 mi vs 1.4 to the Vernon building, which has no room for them)
+vb = (b['sq_es'].values == 'Vernon') & ~np.isin(k5, ['Sabin', 'MLK Jr'])
+Wk = C.dist('walk', ['Sabin', 'MLK Jr'])
+k5[vb] = np.where(Wk[vb, 0] <= Wk[vb, 1], 'Sabin', 'MLK Jr')
+print('Vernon-area K-5 blocks moved to Sabin / King:', int(vb.sum()), dict(Counter(k5[vb])))
 
 ms[k5 == 'Boise-Eliot/Humboldt'] = 'Ockley Green'
 # Faubion's zone, block by block: the Bybee Lake shelter area -> Astor (Plan D); the rest to whichever of the Vernon
@@ -43,7 +53,13 @@ bybee = fzi[lon[fzi] < -122.73]          # Smith and Bybee Lakes, the shelter's 
 rest = fzi[lon[fzi] >= -122.73]
 ms[bybee] = 'Astor'
 ms[rest] = np.where(W[rest, 0] <= W[rest, 1], 'Vernon', 'Ockley Green')
+# King's K-5 zone in these plans reaches past today's King area into old Beach and Chief Joseph blocks (Beach closes in
+# the base); King is their nearest elementary, but for middle school they are ~0.6 mi from Ockley Green vs ~1.5 mi to the
+# Vernon building, so they go to Ockley Green rather than follow King east
+west = (k5 == 'MLK Jr') & np.isin(b['sq_es'].values, ['Beach', 'Chief Joseph'])
+ms[west] = 'Ockley Green'
 K68 = MX.level_kids(cfg)['6-8']
+print('King west strip to Ockley Green: blocks', int(west.sum()), 'kids 6-8', round(float(K68[west].sum()), 1))
 pieces = {t: {'blocks': int((ms[fzi] == t).sum()), 'kids_2031': round(float(K68[fzi][ms[fzi] == t].sum()), 1)}
           for t in ('Vernon', 'Ockley Green', 'Astor')}
 print('Faubion pieces:', pieces)
@@ -69,7 +85,7 @@ for sch in ('Vernon', 'Ockley Green', 'Astor', 'Beaumont'):
         if len(left) == len(cut):
             break
         cut = left
-ch = int((ms != before).sum())
+ch = int((ms != before).sum()) + int(vb.sum())
 print(run, '6-8 blocks changed', ch, '; orphans fixed', len(orphans), Counter((o[1], o[2]) for o in orphans))
 refs = MX.load_refs(CFG_DIR)
 out = os.path.join(O2, f'{run}.staging')

@@ -1,5 +1,5 @@
 {
  "schools_out_of_range_2031_32": [],
- "solver_slack": "not solved: built by build_tubvern_swap.py from tubman_at_vernon_irvbc_ms.staging; 6-8 re-set for Boise-Eliot/Humboldt and Faubion; not solved",
+ "solver_slack": "not solved: built by build_tubvern_swap.py from tubman_at_vernon_irvbc_ms; 6-8 re-set for Boise-Eliot/Humboldt and Faubion; not solved",
  "feeder_splits_used": "as the base, except Faubion's zone splits by piece (main to Vernon, Bybee Lake to Astor)"
 }
