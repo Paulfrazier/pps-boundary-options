@@ -70,6 +70,10 @@
       "status": "done",
       "finished": "2026-10-15T12:57:51"
     },
+    "planD_updated": {
+      "status": "done",
+      "finished": "2026-10-27T11:25:14"
+    },
     "planD": {
       "status": "done",
       "finished": "2026-10-22T10:49:52"
@@ -81,10 +85,6 @@
     "planD_sust": {
       "status": "done",
       "finished": "2026-10-22T10:49:53"
-    },
-    "planD_updated": {
-      "status": "done",
-      "finished": "2026-10-27T11:25:14"
     },
     "sabin_all": {
       "status": "done",
@@ -125,6 +125,14 @@
     "irv_sabin_15th_grant": {
       "status": "done",
       "finished": "2026-10-27T09:41:07"
+    },
+    "tubman_at_vernon_irvbc_ms": {
+      "status": "done",
+      "finished": "2026-10-27T14:45:06"
+    },
+    "tubman_at_vernon_swap": {
+      "status": "done",
+      "finished": "2026-10-27T14:37:03"
     }
   }
 }

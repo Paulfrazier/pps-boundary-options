@@ -1,0 +1,222 @@
+{
+ "status_quo": {
+  "Tubman": {
+   "kids": 322,
+   "polsby_popper": 0.447,
+   "pieces": 1,
+   "school_offset": 1.36,
+   "past_closer": 125,
+   "avg_walk_mi": 1.44
+  },
+  "Vernon": {
+   "kids": 163,
+   "polsby_popper": 0.391,
+   "pieces": 1,
+   "school_offset": 0.89,
+   "past_closer": 40,
+   "avg_walk_mi": 0.78
+  },
+  "Beaumont": {
+   "kids": 168,
+   "polsby_popper": 0.397,
+   "pieces": 1,
+   "school_offset": 0.29,
+   "past_closer": 0,
+   "avg_walk_mi": 0.65
+  },
+  "Ockley Green": {
+   "kids": 402,
+   "polsby_popper": 0.411,
+   "pieces": 1,
+   "school_offset": 0.34,
+   "past_closer": 37,
+   "avg_walk_mi": 1.19
+  },
+  "Roseway Heights": {
+   "kids": 451,
+   "polsby_popper": 0.252,
+   "pieces": 1,
+   "school_offset": 0.61,
+   "past_closer": 106,
+   "avg_walk_mi": 1.4
+  },
+  "Faubion": {
+   "kids": 225,
+   "polsby_popper": 0.313,
+   "pieces": 1,
+   "school_offset": 1.04,
+   "past_closer": 69,
+   "avg_walk_mi": 2.53
+  }
+ },
+ "scenario_A": {
+  "Tubman": {
+   "kids": 371,
+   "polsby_popper": 0.35,
+   "pieces": 1,
+   "school_offset": 2.02,
+   "past_closer": 250,
+   "avg_walk_mi": 2.17
+  },
+  "Beaumont": {
+   "kids": 449,
+   "polsby_popper": 0.391,
+   "pieces": 1,
+   "school_offset": 0.97,
+   "past_closer": 79,
+   "avg_walk_mi": 1.07
+  },
+  "Ockley Green": {
+   "kids": 521,
+   "polsby_popper": 0.278,
+   "pieces": 1,
+   "school_offset": 0.7,
+   "past_closer": 61,
+   "avg_walk_mi": 1.94
+  },
+  "Roseway Heights": {
+   "kids": 451,
+   "polsby_popper": 0.252,
+   "pieces": 1,
+   "school_offset": 0.61,
+   "past_closer": 103,
+   "avg_walk_mi": 1.4
+  }
+ },
+ "planD_updated": {
+  "Tubman": {
+   "kids": 371,
+   "polsby_popper": 0.35,
+   "pieces": 1,
+   "school_offset": 2.02,
+   "past_closer": 250,
+   "avg_walk_mi": 2.17
+  },
+  "Beaumont": {
+   "kids": 449,
+   "polsby_popper": 0.391,
+   "pieces": 1,
+   "school_offset": 0.97,
+   "past_closer": 79,
+   "avg_walk_mi": 1.07
+  },
+  "Ockley Green": {
+   "kids": 529,
+   "polsby_popper": 0.247,
+   "pieces": 2,
+   "school_offset": 0.68,
+   "past_closer": 62,
+   "avg_walk_mi": 1.97
+  },
+  "Roseway Heights": {
+   "kids": 451,
+   "polsby_popper": 0.252,
+   "pieces": 1,
+   "school_offset": 0.61,
+   "past_closer": 103,
+   "avg_walk_mi": 1.4
+  }
+ },
+ "irv_sabin_15th_grant": {
+  "Tubman": {
+   "kids": 497,
+   "polsby_popper": 0.386,
+   "pieces": 1,
+   "school_offset": 1.49,
+   "past_closer": 309,
+   "avg_walk_mi": 1.98
+  },
+  "Beaumont": {
+   "kids": 416,
+   "polsby_popper": 0.447,
+   "pieces": 1,
+   "school_offset": 0.91,
+   "past_closer": 40,
+   "avg_walk_mi": 0.97
+  },
+  "Ockley Green": {
+   "kids": 547,
+   "polsby_popper": 0.38,
+   "pieces": 1,
+   "school_offset": 0.78,
+   "past_closer": 88,
+   "avg_walk_mi": 2.08
+  },
+  "Roseway Heights": {
+   "kids": 404,
+   "polsby_popper": 0.31,
+   "pieces": 1,
+   "school_offset": 0.55,
+   "past_closer": 56,
+   "avg_walk_mi": 1.3
+  }
+ },
+ "tubman_at_vernon_irvbc_ms": {
+  "Vernon": {
+   "kids": 452,
+   "polsby_popper": 0.23,
+   "pieces": 1,
+   "school_offset": 0.46,
+   "past_closer": 150,
+   "avg_walk_mi": 1.35
+  },
+  "Beaumont": {
+   "kids": 517,
+   "polsby_popper": 0.443,
+   "pieces": 1,
+   "school_offset": 0.78,
+   "past_closer": 2,
+   "avg_walk_mi": 1.07
+  },
+  "Ockley Green": {
+   "kids": 547,
+   "polsby_popper": 0.38,
+   "pieces": 1,
+   "school_offset": 0.78,
+   "past_closer": 165,
+   "avg_walk_mi": 2.08
+  },
+  "Roseway Heights": {
+   "kids": 348,
+   "polsby_popper": 0.305,
+   "pieces": 1,
+   "school_offset": 0.4,
+   "past_closer": 2,
+   "avg_walk_mi": 1.16
+  }
+ },
+ "tubman_at_vernon_swap": {
+  "Vernon": {
+   "kids": 472,
+   "polsby_popper": 0.273,
+   "pieces": 1,
+   "school_offset": 0.34,
+   "past_closer": 69,
+   "avg_walk_mi": 1.05
+  },
+  "Beaumont": {
+   "kids": 517,
+   "polsby_popper": 0.443,
+   "pieces": 1,
+   "school_offset": 0.78,
+   "past_closer": 2,
+   "avg_walk_mi": 1.07
+  },
+  "Ockley Green": {
+   "kids": 526,
+   "polsby_popper": 0.271,
+   "pieces": 1,
+   "school_offset": 0.46,
+   "past_closer": 36,
+   "avg_walk_mi": 1.81
+  },
+  "Roseway Heights": {
+   "kids": 348,
+   "polsby_popper": 0.305,
+   "pieces": 1,
+   "school_offset": 0.4,
+   "past_closer": 2,
+   "avg_walk_mi": 1.16
+  }
+ }
+}

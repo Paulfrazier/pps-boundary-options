@@ -1,0 +1,51 @@
+{
+ "schools_out_of_range_2031_32": [
+  {
+   "school": "Roseway Heights",
+   "type": "6-8",
+   "size": 498.4,
+   "floor": 500,
+   "ceiling": 806.0,
+   "short_by": 1.6,
+   "over_by": 0.0,
+   "program_only": false
+  }
+ ],
+ "solver_slack": {
+  "K-5": [
+   {}
+  ],
+  "6-8": [
+   {
+    "Roseway Heights:lo": 2.25,
+    "durability_count_short:2027-28": 1,
+    "durability_count_short:2028-29": 1,
+    "durability_count_short:2029-30": 1,
+    "durability_count_short:2030-31": 2,
+    "durability_count_short:2031-32": 1
+   }
+  ],
+  "9-12": [
+   {}
+  ]
+ },
+ "feeder_splits_used": {
+  "K-5": [
+   0
+  ],
+  "6-8": [
+   0
+  ],
+  "9-12": [
+   0
+  ]
+ },
+ "exempt_from_floor": [
+  "Astor",
+  "Beverly Cleary",
+  "Gray",
+  "Sabin",
+  "Skyline"
+ ],
+ "note": "Slack is in kids; non-zero slack means no plan with these schools/programs can meet that bound given the candidate sets and contiguity. Program-only buildings have fixed sizes set by the program placement, not by lines."
+}

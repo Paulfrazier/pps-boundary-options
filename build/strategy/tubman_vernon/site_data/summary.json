@@ -1,0 +1,65 @@
+{
+ "basis": "2031-32 PSU-forecast middle-school kids on 2020 Census blocks (model v2); OSRM walking miles. Estimates.",
+ "zone": "today's Tubman 6-8 zone plus Vernon's own 6-8 (Vernon becomes K-5 under PPS A, B and Plan D)",
+ "kids": 485,
+ "tubman_on_flint": {
+  "avg_walk_mi": 1.96,
+  "kids_over_1_5mi": 317,
+  "kids_within_1_5mi": 168
+ },
+ "tubman_at_vernon": {
+  "avg_walk_mi": 1.3,
+  "kids_over_1_5mi": 196,
+  "kids_within_1_5mi": 289
+ },
+ "vernon_6_8_kids": 163,
+ "vernon_6_8_walk_to_flint_mi": 2.97,
+ "vernon_6_8_walk_to_vernon_mi": 0.78,
+ "vernon_size_2031": {
+  "Today (K-8)": {
+   "vernon_total": 451,
+   "floor": 500
+  },
+  "PPS A": {
+   "vernon_total": 288,
+   "floor": 360
+  },
+  "PPS B": {
+   "vernon_total": 288,
+   "floor": 360
+  },
+  "Plan D": {
+   "vernon_total": 288,
+   "floor": 360
+  },
+  "Irvington into Sabin": {
+   "vernon_total": 289,
+   "floor": 360
+  }
+ },
+ "buildings_lrfp_2021": {
+  "source": "PPS Long Range Facility Plan 2021 Vol 2 (build/pps-texts/lrfp-2021-vol2-ne-middle-sites.md)",
+  "Vernon": {
+   "site_acres": 3.74,
+   "building_sf": 70833,
+   "levels": 3,
+   "built": 1931,
+   "classrooms": 25,
+   "functional_capacity": 579,
+   "modulars": 4
+  },
+  "Tubman": {
+   "site_acres": 3.05,
+   "building_sf": 87610,
+   "levels": 2,
+   "built": 1952,
+   "classrooms": 33,
+   "functional_capacity": 732,
+   "modulars": 0
+  },
+  "pps_program_sf_new_tubman": {
+   "value": 120000,
+   "source": "Tubman (re)siting due diligence v06 (build/pps-texts/tubman-siting-2022-23/htms-siting-due-diligence-v06.md)"
+  }
+ }
+}

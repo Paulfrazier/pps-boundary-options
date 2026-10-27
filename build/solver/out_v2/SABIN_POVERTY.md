@@ -23,6 +23,8 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Irvington line: NE Knott | 0% / 0% | 0.48 / 0.45 | +0.00 / +0.00 | 100% / 100% | 0% / 0% | 0% / 0% |
 | Irvington line: NE 15th + Knott | 0% / 0% | 0.48 / 0.45 | +0.00 / +0.00 | 100% / 100% | 0% / 0% | 0% / 0% |
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 0% / 0% | 0.48 / 0.45 | +0.00 / +0.00 | 100% / 100% | 0% / 0% | 0% / 0% |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | 0% / 0% | 0.48 / 0.45 | +0.00 / +0.00 | 100% / 100% | 0% / 0% | 0% / 0% |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | 0% / 0% | 0.48 / 0.45 | +0.00 / +0.00 | 100% / 100% | 0% / 0% | 0% / 0% |
 | Sabin into Irvington (small) | 100% / 100% | 0.87 / 0.73 | +0.39 / +0.29 | 68% / 83% | 32% / 17% | 40% / 63% |
 
 ## Middle school (6-8)
@@ -46,6 +48,8 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Irvington line: NE Knott | 0% / 0% | 1.74 / 1.82 | +0.00 / +0.00 | 70% / 75% | 100% / 100% |
 | Irvington line: NE 15th + Knott | 0% / 0% | 1.74 / 1.82 | +0.00 / +0.00 | 70% / 75% | 100% / 100% |
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 0% / 0% | 1.74 / 1.82 | +0.00 / +0.00 | 70% / 75% | 100% / 100% |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | 100% / 100% | 1.11 / 1.09 | -0.63 / -0.72 | 10% / 7% | 0% / 0% |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | 100% / 100% | 1.11 / 1.09 | -0.63 / -0.72 | 10% / 7% | 100% / 100% |
 | Sabin into Irvington (small) | 40% / 60% | 1.46 / 1.38 | -0.29 / -0.43 | 40% / 27% | 100% / 100% |
 
 ## High school (9-12)
@@ -69,6 +73,8 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Irvington line: NE Knott | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Irvington line: NE 15th + Knott | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Sabin into Irvington (small) | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 
 ## Sabin-area kids in a sustainable school (PPS definition: at or above 360 / 500 / 1,100 in 2031-32)
@@ -92,6 +98,8 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Irvington line: NE Knott | 0% / 0% | 100% / 100% | 100% / 100% |
 | Irvington line: NE 15th + Knott | 0% / 0% | 100% / 100% | 100% / 100% |
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 0% / 0% | 100% / 100% | 100% / 100% |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | 100% / 100% | 100% / 100% | 100% / 100% |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | 100% / 100% | 100% / 100% | 100% / 100% |
 | Sabin into Irvington (small) | 40% / 63% | 100% / 100% | 100% / 100% |
 
 ## District: PPS dashboard sustainability (all levels, 2031-32)
@@ -115,6 +123,8 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Irvington line: NE Knott | 63 | 92% | 95% |
 | Irvington line: NE 15th + Knott | 63 | 90% | 94% |
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 63 | 90% | 94% |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | 62 | 94% | 96% |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | 62 | 94% | 96% |
 | Sabin into Irvington (small) | 63 | 94% | 96% |
 
 ## Where Sabin-area kids go
@@ -172,6 +182,12 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | K-5 | Sabin 236 (67 in poverty) |
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 6-8 | Tubman 93 (23 in poverty) |
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 9-12 | Jefferson 221 (71 in poverty) |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | K-5 | Sabin 236 (67 in poverty) |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | 6-8 | Vernon 93 (23 in poverty) |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | 9-12 | Jefferson 221 (71 in poverty) |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | K-5 | Sabin 236 (67 in poverty) |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | 6-8 | Vernon 93 (23 in poverty) |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | 9-12 | Jefferson 221 (71 in poverty) |
 | Sabin into Irvington (small) | K-5 | Alameda 134 (27 in poverty), Irvington 102 (40 in poverty) |
 | Sabin into Irvington (small) | 6-8 | Beaumont 51 (9 in poverty), Tubman 42 (14 in poverty) |
 | Sabin into Irvington (small) | 9-12 | Jefferson 221 (71 in poverty) |
@@ -201,6 +217,8 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Irvington line: NE Knott | 100% / 100% | 0.97 / 0.91 | +0.37 / +0.38 | 57% / 66% | 43% / 34% | 0% / 0% |
 | Irvington line: NE 15th + Knott | 100% / 100% | 0.95 / 0.88 | +0.35 / +0.36 | 58% / 70% | 42% / 30% | 0% / 0% |
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 100% / 100% | 0.95 / 0.88 | +0.35 / +0.36 | 58% / 70% | 42% / 30% | 0% / 0% |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | 100% / 100% | 1.03 / 1.08 | +0.43 / +0.56 | 51% / 42% | 49% / 58% | 0% / 0% |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | 100% / 100% | 1.03 / 1.08 | +0.43 / +0.56 | 51% / 42% | 49% / 58% | 0% / 0% |
 | Sabin into Irvington (small) | 41% / 35% | 0.49 / 0.45 | -0.11 / -0.07 | 100% / 100% | 0% / 0% | 41% / 35% |
 
 ## Middle school (6-8)
@@ -224,6 +242,8 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Irvington line: NE Knott | 89% / 66% | 1.95 / 1.64 | +0.75 / +0.37 | 87% / 62% | 100% / 100% |
 | Irvington line: NE 15th + Knott | 56% / 48% | 1.41 / 1.39 | +0.21 / +0.13 | 54% / 44% | 100% / 100% |
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 56% / 48% | 1.41 / 1.39 | +0.21 / +0.13 | 54% / 44% | 100% / 100% |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | 100% / 100% | 2.04 / 1.82 | +0.84 / +0.56 | 94% / 81% | 100% / 100% |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | 100% / 100% | 2.04 / 1.82 | +0.84 / +0.56 | 94% / 81% | 100% / 100% |
 | Sabin into Irvington (small) | 43% / 36% | 1.29 / 1.27 | +0.10 / -0.00 | 38% / 19% | 100% / 100% |
 
 ## High school (9-12)
@@ -247,6 +267,8 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Irvington line: NE Knott | 13% / 33% | +0.05 / +0.20 | 87% / 67% |
 | Irvington line: NE 15th + Knott | 40% / 51% | +0.19 / +0.31 | 60% / 49% |
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
 | Sabin into Irvington (small) | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
 
 ## Irvington-area kids in a sustainable school (PPS definition: at or above 360 / 500 / 1,100 in 2031-32)
@@ -270,6 +292,8 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Irvington line: NE Knott | 89% / 69% | 100% / 100% | 100% / 100% |
 | Irvington line: NE 15th + Knott | 0% / 0% | 100% / 100% | 100% / 100% |
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 0% / 0% | 100% / 100% | 100% / 100% |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | 100% / 100% | 100% / 100% | 100% / 100% |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | 100% / 100% | 100% / 100% | 100% / 100% |
 | Sabin into Irvington (small) | 41% / 35% | 100% / 100% | 100% / 100% |
 
 ## Where Irvington-area kids go
@@ -327,6 +351,12 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | K-5 | Sabin 121 (23 in poverty), Beverly Cleary 102 (24 in poverty) |
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 6-8 | Beaumont 57 (18 in poverty), Tubman 57 (14 in poverty) |
 | Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 9-12 | Grant 328 (51 in poverty) |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | K-5 | Beverly Cleary 223 (46 in poverty) |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | 6-8 | Beaumont 114 (32 in poverty) |
+| Tubman moves into the Vernon building, no Boise-Eliot/Faubion swap | 9-12 | Grant 328 (51 in poverty) |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | K-5 | Beverly Cleary 223 (46 in poverty) |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | 6-8 | Beaumont 114 (32 in poverty) |
+| Tubman moves into the Vernon building; Irvington all at Beverly Cleary | 9-12 | Grant 328 (51 in poverty) |
 | Sabin into Irvington (small) | K-5 | Irvington 143 (28 in poverty), Beverly Cleary 69 (18 in poverty), Alameda 12 (1 in poverty) |
 | Sabin into Irvington (small) | 6-8 | Tubman 70 (18 in poverty), Beaumont 44 (14 in poverty) |
 | Sabin into Irvington (small) | 9-12 | Grant 328 (51 in poverty) |

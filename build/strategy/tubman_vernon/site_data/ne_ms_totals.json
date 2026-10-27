@@ -1,0 +1,76 @@
+{
+ "status_quo": {
+  "schools": [
+   "Tubman",
+   "Vernon",
+   "Beaumont",
+   "Ockley Green",
+   "Roseway Heights",
+   "Faubion"
+  ],
+  "kids": 1731,
+  "avg_walk_mi": 1.37,
+  "kids_over_1_5mi": 582,
+  "past_closer": 377
+ },
+ "scenario_A": {
+  "schools": [
+   "Tubman",
+   "Beaumont",
+   "Ockley Green",
+   "Roseway Heights"
+  ],
+  "kids": 1792,
+  "avg_walk_mi": 1.63,
+  "kids_over_1_5mi": 824,
+  "past_closer": 493
+ },
+ "planD_updated": {
+  "schools": [
+   "Tubman",
+   "Beaumont",
+   "Ockley Green",
+   "Roseway Heights"
+  ],
+  "kids": 1800,
+  "avg_walk_mi": 1.64,
+  "kids_over_1_5mi": 832,
+  "past_closer": 494
+ },
+ "irv_sabin_15th_grant": {
+  "schools": [
+   "Tubman",
+   "Beaumont",
+   "Ockley Green",
+   "Roseway Heights"
+  ],
+  "kids": 1863,
+  "avg_walk_mi": 1.64,
+  "kids_over_1_5mi": 858,
+  "past_closer": 493
+ },
+ "tubman_at_vernon_irvbc_ms": {
+  "schools": [
+   "Vernon",
+   "Beaumont",
+   "Ockley Green",
+   "Roseway Heights"
+  ],
+  "kids": 1863,
+  "avg_walk_mi": 1.45,
+  "kids_over_1_5mi": 697,
+  "past_closer": 319
+ },
+ "tubman_at_vernon_swap": {
+  "schools": [
+   "Vernon",
+   "Beaumont",
+   "Ockley Green",
+   "Roseway Heights"
+  ],
+  "kids": 1863,
+  "avg_walk_mi": 1.29,
+  "kids_over_1_5mi": 513,
+  "past_closer": 109
+ }
+}

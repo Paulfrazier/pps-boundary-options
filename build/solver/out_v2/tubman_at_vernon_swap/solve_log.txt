@@ -1,0 +1,1 @@
+tubman_at_vernon_swap: built by build_tubvern_swap.py from tubman_at_vernon_irvbc_ms.staging; 6-8 re-set for Boise-Eliot/Humboldt and Faubion; not solved; 6-8 blocks changed 574; Faubion pieces {'Vernon': {'blocks': 225, 'kids_2031': 144.9}, 'Ockley Green': {'blocks': 38, 'kids_2031': 64.6}, 'Astor': {'blocks': 0, 'kids_2031': 0.0}}; orphans 2
