@@ -543,7 +543,7 @@ header h1{font-size:clamp(1.4rem,3vw,2rem)}
 .embed .side .sidemore[hidden]{display:none}
 .embed .side .sidemore:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 /* Closer walk view (color=closer): plan-independent, so the plan, view and color controls are hidden */
-.clmode #segM,.clmode #segS,.clmode #cmpbar,.clmode #quick,.clmode .cby,.clmode #lcol,.clmode #lcurw{display:none!important}
+.clmode #segM,.clmode #segS,.clmode #cmpbar,.clmode #quick,.clmode .cby,.clmode #lcol,.clmode #lcurw,.clmode #lbusw{display:none!important}
 .oncl{display:none}.clmode .oncl{display:block}.clmode .nocl{display:none}
 .clmode .sect{display:none}
 .dnl .clbus{font-size:13px;font-weight:600;display:flex;align-items:center;gap:6px;min-height:32px}.dnl .clbus input{width:18px;height:18px;margin:0}

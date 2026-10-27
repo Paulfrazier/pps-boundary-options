@@ -496,6 +496,17 @@ def hard_of(school):
     for bi, hx, hs in zip(g.block_idx.values, g.hard_x.values, g.hard_streets.values):
         out[int(bi)] = [st_short(x) for x in hs.split('; ')] if hx > 0 and hs else []
     return out
+_BL = {}
+
+
+def bus_line(school, lv):
+    """The bus line (metrics.BUS: 1 mi K-5, 1.5 mi 6-8): outline of every block in the district, kids or not, whose shortest
+    walk to the school is within the no-bus distance (blocks' Voronoi cells, merged). Plan-independent, so one per school."""
+    if (school, lv) not in _BL:
+        w = SB.solver()[1].dist('walk', [school]).astype(float)[:, 0]
+        u = unary_union(list(CELLS[np.isfinite(w) & (w <= SB.solver()[0].BUS[lv])])).buffer(2).buffer(-2).simplify(12)
+        _BL[school, lv] = enc_geom(u)
+    return _BL[school, lv]
 for lv in LEVELS:
     LVDATA[lv]['closer'] = []
 for cf in CLOSER:
@@ -547,12 +558,7 @@ for cf in CLOSER:
     bus = SB.solver()[0].BUS[lv]; hard = np.array([[bool(HL[q][i]) for q in range(len(ns))] for i in range(len(B))])
     hw = [[n, [round(float(K[sel & hard[:, q] & (Wp[:, q] <= bus)].sum())) for q in range(len(ns))]]
           for n, sel in [(x, m & (lab == x)) for x in cf['areas']] + ([(fo, m & (flab == fo))] if fo and fo not in cf['areas'] else [])]
-    # bus line (metrics.BUS: 1 mi K-5, 1.5 mi 6-8), per school: outline of every block in the district, kids or not, whose
-    # shortest walk to it is within the no-bus distance (blocks' Voronoi cells, merged)
-    bl = []
-    for q in range(len(ns)):
-        u = unary_union(list(CELLS[np.isfinite(Wp[:, q]) & (Wp[:, q] <= bus)])).buffer(2).buffer(-2).simplify(12)
-        bl.append(enc_geom(u))
+    bl = [bus_line(x, lv) for x in ns]
     LVDATA[lv]['closer'].append({'key': cf['key'], 's': ns, 'areas': cf['areas'], 'dx': CLOSER_M / MX, 'dy': CLOSER_M / LAT_M,
                                  'm': CLOSER_M, 'tie': CL_TIE, 'head': head, 'by': by, 'cells': cells, 'hx': hx, 'hn': hn, 'hw': hw, 'bus': bus, 'bl': bl})
     log('  closer', lv, cf['key'], 'cells', len(cells), 'bytes', len(json.dumps(LVDATA[lv]['closer'][-1], separators=(',', ':'))), head, by, 'hard walks', hw)
@@ -561,6 +567,12 @@ for cf in CLOSER:
         for t in (0.0, CL_TIE):
             tk = fm & (dlt < t)
             log('    %s takes %s blocks with walk diff < %.2f: %s %.1f, %s %.1f' % (a_, fo, t, a_, own[a_] + K[tk].sum(), b_, own[b_] + K[fm & ~tk].sum()))
+
+# bus line for the single-plan view (map bus=1): one outline per school with an area in any plan, K-5 and 6-8 only (9-12 rides
+# TriMet); the map draws those zoned in the plan shown
+for lv in ['K-5', '6-8']:
+    LVDATA[lv]['bl'] = {n: bus_line(n, lv) for n in sorted({n for pl in LVDATA[lv]['plans'].values() for n in pl['poly']})}
+    log('  bus lines', lv, len(LVDATA[lv]['bl']), 'bytes', len(json.dumps(LVDATA[lv]['bl'], separators=(',', ':'))))
 
 # ------------------------------------------------------------------ "Busy streets to cross" layer (map xing=1)
 # pages/map_data/crossings.js, shared by every level: busy streets and their signal / marked crossings from

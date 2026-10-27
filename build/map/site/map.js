@@ -20,15 +20,15 @@ const P=([x,y])=>((x-lon0)*kx*S).toFixed(1)+","+((lat1-y)*S).toFixed(1);
 const NS="http://www.w3.org/2000/svg";const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
 const svg=$("map");   // aspect ratio and viewBox: see "pan / zoom" (pickAR / fitVB)
 const G=()=>mk("g");
-const gA=G(),gA2=G(),gDen=G(),gFade=G(),gPin=G(),gPast=G(),gSt=G(),gPri=G(),gRail=G(),gRiv=G(),gFwy=G(),gE1=G(),gE2=G(),gB=G(),gCur=G(),gOv=G(),gDiff=G(),gFoc=G(),gStN=G(),gS=G(),gTop=G(),gX=G();
+const gA=G(),gA2=G(),gDen=G(),gFade=G(),gPin=G(),gPast=G(),gSt=G(),gPri=G(),gRail=G(),gRiv=G(),gFwy=G(),gE1=G(),gE2=G(),gB=G(),gCur=G(),gOv=G(),gDiff=G(),gFoc=G(),gStN=G(),gS=G(),gTop=G(),gX=G(),gBus=G();
 {const defs=mk("defs");const c1=mk("clipPath",{id:"swc"});c1.append(mk("rect",{id:"swr",x:0,y:0,width:1,height:1}));const c2=mk("clipPath",{id:"swcL"});c2.append(mk("rect",{id:"swrL",x:0,y:0,width:1,height:1}));
  // rev7 (declutter): the change hatch is quiet: 8px apart, hairline, faint (it covered much of the map at 6px / 60%)
  const pt=mk("pattern",{id:"hatch",patternUnits:"userSpaceOnUse",width:8,height:8});pt.append(mk("path",{d:"M-1,1 L1,-1 M0,8 L8,0 M7,9 L9,7",class:"hatchl",style:"fill:none"}));
  // size colors: exempt schools (not counted in the target-range figure) = neutral fill + light dots
  const ex=mk("pattern",{id:"exh",patternUnits:"userSpaceOnUse",width:6,height:6});ex.append(mk("rect",{width:6,height:6,style:"fill:var(--sz-in)"}),mk("circle",{cx:3,cy:3,r:.9,style:"fill:var(--muted);opacity:.7"}));
  defs.append(c1,c2,pt,ex);svg.append(defs)}
-[gFade,gPin,gSt,gPri,gRail,gX,gRiv,gFwy,gCur,gOv,gFoc,gStN].forEach(g=>g.setAttribute("pointer-events","none"));gFwy.setAttribute("class","fwyg");
-svg.append(gA,gA2,gDen,gFade,gPast,gSt,gPri,gRail,gX,gRiv,gFwy,gE1,gE2,gB,gCur,gOv,gDiff,gFoc,gStN,gS,gTop,gPin);
+[gFade,gPin,gSt,gPri,gRail,gX,gBus,gRiv,gFwy,gCur,gOv,gFoc,gStN].forEach(g=>g.setAttribute("pointer-events","none"));gFwy.setAttribute("class","fwyg");
+svg.append(gA,gA2,gDen,gFade,gPast,gSt,gPri,gRail,gX,gRiv,gFwy,gE1,gE2,gB,gCur,gBus,gOv,gDiff,gFoc,gStN,gS,gTop,gPin);
 const lines=s=>dec(s).filter(r=>r.length>1).map(r=>"M"+r.map(P).join("L")).join("");
 const ringsD=enc=>dec(enc).map(r=>"M"+r.map(P).join("L")+"Z").join("");
 const base={};BASE.split("\n").forEach(l=>{const i=l.indexOf("#");base[l.slice(0,i)]=l.slice(i+1)});
@@ -283,6 +283,13 @@ function closerLegend(el){const C=CL(),L=LD().closer||[];if(!C){el.innerHTML=`<s
  const cb=$("clbus");if(cb)cb.onchange=()=>{clBus=cb.checked;drawAreas()};const sp=$("clp");if(sp)sp.onchange=()=>{cpair=sp.value;const c=CL();drawAreas();if(c){fitHome=c.areas.join(",");fitTo(fitHome)}}}
 // "Busy streets to cross" (Map options; xing=1): busy streets and their signal / marked crossings from map_data/crossings.js
 // (OSM via build/safe_routes, build_site_map.py), loaded on first use; any theme. Lines and dots keep their size at every zoom.
+// Bus line (Map options; bus=1): single-plan view, K-5 and 6-8: each school zoned in the plan shown, outlined at the no-bus
+// walk (LD().bl, plan-independent, build_site_map.py bus_line); the picked school's line drawn bolder. Color=closer has its own.
+const busOn=()=>$("lbus").checked&&mode==="single"&&!clOn()&&!!LD().bl;
+function drawBus(){gBus.replaceChildren();$("lbusw").hidden=!LD().bl||mode!=="single";$("busl").hidden=!busOn();if(!busOn())return;const B=LD().bl,ns=Object.keys(polysOf(scn)).filter(n=>B[n]),o={fill:"none","vector-effect":"non-scaling-stroke","stroke-linejoin":"round"};
+ const one=(n,hi)=>{const d=ringsD(B[n]);gBus.append(mk("path",{...o,d,stroke:"var(--plate)","stroke-width":hi?"6":"4","stroke-opacity":".85"}),mk("path",{...o,d,stroke:hi?"var(--ink)":"color-mix(in srgb,var(--ink) 65%,var(--plate))","stroke-width":hi?"2.8":"1.4","stroke-dasharray":hi?"9 4":"5 4"}))};
+ ns.filter(n=>n!==sel).forEach(n=>one(n,false));if(sel&&B[sel]&&ns.includes(sel))one(sel,true);
+ $("busl").innerHTML=`<svg width="22" height="10" aria-hidden="true"><line x1="1" y1="5" x2="21" y2="5" stroke="var(--ink)" stroke-width="1.6" stroke-dasharray="5 4"/></svg>Bus line: ${(META.levels[lv]||{}).bus_threshold_mi} mi walk to each school; past it, PPS provides a yellow bus <a href="sources.html#def-past-busing-distance">the rule</a>`}
 const xingOn=()=>$("lxing").checked;let xingDone=false;
 function drawXing(){gX.style.display=xingOn()?"":"none";if(!xingOn()||xingDone)return;lazyJS("crossings.js",()=>{if(xingDone||!window.XING)return;xingDone=true;
  const ln=r=>"M"+r.map(P).join("L"),dot=a=>a.map(p=>"M"+P([(p[0]-1229300)/1e4,(p[1]+454300)/1e4])+"h0").join("");
@@ -311,7 +318,7 @@ function denLegend(){const el=$("dnl"),on=denOn()||mvOn()||walkOn()||clOn();el.h
 
 // the change hatch belongs to the School colors and Changes only themes (round 5: it cluttered past, size and racial mix)
 const hatchTheme=()=>colBy()===""||colBy()==="chg",hatchOn=()=>showHatch&&hatchTheme();
-function drawAreas(){hideTip();[gA,gA2,gFade,gS,gDiff,gOv,gPast,gE1,gE2,gFoc].forEach(g=>g.replaceChildren());cavTitles();
+function drawAreas(){hideTip();drawBus();[gA,gA2,gFade,gS,gDiff,gOv,gPast,gE1,gE2,gFoc].forEach(g=>g.replaceChildren());cavTitles();
  const c=cmpOn(),a=c?p1:scn;const polys=polysOf(a);const cols=c?colsFor(p1,p2):colsFor(scn);
  curVis();
  drawPlan(gA,gE1,a,cols,true);drawSchools(gS,a);
@@ -440,7 +447,7 @@ function sideWire(){const sd=$("sidec");sd.querySelectorAll("[data-sel]").forEac
 // a short status line for screen readers (the panel itself is not a live region: it re-renders on every selection)
 function selMsg(n){const m=$("selmsg");if(!m)return;if(!n){m.textContent="";return}const ks=cmpOn()?(p1===p2?[p1]:[p1,p2]):[scn];
  m.textContent=`${nm(n)} selected: `+ks.map(k=>`${polysOf(k)[n]?fmt(PD(k).size[n]||0)+" kids":"no area"} in ${lblShort(k)}`).join(", ")}
-function select(n){if(!cmpOn())selectOne(n);else{sel=n;markSel();cmpSide(n)}selMsg(sel);spotPill();hashWrite()}
+function select(n){if(!cmpOn())selectOne(n);else{sel=n;markSel();cmpSide(n)}drawBus();selMsg(sel);spotPill();hashWrite()}
 
 // ---- "this spot under every plan": tap anywhere; point-in-polygon on the drawn lines of every plan at this level
 const ringCache={};
@@ -561,7 +568,7 @@ $("lhf").onchange=e=>{showHatch=e.target.checked;drawAreas()};
 $("lcur").onchange=curVis;
 $("lpri").onchange=e=>gPri.style.display=e.target.checked?"":"none";
 $("lrail").onchange=e=>gRail.style.display=e.target.checked?"":"none";
-$("lxing").onchange=()=>drawAreas();
+$("lxing").onchange=()=>drawAreas();$("lbus").onchange=()=>{drawBus();hashWrite()};
 $("lcol").onchange=()=>{$("dvl").classList.toggle("on",dvOn());drawAreas()};
 $("tkey").addEventListener("click",e=>{if(e.target.id==="toswipe")setMode("swipe")});
 // level switch (6-8 / 9-12 data load on demand from map_data/, which works from file:// too)
@@ -577,7 +584,8 @@ function setLevel(l){loadLevel(l,()=>{lv=l;const A=avail();
 //   [&color=chg|size|past|race|dens|mv|walk|closer]  the "Color areas by" theme (no key = school colors)
 //   [&cpair=sabin-bc|sabin-bc-king|...]  color=closer only: the school set (build_site_map.py CLOSER keys; none = the level's
 //                   first); with no fit= key the map opens zoomed on that set's areas
-//   [&bus=0]  color=closer only: hide the bus line (each school's walk outline at the no-bus distance); on by default
+//   [&bus=0]  color=closer: hide the bus line (each school's walk outline at the no-bus distance); on by default there
+//   [&bus=1]  other themes, single view, K-5 / 6-8: show the bus line for every school zoned in the plan; off by default
 //   [&xing=1]  the Busy streets to cross layer (busy streets, signals, marked crosswalks); off by default
 //   [&layers=none]  hatch changed areas off (on by default; written only in a compare view under School colors / Changes only;
 //                   layers=hatch is still read).
@@ -594,7 +602,7 @@ const defPick=(k,i)=>{const A=avail();return A.includes(k)?k:A[Math.min(i,A.leng
 function hashWrite(){if(initLoad)return;if(document.documentElement.classList.contains("embed"))try{parent.postMessage({ppsMapPlan:cmpOn()?p2:scn,ppsMapView:mode},"*")}catch(e){}   // embed: tell the host page which plan is shown
  const q=[];if(lv!==DEF.level)q.push(["level",lv]);if(mode!==DEF.view)q.push(["view",mode]);
  if(cmpOn()){if(p1!==defPick(DEF.a,0))q.push(["a",p1]);if(p2!==defPick(DEF.b,1))q.push(["b",p2])}else if(scn!==defPick(DEF.plan,0))q.push(["plan",scn]);
- if(colBy())q.push(["color",colBy()]);if(clOn()&&CL()&&CL()!==(LD().closer||[])[0])q.push(["cpair",CL().key]);if(cmpOn()&&hatchTheme()&&!showHatch)q.push(["layers","none"]);if(xingOn())q.push(["xing","1"]);if(clOn()&&!clBus)q.push(["bus","0"]);   // round 6: off-only, and only where the hatch is drawn
+ if(colBy())q.push(["color",colBy()]);if(clOn()&&CL()&&CL()!==(LD().closer||[])[0])q.push(["cpair",CL().key]);if(cmpOn()&&hatchTheme()&&!showHatch)q.push(["layers","none"]);if(xingOn())q.push(["xing","1"]);if(clOn()&&!clBus)q.push(["bus","0"]);if(!clOn()&&$("lbus").checked)q.push(["bus","1"]);   // round 6: off-only, and only where the hatch is drawn
  if(sel)q.push(["school",sel]);if(pin)q.push(["at",pin[0].toFixed(5)+","+pin[1].toFixed(5)]);
  const h=q.length?"#"+q.map(([k,v])=>k+"="+henc(v)).join("&"):"";if(h===location.hash)return;lastHash=h;try{history.replaceState(null,"",h||location.pathname+location.search)}catch(_){}}
 function hashRead(){const h=(location.hash||"").slice(1);if(!h)return{};if(LVN[h])return{level:h};const o={};
@@ -608,7 +616,7 @@ function restore(st,done){const L=LVN[st.level]?st.level:"K-5";loadLevel(L,()=>{
  const ly=st.layers!=null?st.layers.split(","):null;$("lhf").checked=showHatch=ly?ly.includes("hatch"):true;
  $("lcol").value=st.color!=null?(THEMES.includes(st.color)?st.color:""):ly&&ly.includes("past")?"past":ly&&ly.includes("race")?"race":"";
  if(clOn()){mode="single";scn=BASELINE}document.documentElement.classList.toggle("clmode",clOn());   // Closer walk is plan-independent: a page of its own (Sabin page link), today's lines, no plan controls
- $("dvl").classList.toggle("on",dvOn());cpair=st.cpair||null;clBus=st.bus!=="0";$("lxing").checked=st.xing==="1";
+ $("dvl").classList.toggle("on",dvOn());cpair=st.cpair||null;clBus=st.bus!=="0";$("lbus").checked=st.bus==="1";$("lxing").checked=st.xing==="1";
  initLoad=true;levelUI();modeUI();drawAreas();initLoad=false;hashWrite();
  fitHome=st.fit||(clOn()&&st.cpair&&CL()&&CL().key===st.cpair?CL().areas.join(","):null);if(fitHome){const f=fitHome;fitTo(f);requestAnimationFrame(()=>fitTo(f))}   // again after the first layout (the aspect ratio can change); color=closer with cpair and no fit: that pair's areas
  if(done)requestAnimationFrame(done)})}
