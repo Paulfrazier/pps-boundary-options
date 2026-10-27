@@ -16,7 +16,8 @@ PLANS = [  # (run, folder, display name, status)
     ('scenario_A', 'scenario_A', 'PPS A', 'reference'),
     ('scenario_B', 'scenario_B', 'PPS B', 'reference'),
     ('option2', 'option2', 'Boundary changes, same closures', 'pick'),
-    ('equity_noswap_alameda_rig_hs', 'equity_noswap_alameda_rig_hs', 'Current best: fewer DLI moves', 'pick'),  # 2026-10-22: current best
+    ('dli_home3_rh', 'dli_home3_rh', 'Current best: fewer DLI moves', 'pick'),  # 2026-10-27: current best
+    ('equity_noswap_alameda_rig_hs', 'equity_noswap_alameda_rig_hs', 'Previous best: no program swaps', 'pick'),  # current best 2026-10-22 to 10-27
     ('option2_ms460', 'option2_ms460', 'Balanced middle schools', 'pick'),
     ('option2_ms460_sellwood_home', 'option2_ms460_sellwood_home', 'Balanced middle schools, Sellwood open', 'pick'),  # Paul 2026-10-20: promote
     ('option1_durable', 'option1_durable', 'Redrawn K-8 lines', 'pick'),

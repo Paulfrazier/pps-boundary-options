@@ -25,7 +25,7 @@ def current_best():
         opts = json.load(open(SITE)).get('options', [])
     except (OSError, ValueError):
         opts = []
-    return next((o['name'] for o in opts if o.get('brief_rank') == 0), 'equity_noswap_alameda_rig_hs')
+    return next((o['name'] for o in opts if o.get('brief_rank') == 0), 'dli_home3_rh')
 
 
 LEFT, RIGHT = current_best(), 'scenario_A'   # current best | PPS A

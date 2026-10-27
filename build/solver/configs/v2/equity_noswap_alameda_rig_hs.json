@@ -28,7 +28,7 @@
  ],
  "past_margin_miles": 0.25,
  "name": "equity_noswap_alameda_rig_hs",
- "label": "Current best: fewer DLI moves, sustainable schools",
+ "label": "Previous best: no program swaps",
  "kind": "test",
  "move_baseline": "status_quo",
  "levels": {

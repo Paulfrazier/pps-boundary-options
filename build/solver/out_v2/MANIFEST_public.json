@@ -30,6 +30,10 @@
       "status": "done",
       "finished": "2026-10-15T10:10:53"
     },
+    "dli_home3_rh": {
+      "status": "done",
+      "finished": "2026-10-23T21:20:09"
+    },
     "equity_noswap_alameda_rig_hs": {
       "status": "done",
       "finished": "2026-10-22T11:43:51"
@@ -106,9 +110,17 @@
       "status": "done",
       "finished": "2026-10-26T12:16:44"
     },
+    "irv_sabin_knott": {
+      "status": "done",
+      "finished": "2026-10-27T08:30:12"
+    },
     "irv_sabin_15th": {
       "status": "done",
       "finished": "2026-10-22T23:03:20"
+    },
+    "irv_sabin_15th_grant": {
+      "status": "done",
+      "finished": "2026-10-27T09:41:07"
     }
   }
 }

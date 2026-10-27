@@ -1,54 +1,90 @@
-"""Option 2 recount: DLI students moved under Scenario A vs Option 2, gross and net of PPS-implied non-followers.
-  python dli_moves_v2.py [out_dir]  -> <out_dir>/dli_moves.json, default out_v2/option2.staging (+ markdown on stdout)
-2026-10-12 ~15:15 (Paul): Atkinson->Lent and Scott->Rigler are NECESSARY moves (Lent/Rigler below 360 otherwise);
-the option2 config now makes them, so "avoided" = MLK Jr Mandarin + Beaumont Spanish 6-8."""
+"""DLI (immersion) strand moves for a run, read from THAT run's own program placement.
+
+  python dli_moves_v2.py <run> [<run> ...] [--write]      (a run name, or name.staging)
+
+Baseline = configs/v2/status_quo.json (its program hosts equal today's). For each run, configs/v2/<run>.json
+levels.<lev>.programs is compared strand by strand; a strand counts as moved only if its host building differs from
+the Status Quo host. Sizes: PSU July 2026 Table 5.5 strand rows (v2.program_series), 2025-26 and 2031-32. Arrival share
+= the share implied by PPS's Family Guide projections (v2.follow_rate; 1.0 where PPS implies none). Prints a markdown
+table; --write saves <run folder>/dli_moves.json (the previous file is kept as dli_moves.json.bak_buggy).
+
+Fixed 2026-10-26: the old version (dli_moves_v2.py.bak_dli) ignored its argument's run and always wrote Scenario A vs
+option2 moves into whatever folder it was given, so e.g. out_v2/dli_home3_rh/dli_moves.json listed strands that run
+keeps at home (Clark, Sitton, Atkinson, Scott ...) as moved."""
 import json, os, sys
 import common as C, v2 as V2
-def moves(cfgname):
-    cfg = C.load_config(os.path.join(C.SOLVER, 'configs', 'v2', f'{cfgname}.json'))
-    th = V2.today_hosts()
-    zoned = {lev: set(cfg['levels'][lev]['zoned']) for lev in C.LEVELS}
+
+OUT = os.path.join(C.SOLVER, 'out_v2')
+
+
+def hosts(cfg, lev):
+    return {k: h for h, keys in (cfg['levels'][lev].get('programs') or {}).items() for k in keys}
+
+
+def served(cfg, lev):
+    L = cfg['levels'][lev]
+    return set(L['zoned']) | {h for h, keys in (L.get('programs') or {}).items() if keys}
+
+
+def moves(run):
+    name = run.replace('.staging', '')
+    cfg = C.load_config(os.path.join(C.SOLVER, 'configs', 'v2', f'{name}.json'))
+    sq = C.load_config(os.path.join(C.SOLVER, 'configs', 'v2', 'status_quo.json'))
+    open_any = set().union(*(served(cfg, l) for l in C.LEVELS))
     out = []
     for lev in ('K-5', '6-8'):
-        for host, keys in cfg['levels'][lev].get('programs', {}).items():
-            for k in keys:
-                src = th.get(k)
-                if src is None or src == host:
-                    continue
-                s = V2.program_series(k)
-                f = V2.follow_rate(k, 2031)
-                src_open = src in zoned[lev] or src in cfg['levels'][lev].get('programs', {})
-                out.append({'strand': k, 'level': lev, 'from': src, 'to': host, 'sending_building_stays_open_at_level': src_open,
-                            'n_2025_26': round(s[2025]), 'n_2031_32': round(s[2031]), 'arrival_share_2031_implied': f,
-                            'arrive_2031': round(f * s[2031]), 'non_followers_2031': round((1 - f) * s[2031]),
-                            'per_grade_2031': round(s[2031] / (6 if lev == 'K-5' else 3), 1)})
+        h0, h1 = hosts(sq, lev), hosts(cfg, lev)
+        for k, src in h0.items():
+            dst = h1.get(k)
+            if dst == src:
+                continue
+            s = V2.program_series(k)
+            f = V2.follow_rate(k, 2031) if dst else 0.0
+            if dst is None:
+                why = 'strand dropped'
+            elif src not in open_any:
+                why = 'building closes'
+            elif src not in served(cfg, lev):
+                why = 'building drops these grades'
+            else:
+                why = 'program moves (building stays open at this level)'
+            out.append({'strand': k, 'level': lev, 'from': src, 'to': dst, 'why': why,
+                        'n_2025_26': round(s[2025]), 'n_2031_32': round(s[2031]),
+                        'arrival_share_2031_implied': round(f, 4), 'arrive_2031': round(f * s[2031]),
+                        'non_followers_2031': round((1 - f) * s[2031])})
     return out
-A, O2 = moves('scenario_A'), moves('option2')
-o2keys = {m['strand'] for m in O2}
-def tot(ms, key):
-    return sum(m[key] for m in ms)
-NECESSARY = {'Atkinson|Spanish': 'Lent would be 274 (program-only, below 360) if the strand stayed home',
-             'Scott|Spanish': 'Rigler would be 321 (program-only, below 360) if the strand stayed home'}
-for m in O2:
-    if m['strand'] in NECESSARY:
-        m['necessary_because'] = NECESSARY[m['strand']]
-res = {'scenario_A': A, 'option2': O2, 'necessary_moves_kept': [m for m in O2 if m['strand'] in NECESSARY],
-       'avoided_by_option2': [m for m in A if m['strand'] not in o2keys],
-       'summary': {}}
-for nm, ms in (('scenario_A', A), ('option2', O2), ('avoided_by_option2', res['avoided_by_option2']),
-               ('necessary_moves_kept', res['necessary_moves_kept'])):
-    res['summary'][nm] = {k: tot(ms, k) for k in ('n_2025_26', 'n_2031_32', 'arrive_2031', 'non_followers_2031')}
-recon = [m for m in A if m['strand'] in ('Sitton|Spanish', 'Atkinson|Spanish', 'Scott|Spanish', 'MLK Jr|Mandarin')]
-res['reconstruction_731'] = {'strands': [m['strand'] for m in recon], 'n_2025_26': tot(recon, 'n_2025_26'),
-                             'n_2031_32': tot(recon, 'n_2031_32'), 'arrive_2031': tot(recon, 'arrive_2031'),
-                             'non_followers_2031': tot(recon, 'non_followers_2031'),
-                             'note': 'our reconstruction: the four K-5 strands Scenario A moves out of buildings that stay open, other than Clark, sum to 731 in 2025-26 (PSU Table 5.5). The kit has no written source for "731".'}
-od = sys.argv[1] if len(sys.argv) > 1 else os.path.join(C.SOLVER, 'out_v2', 'option2.staging')
-os.makedirs(od, exist_ok=True)
-json.dump(res, open(os.path.join(od, 'dli_moves.json'), 'w'), indent=1)
-print('| Strand | Level | From → to (A) | 2025-26 | 2031-32 | per grade 2031-32 | Implied arrival share | Arrive 2031-32 | Stay/home 2031-32 | Option 2 |')
-print('|---|---|---|---|---|---|---|---|---|---|')
-for m in A:
-    o = next((x for x in O2 if x['strand'] == m['strand']), None)
-    print(f"| {m['strand']} | {m['level']} | {m['from']} → {m['to']}{'' if m['sending_building_stays_open_at_level'] else ' (building closes or changes grades)'} | {m['n_2025_26']} | {m['n_2031_32']} | {m['per_grade_2031']} | {m['arrival_share_2031_implied']:.2f} | {m['arrive_2031']} | {m['non_followers_2031']} | {'moves' if o else '**stays**'} |")
-print(json.dumps(res['summary'], indent=1)); print(json.dumps(res['reconstruction_731'], indent=1))
+
+
+def summary(ms):
+    t = {k: sum(m[k] for m in ms) for k in ('n_2025_26', 'n_2031_32', 'arrive_2031', 'non_followers_2031')}
+    t['strands'] = len(ms)
+    t['by_level'] = {lev: {k: sum(m[k] for m in ms if m['level'] == lev) for k in ('n_2025_26', 'n_2031_32')}
+                     for lev in ('K-5', '6-8')}
+    return t
+
+
+def folder(run):
+    for d in (run, run.replace('.staging', ''), run.replace('.staging', '') + '.staging'):
+        if os.path.exists(os.path.join(OUT, d, 'scorecard.json')):
+            return os.path.join(OUT, d)
+
+
+if __name__ == '__main__':
+    args = [a for a in sys.argv[1:] if not a.startswith('--')]
+    for r in args:
+        ms = moves(r)
+        res = {'run': r.replace('.staging', ''), 'baseline': 'status_quo', 'moves': ms, 'summary': summary(ms),
+               'source': 'configs/v2/<run>.json levels.<lev>.programs vs configs/v2/status_quo.json; sizes PSU Table 5.5 '
+                         'strand rows (v2.program_series); arrival share v2.follow_rate (implied by PPS Family Guides)'}
+        print(f'\n### {r}\n\n| Strand | Level | From -> to | Why | 2025-26 | 2031-32 | Arrival share | Arrive 2031-32 |')
+        print('|---|---|---|---|---|---|---|---|')
+        for m in ms:
+            print(f"| {m['strand']} | {m['level']} | {m['from']} -> {m['to']} | {m['why']} | {m['n_2025_26']} | "
+                  f"{m['n_2031_32']} | {m['arrival_share_2031_implied']:.2f} | {m['arrive_2031']} |")
+        print(json.dumps(res['summary']))
+        if '--write' in sys.argv:
+            d = folder(r)
+            p = os.path.join(d, 'dli_moves.json')
+            if os.path.exists(p) and not os.path.exists(p + '.bak_buggy'):
+                os.rename(p, p + '.bak_buggy')
+            json.dump(res, open(p, 'w'), indent=1)

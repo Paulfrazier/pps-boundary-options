@@ -21,7 +21,7 @@ What every number in this project means. The code that computes each one is name
 
 A kid counts if their assigned school is **at least 0.25 miles farther on foot than the nearest open school at their level**. The quarter-mile margin keeps near-ties from counting.
 
-**One figure to quote.** The site's figure is the current optimizer's scorecard value: `levels.K-5.kids_past_closer_school` in each plan's `build/solver/out_v2/<plan>/scorecard.json` (model v2, 2031-32 basis, 0.25 mile margin). PPS A = **1,970** kids at K-5 (PPS Status Quo 1,861; PPS B 2,144; Redrawn K-8 lines 1,285; Current best: fewer DLI moves, sustainable schools 890; Previous best: balanced middle schools and Boundary changes, same closures 932 each; Rebalanced PPS A 1,838; the what-if Close 2 focus options 1,001). Model v1 gave PPS A 1,997. Any other number you see for the same idea, such as 2,575 for PPS A, comes from the earlier model and is labeled as such where it appears (the archive pages and older letters).
+**One figure to quote.** The site's figure is the current optimizer's scorecard value: `levels.K-5.kids_past_closer_school` in each plan's `build/solver/out_v2/<plan>/scorecard.json` (model v2, 2031-32 basis, 0.25 mile margin). PPS A = **1,970** kids at K-5 (PPS Status Quo 1,861; PPS B 2,144; Redrawn K-8 lines 1,285; Current best: fewer DLI moves, sustainable schools 793; Previous best: no program swaps 890; Earlier best: balanced middle schools and Boundary changes, same closures 932 each; Rebalanced PPS A 1,838; the what-if Close 2 focus options 1,001). Model v1 gave PPS A 1,997. Any other number you see for the same idea, such as 2,575 for PPS A, comes from the earlier model and is labeled as such where it appears (the archive pages and older letters).
 
 Both model versions use the same rule. They differ in:
 
@@ -72,7 +72,7 @@ Numbers from the two versions are not directly comparable.
 
 ## Plan names
 
-Plans were renamed on 2026-10-12 so names say what each plan does (again on 2026-10-14; on 2026-10-22 a new plan became the current best and the earlier one the previous best). If you have an older figure, this is what it was called. Plans marked * are not on the site now (archived, dropped, paused or awaiting a decision); their names are listed so older figures can be traced.
+Plans were renamed on 2026-10-12 so names say what each plan does (again on 2026-10-14; on 2026-10-22 and again on 2026-10-27 a new plan became the current best, and the one before it the previous best). If you have an older figure, this is what it was called. Plans marked * are not on the site now (archived, dropped, paused or awaiting a decision); their names are listed so older figures can be traced.
 
 | Plan | Earlier names |
 |---|---|
@@ -88,8 +88,9 @@ Plans were renamed on 2026-10-12 so names say what each plan does (again on 2026
 | Most at target + small feeder fixes * | Most schools last + small feeder fixes |
 | Most at target + medium feeder fixes * | Most schools last + medium feeder fixes |
 | Most at target + large feeder fixes * | Most schools last + large feeder fixes |
-| Current best: fewer DLI moves, sustainable schools (the current best example we modeled, since 2026-10-22: PPS A's closures with redrawn K-5 and middle-school lines and no program swaps, so immersion programs whose buildings stay open stay put; big-school relief (an elementary school over 450 kids gets a soft ceiling of 450, and moving kids off it costs less); the Skyline area stays at Lincoln) | |
-| Previous best: balanced middle schools (the best example we modeled from 2026-10-15 to 2026-10-22: PPS A's closures with redrawn K-5 and middle-school lines, middle-school minimum 460; MLK Jr Mandarin and Beaumont Spanish 6-8 stay in their buildings; the Skyline area stays at Lincoln) | Boundary changes, balanced middle schools (until 2026-10-22); Balanced middle schools (short name until 2026-10-22); Boundary changes, smaller middle schools; Smaller middle schools |
+| Current best: fewer DLI moves, sustainable schools (the current best example we modeled, since 2026-10-27: the previous best with three more immersion programs kept in their buildings, Clark Mandarin, Sitton Spanish and Ockley Green Spanish 6-8; only programs whose buildings close or that lose their grades move; middle-school lines re-solved) | |
+| Previous best: no program swaps (the best example we modeled from 2026-10-22 to 2026-10-27: PPS A's closures with redrawn K-5 and middle-school lines and no program swaps, so immersion programs whose buildings stay open stay put; big-school relief (an elementary school over 450 kids gets a soft ceiling of 450, and moving kids off it costs less); the Skyline area stays at Lincoln) | Current best: fewer DLI moves, sustainable schools (2026-10-22 to 2026-10-27) |
+| Earlier best: balanced middle schools (the best example we modeled from 2026-10-15 to 2026-10-22: PPS A's closures with redrawn K-5 and middle-school lines, middle-school minimum 460; MLK Jr Mandarin and Beaumont Spanish 6-8 stay in their buildings; the Skyline area stays at Lincoln) | Previous best: balanced middle schools (2026-10-22 to 2026-10-27); Boundary changes, balanced middle schools (until 2026-10-22); Balanced middle schools (short name until 2026-10-22); Boundary changes, smaller middle schools; Smaller middle schools |
 | Boundary changes, same closures (the same elementary lines, middle-school minimum 500) | Same closures, better lines (until 2026-10-14); Redrawn K-8, MLK Jr + Beaumont DLI stay; Redrawn K-8, 2 DLI stay; Immersion programs stay put; Immersion stays put; Option 2 |
 | Close 2 focus options (Winterhaven, da Vinci), a what-if | Option 3a; Focus schools meet the size rule |
 | Close 2 focus options, 1 more school open * | Option 3b; Focus schools sized, one more school open |

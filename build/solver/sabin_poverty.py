@@ -22,7 +22,7 @@ SPLANS = [('status_quo', 'Today (Status Quo)'), ('scenario_A', 'PPS Scenario A')
           ('planD_redraw_ms', 'Scenario D re-drawn'), ('planD_sust', 'Scenario D buildings, every school at target'),
           ('equity_noswap_alameda_rig_hs', 'Current best: fewer DLI moves, sustainable schools'), ('sabin_all', 'Sabin into Irvington, all ideas'),
           ('sabin_all_keepbc', 'Sabin into Irvington, Beverly Cleary keeps its area'),
-          ('irv_sabin', 'Irvington into Sabin'), ('irv_sabin_keep', 'Irvington into Sabin, all of Sabin stays, Vernon as today'), ('irv_sabin_whole', 'Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson'), ('irv_sabin_noala', 'Sabin Stays - less moves'), ('sabin_irv', 'Sabin into Irvington (small)'),
+          ('irv_sabin', 'Irvington into Sabin'), ('irv_sabin_keep', 'Irvington into Sabin, all of Sabin stays, Vernon as today'), ('irv_sabin_whole', 'Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson'), ('irv_sabin_noala', 'Sabin Stays - less moves'), ('irv_sabin_thompson21', 'Irvington line: Thompson / 21st / Knott'), ('irv_sabin_knott', 'Irvington line: NE Knott'), ('irv_sabin_15th', 'Irvington line: NE 15th + Knott'), ('irv_sabin_15th_grant', 'Irvington line: NE 15th + Knott, Irvington teens stay at Grant'), ('sabin_irv', 'Sabin into Irvington (small)'),
           ('sabin_irv_wide', 'Sabin into Irvington, wider receivers'), ('sabin_irv_both', 'Sabin and Irvington both open')]
 AREAS = ['Sabin', 'Irvington']
 NEIGH = ['Sabin', 'Irvington', 'MLK Jr', 'Alameda', 'Vernon', 'Beverly Cleary', 'Boise-Eliot/Humboldt', 'Rigler', 'Woodlawn']

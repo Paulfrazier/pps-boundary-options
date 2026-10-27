@@ -1,6 +1,6 @@
 {
  "name": "equity_noswap_alameda_rig_hs",
- "label": "Current best: fewer DLI moves, sustainable schools",
+ "label": "Previous best: no program swaps",
  "basis": "2031-32 (PSU forecast; block kids scaled by area, see METHOD.md)",
  "levels": {
   "K-5": {

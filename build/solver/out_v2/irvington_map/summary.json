@@ -1,0 +1,1694 @@
+{
+ "Irvington": {
+  "blocks": 186,
+  "k5_2031": 223.0,
+  "m68_2031": 113.9,
+  "k5_2025": 259.0,
+  "es_bands_k5_2031": {
+   "Beverly Cleary closer by 0.10-0.25 mi": 13.9,
+   "Beverly Cleary closer by >0.25 mi": 82.2,
+   "Sabin closer by 0.10-0.25 mi": 34.4,
+   "Sabin closer by >0.25 mi": 73.8,
+   "tie (<0.1 mi)": 18.7
+  },
+  "ms_bands_m68_2031": {
+   "Beaumont closer by 0.10-0.25 mi": 10.3,
+   "Beaumont closer by >0.25 mi": 6.8,
+   "Tubman closer by 0.10-0.25 mi": 5.8,
+   "Tubman closer by >0.25 mi": 78.9,
+   "tie (<0.1 mi)": 12.1
+  },
+  "k5_closer_sabin": 114.4,
+  "k5_closer_bc": 108.6,
+  "m68_closer_beaumont": 23.9,
+  "m68_closer_tubman": 90.1,
+  "avg_walk_k5": {
+   "Sabin": 1.129,
+   "Beverly Cleary": 1.073,
+   "Irvington": 0.537
+  },
+  "avg_walk_m68": {
+   "Beaumont": 1.885,
+   "Tubman": 1.248
+  },
+  "planD_K5": {
+   "Beverly Cleary": 223.0
+  },
+  "planD_68": {
+   "Beaumont": 113.9
+  },
+  "poverty_kid_weighted": 0.208
+ },
+ "Sabin": {
+  "blocks": 178,
+  "k5_2031": 235.9,
+  "m68_2031": 93.2,
+  "k5_2025": 270.0,
+  "es_bands_k5_2031": {
+   "Sabin closer by >0.25 mi": 235.9
+  },
+  "ms_bands_m68_2031": {
+   "Beaumont closer by 0.10-0.25 mi": 6.3,
+   "Beaumont closer by >0.25 mi": 46.8,
+   "Tubman closer by 0.10-0.25 mi": 5.5,
+   "Tubman closer by >0.25 mi": 26.7,
+   "tie (<0.1 mi)": 7.8
+  },
+  "k5_closer_sabin": 235.9,
+  "k5_closer_bc": 0.0,
+  "m68_closer_beaumont": 57.6,
+  "m68_closer_tubman": 35.6,
+  "avg_walk_k5": {
+   "Sabin": 0.454,
+   "Beverly Cleary": 1.82,
+   "Irvington": 1.09
+  },
+  "avg_walk_m68": {
+   "Beaumont": 1.562,
+   "Tubman": 1.799
+  },
+  "planD_K5": {
+   "Sabin": 235.9
+  },
+  "planD_68": {
+   "Tubman": 93.2
+  },
+  "poverty_kid_weighted": 0.282
+ },
+ "split": {
+  "planD_sizes_2031": {
+   "Sabin": 235.9,
+   "Beverly Cleary": 450.9,
+   "Beaumont": 463.7,
+   "Tubman": 423.3
+  },
+  "nearest_walk_split": {
+   "k5_to_sabin": 114.4,
+   "blocks_to_sabin": 69,
+   "k5_to_bc": 108.6,
+   "sabin_2031": 350.3,
+   "bc_2031": 336.4,
+   "avg_walk_irvington_k5_planD": 1.073,
+   "avg_walk_irvington_k5_nearest_split": 0.862,
+   "sabin_side_components": [
+    247
+   ],
+   "bc_side_irvington_components": [
+    117
+   ]
+  },
+  "threshold_curve": [
+   {
+    "sabin_takes_if_sabin_walk_minus_bc_below": -0.25,
+    "blocks": 47,
+    "k5_moved": 73.8,
+    "sabin_2031": 309.7,
+    "bc_2031": 377.0,
+    "sabin_2025_basis": 355.8
+   },
+   {
+    "sabin_takes_if_sabin_walk_minus_bc_below": -0.1,
+    "blocks": 65,
+    "k5_moved": 108.2,
+    "sabin_2031": 344.1,
+    "bc_2031": 342.6,
+    "sabin_2025_basis": 395.7
+   },
+   {
+    "sabin_takes_if_sabin_walk_minus_bc_below": 0.0,
+    "blocks": 69,
+    "k5_moved": 114.4,
+    "sabin_2031": 350.3,
+    "bc_2031": 336.4,
+    "sabin_2025_basis": 402.9
+   },
+   {
+    "sabin_takes_if_sabin_walk_minus_bc_below": 0.1,
+    "blocks": 81,
+    "k5_moved": 126.9,
+    "sabin_2031": 362.8,
+    "bc_2031": 323.9,
+    "sabin_2025_basis": 417.4
+   },
+   {
+    "sabin_takes_if_sabin_walk_minus_bc_below": 0.25,
+    "blocks": 100,
+    "k5_moved": 140.8,
+    "sabin_2031": 376.7,
+    "bc_2031": 310.1,
+    "sabin_2025_basis": 433.6
+   },
+   {
+    "sabin_takes_if_sabin_walk_minus_bc_below": 0.5,
+    "blocks": 134,
+    "k5_moved": 173.7,
+    "sabin_2031": 409.6,
+    "bc_2031": 277.2,
+    "sabin_2025_basis": 471.7
+   }
+  ],
+  "reach_360_nearest_first": {
+   "kids_needed": 124.1,
+   "blocks_needed": 79,
+   "max_diff_at_360_mi": 0.059
+  },
+  "kids_irvington_planD_walk_gain_if_to_sabin": 114.4
+ },
+ "ms": {
+  "irvington_m68_closer_beaumont": 23.9,
+  "irvington_m68_closer_tubman": 90.1,
+  "planD_irvington_to": {
+   "Beaumont": 113.9
+  },
+  "nearest_effect_on_sizes": {
+   "Beaumont": 373.6,
+   "Tubman": 513.4
+  },
+  "both_areas_nearest_sizes": {
+   "Beaumont": 431.2,
+   "Tubman": 455.8
+  },
+  "avg_walk_irvington_m68_planD": 1.885,
+  "avg_walk_irvington_m68_nearest": 1.209
+ },
+ "pairs": {
+  "edge": {
+   "A": "Beverly Cleary",
+   "B": "Buckman",
+   "areas": {
+    "Beverly Cleary": {
+     "blocks": 136,
+     "k5_2031": 223.7,
+     "bands_k5_2031": {
+      "Beverly Cleary closer by >0.25 mi": 223.7
+     },
+     "k5_closer_A": 223.7,
+     "k5_closer_B": 0.0,
+     "k5_closer_A_by_0_1": 223.7,
+     "k5_tie": 0.0,
+     "k5_closer_B_by_0_1": 0.0,
+     "avg_walk_A": 0.628,
+     "avg_walk_B": 2.075,
+     "avg_walk_own_school": 0.628,
+     "avg_walk_planD_K5": 0.628,
+     "avg_walk_nearer_of_pair": 0.628,
+     "poverty_kid_weighted": 0.111,
+     "planD_K5": {
+      "Beverly Cleary": 223.7
+     }
+    },
+    "Buckman": {
+     "blocks": 325,
+     "k5_2031": 112.3,
+     "bands_k5_2031": {
+      "Beverly Cleary closer by 0.10-0.25 mi": 5.9,
+      "Beverly Cleary closer by >0.25 mi": 3.8,
+      "Buckman closer by 0.10-0.25 mi": 7.8,
+      "Buckman closer by >0.25 mi": 86.4,
+      "tie (<0.1 mi)": 8.4
+     },
+     "k5_closer_A": 13.7,
+     "k5_closer_B": 98.6,
+     "k5_closer_A_by_0_1": 9.7,
+     "k5_tie": 8.4,
+     "k5_closer_B_by_0_1": 94.2,
+     "avg_walk_A": 1.596,
+     "avg_walk_B": 0.704,
+     "avg_walk_own_school": 0.704,
+     "avg_walk_planD_K5": 1.434,
+     "avg_walk_nearer_of_pair": 0.682,
+     "poverty_kid_weighted": 0.364,
+     "planD_K5": {
+      "Abernethy": 50.8,
+      "Sunnyside": 61.6
+     }
+    },
+    "Sunnyside": {
+     "blocks": 173,
+     "k5_2031": 129.1,
+     "bands_k5_2031": {
+      "Buckman closer by 0.10-0.25 mi": 2.7,
+      "Buckman closer by >0.25 mi": 126.4
+     },
+     "k5_closer_A": 0.0,
+     "k5_closer_B": 129.1,
+     "k5_closer_A_by_0_1": 0.0,
+     "k5_tie": 0.0,
+     "k5_closer_B_by_0_1": 129.1,
+     "avg_walk_A": 1.735,
+     "avg_walk_B": 1.142,
+     "avg_walk_own_school": 0.458,
+     "avg_walk_planD_K5": 0.458,
+     "avg_walk_nearer_of_pair": 1.142,
+     "poverty_kid_weighted": 0.19,
+     "planD_K5": {
+      "Sunnyside": 129.1
+     }
+    }
+   },
+   "context_areas": [
+    "Sunnyside"
+   ],
+   "bands_k5_2031_all_areas": {
+    "Beverly Cleary closer by 0.10-0.25 mi": 5.9,
+    "Beverly Cleary closer by >0.25 mi": 227.5,
+    "Buckman closer by 0.10-0.25 mi": 10.5,
+    "Buckman closer by >0.25 mi": 212.9,
+    "tie (<0.1 mi)": 8.4
+   },
+   "k5_closer_A_all": 237.4,
+   "k5_closer_B_all": 227.7,
+   "poverty_by_side": {
+    "closer_A": 0.123,
+    "closer_B": 0.267
+   },
+   "planD_sizes_2031": {
+    "Beverly Cleary": 450.9,
+    "Sunnyside": 190.7,
+    "Abernethy": 291.8
+   }
+  },
+  "beh": {
+   "A": "Beach",
+   "B": "Boise-Eliot/Humboldt",
+   "areas": {
+    "Beach": {
+     "blocks": 211,
+     "k5_2031": 160.0,
+     "bands_k5_2031": {
+      "Beach closer by 0.10-0.25 mi": 15.7,
+      "Beach closer by >0.25 mi": 140.7,
+      "Boise-Eliot/Humboldt closer by 0.10-0.25 mi": 0.1,
+      "tie (<0.1 mi)": 3.5
+     },
+     "k5_closer_A": 159.5,
+     "k5_closer_B": 0.5,
+     "k5_closer_A_by_0_1": 156.4,
+     "k5_tie": 3.5,
+     "k5_closer_B_by_0_1": 0.1,
+     "avg_walk_A": 0.603,
+     "avg_walk_B": 1.485,
+     "avg_walk_own_school": 0.603,
+     "avg_walk_planD_K5": 0.603,
+     "avg_walk_nearer_of_pair": 0.603,
+     "poverty_kid_weighted": 0.347,
+     "planD_K5": {
+      "Beach": 160.0
+     }
+    },
+    "Boise-Eliot/Humboldt": {
+     "blocks": 244,
+     "k5_2031": 309.0,
+     "bands_k5_2031": {
+      "Beach closer by 0.10-0.25 mi": 10.8,
+      "Beach closer by >0.25 mi": 8.9,
+      "Boise-Eliot/Humboldt closer by 0.10-0.25 mi": 14.2,
+      "Boise-Eliot/Humboldt closer by >0.25 mi": 220.4,
+      "tie (<0.1 mi)": 54.7
+     },
+     "k5_closer_A": 58.4,
+     "k5_closer_B": 250.6,
+     "k5_closer_A_by_0_1": 19.7,
+     "k5_tie": 54.7,
+     "k5_closer_B_by_0_1": 234.6,
+     "avg_walk_A": 1.341,
+     "avg_walk_B": 0.715,
+     "avg_walk_own_school": 0.715,
+     "avg_walk_planD_K5": 0.715,
+     "avg_walk_nearer_of_pair": 0.692,
+     "poverty_kid_weighted": 0.585,
+     "planD_K5": {
+      "Boise-Eliot/Humboldt": 309.0
+     }
+    }
+   },
+   "context_areas": [],
+   "bands_k5_2031_all_areas": {
+    "Beach closer by 0.10-0.25 mi": 26.5,
+    "Beach closer by >0.25 mi": 149.6,
+    "Boise-Eliot/Humboldt closer by 0.10-0.25 mi": 14.4,
+    "Boise-Eliot/Humboldt closer by >0.25 mi": 220.4,
+    "tie (<0.1 mi)": 58.2
+   },
+   "k5_closer_A_all": 218.0,
+   "k5_closer_B_all": 251.1,
+   "poverty_by_side": {
+    "closer_A": 0.493,
+    "closer_B": 0.513
+   },
+   "planD_sizes_2031": {
+    "Beach": 160.2,
+    "Boise-Eliot/Humboldt": 309.0
+   },
+   "nearest_split_sizes_2031": {
+    "Beach": 218.2,
+    "Boise-Eliot/Humboldt": 251.1
+   }
+  },
+  "irv": {
+   "A": "Sabin",
+   "B": "Beverly Cleary",
+   "areas_counted": [
+    "Irvington"
+   ],
+   "k5_closer_A_all": 114.4,
+   "k5_closer_B_all": 108.6,
+   "bands_k5_2031_all_areas": {
+    "Beverly Cleary closer by 0.10-0.25 mi": 13.9,
+    "Beverly Cleary closer by >0.25 mi": 82.2,
+    "Sabin closer by 0.10-0.25 mi": 34.4,
+    "Sabin closer by >0.25 mi": 73.8,
+    "tie (<0.1 mi)": 18.7
+   },
+   "context_Sabin_area_k5": 235.9
+  }
+ },
+ "three": {
+  "schools": [
+   "Sabin",
+   "Beverly Cleary",
+   "MLK Jr"
+  ],
+  "areas": {
+   "Irvington": {
+    "k5_2031": 223.0,
+    "closest_k5": {
+     "Sabin": 91.7,
+     "Beverly Cleary": 107.7,
+     "MLK Jr": 23.5
+    },
+    "closest_k5_clear_by_0_1": {
+     "Sabin": 75.7,
+     "Beverly Cleary": 96.1,
+     "MLK Jr": 0.0
+    },
+    "close_call_k5": 51.3,
+    "avg_walk": {
+     "Sabin": 1.129,
+     "Beverly Cleary": 1.073,
+     "MLK Jr": 1.742
+    },
+    "avg_walk_closest": 0.854
+   },
+   "Sabin": {
+    "k5_2031": 235.9,
+    "closest_k5": {
+     "Sabin": 194.7,
+     "Beverly Cleary": 0.0,
+     "MLK Jr": 41.2
+    },
+    "closest_k5_clear_by_0_1": {
+     "Sabin": 185.3,
+     "Beverly Cleary": 0.0,
+     "MLK Jr": 33.8
+    },
+    "close_call_k5": 16.8,
+    "avg_walk": {
+     "Sabin": 0.454,
+     "Beverly Cleary": 1.82,
+     "MLK Jr": 0.931
+    },
+    "avg_walk_closest": 0.414
+   },
+   "MLK Jr": {
+    "k5_2031": 141.0,
+    "closest_k5": {
+     "Sabin": 0.7,
+     "Beverly Cleary": 0.0,
+     "MLK Jr": 140.3
+    },
+    "closest_k5_clear_by_0_1": {
+     "Sabin": 0.0,
+     "Beverly Cleary": 0.0,
+     "MLK Jr": 137.6
+    },
+    "close_call_k5": 3.4,
+    "avg_walk": {
+     "Sabin": 1.006,
+     "Beverly Cleary": 2.733,
+     "MLK Jr": 0.392
+    },
+    "avg_walk_closest": 0.392
+   },
+   "all": {
+    "k5_2031": 599.9,
+    "closest_k5": {
+     "Sabin": 287.1,
+     "Beverly Cleary": 107.7,
+     "MLK Jr": 205.0
+    },
+    "closest_k5_clear_by_0_1": {
+     "Sabin": 261.0,
+     "Beverly Cleary": 96.1,
+     "MLK Jr": 171.4
+    },
+    "close_call_k5": 71.4,
+    "avg_walk": {
+     "Sabin": 0.835,
+     "Beverly Cleary": 1.757,
+     "MLK Jr": 1.106
+    },
+    "avg_walk_closest": 0.573
+   }
+  },
+  "note": "closest by OSRM walk among the three; close call = top two within 0.1 mi",
+  "planD_sizes_2031": {
+   "Sabin": 235.9,
+   "Beverly Cleary": 450.9,
+   "MLK Jr": 141.0
+  },
+  "closest_split_sizes_2031": {
+   "Sabin": 287.1,
+   "Beverly Cleary": 335.6,
+   "MLK Jr": 205.0
+  }
+ },
+ "split_lines": {
+  "basis": "'Sabin Stays - less moves' model family (Irvington closes; Sabin- and Alameda-area families stay; Irvington kids to Sabin feed Tubman, to Beverly Cleary feed Beaumont). Not Plan D: Beverly Cleary's other kids differ, so BC is smaller here than in Plan D.",
+  "options": {
+   "thompson21_knott": {
+    "label": "Option 1: Thompson / 21st / Knott",
+    "rule": "North of NE Thompson west of NE 21st, plus north of NE Knott, to Sabin",
+    "k5_to_sabin": 118.2,
+    "k5_to_bc": 104.8,
+    "k5_farther_any": 6.7,
+    "k5_farther_0_25": 0.0,
+    "avg_walk_k5": 0.864,
+    "poverty_sabin_side": 0.137,
+    "poverty_bc_side": 0.289,
+    "sizes_source": "model run irv_sabin_thompson21 (out_v2/irv_sabin_thompson21/schools.csv)",
+    "sizes_2031": {
+     "Sabin": 354.8,
+     "Beverly Cleary": 356.6,
+     "Tubman": 551.5,
+     "Beaumont": 557.9
+    }
+   },
+   "tillamook21_knott": {
+    "label": "Option 2: Tillamook / 21st / Knott",
+    "rule": "North of NE Tillamook west of NE 21st, plus north of NE Knott, to Sabin",
+    "k5_to_sabin": 131.2,
+    "k5_to_bc": 91.8,
+    "k5_farther_any": 19.7,
+    "k5_farther_0_25": 2.0,
+    "avg_walk_k5": 0.871,
+    "poverty_sabin_side": 0.158,
+    "poverty_bc_side": 0.281,
+    "sizes_source": "block math: the model family base (options.json base_other_kids_2031) plus Irvington kids by this line",
+    "sizes_2031": {
+     "Sabin": 367.8,
+     "Beverly Cleary": 344.5,
+     "Tubman": 557.3,
+     "Beaumont": 552.2
+    }
+   },
+   "15th_knott": {
+    "label": "Option 3: NE 15th + Knott",
+    "rule": "West of NE 15th Ave, plus north of NE Knott, to Sabin",
+    "k5_to_sabin": 121.1,
+    "k5_to_bc": 101.9,
+    "k5_farther_any": 44.4,
+    "k5_farther_0_25": 13.8,
+    "avg_walk_k5": 0.894,
+    "poverty_sabin_side": 0.187,
+    "poverty_bc_side": 0.234,
+    "sizes_source": "model run irv_sabin_15th (out_v2/irv_sabin_15th/schools.csv)",
+    "sizes_2031": {
+     "Sabin": 357.7,
+     "Beverly Cleary": 353.6,
+     "Tubman": 548.8,
+     "Beaumont": 560.7
+    }
+   },
+   "knott": {
+    "label": "Knott only (a collector street)",
+    "rule": "North of NE Knott St to Sabin",
+    "k5_to_sabin": 60.3,
+    "k5_to_bc": 162.7,
+    "k5_farther_any": 58.1,
+    "k5_farther_0_25": 23.1,
+    "avg_walk_k5": 0.919,
+    "poverty_sabin_side": 0.082,
+    "poverty_bc_side": 0.255,
+    "sizes_source": "model run irv_sabin_knott (out_v2/irv_sabin_knott/schools.csv)",
+    "sizes_2031": {
+     "Sabin": 296.9,
+     "Beverly Cleary": 414.5,
+     "Tubman": 523.4,
+     "Beaumont": 586.0
+    }
+   },
+   "brazee": {
+    "label": "Option 4: Brazee",
+    "rule": "North of NE Brazee St to Sabin",
+    "k5_to_sabin": 100.4,
+    "k5_to_bc": 122.6,
+    "k5_farther_any": 38.1,
+    "k5_farther_0_25": 8.8,
+    "avg_walk_k5": 0.898,
+    "poverty_sabin_side": 0.109,
+    "poverty_bc_side": 0.29,
+    "sizes_source": "model run irv_sabin_brazee (out_v2/irv_sabin_brazee/schools.csv)",
+    "sizes_2031": {
+     "Sabin": 337.0,
+     "Beverly Cleary": 375.9,
+     "Tubman": 544.0,
+     "Beaumont": 565.4
+    }
+   },
+   "thompson": {
+    "label": "Also tested: Thompson only",
+    "rule": "North of NE Thompson St to Sabin",
+    "k5_to_sabin": 140.9,
+    "k5_to_bc": 82.1,
+    "k5_farther_any": 26.5,
+    "k5_farther_0_25": 19.0,
+    "avg_walk_k5": 0.913,
+    "poverty_sabin_side": 0.126,
+    "poverty_bc_side": 0.35,
+    "sizes_source": "model run irv_sabin_thompson (out_v2/irv_sabin_thompson/schools.csv)",
+    "sizes_2031": {
+     "Sabin": 377.5,
+     "Beverly Cleary": 335.4,
+     "Tubman": 565.1,
+     "Beaumont": 544.3
+    }
+   }
+  }
+ },
+ "line_bus": {
+  "Today": {
+   "K-5|Sabin": {
+    "kids": 235.9,
+    "walk_ok": 235.9,
+    "bus": 0.0,
+    "pov_walk_ok": 66.6,
+    "pov": 66.6,
+    "avg_walk": 0.454
+   },
+   "K-5|Irvington": {
+    "kids": 223.0,
+    "walk_ok": 206.5,
+    "bus": 16.5,
+    "pov_walk_ok": 40.6,
+    "pov": 46.5,
+    "avg_walk": 0.537
+   },
+   "K-5|both": {
+    "kids": 458.9,
+    "walk_ok": 442.3,
+    "bus": 16.5,
+    "pov_walk_ok": 107.2,
+    "pov": 113.1,
+    "avg_walk": 0.495
+   },
+   "6-8|Sabin": {
+    "kids": 93.2,
+    "walk_ok": 24.6,
+    "bus": 68.6,
+    "pov_walk_ok": 6.9,
+    "pov": 23.0,
+    "avg_walk": 1.799
+   },
+   "6-8|Irvington": {
+    "kids": 113.9,
+    "walk_ok": 80.0,
+    "bus": 33.9,
+    "pov_walk_ok": 22.1,
+    "pov": 32.1,
+    "avg_walk": 1.248
+   },
+   "6-8|both": {
+    "kids": 207.1,
+    "walk_ok": 104.6,
+    "bus": 102.5,
+    "pov_walk_ok": 29.0,
+    "pov": 55.1,
+    "avg_walk": 1.496
+   },
+   "9-12|Sabin": {
+    "kids": 220.5,
+    "walk_ok": 68.3,
+    "bus": 152.2,
+    "pov_walk_ok": 35.5,
+    "pov": 70.7,
+    "avg_walk": 1.708
+   },
+   "9-12|Irvington": {
+    "kids": 328.0,
+    "walk_ok": 242.2,
+    "bus": 85.7,
+    "pov_walk_ok": 37.0,
+    "pov": 50.8,
+    "avg_walk": 1.272
+   },
+   "9-12|both": {
+    "kids": 548.5,
+    "walk_ok": 310.6,
+    "bus": 237.9,
+    "pov_walk_ok": 72.5,
+    "pov": 121.5,
+    "avg_walk": 1.447
+   }
+  },
+  "PPS A": {
+   "K-5|Sabin": {
+    "kids": 235.9,
+    "walk_ok": 127.6,
+    "bus": 108.3,
+    "pov_walk_ok": 49.4,
+    "pov": 66.6,
+    "avg_walk": 0.931
+   },
+   "K-5|Irvington": {
+    "kids": 223.0,
+    "walk_ok": 97.1,
+    "bus": 125.9,
+    "pov_walk_ok": 23.6,
+    "pov": 46.5,
+    "avg_walk": 1.073
+   },
+   "K-5|both": {
+    "kids": 458.9,
+    "walk_ok": 224.7,
+    "bus": 234.2,
+    "pov_walk_ok": 73.0,
+    "pov": 113.1,
+    "avg_walk": 1.0
+   },
+   "6-8|Sabin": {
+    "kids": 93.2,
+    "walk_ok": 24.6,
+    "bus": 68.6,
+    "pov_walk_ok": 6.9,
+    "pov": 23.0,
+    "avg_walk": 1.799
+   },
+   "6-8|Irvington": {
+    "kids": 113.9,
+    "walk_ok": 16.9,
+    "bus": 97.0,
+    "pov_walk_ok": 1.8,
+    "pov": 32.1,
+    "avg_walk": 1.885
+   },
+   "6-8|both": {
+    "kids": 207.1,
+    "walk_ok": 41.5,
+    "bus": 165.6,
+    "pov_walk_ok": 8.7,
+    "pov": 55.1,
+    "avg_walk": 1.846
+   },
+   "9-12|Sabin": {
+    "kids": 220.5,
+    "walk_ok": 68.3,
+    "bus": 152.2,
+    "pov_walk_ok": 35.5,
+    "pov": 70.7,
+    "avg_walk": 1.708
+   },
+   "9-12|Irvington": {
+    "kids": 328.0,
+    "walk_ok": 242.2,
+    "bus": 85.7,
+    "pov_walk_ok": 37.0,
+    "pov": 50.8,
+    "avg_walk": 1.272
+   },
+   "9-12|both": {
+    "kids": 548.5,
+    "walk_ok": 310.6,
+    "bus": 237.9,
+    "pov_walk_ok": 72.5,
+    "pov": 121.5,
+    "avg_walk": 1.447
+   }
+  },
+  "PPS B": {
+   "K-5|Sabin": {
+    "kids": 235.9,
+    "walk_ok": 127.6,
+    "bus": 108.3,
+    "pov_walk_ok": 49.4,
+    "pov": 66.6,
+    "avg_walk": 0.931
+   },
+   "K-5|Irvington": {
+    "kids": 223.0,
+    "walk_ok": 97.1,
+    "bus": 125.9,
+    "pov_walk_ok": 23.6,
+    "pov": 46.5,
+    "avg_walk": 1.073
+   },
+   "K-5|both": {
+    "kids": 458.9,
+    "walk_ok": 224.7,
+    "bus": 234.2,
+    "pov_walk_ok": 73.0,
+    "pov": 113.1,
+    "avg_walk": 1.0
+   },
+   "6-8|Sabin": {
+    "kids": 93.2,
+    "walk_ok": 24.6,
+    "bus": 68.6,
+    "pov_walk_ok": 6.9,
+    "pov": 23.0,
+    "avg_walk": 1.799
+   },
+   "6-8|Irvington": {
+    "kids": 113.9,
+    "walk_ok": 16.9,
+    "bus": 97.0,
+    "pov_walk_ok": 1.8,
+    "pov": 32.1,
+    "avg_walk": 1.885
+   },
+   "6-8|both": {
+    "kids": 207.1,
+    "walk_ok": 41.5,
+    "bus": 165.6,
+    "pov_walk_ok": 8.7,
+    "pov": 55.1,
+    "avg_walk": 1.846
+   },
+   "9-12|Sabin": {
+    "kids": 220.5,
+    "walk_ok": 68.3,
+    "bus": 152.2,
+    "pov_walk_ok": 35.5,
+    "pov": 70.7,
+    "avg_walk": 1.708
+   },
+   "9-12|Irvington": {
+    "kids": 328.0,
+    "walk_ok": 242.2,
+    "bus": 85.7,
+    "pov_walk_ok": 37.0,
+    "pov": 50.8,
+    "avg_walk": 1.272
+   },
+   "9-12|both": {
+    "kids": 548.5,
+    "walk_ok": 310.6,
+    "bus": 237.9,
+    "pov_walk_ok": 72.5,
+    "pov": 121.5,
+    "avg_walk": 1.447
+   }
+  },
+  "Plan D": {
+   "K-5|Sabin": {
+    "kids": 235.9,
+    "walk_ok": 235.9,
+    "bus": 0.0,
+    "pov_walk_ok": 66.6,
+    "pov": 66.6,
+    "avg_walk": 0.454
+   },
+   "K-5|Irvington": {
+    "kids": 223.0,
+    "walk_ok": 97.1,
+    "bus": 125.9,
+    "pov_walk_ok": 23.6,
+    "pov": 46.5,
+    "avg_walk": 1.073
+   },
+   "K-5|both": {
+    "kids": 458.9,
+    "walk_ok": 333.0,
+    "bus": 125.9,
+    "pov_walk_ok": 90.3,
+    "pov": 113.1,
+    "avg_walk": 0.755
+   },
+   "6-8|Sabin": {
+    "kids": 93.2,
+    "walk_ok": 24.6,
+    "bus": 68.6,
+    "pov_walk_ok": 6.9,
+    "pov": 23.0,
+    "avg_walk": 1.799
+   },
+   "6-8|Irvington": {
+    "kids": 113.9,
+    "walk_ok": 16.9,
+    "bus": 97.0,
+    "pov_walk_ok": 1.8,
+    "pov": 32.1,
+    "avg_walk": 1.885
+   },
+   "6-8|both": {
+    "kids": 207.1,
+    "walk_ok": 41.5,
+    "bus": 165.6,
+    "pov_walk_ok": 8.7,
+    "pov": 55.1,
+    "avg_walk": 1.846
+   },
+   "9-12|Sabin": {
+    "kids": 220.5,
+    "walk_ok": 68.3,
+    "bus": 152.2,
+    "pov_walk_ok": 35.5,
+    "pov": 70.7,
+    "avg_walk": 1.708
+   },
+   "9-12|Irvington": {
+    "kids": 328.0,
+    "walk_ok": 242.2,
+    "bus": 85.7,
+    "pov_walk_ok": 37.0,
+    "pov": 50.8,
+    "avg_walk": 1.272
+   },
+   "9-12|both": {
+    "kids": 548.5,
+    "walk_ok": 310.6,
+    "bus": 237.9,
+    "pov_walk_ok": 72.5,
+    "pov": 121.5,
+    "avg_walk": 1.447
+   }
+  },
+  "Knott only": {
+   "K-5|Sabin": {
+    "kids": 235.9,
+    "walk_ok": 235.9,
+    "bus": 0.0,
+    "pov_walk_ok": 66.6,
+    "pov": 66.6,
+    "avg_walk": 0.454
+   },
+   "K-5|Irvington": {
+    "kids": 223.0,
+    "walk_ok": 142.6,
+    "bus": 80.4,
+    "pov_walk_ok": 26.5,
+    "pov": 46.5,
+    "avg_walk": 0.919
+   },
+   "K-5|both": {
+    "kids": 458.9,
+    "walk_ok": 378.5,
+    "bus": 80.4,
+    "pov_walk_ok": 93.1,
+    "pov": 113.1,
+    "avg_walk": 0.68
+   },
+   "6-8|Sabin": {
+    "kids": 93.2,
+    "walk_ok": 24.6,
+    "bus": 68.6,
+    "pov_walk_ok": 6.9,
+    "pov": 23.0,
+    "avg_walk": 1.799
+   },
+   "6-8|Irvington": {
+    "kids": 113.9,
+    "walk_ok": 34.9,
+    "bus": 79.0,
+    "pov_walk_ok": 4.1,
+    "pov": 32.1,
+    "avg_walk": 1.729
+   },
+   "6-8|both": {
+    "kids": 207.1,
+    "walk_ok": 59.5,
+    "bus": 147.6,
+    "pov_walk_ok": 11.0,
+    "pov": 55.1,
+    "avg_walk": 1.76
+   },
+   "9-12|Sabin": {
+    "kids": 220.5,
+    "walk_ok": 68.3,
+    "bus": 152.2,
+    "pov_walk_ok": 35.5,
+    "pov": 70.7,
+    "avg_walk": 1.708
+   },
+   "9-12|Irvington": {
+    "kids": 328.0,
+    "walk_ok": 242.2,
+    "bus": 85.7,
+    "pov_walk_ok": 37.0,
+    "pov": 50.8,
+    "avg_walk": 1.272
+   },
+   "9-12|both": {
+    "kids": 548.5,
+    "walk_ok": 310.6,
+    "bus": 237.9,
+    "pov_walk_ok": 72.5,
+    "pov": 121.5,
+    "avg_walk": 1.447
+   }
+  },
+  "Knott only (Irvington stays at Tubman)": {
+   "K-5|Sabin": {
+    "kids": 235.9,
+    "walk_ok": 235.9,
+    "bus": 0.0,
+    "pov_walk_ok": 66.6,
+    "pov": 66.6,
+    "avg_walk": 0.454
+   },
+   "K-5|Irvington": {
+    "kids": 223.0,
+    "walk_ok": 142.6,
+    "bus": 80.4,
+    "pov_walk_ok": 26.5,
+    "pov": 46.5,
+    "avg_walk": 0.919
+   },
+   "K-5|both": {
+    "kids": 458.9,
+    "walk_ok": 378.5,
+    "bus": 80.4,
+    "pov_walk_ok": 93.1,
+    "pov": 113.1,
+    "avg_walk": 0.68
+   },
+   "6-8|Sabin": {
+    "kids": 93.2,
+    "walk_ok": 24.6,
+    "bus": 68.6,
+    "pov_walk_ok": 6.9,
+    "pov": 23.0,
+    "avg_walk": 1.799
+   },
+   "6-8|Irvington": {
+    "kids": 113.9,
+    "walk_ok": 80.0,
+    "bus": 33.9,
+    "pov_walk_ok": 22.1,
+    "pov": 32.1,
+    "avg_walk": 1.248
+   },
+   "6-8|both": {
+    "kids": 207.1,
+    "walk_ok": 104.6,
+    "bus": 102.5,
+    "pov_walk_ok": 29.0,
+    "pov": 55.1,
+    "avg_walk": 1.496
+   },
+   "9-12|Sabin": {
+    "kids": 220.5,
+    "walk_ok": 68.3,
+    "bus": 152.2,
+    "pov_walk_ok": 35.5,
+    "pov": 70.7,
+    "avg_walk": 1.708
+   },
+   "9-12|Irvington": {
+    "kids": 328.0,
+    "walk_ok": 242.2,
+    "bus": 85.7,
+    "pov_walk_ok": 37.0,
+    "pov": 50.8,
+    "avg_walk": 1.272
+   },
+   "9-12|both": {
+    "kids": 548.5,
+    "walk_ok": 310.6,
+    "bus": 237.9,
+    "pov_walk_ok": 72.5,
+    "pov": 121.5,
+    "avg_walk": 1.447
+   }
+  },
+  "15th + Knott": {
+   "K-5|Sabin": {
+    "kids": 235.9,
+    "walk_ok": 235.9,
+    "bus": 0.0,
+    "pov_walk_ok": 66.6,
+    "pov": 66.6,
+    "avg_walk": 0.454
+   },
+   "K-5|Irvington": {
+    "kids": 223.0,
+    "walk_ok": 150.0,
+    "bus": 73.0,
+    "pov_walk_ok": 26.9,
+    "pov": 46.5,
+    "avg_walk": 0.894
+   },
+   "K-5|both": {
+    "kids": 458.9,
+    "walk_ok": 385.9,
+    "bus": 73.0,
+    "pov_walk_ok": 93.5,
+    "pov": 113.1,
+    "avg_walk": 0.668
+   },
+   "6-8|Sabin": {
+    "kids": 93.2,
+    "walk_ok": 24.6,
+    "bus": 68.6,
+    "pov_walk_ok": 6.9,
+    "pov": 23.0,
+    "avg_walk": 1.799
+   },
+   "6-8|Irvington": {
+    "kids": 113.9,
+    "walk_ok": 60.3,
+    "bus": 53.7,
+    "pov_walk_ok": 14.7,
+    "pov": 32.1,
+    "avg_walk": 1.399
+   },
+   "6-8|both": {
+    "kids": 207.1,
+    "walk_ok": 84.8,
+    "bus": 122.3,
+    "pov_walk_ok": 21.6,
+    "pov": 55.1,
+    "avg_walk": 1.579
+   },
+   "9-12|Sabin": {
+    "kids": 220.5,
+    "walk_ok": 68.3,
+    "bus": 152.2,
+    "pov_walk_ok": 35.5,
+    "pov": 70.7,
+    "avg_walk": 1.708
+   },
+   "9-12|Irvington": {
+    "kids": 328.0,
+    "walk_ok": 242.2,
+    "bus": 85.7,
+    "pov_walk_ok": 37.0,
+    "pov": 50.8,
+    "avg_walk": 1.272
+   },
+   "9-12|both": {
+    "kids": 548.5,
+    "walk_ok": 310.6,
+    "bus": 237.9,
+    "pov_walk_ok": 72.5,
+    "pov": 121.5,
+    "avg_walk": 1.447
+   }
+  },
+  "15th + Knott (Irvington stays at Tubman)": {
+   "K-5|Sabin": {
+    "kids": 235.9,
+    "walk_ok": 235.9,
+    "bus": 0.0,
+    "pov_walk_ok": 66.6,
+    "pov": 66.6,
+    "avg_walk": 0.454
+   },
+   "K-5|Irvington": {
+    "kids": 223.0,
+    "walk_ok": 150.0,
+    "bus": 73.0,
+    "pov_walk_ok": 26.9,
+    "pov": 46.5,
+    "avg_walk": 0.894
+   },
+   "K-5|both": {
+    "kids": 458.9,
+    "walk_ok": 385.9,
+    "bus": 73.0,
+    "pov_walk_ok": 93.5,
+    "pov": 113.1,
+    "avg_walk": 0.668
+   },
+   "6-8|Sabin": {
+    "kids": 93.2,
+    "walk_ok": 24.6,
+    "bus": 68.6,
+    "pov_walk_ok": 6.9,
+    "pov": 23.0,
+    "avg_walk": 1.799
+   },
+   "6-8|Irvington": {
+    "kids": 113.9,
+    "walk_ok": 80.0,
+    "bus": 33.9,
+    "pov_walk_ok": 22.1,
+    "pov": 32.1,
+    "avg_walk": 1.248
+   },
+   "6-8|both": {
+    "kids": 207.1,
+    "walk_ok": 104.6,
+    "bus": 102.5,
+    "pov_walk_ok": 29.0,
+    "pov": 55.1,
+    "avg_walk": 1.496
+   },
+   "9-12|Sabin": {
+    "kids": 220.5,
+    "walk_ok": 68.3,
+    "bus": 152.2,
+    "pov_walk_ok": 35.5,
+    "pov": 70.7,
+    "avg_walk": 1.708
+   },
+   "9-12|Irvington": {
+    "kids": 328.0,
+    "walk_ok": 242.2,
+    "bus": 85.7,
+    "pov_walk_ok": 37.0,
+    "pov": 50.8,
+    "avg_walk": 1.272
+   },
+   "9-12|both": {
+    "kids": 548.5,
+    "walk_ok": 310.6,
+    "bus": 237.9,
+    "pov_walk_ok": 72.5,
+    "pov": 121.5,
+    "avg_walk": 1.447
+   }
+  },
+  "Thompson / 21st / Knott": {
+   "K-5|Sabin": {
+    "kids": 235.9,
+    "walk_ok": 235.9,
+    "bus": 0.0,
+    "pov_walk_ok": 66.6,
+    "pov": 66.6,
+    "avg_walk": 0.454
+   },
+   "K-5|Irvington": {
+    "kids": 223.0,
+    "walk_ok": 160.2,
+    "bus": 62.8,
+    "pov_walk_ok": 28.1,
+    "pov": 46.5,
+    "avg_walk": 0.864
+   },
+   "K-5|both": {
+    "kids": 458.9,
+    "walk_ok": 396.1,
+    "bus": 62.8,
+    "pov_walk_ok": 94.7,
+    "pov": 113.1,
+    "avg_walk": 0.654
+   },
+   "6-8|Sabin": {
+    "kids": 93.2,
+    "walk_ok": 24.6,
+    "bus": 68.6,
+    "pov_walk_ok": 6.9,
+    "pov": 23.0,
+    "avg_walk": 1.799
+   },
+   "6-8|Irvington": {
+    "kids": 113.9,
+    "walk_ok": 63.0,
+    "bus": 50.9,
+    "pov_walk_ok": 11.5,
+    "pov": 32.1,
+    "avg_walk": 1.463
+   },
+   "6-8|both": {
+    "kids": 207.1,
+    "walk_ok": 87.6,
+    "bus": 119.5,
+    "pov_walk_ok": 18.5,
+    "pov": 55.1,
+    "avg_walk": 1.614
+   },
+   "9-12|Sabin": {
+    "kids": 220.5,
+    "walk_ok": 68.3,
+    "bus": 152.2,
+    "pov_walk_ok": 35.5,
+    "pov": 70.7,
+    "avg_walk": 1.708
+   },
+   "9-12|Irvington": {
+    "kids": 328.0,
+    "walk_ok": 242.2,
+    "bus": 85.7,
+    "pov_walk_ok": 37.0,
+    "pov": 50.8,
+    "avg_walk": 1.272
+   },
+   "9-12|both": {
+    "kids": 548.5,
+    "walk_ok": 310.6,
+    "bus": 237.9,
+    "pov_walk_ok": 72.5,
+    "pov": 121.5,
+    "avg_walk": 1.447
+   }
+  },
+  "Thompson / 21st / Knott (Irvington stays at Tubman)": {
+   "K-5|Sabin": {
+    "kids": 235.9,
+    "walk_ok": 235.9,
+    "bus": 0.0,
+    "pov_walk_ok": 66.6,
+    "pov": 66.6,
+    "avg_walk": 0.454
+   },
+   "K-5|Irvington": {
+    "kids": 223.0,
+    "walk_ok": 160.2,
+    "bus": 62.8,
+    "pov_walk_ok": 28.1,
+    "pov": 46.5,
+    "avg_walk": 0.864
+   },
+   "K-5|both": {
+    "kids": 458.9,
+    "walk_ok": 396.1,
+    "bus": 62.8,
+    "pov_walk_ok": 94.7,
+    "pov": 113.1,
+    "avg_walk": 0.654
+   },
+   "6-8|Sabin": {
+    "kids": 93.2,
+    "walk_ok": 24.6,
+    "bus": 68.6,
+    "pov_walk_ok": 6.9,
+    "pov": 23.0,
+    "avg_walk": 1.799
+   },
+   "6-8|Irvington": {
+    "kids": 113.9,
+    "walk_ok": 80.0,
+    "bus": 33.9,
+    "pov_walk_ok": 22.1,
+    "pov": 32.1,
+    "avg_walk": 1.248
+   },
+   "6-8|both": {
+    "kids": 207.1,
+    "walk_ok": 104.6,
+    "bus": 102.5,
+    "pov_walk_ok": 29.0,
+    "pov": 55.1,
+    "avg_walk": 1.496
+   },
+   "9-12|Sabin": {
+    "kids": 220.5,
+    "walk_ok": 68.3,
+    "bus": 152.2,
+    "pov_walk_ok": 35.5,
+    "pov": 70.7,
+    "avg_walk": 1.708
+   },
+   "9-12|Irvington": {
+    "kids": 328.0,
+    "walk_ok": 242.2,
+    "bus": 85.7,
+    "pov_walk_ok": 37.0,
+    "pov": 50.8,
+    "avg_walk": 1.272
+   },
+   "9-12|both": {
+    "kids": 548.5,
+    "walk_ok": 310.6,
+    "bus": 237.9,
+    "pov_walk_ok": 72.5,
+    "pov": 121.5,
+    "avg_walk": 1.447
+   }
+  }
+ },
+ "closing": {
+  "cbk": {
+   "closing_school": "Buckman",
+   "set": [
+    "Beverly Cleary",
+    "Sunnyside",
+    "Abernethy",
+    "Laurelhurst"
+   ],
+   "note": "Buckman closes in PPS A, PPS B and Plan D; all three send its area to Abernethy and Sunnyside.",
+   "k5_2031": 112.3,
+   "closest_k5": {
+    "Beverly Cleary": 46.2,
+    "Sunnyside": 15.3,
+    "Abernethy": 46.9,
+    "Laurelhurst": 3.9
+   },
+   "closest_k5_clear_by_0_1": {
+    "Beverly Cleary": 36.2,
+    "Sunnyside": 6.4,
+    "Abernethy": 37.4,
+    "Laurelhurst": 1.2
+   },
+   "close_call_k5": 31.0,
+   "avg_walk_to": {
+    "Beverly Cleary": 1.596,
+    "Sunnyside": 1.533,
+    "Abernethy": 1.462,
+    "Laurelhurst": 1.806
+   },
+   "avg_walk_today_own_school": 0.704,
+   "avg_walk_nearest": 1.124,
+   "poverty_kid_weighted": 0.364,
+   "plans": {
+    "A": {
+     "closes_school": true,
+     "receivers_k5": {
+      "Abernethy": 50.8,
+      "Sunnyside": 61.6
+     },
+     "avg_walk": 1.434,
+     "k5_sent_past_a_closer_set_school_by_0_1": 54.9,
+     "k5_sent_to_their_closest": 46.7
+    },
+    "B": {
+     "closes_school": true,
+     "receivers_k5": {
+      "Abernethy": 50.8,
+      "Sunnyside": 61.6
+     },
+     "avg_walk": 1.434,
+     "k5_sent_past_a_closer_set_school_by_0_1": 54.9,
+     "k5_sent_to_their_closest": 46.7
+    },
+    "D": {
+     "closes_school": true,
+     "receivers_k5": {
+      "Abernethy": 50.8,
+      "Sunnyside": 61.6
+     },
+     "avg_walk": 1.434,
+     "k5_sent_past_a_closer_set_school_by_0_1": 54.9,
+     "k5_sent_to_their_closest": 46.7
+    }
+   }
+  },
+  "cbe": {
+   "closing_school": "Beach",
+   "set": [
+    "Boise-Eliot/Humboldt",
+    "Chief Joseph",
+    "MLK Jr"
+   ],
+   "note": "Beach closes in PPS A and PPS B (its area to Chief Joseph); Plan D keeps it open. Beach Spanish immersion moves to Chavez in A/B and is not modeled (neighborhood kids only). The Ockley Green building is the nearest school for much of the area but is a 6-8 middle school, so it is left out.",
+   "k5_2031": 160.0,
+   "closest_k5": {
+    "Boise-Eliot/Humboldt": 40.1,
+    "Chief Joseph": 84.1,
+    "MLK Jr": 35.9
+   },
+   "closest_k5_clear_by_0_1": {
+    "Boise-Eliot/Humboldt": 37.0,
+    "Chief Joseph": 74.0,
+    "MLK Jr": 14.4
+   },
+   "close_call_k5": 34.5,
+   "avg_walk_to": {
+    "Boise-Eliot/Humboldt": 1.485,
+    "Chief Joseph": 1.289,
+    "MLK Jr": 1.515
+   },
+   "avg_walk_today_own_school": 0.603,
+   "avg_walk_nearest": 1.014,
+   "poverty_kid_weighted": 0.347,
+   "plans": {
+    "A": {
+     "closes_school": true,
+     "receivers_k5": {
+      "Chief Joseph": 160.0
+     },
+     "avg_walk": 1.289,
+     "k5_sent_past_a_closer_set_school_by_0_1": 67.5,
+     "k5_sent_to_their_closest": 84.1
+    },
+    "B": {
+     "closes_school": true,
+     "receivers_k5": {
+      "Chief Joseph": 160.0
+     },
+     "avg_walk": 1.289,
+     "k5_sent_past_a_closer_set_school_by_0_1": 67.5,
+     "k5_sent_to_their_closest": 84.1
+    },
+    "D": {
+     "closes_school": false,
+     "receivers_k5": {
+      "Beach": 160.0
+     },
+     "avg_walk": 0.603,
+     "k5_sent_past_a_closer_set_school_by_0_1": null,
+     "k5_sent_to_their_closest": null
+    }
+   }
+  }
+ },
+ "hard_walks": {
+  "definition": "kids living within the no-bus walk distance (K-5 1.0 mi, 6-8 1.5 mi; metrics.BUS) whose shortest walk to the school crosses a busy street (trunk/primary/secondary, or 4+ lanes / 35+ mph) with no OSM signal (build/safe_routes, hard_x > 0)",
+  "irv_es": {
+   "level": "K-5",
+   "bus_mi": 1.0,
+   "schools": {
+    "Sabin": {
+     "Irvington": {
+      "kids_within_bus": 80.3,
+      "kids_hard": 55.8
+     },
+     "Sabin": {
+      "kids_within_bus": 235.9,
+      "kids_hard": 23.0
+     },
+     "all": {
+      "kids_within_bus": 316.1,
+      "kids_hard": 78.8
+     },
+     "top_streets_kids": {
+      "Northeast Fremont Street": 78.8
+     }
+    },
+    "Beverly Cleary": {
+     "Irvington": {
+      "kids_within_bus": 97.1,
+      "kids_hard": 0.0
+     },
+     "Sabin": {
+      "kids_within_bus": 0.0,
+      "kids_hard": 0.0
+     },
+     "all": {
+      "kids_within_bus": 97.1,
+      "kids_hard": 0.0
+     },
+     "top_streets_kids": {}
+    }
+   }
+  },
+  "irv_ms": {
+   "level": "6-8",
+   "bus_mi": 1.5,
+   "schools": {
+    "Beaumont": {
+     "Irvington": {
+      "kids_within_bus": 16.9,
+      "kids_hard": 16.0
+     },
+     "Sabin": {
+      "kids_within_bus": 40.7,
+      "kids_hard": 24.2
+     },
+     "all": {
+      "kids_within_bus": 57.7,
+      "kids_hard": 40.2
+     },
+     "top_streets_kids": {
+      "Northeast 33rd Avenue": 40.2
+     }
+    },
+    "Tubman": {
+     "Irvington": {
+      "kids_within_bus": 80.0,
+      "kids_hard": 79.7
+     },
+     "Sabin": {
+      "kids_within_bus": 24.6,
+      "kids_hard": 22.9
+     },
+     "all": {
+      "kids_within_bus": 104.6,
+      "kids_hard": 102.6
+     },
+     "top_streets_kids": {
+      "North Vancouver Avenue": 101.7,
+      "Northeast Martin Luther King Junior Boulevard": 38.0,
+      "North Williams Avenue": 23.2,
+      "Northeast Fremont Street": 7.5
+     }
+    }
+   }
+  },
+  "k3": {
+   "level": "K-5",
+   "bus_mi": 1.0,
+   "schools": {
+    "Sabin": {
+     "Irvington": {
+      "kids_within_bus": 80.3,
+      "kids_hard": 55.8
+     },
+     "Sabin": {
+      "kids_within_bus": 235.9,
+      "kids_hard": 23.0
+     },
+     "MLK Jr": {
+      "kids_within_bus": 81.1,
+      "kids_hard": 2.9
+     },
+     "all": {
+      "kids_within_bus": 397.3,
+      "kids_hard": 81.7
+     },
+     "top_streets_kids": {
+      "Northeast Fremont Street": 78.8,
+      "Northeast Martin Luther King Junior Boulevard": 2.9
+     }
+    },
+    "Beverly Cleary": {
+     "Irvington": {
+      "kids_within_bus": 97.1,
+      "kids_hard": 0.0
+     },
+     "Sabin": {
+      "kids_within_bus": 0.0,
+      "kids_hard": 0.0
+     },
+     "MLK Jr": {
+      "kids_within_bus": 0.0,
+      "kids_hard": 0.0
+     },
+     "all": {
+      "kids_within_bus": 97.1,
+      "kids_hard": 0.0
+     },
+     "top_streets_kids": {}
+    },
+    "MLK Jr": {
+     "Irvington": {
+      "kids_within_bus": 6.2,
+      "kids_hard": 0.0
+     },
+     "Sabin": {
+      "kids_within_bus": 127.6,
+      "kids_hard": 0.0
+     },
+     "MLK Jr": {
+      "kids_within_bus": 141.0,
+      "kids_hard": 11.6
+     },
+     "all": {
+      "kids_within_bus": 274.8,
+      "kids_hard": 11.6
+     },
+     "top_streets_kids": {
+      "Northeast Killingsworth Street": 8.7,
+      "Northeast Martin Luther King Junior Boulevard": 2.9
+     }
+    }
+   }
+  },
+  "edge": {
+   "level": "K-5",
+   "bus_mi": 1.0,
+   "schools": {
+    "Beverly Cleary": {
+     "Beverly Cleary": {
+      "kids_within_bus": 214.4,
+      "kids_hard": 11.7
+     },
+     "Buckman": {
+      "kids_within_bus": 14.6,
+      "kids_hard": 0.0
+     },
+     "Sunnyside": {
+      "kids_within_bus": 0.0,
+      "kids_hard": 0.0
+     },
+     "all": {
+      "kids_within_bus": 228.9,
+      "kids_hard": 11.7
+     },
+     "top_streets_kids": {
+      "Northeast 33rd Avenue": 11.7
+     }
+    },
+    "Buckman": {
+     "Beverly Cleary": {
+      "kids_within_bus": 0.0,
+      "kids_hard": 0.0
+     },
+     "Buckman": {
+      "kids_within_bus": 85.0,
+      "kids_hard": 51.2
+     },
+     "Sunnyside": {
+      "kids_within_bus": 45.1,
+      "kids_hard": 14.2
+     },
+     "all": {
+      "kids_within_bus": 130.0,
+      "kids_hard": 65.4
+     },
+     "top_streets_kids": {
+      "Southeast Belmont Street": 32.6,
+      "Southeast Morrison Street": 23.5,
+      "East Burnside Street": 22.5,
+      "Southeast 25th Avenue": 7.9,
+      "Southeast 12th Avenue": 5.4
+     }
+    }
+   }
+  },
+  "beh": {
+   "level": "K-5",
+   "bus_mi": 1.0,
+   "schools": {
+    "Beach": {
+     "Beach": {
+      "kids_within_bus": 147.4,
+      "kids_hard": 1.0
+     },
+     "Boise-Eliot/Humboldt": {
+      "kids_within_bus": 68.0,
+      "kids_hard": 0.0
+     },
+     "all": {
+      "kids_within_bus": 215.4,
+      "kids_hard": 1.0
+     },
+     "top_streets_kids": {
+      "North Greeley Avenue": 1.0
+     }
+    },
+    "Boise-Eliot/Humboldt": {
+     "Beach": {
+      "kids_within_bus": 21.7,
+      "kids_hard": 0.0
+     },
+     "Boise-Eliot/Humboldt": {
+      "kids_within_bus": 257.8,
+      "kids_hard": 119.3
+     },
+     "all": {
+      "kids_within_bus": 279.5,
+      "kids_hard": 119.3
+     },
+     "top_streets_kids": {
+      "North Williams Avenue": 66.4,
+      "North Vancouver Avenue": 64.4,
+      "North Cook Street": 54.0,
+      "Northeast Fremont Street": 0.9
+     }
+    }
+   }
+  }
+ }
+}

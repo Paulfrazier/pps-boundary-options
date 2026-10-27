@@ -547,8 +547,123 @@
       }
     },
     {
-      "run": "equity_noswap_alameda_rig_hs",
+      "run": "dli_home3_rh",
       "name": "Current best: fewer DLI moves",
+      "status": "pick",
+      "cells": {
+        "K-5_at_target": {
+          "value": 38,
+          "text": "38/38",
+          "rating": "green"
+        },
+        "6-8_at_target": {
+          "value": 13,
+          "text": "13/13",
+          "rating": "green"
+        },
+        "K-5_in_range_minus9": {
+          "value": 17,
+          "text": "17/41",
+          "rating": "red"
+        },
+        "moved": {
+          "value": 7036.0,
+          "text": "7,036",
+          "rating": "red"
+        },
+        "dli_moved": {
+          "value": 586,
+          "text": "586",
+          "rating": "green"
+        },
+        "K-5_past_closer": {
+          "value": 793.0,
+          "text": "793",
+          "rating": "green"
+        },
+        "6-8_past_closer": {
+          "value": 1012.0,
+          "text": "1,012",
+          "rating": "yellow"
+        },
+        "K-5_avg_walk": {
+          "value": 0.91,
+          "text": "0.91",
+          "rating": "green"
+        },
+        "6-8_avg_walk": {
+          "value": 1.703,
+          "text": "1.70",
+          "rating": "green"
+        },
+        "K-5_over_bus": {
+          "value": 3736.0,
+          "text": "3,736",
+          "rating": "green"
+        },
+        "6-8_over_bus": {
+          "value": 2707.0,
+          "text": "2,707",
+          "rating": "green"
+        },
+        "K-5->6-8_together_pct": {
+          "value": 96.7,
+          "text": "96.7",
+          "rating": "green"
+        },
+        "K-5->6-8_splits": {
+          "value": 3,
+          "text": "3",
+          "rating": "green"
+        },
+        "6-8->9-12_together_pct": {
+          "value": 82.1,
+          "text": "82.1",
+          "rating": "yellow"
+        },
+        "6-8->9-12_splits": {
+          "value": 8,
+          "text": "8",
+          "rating": "red"
+        },
+        "K-5_open": {
+          "value": 41,
+          "text": "41",
+          "rating": ""
+        }
+      },
+      "raw": {
+        "K-5_at_target_all_req": 38,
+        "K-5_zoned": 38,
+        "K-5_in_range_minus9": 17,
+        "K-5_avg_walk": 0.91,
+        "K-5_within_1mi_pct": 70.6,
+        "K-5_past_closer": 793.0,
+        "K-5_over_bus": 3736.0,
+        "K-5_reassigned": 4749.0,
+        "K-5_open": 41,
+        "K-5_dissimilarity": 0.212,
+        "6-8_at_target_all_req": 13,
+        "6-8_zoned": 13,
+        "6-8_in_range_minus9": 8,
+        "6-8_avg_walk": 1.703,
+        "6-8_within_1mi_pct": 29.5,
+        "6-8_past_closer": 1012.0,
+        "6-8_over_bus": 2707.0,
+        "6-8_reassigned": 2287.0,
+        "6-8_open": 15,
+        "6-8_dissimilarity": 0.174,
+        "dli_moved": 586,
+        "hs_reassigned": 295.0,
+        "K-5->6-8_together_pct": 96.7,
+        "K-5->6-8_splits": 3,
+        "6-8->9-12_together_pct": 82.1,
+        "6-8->9-12_splits": 8
+      }
+    },
+    {
+      "run": "equity_noswap_alameda_rig_hs",
+      "name": "Previous best: no program swaps",
       "status": "pick",
       "cells": {
         "K-5_at_target": {
@@ -1638,7 +1753,7 @@
         "K-5_over_bus": {
           "value": 4097.0,
           "text": "4,097",
-          "rating": "green"
+          "rating": "yellow"
         },
         "6-8_over_bus": {
           "value": 2632.0,

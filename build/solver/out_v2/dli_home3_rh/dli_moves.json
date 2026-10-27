@@ -1,0 +1,72 @@
+{
+ "run": "dli_home3_rh",
+ "baseline": "status_quo",
+ "moves": [
+  {
+   "strand": "Beach|Spanish",
+   "level": "K-5",
+   "from": "Beach",
+   "to": "Cesar Chavez",
+   "why": "building closes",
+   "n_2025_26": 155,
+   "n_2031_32": 127,
+   "arrival_share_2031_implied": 0.8916,
+   "arrive_2031": 113,
+   "non_followers_2031": 14
+  },
+  {
+   "strand": "James John|Spanish",
+   "level": "K-5",
+   "from": "James John",
+   "to": "Cesar Chavez",
+   "why": "building closes",
+   "n_2025_26": 133,
+   "n_2031_32": 136,
+   "arrival_share_2031_implied": 0.8916,
+   "arrive_2031": 121,
+   "non_followers_2031": 15
+  },
+  {
+   "strand": "Rose City Park|Vietnamese",
+   "level": "K-5",
+   "from": "Rose City Park",
+   "to": "Vestal",
+   "why": "building closes",
+   "n_2025_26": 207,
+   "n_2031_32": 210,
+   "arrival_share_2031_implied": 1.0,
+   "arrive_2031": 210,
+   "non_followers_2031": 0
+  },
+  {
+   "strand": "Cesar Chavez|Spanish 6-8",
+   "level": "6-8",
+   "from": "Cesar Chavez",
+   "to": "George",
+   "why": "building drops these grades",
+   "n_2025_26": 115,
+   "n_2031_32": 113,
+   "arrival_share_2031_implied": 1.0,
+   "arrive_2031": 113,
+   "non_followers_2031": 0
+  }
+ ],
+ "summary": {
+  "n_2025_26": 610,
+  "n_2031_32": 586,
+  "arrive_2031": 557,
+  "non_followers_2031": 29,
+  "strands": 4,
+  "by_level": {
+   "K-5": {
+    "n_2025_26": 495,
+    "n_2031_32": 473
+   },
+   "6-8": {
+    "n_2025_26": 115,
+    "n_2031_32": 113
+   }
+  }
+ },
+ "source": "configs/v2/<run>.json levels.<lev>.programs vs configs/v2/status_quo.json; sizes PSU Table 5.5 strand rows (v2.program_series); arrival share v2.follow_rate (implied by PPS Family Guides)"
+}

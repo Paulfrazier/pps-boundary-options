@@ -1895,7 +1895,7 @@ window.SABIN_DATA = {
   },
   {
    "run": "equity_noswap_alameda_rig_hs",
-   "label": "Current best: fewer DLI moves, sustainable schools",
+   "label": "Previous best: no program swaps",
    "data_label": "Current best: fewer DLI moves, sustainable schools",
    "note": null,
    "caveat": null,
@@ -2281,7 +2281,7 @@ window.SABIN_DATA = {
    "run": "sabin_all",
    "label": "Sabin into Irvington, close to home",
    "data_label": "Sabin into Irvington, all ideas",
-   "note": "Built on the current best, with the same Skyline high-school change. Sabin closes; Irvington stays open below 360. Today's King, Boise-Eliot/Humboldt and Vernon areas are unchanged. Irvington feeds Tubman, then Jefferson; Alameda and Beverly Cleary feed Beaumont, then Grant. 13 elementary schools close.",
+   "note": "Built on the previous best (no program swaps), with the same Skyline high-school change. Sabin closes; Irvington stays open below 360. Today's King, Boise-Eliot/Humboldt and Vernon areas are unchanged. Irvington feeds Tubman, then Jefferson; Alameda and Beverly Cleary feed Beaumont, then Grant. 13 elementary schools close.",
    "caveat": null,
    "on_map": true,
    "scorecard": "build/solver/out_v2/sabin_all/scorecard.json",
@@ -2687,7 +2687,7 @@ window.SABIN_DATA = {
    "run": "sabin_all_keepbc",
    "label": "Sabin into Irvington, Beverly Cleary as is",
    "data_label": "Sabin into Irvington, Beverly Cleary keeps its area",
-   "note": "Like “close to home”, but Beverly Cleary's area stays with Beverly Cleary. Built on the current best.",
+   "note": "Like “close to home”, but Beverly Cleary's area stays with Beverly Cleary. Built on the previous best (no program swaps).",
    "caveat": "Two blocks (about 2 high-school students) cut off from Cleveland by the feeder rule were given to Jefferson, the school around them, after the solve.",
    "on_map": true,
    "scorecard": "build/solver/out_v2/sabin_all_keepbc/scorecard.json",
@@ -3093,7 +3093,7 @@ window.SABIN_DATA = {
    "run": "irv_sabin",
    "label": "Irvington into Sabin",
    "data_label": "Irvington into Sabin",
-   "note": "Built on the current best. Irvington closes; Sabin's building stays open.",
+   "note": "Built on the previous best (no program swaps). Irvington closes; Sabin's building stays open.",
    "caveat": "Sabin stays open below PPS's 360 (exempt from the size floor), so Sabin-area kids stay close to home but most are not in a school PPS counts as sustainable (see the table below).",
    "on_map": true,
    "scorecard": "build/solver/out_v2/irv_sabin/scorecard.json",
@@ -3495,7 +3495,7 @@ window.SABIN_DATA = {
    "run": "irv_sabin_keep",
    "label": "Irvington into Sabin, all of Sabin stays, Vernon as today",
    "data_label": "Irvington into Sabin, all of Sabin stays, Vernon as today",
-   "note": "Built on the current best. Irvington closes; every family in today's Sabin area stays at Sabin, and Vernon keeps today's lines.",
+   "note": "Built on the previous best (no program swaps). Irvington closes; every family in today's Sabin area stays at Sabin, and Vernon keeps today's lines.",
    "caveat": "Sabin and Vernon stay open below PPS's 360 (exempt from the size floor), so every Sabin-area kid stays at Sabin but none are in a school PPS counts as sustainable. About 44 Alameda-area middle schoolers zoned to Rigler go to Roseway Heights instead of Beaumont; that is still to be fixed.",
    "on_map": true,
    "scorecard": "build/solver/out_v2/irv_sabin_keep/scorecard.json",
@@ -3877,7 +3877,7 @@ window.SABIN_DATA = {
    "run": "irv_sabin_whole",
    "label": "Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson",
    "data_label": "Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson",
-   "note": "As “all of Sabin stays”, but the whole Sabin area goes on to Tubman, then Jefferson. Built on the current best.",
+   "note": "As “all of Sabin stays”, but the whole Sabin area goes on to Tubman, then Jefferson. Built on the previous best (no program swaps).",
    "caveat": "Sabin and Vernon stay open below PPS's 360 (exempt from the size floor), so every Sabin-area kid stays at Sabin but none are in a school PPS counts as sustainable. About 44 Alameda-area middle schoolers zoned to Rigler go to Roseway Heights instead of Beaumont; that is still to be fixed.",
    "on_map": true,
    "scorecard": "build/solver/out_v2/irv_sabin_whole/scorecard.json",
@@ -4263,7 +4263,7 @@ window.SABIN_DATA = {
    "run": "irv_sabin_noala",
    "label": "Sabin Stays - less moves",
    "data_label": "Sabin Stays - less moves",
-   "note": "Built on the current best, without its big-school relief. Irvington closes; every Alameda- and Sabin-area family stays at its own school, Vernon keeps today's lines, and all of Sabin goes on to Tubman, then Jefferson.",
+   "note": "Built on the previous best (no program swaps), without its big-school relief. Irvington closes; every Alameda- and Sabin-area family stays at its own school, Vernon keeps today's lines, and all of Sabin goes on to Tubman, then Jefferson.",
    "caveat": null,
    "on_map": true,
    "scorecard": "build/solver/out_v2/irv_sabin_noala/scorecard.json",
@@ -5028,8 +5028,390 @@ window.SABIN_DATA = {
    }
   },
   {
+   "run": "irv_sabin_knott",
+   "label": "Irvington line: NE Knott",
+   "data_label": "Irvington line: NE Knott",
+   "note": "Beverly Cleary grows to about 414, but Sabin stays at about 297, well under 360; about 58 kids walk to the farther school (estimate).",
+   "caveat": "Not a separate solve: the NE 15th + Knott plan with only Irvington's blocks moved to the NE Knott line, then re-scored. The rest of the district is the same in both.",
+   "on_map": true,
+   "scorecard": "build/solver/out_v2/irv_sabin_knott/scorecard.json",
+   "schools_csv": "build/solver/out_v2/irv_sabin_knott/schools.csv",
+   "tradeoffs": null,
+   "district": {
+    "schools_open": 63,
+    "pct_sustainable_schools": 92.1,
+    "pct_students_in_sustainable": 95.2
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 297,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 377,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 505,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 289,
+     "at_target_every_year": false
+    },
+    "Beverly Cleary": {
+     "total_2031": 414,
+     "at_target_every_year": false
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 379,
+     "at_target_every_year": true
+    },
+    "Rigler": {
+     "total_2031": 377,
+     "at_target_every_year": true
+    },
+    "Woodlawn": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    }
+   },
+   "school_years": {
+    "Sabin": {
+     "type": "K-5",
+     "years": {
+      "2027-28": 302.5,
+      "2028-29": 313.5,
+      "2029-30": 303.6,
+      "2030-31": 295.2,
+      "2031-32": 296.9,
+      "2032-33": 293.6,
+      "2033-34": 289.5,
+      "2034-35": 282.1,
+      "2035-36": 278.3
+     }
+    },
+    "Beverly Cleary": {
+     "type": "K-5",
+     "years": {
+      "2027-28": 453.7,
+      "2028-29": 435.8,
+      "2029-30": 429.1,
+      "2030-31": 415.9,
+      "2031-32": 414.5,
+      "2032-33": 414.8,
+      "2033-34": 404.5,
+      "2034-35": 398.2,
+      "2035-36": 393.7
+     }
+    },
+    "MLK Jr": {
+     "type": "K-5",
+     "years": {
+      "2027-28": 376.5,
+      "2028-29": 383.3,
+      "2029-30": 387.1,
+      "2030-31": 391.0,
+      "2031-32": 376.5,
+      "2032-33": 368.3,
+      "2033-34": 357.0,
+      "2034-35": 342.8,
+      "2035-36": 337.7
+     }
+    },
+    "Boise-Eliot/Humboldt": {
+     "type": "K-5",
+     "years": {
+      "2027-28": 384.2,
+      "2028-29": 404.8,
+      "2029-30": 398.2,
+      "2030-31": 396.5,
+      "2031-32": 378.8,
+      "2032-33": 360.3,
+      "2033-34": 345.0,
+      "2034-35": 330.5,
+      "2035-36": 326.5
+     }
+    },
+    "Vernon": {
+     "type": "K-5",
+     "years": {
+      "2027-28": 313.3,
+      "2028-29": 310.9,
+      "2029-30": 303.9,
+      "2030-31": 295.0,
+      "2031-32": 288.6,
+      "2032-33": 285.4,
+      "2033-34": 282.8,
+      "2034-35": 284.7,
+      "2035-36": 282.8
+     }
+    },
+    "Alameda": {
+     "type": "K-5",
+     "years": {
+      "2027-28": 512.0,
+      "2028-29": 516.5,
+      "2029-30": 520.4,
+      "2030-31": 515.1,
+      "2031-32": 504.8,
+      "2032-33": 498.9,
+      "2033-34": 488.5,
+      "2034-35": 477.4,
+      "2035-36": 473.3
+     }
+    },
+    "Beaumont": {
+     "type": "6-8",
+     "years": {
+      "2027-28": 613.0,
+      "2028-29": 576.5,
+      "2029-30": 577.1,
+      "2030-31": 568.8,
+      "2031-32": 586.0,
+      "2032-33": 590.4,
+      "2033-34": 590.9,
+      "2034-35": 600.0,
+      "2035-36": 591.1
+     }
+    },
+    "Tubman": {
+     "type": "6-8",
+     "years": {
+      "2027-28": 595.8,
+      "2028-29": 558.7,
+      "2029-30": 540.5,
+      "2030-31": 520.4,
+      "2031-32": 523.4,
+      "2032-33": 522.3,
+      "2033-34": 530.2,
+      "2034-35": 535.9,
+      "2035-36": 527.7
+     }
+    },
+    "Jefferson": {
+     "type": "9-12",
+     "years": {
+      "2027-28": 694.7,
+      "2028-29": 927.4,
+      "2029-30": 1095.2,
+      "2030-31": 1261.7,
+      "2031-32": 1280.0,
+      "2032-33": 1268.1,
+      "2033-34": 1258.2,
+      "2034-35": 1238.8,
+      "2035-36": 1252.8
+     }
+    },
+    "Grant": {
+     "type": "9-12",
+     "years": {
+      "2027-28": 1803.3,
+      "2028-29": 1698.2,
+      "2029-30": 1597.1,
+      "2030-31": 1470.3,
+      "2031-32": 1387.9,
+      "2032-33": 1301.9,
+      "2033-34": 1244.7,
+      "2034-35": 1181.1,
+      "2035-36": 1157.2
+     }
+    }
+   },
+   "areas": {
+    "Sabin": {
+     "groups": {
+      "K-5": {
+       "pov": {
+        "n": 66.6409,
+        "mv": 0.0,
+        "walk": 0.477,
+        "dwalk": 0.0,
+        "in1": 100.0,
+        "bus": 0.0,
+        "sust": 0.0,
+        "pps": 0.0
+       },
+       "oth": {
+        "n": 169.2329,
+        "mv": 0.0,
+        "walk": 0.4456,
+        "dwalk": 0.0,
+        "in1": 100.0,
+        "bus": 0.0,
+        "sust": 0.0,
+        "pps": 0.0
+       }
+      },
+      "6-8": {
+       "pov": {
+        "n": 23.0294,
+        "mv": 0.0,
+        "walk": 1.7432,
+        "dwalk": 0.0,
+        "in1": 0.0,
+        "bus": 69.857,
+        "sust": 100.0,
+        "pps": 100.0
+       },
+       "oth": {
+        "n": 70.1338,
+        "mv": 0.0,
+        "walk": 1.817,
+        "dwalk": 0.0,
+        "in1": 0.0,
+        "bus": 74.8626,
+        "sust": 100.0,
+        "pps": 100.0
+       }
+      },
+      "9-12": {
+       "pov": {
+        "n": 70.6614,
+        "mv": 0.0,
+        "walk": 1.5527,
+        "dwalk": 0.0,
+        "sust": 0.0,
+        "pps": 100.0
+       },
+       "oth": {
+        "n": 149.8511,
+        "mv": 0.0,
+        "walk": 1.7818,
+        "dwalk": 0.0,
+        "sust": 0.0,
+        "pps": 100.0
+       }
+      }
+     },
+     "destinations": {
+      "K-5": {
+       "Sabin": {
+        "kids": 236,
+        "poverty": 67
+       }
+      },
+      "6-8": {
+       "Tubman": {
+        "kids": 93,
+        "poverty": 23
+       }
+      },
+      "9-12": {
+       "Jefferson": {
+        "kids": 221,
+        "poverty": 71
+       }
+      }
+     }
+    },
+    "Irvington": {
+     "groups": {
+      "K-5": {
+       "pov": {
+        "n": 46.4941,
+        "mv": 100.0,
+        "walk": 0.9731,
+        "dwalk": 0.3735,
+        "in1": 56.9916,
+        "bus": 43.0084,
+        "sust": 0.0,
+        "pps": 89.3169
+       },
+       "oth": {
+        "n": 176.5054,
+        "mv": 100.0,
+        "walk": 0.9051,
+        "dwalk": 0.384,
+        "in1": 65.7897,
+        "bus": 34.2103,
+        "sust": 0.0,
+        "pps": 68.625
+       }
+      },
+      "6-8": {
+       "pov": {
+        "n": 32.067,
+        "mv": 89.2588,
+        "walk": 1.9514,
+        "dwalk": 0.7535,
+        "in1": 4.8004,
+        "bus": 87.2837,
+        "sust": 100.0,
+        "pps": 100.0
+       },
+       "oth": {
+        "n": 81.8647,
+        "mv": 65.7991,
+        "walk": 1.6416,
+        "dwalk": 0.3732,
+        "in1": 6.6194,
+        "bus": 62.3085,
+        "sust": 100.0,
+        "pps": 100.0
+       }
+      },
+      "9-12": {
+       "pov": {
+        "n": 50.8122,
+        "mv": 13.1855,
+        "walk": 1.3397,
+        "dwalk": 0.0536,
+        "sust": 86.8145,
+        "pps": 100.0
+       },
+       "oth": {
+        "n": 277.1536,
+        "mv": 33.351,
+        "walk": 1.4687,
+        "dwalk": 0.1993,
+        "sust": 66.649,
+        "pps": 100.0
+       }
+      }
+     },
+     "destinations": {
+      "K-5": {
+       "Beverly Cleary": {
+        "kids": 163,
+        "poverty": 42
+       },
+       "Sabin": {
+        "kids": 60,
+        "poverty": 5
+       }
+      },
+      "6-8": {
+       "Beaumont": {
+        "kids": 82,
+        "poverty": 29
+       },
+       "Tubman": {
+        "kids": 31,
+        "poverty": 3
+       }
+      },
+      "9-12": {
+       "Grant": {
+        "kids": 229,
+        "poverty": 44
+       },
+       "Jefferson": {
+        "kids": 99,
+        "poverty": 7
+       }
+      }
+     }
+    }
+   }
+  },
+  {
    "run": "irv_sabin_15th",
-   "label": "Irvington line: NE 15th + Knott",
+   "label": "Irvington line: NE 15th + Knott, Sabin side to Jefferson",
    "data_label": "Irvington line: NE 15th + Knott",
    "note": "About 40 more kids walk to the farther school than on the Thompson line; Irvington's lower-income kids split more evenly between the two schools (estimate).",
    "caveat": null,
@@ -5408,6 +5790,384 @@ window.SABIN_DATA = {
      }
     }
    }
+  },
+  {
+   "run": "irv_sabin_15th_grant",
+   "label": "Irvington line: NE 15th + Knott, Irvington teens stay at Grant",
+   "data_label": "Irvington line: NE 15th + Knott, Irvington teens stay at Grant",
+   "note": "The NE 15th + Knott line with every Irvington-area teen kept at Grant, as today (161 go to Grant instead of Jefferson); elementary and middle school are unchanged.",
+   "caveat": null,
+   "on_map": true,
+   "scorecard": "build/solver/out_v2/irv_sabin_15th_grant/scorecard.json",
+   "schools_csv": "build/solver/out_v2/irv_sabin_15th_grant/schools.csv",
+   "tradeoffs": "build/solver/out_v2/irv_sabin_15th_grant/TRADEOFFS.md",
+   "district": {
+    "schools_open": 63,
+    "pct_sustainable_schools": 90.5,
+    "pct_students_in_sustainable": 94.0
+   },
+   "neighbor_schools": {
+    "Sabin": {
+     "total_2031": 358,
+     "at_target_every_year": false
+    },
+    "Irvington": {
+     "total_2031": 0,
+     "at_target_every_year": false
+    },
+    "MLK Jr": {
+     "total_2031": 377,
+     "at_target_every_year": true
+    },
+    "Alameda": {
+     "total_2031": 505,
+     "at_target_every_year": true
+    },
+    "Vernon": {
+     "total_2031": 289,
+     "at_target_every_year": false
+    },
+    "Beverly Cleary": {
+     "total_2031": 354,
+     "at_target_every_year": false
+    },
+    "Boise-Eliot/Humboldt": {
+     "total_2031": 379,
+     "at_target_every_year": true
+    },
+    "Rigler": {
+     "total_2031": 377,
+     "at_target_every_year": true
+    },
+    "Woodlawn": {
+     "total_2031": 361,
+     "at_target_every_year": true
+    }
+   },
+   "school_years": {
+    "Sabin": {
+     "type": "K-5",
+     "years": {
+      "2027-28": 367.9,
+      "2028-29": 377.9,
+      "2029-30": 366.1,
+      "2030-31": 355.2,
+      "2031-32": 357.7,
+      "2032-33": 354.2,
+      "2033-34": 349.0,
+      "2034-35": 340.2,
+      "2035-36": 335.6
+     }
+    },
+    "Beverly Cleary": {
+     "type": "K-5",
+     "years": {
+      "2027-28": 388.2,
+      "2028-29": 371.4,
+      "2029-30": 366.6,
+      "2030-31": 355.9,
+      "2031-32": 353.6,
+      "2032-33": 354.2,
+      "2033-34": 345.0,
+      "2034-35": 340.1,
+      "2035-36": 336.4
+     }
+    },
+    "MLK Jr": {
+     "type": "K-5",
+     "years": {
+      "2027-28": 376.5,
+      "2028-29": 383.3,
+      "2029-30": 387.1,
+      "2030-31": 391.0,
+      "2031-32": 376.5,
+      "2032-33": 368.3,
+      "2033-34": 357.0,
+      "2034-35": 342.8,
+      "2035-36": 337.7
+     }
+    },
+    "Boise-Eliot/Humboldt": {
+     "type": "K-5",
+     "years": {
+      "2027-28": 384.2,
+      "2028-29": 404.8,
+      "2029-30": 398.2,
+      "2030-31": 396.5,
+      "2031-32": 378.8,
+      "2032-33": 360.3,
+      "2033-34": 345.0,
+      "2034-35": 330.5,
+      "2035-36": 326.5
+     }
+    },
+    "Vernon": {
+     "type": "K-5",
+     "years": {
+      "2027-28": 313.3,
+      "2028-29": 310.9,
+      "2029-30": 303.9,
+      "2030-31": 295.0,
+      "2031-32": 288.6,
+      "2032-33": 285.4,
+      "2033-34": 282.8,
+      "2034-35": 284.7,
+      "2035-36": 282.8
+     }
+    },
+    "Alameda": {
+     "type": "K-5",
+     "years": {
+      "2027-28": 512.0,
+      "2028-29": 516.5,
+      "2029-30": 520.4,
+      "2030-31": 515.1,
+      "2031-32": 504.8,
+      "2032-33": 498.9,
+      "2033-34": 488.5,
+      "2034-35": 477.4,
+      "2035-36": 473.3
+     }
+    },
+    "Beaumont": {
+     "type": "6-8",
+     "years": {
+      "2027-28": 581.0,
+      "2028-29": 548.2,
+      "2029-30": 550.1,
+      "2030-31": 543.9,
+      "2031-32": 560.7,
+      "2032-33": 565.2,
+      "2033-34": 565.2,
+      "2034-35": 573.8,
+      "2035-36": 565.6
+     }
+    },
+    "Tubman": {
+     "type": "6-8",
+     "years": {
+      "2027-28": 627.9,
+      "2028-29": 587.1,
+      "2029-30": 567.4,
+      "2030-31": 545.4,
+      "2031-32": 548.8,
+      "2032-33": 547.6,
+      "2033-34": 555.8,
+      "2034-35": 562.1,
+      "2035-36": 553.1
+     }
+    },
+    "Jefferson": {
+     "type": "9-12",
+     "years": {
+      "2027-28": 563.0,
+      "2028-29": 803.5,
+      "2029-30": 979.2,
+      "2030-31": 1155.9,
+      "2031-32": 1180.8,
+      "2032-33": 1175.8,
+      "2033-34": 1170.8,
+      "2034-35": 1156.9,
+      "2035-36": 1172.8
+     }
+    },
+    "Grant": {
+     "type": "9-12",
+     "years": {
+      "2027-28": 1935.0,
+      "2028-29": 1822.0,
+      "2029-30": 1713.0,
+      "2030-31": 1576.0,
+      "2031-32": 1487.0,
+      "2032-33": 1394.0,
+      "2033-34": 1332.0,
+      "2034-35": 1263.0,
+      "2035-36": 1237.0
+     }
+    }
+   },
+   "areas": {
+    "Sabin": {
+     "groups": {
+      "K-5": {
+       "pov": {
+        "n": 66.6409,
+        "mv": 0.0,
+        "walk": 0.477,
+        "dwalk": 0.0,
+        "in1": 100.0,
+        "bus": 0.0,
+        "sust": 0.0,
+        "pps": 0.0
+       },
+       "oth": {
+        "n": 169.2329,
+        "mv": 0.0,
+        "walk": 0.4456,
+        "dwalk": 0.0,
+        "in1": 100.0,
+        "bus": 0.0,
+        "sust": 0.0,
+        "pps": 0.0
+       }
+      },
+      "6-8": {
+       "pov": {
+        "n": 23.0294,
+        "mv": 0.0,
+        "walk": 1.7432,
+        "dwalk": 0.0,
+        "in1": 0.0,
+        "bus": 69.857,
+        "sust": 100.0,
+        "pps": 100.0
+       },
+       "oth": {
+        "n": 70.1338,
+        "mv": 0.0,
+        "walk": 1.817,
+        "dwalk": 0.0,
+        "in1": 0.0,
+        "bus": 74.8626,
+        "sust": 100.0,
+        "pps": 100.0
+       }
+      },
+      "9-12": {
+       "pov": {
+        "n": 70.6614,
+        "mv": 0.0,
+        "walk": 1.5527,
+        "dwalk": 0.0,
+        "sust": 0.0,
+        "pps": 100.0
+       },
+       "oth": {
+        "n": 149.8511,
+        "mv": 0.0,
+        "walk": 1.7818,
+        "dwalk": 0.0,
+        "sust": 0.0,
+        "pps": 100.0
+       }
+      }
+     },
+     "destinations": {
+      "K-5": {
+       "Sabin": {
+        "kids": 236,
+        "poverty": 67
+       }
+      },
+      "6-8": {
+       "Tubman": {
+        "kids": 93,
+        "poverty": 23
+       }
+      },
+      "9-12": {
+       "Jefferson": {
+        "kids": 221,
+        "poverty": 71
+       }
+      }
+     }
+    },
+    "Irvington": {
+     "groups": {
+      "K-5": {
+       "pov": {
+        "n": 46.4941,
+        "mv": 100.0,
+        "walk": 0.9519,
+        "dwalk": 0.3522,
+        "in1": 57.8412,
+        "bus": 42.1588,
+        "sust": 0.0,
+        "pps": 0.0
+       },
+       "oth": {
+        "n": 176.5054,
+        "mv": 100.0,
+        "walk": 0.8793,
+        "dwalk": 0.3582,
+        "in1": 69.7451,
+        "bus": 30.2549,
+        "sust": 0.0,
+        "pps": 0.0
+       }
+      },
+      "6-8": {
+       "pov": {
+        "n": 32.067,
+        "mv": 56.1111,
+        "walk": 1.4104,
+        "dwalk": 0.2126,
+        "in1": 33.1396,
+        "bus": 54.136,
+        "sust": 100.0,
+        "pps": 100.0
+       },
+       "oth": {
+        "n": 81.8647,
+        "mv": 47.8517,
+        "walk": 1.3939,
+        "dwalk": 0.1255,
+        "in1": 20.637,
+        "bus": 44.3612,
+        "sust": 100.0,
+        "pps": 100.0
+       }
+      },
+      "9-12": {
+       "pov": {
+        "n": 50.8122,
+        "mv": 0.0,
+        "walk": 1.2861,
+        "dwalk": 0.0,
+        "sust": 0.0,
+        "pps": 100.0
+       },
+       "oth": {
+        "n": 277.1536,
+        "mv": 0.0,
+        "walk": 1.2693,
+        "dwalk": 0.0,
+        "sust": 0.0,
+        "pps": 100.0
+       }
+      }
+     },
+     "destinations": {
+      "K-5": {
+       "Sabin": {
+        "kids": 121,
+        "poverty": 23
+       },
+       "Beverly Cleary": {
+        "kids": 102,
+        "poverty": 24
+       }
+      },
+      "6-8": {
+       "Beaumont": {
+        "kids": 57,
+        "poverty": 18
+       },
+       "Tubman": {
+        "kids": 57,
+        "poverty": 14
+       }
+      },
+      "9-12": {
+       "Grant": {
+        "kids": 328,
+        "poverty": 51
+       }
+      }
+     }
+    }
+   }
   }
  ],
  "pending": 1,
@@ -5437,5 +6197,204 @@ window.SABIN_DATA = {
   "method": "build/solver/METHOD.md",
   "walk": "build/routing/walk_miles.parquet",
   "big_school": "build/solver/out_v2/equity_noswap_alameda_rig/TRADEOFFS.md"
+ },
+ "irv": {
+  "lines": [
+   {
+    "label": "Knott only",
+    "run": "irv_sabin_knott",
+    "streets": "one collector street (NE Knott)",
+    "to_sabin": 60,
+    "to_bc": 163,
+    "sabin": 297,
+    "bc": 414,
+    "farther": 58,
+    "walk": 0.919,
+    "pov_s": 0.082,
+    "pov_b": 0.255,
+    "schools_csv": "build/solver/out_v2/irv_sabin_knott/schools.csv"
+   },
+   {
+    "label": "15th + Knott",
+    "run": "irv_sabin_15th",
+    "streets": "collector streets only (NE 15th, NE Knott)",
+    "to_sabin": 121,
+    "to_bc": 102,
+    "sabin": 358,
+    "bc": 354,
+    "farther": 44,
+    "walk": 0.894,
+    "pov_s": 0.187,
+    "pov_b": 0.234,
+    "schools_csv": "build/solver/out_v2/irv_sabin_15th/schools.csv"
+   },
+   {
+    "label": "Thompson / 21st / Knott",
+    "run": "irv_sabin_thompson21",
+    "streets": "mostly residential (NE Thompson), then 21st and Knott",
+    "to_sabin": 118,
+    "to_bc": 105,
+    "sabin": 355,
+    "bc": 357,
+    "farther": 7,
+    "walk": 0.864,
+    "pov_s": 0.137,
+    "pov_b": 0.289,
+    "schools_csv": "build/solver/out_v2/irv_sabin_thompson21/schools.csv"
+   }
+  ],
+  "walk": [
+   {
+    "plan": "Today",
+    "k5": {
+     "walk_ok": 442,
+     "kids": 459
+    },
+    "ms": {
+     "walk_ok": 105,
+     "kids": 207
+    },
+    "ms_tubman": null,
+    "hs": {
+     "walk_ok": 311,
+     "kids": 548
+    },
+    "hs_modeled": true
+   },
+   {
+    "plan": "PPS A",
+    "k5": {
+     "walk_ok": 225,
+     "kids": 459
+    },
+    "ms": {
+     "walk_ok": 42,
+     "kids": 207
+    },
+    "ms_tubman": null,
+    "hs": {
+     "walk_ok": 311,
+     "kids": 548
+    },
+    "hs_modeled": true
+   },
+   {
+    "plan": "PPS B",
+    "k5": {
+     "walk_ok": 225,
+     "kids": 459
+    },
+    "ms": {
+     "walk_ok": 42,
+     "kids": 207
+    },
+    "ms_tubman": null,
+    "hs": {
+     "walk_ok": 311,
+     "kids": 548
+    },
+    "hs_modeled": true
+   },
+   {
+    "plan": "Plan D",
+    "k5": {
+     "walk_ok": 333,
+     "kids": 459
+    },
+    "ms": {
+     "walk_ok": 42,
+     "kids": 207
+    },
+    "ms_tubman": null,
+    "hs": {
+     "walk_ok": 311,
+     "kids": 548
+    },
+    "hs_modeled": true
+   },
+   {
+    "plan": "Knott only",
+    "k5": {
+     "walk_ok": 378,
+     "kids": 459
+    },
+    "ms": {
+     "walk_ok": 60,
+     "kids": 207
+    },
+    "ms_tubman": {
+     "walk_ok": 105,
+     "kids": 207
+    },
+    "hs": {
+     "walk_ok": 311,
+     "kids": 548
+    },
+    "hs_modeled": false
+   },
+   {
+    "plan": "15th + Knott, Sabin side to Jefferson",
+    "k5": {
+     "walk_ok": 386,
+     "kids": 459
+    },
+    "ms": {
+     "walk_ok": 85,
+     "kids": 207
+    },
+    "ms_tubman": {
+     "walk_ok": 105,
+     "kids": 207
+    },
+    "hs": {
+     "walk_ok": 235,
+     "kids": 548
+    },
+    "hs_modeled": true
+   },
+   {
+    "plan": "15th + Knott, Irvington teens stay at Grant",
+    "k5": {
+     "walk_ok": 386,
+     "kids": 459
+    },
+    "ms": {
+     "walk_ok": 85,
+     "kids": 207
+    },
+    "ms_tubman": {
+     "walk_ok": 105,
+     "kids": 207
+    },
+    "hs": {
+     "walk_ok": 311,
+     "kids": 548
+    },
+    "hs_modeled": true
+   },
+   {
+    "plan": "Thompson / 21st / Knott",
+    "k5": {
+     "walk_ok": 396,
+     "kids": 459
+    },
+    "ms": {
+     "walk_ok": 88,
+     "kids": 207
+    },
+    "ms_tubman": {
+     "walk_ok": 105,
+     "kids": 207
+    },
+    "hs": {
+     "walk_ok": 311,
+     "kids": 548
+    },
+    "hs_modeled": false
+   }
+  ],
+  "source": "build/solver/out_v2/irvington_map/summary.json",
+  "bus_source": "build/solver/out_v2/irvington_map/line_bus.json",
+  "bus_script": "build/solver/out_v2/irvington_map/line_bus.py"
  }
 };

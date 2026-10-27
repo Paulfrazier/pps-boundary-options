@@ -71,7 +71,7 @@ const avail=()=>ORD.filter(k=>LD().plans[k]);
 const isOpt=k=>PM[k]&&PM[k].kind==="option";
 const lblShort=k=>PM[k]?PM[k].short:k;
 const lblFull=k=>PM[k]?(PM[k].full||PM[k].short)+(isOpt(k)?` (${PM[k].ver})`:PM[k].lines==="official"&&k!==BASELINE?" (PPS lines)":""):k;
-const LEAD=(META.plans.find(p=>p.rank===0)||{k:"equity_noswap_alameda_rig_hs"}).k;   // the current best (site_data brief_rank 0); its name already says "Current best", so it gets no extra tag
+const LEAD=(META.plans.find(p=>p.rank===0)||{k:"dli_home3_rh"}).k;   // the current best (site_data brief_rank 0); its name already says "Current best", so it gets no extra tag
 const leadT=k=>isWif(k)?`<span class="lead wif" title="A what-if, not one of the example plans">what-if</span>`:"";
 const isWif=k=>!!(PM[k]&&PM[k].whatif);
 const isReq=k=>!!(PM[k]&&PM[k].req);   // requested runs (pages/requests.html) and Sabin runs: their own groups in the plan lists

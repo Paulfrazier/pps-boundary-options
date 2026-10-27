@@ -6,8 +6,9 @@ OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'out_v2')
 import json as _json, os as _os
 _PREV = _os.path.join(_os.path.dirname(_os.path.abspath(__file__)), '..', 'export', 'preview_plans.json')
 # local-only preview plans (build/export/preview_plans.json never ships) are added after their 'after' plan
-# (2026-10-22) equity_noswap_alameda_rig_hs = the site's current best (approved); option2_ms460 = previous best
-RELEASED = ['status_quo', 'scenario_A', 'scenario_B', 'option2', 'equity_noswap_alameda_rig_hs', 'option2_ms460', 'option2_ms460_sellwood_home', 'option1_durable', 'option4', 'option3a']
+# (2026-10-27) dli_home3_rh = the site's current best (approved); equity_noswap_alameda_rig_hs = previous best;
+# option2_ms460 = the best before that
+RELEASED = ['status_quo', 'scenario_A', 'scenario_B', 'option2', 'dli_home3_rh', 'equity_noswap_alameda_rig_hs', 'option2_ms460', 'option2_ms460_sellwood_home', 'option1_durable', 'option4', 'option3a']
 if _os.path.exists(_PREV):
     for _p in _json.load(open(_PREV)).get('plans', []):
         if _p['name'] not in RELEASED:

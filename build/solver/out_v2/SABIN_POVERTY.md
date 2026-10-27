@@ -19,7 +19,9 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson | 0% / 0% | 0.48 / 0.45 | +0.00 / +0.00 | 100% / 100% | 0% / 0% | 0% / 0% |
 | Sabin Stays - less moves | 0% / 0% | 0.48 / 0.45 | +0.00 / +0.00 | 100% / 100% | 0% / 0% | 0% / 0% |
 | Irvington line: Thompson / 21st / Knott | 0% / 0% | 0.48 / 0.45 | +0.00 / +0.00 | 100% / 100% | 0% / 0% | 0% / 0% |
+| Irvington line: NE Knott | 0% / 0% | 0.48 / 0.45 | +0.00 / +0.00 | 100% / 100% | 0% / 0% | 0% / 0% |
 | Irvington line: NE 15th + Knott | 0% / 0% | 0.48 / 0.45 | +0.00 / +0.00 | 100% / 100% | 0% / 0% | 0% / 0% |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 0% / 0% | 0.48 / 0.45 | +0.00 / +0.00 | 100% / 100% | 0% / 0% | 0% / 0% |
 | Sabin into Irvington (small) | 100% / 100% | 0.87 / 0.73 | +0.39 / +0.29 | 68% / 83% | 32% / 17% | 40% / 63% |
 
 ## Middle school (6-8)
@@ -39,7 +41,9 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson | 0% / 0% | 1.74 / 1.82 | +0.00 / +0.00 | 70% / 75% | 100% / 100% |
 | Sabin Stays - less moves | 0% / 0% | 1.74 / 1.82 | +0.00 / +0.00 | 70% / 75% | 100% / 100% |
 | Irvington line: Thompson / 21st / Knott | 0% / 0% | 1.74 / 1.82 | +0.00 / +0.00 | 70% / 75% | 100% / 100% |
+| Irvington line: NE Knott | 0% / 0% | 1.74 / 1.82 | +0.00 / +0.00 | 70% / 75% | 100% / 100% |
 | Irvington line: NE 15th + Knott | 0% / 0% | 1.74 / 1.82 | +0.00 / +0.00 | 70% / 75% | 100% / 100% |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 0% / 0% | 1.74 / 1.82 | +0.00 / +0.00 | 70% / 75% | 100% / 100% |
 | Sabin into Irvington (small) | 40% / 60% | 1.46 / 1.38 | -0.29 / -0.43 | 40% / 27% | 100% / 100% |
 
 ## High school (9-12)
@@ -59,7 +63,9 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Sabin Stays - less moves | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Irvington line: Thompson / 21st / Knott | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
+| Irvington line: NE Knott | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Irvington line: NE 15th + Knott | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Sabin into Irvington (small) | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 
 ## Sabin-area kids in a sustainable school (PPS definition: at or above 360 / 500 / 1,100 in 2031-32)
@@ -79,7 +85,9 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson | 0% / 0% | 100% / 100% | 100% / 100% |
 | Sabin Stays - less moves | 0% / 0% | 100% / 100% | 100% / 100% |
 | Irvington line: Thompson / 21st / Knott | 0% / 0% | 100% / 100% | 100% / 100% |
+| Irvington line: NE Knott | 0% / 0% | 100% / 100% | 100% / 100% |
 | Irvington line: NE 15th + Knott | 0% / 0% | 100% / 100% | 100% / 100% |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 0% / 0% | 100% / 100% | 100% / 100% |
 | Sabin into Irvington (small) | 40% / 63% | 100% / 100% | 100% / 100% |
 
 ## District: PPS dashboard sustainability (all levels, 2031-32)
@@ -99,7 +107,9 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson | 63 | 92% | 95% |
 | Sabin Stays - less moves | 63 | 92% | 95% |
 | Irvington line: Thompson / 21st / Knott | 63 | 90% | 94% |
+| Irvington line: NE Knott | 63 | 92% | 95% |
 | Irvington line: NE 15th + Knott | 63 | 90% | 94% |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 63 | 90% | 94% |
 | Sabin into Irvington (small) | 63 | 94% | 96% |
 
 ## Where Sabin-area kids go
@@ -145,9 +155,15 @@ Today's Sabin attendance area, 2031-32 projected kids. Estimated 67 of 236 K-5 k
 | Irvington line: Thompson / 21st / Knott | K-5 | Sabin 236 (67 in poverty) |
 | Irvington line: Thompson / 21st / Knott | 6-8 | Tubman 93 (23 in poverty) |
 | Irvington line: Thompson / 21st / Knott | 9-12 | Jefferson 221 (71 in poverty) |
+| Irvington line: NE Knott | K-5 | Sabin 236 (67 in poverty) |
+| Irvington line: NE Knott | 6-8 | Tubman 93 (23 in poverty) |
+| Irvington line: NE Knott | 9-12 | Jefferson 221 (71 in poverty) |
 | Irvington line: NE 15th + Knott | K-5 | Sabin 236 (67 in poverty) |
 | Irvington line: NE 15th + Knott | 6-8 | Tubman 93 (23 in poverty) |
 | Irvington line: NE 15th + Knott | 9-12 | Jefferson 221 (71 in poverty) |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | K-5 | Sabin 236 (67 in poverty) |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 6-8 | Tubman 93 (23 in poverty) |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 9-12 | Jefferson 221 (71 in poverty) |
 | Sabin into Irvington (small) | K-5 | Alameda 134 (27 in poverty), Irvington 102 (40 in poverty) |
 | Sabin into Irvington (small) | 6-8 | Beaumont 51 (9 in poverty), Tubman 42 (14 in poverty) |
 | Sabin into Irvington (small) | 9-12 | Jefferson 221 (71 in poverty) |
@@ -173,7 +189,9 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson | 100% / 100% | 0.93 / 0.88 | +0.33 / +0.36 | 58% / 68% | 42% / 32% | 75% / 73% |
 | Sabin Stays - less moves | 100% / 100% | 0.92 / 0.86 | +0.32 / +0.34 | 59% / 71% | 41% / 29% | 73% / 67% |
 | Irvington line: Thompson / 21st / Knott | 100% / 100% | 0.92 / 0.85 | +0.32 / +0.33 | 60% / 75% | 40% / 25% | 0% / 0% |
+| Irvington line: NE Knott | 100% / 100% | 0.97 / 0.91 | +0.37 / +0.38 | 57% / 66% | 43% / 34% | 0% / 0% |
 | Irvington line: NE 15th + Knott | 100% / 100% | 0.95 / 0.88 | +0.35 / +0.36 | 58% / 70% | 42% / 30% | 0% / 0% |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 100% / 100% | 0.95 / 0.88 | +0.35 / +0.36 | 58% / 70% | 42% / 30% | 0% / 0% |
 | Sabin into Irvington (small) | 41% / 35% | 0.49 / 0.45 | -0.11 / -0.07 | 100% / 100% | 0% / 0% | 41% / 35% |
 
 ## Middle school (6-8)
@@ -193,7 +211,9 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson | 76% / 75% | 1.65 / 1.55 | +0.46 / +0.28 | 71% / 56% | 100% / 100% |
 | Sabin Stays - less moves | 74% / 68% | 1.64 / 1.51 | +0.44 / +0.24 | 69% / 49% | 100% / 100% |
 | Irvington line: Thompson / 21st / Knott | 66% / 41% | 1.60 / 1.41 | +0.40 / +0.14 | 64% / 37% | 100% / 100% |
+| Irvington line: NE Knott | 89% / 66% | 1.95 / 1.64 | +0.75 / +0.37 | 87% / 62% | 100% / 100% |
 | Irvington line: NE 15th + Knott | 56% / 48% | 1.41 / 1.39 | +0.21 / +0.13 | 54% / 44% | 100% / 100% |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 56% / 48% | 1.41 / 1.39 | +0.21 / +0.13 | 54% / 44% | 100% / 100% |
 | Sabin into Irvington (small) | 43% / 36% | 1.29 / 1.27 | +0.10 / -0.00 | 38% / 19% | 100% / 100% |
 
 ## High school (9-12)
@@ -213,7 +233,9 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson | 22% / 27% | +0.03 / +0.06 | 78% / 73% |
 | Sabin Stays - less moves | 24% / 33% | +0.05 / +0.12 | 76% / 67% |
 | Irvington line: Thompson / 21st / Knott | 33% / 58% | +0.17 / +0.44 | 67% / 42% |
+| Irvington line: NE Knott | 13% / 33% | +0.05 / +0.20 | 87% / 67% |
 | Irvington line: NE 15th + Knott | 40% / 51% | +0.19 / +0.31 | 60% / 49% |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 0% / 0% | +0.00 / +0.00 | 0% / 0% |
 | Sabin into Irvington (small) | 0% / 0% | +0.00 / +0.00 | 100% / 100% |
 
 ## Irvington-area kids in a sustainable school (PPS definition: at or above 360 / 500 / 1,100 in 2031-32)
@@ -233,7 +255,9 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Irvington into Sabin, all of Sabin stays, then Tubman and Jefferson | 75% / 73% | 100% / 100% | 100% / 100% |
 | Sabin Stays - less moves | 73% / 67% | 100% / 100% | 100% / 100% |
 | Irvington line: Thompson / 21st / Knott | 0% / 0% | 100% / 100% | 100% / 100% |
+| Irvington line: NE Knott | 89% / 69% | 100% / 100% | 100% / 100% |
 | Irvington line: NE 15th + Knott | 0% / 0% | 100% / 100% | 100% / 100% |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 0% / 0% | 100% / 100% | 100% / 100% |
 | Sabin into Irvington (small) | 41% / 35% | 100% / 100% | 100% / 100% |
 
 ## Where Irvington-area kids go
@@ -279,9 +303,15 @@ Today's Irvington attendance area, 2031-32 projected kids. Estimated 46 of 223 K
 | Irvington line: Thompson / 21st / Knott | K-5 | Sabin 118 (16 in poverty), Beverly Cleary 105 (30 in poverty) |
 | Irvington line: Thompson / 21st / Knott | 6-8 | Tubman 60 (11 in poverty), Beaumont 54 (21 in poverty) |
 | Irvington line: Thompson / 21st / Knott | 9-12 | Jefferson 179 (17 in poverty), Grant 149 (34 in poverty) |
+| Irvington line: NE Knott | K-5 | Beverly Cleary 163 (42 in poverty), Sabin 60 (5 in poverty) |
+| Irvington line: NE Knott | 6-8 | Beaumont 82 (29 in poverty), Tubman 31 (3 in poverty) |
+| Irvington line: NE Knott | 9-12 | Grant 229 (44 in poverty), Jefferson 99 (7 in poverty) |
 | Irvington line: NE 15th + Knott | K-5 | Sabin 121 (23 in poverty), Beverly Cleary 102 (24 in poverty) |
 | Irvington line: NE 15th + Knott | 6-8 | Beaumont 57 (18 in poverty), Tubman 57 (14 in poverty) |
 | Irvington line: NE 15th + Knott | 9-12 | Grant 167 (31 in poverty), Jefferson 161 (20 in poverty) |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | K-5 | Sabin 121 (23 in poverty), Beverly Cleary 102 (24 in poverty) |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 6-8 | Beaumont 57 (18 in poverty), Tubman 57 (14 in poverty) |
+| Irvington line: NE 15th + Knott, Irvington teens stay at Grant | 9-12 | Grant 328 (51 in poverty) |
 | Sabin into Irvington (small) | K-5 | Irvington 143 (28 in poverty), Beverly Cleary 69 (18 in poverty), Alameda 12 (1 in poverty) |
 | Sabin into Irvington (small) | 6-8 | Tubman 70 (18 in poverty), Beaumont 44 (14 in poverty) |
 | Sabin into Irvington (small) | 9-12 | Grant 328 (51 in poverty) |

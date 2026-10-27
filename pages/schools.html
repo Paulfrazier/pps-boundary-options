@@ -9,10 +9,10 @@
 <link rel="stylesheet" href="site.css">
 <style>
 /* plan colors match the Durability page (pages/durability.html) */
-:root{--s-status_quo:#7a8388;--s-equity_noswap_alameda_rig_hs:#2a78d6;--s-option2_ms460:#6a90c4;--s-option2_ms460_sellwood_home:#1b8ea6;--s-option2:#1baf7a;--s-scenario_A:#eb6834;--s-frontier_k17:#1baf7a;--s-scenario_B:#eda100;--s-option4:#e87ba4;--s-option3a:#008300;--s-option1_durable:#6250d6;--s-other:#556b2f;
+:root{--s-status_quo:#7a8388;--s-dli_home3_rh:#2a78d6;--s-equity_noswap_alameda_rig_hs:#6a90c4;--s-option2_ms460:#93a6c2;--s-option2_ms460_sellwood_home:#1b8ea6;--s-option2:#1baf7a;--s-scenario_A:#eb6834;--s-frontier_k17:#1baf7a;--s-scenario_B:#eda100;--s-option4:#e87ba4;--s-option3a:#008300;--s-option1_durable:#6250d6;--s-other:#556b2f;
  --s-hist:#1f2a30;--s-psu:#8a6d3b;--grid:#e6e2d8;--in:#2e7d5b}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--s-status_quo:#9aa3a8;--s-equity_noswap_alameda_rig_hs:#3987e5;--s-option2_ms460:#8bb0de;--s-option2_ms460_sellwood_home:#4cb4cb;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#2ea52e;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--s-hist:#e6e9ea;--s-psu:#d2b277;--grid:#2c3235;--in:#6cc49a}}
-:root[data-theme="dark"]{--s-status_quo:#9aa3a8;--s-equity_noswap_alameda_rig_hs:#3987e5;--s-option2_ms460:#8bb0de;--s-option2_ms460_sellwood_home:#4cb4cb;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#2ea52e;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--s-hist:#e6e9ea;--s-psu:#d2b277;--grid:#2c3235;--in:#6cc49a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--s-status_quo:#9aa3a8;--s-dli_home3_rh:#3987e5;--s-equity_noswap_alameda_rig_hs:#8bb0de;--s-option2_ms460:#a9b9d0;--s-option2_ms460_sellwood_home:#4cb4cb;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#2ea52e;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--s-hist:#e6e9ea;--s-psu:#d2b277;--grid:#2c3235;--in:#6cc49a}}
+:root[data-theme="dark"]{--s-status_quo:#9aa3a8;--s-dli_home3_rh:#3987e5;--s-equity_noswap_alameda_rig_hs:#8bb0de;--s-option2_ms460:#a9b9d0;--s-option2_ms460_sellwood_home:#4cb4cb;--s-option2:#199e70;--s-scenario_A:#d95926;--s-frontier_k17:#199e70;--s-scenario_B:#c98500;--s-option4:#d55181;--s-option3a:#2ea52e;--s-option1_durable:#9085e9;--s-other:#b5cc7e;--s-hist:#e6e9ea;--s-psu:#d2b277;--grid:#2c3235;--in:#6cc49a}
 .row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:12px 0}
 select{font:inherit;font-size:15px;padding:6px 8px;border:1px solid var(--rule);border-radius:6px;background:var(--card);color:var(--ink);max-width:100%;min-height:40px}
 .levels button.tog{white-space:nowrap}
@@ -237,7 +237,7 @@ function sym(kind,c){var s='<svg width="26" height="14" aria-hidden="true" style
   if(kind==='hist')s+='<line x1="1" x2="25" y1="7" y2="7" stroke="var(--s-hist)" stroke-width="3"/><circle cx="13" cy="7" r="3.5" fill="var(--s-hist)"/>';
   else if(kind==='psu')s+='<line x1="1" x2="25" y1="7" y2="7" stroke="var(--s-psu)" stroke-width="2.5" stroke-dasharray="6 3"/><path d="M13 2L17.5 10.5L8.5 10.5Z" fill="var(--s-psu)"/>';
   else if(kind==='sq')s+='<rect x="8.5" y="2.5" width="9" height="9" fill="var(--card)" stroke="var(--muted)" stroke-width="2"/>';
-  else if(kind==='ex')s+='<line x1="1" x2="25" y1="7" y2="7" stroke="var(--s-equity_noswap_alameda_rig_hs)" stroke-width="2.5"/><circle cx="13" cy="7" r="3.2" fill="var(--s-equity_noswap_alameda_rig_hs)"/>';
+  else if(kind==='ex')s+='<line x1="1" x2="25" y1="7" y2="7" stroke="var(--s-dli_home3_rh)" stroke-width="2.5"/><circle cx="13" cy="7" r="3.2" fill="var(--s-dli_home3_rh)"/>';
   else if(kind==='band')s+='<rect x="1" y="2" width="24" height="10" fill="var(--in)" opacity="0.18"/><line x1="1" x2="25" y1="12" y2="12" stroke="var(--in)" stroke-width="1.5"/><line x1="1" x2="25" y1="2" y2="2" stroke="var(--in)" stroke-width="1.5" stroke-dasharray="4 3"/>';
   else if(kind==='div')s+='<line x1="13" x2="13" y1="0" y2="14" stroke="var(--muted)" stroke-dasharray="2 3"/>';
   else if(kind==='cap')s+='<line x1="1" x2="25" y1="7" y2="7" stroke="var(--muted)" stroke-width="1.2" stroke-dasharray="1 3"/>';
