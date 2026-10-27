@@ -21,8 +21,10 @@ What it reads (all read only):
   data/pps-map/pps-model.json + pps-race.csv (hard-edge zones, kids-of-color share), build/data/schools.csv
   (school locations), pages/pps-walk-redraw.html (streets, base layers, outline, today's K-5 lines),
   work/street_labels.txt + fonts/ (map v2 caches).
+- build/safe_routes/ (read only): walk_crossings.parquet (hard crossings per block and school) and cache/artn.opl +
+  sig.opl (busy streets, signals, marked crossings) for the Closer walk tooltips and the Busy streets to cross layer.
 
-Writes: pages/map.html, pages/map_data/level_K-5.js (blocking script, cached, preloaded), pages/map_data/fonts/*.woff2, pages/map_data/level_6-8.js, pages/map_data/level_9-12.js, map_data/streets.js, map_data/street_names.js,
+Writes: pages/map.html, pages/map_data/level_K-5.js (blocking script, cached, preloaded), pages/map_data/fonts/*.woff2, pages/map_data/level_6-8.js, pages/map_data/level_9-12.js, map_data/streets.js, map_data/street_names.js, map_data/crossings.js,
 work/site_cache/qa_report.json (crisp quality checks). Never writes pages/pps-walk-redraw-v2.html.
 """
 import collections, hashlib, itertools, json, os, sys, time
@@ -34,7 +36,7 @@ from shapely.ops import unary_union
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE); sys.path.insert(0, os.path.join(HERE, 'crisp'))
-from common import KIT, WORK, grab, load_page, dec, enc_ring          # noqa: E402
+from common import KIT, WORK, X0, Y0, grab, load_page, dec, enc_ring  # noqa: E402
 from geo import MX, LAT_M, district, voronoi_cells, block_xy, to_ll    # noqa: E402
 import crisp as CR                                                     # noqa: E402
 import official_lv as OF                                               # noqa: E402
@@ -450,6 +452,211 @@ for lv in LEVELS:
         plans[k]['wk'] = [int(round(100 * a / b)) if b >= 0.05 else -1 for a, b in zip(swd, sw)]
     LVDATA[lv] = {'plans': plans, 'pairs': pairs, 'total': round(float(w0.sum())), 'sch': sch, 'kocd': kocd, 'den': den}
 
+# ------------------------------------------------------------------ "Closer walk" theme (map color=closer)
+# For a fixed set of two or three schools: which is the shortest walk, on a fine grid (CLOSER_M) over the PPS Status Quo
+# areas listed. Several sets per level (the map's picker; the first is the level's default). Same walk matrix as the "walk"
+# theme and the scorecards (solver common.dist('walk'), via scorebasis), PPS Status Quo's 2031-32 kids. focus (optional) =
+# the closing school whose kids the legend headline counts (its Status Quo area at focus_lv); without one the headline
+# counts every covered block. A block goes to its closest school (a two-way exact tie to the second, as irvington_walks.py).
+# A level with no set shows a short key instead.
+CLOSER = [   # key = URL cpair=; picking one zooms the map to its areas
+    {'key': 'sabin-bc', 'lv': 'K-5', 'schools': ['Sabin', 'Beverly Cleary'], 'areas': ['Irvington', 'Sabin', 'Beverly Cleary'], 'focus': 'Irvington', 'focus_lv': 'K-5'},
+    {'key': 'sabin-bc-king', 'lv': 'K-5', 'schools': ['Sabin', 'Beverly Cleary', 'MLK Jr'], 'areas': ['Irvington', 'Sabin', 'MLK Jr']},
+    {'key': 'bc-buckman', 'lv': 'K-5', 'schools': ['Beverly Cleary', 'Buckman'], 'areas': ['Beverly Cleary', 'Buckman', 'Sunnyside']},
+    {'key': 'beach-be', 'lv': 'K-5', 'schools': ['Beach', 'Boise-Eliot/Humboldt'], 'areas': ['Beach', 'Boise-Eliot/Humboldt']},
+    {'key': 'beaumont-tubman', 'lv': '6-8', 'schools': ['Beaumont', 'Tubman'], 'areas': ['Beaumont', 'Tubman'], 'focus': 'Irvington', 'focus_lv': 'K-5'},
+]
+CLOSER_M = 150.0
+CL_TIE = 0.10                      # "about the same" band, miles (as the walk overlay's middle step)
+_sq = next(o for o in OPTS if o['name'] == 'status_quo')
+_XY = block_xy()
+# hard crossings (build/safe_routes, read only): per block and school, the busy streets the shortest walk crosses with no
+# signal within 25 m (walk_crossings.parquet; routed only within 1.5 walk miles). Same files as the models chat's crossing page.
+SAFE = os.path.join(KIT, 'build', 'safe_routes')
+_HX = pd.read_parquet(os.path.join(SAFE, 'walk_crossings.parquet'), columns=['block_idx', 'school_idx', 'hard_x', 'hard_streets'])
+_RIX = SB.solver()[1].school_routing_index()
+_DIR = {'Northeast': 'NE', 'Northwest': 'NW', 'Southeast': 'SE', 'Southwest': 'SW', 'North': 'N', 'South': 'S', 'East': 'E', 'West': 'W'}
+_SUF = {'Street': 'St', 'Avenue': 'Ave', 'Boulevard': 'Blvd', 'Highway': 'Hwy', 'Road': 'Rd', 'Drive': 'Dr', 'Parkway': 'Pkwy'}
+
+
+def st_short(n):
+    """'Northeast Fremont Street' -> 'NE Fremont St' (OSM names, as on street signs)."""
+    w = n.replace('Martin Luther King Junior', 'MLK Jr').split(' ')
+    if len(w) > 1 and w[0] in _DIR:
+        w[0] = _DIR[w[0]]
+    if len(w) > 1 and w[-1] in _SUF:
+        w[-1] = _SUF[w[-1]]
+    return ' '.join(w)
+
+
+def hard_of(school):
+    """block -> list of unsignalized busy streets on the shortest walk to school ([] none; None not routed)."""
+    g = _HX[_HX.school_idx == _RIX[school]]
+    out = [None] * len(B)
+    for bi, hx, hs in zip(g.block_idx.values, g.hard_x.values, g.hard_streets.values):
+        out[int(bi)] = [st_short(x) for x in hs.split('; ')] if hx > 0 and hs else []
+    return out
+for lv in LEVELS:
+    LVDATA[lv]['closer'] = []
+for cf in CLOSER:
+    lv = cf['lv']; ns = cf['schools']; fo = cf.get('focus')
+    lab = load_asg(_sq, lv); flab = load_asg(_sq, cf.get('focus_lv', lv)); K = SB.kids(_sq, lv)
+    Wp = SB.solver()[1].dist('walk', ns).astype(float)
+    m = (np.isin(lab, cf['areas']) | (flab == fo)) & (K > 0) & np.isfinite(Wp).all(axis=1)
+    ix = np.floor(_XY[:, 0] / CLOSER_M).astype(int); iy = np.floor(_XY[:, 1] / CLOSER_M).astype(int)
+    acc = collections.defaultdict(lambda: np.zeros(1 + len(ns)))
+    for i in np.where(m)[0]:
+        acc[(int(ix[i]), int(iy[i]))] += np.r_[K[i], K[i] * Wp[i]]
+    cells = sorted([i, j, round(float(v[0]), 1)] + [int(round(100 * x / v[0])) for x in v[1:]]
+                   for (i, j), v in acc.items() if v[0] >= 0.05)
+    # hx (parallel to cells): 0 = no unsignalized busy crossing on any school's walk for most kids here; else per school
+    # -1 not routed (over 1.5 mi), 0 none, k = the main street (1-based in hn) for the kids whose walk has one, if over half
+    HL = [hard_of(x) for x in ns]; hn = []; hx = []; ckey = [(c[0], c[1]) for c in cells]
+    cblk = collections.defaultdict(list)
+    for i in np.where(m)[0]:
+        cblk[(int(ix[i]), int(iy[i]))].append(i)
+    for key in ckey:
+        ids = cblk[key]; kt = float(K[ids].sum()); row = []
+        for q in range(len(ns)):
+            rt = [i for i in ids if HL[q][i] is not None]
+            if float(K[rt].sum()) < kt / 2:
+                row.append(-1); continue
+            hk = [i for i in rt if HL[q][i]]
+            if float(K[hk].sum()) <= float(K[rt].sum()) / 2:
+                row.append(0); continue
+            c = collections.Counter()
+            for i in hk:
+                for x in dict.fromkeys(HL[q][i]):
+                    c[x] += float(K[i])
+            nmx = c.most_common(1)[0][0]
+            if nmx not in hn:
+                hn.append(nmx)
+            row.append(hn.index(nmx) + 1)
+        hx.append(row if any(v > 0 for v in row) else 0)
+    best = len(ns) - 1 - np.argmin(Wp[:, ::-1], axis=1)       # closest school; an exact tie goes to the later school
+    srt = np.sort(Wp, axis=1); near = (srt[:, 1] - srt[:, 0]) < CL_TIE
+
+    def cnt(sel):      # kids in sel: total, then closest to each school, then top two within the tie band
+        tot = round(float(K[sel].sum())); c = lr_round({k: float(K[sel & (best == k)].sum()) for k in range(len(ns))}, tot)
+        return [tot] + [c[k] for k in range(len(ns))] + [round(float(K[sel & near].sum()))]
+    hd = cnt(m & (flab == fo) if fo else m)
+    head = {'focus': fo, 'flv': cf.get('focus_lv'), 'n': hd[0], 'c': hd[1:-1], 'tie': hd[-1]}
+    by = [[n] + cnt(m & (lab == n)) for n in cf['areas']]
+    # hard walks (build/safe_routes README): kids inside the no-bus distance (metrics.BUS) whose shortest walk to the school
+    # crosses a busy street with no signal; per covered area (and the focus area), per school
+    bus = SB.solver()[0].BUS[lv]; hard = np.array([[bool(HL[q][i]) for q in range(len(ns))] for i in range(len(B))])
+    hw = [[n, [round(float(K[sel & hard[:, q] & (Wp[:, q] <= bus)].sum())) for q in range(len(ns))]]
+          for n, sel in [(x, m & (lab == x)) for x in cf['areas']] + ([(fo, m & (flab == fo))] if fo and fo not in cf['areas'] else [])]
+    # bus line (metrics.BUS: 1 mi K-5, 1.5 mi 6-8), per school: outline of every block in the district, kids or not, whose
+    # shortest walk to it is within the no-bus distance (blocks' Voronoi cells, merged)
+    bl = []
+    for q in range(len(ns)):
+        u = unary_union(list(CELLS[np.isfinite(Wp[:, q]) & (Wp[:, q] <= bus)])).buffer(2).buffer(-2).simplify(12)
+        bl.append(enc_geom(u))
+    LVDATA[lv]['closer'].append({'key': cf['key'], 's': ns, 'areas': cf['areas'], 'dx': CLOSER_M / MX, 'dy': CLOSER_M / LAT_M,
+                                 'm': CLOSER_M, 'tie': CL_TIE, 'head': head, 'by': by, 'cells': cells, 'hx': hx, 'hn': hn, 'hw': hw, 'bus': bus, 'bl': bl})
+    log('  closer', lv, cf['key'], 'cells', len(cells), 'bytes', len(json.dumps(LVDATA[lv]['closer'][-1], separators=(',', ':'))), head, by, 'hard walks', hw)
+    if cf['key'] == 'sabin-bc':      # for the Sabin options page's note: Sabin takes only the Irvington blocks it is closer to
+        a_, b_ = ns; dlt = Wp[:, 0] - Wp[:, 1]; own = {x: float(K[lab == x].sum()) for x in ns}; fm = m & (flab == fo)
+        for t in (0.0, CL_TIE):
+            tk = fm & (dlt < t)
+            log('    %s takes %s blocks with walk diff < %.2f: %s %.1f, %s %.1f' % (a_, fo, t, a_, own[a_] + K[tk].sum(), b_, own[b_] + K[fm & ~tk].sum()))
+
+# ------------------------------------------------------------------ "Busy streets to cross" layer (map xing=1)
+# pages/map_data/crossings.js, shared by every level: busy streets and their signal / marked crossings from
+# build/safe_routes/cache/artn.opl + sig.opl (OSM, the routing's own extract; read only), with routes.py's rules: busy =
+# trunk/primary/secondary (and links) or any arterial with 4+ lanes or a 35+ mph limit; signal = highway=traffic_signals,
+# crossing=traffic_signals or crossing:signals=yes; marked = crossing=marked/zebra/uncontrolled with no signal within 25 m.
+# Points within 15 m of a busy street inside the district, one per 30 m. Freeways are drawn as barriers already.
+BUSY_HW = {'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link'}
+
+
+def _opl_tags(tok):
+    out = {}
+    for kv in tok[1:].split(','):
+        if '=' in kv:
+            k, v = kv.split('=', 1)
+            out[k] = v.replace('%20%', ' ').replace('%2c%', ',')
+    return out
+
+
+def _num(v):
+    try:
+        return float(str(v).split()[0].split(';')[0])
+    except (ValueError, IndexError):
+        return None
+
+
+def _enc_pt(x, y):
+    return [round(x / MX * 1e4 + X0), round(y / LAT_M * 1e4 - Y0)]
+
+
+def _enc_line(c):
+    q = []
+    for x, y in c:
+        p = tuple(_enc_pt(x, y))
+        if not q or p != q[-1]:
+            q.append(p)
+    return '%d,%d' % q[0] + ''.join(' %d,%d' % (b[0] - a[0], b[1] - a[1]) for a, b in zip(q, q[1:])) if len(q) >= 2 else None
+
+
+def crossings_data():
+    srcs = [os.path.join(SAFE, 'cache', f) for f in ('artn.opl', 'sig.opl')]
+    cp = os.path.join(CACHE, 'xing_%s.json' % sha(*srcs, b'xing-2'))
+    if os.path.exists(cp) and not FORCE:
+        return json.load(open(cp))
+    nxy = {}; byname = collections.defaultdict(list)
+    for line in open(srcs[0]):
+        f = line.split(' ')
+        if line[0] == 'n':
+            x = next(t for t in f if t[0] == 'x'); y = next(t for t in f if t[0] == 'y')
+            nxy[int(f[0][1:])] = (float(x[1:]) * MX, float(y[1:]) * LAT_M)
+        elif line[0] == 'w':
+            T = _opl_tags(next(t for t in f if t[0] == 'T')); hw = T.get('highway', '')
+            if hw in BUSY_HW or (_num(T.get('lanes')) or 0) >= 4 or (_num(T.get('maxspeed')) or 0) >= 35:
+                pts = [nxy[int(n[1:])] for n in next(t for t in f if t[0] == 'N').strip()[1:].split(',') if n and int(n[1:]) in nxy]
+                if len(pts) >= 2:
+                    byname[st_short(T.get('name') or T.get('ref') or hw)].append(shapely.LineString(pts))
+    D = district().buffer(50); lines = []; parts_all = []
+    for n, ls in sorted(byname.items()):
+        g = shapely.line_merge(shapely.union_all(ls)).intersection(D).simplify(6)
+        ps = [g] if g.geom_type == 'LineString' else [x for x in getattr(g, 'geoms', []) if x.geom_type == 'LineString']
+        ps = [x for x in ps if x.length >= 20]
+        e = [x for x in (_enc_line(list(x.coords)) for x in ps) if x]
+        if e:
+            lines.append('|'.join(e)); parts_all += ps      # no names: drawing only (names show on the street layer)
+    tree = shapely.STRtree(parts_all); sig = []; mkd = []
+    for line in open(srcs[1]):
+        f = line.split(' '); T = _opl_tags(next((t for t in f if t[0] == 'T'), 'T'))
+        x = next(t for t in f if t[0] == 'x'); y = next(t for t in f if t[0] == 'y'); p = (float(x[1:]) * MX, float(y[1:]) * LAT_M)
+        if T.get('highway') == 'traffic_signals' or T.get('crossing') == 'traffic_signals' or T.get('crossing:signals') == 'yes':
+            sig.append(p)
+        elif T.get('crossing') in ('marked', 'zebra', 'uncontrolled') or T.get('crossing_ref') == 'zebra':
+            mkd.append(p)
+
+    def keep(P, avoid=None):
+        P = np.array(P); g = shapely.points(P)
+        ok = (np.array([len(tree.query(x, predicate='dwithin', distance=15)) > 0 for x in g]) & shapely.contains_xy(D, P[:, 0], P[:, 1]))
+        if avoid is not None:
+            ok &= np.array([len(avoid.query(x, predicate='dwithin', distance=25)) == 0 for x in g])
+        out = []; grid = {}
+        for x, y in P[ok]:       # one point per 30 m
+            k = (int(x // 30), int(y // 30))
+            if any((x - a) ** 2 + (y - b) ** 2 < 900 for i in (-1, 0, 1) for j in (-1, 0, 1) for a, b in grid.get((k[0] + i, k[1] + j), [])):
+                continue
+            grid.setdefault(k, []).append((x, y)); out.append((x, y))
+        return out
+    S = keep(sig); M_ = keep(mkd, shapely.STRtree(shapely.points(np.array(S))))
+    d = {'lines': lines, 'sig': [_enc_pt(*p) for p in S], 'mk': [_enc_pt(*p) for p in M_]}
+    json.dump(d, open(cp, 'w'), separators=(',', ':'))
+    return d
+
+
+XING = crossings_data()
+open(os.path.join(OUTD, 'crossings.js'), 'w', encoding='utf-8').write('window.XING=' + json.dumps(XING, separators=(',', ':'), ensure_ascii=False) + ';\n')
+log('  crossings.js', len(XING['lines']), 'streets', len(XING['sig']), 'signals', len(XING['mk']), 'marked',
+    '%.1f KB' % (os.path.getsize(os.path.join(OUTD, 'crossings.js')) / 1e3))
+
 json.dump(QA, open(os.path.join(CACHE, 'qa_report.json'), 'w'), indent=1)
 
 # ------------------------------------------------------------------ PROG (PPS projections + Family Guide wording for PPS scenarios)
@@ -495,7 +702,7 @@ VER = sha(*(os.path.join(OUTD, 'level_%s.js' % lv) for lv in LEVELS))
 # (label anchors) only once the map is zoomed in far enough to show names.
 open(os.path.join(OUTD, 'streets.js'), 'w', encoding='utf-8').write('window.STREETS=`' + STREETS + '`;\n')
 open(os.path.join(OUTD, 'street_names.js'), 'w', encoding='utf-8').write('window.SLBL=' + js(SLBL) + ';\n')
-SVER = sha(os.path.join(OUTD, 'streets.js'), os.path.join(OUTD, 'street_names.js'))
+SVER = sha(os.path.join(OUTD, 'streets.js'), os.path.join(OUTD, 'street_names.js'), os.path.join(OUTD, 'crossings.js'))
 
 # fonts: Overpass + Overpass Mono (latin subset, variable woff2; Google Fonts, OFL) as their own cached files in
 # map_data/fonts/ (were ~106 KB of base64 in <head>, re-sent with every page load); the regular face is preloaded

@@ -27,7 +27,7 @@
  ],
  "past_margin_miles": 0.25,
  "name": "option2_ms500",
- "label": "PREVIEW: best example we modeled with re-solved middle lines at 500 (13/13 at target, Hosford fits, 5 split elementary); not yet written up",
+ "label": "Best example we modeled with re-solved middle lines at 500 (13/13 at target, Hosford fits, 5 split elementary)",
  "kind": "option",
  "move_baseline": "status_quo",
  "levels": {

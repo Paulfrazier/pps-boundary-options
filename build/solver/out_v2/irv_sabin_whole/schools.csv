@@ -1,10 +1,10 @@
 school,nbhd_K-5,prog_K-5,zoned_K-5,nbhd_6-8,prog_6-8,zoned_6-8,nbhd_9-12,prog_9-12,zoned_9-12,type,program_only,total,capacity,floor,ceiling,utilization,floor_exempt,below_floor,above_ceiling,in_range,short_by,over_by,total_2025_26_basis,avg_walk_K-5,kids_over_bus_K-5,poc_share_K-5,avg_walk_6-8,kids_over_bus_6-8,poc_share_6-8,avg_walk_9-12,kids_over_bus_9-12,poc_share_9-12
 Beaumont,0.0,0.0,False,401.327,145.0,True,0.0,0.0,False,6-8,False,546.327,737.0,500,737.0,0.741,False,False,False,True,0.0,0.0,575.118,,,,1.076,84.1,0.291,,,
 George,0.0,0.0,False,347.775,270.205,True,0.0,0.0,False,6-8,False,617.981,623.0,500,623.0,0.992,False,False,False,True,0.0,0.0,629.743,,,,1.377,128.9,0.632,,,
-Gray,0.0,0.0,False,465.369,0.0,True,0.0,0.0,False,6-8,False,465.369,588.0,500,588.0,0.791,False,True,False,False,34.631,0.0,579.127,,,,1.773,266.8,0.338,,,
+Gray,0.0,0.0,False,446.992,0.0,True,0.0,0.0,False,6-8,False,446.992,588.0,500,588.0,0.76,True,False,False,True,0.0,0.0,531.886,,,,1.744,246.5,0.335,,,
 Harrison Park,0.0,0.0,False,368.219,186.501,True,0.0,0.0,False,6-8,False,554.72,902.0,500,902.0,0.615,False,False,False,True,0.0,0.0,623.842,,,,1.322,145.5,0.581,,,
 Hosford,0.0,0.0,False,534.769,0.0,True,0.0,0.0,False,6-8,False,534.769,711.0,500,711.0,0.752,False,False,False,True,0.0,0.0,717.001,,,,1.419,197.9,0.359,,,
-Jackson,0.0,0.0,False,535.381,0.0,True,0.0,0.0,False,6-8,False,535.381,946.0,500,946.0,0.566,False,False,False,True,0.0,0.0,678.836,,,,2.451,377.5,0.332,,,
+Jackson,0.0,0.0,False,553.758,0.0,True,0.0,0.0,False,6-8,False,553.758,946.0,500,946.0,0.585,False,False,False,True,0.0,0.0,726.077,,,,1.789,347.0,0.335,,,
 Kellogg,0.0,0.0,False,367.139,257.0,True,0.0,0.0,False,6-8,False,624.139,737.0,500,737.0,0.847,False,False,False,True,0.0,0.0,669.715,,,,1.508,145.8,0.499,,,
 Lane,0.0,0.0,False,474.261,30.0,True,0.0,0.0,False,6-8,False,504.261,763.0,500,763.0,0.661,False,False,False,True,0.0,0.0,741.39,,,,1.907,273.5,0.375,,,
 Mt Tabor,0.0,0.0,False,411.044,210.0,True,0.0,0.0,False,6-8,False,621.044,752.0,500,752.0,0.826,False,False,False,True,0.0,0.0,726.684,,,,1.057,69.3,0.312,,,

@@ -1,6 +1,6 @@
 {
  "name": "option2_ms500",
- "label": "PREVIEW: best example we modeled with re-solved middle lines at 500 (13/13 at target, Hosford fits, 5 split elementary); not yet written up",
+ "label": "Best example we modeled with re-solved middle lines at 500 (13/13 at target, Hosford fits, 5 split elementary)",
  "basis": "2031-32 (PSU forecast; block kids scaled by area, see METHOD.md)",
  "levels": {
   "K-5": {

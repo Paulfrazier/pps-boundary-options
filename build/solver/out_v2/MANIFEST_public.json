@@ -84,7 +84,7 @@
     },
     "sabin_all_keepbc": {
       "status": "done",
-      "finished": "2026-10-22T15:15:35"
+      "finished": "2026-10-22T23:03:17"
     },
     "irv_sabin": {
       "status": "done",
@@ -96,11 +96,19 @@
     },
     "irv_sabin_whole": {
       "status": "done",
-      "finished": "2026-10-22T20:50:54"
+      "finished": "2026-10-22T23:03:14"
     },
     "irv_sabin_noala": {
       "status": "done",
-      "finished": "2026-10-22T21:20:54"
+      "finished": "2026-10-22T23:03:11"
+    },
+    "irv_sabin_thompson21": {
+      "status": "done",
+      "finished": "2026-10-26T12:16:44"
+    },
+    "irv_sabin_15th": {
+      "status": "done",
+      "finished": "2026-10-22T23:03:20"
     }
   }
 }

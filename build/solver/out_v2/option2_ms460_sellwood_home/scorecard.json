@@ -1,6 +1,6 @@
 {
  "name": "option2_ms460_sellwood_home",
- "label": "Balanced middle schools + Sellwood Middle kept open on its own neighborhood (2026-10-20, Paul: keep Sellwood open without sending more kids past a closer school): Sellwood exempt from the middle minimum (may run as small as 300, not counted at target), stronger past-closer charge at 6-8 (1.0), other middle schools 460; K-5 lines as the live plan",
+ "label": "Balanced middle schools + Sellwood Middle kept open on its own neighborhood (keep Sellwood open without sending more kids past a closer school): Sellwood exempt from the middle minimum (may run as small as 300, not counted at target), stronger past-closer charge at 6-8 (1.0), other middle schools 460; K-5 lines as the live plan",
  "basis": "2031-32 (PSU forecast; block kids scaled by area, see METHOD.md)",
  "levels": {
   "K-5": {

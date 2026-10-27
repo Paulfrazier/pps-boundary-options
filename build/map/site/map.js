@@ -20,15 +20,15 @@ const P=([x,y])=>((x-lon0)*kx*S).toFixed(1)+","+((lat1-y)*S).toFixed(1);
 const NS="http://www.w3.org/2000/svg";const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
 const svg=$("map");   // aspect ratio and viewBox: see "pan / zoom" (pickAR / fitVB)
 const G=()=>mk("g");
-const gA=G(),gA2=G(),gDen=G(),gFade=G(),gPin=G(),gPast=G(),gSt=G(),gPri=G(),gRail=G(),gRiv=G(),gFwy=G(),gE1=G(),gE2=G(),gB=G(),gCur=G(),gOv=G(),gDiff=G(),gFoc=G(),gStN=G(),gS=G(),gTop=G();
+const gA=G(),gA2=G(),gDen=G(),gFade=G(),gPin=G(),gPast=G(),gSt=G(),gPri=G(),gRail=G(),gRiv=G(),gFwy=G(),gE1=G(),gE2=G(),gB=G(),gCur=G(),gOv=G(),gDiff=G(),gFoc=G(),gStN=G(),gS=G(),gTop=G(),gX=G();
 {const defs=mk("defs");const c1=mk("clipPath",{id:"swc"});c1.append(mk("rect",{id:"swr",x:0,y:0,width:1,height:1}));const c2=mk("clipPath",{id:"swcL"});c2.append(mk("rect",{id:"swrL",x:0,y:0,width:1,height:1}));
  // rev7 (declutter): the change hatch is quiet: 8px apart, hairline, faint (it covered much of the map at 6px / 60%)
  const pt=mk("pattern",{id:"hatch",patternUnits:"userSpaceOnUse",width:8,height:8});pt.append(mk("path",{d:"M-1,1 L1,-1 M0,8 L8,0 M7,9 L9,7",class:"hatchl",style:"fill:none"}));
  // size colors: exempt schools (not counted in the target-range figure) = neutral fill + light dots
  const ex=mk("pattern",{id:"exh",patternUnits:"userSpaceOnUse",width:6,height:6});ex.append(mk("rect",{width:6,height:6,style:"fill:var(--sz-in)"}),mk("circle",{cx:3,cy:3,r:.9,style:"fill:var(--muted);opacity:.7"}));
  defs.append(c1,c2,pt,ex);svg.append(defs)}
-[gFade,gPin,gSt,gPri,gRail,gRiv,gFwy,gCur,gOv,gFoc,gStN].forEach(g=>g.setAttribute("pointer-events","none"));gFwy.setAttribute("class","fwyg");
-svg.append(gA,gA2,gDen,gFade,gPast,gSt,gPri,gRail,gRiv,gFwy,gE1,gE2,gB,gCur,gOv,gDiff,gFoc,gStN,gS,gTop,gPin);
+[gFade,gPin,gSt,gPri,gRail,gX,gRiv,gFwy,gCur,gOv,gFoc,gStN].forEach(g=>g.setAttribute("pointer-events","none"));gFwy.setAttribute("class","fwyg");
+svg.append(gA,gA2,gDen,gFade,gPast,gSt,gPri,gRail,gX,gRiv,gFwy,gE1,gE2,gB,gCur,gOv,gDiff,gFoc,gStN,gS,gTop,gPin);
 const lines=s=>dec(s).filter(r=>r.length>1).map(r=>"M"+r.map(P).join("L")).join("");
 const ringsD=enc=>dec(enc).map(r=>"M"+r.map(P).join("L")+"Z").join("");
 const base={};BASE.split("\n").forEach(l=>{const i=l.indexOf("#");base[l.slice(0,i)]=l.slice(i+1)});
@@ -63,7 +63,7 @@ const PM={};META.plans.forEach(p=>PM[p.k]=p);
 const ORD=META.plans.map(p=>p.k);
 const LVN={"K-5":"K–5","6-8":"6–8","9-12":"9–12"};
 const BASELINE="status_quo";   // the one baseline: PPS Status Quo (2027-28, no closures) (Today archived)
-let lv="K-5",mode="single",scn="scenario_A",p1=BASELINE,p2="scenario_A",sel=null,swf=.5,showHatch=true,wk="S",initLoad=false,pin=null;
+let lv="K-5",mode="single",scn="scenario_A",p1=BASELINE,p2="scenario_A",sel=null,swf=.5,showHatch=true,wk="S",initLoad=false,pin=null,cpair=null,clBus=true;
 const LD=()=>MAPLV[lv];
 const PD=k=>LD().plans[k];
 const polysOf=k=>(PD(k)||{}).poly||{};
@@ -95,8 +95,8 @@ function colsFor(a,b){const k=lv+"|"+a+"|"+(b||"");if(colOf[k])return colOf[k];i
  const pa=polysOf(a),pb=polysOf(b),m={};new Set([...Object.keys(pa),...Object.keys(pb)]).forEach(n=>{m[n]=[pa[n],pb[n]].filter(Boolean).join("|")});return colOf[k]=colorize(m)}
 // "Color areas by" = the map's ONE theme (one encoding at a time, each with its own key and panel list):
 // "" school colors · "chg" changes only (plain fill; the lines and the hatch carry it) · "size" size vs target range (2031-32)
-// · "past" past a closer school (plain fill + the past regions) · "race" racial mix
-const colBy=()=>$("lcol").value,dvOn=()=>colBy()==="race",szOn=()=>colBy()==="size",pastOn=()=>colBy()==="past",denOn=()=>colBy()==="dens",mvOn=()=>colBy()==="mv",walkOn=()=>colBy()==="walk";
+// · "past" past a closer school (plain fill + the past regions) · "race" racial mix · "closer" which of a fixed school pair is the shorter walk
+const colBy=()=>$("lcol").value,dvOn=()=>colBy()==="race",szOn=()=>colBy()==="size",pastOn=()=>colBy()==="past",denOn=()=>colBy()==="dens",mvOn=()=>colBy()==="mv",walkOn=()=>colBy()==="walk",clOn=()=>colBy()==="closer";
 // schools at target, 2031-32, as on the options and landing pages (scorecard durability: zoned, non-exempt schools)
 const durOf=k=>(PD(k)||{}).dur;
 const szCls=(k,n)=>{const d=durOf(k);if(!d)return null;const x=d.s[n];return x?x[1]:"x"};   // -1 under floor, 0 at target, 1 over ceiling, "x" exempt
@@ -209,6 +209,7 @@ function impFor(side,sw){const m=new Map(),add=L=>L.slice(0,12).forEach((n,i)=>{
  const dif=(a,b)=>{const o={};new Set([...Object.keys(a),...Object.keys(b)]).forEach(n=>o[n]=(b[n]||0)-(a[n]||0));return o},two=cmpOn()&&p1!==p2;
  if(szOn())add((side||(cmpOn()?[p1]:[scn])).flatMap(k=>{const d=durOf(k);return d?Object.keys(d.s).filter(n=>d.s[n][1]):[]}));
  else if(pastOn())add(sw?top(pastBy(side[0]),40):two?top(dif(pastBy(p1),pastBy(p2)),40):top(pastBy(cmpOn()?p1:scn),40));
+ else if(clOn()){const C=CL();if(C)add([...C.s,C.head.focus].filter(Boolean))}
  else if(walkOn()){const aw=k=>(PD(k)||{}).avgw||{};add(sw?top(aw(side[0]),0):two&&mode==="overlay"?top(dif(aw(p1),aw(p2)),.1):top(aw(cmpOn()?p1:scn),0))}
  else if(two)add(top(dif(PD(p1).size,PD(p2).size),100));
  return m}
@@ -250,7 +251,48 @@ function walkLegend(el){const avg=k=>{const s=(PD(k)||{}).sum||{};return s.avg_w
  if(wkDiff()){el.innerHTML=`<span class="szh">Change in walk to the assigned school, ${esc(lblShort(p1))} → ${esc(lblShort(p2))}: ${src}. Green squares get closer, red get farther${avg(p1)?` (average ${esc(lblShort(p1))}${avg(p1).replace("; average for all kids","")}, ${esc(lblShort(p2))}${avg(p2).replace("; average for all kids","")})`:""}.</span><span class="dnr">${WDL.map((t,b)=>`<span><i class="densw" style="background:${wdFill(b)}"></i>${t}</span>`).join(" ")}</span><a href="sources.html#def-walk-distance">how walks are measured</a>`;return}
  const ks=cmpOn()&&mode==="swipe"?[p1,p2]:[cmpOn()?p1:scn];
  el.innerHTML=`<span class="szh">Walk to the assigned school, ${ks.map((k,i)=>(ks.length>1?(i?"right: ":"left: "):"")+esc(lblShort(k))+avg(k)).join("; ")}: ${src}.</span><span class="dnr">${WKB[lv].map((_,b)=>b).concat(WKB[lv].length).map(b=>`<span><i class="densw" style="background:${wkFill(b)}"></i>${wkRng(b)}</span>`).join(" ")}</span><a href="sources.html#def-walk-distance">how walks are measured</a>`}
-function drawDen(){gDen.replaceChildren();if(walkOn()){drawWalk();return}if(!denOn()&&!mvOn())return;const D=LD().den;if(!D)return;
+// "Closer walk": for one set of two or three schools at this level (LD().closer = the level's sets, build_site_map.py CLOSER;
+// cpair = the picked key, else the first; none = a short key), each 150 m cell (cells = [i,j,kids,walk to each school],
+// hundredths of a mile) shaded by its kids' average walks. Two schools: the walk overlay's diverging steps on the difference,
+// blue = the first closer, orange = the second. Three: the closest school's hue, lighter where the top two are within the tie
+// band. PPS Status Quo kids, so the same under every plan: drawn once, also in swipe.
+const CL=()=>{const L=LD().closer||[];return L.find(c=>c.key===cpair)||L[0]||null};
+const CLH=["--cla","--clb","--clc"],clTie=()=>`color-mix(in srgb,var(--ink) 9%,var(--plate))`;
+const clFill=b=>b===3?clTie():`color-mix(in srgb,var(${CLH[b<3?0:1]}) ${[88,62,36][b<3?b:6-b]}%,var(--plate))`;
+const clFill3=(k,lt)=>`color-mix(in srgb,var(${CLH[k]}) ${lt?32:78}%,var(--plate))`;
+const clLbl=(C,b)=>{const[A,B]=C.s.map(nm);return b===3?`about the same (within ${C.tie} mi)`:`${b<3?A:B} closer by ${["0.5+","0.25–0.5","0.1–0.25"][b<3?b:6-b]} mi`};
+const clName=c=>c.s.length>2?"closest of "+c.s.map(nm).join(", "):c.s.map(nm).join(" vs ");
+const clCell=(C,v)=>{if(C.s.length===2)return clFill(wdBin((v[0]-v[1])/100));const o=v.map((x,k)=>[x,k]).sort((a,b)=>a[0]-b[0]);return clFill3(o[0][1],(o[1][0]-o[0][0])/100<C.tie)};
+// C.hx[n] (parallel to cells): 0, or per school the main busy street its kids' shortest walk crosses with no signal (1-based
+// in C.hn; 0 none, -1 not routed, over 1.5 mi; build/safe_routes). Tooltip names them.
+function drawCloser(){const C=CL();if(!C)return;const w=C.dx*kx*S,h=C.dy*S,N=C.s.map(nm),HX=C.hx||[];
+ C.cells.forEach(([i,j,k,...v],n)=>{const x=(i*C.dx-lon0)*kx*S,y=(lat1-(j+1)*C.dy)*S,hx=HX[n]||[],cr=hx.map((t,q)=>t>0?` · walk to ${N[q]} crosses ${C.hn[t-1]} without a signal`:"").join("");
+  const r=mk("rect",{x:x.toFixed(1),y:y.toFixed(1),width:w.toFixed(2),height:h.toFixed(2),style:`fill:${clCell(C,v)}`,"data-tip":`${N.map((n,q)=>n+" "+mi2(v[q])).join(" · ")} · ${k<0.5?"under 1 "+LVN[lv]+" kid":"about "+fmt(k)+" "+LVN[lv]+" kids"}${cr}`});r.addEventListener("click",passSel);gDen.append(r)});
+ if(clBus)(C.bl||[]).forEach((e,q)=>{if(!e)return;const d=ringsD(e),o={d,fill:"none","vector-effect":"non-scaling-stroke","pointer-events":"none","stroke-linejoin":"round"};   // bus line: blocks within C.bus mi on foot of each school
+  gDen.append(mk("path",{...o,stroke:"var(--plate)","stroke-width":"5","stroke-opacity":".9"}),mk("path",{...o,stroke:clBusC(q),"stroke-width":"2.6","stroke-dasharray":BUSDASH[q]}))})}
+const BUSDASH=["8 4","3 3","12 3 3 3"],clBusC=q=>`color-mix(in srgb,var(${CLH[q]}) 70%,var(--ink))`;
+function closerLegend(el){const C=CL(),L=LD().closer||[];if(!C){el.innerHTML=`<span class="szh">Closer walk: no school pair for this level (there are pairs for K–5 and 6–8).</span>`;return}
+ const N=C.s.map(nm),H=C.head,two=N.length===2,ar=[...C.areas,...(!H.focus||C.areas.includes(H.focus)?[]:[H.focus])].map(nm),ls=a=>a.length>1?a.slice(0,-1).join(", ")+(a.length>2?",":"")+" and "+a[a.length-1]:a[0];
+ const pk=L.length>1?`<label class="clpk">Schools <select id="clp">${L.map(c=>`<option value="${esc(c.key)}"${c===C?" selected":""}>${esc(clName(c))}</option>`).join("")}</select></label>`:"";
+ const cs=c=>N.map((n,q)=>`${fmt(c[q])} ${q?(two?"closer to ":"to "):two?"live closer to ":"live closest to "}${esc(n)}`).join(", ");
+ const hd=H.focus?`Of the ${fmt(H.n)} ${LVN[lv]} kids in ${esc(nm(H.focus))}'s ${H.flv&&H.flv!==lv?LVN[H.flv]+" ":""}area`:`Of the ${fmt(H.n)} ${LVN[lv]} kids in the shaded areas`;
+ const by=H.focus?"":`<span class="szh clh">By area: ${C.by.filter(r=>r[1]).map(r=>`${esc(nm(r[0]))}'s area: ${N.map((n,q)=>`${esc(n)} ${fmt(r[2+q])}`).join(", ")}`).join(" · ")}.</span>`;
+ const sw=two?[0,1,2,3,4,5,6].map(b=>`<span><i class="densw" style="background:${clFill(b)}"></i>${esc(clLbl(C,b))}</span>`):N.flatMap((n,q)=>[`<span><i class="densw" style="background:${clFill3(q,0)}"></i>${esc(n)} closest</span>`,`<span><i class="densw" style="background:${clFill3(q,1)}"></i>${esc(n)}, next within ${C.tie} mi</span>`]);
+ el.innerHTML=pk+`<span class="szh">Which is the shortest walk, ${esc(two?N.join(" or "):ls(N))}: each ${C.m} m square shaded by ${two?"how much closer its "+LVN[lv]+" kids live to one school than the other":"the school its "+LVN[lv]+" kids live closest to"}, on foot along OpenStreetMap routes, over the PPS Status Quo areas of ${esc(ls(ar))} (our model, 2031-32 kids). The same under every plan.</span>`+
+  `<span class="szh clh"><b>${hd}: ${cs(H.c)}</b> (${fmt(H.tie)} ${two?`within ${C.tie} mi either way`:`with the top two within ${C.tie} mi`}).</span>${by}<span class="dnr">${sw.join(" ")}</span>${C.bl?`<label class="clbus"><input type="checkbox" id="clbus"${clBus?" checked":""}> ${C.bus} mi bus line</label>${clBus?`<span class="dnr">${N.map((n,q)=>`<span><svg width="26" height="10" aria-hidden="true"><line x1="1" y1="5" x2="25" y2="5" stroke="var(--plate)" stroke-width="5"/><line x1="1" y1="5" x2="25" y2="5" stroke="${clBusC(q)}" stroke-width="2.6" stroke-dasharray="${BUSDASH[q]}"/></svg> ${C.bus} mi walk to ${esc(n)}</span>`).join(" ")}</span><span class="szh">Inside a school's line there's no yellow bus to it; past ${C.bus} mi on foot, PPS provides one (Oregon law and PPS's guidelines). Measured on our walk routes, which may not match how PPS measures; PPS also buses some closer kids whose walk crosses a hazard.</span>`:""}`:""}<div class="cllk"><a href="sources.html#def-past-busing-distance">the bus line</a> · <a href="sources.html#def-walk-distance">how walks are measured</a> · <a href="map.html">the full map, with every plan</a></div>`;
+ const cb=$("clbus");if(cb)cb.onchange=()=>{clBus=cb.checked;drawAreas()};const sp=$("clp");if(sp)sp.onchange=()=>{cpair=sp.value;const c=CL();drawAreas();if(c){fitHome=c.areas.join(",");fitTo(fitHome)}}}
+// "Busy streets to cross" (Map options; xing=1): busy streets and their signal / marked crossings from map_data/crossings.js
+// (OSM via build/safe_routes, build_site_map.py), loaded on first use; any theme. Lines and dots keep their size at every zoom.
+const xingOn=()=>$("lxing").checked;let xingDone=false;
+function drawXing(){gX.style.display=xingOn()?"":"none";if(!xingOn()||xingDone)return;lazyJS("crossings.js",()=>{if(xingDone||!window.XING)return;xingDone=true;
+ const ln=r=>"M"+r.map(P).join("L"),dot=a=>a.map(p=>"M"+P([(p[0]-1229300)/1e4,(p[1]+454300)/1e4])+"h0").join("");
+ gX.append(mk("path",{d:XING.lines.map(l=>dec(l).map(ln).join("")).join(""),fill:"none",stroke:"var(--xg)","stroke-width":"3.2","stroke-opacity":".55","stroke-linecap":"round","stroke-linejoin":"round","vector-effect":"non-scaling-stroke"}),
+  mk("path",{d:dot(XING.mk),fill:"none",stroke:"var(--xm)","stroke-width":"4.5","stroke-linecap":"round","vector-effect":"non-scaling-stroke"}),
+  mk("path",{d:dot(XING.sig),fill:"none",stroke:"var(--xs)","stroke-width":"5.5","stroke-linecap":"round","vector-effect":"non-scaling-stroke"}))})}
+function xingLegend(){const el=$("xgl");el.hidden=!xingOn();if(!xingOn())return;const ln=c=>`<svg width="22" height="10" aria-hidden="true"><line x1="2" y1="5" x2="20" y2="5" stroke="var(${c})" stroke-opacity=".55" stroke-width="3.2" stroke-linecap="round"/></svg>`,dt=(c,r)=>`<svg width="12" height="10" aria-hidden="true"><circle cx="6" cy="5" r="${r}" fill="var(${c})"/></svg>`;
+ el.innerHTML=`<span class="szh">Busy streets (OpenStreetMap) and signal-controlled crossings; the map can't tell how safe a crossing feels.</span><span class="dnr"><span>${ln("--xg")} busy street</span><span>${dt("--xs",2.8)} signal</span><span>${dt("--xm",2.3)} marked crosswalk, no signal</span></span>${clOn()&&CL()&&CL().hw?`<span class="szh clh">Kids within ${CL().bus} mi (the no-bus distance) whose shortest walk crosses a busy street with no signal: ${CL().hw.filter(r=>r[1].some(x=>x)).map(r=>`${esc(nm(r[0]))}'s area ${r[1].map((x,q)=>`to ${esc(nm(CL().s[q]))} ${fmt(x)}`).join(", ")}`).join(" · ")||"none"}.</span>`:""}`+
+  `<span class="szh">Busy = OSM trunk, primary or secondary streets, or any street with 4+ lanes or a 35+ mph limit; a crossing counts as signaled with an OSM traffic signal within 25 m. OSM's signal tagging is incomplete, so some real signals are missing; flashing beacons and marked crosswalks count as unsignaled. Crossings are on the shortest walk, not the route a parent would choose (a kid might walk farther to reach a signal). Data: the project's safe-routes analysis (build/safe_routes), from the same OpenStreetMap extract as the walks.</span>`}
+function drawDen(){gDen.replaceChildren();drawXing();xingLegend();if(clOn()){drawCloser();return}if(walkOn()){drawWalk();return}if(!denOn()&&!mvOn())return;const D=LD().den;if(!D)return;
  const paths=D.b.map(()=>"").concat("");
  if(denOn()){const w=D.dx*kx*S,h=D.dy*S;D.cells.forEach(([i,j,k])=>{const x=(i*D.dx-lon0)*kx*S,y=(lat1-(j+1)*D.dy)*S;paths[denBin(k/(D.m*D.m/1e6))]+=`M${x.toFixed(1)},${y.toFixed(1)}h${w.toFixed(2)}v${h.toFixed(2)}h${(-w).toFixed(2)}z`});
   paths.forEach((d,b)=>{if(!d)return;const p=mk("path",{d,style:`fill:${denFill(b)}`,"data-tip":`About ${denRng(b)} ${LVN[lv]} kids per square km here (our model, 2031-32)`});p.addEventListener("click",passSel);gDen.append(p)});return}
@@ -258,7 +300,7 @@ function drawDen(){gDen.replaceChildren();if(walkOn()){drawWalk();return}if(!den
  I.regs.forEach(r=>{const d=ringsD(r[3]);const p=mk("path",{d,"fill-rule":"evenodd",style:r[2]?`fill:${denFill(denBin(r[2]/regKm2(r[3])))}`:"fill:none;stroke:var(--den);stroke-opacity:.5;stroke-dasharray:3 3","vector-effect":"non-scaling-stroke"});
   if(!cmpOn()){p.dataset.tip=r[2]?`${nm(r[0])} → ${nm(r[1])}: about ${fmt(r[2])} kids in this area move`:`${nm(r[0])} → ${nm(r[1])}: the line moves here, but no kids live in this area (model)`;p.addEventListener("click",()=>select(r[0]))}
   else p.setAttribute("pointer-events","none");gDen.append(p)})}
-function denLegend(){const el=$("dnl"),on=denOn()||mvOn()||walkOn();el.hidden=!on;if(!on)return;if(walkOn()){walkLegend(el);return}const D=LD().den;
+function denLegend(){const el=$("dnl"),on=denOn()||mvOn()||walkOn()||clOn();el.hidden=!on;if(!on)return;if(clOn()){closerLegend(el);return}if(walkOn()){walkLegend(el);return}const D=LD().den;
  const sw=D.b.map((_,b)=>b).concat(D.b.length).map(b=>`<span><i class="densw" style="background:${denFill(b)}"></i>${denRng(b)}</span>`).join(" ");
  if(denOn()){el.innerHTML=`<span class="szh">Where ${LVN[lv]} kids live: neighborhood kids per square km, on a 400 m grid (our model, 2031-32). The same in every plan; the lines show which school each area goes to.</span><span class="dnr">${sw}</span><a href="sources.html#def-neighborhood-kids">what this counts</a>`;return}
  const pr=mvPair(),I=pr&&pairInfo(pr[0],pr[1]);
@@ -491,7 +533,7 @@ function quick(){const q=$("quick");q.querySelectorAll("button").forEach(b=>b.re
   bt.setAttribute("aria-pressed",cmpOn()?p1===a&&p2===b:scn===b);bt.onclick=()=>{p1=a;p2=b;if(!cmpOn()){scn=b;$("sel0").value=b;sel=null;drawAreas()}else{fillSelects();chips();drawAreas()}quick();hashWrite()};q.append(bt)});quickFade()}
 // "Map options" (round 8): a dot on the button while anything in it differs from the default, so a hidden setting is never a surprise
 function optInd(){const off=[];if(colBy())off.push("colors: "+$("lcol").selectedOptions[0].text);if(cmpOn()&&hatchTheme()&&!showHatch)off.push("hatch off");
- if($("lcur").checked&&!$("lcurw").hidden)off.push("Status Quo lines on top");[["lpri","major streets"],["lst","collector streets"],["lloc","local streets"],["lnm","street names"],["lrail","rail"]].forEach(([id,t])=>{if(!$(id).checked)off.push(t+" off")});
+ if($("lcur").checked&&!$("lcurw").hidden)off.push("Status Quo lines on top");[["lpri","major streets"],["lst","collector streets"],["lloc","local streets"],["lnm","street names"],["lrail","rail"]].forEach(([id,t])=>{if(!$(id).checked)off.push(t+" off")});if(xingOn())off.push("busy streets on");
  $("mdot").hidden=!off.length;$("mdotT").textContent=off.length?" (changed: "+off.join(", ")+")":"";$("mopt").querySelector("summary").title=off.length?"Changed: "+off.join(", "):"Colors, hatching, streets and rail"}
 function modeUI(){const m=mode,c=m!=="single";document.querySelectorAll("[data-m]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.m===m));
  $("cmpbar").hidden=!c;$("segS").hidden=c;$("swipe").hidden=m!=="swipe";$("chipL").hidden=$("chipR").hidden=!c;$("lg2").hidden=!c;
@@ -519,6 +561,7 @@ $("lhf").onchange=e=>{showHatch=e.target.checked;drawAreas()};
 $("lcur").onchange=curVis;
 $("lpri").onchange=e=>gPri.style.display=e.target.checked?"":"none";
 $("lrail").onchange=e=>gRail.style.display=e.target.checked?"":"none";
+$("lxing").onchange=()=>drawAreas();
 $("lcol").onchange=()=>{$("dvl").classList.toggle("on",dvOn());drawAreas()};
 $("tkey").addEventListener("click",e=>{if(e.target.id==="toswipe")setMode("swipe")});
 // level switch (6-8 / 9-12 data load on demand from map_data/, which works from file:// too)
@@ -531,7 +574,11 @@ function setLevel(l){loadLevel(l,()=>{lv=l;const A=avail();
 // ---- URL hash state (format documented at the top of build/map/MAP_UX_AUDIT.md):
 //   #level=K-5&view=overlay&a=status_quo&b=scenario_A[&school=Sabin][&at=-122.6501,45.5502]   (view = swipe | overlay)
 //   #level=6-8&view=single&plan=scenario_A[&school=...][&at=lon,lat]
-//   [&color=chg|size|past|race]  the "Color areas by" theme (no key = school colors)
+//   [&color=chg|size|past|race|dens|mv|walk|closer]  the "Color areas by" theme (no key = school colors)
+//   [&cpair=sabin-bc|sabin-bc-king|...]  color=closer only: the school set (build_site_map.py CLOSER keys; none = the level's
+//                   first); with no fit= key the map opens zoomed on that set's areas
+//   [&bus=0]  color=closer only: hide the bus line (each school's walk outline at the no-bus distance); on by default
+//   [&xing=1]  the Busy streets to cross layer (busy streets, signals, marked crosswalks); off by default
 //   [&layers=none]  hatch changed areas off (on by default; written only in a compare view under School colors / Changes only;
 //                   layers=hatch is still read).
 //   [&fit=Sabin,Irvington,...]  open zoomed on these school areas (their PPS Status Quo outlines where they have one, else
@@ -539,7 +586,7 @@ function setLevel(l){loadLevel(l,()=>{lv=l;const A=avail();
 //                   Used by the Sabin options page's embedded map (pages/sabin.html).
 //   Legacy: layers=past (old checkbox) = color=past, layers=race = color=race (an explicit color key wins); #6-8 / #9-12.
 //   Every read starts from the defaults (also on hashchange), so a missing or unknown key never keeps the last view's value.
-const VIEWS=["single","swipe","overlay"],THEMES=["chg","size","past","race","dens","mv","walk"];let lastHash="";
+const VIEWS=["single","swipe","overlay"],THEMES=["chg","size","past","race","dens","mv","walk","closer"];let lastHash="";
 const henc=v=>encodeURIComponent(v).replace(/%2C/g,",").replace(/%20/g,"+");
 // round 8: the default view (K-5, swipe, PPS Status Quo | PPS A) writes no hash; any key that differs from its default is written
 const DEF={level:"K-5",view:"single",a:BASELINE,b:"scenario_A",plan:"scenario_A"};
@@ -547,7 +594,7 @@ const defPick=(k,i)=>{const A=avail();return A.includes(k)?k:A[Math.min(i,A.leng
 function hashWrite(){if(initLoad)return;if(document.documentElement.classList.contains("embed"))try{parent.postMessage({ppsMapPlan:cmpOn()?p2:scn,ppsMapView:mode},"*")}catch(e){}   // embed: tell the host page which plan is shown
  const q=[];if(lv!==DEF.level)q.push(["level",lv]);if(mode!==DEF.view)q.push(["view",mode]);
  if(cmpOn()){if(p1!==defPick(DEF.a,0))q.push(["a",p1]);if(p2!==defPick(DEF.b,1))q.push(["b",p2])}else if(scn!==defPick(DEF.plan,0))q.push(["plan",scn]);
- if(colBy())q.push(["color",colBy()]);if(cmpOn()&&hatchTheme()&&!showHatch)q.push(["layers","none"]);   // round 6: off-only, and only where the hatch is drawn
+ if(colBy())q.push(["color",colBy()]);if(clOn()&&CL()&&CL()!==(LD().closer||[])[0])q.push(["cpair",CL().key]);if(cmpOn()&&hatchTheme()&&!showHatch)q.push(["layers","none"]);if(xingOn())q.push(["xing","1"]);if(clOn()&&!clBus)q.push(["bus","0"]);   // round 6: off-only, and only where the hatch is drawn
  if(sel)q.push(["school",sel]);if(pin)q.push(["at",pin[0].toFixed(5)+","+pin[1].toFixed(5)]);
  const h=q.length?"#"+q.map(([k,v])=>k+"="+henc(v)).join("&"):"";if(h===location.hash)return;lastHash=h;try{history.replaceState(null,"",h||location.pathname+location.search)}catch(_){}}
 function hashRead(){const h=(location.hash||"").slice(1);if(!h)return{};if(LVN[h])return{level:h};const o={};
@@ -560,9 +607,10 @@ function restore(st,done){const L=LVN[st.level]?st.level:"K-5";loadLevel(L,()=>{
  const at=(st.at||"").split(",").map(Number);pin=at.length===2&&at.every(isFinite)&&at[0]>lon0&&at[0]<lon1&&at[1]>lat0&&at[1]<lat1?at:null;
  const ly=st.layers!=null?st.layers.split(","):null;$("lhf").checked=showHatch=ly?ly.includes("hatch"):true;
  $("lcol").value=st.color!=null?(THEMES.includes(st.color)?st.color:""):ly&&ly.includes("past")?"past":ly&&ly.includes("race")?"race":"";
- $("dvl").classList.toggle("on",dvOn());
+ if(clOn()){mode="single";scn=BASELINE}document.documentElement.classList.toggle("clmode",clOn());   // Closer walk is plan-independent: a page of its own (Sabin page link), today's lines, no plan controls
+ $("dvl").classList.toggle("on",dvOn());cpair=st.cpair||null;clBus=st.bus!=="0";$("lxing").checked=st.xing==="1";
  initLoad=true;levelUI();modeUI();drawAreas();initLoad=false;hashWrite();
- fitHome=st.fit||null;if(st.fit){fitTo(st.fit);requestAnimationFrame(()=>fitTo(st.fit))}   // again after the first layout (the aspect ratio can change)
+ fitHome=st.fit||(clOn()&&st.cpair&&CL()&&CL().key===st.cpair?CL().areas.join(","):null);if(fitHome){const f=fitHome;fitTo(f);requestAnimationFrame(()=>fitTo(f))}   // again after the first layout (the aspect ratio can change); color=closer with cpair and no fit: that pair's areas
  if(done)requestAnimationFrame(done)})}
 // fit=: the view box around the named school areas (union of outlines), with a margin; false if none is drawn at this level
 function fitTo(list){const N=String(list).split(",").map(s=>s.trim()).filter(Boolean),PL=MAPLV[lv].plans,ks=[BASELINE,...Object.keys(PL)];

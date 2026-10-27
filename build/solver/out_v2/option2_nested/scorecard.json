@@ -1,6 +1,6 @@
 {
  "name": "option2_nested",
- "label": "PREVIEW: Boundary changes, feeders follow high schools - PPS A's closures, programs and high-school lines; every elementary area inside one high-school area (Laurelhurst the one exception), middle schools inside high-school areas except PPS A's 3 splits and Ockley Green; middle minimum 425; not yet written up",
+ "label": "Boundary changes, feeders follow high schools - PPS A's closures, programs and high-school lines; every elementary area inside one high-school area (Laurelhurst the one exception), middle schools inside high-school areas except PPS A's 3 splits and Ockley Green; middle minimum 425",
  "basis": "2031-32 (PSU forecast; block kids scaled by area, see METHOD.md)",
  "levels": {
   "K-5": {

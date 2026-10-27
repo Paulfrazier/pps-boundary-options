@@ -16,9 +16,11 @@
 <div class="wrap">
  <div class="warn" id="pps-disclaimer" role="note"><b>Independent analysis by a PPS parent, not an official Portland Public Schools product.</b> <span class="dlong">PPS's own proposals are on the <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">PPS rightsizing scenarios page</a> and in <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials (BoardBook)</a>.</span><span class="dshort">PPS's own proposals: <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">scenarios page</a> · <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">Oct 6, 2026 board materials</a>.</span> Built with AI, directed by a PPS parent (<a href="how.html">how</a>).</div>
  <header>
-  <h1>Every option on one map</h1>
-  <p class="notreal">These are best effort boundaries. NOT REAL PLANS, yet.</p>
-  <p class="lede" id="lede">Compare any two plans: swipe to see where the lines move, tap a spot to see its school under each plan.</p>
+  <h1 class="nocl">Every option on one map</h1>
+  <p class="notreal nocl">These are best effort boundaries. NOT REAL PLANS, yet.</p>
+  <p class="lede nocl" id="lede">Compare any two plans: swipe to see where the lines move, tap a spot to see its school under each plan.</p>
+  <h1 class="oncl">What walk is closer</h1>
+  <p class="lede oncl">Which school is the shorter walk from each spot, on foot along real streets (our model, 2031-32 kids). It doesn&rsquo;t depend on any plan; the lines are today&rsquo;s PPS Status Quo areas. <a href="sabin.html">Sabin options</a> &middot; <a href="map.html">the full map, with every plan</a></p>
   <p class="warn prelim" id="prelim" hidden></p>
  </header>
  <div class="ctl" id="ctl">
@@ -38,7 +40,7 @@
   <details class="mopt" id="mopt"><summary aria-label="Map options: colors, hatching, streets and rail"><svg class="ico" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M2 4h7M13 4h1M2 12h1M7 12h7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="11" cy="4" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/><circle cx="5" cy="12" r="2" fill="none" stroke="currentColor" stroke-width="1.6"/></svg><span class="mt">Map options</span><span class="mts">Options</span><i class="mdot" id="mdot" hidden></i><span class="sr" id="mdotT"></span></summary>
   <div class="mpop" role="group" aria-label="Map options">
    <label class="sel cby" for="lcol">Color areas by</label>
-   <select id="lcol"><option value="">School colors</option><option value="chg">Changes only (plain fill)</option><option value="size">Size vs target range</option><option value="past">Sent to a farther school</option><option value="race">Racial mix</option><option value="dens">Where kids live</option><option value="mv">Where kids move</option><option value="walk">Walk to assigned school</option></select>
+   <select id="lcol"><option value="">School colors</option><option value="chg">Changes only (plain fill)</option><option value="size">Size vs target range</option><option value="past">Sent to a farther school</option><option value="race">Racial mix</option><option value="dens">Where kids live</option><option value="mv">Where kids move</option><option value="walk">Walk to assigned school</option><option value="closer" hidden>Closer walk</option></select>
    <label class="chk" id="lhfw" hidden><input type="checkbox" id="lhf" checked> Hatch changed areas</label>
    <p class="mh">Layers</p>
    <label class="chk" id="lcurw"><input type="checkbox" id="lcur"> PPS Status Quo lines on top</label>
@@ -47,6 +49,7 @@
    <label class="chk"><input type="checkbox" id="lloc" checked> Local streets <button type="button" class="zh" hidden>zoom in</button></label>
    <label class="chk"><input type="checkbox" id="lnm" checked> Street names <button type="button" class="zh" hidden>zoom in</button></label>
    <label class="chk"><input type="checkbox" id="lrail" checked> Rail</label>
+   <label class="chk"><input type="checkbox" id="lxing"> Busy streets to cross</label>
   </div>
   </details>
   <button type="button" class="copyl" id="copyl" aria-label="Copy a link to this exact view" title="Copy a link to this exact view (level, plans, school, spot, colors and layers)"><svg class="ico" width="15" height="15" viewBox="0 0 16 16" aria-hidden="true"><path d="M6.5 9.5l3-3M7 4.5l1.2-1.2a2.6 2.6 0 0 1 3.7 3.7L10.7 8.2M9 11.5l-1.2 1.2a2.6 2.6 0 0 1-3.7-3.7L5.3 7.8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span class="ct" id="copylT" aria-live="polite">Copy link</span></button>
@@ -78,7 +81,7 @@
 <span class="lg2" id="lg2" hidden><span id="lgO" hidden><span><svg width="26" height="10"><line x1="1" y1="5" x2="25" y2="5" stroke="var(--ink)" stroke-opacity=".7" stroke-width="1.6"/></svg><span id="lgO1T">Plan 1 lines</span></span> <span><svg width="26" height="10"><line x1="1" y1="5" x2="25" y2="5" stroke="var(--cmp)" stroke-width="2.4" stroke-dasharray="7 4"/></svg><span id="lgO2T">Plan 2 lines</span></span></span><span id="lgS" hidden>◂ plan 1 | plan 2 ▸</span><span id="lgH" hidden><i class="chgsw"></i>Hatched: area changes school (plan 1 → plan 2)</span></span>
 <span id="lgP" class="lgp" hidden></span>
 <span class="szl" id="szl" hidden></span>
-<span class="dnl" id="dnl" hidden></span>
+<span class="dnl" id="dnl" hidden></span><span class="dnl" id="xgl" hidden></span>
 <span class="dvl" id="dvl"><span class="dvs">Share of kids of color in each school's area, compared with the district.</span><span class="dvr">lower<b aria-hidden="true"></b>higher<i class="dsep" aria-hidden="true">·</i><span id="dvlP"></span><i class="dsep" aria-hidden="true">·</i><a href="sources.html#def-kids-of-color-share">what this counts</a></span></span>
    </div><div id="sidec"></div>
    <details class="gloss" id="glossd"><summary>Terms: DLI, plan 1 / plan 2, target range, exempt</summary><p><b>Terms:</b> DLI = Dual Language Immersion · plan 1 / plan 2 = the two plans compared (left / right in swipe) · target range = a school's size floor (PPS's minimum) to ceiling (building capacity) · <span title="Astor and Skyline: small K-8s PPS keeps below the floor in every scenario">exempt</span> = not counted against the target (<a href="sources.html#def-size-target-floor">definitions</a>)</p></details>

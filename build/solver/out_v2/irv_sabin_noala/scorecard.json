@@ -32,33 +32,31 @@
   },
   "6-8": {
    "kids": 5934.4,
-   "avg_walk_mi": 1.811,
+   "avg_walk_mi": 1.749,
    "pct_within_0.5mi": 7.2,
-   "pct_within_1.0mi": 28.5,
-   "pct_within_1.5mi": 51.5,
-   "kids_over_bus_threshold": 2876.0,
+   "pct_within_1.0mi": 29.1,
+   "pct_within_1.5mi": 52.4,
+   "kids_over_bus_threshold": 2825.0,
    "bus_threshold_mi": 1.5,
-   "avg_bike_mi": 1.877,
-   "kids_past_closer_school": 1370.0,
+   "avg_bike_mi": 1.808,
+   "kids_past_closer_school": 1225.0,
    "past_margin_mi": 0.25,
-   "kids_reassigned_vs_status_quo": 2616.0,
-   "poc_share_of_movers_vs_status_quo": 0.399,
-   "kids_reassigned_vs_today": 2686.0,
+   "kids_reassigned_vs_status_quo": 2357.0,
+   "poc_share_of_movers_vs_status_quo": 0.411,
+   "kids_reassigned_vs_today": 2426.0,
    "poc_share_district": 0.428,
    "dissimilarity_index": 0.189,
    "schools_open": 15,
-   "schools_in_range": 14,
-   "schools_evaluated_non_exempt": 13,
+   "schools_in_range": 15,
+   "schools_evaluated_non_exempt": 12,
    "schools_in_range_non_exempt": 12,
-   "below_floor": {
-    "Gray": 465
-   },
+   "below_floor": {},
    "above_ceiling": {},
-   "avg_utilization": 0.732,
+   "avg_utilization": 0.731,
    "min_size": 178,
    "max_size": 624,
    "schools_in_range_2025_26_basis": 13,
-   "schools_in_range_at_minus9pct": 8,
+   "schools_in_range_at_minus9pct": 10,
    "split_feeders_es_to_ms": {},
    "n_split_feeders_es_to_ms": 0
   },
@@ -92,8 +90,8 @@
    "schools_in_range_at_minus9pct": 7,
    "split_feeders_ms_to_hs": {
     "Gray": {
-     "Ida B. Wells": 569.8,
-     "Lincoln": 192.1
+     "Ida B. Wells": 499.0,
+     "Lincoln": 269.6
     },
     "Harrison Park": {
      "Franklin": 243.7,
@@ -102,10 +100,6 @@
     "Hosford": {
      "Cleveland": 676.5,
      "Franklin": 103.3
-    },
-    "Jackson": {
-     "Ida B. Wells": 891.5,
-     "Lincoln": 77.4
     },
     "Lane": {
      "Cleveland": 408.9,
@@ -122,7 +116,7 @@
      "Roosevelt": 73.6
     }
    },
-   "n_split_feeders_ms_to_hs": 7,
+   "n_split_feeders_ms_to_hs": 6,
    "split_feeders_es_to_hs": {
     "Ainsworth": {
      "Ida B. Wells": 10.3,
@@ -170,7 +164,7 @@
     }
    },
    "n_split_feeders_es_to_hs": 11,
-   "pct_ms_feeders_to_one_hs": 53.3,
+   "pct_ms_feeders_to_one_hs": 60.0,
    "hs_range": 424
   }
  },
@@ -1491,11 +1485,11 @@
     "at_target_all_years_to_2035_36": 14
    },
    "6-8": {
-    "n_zoned_non_exempt": 13,
+    "n_zoned_non_exempt": 12,
     "at_target_zoned": {
-     "2027-28": 12,
-     "2028-29": 12,
-     "2029-30": 12,
+     "2027-28": 11,
+     "2028-29": 11,
+     "2029-30": 11,
      "2030-31": 11,
      "2031-32": 12,
      "2032-33": 11,
@@ -1576,36 +1570,6 @@
       "in_range_all_required_years": false,
       "in_range_all_years": false
      },
-     "Gray": {
-      "first_year_out": "2030-31",
-      "by": -11.9,
-      "sizes_by_year": {
-       "2027-28": 562.9,
-       "2028-29": 548.4,
-       "2029-30": 533.7,
-       "2030-31": 488.1,
-       "2031-32": 465.4,
-       "2032-33": 456.2,
-       "2033-34": 478.3,
-       "2034-35": 495.6,
-       "2035-36": 495.3
-      },
-      "program_only": false,
-      "size_2031": 465.4,
-      "in_range_by_year": [
-       true,
-       true,
-       true,
-       false,
-       false,
-       false,
-       false,
-       false,
-       false
-      ],
-      "in_range_all_required_years": false,
-      "in_range_all_years": false
-     },
      "Harrison Park": {
       "first_year_out": null,
       "by": null,
@@ -1670,18 +1634,18 @@
       "first_year_out": null,
       "by": null,
       "sizes_by_year": {
-       "2027-28": 658.4,
-       "2028-29": 646.9,
-       "2029-30": 621.9,
-       "2030-31": 561.9,
-       "2031-32": 535.4,
-       "2032-33": 527.9,
-       "2033-34": 557.8,
-       "2034-35": 571.9,
-       "2035-36": 570.3
+       "2027-28": 699.6,
+       "2028-29": 694.2,
+       "2029-30": 659.6,
+       "2030-31": 586.3,
+       "2031-32": 553.8,
+       "2032-33": 549.8,
+       "2033-34": 583.5,
+       "2034-35": 591.2,
+       "2035-36": 587.2
       },
       "program_only": false,
-      "size_2031": 535.4,
+      "size_2031": 553.8,
       "in_range_by_year": [
        true,
        true,
@@ -2249,7 +2213,7 @@
  "solve": {
   "seconds": {
    "K-5": 858.8,
-   "6-8": 3.2,
+   "6-8": 6.5,
    "9-12": 0.0
   },
   "components": {
@@ -2460,9 +2424,9 @@
       {
        "round": 0,
        "status": "OPTIMAL",
-       "secs": 0.9,
-       "objective": 94889477.0,
-       "bound": 94889477.0,
+       "secs": 1.7,
+       "objective": 39652785.0,
+       "bound": 39652785.0,
        "gap": 0.0,
        "islands": 0,
        "relaxation_bound": null,
@@ -2470,12 +2434,10 @@
        "island_kids": 0.0,
        "cuts_total": 0,
        "slack": {
-        "Gray:lo": 35.14,
         "durability_count_short:2027-28": 1,
         "durability_count_short:2028-29": 1,
         "durability_count_short:2029-30": 1,
-        "durability_count_short:2030-31": 2,
-        "durability_count_short:2031-32": 1
+        "durability_count_short:2030-31": 1
        },
        "splits": 0,
        "range_excess": null,
@@ -2494,18 +2456,18 @@
          "West Sylvan"
         ],
         "at_target_by_year": {
-         "2027-28": 12,
-         "2028-29": 12,
-         "2029-30": 12,
+         "2027-28": 11,
+         "2028-29": 11,
+         "2029-30": 11,
          "2030-31": 11,
          "2031-32": 12
         },
         "required_by_year": {
-         "2027-28": 13,
-         "2028-29": 13,
-         "2029-30": 13,
-         "2030-31": 13,
-         "2031-32": 13
+         "2027-28": 12,
+         "2028-29": 12,
+         "2029-30": 12,
+         "2030-31": 12,
+         "2031-32": 12
         }
        },
        "opened_optional": null,
@@ -2533,9 +2495,9 @@
      "final": {
       "round": 0,
       "status": "OPTIMAL",
-      "secs": 0.9,
-      "objective": 94889477.0,
-      "bound": 94889477.0,
+      "secs": 1.7,
+      "objective": 39652785.0,
+      "bound": 39652785.0,
       "gap": 0.0,
       "islands": 0,
       "relaxation_bound": null,
@@ -2543,12 +2505,10 @@
       "island_kids": 0.0,
       "cuts_total": 0,
       "slack": {
-       "Gray:lo": 35.14,
        "durability_count_short:2027-28": 1,
        "durability_count_short:2028-29": 1,
        "durability_count_short:2029-30": 1,
-       "durability_count_short:2030-31": 2,
-       "durability_count_short:2031-32": 1
+       "durability_count_short:2030-31": 1
       },
       "splits": 0,
       "range_excess": null,
@@ -2567,18 +2527,18 @@
         "West Sylvan"
        ],
        "at_target_by_year": {
-        "2027-28": 12,
-        "2028-29": 12,
-        "2029-30": 12,
+        "2027-28": 11,
+        "2028-29": 11,
+        "2029-30": 11,
         "2030-31": 11,
         "2031-32": 12
        },
        "required_by_year": {
-        "2027-28": 13,
-        "2028-29": 13,
-        "2029-30": 13,
-        "2030-31": 13,
-        "2031-32": 13
+        "2027-28": 12,
+        "2028-29": 12,
+        "2029-30": 12,
+        "2030-31": 12,
+        "2031-32": 12
        }
       },
       "opened_optional": null,

@@ -1,50 +1,49 @@
-== irv_sabin_whole K-5
- K-5: fixed to build/solver/out_v2/irv_sabin_keep.staging/assign_K-5.parquet (not solved)
+== K-5: loaded from checkpoint
 == irv_sabin_whole 6-8
  6-8: warm start from build/solver/out_v2/equity_noswap/assign_6-8.parquet (9160/9295 blocks hinted); relaxation round skipped
  middle->high feeders vs A_hs: soft (Paul 2026-10-12 ~15:15): ~200 kid-miles per extra HS, no floor penalty 1000.0 per high school fed; floor 0% of 15 middle zones feed one HS
- durability mode (all, horizon pps2031: 2027-28..2031-32): required at target by year [13, 13, 13, 13, 13] (reference scenario_A); 13 countable schools
+ durability mode (all, horizon pps2031: 2027-28..2031-32): required at target by year [12, 12, 12, 12, 12] (reference scenario_A); 12 countable schools
  15 schools, 9295 blocks, 40561 assignment vars, avg 4.4 candidates/block
  pruned 0 unreachable (block, school) candidates
  component: 15 schools, 9295 blocks
-  (round 0: 1s wall, det=0.7 work units)
-   middle zones feeding one high school: 4/15 (floor 0%); split: {'Beaumont': ['McDaniel', 'Grant', 'Cleveland'], 'Gray': ['Lincoln', 'Ida B. Wells'], 'Harrison Park': ['Franklin', 'McDaniel'], 'Hosford': ['Cleveland', 'Franklin'], 'Jackson': ['Lincoln', 'Ida B. Wells'], 'Kellogg': ['Cleveland', 'Franklin'], 'Lane': ['Cleveland', 'Franklin'], 'Mt Tabor': ['Cleveland', 'Grant', 'Franklin', 'McDaniel'], 'Ockley Green': ['McDaniel', 'Jefferson', 'Roosevelt'], 'Roseway Heights': ['McDaniel', 'Grant'], 'Tubman': ['Grant', 'Jefferson', 'Cleveland']}
-  round 0: OPTIMAL 1s obj=94993640 bound=94993640 gap=0.00% islands=0 (0.0 kids) slack={'Gray:lo': 35.14, 'durability_count_short:2027-28': 1, 'durability_count_short:2028-29': 1, 'durability_count_short:2029-30': 1, 'durability_count_short:2030-31': 2, 'durability_count_short:2031-32': 1} splits=0
-   at target in every modeled year (pps2031): 11/13; at target by year [12, 12, 12, 11, 12] (required [13, 13, 13, 13, 13])
-  phase 2 skipped (solver.phase2_skip): whole-zone shortfalls accepted {'Gray:lo': 35.14, 'durability_count_short:2027-28': 1, 'durability_count_short:2028-29': 1, 'durability_count_short:2029-30': 1, 'durability_count_short:2030-31': 2, 'durability_count_short:2031-32': 1}
- 6-8 done in 2.5s
+  (round 0: 2s wall, det=0.8 work units)
+   middle zones feeding one high school: 5/15 (floor 0%); split: {'Beaumont': ['McDaniel', 'Grant', 'Cleveland'], 'Gray': ['Lincoln', 'Ida B. Wells'], 'Harrison Park': ['Franklin', 'McDaniel'], 'Hosford': ['Cleveland', 'Franklin'], 'Kellogg': ['Cleveland', 'Franklin'], 'Lane': ['Cleveland', 'Franklin'], 'Mt Tabor': ['Cleveland', 'Grant', 'Franklin', 'McDaniel'], 'Ockley Green': ['McDaniel', 'Jefferson', 'Roosevelt'], 'Roseway Heights': ['McDaniel', 'Grant'], 'Tubman': ['Grant', 'Jefferson', 'Cleveland']}
+  round 0: OPTIMAL 2s obj=39756948 bound=39756948 gap=0.00% islands=0 (0.0 kids) slack={'durability_count_short:2027-28': 1, 'durability_count_short:2028-29': 1, 'durability_count_short:2029-30': 1, 'durability_count_short:2030-31': 1} splits=0
+   at target in every modeled year (pps2031): 11/12; at target by year [11, 11, 11, 11, 12] (required [12, 12, 12, 12, 12])
+  phase 2 skipped (solver.phase2_skip): whole-zone shortfalls accepted {'durability_count_short:2027-28': 1, 'durability_count_short:2028-29': 1, 'durability_count_short:2029-30': 1, 'durability_count_short:2030-31': 1}
+ 6-8 done in 6.9s
 == irv_sabin_whole 9-12
  9-12: 130 blocks with es_cur = Skyline -> Lincoln
  9-12: 214 blocks with None = ['Sabin'] -> Jefferson
  9-12: fixed to block column A_hs (not solved)
                                          K-5       6-8      9-12
 kids                               12715.000  5934.400  9261.000
-avg_walk_mi                            0.914     1.819     1.977
+avg_walk_mi                            0.914     1.757     1.977
 pct_within_0.5mi                      25.900     6.900     5.700
-pct_within_1.0mi                      69.600    27.800    23.400
-pct_within_1.5mi                      89.700    51.100    46.500
-kids_over_bus_threshold             3863.000  2904.000  4951.000
+pct_within_1.0mi                      69.600    28.400    23.400
+pct_within_1.5mi                      89.700    51.900    46.500
+kids_over_bus_threshold             3863.000  2853.000  4951.000
 bus_threshold_mi                       1.000     1.500     1.500
-kids_past_closer_school              984.000  1415.000   784.000
+kids_past_closer_school              984.000  1270.000   784.000
 past_margin_mi                         0.250     0.250     0.250
-kids_reassigned_vs_status_quo       4404.000  2666.000   380.000
-poc_share_of_movers_vs_status_quo      0.434     0.396     0.444
-kids_reassigned_vs_today            4400.000  2737.000  1556.000
+kids_reassigned_vs_status_quo       4404.000  2407.000   380.000
+poc_share_of_movers_vs_status_quo      0.434     0.407     0.444
+kids_reassigned_vs_today            4400.000  2476.000  1556.000
 poc_share_district                     0.427     0.428     0.426
 dissimilarity_index                    0.213     0.184     0.183
 schools_open                          42.000    15.000     8.000
-schools_in_range                      42.000    14.000     8.000
-schools_evaluated_non_exempt          38.000    13.000     8.000
+schools_in_range                      42.000    15.000     8.000
+schools_evaluated_non_exempt          38.000    12.000     8.000
 schools_in_range_non_exempt           38.000    12.000     8.000
 avg_utilization                        0.739     0.731     0.782
 min_size                             178.000   178.000  1119.000
 max_size                             549.000   624.000  1543.000
 schools_in_range_2025_26_basis        36.000    13.000     6.000
-schools_in_range_at_minus9pct         17.000     7.000     7.000
-avg_bike_mi                              NaN     1.884     2.044
+schools_in_range_at_minus9pct         17.000     9.000     7.000
+avg_bike_mi                              NaN     1.816     2.044
 n_split_feeders_es_to_ms                 NaN     0.000       NaN
 pct_within_2.0mi                         NaN       NaN    61.500
-n_split_feeders_ms_to_hs                 NaN       NaN     8.000
+n_split_feeders_ms_to_hs                 NaN       NaN     7.000
 n_split_feeders_es_to_hs                 NaN       NaN    12.000
-pct_ms_feeders_to_one_hs                 NaN       NaN    46.700
+pct_ms_feeders_to_one_hs                 NaN       NaN    53.300
 hs_range                                 NaN       NaN   424.000
