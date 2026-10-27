@@ -8,9 +8,9 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23245c9e%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23fff%27/%3E%3C/svg%3E">
 <link rel="stylesheet" href="site.css">
 <style>
-:root{--b0:#dcebf0;--b1:#9cc6d4;--b2:#4f8fa8;--b3:#1f5168;--fwy:#d9782d;--road:#b9b3a6;--river:#bcd6e6;--land:#efece4;--z0:#2f5d6e;--z1:#b4472f;--z2:#8a6d3b;--z3:#2e7d5b;--z4:#7b5ea7;--z5:#5d686d}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--b0:#203a44;--b1:#2f6577;--b2:#5d9fb6;--b3:#a7d4e3;--fwy:#e8975a;--road:#4a4f50;--river:#22394a;--land:#20272a;--z0:#8cc3d6;--z1:#e8876f;--z2:#d2b277;--z3:#6cc49a;--z4:#b59be0;--z5:#a3adb1}}
-:root[data-theme="dark"]{--b0:#203a44;--b1:#2f6577;--b2:#5d9fb6;--b3:#a7d4e3;--fwy:#e8975a;--road:#4a4f50;--river:#22394a;--land:#20272a;--z0:#8cc3d6;--z1:#e8876f;--z2:#d2b277;--z3:#6cc49a;--z4:#b59be0;--z5:#a3adb1}
+:root{--d0:#e4eef0;--d1:#bcd7de;--d2:#86b5c4;--d3:#4f8fa8;--d4:#24607a;--b0:#dcebf0;--b1:#9cc6d4;--b2:#4f8fa8;--b3:#1f5168;--fwy:#d9782d;--road:#b9b3a6;--river:#bcd6e6;--land:#efece4;--z0:#2f5d6e;--z1:#b4472f;--z2:#8a6d3b;--z3:#2e7d5b;--z4:#7b5ea7;--z5:#5d686d}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--d0:#1d3038;--d1:#24485a;--d2:#2f6a80;--d3:#4d93ad;--d4:#8cc6da;--b0:#203a44;--b1:#2f6577;--b2:#5d9fb6;--b3:#a7d4e3;--fwy:#e8975a;--road:#4a4f50;--river:#22394a;--land:#20272a;--z0:#8cc3d6;--z1:#e8876f;--z2:#d2b277;--z3:#6cc49a;--z4:#b59be0;--z5:#a3adb1}}
+:root[data-theme="dark"]{--d0:#1d3038;--d1:#24485a;--d2:#2f6a80;--d3:#4d93ad;--d4:#8cc6da;--b0:#203a44;--b1:#2f6577;--b2:#5d9fb6;--b3:#a7d4e3;--fwy:#e8975a;--road:#4a4f50;--river:#22394a;--land:#20272a;--z0:#8cc3d6;--z1:#e8876f;--z2:#d2b277;--z3:#6cc49a;--z4:#b59be0;--z5:#a3adb1}
 .pitch{font-size:20px;line-height:1.45;max-width:60ch;margin:14px 0}
 .status{display:inline-block;font-size:13px;font-weight:700;background:var(--tag);border-radius:6px;padding:2px 8px;margin:0 0 8px}
 section{margin:34px 0}
@@ -24,6 +24,12 @@ section h2{margin:0 0 8px}
 .fig svg{display:block;width:100%;height:auto}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.hero{display:grid;grid-template-columns:3fr 2fr;gap:14px;align-items:start}
+.why{list-style:none;margin:12px 0;padding:0}
+.why li{border-left:4px solid var(--good);padding:4px 12px;margin:0 0 12px}
+.why b{display:block;font-size:20px}
+.why span{font-size:14px;color:var(--muted)}
+@media (max-width:700px){.hero{grid-template-columns:1fr}}
 .kpis{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}
 .kpi{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:10px 14px;min-width:150px;flex:1}
 .kpi b{display:block;font-size:24px}
@@ -52,8 +58,8 @@ svg text{font-family:inherit}
 <main>
 <div class="warn" id="pps-disclaimer"><b>Independent analysis by a PPS parent, not an official Portland Public Schools product.</b> It may contain errors. Check PPS's own materials: the <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">Rightsizing scenarios page</a> and the <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
 
-<p class="small"><a href="sabin-ideas.html">&larr; Sabin and the area: two ideas</a></p>
-<h1>Move Tubman to where its kids are</h1>
+<p class="small"><a href="sabin-ideas.html">&larr; Sabin: the ADA plan vs the better plan</a></p>
+<h1>The better plan: move Tubman to where its kids are</h1>
 <p class="notreal">These are best effort boundaries. NOT REAL PLANS, yet.</p>
 <p class="pitch">Harriet Tubman Middle School sits at the edge of a freeway and at the edge of the kids it serves. The Vernon building, about 2 miles northeast, fixes both, and PPS has wanted to move Tubman for five years.</p>
 <p class="status" id="status">Our model, 2031-32; the walk maps are study estimates</p>
@@ -90,6 +96,29 @@ function fwySvg(b,wd){return (b.trunk?'<path d="'+b.trunk+'" fill="none" stroke=
 function dot(p,lab,o){o=o||{};var r=o.r||6;
   return '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+r+'" fill="'+(o.fill||'var(--ink)')+'" stroke="var(--paper)" stroke-width="2"/>'+
     (lab?'<text x="'+(p[0]+(o.dx==null?9:o.dx))+'" y="'+(p[1]+(o.dy==null?4:o.dy))+'" data-px="'+(o.px||14)+'" font-weight="700" fill="var(--ink)" stroke="var(--paper)" stroke-width="3" paint-order="stroke"'+(o.anchor?' text-anchor="'+o.anchor+'"':'')+'>'+esc(lab)+'</text>':'');}
+
+// ---- 0. the case in one map: the same kids, two buildings
+function heroFig(){
+  var W=T.walk, H=T.hero, F=S.tubman_on_flint, V=S.tubman_at_vernon, ft=W.pts.Tubman, vn=W.pts.Vernon, m=H.mid;
+  function leg(a,lab,c){var x=(a[0]+m[0])/2,y=(a[1]+m[1])/2;
+    return '<path d="M'+m[0]+' '+m[1]+'L'+a[0]+' '+a[1]+'" stroke="'+c+'" stroke-width="3" stroke-dasharray="7 5"/>'+
+      '<text x="'+x+'" y="'+(y-8)+'" data-px="14" font-weight="700" fill="'+c+'" stroke="var(--paper)" stroke-width="4" paint-order="stroke" text-anchor="middle">'+esc(lab)+'</text>';}
+  var svg=svgOpen(W.w,W.h,'Where the middle schoolers in Tubman&rsquo;s area live, and the two buildings')+baseSvg(W.base,W.w,W.h)+
+    fwySvg(W.base,6)+
+    H.dens.map(function(d,i){return d?'<path d="'+d+'" fill="var(--d'+i+')" stroke="var(--d'+i+')" stroke-width=".6"/>':'';}).join('')+
+    leg(ft,H.mid_to.Tubman.toFixed(2)+' mi','var(--bad)')+leg(vn,H.mid_to.Vernon.toFixed(2)+' mi','var(--good)')+
+    '<circle cx="'+m[0]+'" cy="'+m[1]+'" r="9" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/><circle cx="'+m[0]+'" cy="'+m[1]+'" r="3" fill="var(--ink)"/>'+
+    '<text x="'+(m[0]-14)+'" y="'+(m[1]+5)+'" data-px="14" font-weight="700" fill="var(--ink)" stroke="var(--paper)" stroke-width="4" paint-order="stroke" text-anchor="end">Middle of its kids</text>'+
+    dot(ft,'Tubman today, N Flint, by I-5',{r:12,px:15,dx:17,dy:10,fill:'var(--bad)'})+dot(vn,'Vernon building',{r:12,px:15,dx:17,dy:10,fill:'var(--good)'})+'</svg>';
+  return '<div class="hero"><div class="fig">'+svg+
+    '<div class="legend"><span>Middle schoolers per sq mi:</span>'+[0,1,2,3,4].map(function(i){var b=H.breaks;return '<span><i style="background:var(--d'+i+')"></i>'+(i===0?'under '+b[0]:i===4?b[3]+'+':b[i-1]+'&ndash;'+b[i])+'</span>';}).join('')+'<span><i class="ln" style="background:var(--fwy)"></i>Freeway</span></div></div>'+
+    '<ul class="why">'+
+    '<li><b>'+H.mid_to.Vernon.toFixed(2)+' mi vs '+H.mid_to.Tubman.toFixed(2)+' mi</b><span>from the middle of where Tubman&rsquo;s kids live to the Vernon building vs to N Flint (straight line)</span></li>'+
+    '<li><b>'+n0(H.closer_vernon)+' of '+n0(S.kids)+'</b><span>kids have a shorter walk to Vernon than to N Flint</span></li>'+
+    '<li><b>'+n0(F.kids_within_1_5mi)+' &rarr; '+n0(V.kids_within_1_5mi)+'</b><span>kids within the 1.5 mi bus line; average walk '+mi(F.avg_walk_mi)+' &rarr; '+mi(V.avg_walk_mi)+' mi</span></li>'+
+    '<li><b>Next to I-5 &rarr; a neighborhood street</b><span>N Flint sits a few dozen feet from the freeway being widened now; Vernon is on NE Killingsworth, away from the freeways</span></li></ul></div>'+
+    '<p class="cite">The kids: under PPS A, B and Plan D, Tubman serves today&rsquo;s Tubman zone plus Vernon&rsquo;s middle schoolers, about '+n0(S.kids)+' in 2031-32. Density is smoothed over neighboring blocks (about 300 m) so it reads as a surface. '+STUDY+' '+fl(T.sources.blocks,'blocks_ms_walk.csv')+', '+fl(T.sources.summary,'summary.json')+'.</p>';
+}
 
 // ---- 1. freeway inset + overview
 function freewayFig(){
@@ -172,6 +201,8 @@ function vernonFig(){var V=S.vernon_size_2031;
 }
 
 body.innerHTML=
+  '<section><h2>Same kids, two buildings</h2>'+heroFig()+'</section>'+
+
   '<section><h2>Next to a freeway, under construction now</h2><div class="prose">'+
   '<p>Tubman, at 2231 N Flint Ave, &ldquo;sits just a few dozen feet from Interstate 5&rdquo;. When I-5 went in during the early 1960s, it was built &ldquo;about 50 feet away&rdquo; from the school. A 2018 Portland State University study found higher levels of air pollutants at the school than in the surrounding area [second-hand: as reported by the Portland Mercury; we have not read the study].</p>'+
   '<p>The I-5 Rose Quarter widening is being built now: crews poured the first concrete in September 2026, and a northbound closure is planned for summer 2027. In 2021 one ODOT design would have moved the freeway 26 feet closer to the school; that was a design option then, not the current plan.</p>'+
@@ -186,17 +217,19 @@ body.innerHTML=
 
   '<section><h2>Less &ldquo;Tetris&rdquo;</h2><div class="prose">'+
   '<p>A middle school works best near the middle of its kids. Today Tubman&rsquo;s building already sits at the edge of its zone. PPS A and Plan D push it further out: the zone stretches northeast toward Vernon while the building stays on N Flint, so more kids pass a closer middle school on the way.</p>'+
-  '<p>We modeled Tubman in the Vernon building two ways. In both, Beverly Cleary (with all of Irvington) and Alameda feed Beaumont. With the Boise-Eliot/Faubion swap, King, Sabin and Faubion&rsquo;s main neighborhood feed Tubman at Vernon, Boise-Eliot goes to Ockley Green, and the Bybee Lake area goes to Astor, as in Plan D. Moving the building does about half; the swap does the rest.</p></div>'+
+  '<p>We modeled Tubman in the Vernon building two ways. In both, Sabin and King feed Tubman at Vernon, and Beverly Cleary (with all of Irvington) and Alameda feed Beaumont.</p>'+
+  '<p><b>The swap</b> trades two elementary schools between Tubman and Ockley Green. Without it, Boise-Eliot/Humboldt&rsquo;s middle schoolers go to Tubman, as they do today and in PPS A and Plan D, and Faubion&rsquo;s go to Ockley Green. But once Tubman is in the Vernon building, Ockley Green is closer for most Boise-Eliot families, and the Vernon building is closer for Faubion&rsquo;s. With the swap, Boise-Eliot/Humboldt goes to Ockley Green and Faubion&rsquo;s main neighborhood goes to Tubman at Vernon; Faubion&rsquo;s far north blocks stay at Ockley Green, and the Bybee Lake area goes to Astor, as in Plan D.</p>'+
+  '<p>Moving the building does about half; the swap does the rest.</p></div>'+
   tetrisFig()+'</section>'+
 
-  '<section><h2>The district already wants this, and the site was missed</h2>'+
+  '<section><h2>The district already wants this, and Vernon doesn&rsquo;t appear in its search</h2>'+
   '<ul class="tl">'+
   '<li><b>2021</b><span>PPS&rsquo;s Long Range Facility Plan: Tubman &ldquo;is under consideration for relocation&rdquo; ('+fl(LRFP,'LRFP 2021 Vol. 2')+', PDF p. 101).</span></li>'+
   '<li><b>July 2021</b><span>The PPS board resolves that the state and ODOT must &ldquo;secure the funds to rebuild Harriet Tubman Middle School in a safe, healthy location in Historic Albina&rdquo; (quoted in the '+fl(TV+'mercury-2022-02-17-community-split-tubman-relocation.md','Mercury, 2022')+').</span></li>'+
   '<li><b>2022</b><span>The Legislature puts $120 million toward a new Tubman ('+fl(TV+'wweek-2022-03-03-120m-new-tubman.md','Willamette Week, Mar 3, 2022')+').</span></li>'+
-  '<li><b>2022-23</b><span>PPS&rsquo;s six-part siting study never evaluates the Vernon building. Sabin, King, Irvington and Boise-Eliot are ruled out only as <i>shared</i> buildings ('+fl(SIT+'htms-siting-due-diligence-v06.md','siting due diligence')+', versions 1-6).</span></li>'+
+  '<li><b>2022-23</b><span>We canWe can&rsquo;t find the Vernon building evaluated in any of PPS&rsquo;s six-part siting study.rsquo;t find the Vernon building evaluated in any of the six versions of PPS&rsquo;s siting study. Sabin, King, Irvington and Boise-Eliot are ruled out only as <i>shared</i> buildings ('+fl(SIT+'htms-siting-due-diligence-v06.md','siting due diligence')+', versions 1-6).</span></li>'+
   '<li><b>Jan 2025</b><span>PPS pauses the move &ldquo;for the indefinite future&rdquo;, citing the highway timeline and &ldquo;a lack of workable relocation sites&rdquo;; the state money &ldquo;has been sitting around&rdquo; ('+fl(TV+'wweek-2025-01-28-tubman-relocation-paused.md','Willamette Week, Jan 28, 2025')+').</span></li></ul>'+
-  '<p class="verdict">Vernon is a workable site, in Historic Albina, that PPS&rsquo;s own search never looked at. The City&rsquo;s 1990 Albina Community Plan names Vernon as part of Albina ('+fl(TV+'albina-community-plan-process-1990-excerpts.md','excerpts')+').</p></section>'+
+  '<p class="verdict">Vernon is a workable site, in Historic Albina, and we can&rsquo;t find it evaluated in PPS&rsquo;s own search. The City&rsquo;s 1990 Albina Community Plan names Vernon as part of Albina ('+fl(TV+'albina-community-plan-process-1990-excerpts.md','excerpts')+').</p></section>'+
 
   '<section><h2>Vernon&rsquo;s elementary is already too small in every plan</h2><div class="prose">'+
   '<p>Once Vernon&rsquo;s middle schoolers leave, its elementary falls well under PPS&rsquo;s 360 target in every plan. Merging it into nearby schools fills Sabin and King to target, the same reasoning PPS uses for every closure in A and B.</p></div>'+
@@ -207,9 +240,17 @@ body.innerHTML=
   '<li><b>The building.</b> Vernon is 70,833 sq ft on 3 levels, built in 1931, with 25 classrooms and 4 modular classrooms; its gym is small, and music and art are in portables ('+fl(LRFP,'LRFP 2021')+'). PPS&rsquo;s program for a new Tubman is 120,000 sq ft ('+fl(SIT+'htms-siting-due-diligence-v06.md','siting study v06')+').</li>'+
   '<li><b>Access.</b> The state register lists one vertical wheelchair lift at Vernon and no passenger elevator ('+fl(TV+'oregon-bcd-elevator-search-vernon-tubman.md','Oregon elevator search')+'; a negative search result is strong but not proof).</li>'+
   '<li><b>Room.</b> With the swap, Tubman at Vernon has about 574 students in 2027-28, then 549, 532, 519 and 524 by 2031-32, against about 552 seats: over only in the first year. Ockley Green dips to about 494 for one year (2028-29). Without the swap: 568, 533, 515, 497 and 504. (Our model: '+fl('build/solver/out_v2/tubman_at_vernon_swap/scorecard.json','with the swap')+', '+fl('build/solver/out_v2/tubman_at_vernon_irvbc_ms/scorecard.json','no swap')+'.)</li></ul>'+
-  '<p><b>Getting there.</b> PPS should investigate creative ways to make the transition, such as portables, a flex year with some grades staying on N Flint, phasing Vernon&rsquo;s elementary out from kindergarten up, and upgrading the building while in use, so Tubman moves well before a full renovation would allow. Accessibility (Vernon has no elevator) is the main thing to check.</p></div></section>'+
+  '</div></section>'+
 
-  '<section><h2>Where this fits</h2><div class="prose"><p>This is one of two ideas for Sabin and the schools around it. <a href="sabin-ideas.html">Sabin and the area: two ideas</a> compares it with <a href="irvington-sabin.html">Irvington into Sabin</a> and gives our verdict: move Tubman into Vernon, with Irvington into Sabin as the first step.</p></div></section>';
+  '<section><h2>A creative move-in, not a long wait</h2><div class="prose">'+
+  '<p>Tubman doesn&rsquo;t need a finished renovation to move. PPS can move in creatively and upgrade the building while it&rsquo;s in use:</p><ul>'+
+  '<li><b>Portables</b> for the first year or two, when the model has Tubman a little over Vernon&rsquo;s seats.</li>'+
+  '<li><b>A flex year</b>, with some grades staying on N Flint while the rest move.</li>'+
+  '<li><b>Phasing Vernon&rsquo;s elementary out from kindergarten up</b>, so no K-5 class is moved mid-way and the building fills with middle schoolers as it empties.</li>'+
+  '<li><b>Upgrading while in use</b>, starting with access: Vernon has a wheelchair lift but no elevator on record, the main thing to check.</li></ul>'+
+  '<p>The money exists: the state put $120 million toward a new Tubman in 2022, and in January 2025 it &ldquo;has been sitting around&rdquo; ('+fl(TV+'wweek-2025-01-28-tubman-relocation-paused.md','Willamette Week, Jan 28, 2025')+').</p></div></section>'+
+
+  '<section><h2>Where this fits</h2><div class="prose"><p>This is one of two plans for Sabin and the schools around it. <a href="sabin-ideas.html">The ADA plan vs the better plan</a> compares it with the Sabin ADA plan, <a href="irvington-sabin.html">Irvington into Sabin</a>, and gives our verdict: this is the better plan.</p></div></section>';
 // map labels: a fixed size on screen whatever the map's width (site.css forces 12px SVG text on phones, so set it inline)
 function fitLabels(){[].forEach.call(document.querySelectorAll('.fig svg'),function(g){var vb=g.viewBox.baseVal,w=g.getBoundingClientRect().width;if(!vb||!w)return;var k=vb.width/w;
   [].forEach.call(g.querySelectorAll('text[data-px]'),function(t){t.style.setProperty('font-size',(+t.dataset.px*k).toFixed(1)+'px','important');});});}
