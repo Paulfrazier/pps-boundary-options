@@ -72,5 +72,29 @@
   "avg_walk_mi": 1.28,
   "kids_over_1_5mi": 502,
   "past_closer": 87
+ },
+ "tubman_at_vernon_sabinwhole": {
+  "schools": [
+   "Vernon",
+   "Beaumont",
+   "Ockley Green",
+   "Roseway Heights"
+  ],
+  "kids": 1863,
+  "avg_walk_mi": 1.31,
+  "kids_over_1_5mi": 528,
+  "past_closer": 154
+ },
+ "tubman_at_vernon_beh": {
+  "schools": [
+   "Vernon",
+   "Beaumont",
+   "Ockley Green",
+   "Roseway Heights"
+  ],
+  "kids": 1863,
+  "avg_walk_mi": 1.31,
+  "kids_over_1_5mi": 528,
+  "past_closer": 154
  }
 }

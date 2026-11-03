@@ -24,27 +24,50 @@ ZONES = ['Tubman', 'Vernon', 'Beaumont', 'Ockley Green']
 SITES = ['Tubman', 'Vernon', 'Beaumont', 'Ockley Green']
 W = C.dist('walk', SITES)
 keep = np.isin(ms0, ZONES)
+# PPS A's middle schools; B and Plan D draw Tubman's zone block for block the same (checked). Under all three,
+# Irvington merges into Beverly Cleary and its middle schoolers leave Tubman for Beaumont, and Vernon's 6-8 joins Tubman
+ms_abd = asg('scenario_A', '6-8')
+for r in ('scenario_B', 'planD_updated'):
+    assert ((asg(r, '6-8') == 'Tubman') == (ms_abd == 'Tubman')).all(), f'{r} Tubman zone differs from PPS A'
 df = pd.DataFrame({'idx': np.arange(len(b))[keep], 'GEOID': b['GEOID'].values[keep], 'ms_today': ms0[keep],
-                   'kids_6_8': K[keep].round(2)})
+                   'ms_abd': ms_abd[keep], 'es_today': b['sq_es'].values[keep], 'kids_6_8': K[keep].round(2)})
 for j, s in enumerate(SITES):
     df[f'walk_{s.replace(" ", "_").lower()}'] = W[keep, j].round(3)
 df.to_csv(os.path.join(OUT, 'blocks_ms_walk.csv'), index=False)
 
-# today's Tubman zone plus Vernon's own 6-8 (A/B/D send Vernon's 6-8 to Tubman): N Flint vs the Vernon building
-z = keep & np.isin(ms0, ['Tubman', 'Vernon'])
+# Tubman's zone under PPS A, B and Plan D (today's zone minus Irvington, plus Vernon's own 6-8): N Flint vs the Vernon building
+z = keep & (ms_abd == 'Tubman')
 k = K[z]; wt, wv = W[z, 0], W[z, 1]
 def stats(w):
     return {'avg_walk_mi': round(float((k * w).sum() / k.sum()), 2), 'kids_over_1_5mi': round(float(k[w > 1.5].sum())),
             'kids_within_1_5mi': round(float(k[w <= 1.5].sum()))}
 vz = ms0[z] == 'Vernon'
+es = b['sq_es'].values
+# where today's Tubman and Vernon middle schoolers go under A/B/D, by today's elementary area
+split = {}
+for zt in ('Tubman', 'Vernon'):
+    m = keep & (ms0 == zt)
+    g = pd.DataFrame({'es': es[m], 'to': ms_abd[m], 'k': K[m]}).groupby(['es', 'to']).k.sum().round()
+    split[zt] = {f'{e} -> {t}': int(v) for (e, t), v in g.items() if v > 0}
+by_area = {}
+for e in sorted(set(es[z])):
+    m = z & (es == e)
+    if K[m].sum() < 1:
+        continue
+    by_area[e] = {'kids': round(float(K[m].sum())), 'walk_flint_mi': round(float((K[m] * W[m, 0]).sum() / K[m].sum()), 2),
+                  'walk_vernon_mi': round(float((K[m] * W[m, 1]).sum() / K[m].sum()), 2)}
 summary = {
     'basis': '2031-32 PSU-forecast middle-school kids on 2020 Census blocks (model v2); OSRM walking miles. Estimates.',
-    'zone': "today's Tubman 6-8 zone plus Vernon's own 6-8 (Vernon becomes K-5 under PPS A, B and Plan D)",
+    'zone': ("Tubman's middle-school zone under PPS A, B and Plan D (identical in all three): today's Tubman zone without "
+             "Irvington (whose elementary merges into Beverly Cleary and whose middle schoolers go to Beaumont), plus "
+             "Vernon's own 6-8 (Vernon becomes a K-5)"),
     'kids': round(float(k.sum())),
     'tubman_on_flint': stats(wt), 'tubman_at_vernon': stats(wv),
     'vernon_6_8_kids': round(float(k[vz].sum())),
     'vernon_6_8_walk_to_flint_mi': round(float((k[vz] * wt[vz]).sum() / k[vz].sum()), 2),
     'vernon_6_8_walk_to_vernon_mi': round(float((k[vz] * wv[vz]).sum() / k[vz].sum()), 2),
+    'abd_zone_by_today_es_area': by_area,
+    'today_to_abd_6_8': split,
 }
 sizes = {}
 for run, lab in [('status_quo', 'Today (K-8)'), ('scenario_A', 'PPS A'), ('scenario_B', 'PPS B'), ('planD_updated', 'Plan D'),

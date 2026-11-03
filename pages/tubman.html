@@ -8,9 +8,9 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23245c9e%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23fff%27/%3E%3C/svg%3E">
 <link rel="stylesheet" href="site.css">
 <style>
-:root{--d0:#e4eef0;--d1:#bcd7de;--d2:#86b5c4;--d3:#4f8fa8;--d4:#24607a;--b0:#dcebf0;--b1:#9cc6d4;--b2:#4f8fa8;--b3:#1f5168;--fwy:#d9782d;--road:#b9b3a6;--river:#bcd6e6;--land:#efece4;--z0:#2f5d6e;--z1:#b4472f;--z2:#8a6d3b;--z3:#2e7d5b;--z4:#7b5ea7;--z5:#5d686d}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--d0:#1d3038;--d1:#24485a;--d2:#2f6a80;--d3:#4d93ad;--d4:#8cc6da;--b0:#203a44;--b1:#2f6577;--b2:#5d9fb6;--b3:#a7d4e3;--fwy:#e8975a;--road:#4a4f50;--river:#22394a;--land:#20272a;--z0:#8cc3d6;--z1:#e8876f;--z2:#d2b277;--z3:#6cc49a;--z4:#b59be0;--z5:#a3adb1}}
-:root[data-theme="dark"]{--d0:#1d3038;--d1:#24485a;--d2:#2f6a80;--d3:#4d93ad;--d4:#8cc6da;--b0:#203a44;--b1:#2f6577;--b2:#5d9fb6;--b3:#a7d4e3;--fwy:#e8975a;--road:#4a4f50;--river:#22394a;--land:#20272a;--z0:#8cc3d6;--z1:#e8876f;--z2:#d2b277;--z3:#6cc49a;--z4:#b59be0;--z5:#a3adb1}
+:root{--k0:#b4472f;--k1:#7a8388;--k2:#2f5d6e;--k3:#2e7d5b;--k4:#8a6d3b;--k5:#7b5ea7;--k6:#c08a1e;--d0:#e4eef0;--d1:#bcd7de;--d2:#86b5c4;--d3:#4f8fa8;--d4:#24607a;--b0:#dcebf0;--b1:#9cc6d4;--b2:#4f8fa8;--b3:#1f5168;--fwy:#d9782d;--road:#b9b3a6;--river:#bcd6e6;--land:#efece4;--z0:#2f5d6e;--z1:#b4472f;--z2:#8a6d3b;--z3:#2e7d5b;--z4:#7b5ea7;--z5:#5d686d}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--k0:#e8876f;--k1:#a3adb1;--k2:#8cc3d6;--k3:#6cc49a;--k4:#d2b277;--k5:#b59be0;--k6:#e3b85a;--d0:#1d3038;--d1:#24485a;--d2:#2f6a80;--d3:#4d93ad;--d4:#8cc6da;--b0:#203a44;--b1:#2f6577;--b2:#5d9fb6;--b3:#a7d4e3;--fwy:#e8975a;--road:#4a4f50;--river:#22394a;--land:#20272a;--z0:#8cc3d6;--z1:#e8876f;--z2:#d2b277;--z3:#6cc49a;--z4:#b59be0;--z5:#a3adb1}}
+:root[data-theme="dark"]{--k0:#e8876f;--k1:#a3adb1;--k2:#8cc3d6;--k3:#6cc49a;--k4:#d2b277;--k5:#b59be0;--k6:#e3b85a;--d0:#1d3038;--d1:#24485a;--d2:#2f6a80;--d3:#4d93ad;--d4:#8cc6da;--b0:#203a44;--b1:#2f6577;--b2:#5d9fb6;--b3:#a7d4e3;--fwy:#e8975a;--road:#4a4f50;--river:#22394a;--land:#20272a;--z0:#8cc3d6;--z1:#e8876f;--z2:#d2b277;--z3:#6cc49a;--z4:#b59be0;--z5:#a3adb1}
 .pitch{font-size:20px;line-height:1.45;max-width:60ch;margin:14px 0}
 .status{display:inline-block;font-size:13px;font-weight:700;background:var(--tag);border-radius:6px;padding:2px 8px;margin:0 0 8px}
 section{margin:34px 0}
@@ -24,6 +24,10 @@ section h2{margin:0 0 8px}
 .fig svg{display:block;width:100%;height:auto}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .three{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.five{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.five .fig{margin:0;padding:8px}
+.five h3{font-size:14px}
+@media (max-width:700px){.five{grid-template-columns:1fr 1fr}}
 .hero{display:grid;grid-template-columns:3fr 2fr;gap:14px;align-items:start}
 .why{list-style:none;margin:12px 0;padding:0}
 .why li{border-left:4px solid var(--good);padding:4px 12px;margin:0 0 12px}
@@ -97,6 +101,11 @@ function dot(p,lab,o){o=o||{};var r=o.r||6;
   return '<circle cx="'+p[0]+'" cy="'+p[1]+'" r="'+r+'" fill="'+(o.fill||'var(--ink)')+'" stroke="var(--paper)" stroke-width="2"/>'+
     (lab?'<text x="'+(p[0]+(o.dx==null?9:o.dx))+'" y="'+(p[1]+(o.dy==null?4:o.dy))+'" data-px="'+(o.px||14)+'" font-weight="700" fill="var(--ink)" stroke="var(--paper)" stroke-width="3" paint-order="stroke"'+(o.anchor?' text-anchor="'+o.anchor+'"':'')+'>'+esc(lab)+'</text>':'');}
 
+// street labels, skipping any that would sit on a building or area label (avoid: [[x,y,dx_right]])
+function streetsSvg(L,avoid){return (L||[]).filter(function(l){return !(avoid||[]).some(function(a){var dx=l[0]-a[0],dy=l[1]-a[1];return dy>-24&&dy<30&&dx>-40&&dx<(a[2]||40);});}).map(function(l){
+  return '<text transform="translate('+l[0]+' '+l[1]+') rotate('+l[2]+')" text-anchor="middle" dy="4" data-px="11" font-style="italic" fill="var(--muted)" stroke="var(--paper)" stroke-width="3" paint-order="stroke">'+esc(l[3])+'</text>';}).join('');}
+function ringSvg(d,c){return d?'<path d="'+d+'" fill="none" stroke="'+(c||'var(--ink)')+'" stroke-width="2" stroke-dasharray="6 5" stroke-opacity=".75"/>':'';}
+
 // ---- 0. the case in one map: the same kids, two buildings
 function heroFig(){
   var W=T.walk, H=T.hero, F=S.tubman_on_flint, V=S.tubman_at_vernon, ft=W.pts.Tubman, vn=W.pts.Vernon, m=H.mid;
@@ -105,7 +114,7 @@ function heroFig(){
       '<text x="'+x+'" y="'+(y-8)+'" data-px="14" font-weight="700" fill="'+c+'" stroke="var(--paper)" stroke-width="4" paint-order="stroke" text-anchor="middle">'+esc(lab)+'</text>';}
   var svg=svgOpen(W.w,W.h,'Where the middle schoolers in Tubman&rsquo;s area live, and the two buildings')+baseSvg(W.base,W.w,W.h)+
     fwySvg(W.base,6)+
-    H.dens.map(function(d,i){return d?'<path d="'+d+'" fill="var(--d'+i+')" stroke="var(--d'+i+')" stroke-width=".6"/>':'';}).join('')+
+    H.dens.map(function(d,i){return d?'<path d="'+d+'" fill="var(--d'+i+')" stroke="var(--d'+i+')" stroke-width=".6"/>':'';}).join('')+streetsSvg(W.labels,[[vn[0],vn[1],150],[ft[0],ft[1],230],[m[0]-150,m[1],170],[(vn[0]+m[0])/2-30,(vn[1]+m[1])/2-8,60],[(ft[0]+m[0])/2-30,(ft[1]+m[1])/2-8,60]])+
     leg(ft,H.mid_to.Tubman.toFixed(2)+' mi','var(--bad)')+leg(vn,H.mid_to.Vernon.toFixed(2)+' mi','var(--good)')+
     '<circle cx="'+m[0]+'" cy="'+m[1]+'" r="9" fill="var(--paper)" stroke="var(--ink)" stroke-width="3"/><circle cx="'+m[0]+'" cy="'+m[1]+'" r="3" fill="var(--ink)"/>'+
     '<text x="'+(m[0]-14)+'" y="'+(m[1]+5)+'" data-px="14" font-weight="700" fill="var(--ink)" stroke="var(--paper)" stroke-width="4" paint-order="stroke" text-anchor="end">Middle of its kids</text>'+
@@ -117,7 +126,7 @@ function heroFig(){
     '<li><b>'+n0(H.closer_vernon)+' of '+n0(S.kids)+'</b><span>kids have a shorter walk to Vernon than to N Flint</span></li>'+
     '<li><b>'+n0(F.kids_within_1_5mi)+' &rarr; '+n0(V.kids_within_1_5mi)+'</b><span>kids within the 1.5 mi bus line; average walk '+mi(F.avg_walk_mi)+' &rarr; '+mi(V.avg_walk_mi)+' mi</span></li>'+
     '<li><b>Next to I-5 &rarr; a neighborhood street</b><span>N Flint sits a few dozen feet from the freeway being widened now; Vernon is on NE Killingsworth, away from the freeways</span></li></ul></div>'+
-    '<p class="cite">The kids: under PPS A, B and Plan D, Tubman serves today&rsquo;s Tubman zone plus Vernon&rsquo;s middle schoolers, about '+n0(S.kids)+' in 2031-32. Density is smoothed over neighboring blocks (about 300 m) so it reads as a surface. '+STUDY+' '+fl(T.sources.blocks,'blocks_ms_walk.csv')+', '+fl(T.sources.summary,'summary.json')+'.</p>';
+    '<p class="cite">The kids: under PPS A, B and Plan D, Tubman serves today&rsquo;s Tubman zone without Irvington (whose middle schoolers go to Beaumont), plus Vernon&rsquo;s middle schoolers: about '+n0(S.kids)+' in 2031-32. Density is smoothed over neighboring blocks (about 300 m) so it reads as a surface. '+STUDY+' '+fl(T.sources.blocks,'blocks_ms_walk.csv')+', '+fl(T.sources.summary,'summary.json')+'.</p>';
 }
 
 // ---- 1. freeway inset + overview
@@ -127,10 +136,10 @@ function freewayFig(){
     dot(I.pt,'Tubman (N Flint Ave)',{r:9,px:14})+
     '<g transform="translate(14,'+(I.h-16)+')"><path d="M0 0h'+I.m100+'" stroke="var(--ink)" stroke-width="2"/><text x="'+(I.m100+6)+'" y="5" data-px="12" fill="var(--ink)">100 m (330 ft)</text></g></svg>';
   var over=svgOpen(W.w,W.h,'The Tubman and Vernon buildings and the freeways')+baseSvg(W.base,W.w,W.h)+
-    '<path d="'+W.zone+'" fill="var(--b0)" fill-opacity=".7" stroke="var(--b2)" stroke-width="1.5"/>'+fwySvg(W.base,5)+
+    '<path d="'+W.zone+'" fill="var(--b0)" fill-opacity=".7" stroke="var(--b2)" stroke-width="1.5"/>'+fwySvg(W.base,5)+streetsSvg(W.labels)+
     dot(W.pts.Tubman,'Tubman today',{r:12,px:15,dx:17,dy:10})+dot(W.pts.Vernon,'Vernon building',{r:12,px:15,dx:17,dy:10,fill:'var(--accent)'})+'</svg>';
   return '<div class="two"><div class="fig"><h3>The N Flint building and I-5</h3>'+inset+'<div class="legend"><span><i class="ln" style="background:var(--fwy)"></i>Freeway (I-5)</span><span><i class="ln" style="background:var(--road)"></i>Street</span></div></div>'+
-    '<div class="fig"><h3>Where the two buildings are</h3>'+over+'<div class="legend"><span><i style="background:var(--b0);border:1px solid var(--b2)"></i>Today&rsquo;s Tubman zone plus Vernon&rsquo;s middle-school area</span><span><i class="ln" style="background:var(--fwy)"></i>Freeway</span></div></div></div>'+
+    '<div class="fig"><h3>Where the two buildings are</h3>'+over+'<div class="legend"><span><i style="background:var(--b0);border:1px solid var(--b2)"></i>Tubman&rsquo;s zone under PPS A, B and Plan D</span><span><i class="ln" style="background:var(--fwy)"></i>Freeway</span></div></div></div>'+
     '<p class="cite">Streets and freeways: OpenStreetMap, as on the site&rsquo;s map. Building points: PPS school locations (build/data/schools.csv); the dot marks the school&rsquo;s address point, not its footprint.</p>';
 }
 
@@ -141,18 +150,21 @@ function walkPanel(key,title,at){
   var s=svgOpen(W.w,W.h,title)+baseSvg(W.base,W.w,W.h)+
     P.bands.map(function(d,i){return d?'<path d="'+d+'" fill="'+BC[i]+'" stroke="none"/>':'';}).join('')+
     '<path d="'+W.zone+'" fill="none" stroke="var(--ink)" stroke-width="1.2" stroke-opacity=".6"/>'+fwySvg(W.base,4)+
+    ringSvg(W.rings[at],'var(--bad)')+streetsSvg(W.labels,[[W.pts[at][0],W.pts[at][1],170]])+
     dot(W.pts[at],at==='Tubman'?'Tubman, N Flint':'Tubman at Vernon',{r:12,px:15,dx:17,dy:10,fill:'var(--bad)'})+'</svg>';
   var over=P.kids[2]+P.kids[3];
   return '<div class="fig"><h3>'+esc(title)+'</h3>'+s+'<p class="small" style="margin:6px 0 0">Average walk <b>'+mi(P.avg)+' mi</b>; <b>'+n0(over)+'</b> of '+n0(S.kids)+' kids over 1.5 mi.</p></div>';
 }
 function walkFig(){
   return '<div class="two">'+walkPanel('flint','Walk to Tubman on N Flint','Tubman')+walkPanel('vernon','Walk to Tubman in the Vernon building','Vernon')+'</div>'+
-    '<div class="legend">'+BANDS.map(function(b,i){return '<span><i style="background:'+BC[i]+'"></i>'+b+'</span>';}).join('')+'<span>1.5 mi is the middle-school bus line</span></div>';
+    '<div class="legend">'+BANDS.map(function(b,i){return '<span><i style="background:'+BC[i]+'"></i>'+b+'</span>';}).join('')+'<span><i class="ln" style="background:var(--bad)"></i>1.5 mi from the building, straight line (the bus line is 1.5 mi of walking)</span></div>';
 }
-function kpis(){var F=S.tubman_on_flint,V=S.tubman_at_vernon;
+function kpis(){var F=S.tubman_on_flint,V=S.tubman_at_vernon,PF=T.walk.panels.flint,PV=T.walk.panels.vernon;
+  function pct(k){return Math.round(100*k/S.kids)+'%';}
   return '<div class="kpis">'+
     '<div class="kpi"><b>'+mi(F.avg_walk_mi)+' &rarr; '+mi(V.avg_walk_mi)+' mi</b><span>average walk, about '+n0(S.kids)+' kids</span></div>'+
     '<div class="kpi"><b>'+n0(F.kids_over_1_5mi)+' &rarr; '+n0(V.kids_over_1_5mi)+'</b><span>kids over 1.5 mi (the bus line)</span></div>'+
+    '<div class="kpi"><b>'+pct(PF.kids[0])+' &rarr; '+pct(PV.kids[0])+'</b><span>within 1 mi; over 2 mi '+pct(PF.kids[3])+' &rarr; '+pct(PV.kids[3])+'</span></div>'+
     '<div class="kpi"><b>'+mi(S.vernon_6_8_walk_to_flint_mi)+' &rarr; '+mi(S.vernon_6_8_walk_to_vernon_mi)+' mi</b><span>Vernon&rsquo;s own '+n0(S.vernon_6_8_kids)+' middle schoolers</span></div></div>';
 }
 function bars(rows,max,fmt,line){
@@ -164,6 +176,53 @@ function nearestFig(){
   var R=[{k:'Tubman today, N Flint',v:241,sub:'NE average walk 1.42 mi; 663 over 1.5 mi',c:'var(--bad)'},{k:'Vernon building',v:539,sub:'1.23 mi; 394 over 1.5 mi'},{k:'Sabin building',v:558,sub:'1.22 mi; 356 over 1.5 mi'}];
   return '<div class="fig"><h3>Middle schoolers who live closest to each site</h3>'+bars(R,600,n0)+
     '<p class="cite">If every NE middle schooler went to the closest of Beaumont, Roseway Heights, Ockley Green and the site tested. Study estimate (NE study, '+fl('build/strategy/northeast/REPORT.md','REPORT.md')+').</p></div>';
+}
+
+// ---- 2b. the split under A, B and D, walk by area, the elementary piece, NE walk bands
+var AN={'MLK Jr':'King','Boise-Eliot/Humboldt':'Boise-Eliot/Humboldt'}, DC={'Tubman':'var(--z1)','Beaumont':'var(--z2)'}, DL={'Tubman':'Tubman on N Flint','Beaumont':'Beaumont'};
+function splitFig(){var P=T.split;
+  var svg=svgOpen(P.w,P.h,'Where today&rsquo;s Tubman and Vernon middle-school areas go under PPS A, B and Plan D')+baseSvg(P.base,P.w,P.h)+
+    Object.keys(P.fill).map(function(d){return '<path d="'+P.fill[d]+'" fill="'+(DC[d]||'var(--z5)')+'" fill-opacity=".42" stroke="none"/>';}).join('')+
+    P.areas.map(function(a){return '<path d="'+a.path+'" fill="none" stroke="var(--ink)" stroke-width="1" stroke-opacity=".55"/>';}).join('')+
+    '<path d="'+P.outline+'" fill="none" stroke="var(--ink)" stroke-width="2"/>'+fwySvg(P.base,5)+
+    streetsSvg(P.labels,P.areas.map(function(a){return [a.at[0]-80,a.at[1],160];}).concat([[P.pts.Vernon[0],P.pts.Vernon[1]-10,170]]))+
+    dot(P.pts.Tubman,'Tubman, N Flint',{r:10,px:14,dx:-14,dy:-12,anchor:'end',fill:DC.Tubman})+dot(P.pts.Vernon,'Vernon building (K-5)',{r:7,px:13,dx:10,dy:-10,fill:'var(--muted)'})+
+    dot(P.pts.Beaumont,'Beaumont',{r:9,px:14,dx:12,dy:5,fill:DC.Beaumont})+
+    P.areas.map(function(a){var x=a.at[0],y=a.at[1];
+      return '<text x="'+x+'" y="'+y+'" text-anchor="middle" data-px="14" font-weight="700" fill="var(--ink)" stroke="var(--paper)" stroke-width="4" paint-order="stroke">'+esc(AN[a.es]||a.es)+'</text>'+
+        '<text x="'+x+'" y="'+(y+16)+'" text-anchor="middle" data-px="13" fill="var(--ink)" stroke="var(--paper)" stroke-width="4" paint-order="stroke">'+n0(a.kids)+' &rarr; '+esc(DL[a.to]||a.to)+'</text>';}).join('')+'</svg>';
+  return '<div class="fig"><h3>Today&rsquo;s Tubman and Vernon middle-school areas, by where each goes under PPS A, B and Plan D</h3>'+svg+
+    '<div class="legend"><span><i style="background:'+DC.Tubman+';opacity:.6"></i>To Tubman on N Flint</span><span><i style="background:'+DC.Beaumont+';opacity:.6"></i>To Beaumont</span><span><i class="ln" style="background:var(--ink)"></i>Today&rsquo;s Tubman + Vernon areas</span><span>Thin lines: today&rsquo;s elementary areas</span></div></div>';
+}
+function areaBarsFig(){var A=S.abd_zone_by_today_es_area, R=[];
+  Object.keys(A).sort(function(a,b){return A[b].walk_flint_mi-A[a].walk_flint_mi;}).forEach(function(k){var v=A[k],nm=(AN[k]||k)+' ('+n0(v.kids)+' kids)';
+    R.push({k:nm,sub:'to N Flint',v:v.walk_flint_mi,c:'var(--bad)'});R.push({k:'',sub:'to the Vernon building',v:v.walk_vernon_mi,c:'var(--good)'});});
+  return '<div class="fig"><h3>Average walk by today&rsquo;s elementary area, Tubman&rsquo;s A/B/D zone</h3>'+bars(R,3.2,function(v){return v.toFixed(2)+' mi';},1.5)+
+    '<p class="cite">Dashed line: 1.5 mi, the middle-school bus line. Boise-Eliot/Humboldt is the one area that is farther from the Vernon building; our plan sends it to Ockley Green instead (about 1.66 mi; see the swap below). '+STUDY+' '+fl(T.sources.summary,'summary.json')+'.</p></div>';
+}
+var KC={'Sabin':'var(--k0)','Irvington':'var(--k1)','Beverly Cleary':'var(--k2)','MLK Jr':'var(--k3)','Vernon':'var(--k4)','Alameda':'var(--k5)','Boise-Eliot/Humboldt':'var(--k6)'};
+var KS={'Beverly Cleary':'B. Cleary','Boise-Eliot/Humboldt':'Boise-Eliot','MLK Jr':'King'};
+function k5Fig(){var K=T.k5m;
+  var panels=K.plans.map(function(p){
+    var s=svgOpen(K.w,K.h,'Elementary lines, '+p.label)+baseSvg(K.base,K.w,K.h)+
+      Object.keys(p.zones).map(function(n){return '<path d="'+p.zones[n]+'" fill="'+KC[n]+'" fill-opacity=".32" stroke="'+KC[n]+'" stroke-width="1.2"/>';}).join('')+
+      '<path d="'+K.irv+'" fill="none" stroke="var(--ink)" stroke-width="2.4" stroke-dasharray="5 4"/>'+fwySvg(K.base,3)+
+      Object.keys(p.bld).map(function(n){return dot(p.bld[n],KS[n]||n,{r:4,px:11,dx:6,dy:4,fill:KC[n]});}).join('')+
+      Object.keys(p.closed).map(function(n){var q=p.closed[n];return '<path d="M'+(q[0]-5)+' '+(q[1]-5)+'l10 10M'+(q[0]+5)+' '+(q[1]-5)+'l-10 10" stroke="var(--bad)" stroke-width="2.4"/>';}).join('')+'</svg>';
+    return '<div class="fig"><h3>'+esc(p.label)+'</h3>'+s+'</div>';}).join('');
+  return '<div class="five">'+panels+'</div><div class="legend">'+Object.keys(KC).map(function(n){return '<span><i style="background:'+KC[n]+'"></i>'+esc(KS[n]||n)+'</span>';}).join('')+
+    '<span><i class="ln" style="background:var(--ink)"></i>Irvington&rsquo;s area today (dashed)</span><span style="color:var(--bad)">&times; school closes or changes use</span></div>'+
+    '<p class="cite">Each plan&rsquo;s elementary assignment (assign_K-5.parquet), drawn on the same block cells as the site&rsquo;s map. In our plan the Vernon building becomes Tubman, so its &times; marks the elementary closing, not the building.</p>';
+}
+var RUNLAB={status_quo:'Today',scenario_A:'PPS A',scenario_B:'PPS B',planD_updated:'Plan D (current draft)'};
+function bandTables(){var B=T.bands, runs=Object.keys(B);
+  function lab(r){return RUNLAB[r]||'Tubman at Vernon (our plan)';}
+  function tbl(lev,heads){return '<div class="tbl"><table><thead><tr><th>Plan</th>'+heads.map(function(h){return '<th class="num">'+h+'</th>';}).join('')+'<th class="num">Average</th></tr></thead><tbody>'+
+    runs.map(function(r){var v=B[r][lev];return '<tr'+(r===T.lead_run?' style="font-weight:700"':'')+'><td>'+esc(lab(r))+'</td>'+v.pct.map(function(x){return '<td class="num">'+Math.round(x)+'%</td>';}).join('')+'<td class="num">'+mi(v.avg_walk_mi)+' mi</td></tr>';}).join('')+'</tbody></table></div>';}
+  var m=B.status_quo['6-8'], e=B.status_quo['K-5'];
+  return '<h3 style="margin:14px 0 6px">Middle school: every NE middle schooler, by walk to their assigned school</h3>'+tbl('6-8',['1 mi or less','1 to 1.5 mi','1.5 to 2 mi','Over 2 mi'])+
+    '<h3 style="margin:14px 0 6px">Elementary, same area</h3>'+tbl('K-5',['&frac12; mi or less','&frac12; to 1 mi','1 to 1.5 mi','Over 1.5 mi'])+
+    '<p class="cite">About '+n0(m.kids)+' middle schoolers and '+n0(e.kids)+' elementary kids living in today&rsquo;s six NE middle-school zones (Tubman, Vernon, Beaumont, Ockley Green, Roseway Heights, Faubion), 2031-32. The bus line is 1.5 mi for middle school and 1 mi for elementary. '+STUDY+' Built by '+fl(T.sources.bands_py,'tubman_bands.py')+' from each run&rsquo;s assignments.</p>';
 }
 
 // ---- 3. Tetris: zone maps + offset/past-closer bars
@@ -211,23 +270,30 @@ body.innerHTML=
   '<p class="cite">Sources: KATU, May 11, 2021 ('+fl(TV+'katu-2021-05-11-tubman-future.md','text')+'); Portland Mercury, Feb 17, 2022 ('+fl(TV+'mercury-2022-02-17-community-split-tubman-relocation.md','text')+') and May 18, 2021 ('+fl(TV+'mercury-2021-05-18-pps-board-odot-tubman.md','text')+'); KPTV, Sept 25, 2026 ('+fl(TV+'kptv-2026-09-25-rose-quarter-construction.md','text')+'); PPS Long Range Facility Plan 2021, Vol. 2 ('+fl(LRFP,'text')+').</p></section>'+
 
   '<section><h2>In the wrong place for its kids</h2><div class="prose">'+
-  '<p>Under PPS A, PPS B and Plan D, Vernon becomes a K-5 and its middle schoolers go to Tubman. That makes Tubman&rsquo;s area today&rsquo;s Tubman zone plus Vernon&rsquo;s, about '+n0(S.kids)+' middle schoolers. Most of them live northeast of the N Flint building. Vernon&rsquo;s own '+n0(S.vernon_6_8_kids)+' would walk about '+mi(S.vernon_6_8_walk_to_flint_mi)+' miles to N Flint, past Beaumont.</p></div>'+
+  '<p>Under PPS A, PPS B and Plan D, Vernon becomes a K-5 and its middle schoolers go to Tubman. Irvington&rsquo;s middle schoolers leave for Beaumont (its elementary merges into Beverly Cleary). That makes Tubman&rsquo;s area today&rsquo;s Tubman zone without Irvington, plus Vernon&rsquo;s: about '+n0(S.kids)+' middle schoolers. Most of them live northeast of the N Flint building. Vernon&rsquo;s own '+n0(S.vernon_6_8_kids)+' would walk about '+mi(S.vernon_6_8_walk_to_flint_mi)+' miles to N Flint, past Beaumont.</p></div>'+
   kpis()+walkFig()+'<p class="cite">'+STUDY+' Blocks: '+fl(T.sources.blocks,'blocks_ms_walk.csv')+'; totals: '+fl(T.sources.summary,'summary.json')+'.</p>'+
   nearestFig()+'</section>'+
+
+  '<section><h2>Where today&rsquo;s Tubman and Vernon kids go under PPS A, B and D</h2><div class="prose">'+
+  '<p>PPS A, PPS B and Plan D draw the same Tubman zone, block for block. Irvington&rsquo;s elementary merges into Beverly Cleary, so its '+n0(S.today_to_abd_6_8.Tubman['Irvington -> Beaumont'])+' middle schoolers leave Tubman for Beaumont. Vernon becomes a K-5, so its '+n0(S.vernon_6_8_kids)+' middle schoolers go to Tubman on N Flint. Sabin, King and Boise-Eliot/Humboldt stay with Tubman.</p></div>'+
+  splitFig()+areaBarsFig()+
+  '<h3 style="margin:18px 0 6px">The elementary piece: Irvington into Beverly Cleary</h3><div class="prose"><p>Under every plan here, Irvington&rsquo;s area goes to Beverly Cleary for elementary. PPS A and B close Sabin into King; Plan D keeps Sabin (about 236, under 360). Vernon stays a K-5 of about 288 in A, B and D. In our plan, Vernon&rsquo;s elementary kids go to Sabin and King, and the building becomes Tubman.</p></div>'+
+  k5Fig()+'<p class="cite">Kid counts: our model, 2031-32 ('+fl(T.sources.summary,'summary.json')+').</p></section>'+
 
   '<section><h2>Less &ldquo;Tetris&rdquo;</h2><div class="prose">'+
   '<p>A middle school works best near the middle of its kids. Today Tubman&rsquo;s building already sits at the edge of its zone. PPS A and Plan D push it further out: the zone stretches northeast toward Vernon while the building stays on N Flint, so more kids pass a closer middle school on the way.</p>'+
   '<p>We modeled Tubman in the Vernon building two ways. In both, Sabin and King feed Tubman at Vernon, and Beverly Cleary (with all of Irvington) and Alameda feed Beaumont.</p>'+
   '<p><b>The swap</b> trades two elementary schools between Tubman and Ockley Green. Without it, Boise-Eliot/Humboldt&rsquo;s middle schoolers go to Tubman, as they do today and in PPS A and Plan D, and Faubion&rsquo;s go to Ockley Green. But once Tubman is in the Vernon building, Ockley Green is closer for most Boise-Eliot families, and the Vernon building is closer for Faubion&rsquo;s. With the swap, Boise-Eliot/Humboldt goes to Ockley Green and Faubion&rsquo;s main neighborhood goes to Tubman at Vernon; Faubion&rsquo;s far north blocks stay at Ockley Green, and the Bybee Lake area goes to Astor, as in Plan D. King&rsquo;s westernmost blocks (formerly Beach and Chief Joseph) also go to Ockley Green, about 0.6 mi away against about 1.5 to the Vernon building.</p>'+
   '<p>Across the NE middle schools, moving the building alone cuts the kids sent past a closer middle school from about '+n0(T.ne.scenario_A.past_closer)+' (PPS A) to '+n0(T.ne.tubman_at_vernon_irvbc_ms.past_closer)+'; the swap takes it to '+n0(T.ne.tubman_at_vernon_swap.past_closer)+'.</p></div>'+
-  tetrisFig()+'</section>'+
+  tetrisFig()+
+  '<h3 style="margin:22px 0 6px">Walks across all of NE</h3><div class="prose"><p>Across NE, PPS A, B and Plan D put more middle schoolers over 2 miles from school than today. Our plan brings the area back to about today&rsquo;s walks.</p></div>'+bandTables()+'</section>'+
 
   '<section><h2>The district already wants this, and Vernon doesn&rsquo;t appear in its search</h2>'+
   '<ul class="tl">'+
   '<li><b>2021</b><span>PPS&rsquo;s Long Range Facility Plan: Tubman &ldquo;is under consideration for relocation&rdquo; ('+fl(LRFP,'LRFP 2021 Vol. 2')+', PDF p. 101).</span></li>'+
   '<li><b>July 2021</b><span>The PPS board resolves that the state and ODOT must &ldquo;secure the funds to rebuild Harriet Tubman Middle School in a safe, healthy location in Historic Albina&rdquo; (quoted in the '+fl(TV+'mercury-2022-02-17-community-split-tubman-relocation.md','Mercury, 2022')+').</span></li>'+
   '<li><b>2022</b><span>The Legislature puts $120 million toward a new Tubman ('+fl(TV+'wweek-2022-03-03-120m-new-tubman.md','Willamette Week, Mar 3, 2022')+').</span></li>'+
-  '<li><b>2022-23</b><span>We canWe can&rsquo;t find the Vernon building evaluated in any of PPS&rsquo;s six-part siting study.rsquo;t find the Vernon building evaluated in any of the six versions of PPS&rsquo;s siting study. Sabin, King, Irvington and Boise-Eliot are ruled out only as <i>shared</i> buildings ('+fl(SIT+'htms-siting-due-diligence-v06.md','siting due diligence')+', versions 1-6).</span></li>'+
+  '<li><b>2022-23</b><span>We can&rsquo;t find the Vernon building evaluated in any of the six versions of PPS&rsquo;s siting study. Sabin, King, Irvington and Boise-Eliot are ruled out only as <i>shared</i> buildings ('+fl(SIT+'htms-siting-due-diligence-v06.md','siting due diligence')+', versions 1-6).</span></li>'+
   '<li><b>Jan 2025</b><span>PPS pauses the move &ldquo;for the indefinite future&rdquo;, citing the highway timeline and &ldquo;a lack of workable relocation sites&rdquo;; the state money &ldquo;has been sitting around&rdquo; ('+fl(TV+'wweek-2025-01-28-tubman-relocation-paused.md','Willamette Week, Jan 28, 2025')+').</span></li></ul>'+
   '<p class="verdict">Vernon is a workable site, in Historic Albina, and we can&rsquo;t find it evaluated in PPS&rsquo;s own search. The City&rsquo;s 1990 Albina Community Plan names Vernon as part of Albina ('+fl(TV+'albina-community-plan-process-1990-excerpts.md','excerpts')+').</p></section>'+
 
@@ -240,12 +306,12 @@ body.innerHTML=
   '<li><b>Sabin feeds two middle schools.</b> Vernon-area families go only to Sabin or King for elementary. About 75 kids on the east side of Vernon&rsquo;s area go to Sabin, about 1.51 mi away (Alameda would be 1.22), and then to Beaumont for middle school, about 0.77 mi, because the Vernon building has no room for them. The rest of Sabin goes to Tubman at Vernon. Sabin grows to about 495 by 2031-32 ('+fl('build/solver/out_v2/tubman_at_vernon_swap/schools.csv','schools.csv')+').</li>'+
   '<li><b>The building.</b> Vernon is 70,833 sq ft on 3 levels, built in 1931, with 25 classrooms and 4 modular classrooms; its gym is small, and music and art are in portables ('+fl(LRFP,'LRFP 2021')+'). PPS&rsquo;s program for a new Tubman is 120,000 sq ft ('+fl(SIT+'htms-siting-due-diligence-v06.md','siting study v06')+').</li>'+
   '<li><b>Access.</b> The state register lists one vertical wheelchair lift at Vernon and no passenger elevator ('+fl(TV+'oregon-bcd-elevator-search-vernon-tubman.md','Oregon elevator search')+'; a negative search result is strong but not proof).</li>'+
-  '<li><b>Room.</b> With the swap, Tubman at Vernon has about 553 students in 2027-28, then 528, 509, 496 and 501 by 2031-32, against about 552 seats: 1 over in the first year, and 4 under PPS&rsquo;s 500 middle-school floor in 2030-31. Ockley Green stays between about 515 and 552. Without the swap: 568, 533, 515, 497 and 504. (Our model: '+fl('build/solver/out_v2/tubman_at_vernon_swap/scorecard.json','with the swap')+', '+fl('build/solver/out_v2/tubman_at_vernon_irvbc_ms/scorecard.json','no swap')+'.)</li></ul>'+
+  '<li><b>Room.</b> With the swap, Tubman at Vernon has about 553 students in 2027-28, then 528, 509, 496 and 501 by 2031-32, against the building&rsquo;s seats. Rated as a middle school the way PPS rates Tubman and Beaumont, the Vernon building holds about 565 students without its four portables (about 650 with them); as a K-8 it&rsquo;s rated at 552 (our arithmetic on the capacity worksheet in PPS&rsquo;s <a href="https://app.powerbi.com/view?r=eyJrIjoiZTYxZThjOWUtZDAyZS00YmFkLWI4YWUtOTZiOGUxOTAxNWMzIiwidCI6ImQwOGRmYzk0LWEyM2MtNDRlNC04YjhkLTRhYmM0MGRkYTlhZSIsImMiOjZ9">rightsizing dashboard</a>). So it fits without the portables, but tight in the first year; 2030-31 is 4 under PPS&rsquo;s 500 middle-school floor. Ockley Green stays between about 515 and 552. Without the swap: 568, 533, 515, 497 and 504. (Our model: '+fl('build/solver/out_v2/tubman_at_vernon_swap/scorecard.json','with the swap')+', '+fl('build/solver/out_v2/tubman_at_vernon_irvbc_ms/scorecard.json','no swap')+'.)</li></ul>'+
   '</div></section>'+
 
   '<section><h2>A creative move-in, not a long wait</h2><div class="prose">'+
   '<p>Tubman doesn&rsquo;t need a finished renovation to move. PPS can move in creatively and upgrade the building while it&rsquo;s in use:</p><ul>'+
-  '<li><b>Portables</b> for the first year or two, when the model has Tubman a little over Vernon&rsquo;s seats.</li>'+
+  '<li><b>Keep the four portables</b> for the first year or two as a cushion, when the model has Tubman close to the building&rsquo;s middle-school seats.</li>'+
   '<li><b>A flex year</b>, with some grades staying on N Flint while the rest move.</li>'+
   '<li><b>Phasing Vernon&rsquo;s elementary out from kindergarten up</b>, so no K-5 class is moved mid-way and the building fills with middle schoolers as it empties.</li>'+
   '<li><b>Upgrading while in use</b>, starting with access: Vernon has a wheelchair lift but no elevator on record, the main thing to check.</li></ul>'+
