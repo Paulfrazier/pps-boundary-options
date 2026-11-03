@@ -51,6 +51,8 @@ OUT = os.path.join(KIT, 'pages', 'map.html')
 OUTD = os.path.join(KIT, 'pages', 'map_data')
 LEVELS = ['K-5', '6-8', '9-12']
 WCOL = {'K-5': 'k5', '6-8': 'm68', '9-12': 'h912'}
+LIVE = pd.read_parquet(os.path.join(KIT, 'build', 'data', 'v2', 'where_kids_live_2031.parquet')).sort_values('idx').reset_index(drop=True)
+LIVE_COL = {'K-5': 'k5', '6-8': 'm68', '9-12': 'h912'}
 DEN_M = 400.0                # density grid cell, metres (map themes "Where kids live" / "Where kids move")
 TYPES = {'K-5': ('K-5', 'K-8'), '6-8': ('6-8', 'K-8'), '9-12': ('9-12',)}
 OFFICIAL = set(OF.COL)
@@ -439,6 +441,16 @@ for lv in LEVELS:
     nice = lambda v: float('%.2g' % v) if v < 100 else float(round(v, -1))
     br = sorted({nice(np.quantile(dk, q)) for q in (0.2, 0.4, 0.6, 0.8)})
     den = {'dx': DEN_M / MX, 'dy': DEN_M / LAT_M, 'm': DEN_M, 'b': br, 'cells': cells}
+    # "Where kids live" shades residence (build/solver/where_kids_live.py: neighborhood kids + program students at
+    # estimated homes), on its own cells and steps; b and cells above stay on the scorecard basis for the walk and
+    # move themes. The residence totals aren't scorecard kids, so they're never shown as counts.
+    res = LIVE[LIVE_COL[lv]].to_numpy(float)
+    live = collections.Counter()
+    for i, j, ww in zip(ix, iy, res):
+        live[(int(i), int(j))] += float(ww)
+    lcells = sorted([i, j, round(v, 1)] for (i, j), v in live.items() if v >= 0.5)
+    ldk = np.array([c[2] for c in lcells]) / (DEN_M * DEN_M / 1e6)
+    den['live'] = {'b': sorted({nice(np.quantile(ldk, q)) for q in (0.2, 0.4, 0.6, 0.8)}), 'cells': lcells}
     # "Walk to assigned school" theme: per plan, each density cell's kid-weighted average walk to the school that plan
     # assigns (scorebasis d = metrics.py walk miles, the plan's own scorecard kids), in hundredths of a mile, in den.cells
     # order; -1 = under 0.05 of the plan's kids in the cell
