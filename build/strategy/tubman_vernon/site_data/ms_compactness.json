@@ -286,5 +286,73 @@
    "past_closer": 56,
    "avg_walk_mi": 1.3
   }
+ },
+ "tubman_at_vernon_best": {
+  "Vernon": {
+   "kids": 460,
+   "polsby_popper": 0.326,
+   "pieces": 1,
+   "school_offset": 0.25,
+   "past_closer": 62,
+   "avg_walk_mi": 0.97
+  },
+  "Beaumont": {
+   "kids": 470,
+   "polsby_popper": 0.439,
+   "pieces": 1,
+   "school_offset": 0.94,
+   "past_closer": 0,
+   "avg_walk_mi": 1.08
+  },
+  "Ockley Green": {
+   "kids": 524,
+   "polsby_popper": 0.286,
+   "pieces": 1,
+   "school_offset": 0.47,
+   "past_closer": 35,
+   "avg_walk_mi": 1.8
+  },
+  "Roseway Heights": {
+   "kids": 404,
+   "polsby_popper": 0.31,
+   "pieces": 1,
+   "school_offset": 0.55,
+   "past_closer": 56,
+   "avg_walk_mi": 1.3
+  }
+ },
+ "tubman_at_vernon_on_bprime": {
+  "Vernon": {
+   "kids": 460,
+   "polsby_popper": 0.326,
+   "pieces": 1,
+   "school_offset": 0.25,
+   "past_closer": 62,
+   "avg_walk_mi": 0.97
+  },
+  "Beaumont": {
+   "kids": 466,
+   "polsby_popper": 0.405,
+   "pieces": 1,
+   "school_offset": 0.93,
+   "past_closer": 0,
+   "avg_walk_mi": 1.07
+  },
+  "Ockley Green": {
+   "kids": 524,
+   "polsby_popper": 0.289,
+   "pieces": 1,
+   "school_offset": 0.47,
+   "past_closer": 35,
+   "avg_walk_mi": 1.8
+  },
+  "Roseway Heights": {
+   "kids": 404,
+   "polsby_popper": 0.31,
+   "pieces": 1,
+   "school_offset": 0.55,
+   "past_closer": 56,
+   "avg_walk_mi": 1.3
+  }
  }
 }

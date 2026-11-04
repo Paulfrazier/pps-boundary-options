@@ -198,7 +198,7 @@ function areaBarsFig(){var A=S.abd_zone_by_today_es_area, R=[];
   Object.keys(A).sort(function(a,b){return A[b].walk_flint_mi-A[a].walk_flint_mi;}).forEach(function(k){var v=A[k],nm=(AN[k]||k)+' ('+n0(v.kids)+' kids)';
     R.push({k:nm,sub:'to N Flint',v:v.walk_flint_mi,c:'var(--bad)'});R.push({k:'',sub:'to the Vernon building',v:v.walk_vernon_mi,c:'var(--good)'});});
   return '<div class="fig"><h3>Average walk by today&rsquo;s elementary area, Tubman&rsquo;s A/B/D zone</h3>'+bars(R,3.2,function(v){return v.toFixed(2)+' mi';},1.5)+
-    '<p class="cite">Dashed line: 1.5 mi, the middle-school bus line. Boise-Eliot/Humboldt is the one area that is farther from the Vernon building; our plan sends it to Ockley Green instead (about 1.66 mi; see the swap below). '+STUDY+' '+fl(T.sources.summary,'summary.json')+'.</p></div>';
+    '<p class="cite">Dashed line: 1.5 mi, the middle-school bus line. Boise-Eliot/Humboldt is the one area that is farther from the Vernon building; our plan sends it to Ockley Green instead (about 1.66 mi; see below). '+STUDY+' '+fl(T.sources.summary,'summary.json')+'.</p></div>';
 }
 var KC={'Sabin':'var(--k0)','Irvington':'var(--k1)','Beverly Cleary':'var(--k2)','MLK Jr':'var(--k3)','Vernon':'var(--k4)','Alameda':'var(--k5)','Boise-Eliot/Humboldt':'var(--k6)'};
 var KS={'Beverly Cleary':'B. Cleary','Boise-Eliot/Humboldt':'Boise-Eliot','MLK Jr':'King'};
@@ -239,10 +239,10 @@ function zonePanel(p){var Z=T.zones;
 function tetrisFig(){
   var Z=T.zones, held=!Z.plans.some(function(p){return T.vernon_runs.indexOf(p.run)>=0;});
   var panels=Z.plans.map(zonePanel).join('')+(held?'<div class="fig"><h3>Tubman in the Vernon building</h3><div class="held">The map is coming: the checked model run is being published.</div></div>':'');
-  var lab={status_quo:'Today',scenario_A:'PPS A',planD_updated:'Plan D (current draft)',irv_sabin_15th_grant:'15th + Knott line, teens at Grant',tubman_at_vernon_irvbc_ms:'Tubman at Vernon, no swap',tubman_at_vernon_swap:'Tubman at Vernon + swap'};
+  var lab={status_quo:'Today',scenario_A:'PPS A',planD_updated:'Plan D (current draft)',irv_sabin_15th_grant:'15th + Knott line, teens at Grant',tubman_at_vernon_beh:'Tubman at Vernon (our plan)',tubman_at_vernon_best:'Our plan, on our current best',tubman_at_vernon_on_bprime:'Our plan, on PPS B made sustainable'};
   var tot='<div class="tbl"><table><thead><tr><th>Plan</th><th class="num">Average walk</th><th class="num">Kids over 1.5 mi</th><th class="num">Kids past a closer middle school</th></tr></thead><tbody>'+
     Object.keys(T.ne).filter(function(r){return lab[r];}).map(function(r){var v=T.ne[r];return '<tr><td>'+esc(lab[r])+'</td><td class="num">'+mi(v.avg_walk_mi)+' mi</td><td class="num">'+n0(v.kids_over_1_5mi)+'</td><td class="num">'+n0(v.past_closer)+'</td></tr>';}).join('')+'</tbody></table></div>';
-  var rows=Object.keys(T.compact).filter(function(r){return T.compact[r].Tubman;}).map(function(r){var t=T.compact[r].Tubman;return {k:lab[r]||r,o:t.school_offset,p:t.past_closer};});
+  var rows=Object.keys(T.compact).filter(function(r){return T.compact[r].Tubman&&r!=='tubman_at_vernon_best'&&r!=='tubman_at_vernon_on_bprime';}).map(function(r){var t=T.compact[r].Tubman;return {k:lab[r]||r,o:t.school_offset,p:t.past_closer};});
   return '<div class="'+(Z.plans.length+(held?1:0)===4?'two':'three')+'">'+panels+'</div>'+
     '<div class="legend">'+Object.keys(ZC).map(function(n){return '<span><i style="background:'+ZC[n]+'"></i>'+esc(n)+'</span>';}).join('')+'</div>'+
     '<div class="two" style="margin-top:12px"><div class="fig"><h3>How far Tubman&rsquo;s building sits from its own kids</h3>'+bars(rows.map(function(r){return {k:r.k,v:r.o,c:'var(--z1)'};}),2.4,function(v){return v.toFixed(2);},1)+
@@ -254,6 +254,29 @@ function tetrisFig(){
 }
 
 // ---- 5. Vernon's size
+// ---- 4. one package, two citywide plans
+function versionsFig(){var R=T.versions.rows, Y=T.versions.years, V1=Y.tubman_at_vernon_best, V2=Y.tubman_at_vernon_on_bprime;
+  var H={scenario_A:'PPS A',scenario_B:'PPS B',dli_home3_rh:'Our current best',tubman_at_vernon_best:'Package on our current best',tubman_at_vernon_on_bprime:'Package on PPS B, made sustainable'};
+  function tr(lab,f){return '<tr><td>'+lab+'</td>'+R.map(function(r){return '<td class="num">'+f(r)+'</td>';}).join('')+'</tr>';}
+  function of(o){return o.at+' of '+o.of;}
+  return '<div class="tbl"><table><thead><tr><th>2031-32</th>'+R.map(function(r){return '<th class="num">'+esc(H[r.run])+'</th>';}).join('')+'</tr></thead><tbody>'+
+    tr('K-5 schools at target, every required year',function(r){return of(r.k5);})+
+    tr('K-5 average walk',function(r){return r.k5.walk.toFixed(2)+' mi';})+
+    tr('K-5 kids past a closer school',function(r){return n0(r.k5.past);})+
+    tr('K-5 kids moved from Status Quo',function(r){return n0(r.k5.moved);})+
+    tr('6-8 schools at target, every required year',function(r){return of(r.ms);})+
+    tr('6-8 average walk',function(r){return r.ms.walk.toFixed(2)+' mi';})+
+    tr('6-8 kids over 1.5 mi',function(r){return n0(r.ms.over);})+
+    tr('6-8 kids past a closer school',function(r){return n0(r.ms.past);})+'</tbody></table></div>'+
+    '<div class="prose"><ul>'+
+    '<li><b>Both versions:</b> Vernon building about '+n0(V1.vernon[4])+', Sabin about '+n0(V1.sabin)+', Alameda about '+n0(V1.alameda)+'. King about '+n0(V1.king)+' on our current best, about '+n0(V2.king)+' on PPS B. Boise-Eliot/Humboldt about '+n0(V1.beh)+' and about '+n0(V2.beh)+'.</li>'+
+    '<li><b>On our current best:</b> middle-school walks improve, but elementary gets a little worse than our current best. Faubion falls under 360 from 2028-29 (about '+n0(V1.faubion)+' in 2031-32), which is why it reads 37 of 38.</li>'+
+    '<li><b>On PPS B, made sustainable:</b> fewer elementary kids move than on our current best, but the elementary lines are weaker, with '+n0(R[4].k5.past)+' kids past a closer school. Lent (274) and Rigler (321) are program-only schools under 360 and aren&rsquo;t counted in the 35.</li>'+
+    '<li>School counts differ by plan because each plan keeps a different set of schools open, so compare the &ldquo;x of y&rdquo; pairs, not just the first number.</li>'+
+    '<li>Both versions are spliced from two plans, not solved as one.</li></ul></div>'+
+    '<p class="cite">Our model v2, 2031-32 kids. Scorecards: '+R.map(function(r){return fl('build/solver/out_v2/'+r.run+'/scorecard.json',H[r.run]);}).join(', ')+'.</p>';
+}
+
 function vernonFig(){var V=S.vernon_size_2031;
   var R=Object.keys(V).map(function(k){var v=V[k];return {k:k==='Irvington into Sabin'?'Sabin open':k,v:v.vernon_total,line:v.floor,sub:k.indexOf('K-8')>=0?'K-8, target 500':'K-5, target 360',c:v.vernon_total<v.floor?'var(--bad)':'var(--good)'};});
   return '<div class="fig"><h3>Vernon&rsquo;s students in 2031-32</h3>'+bars(R,600,n0,360)+'<p class="cite">Dashed line: PPS&rsquo;s 360 K-5 target (500 for a K-8). Our model, 2031-32, each plan&rsquo;s schools.csv ('+fl(T.sources.summary,'summary.json')+').</p></div>';
@@ -277,16 +300,18 @@ body.innerHTML=
   '<section><h2>Where today&rsquo;s Tubman and Vernon kids go under PPS A, B and D</h2><div class="prose">'+
   '<p>PPS A, PPS B and Plan D draw the same Tubman zone, block for block. Irvington&rsquo;s elementary merges into Beverly Cleary, so its '+n0(S.today_to_abd_6_8.Tubman['Irvington -> Beaumont'])+' middle schoolers leave Tubman for Beaumont. Vernon becomes a K-5, so its '+n0(S.vernon_6_8_kids)+' middle schoolers go to Tubman on N Flint. Sabin, King and Boise-Eliot/Humboldt stay with Tubman.</p></div>'+
   splitFig()+areaBarsFig()+
-  '<h3 style="margin:18px 0 6px">The elementary piece: Irvington into Beverly Cleary</h3><div class="prose"><p>Under every plan here, Irvington&rsquo;s area goes to Beverly Cleary for elementary. PPS A and B close Sabin into King; Plan D keeps Sabin (about 236, under 360). Vernon stays a K-5 of about 288 in A, B and D. In our plan, Vernon&rsquo;s elementary kids go to Sabin and King, and the building becomes Tubman.</p></div>'+
+  '<h3 style="margin:18px 0 6px">The elementary piece: Irvington into Beverly Cleary</h3><div class="prose"><p>Under PPS A, PPS B and Plan D, all of Irvington&rsquo;s area goes to Beverly Cleary for elementary. PPS A and B close Sabin into King; Plan D keeps Sabin (about 236, under 360). Vernon stays a K-5 of about 288 in A, B and D. In our plan, about 162 Irvington kids go to Beverly Cleary and about 61 on the west side go to Boise-Eliot/Humboldt, a shorter walk for them. Vernon&rsquo;s elementary kids go to Sabin (about 258) and King (about 30), and the building becomes Tubman.</p></div>'+
   k5Fig()+'<p class="cite">Kid counts: our model, 2031-32 ('+fl(T.sources.summary,'summary.json')+').</p></section>'+
 
   '<section><h2>Less &ldquo;Tetris&rdquo;</h2><div class="prose">'+
   '<p>A middle school works best near the middle of its kids. Today Tubman&rsquo;s building already sits at the edge of its zone. PPS A and Plan D push it further out: the zone stretches northeast toward Vernon while the building stays on N Flint, so more kids pass a closer middle school on the way.</p>'+
-  '<p>We modeled Tubman in the Vernon building two ways. In both, Sabin and King feed Tubman at Vernon, and Beverly Cleary (with all of Irvington) and Alameda feed Beaumont.</p>'+
-  '<p><b>The swap</b> trades two elementary schools between Tubman and Ockley Green. Without it, Boise-Eliot/Humboldt&rsquo;s middle schoolers go to Tubman, as they do today and in PPS A and Plan D, and Faubion&rsquo;s go to Ockley Green. But once Tubman is in the Vernon building, Ockley Green is closer for most Boise-Eliot families, and the Vernon building is closer for Faubion&rsquo;s. With the swap, Boise-Eliot/Humboldt goes to Ockley Green and Faubion&rsquo;s main neighborhood goes to Tubman at Vernon; Faubion&rsquo;s far north blocks stay at Ockley Green, and the Bybee Lake area goes to Astor, as in Plan D. King&rsquo;s westernmost blocks (formerly Beach and Chief Joseph) also go to Ockley Green, about 0.6 mi away against about 1.5 to the Vernon building.</p>'+
-  '<p>Across the NE middle schools, moving the building alone cuts the kids sent past a closer middle school from about '+n0(T.ne.scenario_A.past_closer)+' (PPS A) to '+n0(T.ne.tubman_at_vernon_irvbc_ms.past_closer)+'; the swap takes it to '+n0(T.ne.tubman_at_vernon_swap.past_closer)+'.</p></div>'+
+  '<p>In our plan, Tubman moves into the Vernon building. All of Sabin and King feed it, along with Vernon&rsquo;s own middle schoolers and Faubion&rsquo;s main neighborhood. Beverly Cleary and Alameda feed Beaumont, and all of Irvington&rsquo;s middle schoolers go to Beaumont, as they do under PPS A, B and Plan D.</p>'+
+  '<p><b>Boise-Eliot/Humboldt and Faubion trade places.</b> Boise-Eliot/Humboldt&rsquo;s middle schoolers go to Ockley Green, which is closer for most of them than the Vernon building. To make up for losing nearby Tubman, its elementary grows rather than shrinks. Faubion&rsquo;s main neighborhood goes to Tubman at Vernon; Faubion&rsquo;s far north blocks stay at Ockley Green, and the Bybee Lake area goes to Astor, as in Plan D.</p>'+
+  '<p>Across the NE middle schools, this cuts the kids sent past a closer middle school from about '+n0(T.ne.scenario_A.past_closer)+' (PPS A) to '+n0(T.ne.tubman_at_vernon_beh.past_closer)+'.</p></div>'+
   tetrisFig()+
   '<h3 style="margin:22px 0 6px">Walks across all of NE</h3><div class="prose"><p>Across NE, PPS A, B and Plan D put more middle schoolers over 2 miles from school than today. Our plan brings the area back to about today&rsquo;s walks.</p></div>'+bandTables()+'</section>'+
+
+  '<section><h2>One package, two citywide plans</h2><div class="prose"><p>We put the same Northeast package on two citywide plans: our current best, and PPS B made sustainable.</p></div>'+versionsFig()+'</section>'+
 
   '<section><h2>The district already wants this, and Vernon doesn&rsquo;t appear in its search</h2>'+
   '<ul class="tl">'+
@@ -302,11 +327,12 @@ body.innerHTML=
   vernonFig()+'</section>'+
 
   '<section><h2>The honest costs</h2><div class="prose"><ul>'+
-  '<li><b>Vernon&rsquo;s elementary closes.</b> About 288 K-5 kids move to King or Sabin, walking about 1.2 miles on average; about 170 would be over 1 mile (study estimate). Vernon is in a historically Black neighborhood, and trust is already strained by the 2021-23 site search.</li>'+
-  '<li><b>Sabin feeds two middle schools.</b> Vernon-area families go only to Sabin or King for elementary. About 75 kids on the east side of Vernon&rsquo;s area go to Sabin, about 1.51 mi away (Alameda would be 1.22), and then to Beaumont for middle school, about 0.77 mi, because the Vernon building has no room for them. The rest of Sabin goes to Tubman at Vernon. Sabin grows to about 495 by 2031-32 ('+fl('build/solver/out_v2/tubman_at_vernon_swap/schools.csv','schools.csv')+').</li>'+
+  '<li><b>Vernon&rsquo;s elementary closes.</b> About 288 K-5 kids move, about 258 to Sabin and about 30 to King. Those going to Sabin walk about 1.2 miles on average, and about 170 of them would be over 1 mile (our model). Vernon is in a historically Black neighborhood, and trust is already strained by the 2021-23 site search.</li>'+
+  '<li><b>Irvington splits between two elementaries.</b> About 162 kids go to Beverly Cleary and about 61 to Boise-Eliot/Humboldt. They still share a middle school and high school. Under PPS A, B and Plan D, all of them go to Beverly Cleary.</li>'+
+  '<li><b>Boise-Eliot/Humboldt&rsquo;s middle-school trip gets longer.</b> Tubman on N Flint is about 1.09 mi on average; Ockley Green is about 1.66 mi, with about half of those kids over the 1.5 mi bus line. We&rsquo;d pair this with a transportation guarantee for those families and phase the change in (our model: '+fl(T.sources.summary,'summary.json')+', '+fl('build/solver/out_v2/tubman_at_vernon_beh/schools.csv','schools.csv')+').</li>'+
   '<li><b>The building.</b> Vernon is 70,833 sq ft on 3 levels, built in 1931, with 25 classrooms and 4 modular classrooms; its gym is small, and music and art are in portables ('+fl(LRFP,'LRFP 2021')+'). PPS&rsquo;s program for a new Tubman is 120,000 sq ft ('+fl(SIT+'htms-siting-due-diligence-v06.md','siting study v06')+').</li>'+
   '<li><b>Access.</b> The state register lists one vertical wheelchair lift at Vernon and no passenger elevator ('+fl(TV+'oregon-bcd-elevator-search-vernon-tubman.md','Oregon elevator search')+'; a negative search result is strong but not proof).</li>'+
-  '<li><b>Room.</b> With the swap, Tubman at Vernon has about 553 students in 2027-28, then 528, 509, 496 and 501 by 2031-32, against the building&rsquo;s seats. Rated as a middle school the way PPS rates Tubman and Beaumont, the Vernon building holds about 565 students without its four portables (about 650 with them); as a K-8 it&rsquo;s rated at 552 (our arithmetic on the capacity worksheet in PPS&rsquo;s <a href="https://app.powerbi.com/view?r=eyJrIjoiZTYxZThjOWUtZDAyZS00YmFkLWI4YWUtOTZiOGUxOTAxNWMzIiwidCI6ImQwOGRmYzk0LWEyM2MtNDRlNC04YjhkLTRhYmM0MGRkYTlhZSIsImMiOjZ9">rightsizing dashboard</a>). So it fits without the portables, but tight in the first year; 2030-31 is 4 under PPS&rsquo;s 500 middle-school floor. Ockley Green stays between about 515 and 552. Without the swap: 568, 533, 515, 497 and 504. (Our model: '+fl('build/solver/out_v2/tubman_at_vernon_swap/scorecard.json','with the swap')+', '+fl('build/solver/out_v2/tubman_at_vernon_irvbc_ms/scorecard.json','no swap')+'.)</li></ul>'+
+  '<li><b>Room.</b> Tubman at Vernon has about '+T.versions.years.tubman_at_vernon_best.vernon.join(', ').replace(/, (\d+)$/,' and $1')+' students from 2027-28 to 2031-32, against the building&rsquo;s seats. Rated as a middle school the way PPS rates Tubman and Beaumont, the Vernon building holds about 565 students without its four portables (about 650 with them); as a K-8 it&rsquo;s rated at 552 (our arithmetic on the capacity worksheet in PPS&rsquo;s <a href="https://app.powerbi.com/view?r=eyJrIjoiZTYxZThjOWUtZDAyZS00YmFkLWI4YWUtOTZiOGUxOTAxNWMzIiwidCI6ImQwOGRmYzk0LWEyM2MtNDRlNC04YjhkLTRhYmM0MGRkYTlhZSIsImMiOjZ9">rightsizing dashboard</a>). So it fits without the portables, but tight in the first year, and it stays above PPS&rsquo;s 500 middle-school floor. In both versions Ockley Green stays between about '+Math.min.apply(null,T.versions.years.tubman_at_vernon_best.ockley)+' and '+Math.max.apply(null,T.versions.years.tubman_at_vernon_best.ockley)+'. (Our model: '+fl('build/solver/out_v2/tubman_at_vernon_best/scorecard.json','on our current best')+', '+fl('build/solver/out_v2/tubman_at_vernon_on_bprime/scorecard.json','on PPS B')+'.)</li></ul>'+
   '</div></section>'+
 
   '<section><h2>A creative move-in, not a long wait</h2><div class="prose">'+
