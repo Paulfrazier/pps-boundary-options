@@ -1,0 +1,213 @@
+<meta charset="utf-8">
+<title>Closer Schools, Same Closures</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: one reading column; the two maps sit side by side as one comparison, then the area chart, then the pairs table. Tokens follow the PPS boundary options site (site.css). */
+:root{--paper:#f6f4ef;--card:#fffdf9;--ink:#1f2a30;--muted:#5d686d;--rule:#ddd8cd;--accent:#2f5d6e;--tag:#e3ecee;
+  --pps:#8a6d3b;--ours:#2f5d6e;--empty:#e9e5dc;--line:#8f9a9f;
+  --h1:#f2d3c4;--h2:#e3a487;--h3:#cf7552;--h4:#ad4a2d;--h5:#76291a;
+  --sans:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;--disp:"Fraunces",Georgia,serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--paper:#15191b;--card:#1d2326;--ink:#e6e9ea;--muted:#a3adb1;--rule:#33393c;--accent:#8cc3d6;--tag:#26343a;
+  --pps:#d2b277;--ours:#8cc3d6;--empty:#262d30;--line:#6f7a7f;
+  --h1:#4b2a21;--h2:#7d3a27;--h3:#b45638;--h4:#e2825f;--h5:#f7bea3;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#15191b;--card:#1d2326;--ink:#e6e9ea;--muted:#a3adb1;--rule:#33393c;--accent:#8cc3d6;--tag:#26343a;
+  --pps:#d2b277;--ours:#8cc3d6;--empty:#262d30;--line:#6f7a7f;
+  --h1:#4b2a21;--h2:#7d3a27;--h3:#b45638;--h4:#e2825f;--h5:#f7bea3;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--sans)}
+main{max-width:1000px;margin:0 auto;padding-block:28px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.ai{font-size:13px;color:var(--muted);margin:0 0 18px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0}
+h1{font-family:var(--disp);font-weight:600;font-size:clamp(28px,5.4vw,42px);line-height:1.1;margin:6px 0 12px;text-wrap:balance;max-width:22ch}
+h2{font-family:var(--disp);font-weight:600;font-size:23px;line-height:1.2;margin:44px 0 6px;text-wrap:balance}
+p{max-width:68ch}
+.lede{font-size:18px;color:var(--muted);margin:0 0 22px}
+.lede b{color:var(--ink)}
+.claim{border-left:3px solid var(--pps);padding:2px 14px;margin:0 0 22px;font-size:17px;max-width:62ch}
+.claim q{font-style:italic}
+.num{font-variant-numeric:tabular-nums}
+/* headline comparison */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:8px 0 6px}
+.stat{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
+.stat .lab{font-size:14px;color:var(--muted);line-height:1.35;min-height:2.7em}
+.stat .row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-variant-numeric:tabular-nums}
+.stat .row span{font-size:13px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.stat .row b{font-size:22px;font-weight:650}
+.stat .row.us b{font-size:26px}
+.sw{width:10px;height:10px;border-radius:2px;display:inline-block;flex:none}
+.sw.p{background:var(--pps)}.sw.o{background:var(--ours)}
+.stat .cost{font-size:12px;color:var(--muted);border-top:1px solid var(--rule);padding-top:6px}
+.cite{font-size:12px;color:var(--muted)}
+/* maps */
+.maps{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+@media (max-width:720px){.maps{grid-template-columns:1fr}}
+figure{margin:0;min-width:0}
+.mapcard{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 12px 8px;position:relative}
+.mapcard h3{margin:0 0 2px;font-size:16px;display:flex;align-items:center;gap:8px}
+.mapcard .sub{font-size:14px;color:var(--muted);margin:0 0 6px}
+.mapcard .sub b{color:var(--ink);font-size:18px}
+svg.map{width:100%;height:auto;display:block;touch-action:manipulation}
+svg.map .cl{fill:none;stroke:var(--line);stroke-width:.35}
+svg.map .rv{fill:none;stroke:var(--accent);stroke-opacity:.45;stroke-width:.9}
+svg.map .fw{fill:none;stroke:var(--line);stroke-width:.6;stroke-dasharray:1.6 1}
+svg.map rect.c{stroke:var(--card);stroke-width:.12}
+svg.map rect.c.hot{stroke:var(--ink);stroke-width:.35}
+svg.map .so{fill:var(--card);stroke:var(--ink);stroke-width:.35}
+svg.map .sx{stroke:var(--ink);stroke-width:.45}
+svg.map text{font:600 2.1px var(--sans);fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:.6px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;align-items:center;font-size:13px;color:var(--muted);margin:10px 0 0}
+.legend .ramp{display:flex;align-items:center;gap:2px}
+.legend .ramp i{width:22px;height:10px;display:inline-block}
+.legend .ramp i:first-child{border-radius:2px 0 0 2px}.legend .ramp i:last-child{border-radius:0 2px 2px 0}
+.legend .key{display:inline-flex;align-items:center;gap:5px}
+.tip{position:absolute;pointer-events:none;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:8px 10px;font-size:13px;line-height:1.4;box-shadow:0 4px 14px rgb(0 0 0 / .12);max-width:240px;z-index:3}
+.tip b{font-variant-numeric:tabular-nums}
+/* area chart */
+.chart{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 14px 10px;margin-top:12px;overflow-x:auto}
+.bars{display:grid;grid-template-columns:minmax(118px,170px) 1fr;gap:4px 12px;align-items:center;min-width:420px;font-size:14px}
+.bars .nm{text-align:right;line-height:1.2}
+.bars .nm small{display:block;font-size:11px;color:var(--muted)}
+.bars .tr{display:flex;flex-direction:column;gap:2px;padding-block:3px}
+.bars .b{height:9px;border-radius:0 4px 4px 0;position:relative;min-width:1px}
+.bars .b.p{background:var(--pps)}.bars .b.o{background:var(--ours)}
+.bars .b em{position:absolute;left:calc(100% + 6px);top:50%;transform:translateY(-50%);font-style:normal;font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bars .b.p em{color:var(--ink)}
+.bars .row-hl .nm{font-weight:700}
+.tag{display:inline-block;background:var(--tag);border-radius:4px;padding:0 5px;font-size:11px;color:var(--ink);font-weight:500;margin-left:4px;vertical-align:1px}
+/* table */
+.tbl{overflow-x:auto;border:1px solid var(--rule);border-radius:10px;background:var(--card);margin-top:12px}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:640px}
+th,td{padding:7px 10px;border-bottom:1px solid var(--rule);text-align:right;font-variant-numeric:tabular-nums;vertical-align:top}
+th:nth-child(-n+3),td:nth-child(-n+3){text-align:left}
+thead th{font-weight:600;color:var(--muted);vertical-align:bottom;font-size:13px}
+tr:last-child td{border-bottom:0}
+tr.hl td{background:color-mix(in srgb,var(--pps) 10%,transparent)}
+td .x{color:var(--muted);font-size:12px;display:block}
+.notes{font-size:14px;color:var(--muted)}
+.notes li{margin:6px 0;max-width:72ch}
+a{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&display=swap">
+
+<main>
+<p class="ai">Built by AI (Claude), directed and checked by Paul Frazier. These are model estimates from public data, not PPS's own numbers.</p>
+<p class="eyebrow">PPS rightsizing · Scenario B · K–5</p>
+<h1>Same ten closures. Shorter walks.</h1>
+<p class="claim">The argument: <q>kids just have to go farther.</q> With fewer buildings, some walks do get longer. But under Scenario B, most kids who are sent past a closer school don't have to be. That comes from where the lines are drawn, not from the closures.</p>
+<p class="lede">We kept every one of Scenario B's ten closures and redrew the K–5 lines to send kids to the nearest open school while keeping schools at a workable size. PPS's B lines send <b class="num" id="l-b"></b> kids past a closer open school. The redraw sends <b class="num" id="l-r"></b>.</p>
+
+<div class="stats" id="stats"></div>
+<p class="cite">2031–32 projected K–5 kids on our model (v2: 2020 Census blocks scaled to PSU's July 2026 forecast). "Past a closer school" = their assigned school is at least ¼ mile farther on foot than an open school they could reach without a new I-84 or river crossing. Sources: <code>out_v2/scenario_B/scorecard.json</code>, <code>out_v2/bscale_B_ref.staging/scorecard.json</code>.</p>
+
+<h2>Where kids are sent past a closer school</h2>
+<p>Each square is about ¼ mile across. Darker means more kids there are assigned past a closer open school. Both maps use the same scale. Hover or tap a square for details.</p>
+<div class="maps">
+  <figure class="mapcard" id="mB"><h3><span class="sw p"></span>PPS Scenario B lines</h3><p class="sub"><b class="num" id="sB"></b> kids past a closer school</p></figure>
+  <figure class="mapcard" id="mR"><h3><span class="sw o"></span>Same closures, walk-first lines</h3><p class="sub"><b class="num" id="sR"></b> kids past a closer school</p></figure>
+</div>
+<div class="legend" id="legend"></div>
+
+<h2>It happens in closing and non-closing areas alike</h2>
+<p id="splitp"></p>
+<div class="chart"><div class="bars" id="bars"></div></div>
+<div class="legend"><span class="key"><span class="sw p"></span>PPS Scenario B</span><span class="key"><span class="sw o"></span>Same closures, walk-first lines</span><span class="key"><span class="tag" style="margin:0">closes</span>school closes under B</span></div>
+<p class="cite">Grouped by the K–5 area the kids live in today.</p>
+
+<h2>Sent here, when a closer school is open</h2>
+<p>The largest groups under Scenario B. The walk-first lines send almost all of these kids to the closer school.</p>
+<div class="tbl"><table id="pairs"><thead><tr><th>Kids living in today's</th><th>B sends them to</th><th>Closer open school</th><th>Kids</th><th>Walk under B</th><th>Walk to closer school</th><th>Walk-first lines fix</th></tr></thead><tbody></tbody></table></div>
+<p class="cite">Walks are average walking miles on the street network (OSRM foot routing), weighted by kids. "Fix" = kids the redraw assigns to the closer school or to one within ¼ mile of it.</p>
+
+<h2>What the redraw costs</h2>
+<p id="costp"></p>
+
+<h2>How to read this</h2>
+<ul class="notes">
+<li>The walk-first lines are one model example, not a proposal. The solver stopped at a feasible plan (31% from its proven bound on K–5), so a better plan may exist. PPS's own tools, with real addresses, could do better still.</li>
+<li>Same closures as Scenario B: Beach, Buckman, Creston, Irvington, James John, Maplewood, Marysville, Peninsula, Sabin and Woodmere. Immersion programs follow Scenario B's moves. The redraw had to keep at least as many schools at PPS's 360 target each year as B does; it got 30 of 38.</li>
+<li>Scenario B's lines are our digitized copy of PPS's published B maps. Kid counts are model estimates from Census blocks, not enrollment. Transfers, immersion choices and opt-outs are not modeled. The two plans count slightly different totals (<span class="num" id="kidsB"></span> vs <span class="num" id="kidsR"></span>) because program kids are placed differently.</li>
+<li>Kids walking past a closer school today (no closures) on the same measure: 1,861. Scenario B raises that; the walk-first lines cut it to about a third of today's.</li>
+</ul>
+</main>
+
+<script>
+(()=>{
+const DATA=__DATA__;
+const M=__METRICS__;
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+const byId=id=>document.getElementById(id);
+byId('l-b').textContent=fmt(M.B.past);byId('l-r').textContent=fmt(M.R.past);
+byId('sB').textContent=fmt(M.B.past);byId('sR').textContent=fmt(M.R.past);
+byId('kidsB').textContent=fmt(M.B.kids);byId('kidsR').textContent=fmt(M.R.kids);
+
+// headline tiles
+const tiles=[
+ ['Kids sent past a closer open school',fmt(M.B.past),fmt(M.R.past),`${Math.round(100*(1-M.R.past/M.B.past))}% fewer`],
+ ['Kids with a walk over 1 mile (PPS K–5 bus line)',fmt(M.B.bus),fmt(M.R.bus),`${fmt(M.B.bus-M.R.bus)} fewer`],
+ ['Kids within a 1-mile walk',M.B.w1.toFixed(0)+'%',M.R.w1.toFixed(0)+'%',`${fmt((M.R.w1-M.B.w1)/100*M.R.kids)} more kids`],
+ ['Schools at 360+ kids every year, 2027–31',`${M.B.dur} of 38`,`${M.R.dur} of 38`,'shorter walks did not cost school size'],
+];
+byId('stats').innerHTML=tiles.map(t=>`<div class="stat"><div class="lab">${t[0]}</div>
+<div class="row"><span><i class="sw p"></i>PPS B</span><b>${t[1]}</b></div>
+<div class="row us"><span><i class="sw o"></i>Walk-first</span><b>${t[2]}</b></div>
+<div class="cost">${t[3]}</div></div>`).join('');
+
+// maps
+const BINS=[0.5,2,5,10,18];const HV=['--h1','--h2','--h3','--h4','--h5'];
+const bin=v=>{let k=-1;for(let i=0;i<BINS.length;i++)if(v>=BINS[i])k=i;return k};
+let x0=1e9,x1=-1e9,y0=1e9,y1=-1e9;
+DATA.outline.forEach(r=>r.forEach(([x,y])=>{x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y)}));
+const pad=2,W=x1-x0+2*pad,H=y1-y0+2*pad;
+const px=x=>(x-x0+pad).toFixed(2),py=y=>(y1-y+pad).toFixed(2);
+const path=pts=>'M'+pts.map(([x,y])=>px(x)+' '+py(y)).join('L');
+const LABEL={'Sabin':[-1.2,-1.4,'end'],'MLK Jr':[-1.2,1.6,'end'],'Alameda':[1.2,-1.2,'start'],'Rosa Parks':[-1.2,-1.2,'end']};const LN={'MLK Jr':'King'};
+function drawMap(fig,col){
+  const ns='http://www.w3.org/2000/svg';
+  let s=`<svg class="map" viewBox="0 0 ${W.toFixed(1)} ${H.toFixed(1)}" role="img" aria-label="Heat map of kids sent past a closer school">`;
+  s+=DATA.outline.map(r=>`<path class="cl" d="${path(r)}Z" style="fill:var(--paper)"/>`).join('');
+  DATA.cells.forEach((c,i)=>{const v=c[col],k=bin(v);
+    const fill=k<0?'var(--empty)':`var(${HV[k]})`;
+    s+=`<rect class="c" data-i="${i}" x="${px(c[0])}" y="${py(c[1]+1)}" width="1" height="1" style="fill:${fill}"/>`});
+  s+=`<path class="rv" d="${path(DATA.river)}"/><path class="fw" d="${path(DATA.i84)}"/>`;
+  DATA.schools.forEach(([n,x,y,cl,op])=>{
+    if(cl){const a=0.75;s+=`<path class="sx" d="M${px(x-a)} ${py(y-a)}L${px(x+a)} ${py(y+a)}M${px(x-a)} ${py(y+a)}L${px(x+a)} ${py(y-a)}"/>`}
+    else if(op){s+=`<circle class="so" cx="${px(x)}" cy="${py(y)}" r=".55"/>`}
+    if(LABEL[n]){const [dx,dy,an]=LABEL[n];s+=`<text text-anchor="${an}" x="${(+px(x)+dx).toFixed(2)}" y="${(+py(y)+dy).toFixed(2)}">${LN[n]||n}</text>`}
+  });
+  s+='</svg>';
+  fig.insertAdjacentHTML('beforeend',s);
+  const tip=document.createElement('div');tip.className='tip';tip.hidden=true;fig.appendChild(tip);
+  const svg=fig.querySelector('svg');let hot=null;
+  const show=e=>{const r=e.target.closest('rect.c');if(!r){tip.hidden=true;if(hot)hot.classList.remove('hot');return}
+    if(hot)hot.classList.remove('hot');hot=r;r.classList.add('hot');
+    const c=DATA.cells[+r.dataset.i];
+    tip.innerHTML=`About <b>${c[2]<1?'<1':fmt(c[2])}</b> K–5 kids live here.<br>Past a closer school: <b>${fmt(c[3])}</b> under B, <b>${fmt(c[4])}</b> with walk-first lines.`+(c[3]>=0.5?`<br>Extra walk under B: about <b>${c[5].toFixed(1)} mi</b> each.`:'');
+    tip.hidden=false;const fb=fig.getBoundingClientRect();
+    let L=e.clientX-fb.left+12,T=e.clientY-fb.top+12;if(L>fb.width-250)L=Math.max(4,e.clientX-fb.left-250);tip.style.left=L+'px';tip.style.top=T+'px'};
+  svg.addEventListener('pointermove',show);svg.addEventListener('pointerdown',show);
+  svg.addEventListener('pointerleave',()=>{tip.hidden=true;if(hot)hot.classList.remove('hot')});
+}
+drawMap(byId('mB'),3);drawMap(byId('mR'),4);
+const lab=['under 2','2–5','5–10','10–18','18+'];
+byId('legend').innerHTML=`<span>Kids past a closer school, per square:</span><span class="ramp">${HV.map((h,i)=>`<i style="background:var(${h})" title="${lab[i]}"></i>`).join('')}</span><span>${lab[0]} → ${lab[4]}</span>
+<span class="key"><i class="sw" style="background:var(--empty)"></i>none</span>
+<span class="key"><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="4" fill="var(--card)" stroke="var(--ink)"/></svg>open school</span>
+<span class="key"><svg width="12" height="12" viewBox="0 0 12 12"><path d="M2 2L10 10M2 10L10 2" stroke="var(--ink)" stroke-width="1.6"/></svg>closes under B</span>
+<span class="key"><svg width="18" height="8"><path d="M0 4H18" stroke="var(--line)" stroke-dasharray="4 2" stroke-width="1.5"/></svg>I-84</span>`;
+
+// split text + bars
+let cB=0,cR=0,oB=0,oR=0;DATA.area.forEach(a=>{if(a[4]){cB+=a[2];cR+=a[3]}else{oB+=a[2];oR+=a[3]}});
+byId('splitp').innerHTML=`Of the ${fmt(M.B.past)} under B, <b>${fmt(cB)}</b> live in the ten closing schools' areas: B sends them to a receiver when another open school is nearer. The other <b>${fmt(oB)}</b> live in areas whose school stays open; B's boundary changes leave those older pockets in place. The walk-first lines bring these down to ${fmt(cR)} and ${fmt(oR)}.`;
+const topAreas=DATA.area.slice(0,16),mx=Math.max(...topAreas.map(a=>a[2]));
+const NM=n=>n==='MLK Jr'?'King (MLK Jr)':n;
+byId('bars').innerHTML=topAreas.map(a=>`<div class="nm${a[0]==='Sabin'?' hl':''}">${NM(a[0])}${a[4]?'<span class="tag">closes</span>':''}</div>
+<div class="tr" title="${NM(a[0])}: ${fmt(a[2])} under B, ${fmt(a[3])} walk-first"><div class="b p" style="width:${(78*a[2]/mx).toFixed(1)}%"><em>${fmt(a[2])}</em></div><div class="b o" style="width:${(78*a[3]/mx).toFixed(1)}%"><em>${fmt(a[3])}</em></div></div>`).join('');
+
+// pairs
+const CLS=new Set(DATA.area.filter(a=>a[4]).map(a=>a[0]));
+byId('pairs').querySelector('tbody').innerHTML=DATA.pairs.slice(0,14).map(p=>`<tr${p[0]==='Sabin'?' class="hl"':''}><td>${NM(p[0])}${CLS.has(p[0])?' <span class="tag">closes</span>':''}</td><td>${NM(p[1])}</td><td>${NM(p[2])}</td><td>${fmt(p[3])}</td><td>${p[4].toFixed(2)} mi</td><td>${p[5].toFixed(2)} mi<span class="x">${(p[4]-p[5]).toFixed(2)} mi shorter</span></td><td>${fmt(p[6])} of ${fmt(p[3])}</td></tr>`).join('');
+
+byId('costp').textContent=`More kids change schools. Compared with today's lines, ${fmt(M.R.moved)} K–5 kids would change schools under the walk-first lines, against ${fmt(M.B.moved)} under Scenario B. Diversity is about the same: the dissimilarity index is ${M.R.dis.toFixed(3)} against B's ${M.B.dis.toFixed(3)} (lower is more even), a gap within the model's error.`;
+})();
+</script>
