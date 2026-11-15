@@ -50,6 +50,7 @@ tr:last-child td{border-bottom:0}
 .pill{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.02em;padding:2px 8px;border-radius:999px;background:color-mix(in srgb,var(--alam) 16%,transparent);color:var(--fg);vertical-align:middle;margin-left:6px;max-width:100%;white-space:normal}
 #opts tr.on td:first-child{box-shadow:inset 4px 0 0 var(--alam)}
 #opts tr.on td:first-child::before{content:"▶ ";color:var(--alam)}
+#info b,#pros b{font-size:inherit;display:inline}
 #pros p{margin:0 0 8px}#allpros h3{font-size:.95rem;margin:0 0 4px}
 .split-key{display:inline-block;width:22px;height:0;border-top:3px dashed var(--fg);margin-right:6px;vertical-align:3px}
 </style><style>main{grid-template-columns:minmax(0,1fr)}.stats{grid-template-columns:repeat(auto-fit,minmax(min(170px,100%),1fr))}.site-nav{font-family:var(--font)}#pps-disclaimer{margin:0}#info b{font-size:inherit;line-height:inherit;display:inline}</style>
@@ -69,7 +70,7 @@ tr:last-child td{border-bottom:0}
 <h2>Options <span class="pill cur"></span></h2>
 <p class="note">The recommendation is the reference and loads first. The rest run from the most of Sabin sent to Alameda down to the fewest. Click a row (or tab to it and press Enter) to show that option everywhere on the page.</p>
 <div class="tw"><table id="opts"></table></div>
-<p class="note">School sizes are PPS-anchored: each school starts from PPS's own 2027-28 projection under the recommendation (memo staffing table), grows or shrinks by our model's year-to-year change, and then adds or loses the kids the option moves (our estimate). K-5 totals are 2031-32. Red: Vernon under 360, Alameda over the model's 600 K-5 cap, Jefferson under 1,100. *Jefferson in 2031-32 if the moved Sabin kids' middle and high school follow their new K-5. Every option is scored the same way, by year; only the lines inside Sabin differ.</p>
+<p class="note">School sizes are PPS-anchored: each school starts from PPS's own 2027-28 projection under the recommendation (memo staffing table), grows or shrinks by our model's year-to-year change, and then adds or loses the kids the option moves (our estimate). K-5 totals are 2031-32. Red: King over its 584 seats or under 360, Vernon under 360, Alameda over the model's 600 K-5 cap, Jefferson under 1,100. *Jefferson in 2031-32 if the moved Sabin kids' middle and high school follow their new K-5. Every option is scored the same way, by year; only the lines inside Sabin differ.</p>
 <h2 style="margin-top:6px">Map <span class="pill cur"></span></h2>
 <div class="ctrl" role="group" aria-label="Color the map by">
 <button data-m="split" aria-pressed="true">K-5 school</button>
@@ -173,7 +174,7 @@ function draw(){const W=cv.width,H=cv.height;ctx.clearRect(0,0,W,H);ctx.fillStyl
  if(sel>=0){const b=DATA.blocks[sel];const[x,y]=px(b[0],b[1]);ctx.strokeStyle=css('--fg');ctx.lineWidth=4;ctx.beginPath();ctx.arc(x,y,rad(b)+6,0,7);ctx.stroke()}
  const SC={'MLK Jr':['King','--king'],'Vernon':['Vernon','--vern'],'Beverly Cleary':['Beverly Cleary','--clea'],'Sabin':['Sabin (closes)','--fg'],'Alameda':['Alameda','--alam'],'Irvington':['Irvington (closes)','--fg'],'Boise-Eliot/Humboldt':['Boise-Eliot/Humboldt','--mute']};
  ctx.font='600 24px Public Sans, system-ui, sans-serif';
- for(const[n,[lon,lat]]of Object.entries(DATA.schools)){const[x,y]=px(lon,lat);const[lab,c]=SC[n]||[n,'--mute'];ctx.fillStyle=css('--panel');ctx.strokeStyle=css(c);ctx.lineWidth=5;ctx.beginPath();ctx.rect(x-11,y-11,22,22);ctx.fill();ctx.stroke();
+ for(const[n,[lon,lat]]of Object.entries(DATA.schools)){if(offMap(n))continue;const[x,y]=px(lon,lat);const[lab,c]=SC[n]||[n,'--mute'];ctx.fillStyle=css('--panel');ctx.strokeStyle=css(c);ctx.lineWidth=5;ctx.beginPath();ctx.rect(x-11,y-11,22,22);ctx.fill();ctx.stroke();
   ctx.fillStyle=css('--fg');const w=ctx.measureText(lab).width;let tx=x+18;if(tx+w>W-6)tx=x-18-w;ctx.fillText(lab,tx,y+8)}}
 const f2=v=>v==null?'–':v.toFixed(2)+' mi';
 function offMap(s){const p=DATA.schools[s];if(!p)return true;return p[0]<box.x0||p[0]>box.x1||p[1]<box.y0||p[1]>box.y1}
@@ -196,8 +197,8 @@ function pick(ev){const r=cv.getBoundingClientRect();const x=(ev.clientX-r.left)
  if(bd<30){if(best!==sel){sel=best;draw();info()}tipShow(ev)}else if(ev.type==='mousemove'){tip.style.display='none'}}
 cv.addEventListener('mousemove',pick);cv.addEventListener('mouseleave',()=>{tip.style.display='none'});cv.addEventListener('click',pick);
 function opts(){const T=document.getElementById('opts');const bad=(v,f)=>v<f?' class="bad"':'';
- let h='<thead><tr><th>Option</th><th>Sabin to King / Vernon / Alameda / Cleary</th><th>Vernon</th><th>Alameda</th><th>Cleary</th><th>Sabin avg walk</th><th>Sabin kids walking over 1 mi</th><th>Jefferson*</th></tr></thead><tbody>';
- DATA.options.forEach((o,i)=>{h+=`<tr data-k="${i}" class="${i===opt?'on':''}" tabindex="0"><td>${o.label}</td><td>${o.to.join(' / ')}</td><td${bad(o.tot[1],360)}>${o.tot[1]}</td><td${o.tot[2]>600?' class="bad"':''}>${o.tot[2]}</td><td>${o.tot[3]}</td><td>${o.walk.toFixed(2)} mi</td><td>${o.over1}</td><td${bad(o.jeff,1100)}>${o.jeff.toLocaleString()}</td></tr>`});
+ let h='<thead><tr><th>Option</th><th>Sabin to King / Vernon / Alameda / Cleary</th><th>King</th><th>Vernon</th><th>Alameda</th><th>Cleary</th><th>Sabin avg walk</th><th>Sabin kids walking over 1 mi</th><th>Jefferson*</th></tr></thead><tbody>';
+ DATA.options.forEach((o,i)=>{h+=`<tr data-k="${i}" class="${i===opt?'on':''}" tabindex="0"><td>${o.label}</td><td>${o.to.join(' / ')}</td><td${(o.tot[0]<360||o.tot[0]>584)?' class="bad"':''}>${o.tot[0]}</td><td${bad(o.tot[1],360)}>${o.tot[1]}</td><td${o.tot[2]>600?' class="bad"':''}>${o.tot[2]}</td><td>${o.tot[3]}</td><td>${o.walk.toFixed(2)} mi</td><td>${o.over1}</td><td${bad(o.jeff,1100)}>${o.jeff.toLocaleString()}</td></tr>`});
  T.innerHTML=h+'</tbody>';
  T.querySelectorAll('tr[data-k]').forEach(r=>{const go=()=>{opt=+r.dataset.k;updateAll()};r.addEventListener('click',go);r.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})})}
 opts();
