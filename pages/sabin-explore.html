@@ -225,15 +225,15 @@ cv.addEventListener('pointermove',e=>{if(!ptrs.has(e.pointerId))return;const p=c
 const up=e=>{ptrs.delete(e.pointerId);if(ptrs.size<2)pinch=null;if(ptrs.size===1)last=[...ptrs.values()][0];if(!ptrs.size){last=null;cv.classList.remove('drag')}};
 cv.addEventListener('pointerup',up);cv.addEventListener('pointercancel',up);
 function opts(){const T=document.getElementById('opts');const bad=(v,f)=>v<f?' class="bad"':'';
- let h='<thead><tr><th>Option</th><th>Sabin to King / Vernon / Alameda / Cleary</th><th>King</th><th>Vernon</th><th>Alameda</th><th>Cleary</th><th>Sabin avg walk</th><th>Sabin kids within 1 mi / over 1 mi (bus-eligible)</th><th>Jefferson*</th></tr></thead><tbody>';
- DATA.options.forEach((o,i)=>{h+=`<tr data-k="${i}" class="${i===opt?'on':''}" tabindex="0"><td>${o.label}</td><td>${o.to.join(' / ')}</td><td${(o.tot[0]<360||o.tot[0]>584)?' class="bad"':''}>${o.tot[0]}</td><td${bad(o.tot[1],360)}>${o.tot[1]}</td><td${o.tot[2]>771?' class="bad"':''}>${o.tot[2]}</td><td>${o.tot[3]}</td><td>${o.walk.toFixed(2)} mi</td><td>${o.under1} / ${o.over1}</td><td${bad(o.jeff,1100)}>${o.jeff.toLocaleString()}</td></tr>`});
+ let h='<thead><tr><th>Option</th><th>Sabin to King / Alameda / Cleary</th><th>King</th><th>Alameda</th><th>Cleary</th><th>Sabin avg walk</th><th>Sabin kids within 1 mi / over 1 mi (bus-eligible)</th><th>Jefferson*</th></tr></thead><tbody>';
+ DATA.options.forEach((o,i)=>{h+=`<tr data-k="${i}" class="${i===opt?'on':''}" tabindex="0"><td>${o.label}</td><td>${[o.to[0],o.to[2],o.to[3]].join(' / ')}</td><td${(o.tot[0]<360||o.tot[0]>584)?' class="bad"':''}>${o.tot[0]}</td><td${o.tot[2]>771?' class="bad"':''}>${o.tot[2]}</td><td>${o.tot[3]}</td><td>${o.walk.toFixed(2)} mi</td><td>${o.under1} / ${o.over1}</td><td${bad(o.jeff,1100)}>${o.jeff.toLocaleString()}</td></tr>`});
  T.innerHTML=h+'</tbody>';
  T.querySelectorAll('tr[data-k]').forEach(r=>{const go=()=>{opt=+r.dataset.k;updateAll()};r.addEventListener('click',go);r.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}})})}
 opts();
 const REC=()=>DATA.options[0];
 function years(){const Y=DATA.years.yrs,T=document.getElementById('years');const fl={'MLK Jr':360,'Vernon':360,'Alameda':360,'Beverly Cleary':360,'Tubman':500,'Beaumont':500,'Jefferson':1100,'Grant':0};
  const seats={'Grant':1935,'MLK Jr':584,'Beverly Cleary':531,'Alameda':771,'Tubman':778,'Beaumont':737};
- const lab={'MLK Jr':'King (K-5)','Vernon':'Vernon (K-5)','Alameda':'Alameda (K-5)','Beverly Cleary':'Beverly Cleary (K-5)','Tubman':'Tubman (6-8)','Beaumont':'Beaumont (6-8)','Jefferson':'Jefferson (9-12)','Grant':'Grant (9-12)'};
+ const lab={'MLK Jr':'King (K-5)','Alameda':'Alameda (K-5)','Beverly Cleary':'Beverly Cleary (K-5)','Tubman':'Tubman (6-8)','Beaumont':'Beaumont (6-8)','Jefferson':'Jefferson (9-12)','Grant':'Grant (9-12)'};
  const plans=opt===0?[[REC(),'Rec']]:[[REC(),'Rec'],[O(),'This option']];
  let h='<thead><tr><th>School</th><th>Plan</th>'+Y.map(y=>`<th>${y}</th>`).join('')+'</tr></thead><tbody>';
  for(const n of Object.keys(lab)){plans.forEach(([o,pl],j)=>{h+=`<tr${j?' class="on"':''}><td>${j?'':lab[n]}</td><td>${pl}</td>`+o.years[n].map(v=>{const bad=v<fl[n]||(seats[n]&&v>seats[n]);return `<td${bad?' class="bad"':''}>${v.toLocaleString()}</td>`}).join('')+'</tr>'})}
@@ -244,11 +244,10 @@ function walks(){const T=document.getElementById('walks');const rows=[['Sabin (t
  let h='<thead><tr><th>K-5 school</th><th>Avg walk</th><th>Within ½ mi</th><th>Within 1 mi</th><th>Over 1 mi</th><th>Over 1.5 mi</th></tr></thead><tbody>';
  for(const[l,f]of rows){const[a,h5,w1,o1,o15]=sabinWalk(f);h+=`<tr${l==='This option'?' class="on"':''}><td>${l}</td><td>${a.toFixed(2)} mi</td><td>${h5}</td><td>${w1}</td><td${o1>50?' class="bad"':''}>${o1}</td><td>${o15}</td></tr>`}
  T.innerHTML=h+'</tbody>'}
-function stats(){const o=O(),r=REC();const cards=[[o.to.join(' / '),'Sabin K-5 kids to King / Vernon / Alameda / Cleary (237 in all)'],
+function stats(){const o=O(),r=REC();const cards=[[[o.to[0],o.to[2],o.to[3]].join(' / '),'Sabin K-5 kids to King / Alameda / Cleary (237 in all)'],
  [opt?`${r.walk.toFixed(2)} → ${o.walk.toFixed(2)} mi`:`${r.walk.toFixed(2)} mi`,'Sabin average walk'+(opt?', rec → this option':'')],
  [opt?`${r.over1} → ${o.over1}`:`${r.over1}`,'Sabin kids over 1 mile, bus-eligible under PPS rules'+(opt?', rec → this option':'')],
  [opt?`${r.under1} → ${o.under1}`:`${r.under1}`,'Sabin kids within 1 mile (walkers)'+(opt?', rec → this option':'')],
- [`${o.tot[1]}`,`Vernon in 2031-32${o.tot[1]<360?', under':', at or over'} PPS's 360 floor (rec: ${r.tot[1]})`],
  [`${o.tot[0]} / ${o.tot[2]}`,`King / Alameda in 2031-32 (rec: ${r.tot[0]} / ${r.tot[2]})`],
  [`${o.chg_ms} / ${o.chg_hs}`,'Sabin middle / high schoolers whose school changes vs the rec']];
  document.getElementById('stats').innerHTML=cards.map(([b,t])=>`<div class="stat"><b>${b}</b><span>${t}</span></div>`).join('')}
