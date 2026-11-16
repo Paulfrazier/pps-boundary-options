@@ -2,254 +2,168 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>PPS boundary options</title>
-<meta name="description" content="A PPS parent's look at Portland Public Schools' boundary options, PPS Status Quo, PPS A and PPS B, next to other options worth seeing: the trade-offs across the district in walking, size targets every year, reassignments and feeders (preliminary).">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23245c9e%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23fff%27/%3E%3Crect x=%2713.5%27 y=%2718%27 width=%275%27 height=%277%27 fill=%27%23245c9e%27/%3E%3C/svg%3E">
-<link rel="stylesheet" href="pages/site.css">
-<style>
-main{max-width:900px;padding-top:28px}
-.tbl table{min-width:560px}
-.glance-head{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;margin:0 0 10px}
-.vl{display:block;font-weight:400;font-size:11px;color:var(--muted)}
-.card .tag{margin-left:0;margin-right:6px}
-/* Plans on the table */
-.plans{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px;margin:10px 0 6px}
-.plan{background:var(--card);border:1px solid var(--rule);border-top:4px solid var(--pps);border-radius:8px;padding:10px 12px}
-.plan.k-option{border-top-color:var(--ours)}
-.plan.k-reference{border-top-color:var(--today)}
-.plan b{display:block;font-size:15px;line-height:1.25}
-.plan .who{display:inline-block;font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--ours);font-weight:600;margin-bottom:4px}
-.pg{font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:14px 0 0;font-weight:600}
-.pg span{text-transform:none;letter-spacing:0;font-weight:400;margin-left:6px}
-.plan p{margin:6px 0 0;font-size:13px;line-height:1.4;color:var(--muted)}
-.plan .open{font-variant-numeric:tabular-nums;color:var(--ink);font-size:13px;margin-top:6px;display:block}
-/* Trade-off table */
-.why{display:block;font-size:11px;color:var(--muted);font-weight:400}
-/* Ideas for the district */
-.ideas{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:12px 0 8px}
-.idea{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:6px}
-.idea h3{margin:0;font-size:16px;line-height:1.3}
-.idea p{margin:0;font-size:14px;line-height:1.45}
-.idea .tests{color:var(--muted);font-size:13px}
-.idea .st{margin-top:auto;padding-top:6px;font-size:13px}
-.chip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:999px;padding:2px 8px;border:1px solid var(--rule);color:var(--muted);margin-right:6px}
-.chip.on{border-color:var(--ours);color:var(--ours)}
-.kf{display:grid;grid-template-columns:3fr 2fr;gap:14px;margin:12px 0 6px;align-items:start}
-.kf>div{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:14px 16px}
-.kf-catch{border-left:4px solid var(--bad)!important}
-.kf h3{margin:0 0 8px;font-size:16px}.kf ul{margin:0;padding-left:18px}.kf li,.kf p{font-size:14px;line-height:1.5}.kf p{margin:0 0 8px}
-@media (max-width:700px){.kf{grid-template-columns:1fr}}
-/* Number strip + before/after map */
-.hero{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0 6px}
-.hn{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px}
-.hn .q{font-size:13px;line-height:1.35;color:var(--muted);margin:0}
-.hn .big{font-size:30px;font-weight:700;line-height:1.05;font-variant-numeric:tabular-nums;color:var(--ours)}
-.hn .vs{font-size:13px;line-height:1.35;margin:0}
-.hn .vs b{font-variant-numeric:tabular-nums}
-.hn.cost{border-left:4px solid var(--bad)}
-.hn.cost .big{color:var(--ink)}
-.hn-foot{font-size:12px;color:var(--muted);margin:2px 0 18px}
-.hn-more{font-size:14px;margin:6px 0 4px}
-@media (max-width:760px){.hero{grid-template-columns:1fr 1fr}.hn .big{font-size:26px}}
-.ba{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:12px 14px 10px;margin:4px 0 8px}
-.ba h3{margin:0 0 2px;font-size:16px}
-.ba .sub{margin:0 0 8px;font-size:13px;color:var(--muted)}
-.ba-wrap{position:relative;width:min(100%,535px);margin:0 auto;aspect-ratio:.955;touch-action:pan-y;user-select:none;-webkit-user-select:none;cursor:ew-resize}
-.ba-wrap svg{position:absolute;inset:0;width:100%;height:100%}
-.ba-wrap .ba-l{clip-path:inset(0 calc(100% - var(--pos,50%)) 0 0)}
-.ba-wrap.nochg .chg{display:none}
-.ba-bar{position:absolute;top:0;bottom:0;left:var(--pos,50%);width:3px;margin-left:-1.5px;background:var(--ink);pointer-events:none}
-.ba-bar::after{content:"\2194";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;background:var(--ink);color:var(--card);display:flex;align-items:center;justify-content:center;font-size:18px;box-shadow:0 1px 4px rgba(0,0,0,.3)}
-.ba-lbl{position:absolute;top:8px;font-size:12px;font-weight:700;padding:3px 8px;border-radius:999px;background:var(--card);border:1px solid var(--rule);pointer-events:none}
-.ba-lbl.l{left:8px;color:var(--ours)}.ba-lbl.r{right:8px;color:var(--pps)}
-.ba input[type=range]{width:100%;margin:8px 0 2px}
-.ba .key{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:12px;color:var(--muted);margin:4px 0 0;align-items:center}
-.ba .key label{cursor:pointer}
-.ba .sw{display:inline-block;width:16px;height:12px;border-radius:2px;vertical-align:-2px;margin-right:5px;border:2px dashed #1b2a3a}
-</style>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>PPS Boundary Options</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Our maps vs the Superintendent’s rightsizing recommendation, Portland Public Schools.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2715%27 fill=%27%2316785a%27/%3E%3Cpath d=%27M9 16 16 10l7 6v7H9z%27 fill=%27%23fff%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="pages/site2.css">
+
 </head>
 <body>
-<nav class="site-nav"><div class="in"><a class="brand" href="index.html" aria-current="page">PPS boundary options</a><a href="pages/options.html">Options</a><a href="pages/plans.html">Plans</a><a href="pages/map.html">Map</a><a href="pages/durability.html">Durability</a><a href="pages/requests.html">Requests</a><a href="pages/sabin.html">Sabin options</a><a href="pages/sabin-explore.html">Exploring Sabin options</a><a href="pages/closer-b.html">Closer schools (B)</a><a href="pages/schools.html">Schools</a><a href="pages/sizes.html">Why these sizes</a><a href="pages/segc.html">Lessons from SEGC</a><a href="pages/method.html">Method</a><a href="pages/sources.html">Sources</a><a href="pages/how.html">How we did this</a></div></nav>
-<main>
-<h1>PPS boundary options: a parent&rsquo;s look at what else is possible</h1>
-<p class="notreal">These are best effort boundaries. NOT REAL PLANS, yet.</p>
-<div class="warn" id="pps-disclaimer" style="margin:10px 0 16px"><b>Independent analysis by a PPS parent, not an official Portland Public Schools product.</b> It may contain errors; check PPS&rsquo;s <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">rightsizing scenarios</a> and the <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 board materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
-<p class="lede">PPS has shared two scenarios, PPS A and PPS B. This site models what other options could look like, with different boundaries and the trade-offs each one makes. The goal: to encourage PPS to release more of its data and present more options. Keeping PPS A&rsquo;s closures but redrawing the lines puts more kids within walking distance and keeps more schools at their size target. Under the current best example we modeled, <b>70.6% of elementary kids live within a 1-mile walk of their school</b>, against 62.7% under PPS A (72.2% with no closures). On our model, all 38 neighborhood elementary schools stay at their size target every year to 2031-32, many with thin margins (see the costs below). PPS A keeps 21 of 35 at target on our model, and 18 on PPS&rsquo;s own projections. (The current best counts 38 because it keeps Lent, Rigler and C&eacute;sar Ch&aacute;vez as neighborhood schools with their Spanish programs.)</p>
-<div class="hero" aria-label="The current best example we modeled, compared with PPS A">
-<div class="hn"><p class="q">Elementary kids within a 1-mile walk of school</p><span class="big" data-m="K-5_within1" data-p="dli_home3_rh">70.6%</span><p class="vs">vs <b data-m="K-5_within1" data-p="scenario_A">62.7%</b> under PPS A</p></div>
-<div class="hn"><p class="q">Neighborhood elementary schools at size target every year to 2031-32</p><span class="big"><span data-m="K-5_at_target" data-p="dli_home3_rh" data-f="n">38</span> of <span data-m="K-5_at_target" data-p="dli_home3_rh" data-f="d">38</span></span><p class="vs">vs <b>21</b> under PPS A on our model (<b data-m="K-5_at_target" data-p="scenario_A" data-f="n">18</b> on PPS&rsquo;s own)</p></div>
-<div class="hn"><p class="q">Elementary kids assigned past a closer open school</p><span class="big" data-m="K-5_past_closer" data-p="dli_home3_rh">793</span><p class="vs">vs <b data-m="K-5_past_closer" data-p="scenario_A">1,970</b> under PPS A</p></div>
-<div class="hn cost"><p class="q">The cost: kids reassigned (K-5 + 6-8)</p><span class="big" data-m="moved" data-p="dli_home3_rh">7,036</span><p class="vs">vs <b data-m="moved" data-p="scenario_A">4,907</b> under PPS A</p></div>
+<div class="ainote band"><div class="in">Independent analysis by a PPS parent, not an official Portland Public Schools product. Built with AI: Claude did the work, directed and checked by Paul Frazier. <a href="pages/how.html">How we did this</a> &middot; <a href="#ai">About the AI</a></div></div>
+<nav class="site-nav band" aria-label="Site"><div class="in"><a class="brand" href="index.html" aria-current="page">PPS boundary options</a><a href="pages/map.html">Map</a><a href="pages/far-walks.html">Far walks</a><a href="pages/options.html">Options</a><a href="pages/plans.html">Plans</a><a href="pages/durability.html">Year by year</a><a href="pages/schools.html">Schools</a><a href="pages/sabin.html">Sabin and NE</a><a href="pages/sabin-explore.html">Exploring Sabin options</a><a href="pages/sizes.html">Why these sizes</a><a href="pages/segc.html">Lessons from SEGC</a><a href="pages/method.html">Method</a><a href="pages/sources.html">Sources</a><a href="pages/how.html">How we did this</a><a class="earlier" href="earlier/index.html">Earlier work (Scenario A/B era)</a></div></nav>
+<main class="band"><div class="in">
+
+<header class="hero col" style="max-width:var(--wide)">
+<div class="eyebrow">Portland Public Schools rightsizing &middot; Board vote December 15, 2026</div>
+<h1>Same closures, better lines.</h1>
+<p class="lede">The Superintendent&rsquo;s recommendation of November 12 leaves 21 of 38 neighborhood elementary schools outside PPS&rsquo;s own size target in 2031-32, and sends 1,216 K-5 kids more than a mile from home when a school within a mile is open. We modeled other ways to draw the map. Map A is our best overall; map B keeps the recommendation&rsquo;s closures and fixes the lines.</p>
+</header>
+
+<section class="wide" id="new-sabin" style="margin-bottom:28px">
+<div class="earlier-box" style="border-left:4px solid var(--accent)"><div style="flex:1 1 320px;min-width:0"><span class="eyebrow">New, November 15, 2026: Sabin</span>
+<p style="margin:6px 0 0">The recommendation closes Sabin and sends all of it to King. <b>11 other ways to split Sabin</b> among King, Vernon, Alameda and Beverly Cleary are now on one close-up map, each with school sizes, the walk from every block, and its pros and cons. We don&rsquo;t pick a winner. The Sabin page shows our smallest fix, the Sabin split, scored on the full model.</p></div>
+<div style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="pages/sabin-explore.html">Exploring Sabin options</a> <a class="btn" href="pages/sabin.html">Sabin and NE</a></div></div>
+</section>
+
+<div class="thesis wide">
+<div class="stat"><span class="eyebrow">K-5 schools at 360 or more, 2031-32</span>
+<div class="vs"><span class="big">38<small class="muted" style="font-size:1rem"> of 38</small></span><span><span class="pb A" aria-hidden="true">A</span></span></div>
+<p>Map A. The rec: 17 of 38. Map B: 33 of 37.</p></div>
+<div class="stat"><span class="eyebrow">Middle schools at 500 or more</span>
+<div class="vs"><span class="big">13<small class="muted" style="font-size:1rem"> of 13</small></span><span><span class="pb A" aria-hidden="true">A</span></span></div>
+<p>Map A. The rec, and map B, which keeps its middle school lines: 6 of 14.</p></div>
+<div class="stat"><span class="eyebrow">K-5 sent over 1 mi with a school within 1 mi</span>
+<div class="vs"><span class="big">1,216</span><span><span class="pb rec" aria-hidden="true">R</span></span></div>
+<p>The rec. Map A: 226. Map B: 248. Today&rsquo;s lines: 1,035. <a href="pages/compare.html#rec">Where they are</a>.</p></div>
+<div class="stat"><span class="eyebrow">High schools at 1,100, 2027-28 to 2031-32</span>
+<div class="vs"><span><span class="pb rec" aria-hidden="true">R</span> 6 / 7 / 7 / 8 / 8</span></div><div class="vs"><span><span class="pb A" aria-hidden="true">A</span> 7 / 8 / 8 / 8 / 8</span></div>
+<p>Of 8, by year. All eight reach 1,100 by 2031-32 under both; the rec gets there two years later.</p></div>
 </div>
-<p class="hn-more">Also on our model (2031-32): <b><span data-m="K-5_over_bus" data-p="dli_home3_rh">3,736</span></b> elementary kids live past the 1-mile bus line (<span data-m="K-5_over_bus" data-p="scenario_A">4,703</span> under PPS A); <b><span data-m="dli_moved" data-p="dli_home3_rh">586</span></b> immersion students see their program move (<span data-m="dli_moved" data-p="scenario_A">1,567</span>); and on PPS&rsquo;s own dashboard measures, <b>97%</b> of schools are sustainable (69% under PPS A), with <b>98%</b> of students in them (81%).</p>
-<p class="hn-foot">The current best example we modeled, against PPS A. Model estimates from Census blocks, not PPS&rsquo;s student records; they may not hold up on PPS&rsquo;s real data. <a href="pages/options.html">All the numbers, every plan</a> &middot; <a href="pages/method.html">Method</a></p>
-<div class="ba" id="ba" hidden>
-<h3>See the lines move</h3>
-<p class="sub">Elementary attendance areas. Drag across the map: the current best example we modeled on the left, PPS A on the right, as on the full map.</p>
-<div class="ba-wrap" id="baw" style="--pos:50%"><div class="ba-bar"></div><span class="ba-lbl l">Current best</span><span class="ba-lbl r">PPS A</span></div>
-<input type="range" id="bar" min="0" max="100" value="50" aria-label="Slide between the current best example we modeled and PPS A">
-<div class="key"><label><input type="checkbox" id="bachg" checked> <span class="sw"></span>Outline areas assigned to a different school in the two plans (about <span id="ban">3,238</span> elementary kids)</label><span>Each color is one school&rsquo;s area</span><a href="pages/map.html#a=equity_noswap_alameda_rig_hs">Open the full map: any two plans, tap any spot</a></div>
+<p class="cite wide" style="margin-top:-28px">Model v2 estimates (our model, not PPS&rsquo;s), on the PSU forecast. Runs <a href="build/solver/out_v2/super_rec/scorecard.json">super_rec/scorecard.json</a>, <a href="build/solver/out_v2/mapA4/scorecard.json">mapA4/scorecard.json</a>, <a href="build/solver/out_v2/mapB/scorecard.json">mapB/scorecard.json</a>, <a href="build/solver/out_v2/status_quo/scorecard.json">status_quo/scorecard.json</a>. The memo&rsquo;s own count is &ldquo;50% of 42&rdquo; K-5 schools at 360; it counts the four immersion hubs, which have no neighborhood area (<a href="build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=43">memo, p. 42</a>). <a href="pages/method.html#current">How we count</a>.</p>
+
+<section class="wide">
+<h2>The plans</h2>
+<div class="plans"><article class="pcard A">
+<span class="tag">Leads: best overall</span>
+<h3><span class="pb A" aria-hidden="true">A</span> Map A: our best overall</h3>
+<p>Our school set: Chávez, Lent and Rigler keep neighborhood areas with immersion alongside; James John, Maplewood and Stephenson close. Lines redrawn at every level.</p>
+<dl>
+<dt>K-5 schools at 360+</dt><dd>38 of 38</dd>
+<dt>Middle schools at 500+</dt><dd>13 of 13</dd>
+<dt>High schools at 1,100+, 2027-28</dt><dd>7 of 8</dd>
+<dt>K-5 over 1 mi, school within 1 mi</dt><dd>226</dd>
+</dl>
+<div class="links"><a href="pages/map.html">See it on the map</a><a href="pages/plans.html#A">What it changes</a></div>
+</article><article class="pcard B">
+<span class="tag">The realistic ask</span>
+<h3><span class="pb B" aria-hidden="true">B</span> Map B: the rec, lines fixed</h3>
+<p>The recommendation’s closures and immersion hubs, plus James John into Sitton. K-5 lines redrawn; middle and high school lines are the recommendation’s.</p>
+<dl>
+<dt>K-5 schools at 360+</dt><dd>33 of 37</dd>
+<dt>Middle schools at 500+</dt><dd>6 of 14</dd>
+<dt>High schools at 1,100+, 2027-28</dt><dd>6 of 8</dd>
+<dt>K-5 over 1 mi, school within 1 mi</dt><dd>248</dd>
+</dl>
+<div class="links"><a href="pages/map.html">See it on the map</a><a href="pages/plans.html#B">What it changes</a></div>
+</article><article class="pcard rec">
+<span class="tag">Before the Board Nov 17, vote Dec 15</span>
+<h3><span class="pb rec" aria-hidden="true">R</span> The Superintendent’s recommendation</h3>
+<p>The memo to the Board of Nov 12, 2026, as written: 10 closures, four Spanish immersion hubs with no neighborhood area.</p>
+<dl>
+<dt>K-5 schools at 360+</dt><dd>17 of 38</dd>
+<dt>Middle schools at 500+</dt><dd>6 of 14</dd>
+<dt>High schools at 1,100+, 2027-28</dt><dd>6 of 8</dd>
+<dt>K-5 over 1 mi, school within 1 mi</dt><dd>1,216</dd>
+</dl>
+<div class="links"><a href="pages/map.html">See it on the map</a><a href="pages/plans.html#rec">What it changes</a></div>
+</article><article class="pcard today">
+<span class="tag">Baseline</span>
+<h3><span class="pb today" aria-hidden="true">T</span> Today’s lines</h3>
+<p>PPS’s Status Quo map for 2027-28: no closures, today’s attendance areas.</p>
+<dl>
+<dt>K-5 schools at 360+</dt><dd>9 of 50</dd>
+<dt>Middle schools at 500+</dt><dd>3 of 14</dd>
+<dt>High schools at 1,100+, 2027-28</dt><dd>6 of 8</dd>
+<dt>K-5 over 1 mi, school within 1 mi</dt><dd>1,035</dd>
+</dl>
+<div class="links"><a href="pages/map.html">See it on the map</a><a href="pages/plans.html#today">What it changes</a></div>
+</article><article class="pcard sabin">
+<span class="tag">Smallest ask: Sabin only</span>
+<h3><span class="pb sabin" aria-hidden="true">S</span> Sabin split: the rec, Sabin on street lines</h3>
+<p>The recommendation everywhere except Sabin. Sabin splits by street lines among King, Vernon and Alameda, and the Alameda piece goes on to Beaumont and Grant with its Alameda classmates.</p>
+<dl>
+<dt>K-5 schools at 360+</dt><dd>18 of 38</dd>
+<dt>Middle schools at 500+</dt><dd>6 of 14</dd>
+<dt>High schools at 1,100+, 2027-28</dt><dd>5 of 8</dd>
+<dt>K-5 over 1 mi, school within 1 mi</dt><dd>1,123</dd>
+</dl>
+<div class="links"><a href="pages/map.html">See it on the map</a><a href="pages/plans.html#sabin">What it changes</a></div>
+</article><article class="pcard ne">
+<span class="tag">Sabin plus the rest of NE</span>
+<h3><span class="pb ne" aria-hidden="true">NE</span> NE only: Sabin split plus NE redrawn</h3>
+<p>The recommendation everywhere else. In NE, Sabin splits by street lines among King, Vernon and Alameda, and the rest of NE is redrawn. Middle and high school lines are the recommendation’s.</p>
+<dl>
+<dt>K-5 schools at 360+</dt><dd>22 of 38</dd>
+<dt>Middle schools at 500+</dt><dd>6 of 14</dd>
+<dt>High schools at 1,100+, 2027-28</dt><dd>6 of 8</dd>
+<dt>K-5 over 1 mi, school within 1 mi</dt><dd>1,035</dd>
+</dl>
+<div class="links"><a href="pages/map.html">See it on the map</a><a href="pages/plans.html#ne">What it changes</a></div>
+</article></div>
+</section>
+
+<section class="wide">
+<h2>Side by side</h2>
+<div class="tw"><table><thead><tr><th class="rowh">2031-32 unless noted</th><th class="n"><span class="pname"><span class="pb A" aria-hidden="true">A</span> Map A</span></th><th class="n"><span class="pname"><span class="pb B" aria-hidden="true">B</span> Map B</span></th><th class="n"><span class="pname"><span class="pb rec" aria-hidden="true">R</span> The rec</span></th><th class="n"><span class="pname"><span class="pb today" aria-hidden="true">T</span> Today</span></th><th class="n"><span class="pname"><span class="pb sabin" aria-hidden="true">S</span> Sabin split</span></th><th class="n"><span class="pname"><span class="pb ne" aria-hidden="true">NE</span> NE only</span></th></tr></thead><tbody><tr class="grp"><td colspan="7">Elementary (K-5)</td></tr><tr><td class="rowh">Schools at 360 or more, 2031-32</td><td class="n best">38 of 38</td><td class="n">33 of 37</td><td class="n worst">17 of 38</td><td class="n">9 of 50</td><td class="n">18 of 38</td><td class="n">22 of 38</td></tr><tr><td class="rowh">Kids past a closer school</td><td class="n best">1,046</td><td class="n">1,280</td><td class="n worst">2,013</td><td class="n">1,861</td><td class="n">1,922</td><td class="n">1,843</td></tr><tr><td class="rowh">Over 1 mi, with a school within 1 mi</td><td class="n best">226</td><td class="n">248</td><td class="n worst">1,216</td><td class="n">1,035</td><td class="n">1,123</td><td class="n">1,035</td></tr><tr><td class="rowh">Over 1 mi, with a school within &frac12; mi</td><td class="n">1</td><td class="n best">0</td><td class="n worst">115</td><td class="n">103</td><td class="n">85</td><td class="n">80</td></tr><tr><td class="rowh">Moved out of schools that stay open</td><td class="n">1,317 <span class="small muted">(337 walk farther)</span></td><td class="n">1,594 <span class="small muted">(618 walk farther)</span></td><td class="n">124 <span class="small muted">(9 walk farther)</span></td><td class="n">&ndash;</td><td class="n">124 <span class="small muted">(9 walk farther)</span></td><td class="n">849 <span class="small muted">(402 walk farther)</span></td></tr><tr class="grp"><td colspan="7">Middle (6-8)</td></tr><tr><td class="rowh">Schools at 500 or more, 2031-32</td><td class="n best">13 of 13</td><td class="n worst">6 of 14</td><td class="n worst">6 of 14</td><td class="n">3 of 14</td><td class="n worst">6 of 14</td><td class="n worst">6 of 14</td></tr><tr><td class="rowh">Kids past a closer school</td><td class="n best">879</td><td class="n worst">1,243</td><td class="n worst">1,243</td><td class="n">1,407</td><td class="n">1,226</td><td class="n worst">1,243</td></tr><tr class="grp"><td colspan="7">High (9-12)</td></tr><tr><td class="rowh">Schools at 1,100 or more, 2031-32</td><td class="n">8 of 8</td><td class="n">8 of 8</td><td class="n">8 of 8</td><td class="n">8 of 8</td><td class="n">8 of 8</td><td class="n">8 of 8</td></tr><tr><td class="rowh">Kids past a closer school</td><td class="n worst">922</td><td class="n">751</td><td class="n">751</td><td class="n">971</td><td class="n best">701</td><td class="n">751</td></tr><tr><td class="rowh">Middle schools feeding one high school</td><td class="n worst">53%</td><td class="n best">81%</td><td class="n best">81%</td><td class="n">78%</td><td class="n best">81%</td><td class="n best">81%</td></tr></tbody></table></div>
+<p class="cite">Model v2 estimates for 2031-32 (years as marked), Census blocks scaled to the PSU forecast. Runs (scorecard.json): <a href="build/solver/out_v2/mapA4/scorecard.json">mapA4</a>, <a href="build/solver/out_v2/mapB/scorecard.json">mapB</a>, <a href="build/solver/out_v2/super_rec/scorecard.json">super_rec</a>, <a href="build/solver/out_v2/status_quo/scorecard.json">status_quo</a>, <a href="build/solver/out_v2/sabin_split/scorecard.json">sabin_split</a>, <code>ne_plan</code>. Schools at target are neighborhood schools with an attendance area, between PPS&rsquo;s floor and the building&rsquo;s capacity; immersion-only hubs and the two small K-8s (Astor, Skyline) aren&rsquo;t counted. Green marks the best and red the worst of the options (today&rsquo;s lines aren&rsquo;t ranked). Worst walks and moves come from the solver&rsquo;s worst_walks.py and score_principles.py. <a href="pages/method.html#current">How we count</a>.</p>
+<p><a href="pages/options.html">Every measure, every year</a> &middot; <a href="pages/durability.html">Year by year</a> &middot; <a href="pages/schools.html">School by school</a></p>
+</section>
+
+<section class="wide">
+<h2>Jefferson, year by year</h2>
+<div class="col">
+<p>Under the recommendation, Jefferson High School starts at 563 in 2027-28 and doesn&rsquo;t reach PPS&rsquo;s 1,100 floor until 2030-31: 563, 804, 979, 1,156, 1,181. PPS&rsquo;s own 2027-28 projection for Jefferson is 570, close to ours. Map A&rsquo;s high school lines put it at 885, 1,100, 1,250, 1,399, 1,407. That is short only in the first year, a ramp-up year.</p>
 </div>
+<figure class="chart" style="margin:0"><svg viewBox="0 0 640 300" role="img" aria-label="Jefferson High School enrollment by year: the recommendation 563, 804, 979, 1,156, 1,181; map A 885, 1,100, 1,250, 1,399, 1,407; PPS projects 570 for 2027-28"><line x1="52" x2="622" y1="260.0" y2="260.0" stroke="var(--rule)"/><text x="44" y="264.0" text-anchor="end">0</text><line x1="52" x2="622" y1="179.3" y2="179.3" stroke="var(--rule)"/><text x="44" y="183.3" text-anchor="end">500</text><line x1="52" x2="622" y1="98.7" y2="98.7" stroke="var(--rule)"/><text x="44" y="102.7" text-anchor="end">1,000</text><line x1="52" x2="622" y1="18.0" y2="18.0" stroke="var(--rule)"/><text x="44" y="22.0" text-anchor="end">1,500</text><line x1="52" x2="622" y1="82.5" y2="82.5" stroke="var(--ink)" stroke-dasharray="5 4"/><text x="86.0" y="280" text-anchor="middle">2027-28</text><text x="211.5" y="280" text-anchor="middle">2028-29</text><text x="337.0" y="280" text-anchor="middle">2029-30</text><text x="462.5" y="280" text-anchor="middle">2030-31</text><text x="588.0" y="280" text-anchor="middle">2031-32</text><polyline points="86.0,117.2 211.5,82.5 337.0,58.3 462.5,34.3 588.0,33.0" fill="none" stroke="var(--p-A)" stroke-width="3"/><circle cx="86.0" cy="117.2" r="4.5" fill="var(--p-A)"/><text x="86.0" y="107.2" text-anchor="middle" class="lab">885</text><circle cx="211.5" cy="82.5" r="4.5" fill="var(--p-A)"/><text x="211.5" y="72.5" text-anchor="middle" class="lab">1,100</text><circle cx="337.0" cy="58.3" r="4.5" fill="var(--p-A)"/><text x="337.0" y="48.3" text-anchor="middle" class="lab">1,250</text><circle cx="462.5" cy="34.3" r="4.5" fill="var(--p-A)"/><text x="462.5" y="24.3" text-anchor="middle" class="lab">1,399</text><circle cx="588.0" cy="33.0" r="4.5" fill="var(--p-A)"/><text x="588.0" y="23.0" text-anchor="middle" class="lab">1,407</text><polyline points="86.0,169.2 211.5,130.3 337.0,102.1 462.5,73.5 588.0,69.5" fill="none" stroke="var(--p-rec)" stroke-width="3"/><circle cx="86.0" cy="169.2" r="4.5" fill="var(--p-rec)"/><text x="86.0" y="189.2" text-anchor="middle" class="lab">563</text><circle cx="211.5" cy="130.3" r="4.5" fill="var(--p-rec)"/><text x="211.5" y="150.3" text-anchor="middle" class="lab">804</text><circle cx="337.0" cy="102.1" r="4.5" fill="var(--p-rec)"/><text x="337.0" y="122.1" text-anchor="middle" class="lab">979</text><circle cx="462.5" cy="73.5" r="4.5" fill="var(--p-rec)"/><text x="462.5" y="93.5" text-anchor="middle" class="lab">1,156</text><circle cx="588.0" cy="69.5" r="4.5" fill="var(--p-rec)"/><text x="588.0" y="89.5" text-anchor="middle" class="lab">1,181</text><path d="M79.0,168.0 l7,-7 l7,7 l-7,7z" fill="var(--panel)" stroke="var(--ink)" stroke-width="2"/><text x="104.0" y="190.0" class="lab">PPS projects 570</text></svg><div class="legend"><span><i class="sw" style="--c:var(--p-A)"></i>Map A</span><span><i class="sw" style="--c:var(--p-rec)"></i>The rec (map B and NE only use the same high school lines)</span><span>&#9671; PPS&rsquo;s own 2027-28 projection</span><span>- - - PPS&rsquo;s high school floor, 1,100</span></div></figure>
+<p class="cite">Our figures: model v2, <a href="build/solver/out_v2/super_rec/scorecard.json">super_rec/scorecard.json</a> and <a href="build/solver/out_v2/mapA4/scorecard.json">mapA4/scorecard.json</a>, durability sizes by year. PPS: Superintendent’s recommendation memo (Nov 12, 2026), “Modeling School-by-School Staffing Projections (2027–28),” projected enrollment, printed p. 52 (PDF p. 53) (<a href="build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=53">PDF</a>, <a href="build/pps-texts/superintendent-recommendation-2026-11-12.md">text</a>). The 1,100 floor is PPS&rsquo;s own (<a href="pages/sizes.html">why these sizes</a>).</p>
+</section>
 
-<p><b>What it costs:</b> more moves and messier feeder paths. About 7,000 elementary and middle schoolers change schools compared with PPS Status Quo, against about 4,900 under PPS A (37% of K-8 students, against 27%: PPS&rsquo;s dashboard measure, on our model). Middle-school lines are redrawn while high-school lines stay close to PPS A&rsquo;s, so fewer middle schoolers go on to the same high school as most of their class: <span data-m="6-8-&gt;9-12_together_pct" data-p="dli_home3_rh">82.1</span>%, against <span data-m="6-8-&gt;9-12_together_pct" data-p="scenario_A">90.2</span>% under PPS A. Three elementary schools split between two middle schools (1 under PPS A). Middle schools are held to PPS&rsquo;s 500: all 13 meet it every year to 2031-32 (5 under PPS A on PPS&rsquo;s figures). One high-school change, taken from the previous best: the Skyline area stays at Lincoln instead of crossing the St. Johns Bridge to Roosevelt, so Roosevelt stays in range every year to 2031-32 (falling below 1,100 from 2032-33, a year PPS doesn&rsquo;t project); the gap between the largest and smallest high school grows from 362 to 424 students, and the average high-school walk from 1.93 to 1.98 miles.</p>
- <p><b>What changed on 2026-10-27.</b> The current best now keeps three more immersion programs in their own buildings: Clark Mandarin, Sitton Spanish and Ockley Green Spanish (6-8). Only programs whose buildings close, or that lose their grades, move: 4 programs and 586 students, against 820 under the previous best. The lines shift to fit: about 180 elementary kids are drawn differently (parts of Clark&rsquo;s area go to Bridger and Vestal, parts of Sitton&rsquo;s to Astor and Rosa Parks), and about 720 middle schoolers change schools, which ends a criss-cross of about 185 each way between Beaumont and Tubman and brings all 13 middle schools to PPS&rsquo;s 500 every year (12 under the previous best). Elementary kids sent past a closer school fall from 890 to 793. The previous best (no program swaps) and the one before it (balanced middle schools) are still shown on every page.</p>
+<section class="wide">
+<h2>What each one costs</h2>
+<div class="plans">
+<div class="note"><h3><span class="pname"><span class="pb A" aria-hidden="true">A</span> Map A: our best overall</span></h3><ul class="tight">
+<li>It needs a different school set from the rec: Ch&aacute;vez, Lent and Rigler keep neighborhood areas, and James John, Maplewood and Stephenson close. Those choices, not the lines, explain most of the gap.</li>
+<li>Feeders are less clean: 53% of middle schools feed one high school (the rec: 81%), and six K-5 zones split across two high schools.</li>
+<li>1,317 K-5 kids move out of schools that stay open (337 of them to a longer walk), against 124 under the rec.</li></ul></div>
+<div class="note"><h3><span class="pname"><span class="pb B" aria-hidden="true">B</span> Map B: the rec, lines fixed</span></h3><ul class="tight">
+<li>Keeps the rec&rsquo;s closures and hubs; one school change, James John into Sitton (as in Scenario A).</li>
+<li>The Southwest stays short (Maplewood, Forest Park, Stephenson, Markham): six schools have kids for about four. Lines can&rsquo;t fix that.</li>
+<li>Middle schools stay at 6 of 14, because it keeps the rec&rsquo;s middle lines. 1,594 K-5 kids move out of open schools (618 to a longer walk, mostly to fill short schools).</li></ul></div>
+</div>
+<p class="cite">Sources: <a href="build/solver/out_v2/mapA4/TRADEOFFS.md">mapA4/TRADEOFFS.md</a>, <a href="build/solver/out_v2/mapB/TRADEOFFS.md">mapB/TRADEOFFS.md</a>; moves from the solver&rsquo;s score_principles.py.</p>
+</section>
 
-<h2 id="glance">Trade-offs</h2>
-<p>No plan wins every row: that is the trade-off.</p>
-<div id="mx"></div>
-<p>Every number by level, with bus lines and racial mix: <a href="pages/options.html#compare">Options, side by side</a>.</p>
-
-<h3>What the trade-offs show</h3>
-<ul>
-<li><b>PPS&rsquo;s closures can work with other lines.</b> Starting from PPS A&rsquo;s closures, every example plan keeps at least as many schools at target as PPS A every year to 2031-32, on our model.</li>
-<li><b>Shorter walks move more kids.</b> Whether that&rsquo;s worth it is the district&rsquo;s call.</li>
-<li><b>Walking and feeders pull against each other.</b> Walkable middle-school lines split more feeders. Redrawing every level together didn&rsquo;t fix it: the Ida B. Wells and Grant areas have too few middle schoolers for their buildings, under PPS A too.</li>
-<li><b>Sizing to one year is fragile.</b> Enrollment keeps falling after 2031-32; see <a href="pages/durability.html">Durability</a>.</li>
-</ul>
-
-<h2 id="goals">Our goals</h2>
-<ol>
-<li><b>Show more options.</b> Two scenarios are two points in a wide space. We lay out more, side by side, so the trade-offs are visible.</li>
-<li><b>Ask the district for more options.</b> PPS has better data than we do. Our numbers are model estimates, built from Census blocks rather than PPS&rsquo;s student records, so they may not hold up on PPS&rsquo;s real data. We&rsquo;d like PPS to test options like these on its own data and present more than two, including lines that keep kids closer to school and schools at target every year to 2031-32.</li>
-<li><b>Publish the data.</b> Our data, code and method are open. We&rsquo;d like PPS to share the data behind its scenarios too: boundary files in a mapping format (not just PDFs), student counts on a privacy-safe grid, the transfer and program-follow assumptions behind each scenario, and transportation costs.</li>
+<section class="wide">
+<h2>What we&rsquo;d ask the Board</h2>
+<div class="ask col"><ol>
+<li><b>Adopt the recommendation&rsquo;s closures, but redraw the lines</b> (map B).</li>
+<li><b>Merge James John into Sitton.</b> Without its Spanish strand, which the rec moves to Ch&aacute;vez, James John is about 233 and Sitton about 208: two small schools side by side.</li>
+<li><b>Revisit the Southwest and the middle school count,</b> which no lines can fill. Map A shows the price of not doing so.</li>
 </ol>
-<p><b>Why the modeling stops here.</b> We could keep pushing the models: more runs, finer lines, new trade-offs to test. But past this point, more modeling adds precision the inputs can&rsquo;t support. Our student counts are estimates built from 2020 Census blocks and calibrated to 2025-26 enrollment, and PPS hasn&rsquo;t published the scenario-level data behind A and B: student counts on a privacy-safe grid, the transfer and program-follow assumptions under each scenario, and cost estimates. With the district&rsquo;s data, the same tools could test plans far more precisely. Without it, further tuning would mostly fit our own estimates.</p>
-<p>The aim: a community that can talk through the trade-offs with the same numbers in front of everyone.</p>
+<p class="small">Smallest ask: change only Sabin. Split it by street lines among King, Vernon and Alameda instead of sending all of it to King: Vernon reaches 363, and the worst walks (over 1 mi with a school within &frac12; mi) drop from 115 to 85. <a href="pages/sabin.html">Sabin and NE</a>.</p></div>
+</section>
 
-<h2 id="explore">What this site lets you do</h2>
-<div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(190px,1fr))">
-<a class="card" href="pages/map.html"><b>Compare plans on a map</b><span>Any two plans, any level: see where the lines move, and tap a spot to see its school under every plan.</span></a>
-<a class="card" href="pages/plans.html"><b>Read a one-pager on each plan</b><span>What each plan does, its key numbers, what it does well and what it gives up. Flip between plans, or print one.</span></a>
-<a class="card" href="pages/options.html"><b>See every plan side by side</b><span>Walks, school sizes, kids moved, feeders and immersion moves, for PPS&rsquo;s plans and the example plans.</span></a>
-<a class="card" href="pages/sizes.html"><b>Why 360 and 500?</b><span>Where PPS&rsquo;s size targets come from (the state&rsquo;s Quality Education Model), and how many schools fall below them.</span></a>
-<a class="card" href="pages/durability.html"><b>Check school sizes, year by year</b><span>Which schools stay at their size target to 2031-32, and any school&rsquo;s projected enrollment under every plan, next to PPS&rsquo;s own figures.</span></a>
-<a class="card" href="pages/schools.html"><b>Explore one school at a time</b><span>Any school&rsquo;s actual enrollment since 2018-19, Portland State&rsquo;s forecast, PPS&rsquo;s own projections for each scenario, and the example plans.</span></a>
-<div class="card"><b><a href="pages/how.html">How this was done and open data</a></b><span>How the model works, every source, and all the data and code: <a href="pages/how.html">How we did this</a> &middot; <a href="pages/method.html">Method</a> &middot; <a href="pages/sources.html">Sources</a> &middot; <a href="https://github.com/Paulfrazier/pps-boundary-options">Data and code</a></span></div>
-</div>
+<div class="earlier-box wide"><div><b>Earlier work (Scenario A/B era).</b> The site as it stood before the recommendation, comparing PPS Scenarios A and B with our redraws, is kept unchanged.</div><a class="btn" href="earlier/index.html">Open earlier work</a></div>
 
-<h2 id="key-finding">Shorter walks and more schools at target, at a cost</h2>
-<div class="kf">
-<div class="kf-why"><h3>Why redrawn lines do better</h3>
-<ul>
-<li><b>PPS A&rsquo;s line changes are targeted.</b> It folds each closing school into one or two nearby schools and makes 38 targeted boundary changes (<a href="https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=14509719">PPS scenario memo, Oct 5, 2026</a>), but it doesn&rsquo;t redraw lines around every school, so some end up too big and others too small: 20 elementary and middle schools out of range in 2031-32 on our model. PPS&rsquo;s own projections show the same, such as Clark at 272 (343 with no closures) and Sunnyside, as a K-5, at 235 (the floor is 360), and George at 636 in a 623-seat building (PPS Family Guides, p. 4; capacity from PPS&rsquo;s 2025-26 school profiles, second-hand).</li>
-<li><b>PPS A adds a little to long walks; redrawing removes a lot.</b> With today&rsquo;s schools and no closures (PPS Status Quo), 1,861 elementary kids are already assigned to a farther school, past a closer open one. PPS A raises that by 109, to 1,970. The current best example we modeled cuts it to 793: 1,068 fewer than with no closures. Sending kids to the closer school also evens out sizes.</li>
-<li><b>Size comes first.</b> Every example plan must keep at least as many schools at target as PPS A, every year to 2031-32; within that, it finds the shortest walks.</li>
-</ul></div>
-<div class="kf-catch"><h3>The costs</h3>
-<ul>
-<li><b>Messier feeder paths.</b> More elementary schools split between two middle schools, and fewer middle-school classes stay together into high school (numbers above).</li>
-<li><b>More kids change schools:</b> about 7,100 elementary and middle schoolers under the current best, against about 4,900 under PPS A (both compared with PPS Status Quo).</li>
-<li><b>Thin size margins.</b> Many elementary schools sit just above the 360-kid floor: in 2031-32, 17 to 22 are within 20 kids of it across the example plans (17 of 38 under the current best), against 2 of 35 under PPS A. That works if PSU&rsquo;s forecast holds, as PPS assumes; if enrollment falls faster, those schools dip below 360 first.</li>
-</ul></div>
-</div>
-<p class="cite">Sources: <a href="build/solver/out_v2/equity_noswap_alameda_rig_hs/TRADEOFFS.md">equity_noswap_alameda_rig_hs/TRADEOFFS.md</a>, <a href="build/solver/out_v2/TRADEOFFS_MATRIX.json">TRADEOFFS_MATRIX.json</a>, <a href="build/solver/out_v2/PPS_SCORECARD_public.md">PPS_SCORECARD_public.md</a> (PPS&rsquo;s dashboard measures, our model) and <a href="build/solver/out_v2/BRIEFS.md">BRIEFS.md</a>.</p>
+</div></main>
+<footer class="band"><div class="in">
+<p id="ai"><b>Built with AI.</b> The research, data work, modeling and writing were done by AI (Claude, from Anthropic), directed and checked by Paul Frazier, a PPS parent, who made every judgment call and checked results against PPS&rsquo;s documents. Best effort; it will have errors. <a href="pages/how.html">How we did this</a> &middot; <a href="pages/method.html">Method</a>.</p>
+<p>Every figure is a model estimate on the Portland State University (PSU) enrollment forecast, from our model, not PPS&rsquo;s, unless a PPS source is cited. Figures may not hold up on PPS&rsquo;s own data.</p>
+<p><a href="LICENSE">License</a>: code MIT, analysis CC BY 4.0, OpenStreetMap-derived data &copy; OpenStreetMap contributors, ODbL. &copy; 2026 Paul Frazier. Data generated November 15, 2026.</p>
+</div></footer>
 
-<h2>The options on the table</h2>
-<h3 class="pg">From PPS</h3>
-<div class="plans" id="plans-pps"></div>
-<h3 class="pg">Example plans <span>PPS A&rsquo;s closures and programs, lines drawn differently</span></h3>
-<div class="plans" id="plans-ours"></div>
-
-<h2>Options we&rsquo;d like the district to present</h2>
-<p>Two scenarios are two points in a wide space. Options like these would show the trade-offs; where we modeled one, it&rsquo;s linked.</p>
-<div class="ideas" id="ideas">
-<div class="idea" data-key="option1_durable"><h3>Same closures, lines drawn for walking</h3><p>Keep PPS A&rsquo;s closures and programs; redraw elementary and middle-school lines so more kids stay close.</p><p class="tests">Tests: what the lines alone can buy.</p><p class="st"></p></div>
-<div class="idea" data-key="dli_home3_rh"><h3>Keep immersion programs where they are</h3><p>Leave immersion programs in their buildings when the building stays open. Programs in closing buildings, or that lose their grades, still move.</p><p class="tests">The current best moves only those: Beach and James John Spanish, Rose City Park Vietnamese and C&eacute;sar Ch&aacute;vez Spanish 6-8. 586 immersion students move, against 1,567 under PPS A. The previous best also moved Clark Mandarin, Sitton Spanish and Ockley Green Spanish 6-8 (820 move); the one before kept only MLK Jr Mandarin and Beaumont Spanish 6-8 in place (1,226 move).</p><p class="st"></p></div>
-<div class="idea"><h3>Redraw everything together</h3><p>Redraw all three levels as one system, so each school feeds cleanly into the next.</p><p class="st"><span class="chip">Tried, not shown</span> It missed the size rules: the Ida B. Wells and Grant areas lack the middle schoolers for today&rsquo;s buildings. Likely needs a building decision.</p></div>
-<div class="idea" data-key="option4"><h3>Rebalance PPS A</h3><p>Keep PPS A&rsquo;s closures and programs, and change today&rsquo;s lines as little as possible while bringing schools into range.</p><p class="tests">Finding: it moves <em>more</em> K-5 kids than PPS A (3,594 vs 2,935), and still leaves Forest Park, Jackson and Roseway Heights short in 2031-32.</p><p class="st"></p></div>
-<div class="idea"><h3>Shortest walks that keep PPS A&rsquo;s count</h3><p>The shortest walks that still keep at least as many schools at target as PPS A every year to 2031-32.</p><p class="st"><span class="chip">Tried, dropped</span> The re-solved previous best beat it on nearly every measure, including walks.</p></div>
-<div class="idea"><h3>A range, not two points</h3><p>A series from fewest moves to shortest walks, so the board can see what each step costs.</p><p class="st"><span class="chip">Idea</span></p></div>
-</div>
-<h3>A what-if, not a proposal</h3>
-<div class="ideas">
-<div class="idea" data-key="option3a"><h3>What if focus options were sized too?</h3><p>We tested what happens to school sizes and walks if Winterhaven and da Vinci closed and their students returned to neighborhood schools. <b>This is a sensitivity test, not a recommendation to close either school.</b></p><p class="tests">It rests on a second-hand count of where focus-option students live (source of the per-program numbers not stated) and assumes every returning student stays in PPS.</p><p class="st"></p></div>
-</div>
-
-<p id="ai"><b>Built with AI.</b> The research, data work, modeling and writing were done by AI (Claude, from Anthropic), directed and guided by Paul Frazier, a PPS parent, who made every judgment call and checked results against PPS&rsquo;s documents. Best effort; it will have errors. <a href="pages/method.html">Method</a> &middot; <a href="pages/how.html">How we did this</a>.</p>
-
-<p>Thanks to the <a href="https://ppsdata.info/">PPS Data Explorer</a> project (<a href="https://github.com/meub/pps-data">pps-data</a>) for compiled enrollment and immersion files, and the <a href="https://pps-dli-explorer.netlify.app/">PPS Dual Language Immersion &amp; Rightsizing</a> project, whose snapshots supplied PPS&rsquo;s 2025-26 building capacities.</p>
-
-<h2>Limits</h2>
-<ul>
-<li>Where kids live is estimated from 2020 Census blocks, not addresses; sizes within ~15% of a threshold are uncertain.</li>
-<li>Immersion and focus students&rsquo; homes are estimated.</li>
-<li id="lim-dur">Sizes by year follow PSU&rsquo;s July 2026 forecast. <span id="lim-basis"></span></li>
-<li id="lim-prelim">All plan results use the calibrated current model (v2).</li>
-</ul>
-
-<footer>
-Code, data and method: <a href="https://github.com/Paulfrazier/pps-boundary-options">GitHub repository</a> &middot; <a href="pages/sources.html">Sources</a> &middot; <a href="LICENSE">License</a> (code MIT, analysis CC BY 4.0, OpenStreetMap-derived data &copy; OpenStreetMap contributors, ODbL).<br>
-&copy; 2026 Paul Frazier.<br>
-Built with AI (Claude, from Anthropic), directed and guided by Paul Frazier (<a href="#ai">more</a>).<span id="gen-date"></span>
-<script>document.addEventListener('DOMContentLoaded',function(){var D=window.SITE_DATA,e=document.getElementById('gen-date');if(D&&e&&D.generated_label)e.textContent=' Data generated '+D.generated_label+'.'});</script>
-</footer>
-</main>
-<script src="pages/data/site_data.js"></script>
-<script src="pages/matrix.js"></script>
-<script>
-(function(){
-var D=window.SITE_DATA,lv='K-5',$=function(i){return document.getElementById(i)};
-if(!D)return;
-if(window.renderMatrix)renderMatrix($('mx'),D,'');
-var O=D.options,by={};O.forEach(function(o){by[o.name]=o});
-var cols=[by.status_quo,by.scenario_A,by.scenario_B].concat(O.filter(function(o){return o.kind==='option'&&o.name!=='option1_2031only'})).filter(Boolean);
-function L(o,l){return o.levels&&o.levels[l||lv]}
-function Du(o){return o.durability&&o.durability.levels&&o.durability.levels[lv]}
-function n(v,d){return v==null?'–':Number(v).toLocaleString('en-US',{minimumFractionDigits:d||0,maximumFractionDigits:d||0})}
-function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
-var isRef=function(o){return o.kind==='reference'};
-
-// The options on the table: one card per plan, from site data.
-var who=function(o){var t=o.what_if?'What-if':o.kind==='reference'?'Baseline':'';return t?'<span class="who">'+t+'</span>':''};
-var WHAT={status_quo:'PPS&rsquo;s 2027-28 lines with no closures. Every plan is compared with it.',
- scenario_A:'PPS&rsquo;s first rightsizing scenario: closures, K-8 conversions, program moves and new lines.',
- scenario_B:'PPS&rsquo;s second rightsizing scenario, with fewer closures than PPS A.',
- frontier_k17:'Lines drawn for the shortest walks that keep at least PPS A&rsquo;s count of schools at target.',
- option1_durable:'Elementary and middle lines redrawn for walking and size; PPS A&rsquo;s high-school lines.',
- equity_noswap_alameda_rig_hs:'Redrawn K-5 and middle-school lines with no program swaps: immersion programs whose buildings stay open stay put. Big-school relief: an elementary school over 450 kids gets a soft ceiling of 450, and moving kids off it costs less. Skyline area stays at Lincoln.',
- option2_ms460:'Redrawn K-5 and middle-school lines (middle-school minimum 460); MLK Jr Mandarin and Beaumont Spanish 6-8 stay in their buildings; Skyline area stays at Lincoln.',
- option2_ms460_sellwood_home:'The previous best with Sellwood Middle kept open on about its own area.',
- option2:'Redrawn K-5 and middle-school lines; MLK Jr Mandarin and Beaumont Spanish 6-8 stay in their buildings.',
- option4:'PPS A&rsquo;s closures and programs, with today&rsquo;s lines changed as little as possible to bring schools into range.',
- option3a:'Also closes Winterhaven and da Vinci; their students return to neighborhood schools.'};
-var card=function(o){var k=L(o,'K-5'),m=L(o,'6-8');
- var what=WHAT[o.name]||esc(o.full);
- return '<div class="plan k-'+esc(o.kind)+'">'+who(o)+'<b>'+esc(o.short)+'</b><p>'+what+'</p>'+
-  (k&&k.schools_open!=null?'<span class="open">'+n(k.schools_open)+' elementary &middot; '+n(m&&m.schools_open)+' middle schools</span>':'')+'</div>'};
-$('plans-pps').innerHTML=cols.filter(function(o){return o.kind!=='option'}).map(card).join('');
-$('plans-ours').innerHTML=cols.filter(function(o){return o.kind==='option'}).map(card).join('');
-
-var b=O.filter(function(o){return o.durability&&o.durability.basis}).map(function(o){return o.durability.basis});
-var u=b.filter(function(x,i){return b.indexOf(x)===i});
-// (basis detail lives on Method; the landing keeps Limits short)
-if(!D.placeholder_note)$('lim-prelim').textContent='All plan results use the calibrated current model (v2).';
-
-// Ideas: status from site data (modeled and shown) or not yet.
-[].forEach.call(document.querySelectorAll('.idea[data-key]'),function(el){var k=el.dataset.key,o=by[k],st=el.querySelector('.st');
- st.innerHTML=o?'<span class="chip on">Modeled</span><a href="pages/options.html#opt-'+esc(k)+'">'+esc(o.short)+'</a> &middot; <a href="pages/map.html#level=K-5&amp;view=overlay&amp;a=scenario_A&amp;b='+esc(k)+'&amp;color=past">map vs PPS A</a>'
-  :'<span class="chip">Being modeled</span>'});
-})();
-</script>
-<script src="pages/map_data/landing_ba.js"></script>
-<script>
-(function(){
-var D=window.SITE_DATA;
-if(D&&D.matrix){var C={};D.matrix.plans.forEach(function(p){C[p.name]=p.cells});
-document.querySelectorAll('[data-m]').forEach(function(e){var c=(C[e.dataset.p]||{})[e.dataset.m],t=c&&c.text;if(!t)return;
-var f=e.dataset.f;if(f){var s=t.split('/');t=f==='n'?s[0]:s[1]}if(t)e.textContent=t})}
-var B=window.LANDING_BA,box=document.getElementById('ba'),w=document.getElementById('baw'),r=document.getElementById('bar');
-if(!B||!box)return;
-w.insertAdjacentHTML('afterbegin',B.right+B.left);w.style.aspectRatio=B.ar;w.style.width='min(100%,'+Math.round(560*B.ar)+'px)';
-document.getElementById('ban').textContent=B.n.toLocaleString('en-US');box.hidden=false;
-function set(p){p=Math.max(0,Math.min(100,p));w.style.setProperty('--pos',p+'%');r.value=p}
-r.addEventListener('input',function(){set(+r.value)});
-document.getElementById('bachg').addEventListener('change',function(e){w.classList.toggle('nochg',!e.target.checked)});
-var drag=false;function at(e){var b=w.getBoundingClientRect();set((e.clientX-b.left)/b.width*100)}
-w.addEventListener('pointerdown',function(e){drag=true;try{w.setPointerCapture(e.pointerId)}catch(_){}at(e)});
-w.addEventListener('pointermove',function(e){if(drag)at(e)});
-w.addEventListener('pointerup',function(){drag=false});w.addEventListener('pointercancel',function(){drag=false});
-})();
-</script>
 </body>
 </html>

@@ -1,0 +1,290 @@
+SELECTED: Forest Park
+RETRIEVED: 2026-10-09T19:15:30.219Z
+SOURCE: https://app.powerbi.com/view?r=eyJrIjoiOWZlNmJhYjQtYzc5YS00MzY5LTk3ODYtMWYxMmQ0YWMyMjIxIiwidCI6ImQwOGRmYzk0LWEyM2MtNDRlNC04YjhkLTRhYmM0MGRkYTlhZSIsImMiOjZ9&pageName=52fe3db4b36f375bbf95
+
+Show keyboard shortcuts
+Show screen reader tips
+Skip to main content
+Power BI Report
+
+School Profiles
+
+2025 - 2026
+
+School
+Abernethy
+Access Academy
+Ainsworth
+Alameda
+Alliance
+Arleta
+Astor
+Atkinson
+Beach
+Beaumont
+Benson
+Beverly Cleary
+Boise-Eliot/Humboldt
+Brentwood
+Bridger Creative Science
+Bridlemile
+Buckman
+Capitol Hill
+Cesar Chavez
+Chapman
+Chief Joseph
+Clark
+Cleveland
+Creston
+DaVinci Arts
+Dr Martin Luther King Jr
+Duniway
+Faubion
+Forest Park
+Franklin
+George
+Glencoe
+Grant
+Grout
+Harriet Tubman
+Harrison Park
+Hayhurst
+Hosford
+Ida B Wells
+Irvington
+Jackson
+James John
+Jefferson
+Kellogg
+Kelly
+Laurelhurst
+Lent
+Lewis
+Lincoln
+Llewellyn
+Maplewood
+Markham
+Marysville
+McDaniel
+MLC K12
+Mt Tabor
+Ockley Green
+Odyssey Program
+Peninsula
+Richmond
+Rieke
+Rigler
+Robert Gray
+Roosevelt
+Rosa Parks
+Rose City Park
+Roseway Heights
+Sabin
+Scott
+Sellwood
+Sitton
+Skyline
+Stephenson
+Sunnyside Environmental
+Sunrise
+Vernon
+Vestal
+West Sylvan
+Whitman
+Winterhaven
+Woodlawn
+Woodmere
+Woodstock
+
+Forest Park
+
+Map panned south west 11.58 kilometers.
+
+Location: NW Miller Rd, West Haven.
+
+Map style: grayscale_light.
+
+Map shortcuts: Zoom out: hyphen. Zoom in: plus. Pan right 100 pixels: right arrow. Pan left 100 pixels: left arrow. Pan up 100 pixels: up arrow. Pan down 100 pixels: down arrow. Rotate 15 degrees clockwise: shift + right arrow. Rotate 15 degrees counter clockwise: shift + left arrow. Increase pitch 10 degrees: shift + up arrow. Decrease pitch 10 degrees: shift + down arrow. Jump focus to the map: Escape.
+Road
+Satellite
+Hybrid
+Grayscale (Dark)
+Night
+Grayscale (Light)
+Terra
+Blank
+Blank (Accessible)
+High contrast (Dark)
+High contrast (Light)
+Grayscale (Light)
+©2026 TomTom©2026 OSM
+Feedback
+
+Address: 9935 NW DURRETT ST
+Originally Built For: K-5
+HS Cluster: LINCOLN
+Primary Use: K-5
+
+BUILDING INFORMATION
+
+Grades: K-5
+Year Built: 1998
+Square Footage: 65,745
+
+Enrollment
+
+264
+
+=
+
+Utilization Rate
+
+51%
+
+÷
+
+Functional Capacity
+
+519
+
+Functional
+Capacity
+
+519
+
+2025-2026 Utilization Rate
+
+51%
+
+Enrollment
+
+Direct Cert. indicates percentage of students qualifying for direct certification. 
+
+2026 - 2027 Projected
+
+259
+
+2025 - 2026 Enrollment
+
+264
+
+2025 - 2026 Direct Cert.
+
+6.4%
+
+Students in Neighborhood School
+
+263
+
+PPS Students Live in Zone
+
+301
+
+In District Capture Rate
+
+87.4%
+
+Historical and Projected Enrollment
+0
+100
+200
+300
+400
+School Year
+2019-2020
+2020-2021
+2021-2022
+2022-2023
+2023-2024
+2024-2025
+2025-2026
+2026-2027
+2027-2028
+2028-2029
+2029-2030
+2030-2031
+2031-2032
+402
+258
+321
+348
+260
+252
+328
+257
+260
+264
+333
+303
+259
+Historical Demographics
+0
+100
+200
+300
+400
+School Year
+2018-19
+2019-20
+2020-21
+2021-22
+2022-23
+2023-24
+2024-25
+2025-26
+247
+248
+210
+188
+182
+184
+172
+143
+50
+55
+39
+36
+43
+44
+43
+37
+93
+80
+76
+80
+80
+69
+62
+52
+Race
+Asian
+Black
+Latino
+Multiple
+Native
+Pacific Islander
+White
+
+Programs
+
+Program Type
+
+Neighborhood
+
+Title 1
+
+No
+
+Immersion Language
+
+--
+
+Immersion Language 2
+
+--
+
+-
++
+107%
+Microsoft Power BI
+Report Zoomed To 107%

@@ -1,0 +1,22 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+# OS / tools
+.DS_Store
+.gstack/
+node_modules/
+# Rebuild-only inputs (fetched by scripts/fetch_raw.py; not redistributed)
+build/data/raw/
+build/routing/osm/
+build/routing/foot/
+build/routing/bike/
+build/map/work/*.pbf
+build/map/work/*.geojsonseq
+cowork/crisp/faces.pkl
+# Secrets
+.env
+*.key
+census_api_key
+# PPS dashboard data model pulled 2026-10-20 (unpublished scenarios): never commit
+build/pps-texts/pps-rightsizing-dashboard-model-2026-10-20/

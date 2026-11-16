@@ -1,0 +1,6 @@
+{
+ "schools_out_of_range_2031_32": [],
+ "solver_slack": "not solved: Plan D as written, scored like the PPS baselines (build_planD_updated.py)",
+ "feeder_splits_used": "Status Quo's, plus the draft's feeder changes (six K-8s to K-5; Creston, Maplewood, Lewis, Irvington, Peninsula areas)",
+ "exclave_note": "cut-off pieces are Status Quo's own (Faubion/Bybee Lake, Skyline, Chapman, Beach, McDaniel, Jefferson) or follow from the draft's feeder moves (Hosford, Ockley Green, under 4 kids each); see TRADEOFFS.md"
+}

@@ -1,0 +1,6 @@
+RV type <class 'list'> [[-122.6581, 45.4109], [-122.6569, 45.4151], [-122.6554, 45.4178], [-122.6552, 45.4199], [-122.6562, 45.4235], [-122.6518, 45.4283], [-122.6494, 45.42
+block 4535 410510025021017 -> Abernethy: route 2.46 mi vs straight 2.18 mi; I-84 crossings=1 at [(-122.6371, 45.5303)] on ['Northeast 28th Avenue']; river segs hit=0
+block 4576 410510026003016 -> Buckman: route 1.84 mi vs straight 1.63 mi; I-84 crossings=1 at [(-122.6258, 45.5337)] on ['Northeast Sandy Boulevard']; river segs hit=0
+block 6498 410510025022001 -> Glencoe: route 2.23 mi vs straight 1.66 mi; I-84 crossings=3 at [(-122.6229, 45.533), (-122.615, 45.5301), (-122.6172, 45.5314)] on ['Northeast Campesinos Boulevard', 'Northeast 47th Avenue', 'Banfield Expressway Path']; river segs hit=0
+block 7736 410510025023009 -> Grout: route 3.43 mi vs straight 2.93 mi; I-84 crossings=1 at [(-122.6449, 45.5299)] on ['Northeast 21st Avenue']; river segs hit=0
+block 357 410510028023017 -> Sunnyside: route 1.89 mi vs straight 1.39 mi; I-84 crossings=1 at [(-122.6089, 45.5273)] on ['Northeast 53rd Avenue']; river segs hit=0

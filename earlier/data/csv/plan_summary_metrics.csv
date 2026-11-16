@@ -1,0 +1,7 @@
+plan,dissimilarity_index,schools_within_15pts,n_schools,min_pct_color,max_pct_color,avg_walk_mi,walk_over_1mi,walk_over_1.5mi,passing_closer_school,schools_360plus,n_schools_2,students_moved
+Today,0.215,39,53,24,80,0.875,4046,1655,2181,15,53,0
+PPS plan A,0.201,28,40,26,71,0.995,5617,2332,2685,30,40,3320
+PPS plan B,0.206,31,43,24,71,0.96,5178,2065,2695,27,43,2529
+Walk redraw A,0.199,30,39,24,66,0.89,4375,1470,705,35,40,5923
+Walk redraw B,0.2,32,42,26,66,0.858,3982,1354,766,32,43,5511
+Walk + diversity A,0.185,34,39,26,66,0.893,4536,1488,857,34,40,6041

@@ -1,0 +1,315 @@
+{
+ "basis": "2031-32 (PSU forecast; block kids scaled by area, see METHOD.md)",
+ "lr_nbhd_share": 0.02,
+ "floors": {
+  "K-5": 360,
+  "K-8": 500,
+  "6-8": 500,
+  "9-12": 1100
+ },
+ "ceiling_k5_max": 600,
+ "exempt_floor": [
+  "Astor",
+  "Skyline"
+ ],
+ "exempt_hold_status_quo": true,
+ "capacity_overrides": {
+  "Jefferson": 1773
+ },
+ "hs_range_max": 350,
+ "focus": [
+  "Winterhaven",
+  "da Vinci",
+  "Odyssey",
+  "ACCESS",
+  "MLC",
+  "Benson"
+ ],
+ "past_margin_miles": 0.25,
+ "name": "option2_splitA",
+ "label": "Redrawn K-8, MLK Jr + Beaumont DLI stay, middle zones split at PPS A high-school lines: K-5 copied from option2 (unchanged); 6-8 built from K-5 zones cut at A_hs lines; 2,000 kid-miles per extra HS a middle zone feeds (Paul 2026-10-12 ~22:00, option A)",
+ "kind": "option",
+ "move_baseline": "status_quo",
+ "levels": {
+  "K-5": {
+   "zoned": [
+    "Abernethy",
+    "Ainsworth",
+    "Alameda",
+    "Arleta",
+    "Astor",
+    "Atkinson",
+    "Beverly Cleary",
+    "Boise-Eliot/Humboldt",
+    "Bridger",
+    "Bridlemile",
+    "Capitol Hill",
+    "Chapman",
+    "Chief Joseph",
+    "Clark",
+    "Duniway",
+    "Faubion",
+    "Forest Park",
+    "Glencoe",
+    "Grout",
+    "Hayhurst",
+    "Kelly",
+    "Laurelhurst",
+    "Lee",
+    "Llewellyn",
+    "MLK Jr",
+    "Markham",
+    "Rieke",
+    "Rosa Parks",
+    "Scott",
+    "Sitton",
+    "Skyline",
+    "Sunnyside",
+    "Vernon",
+    "Vestal",
+    "Whitman",
+    "Woodlawn",
+    "Woodstock"
+   ],
+   "k8": [
+    "Astor",
+    "Skyline"
+   ],
+   "programs": {
+    "Ainsworth": [
+     "Ainsworth|Spanish"
+    ],
+    "Cesar Chavez": [
+     "Cesar Chavez|Spanish K-5",
+     "Beach|Spanish",
+     "James John|Spanish",
+     "Sitton|Spanish"
+    ],
+    "Lent": [
+     "Lent|Spanish",
+     "Atkinson|Spanish"
+    ],
+    "Rigler": [
+     "Rigler|Spanish",
+     "Scott|Spanish"
+    ],
+    "Woodstock": [
+     "Woodstock|Mandarin",
+     "Clark|Mandarin"
+    ],
+    "Kelly": [
+     "Kelly|Russian"
+    ],
+    "Vestal": [
+     "Rose City Park|Vietnamese"
+    ],
+    "Richmond": [
+     "Richmond|Japanese"
+    ],
+    "MLK Jr": [
+     "MLK Jr|Mandarin"
+    ]
+   },
+   "hint": "A_es",
+   "n_cand": 7,
+   "rooted": true,
+   "hs_nest": {
+    "column": "A_hs",
+    "kid_miles_per_kid": 0.1
+   },
+   "warm_start": {
+    "run": "option1_durable",
+    "staging": true
+   },
+   "fixed_run": "option2"
+  },
+  "6-8": {
+   "zoned": [
+    "Astor",
+    "Beaumont",
+    "George",
+    "Gray",
+    "Harrison Park",
+    "Hosford",
+    "Jackson",
+    "Kellogg",
+    "Lane",
+    "Mt Tabor",
+    "Ockley Green",
+    "Roseway Heights",
+    "Skyline",
+    "Tubman",
+    "West Sylvan"
+   ],
+   "k8": [
+    "Astor",
+    "Skyline"
+   ],
+   "programs": {
+    "West Sylvan": [
+     "West Sylvan|Spanish"
+    ],
+    "Kellogg": [
+     "Kellogg|Spanish"
+    ],
+    "George": [
+     "George|Spanish",
+     "Ockley Green|Spanish",
+     "Cesar Chavez|Spanish 6-8"
+    ],
+    "Roseway Heights": [
+     "Roseway Heights|Spanish",
+     "Roseway Heights|Vietnamese"
+    ],
+    "Harrison Park": [
+     "Harrison Park|Mandarin"
+    ],
+    "Tubman": [
+     "Tubman|Mandarin"
+    ],
+    "Mt Tabor": [
+     "Mt Tabor|Japanese"
+    ],
+    "Lane": [
+     "Lane|Russian"
+    ],
+    "Beaumont": [
+     "Beaumont|Spanish"
+    ]
+   },
+   "hint": "A_ms",
+   "n_cand": 5,
+   "rooted": true,
+   "group_split_by": "A_hs"
+  },
+  "9-12": {
+   "zoned": [
+    "Cleveland",
+    "Franklin",
+    "Grant",
+    "Ida B. Wells",
+    "Jefferson",
+    "Lincoln",
+    "McDaniel",
+    "Roosevelt"
+   ],
+   "k8": [],
+   "programs": {
+    "Lincoln": [
+     "Lincoln|Spanish"
+    ],
+    "Roosevelt": [
+     "Roosevelt|Spanish",
+     "Roosevelt|PISA"
+    ],
+    "McDaniel": [
+     "McDaniel|Spanish",
+     "McDaniel|Vietnamese",
+     "McDaniel|PISA"
+    ],
+    "Franklin": [
+     "Franklin|Spanish",
+     "Franklin|Russian"
+    ],
+    "Cleveland": [
+     "Cleveland|Mandarin"
+    ],
+    "Jefferson": [
+     "Jefferson|Mandarin"
+    ],
+    "Grant": [
+     "Grant|Japanese"
+    ]
+   },
+   "hint": "A_hs",
+   "n_cand": 5,
+   "rooted": true,
+   "group_by": "K-5",
+   "parent_split_by": "6-8",
+   "fixed_assign": "A_hs",
+   "note": "Paul 2026-10-12: keep Scenario A's official 9-12 lines in all options (feeder splits did not pay in v1 Option 1-durable)"
+  }
+ },
+ "weights": {
+  "walk": 1.0,
+  "past": 0.25,
+  "move": 0.15,
+  "perim": 3.0,
+  "diversity": 0.0,
+  "diversity_band": 0.15,
+  "split": 20000.0,
+  "hs_range": 2.0,
+  "slack": 10000.0,
+  "durable_school": 3000.0,
+  "school_year_at_target": 100.0,
+  "durability_count_slack": 100000.0,
+  "ms_split": 2000.0
+ },
+ "solver": {
+  "time_first": 180,
+  "time_round": 60,
+  "time_star": 600,
+  "max_rounds": 10,
+  "workers": 3,
+  "time_first_2a": 60,
+  "time_star_2a": 600,
+  "slack_rounds": 0,
+  "phase2_warm": true
+ },
+ "durability": {
+  "mode": "meet_reference",
+  "reference": "scenario_A",
+  "note": "count of zoned non-exempt schools at target >= Scenario A's count, each REQUIRED year 2027-28..2031-32 (PPS Family Guide window); 2032-33..2035-36 reported only (PSU Table 5.5); no extension past 2035-36"
+ },
+ "model_version": "v2",
+ "v2": {
+  "focus_lottery": {
+   "Sunnyside": {
+    "in_zone_2025_26": 219,
+    "enrollment_2025_26": 485,
+    "source": "PPS Enrollment Summary Oct 2025 by neighborhood and type of school attended, p. 1 (build/pps-texts/boardbook-2026-10/pps-enrollment-summary-oct-2025-capture-rates.md); ODE Fall Membership 2025-26 (build/data/schools.csv enr_total)",
+    "placement": {
+     "K-5": "phase_out",
+     "6-8": "home"
+    }
+   },
+   "Bridger": {
+    "in_zone_2025_26": 143,
+    "enrollment_2025_26": 446,
+    "source": "PPS Enrollment Summary Oct 2025 by neighborhood and type of school attended, p. 1 (build/pps-texts/boardbook-2026-10/pps-enrollment-summary-oct-2025-capture-rates.md); ODE Fall Membership 2025-26 (build/data/schools.csv enr_total)",
+    "placement": {
+     "K-5": "host",
+     "6-8": {
+      "Harrison Park": 1.0
+     }
+    }
+   },
+   "Buckman": {
+    "in_zone_2025_26": 133,
+    "enrollment_2025_26": 283,
+    "source": "PPS Enrollment Summary Oct 2025 by neighborhood and type of school attended, p. 1 (build/pps-texts/boardbook-2026-10/pps-enrollment-summary-oct-2025-capture-rates.md); ODE Fall Membership 2025-26 (build/data/schools.csv enr_total)",
+    "placement": {
+     "K-5": {
+      "Abernethy": 0.5,
+      "Sunnyside": 0.5
+     }
+    }
+   }
+  },
+  "lent_nondli": {
+   "kids_2025_26": 117,
+   "source": "PPS Enrollment Summary Oct 2025 by neighborhood and type of school attended, p. 1 (build/pps-texts/boardbook-2026-10/pps-enrollment-summary-oct-2025-capture-rates.md): Lent row, 117 Lent-area PPS students attend another neighborhood school (Marysville by design; Closure Commutes cites ~115). Marysville closure memo: \"pre-SEGC Lent non-DLI area -> Kelly\" (build/data/scenarios.json closures)"
+  },
+  "dli_follow": "build/data/v2/dli_follow.json",
+  "capacity": "build/data/v2/capacity_2025_26.csv",
+  "psu_by_year": "build/data/v2/psu_table5_5_by_year.csv",
+  "returner_weighting": "residents"
+ },
+ "ms_hs_feeder": {
+  "min_share": 0.0,
+  "min_kids": 5,
+  "ms_split_note": "soft (Paul 2026-10-12 ~15:15): ~200 kid-miles per extra HS, no floor"
+ },
+ "horizon": "pps2031",
+ "program_note": "necessary moves (kept): Atkinson Spanish -> Lent, Scott Spanish -> Rigler; avoided: MLK Jr Mandarin, Beaumont Spanish 6-8 (Paul 2026-10-12 ~15:15)"
+}

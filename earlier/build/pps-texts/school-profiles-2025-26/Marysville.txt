@@ -1,0 +1,300 @@
+SELECTED: Marysville
+RETRIEVED: 2026-10-09T19:24:12.964Z
+SOURCE: https://app.powerbi.com/view?r=eyJrIjoiOWZlNmJhYjQtYzc5YS00MzY5LTk3ODYtMWYxMmQ0YWMyMjIxIiwidCI6ImQwOGRmYzk0LWEyM2MtNDRlNC04YjhkLTRhYmM0MGRkYTlhZSIsImMiOjZ9&pageName=52fe3db4b36f375bbf95
+
+Show keyboard shortcuts
+Show screen reader tips
+Skip to main content
+Power BI Report
+
+School Profiles
+
+2025 - 2026
+
+School
+Abernethy
+Access Academy
+Ainsworth
+Alameda
+Alliance
+Arleta
+Astor
+Atkinson
+Beach
+Beaumont
+Benson
+Beverly Cleary
+Boise-Eliot/Humboldt
+Brentwood
+Bridger Creative Science
+Bridlemile
+Buckman
+Capitol Hill
+Cesar Chavez
+Chapman
+Chief Joseph
+Clark
+Cleveland
+Creston
+DaVinci Arts
+Dr Martin Luther King Jr
+Duniway
+Faubion
+Forest Park
+Franklin
+George
+Glencoe
+Grant
+Grout
+Harriet Tubman
+Harrison Park
+Hayhurst
+Hosford
+Ida B Wells
+Irvington
+Jackson
+James John
+Jefferson
+Kellogg
+Kelly
+Laurelhurst
+Lent
+Lewis
+Lincoln
+Llewellyn
+Maplewood
+Markham
+Marysville
+McDaniel
+MLC K12
+Mt Tabor
+Ockley Green
+Odyssey Program
+Peninsula
+Richmond
+Rieke
+Rigler
+Robert Gray
+Roosevelt
+Rosa Parks
+Rose City Park
+Roseway Heights
+Sabin
+Scott
+Sellwood
+Sitton
+Skyline
+Stephenson
+Sunnyside Environmental
+Sunrise
+Vernon
+Vestal
+West Sylvan
+Whitman
+Winterhaven
+Woodlawn
+Woodmere
+Woodstock
+
+Marysville
+
+Map panned north east 11.87 kilometers.
+
+Location: SE Raymond St & SE 78th Ave, Arleta, Sellwood.
+
+Map style: grayscale_light.
+
+Map shortcuts: Zoom out: hyphen. Zoom in: plus. Pan right 100 pixels: right arrow. Pan left 100 pixels: left arrow. Pan up 100 pixels: up arrow. Pan down 100 pixels: down arrow. Rotate 15 degrees clockwise: shift + right arrow. Rotate 15 degrees counter clockwise: shift + left arrow. Increase pitch 10 degrees: shift + up arrow. Decrease pitch 10 degrees: shift + down arrow. Jump focus to the map: Escape.
+Road
+Satellite
+Hybrid
+Grayscale (Dark)
+Night
+Grayscale (Light)
+Terra
+Blank
+Blank (Accessible)
+High contrast (Dark)
+High contrast (Light)
+Grayscale (Light)
+©2026 TomTom©2026 OSM
+Feedback
+
+Address: 7733 SE RAYMOND ST
+Originally Built For: K-8
+HS Cluster: FRANKLIN
+Primary Use: K-5
+
+BUILDING INFORMATION
+
+Grades: K-5
+Year Built: 1921
+Square Footage: 58,008
+
+Enrollment
+
+307
+
+=
+
+Utilization Rate
+
+75%
+
+÷
+
+Functional Capacity
+
+410
+
+Functional
+Capacity
+
+410.4
+
+2025-2026 Utilization Rate
+
+75%
+
+Enrollment
+
+Direct Cert. indicates percentage of students qualifying for direct certification. 
+
+2026 - 2027 Projected
+
+294
+
+2025 - 2026 Enrollment
+
+307
+
+2025 - 2026 Direct Cert.
+
+58.3%
+
+Students in Neighborhood School
+
+167
+
+PPS Students Live in Zone
+
+283
+
+In District Capture Rate
+
+59.0%
+
+Historical and Projected Enrollment
+0
+100
+200
+300
+400
+School Year
+2019-2020
+2020-2021
+2021-2022
+2022-2023
+2023-2024
+2024-2025
+2025-2026
+2026-2027
+2027-2028
+2028-2029
+2029-2030
+2030-2031
+2031-2032
+383
+312
+359
+402
+300
+317
+286
+317
+308
+307
+248
+320
+294
+Historical Demographics
+0
+100
+200
+300
+400
+School Year
+2018-19
+2019-20
+2020-21
+2021-22
+2022-23
+2023-24
+2024-25
+2025-26
+123
+137
+148
+117
+139
+149
+137
+110
+43
+51
+54
+44
+60
+40
+40
+85
+72
+82
+57
+65
+78
+61
+64
+47
+40
+36
+37
+37
+37
+69
+67
+63
+47
+35
+Race
+Asian
+Black
+Latino
+Multiple
+Native
+Pacific Islander
+White
+
+Programs
+
+Program Type
+
+Neighborhood
+
+Title 1
+
+Yes
+
+Immersion Language
+
+--
+
+Immersion Language 2
+
+--
+
+-
++
+107%
+Microsoft Power BI
+Report Zoomed To 107%

@@ -1,0 +1,4585 @@
+{
+ "source": {
+  "board_memo": "PPS 'Rightsizing Update: Scenario Release' memo, Oct 5 2026 (meub/pps-data data/raw/pps_rightsizing_board_2026-10-06/)",
+  "regional_summaries": "PPS Regional summaries (4), updated Oct 3-4 2026",
+  "family_guides": "Per-school Family Guides via https://www.pps.net/about/portland-public-schools-information/rightsize/how-could-your-school-be-impacted (Awesome Table -> Google Drive PDFs), saved in raw/family_guides/",
+  "maps": "Attendance boundary map PDFs (Status Quo/A/B x K-5, 6-8, 9-12; School Year 2027-28) from BoardBook org 915 files 14505795-14505805; Scenario A 6-8 also from the user's Downloads. Digitized from vector paths (raw/scenario_maps/)",
+  "scenario_page": "https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios"
+ },
+ "thresholds": {
+  "k5": 360,
+  "k8_and_middle": 500,
+  "high": 1100,
+  "space_use_goal": "70-100% of building capacity"
+ },
+ "renames": {
+  "Lee": "Sunrise",
+  "Lane Middle School": "Brentwood Middle School",
+  "Gray": "Robert Gray"
+ },
+ "digitization_qa": {
+  "georeference": "affine PDF->EPSG:2913 fitted on Status-Quo 6-8 lines vs current lines (ICP)",
+  "median_line_offset_ft": 71,
+  "p90_line_offset_ft": 143,
+  "status_quo_k5_block_agreement_with_current": "99.9% of digitized blocks",
+  "status_quo_6_8_block_agreement": "98.7% (all 100 disagreements = Rigler K-5 area drawn in Roseway Heights on the 2027-28 SQ map vs Beaumont in the City/PPS 2023-24 layer)",
+  "status_quo_9_12": "matches current except dual-assignment zones, which the 2027-28 map shows as Jefferson-only"
+ },
+ "pps_projections_2027_28_to_2031_32": {
+  "ACCESS": {
+   "no_change": [
+    310,
+    296,
+    286,
+    278,
+    275
+   ],
+   "A": [
+    310,
+    296,
+    286,
+    278,
+    275
+   ],
+   "B": [
+    310,
+    296,
+    286,
+    278,
+    275
+   ]
+  },
+  "Abernethy": {
+   "no_change": [
+    242,
+    242,
+    247,
+    244,
+    241
+   ],
+   "A": [
+    354,
+    358,
+    369,
+    368,
+    365
+   ],
+   "B": [
+    354,
+    358,
+    369,
+    368,
+    365
+   ]
+  },
+  "Ainsworth": {
+   "no_change": [
+    555,
+    568,
+    551,
+    551,
+    557
+   ],
+   "A": [
+    555,
+    568,
+    551,
+    551,
+    557
+   ],
+   "B": [
+    555,
+    568,
+    551,
+    551,
+    557
+   ]
+  },
+  "Alameda": {
+   "no_change": [
+    498,
+    503,
+    507,
+    502,
+    492
+   ],
+   "A": [
+    498,
+    503,
+    508,
+    503,
+    493
+   ],
+   "B": [
+    498,
+    503,
+    508,
+    503,
+    493
+   ]
+  },
+  "Arleta": {
+   "no_change": [
+    213,
+    214,
+    212,
+    216,
+    210
+   ],
+   "A": [
+    224,
+    536,
+    545,
+    552,
+    543
+   ],
+   "B": [
+    224,
+    536,
+    545,
+    552,
+    543
+   ]
+  },
+  "Astor": {
+   "no_change": [
+    412,
+    409,
+    443,
+    426,
+    418
+   ],
+   "A": [
+    422,
+    420,
+    455,
+    438,
+    430
+   ],
+   "B": [
+    422,
+    420,
+    455,
+    438,
+    430
+   ]
+  },
+  "Atkinson": {
+   "no_change": [
+    363,
+    375,
+    378,
+    386,
+    386
+   ],
+   "A": [
+    395,
+    394,
+    395,
+    412,
+    413
+   ],
+   "B": [
+    395,
+    394,
+    395,
+    412,
+    413
+   ]
+  },
+  "Beach": {
+   "no_change": [
+    284,
+    288,
+    291,
+    297,
+    287
+   ],
+   "A": "closes",
+   "B": "closes"
+  },
+  "Beaumont": {
+   "no_change": [
+    410,
+    388,
+    390,
+    390,
+    418
+   ],
+   "A": [
+    506,
+    502,
+    501,
+    490,
+    498
+   ],
+   "B": [
+    506,
+    502,
+    501,
+    490,
+    498
+   ]
+  },
+  "Benson": {
+   "no_change": [
+    1200,
+    1216,
+    1215,
+    1215,
+    1213
+   ],
+   "A": [
+    1200,
+    1216,
+    1215,
+    1215,
+    1213
+   ],
+   "B": [
+    1200,
+    1216,
+    1215,
+    1215,
+    1213
+   ]
+  },
+  "Beverly Cleary": {
+   "no_change": [
+    430,
+    412,
+    407,
+    398,
+    389
+   ],
+   "A": [
+    503,
+    494,
+    496,
+    478,
+    484
+   ],
+   "B": [
+    503,
+    494,
+    496,
+    478,
+    484
+   ]
+  },
+  "Boise-Eliot Humboldt": {
+   "no_change": [
+    314,
+    333,
+    324,
+    322,
+    308
+   ],
+   "A": [
+    521,
+    540,
+    533,
+    533,
+    512
+   ],
+   "B": [
+    521,
+    540,
+    533,
+    533,
+    512
+   ]
+  },
+  "Brentwood": {
+   "no_change": [
+    417,
+    402,
+    393,
+    372,
+    357
+   ],
+   "A": [
+    384,
+    586,
+    525,
+    480,
+    457
+   ],
+   "B": [
+    384,
+    664,
+    596,
+    542,
+    512
+   ]
+  },
+  "Bridger Creative Science": {
+   "no_change": [
+    450,
+    444,
+    440,
+    421,
+    415
+   ],
+   "A": [
+    310,
+    304,
+    313,
+    313,
+    305
+   ],
+   "B": [
+    310,
+    304,
+    313,
+    313,
+    305
+   ]
+  },
+  "Bridlemile": {
+   "no_change": [
+    419,
+    414,
+    414,
+    422,
+    413
+   ],
+   "A": [
+    419,
+    414,
+    414,
+    422,
+    413
+   ],
+   "B": [
+    419,
+    414,
+    414,
+    422,
+    413
+   ]
+  },
+  "Buckman": {
+   "no_change": [
+    244,
+    245,
+    248,
+    246,
+    239
+   ],
+   "A": "closes",
+   "B": "closes"
+  },
+  "Capitol Hill": {
+   "no_change": [
+    310,
+    301,
+    306,
+    319,
+    311
+   ],
+   "A": [
+    381,
+    370,
+    370,
+    387,
+    379
+   ],
+   "B": [
+    310,
+    301,
+    306,
+    319,
+    311
+   ]
+  },
+  "Cesar Chavez": {
+   "no_change": [
+    413,
+    403,
+    404,
+    405,
+    392
+   ],
+   "A": [
+    541,
+    532,
+    525,
+    528,
+    527
+   ],
+   "B": [
+    541,
+    532,
+    525,
+    528,
+    527
+   ]
+  },
+  "Chapman": {
+   "no_change": [
+    316,
+    338,
+    333,
+    324,
+    333
+   ],
+   "A": [
+    316,
+    338,
+    333,
+    324,
+    333
+   ],
+   "B": [
+    316,
+    338,
+    333,
+    324,
+    333
+   ]
+  },
+  "Chief Joseph": {
+   "no_change": [
+    245,
+    248,
+    240,
+    234,
+    238
+   ],
+   "A": [
+    420,
+    426,
+    424,
+    421,
+    417
+   ],
+   "B": [
+    420,
+    426,
+    424,
+    421,
+    417
+   ]
+  },
+  "Clark": {
+   "no_change": [
+    360,
+    355,
+    356,
+    350,
+    343
+   ],
+   "A": [
+    276,
+    277,
+    279,
+    275,
+    272
+   ],
+   "B": [
+    276,
+    277,
+    279,
+    275,
+    272
+   ]
+  },
+  "Cleveland": {
+   "no_change": [
+    1460,
+    1467,
+    1419,
+    1403,
+    1318
+   ],
+   "A": [
+    1465,
+    1469,
+    1422,
+    1404,
+    1322
+   ],
+   "B": [
+    1480,
+    1501,
+    1465,
+    1458,
+    1371
+   ]
+  },
+  "Creston": {
+   "no_change": [
+    201,
+    191,
+    189,
+    188,
+    187
+   ],
+   "A": "closes",
+   "B": "closes"
+  },
+  "Dr  Martin Luther King Jr ": {
+   "no_change": [
+    337,
+    343,
+    346,
+    350,
+    337
+   ],
+   "A": [
+    376,
+    395,
+    389,
+    386,
+    383
+   ],
+   "B": [
+    376,
+    395,
+    389,
+    386,
+    383
+   ]
+  },
+  "Duniway": {
+   "no_change": [
+    338,
+    347,
+    344,
+    348,
+    345
+   ],
+   "A": [
+    544,
+    517,
+    505,
+    482,
+    463
+   ],
+   "B": [
+    338,
+    347,
+    344,
+    348,
+    345
+   ]
+  },
+  "Faubion": {
+   "no_change": [
+    618,
+    606,
+    606,
+    606,
+    602
+   ],
+   "A": [
+    425,
+    423,
+    414,
+    416,
+    407
+   ],
+   "B": [
+    425,
+    423,
+    414,
+    416,
+    407
+   ]
+  },
+  "Forest Park": {
+   "no_change": [
+    260,
+    260,
+    257,
+    252,
+    258
+   ],
+   "A": [
+    260,
+    260,
+    257,
+    252,
+    258
+   ],
+   "B": [
+    260,
+    260,
+    257,
+    252,
+    258
+   ]
+  },
+  "Franklin": {
+   "no_change": [
+    1689,
+    1607,
+    1567,
+    1530,
+    1492
+   ],
+   "A": [
+    1686,
+    1601,
+    1556,
+    1516,
+    1476
+   ],
+   "B": [
+    1672,
+    1571,
+    1515,
+    1466,
+    1429
+   ]
+  },
+  "George": {
+   "no_change": [
+    391,
+    405,
+    402,
+    396,
+    390
+   ],
+   "A": [
+    604,
+    637,
+    669,
+    649,
+    636
+   ],
+   "B": [
+    604,
+    637,
+    669,
+    649,
+    636
+   ]
+  },
+  "Glencoe": {
+   "no_change": [
+    311,
+    292,
+    295,
+    301,
+    296
+   ],
+   "A": [
+    318,
+    302,
+    309,
+    318,
+    317
+   ],
+   "B": [
+    318,
+    302,
+    309,
+    318,
+    317
+   ]
+  },
+  "Grant": {
+   "no_change": [
+    1935,
+    1822,
+    1713,
+    1576,
+    1487
+   ],
+   "A": [
+    1935,
+    1822,
+    1713,
+    1576,
+    1487
+   ],
+   "B": [
+    1935,
+    1822,
+    1713,
+    1576,
+    1487
+   ]
+  },
+  "Gray": {
+   "no_change": [
+    427,
+    412,
+    403,
+    376,
+    368
+   ],
+   "A": [
+    481,
+    518,
+    551,
+    508,
+    490
+   ],
+   "B": [
+    481,
+    518,
+    551,
+    508,
+    490
+   ]
+  },
+  "Grout": {
+   "no_change": [
+    303,
+    300,
+    297,
+    285,
+    280
+   ],
+   "A": [
+    303,
+    300,
+    297,
+    285,
+    280
+   ],
+   "B": [
+    303,
+    300,
+    297,
+    285,
+    280
+   ]
+  },
+  "Harriet Tubman": {
+   "no_change": [
+    457,
+    414,
+    389,
+    368,
+    374
+   ],
+   "A": [
+    608,
+    546,
+    492,
+    465,
+    455
+   ],
+   "B": [
+    608,
+    546,
+    492,
+    465,
+    455
+   ]
+  },
+  "Harrison Park": {
+   "no_change": [
+    427,
+    416,
+    419,
+    400,
+    417
+   ],
+   "A": [
+    642,
+    625,
+    614,
+    578,
+    591
+   ],
+   "B": [
+    642,
+    625,
+    614,
+    578,
+    591
+   ]
+  },
+  "Hayhurst": {
+   "no_change": [
+    274,
+    270,
+    266,
+    263,
+    266
+   ],
+   "A": [
+    472,
+    451,
+    435,
+    424,
+    410
+   ],
+   "B": [
+    472,
+    451,
+    435,
+    424,
+    410
+   ]
+  },
+  "Hosford": {
+   "no_change": [
+    482,
+    445,
+    390,
+    375,
+    374
+   ],
+   "A": [
+    602,
+    747,
+    610,
+    575,
+    557
+   ],
+   "B": [
+    602,
+    669,
+    540,
+    512,
+    501
+   ]
+  },
+  "Ida B Wells": {
+   "no_change": [
+    1524,
+    1513,
+    1486,
+    1488,
+    1457
+   ],
+   "A": [
+    1524,
+    1513,
+    1486,
+    1488,
+    1457
+   ],
+   "B": [
+    1524,
+    1513,
+    1486,
+    1488,
+    1457
+   ]
+  },
+  "Irvington": {
+   "no_change": [
+    240,
+    236,
+    229,
+    220,
+    223
+   ],
+   "A": "closes",
+   "B": "closes"
+  },
+  "Jackson": {
+   "no_change": [
+    661,
+    659,
+    623,
+    549,
+    515
+   ],
+   "A": [
+    618,
+    564,
+    486,
+    428,
+    404
+   ],
+   "B": [
+    618,
+    564,
+    486,
+    428,
+    404
+   ]
+  },
+  "James John": {
+   "no_change": [
+    359,
+    366,
+    369,
+    354,
+    352
+   ],
+   "A": "closes",
+   "B": "closes"
+  },
+  "Jefferson": {
+   "no_change": [
+    564,
+    805,
+    981,
+    1158,
+    1183
+   ],
+   "A": [
+    570,
+    812,
+    988,
+    1165,
+    1190
+   ],
+   "B": [
+    570,
+    812,
+    988,
+    1165,
+    1190
+   ]
+  },
+  "Kellogg": {
+   "no_change": [
+    513,
+    493,
+    470,
+    450,
+    471
+   ],
+   "A": [
+    507,
+    548,
+    582,
+    556,
+    579
+   ],
+   "B": [
+    507,
+    548,
+    582,
+    556,
+    579
+   ]
+  },
+  "Kelly": {
+   "no_change": [
+    402,
+    402,
+    403,
+    394,
+    391
+   ],
+   "A": [
+    407,
+    407,
+    410,
+    402,
+    401
+   ],
+   "B": [
+    407,
+    407,
+    410,
+    402,
+    401
+   ]
+  },
+  "Laurelhurst": {
+   "no_change": [
+    607,
+    587,
+    560,
+    542,
+    525
+   ],
+   "A": [
+    378,
+    370,
+    371,
+    361,
+    359
+   ],
+   "B": [
+    378,
+    370,
+    371,
+    361,
+    359
+   ]
+  },
+  "Lent": {
+   "no_change": [
+    256,
+    268,
+    271,
+    283,
+    274
+   ],
+   "A": [
+    401,
+    417,
+    424,
+    430,
+    421
+   ],
+   "B": [
+    401,
+    417,
+    424,
+    430,
+    421
+   ]
+  },
+  "Lewis": {
+   "no_change": [
+    224,
+    206,
+    213,
+    202,
+    201
+   ],
+   "A": "closes",
+   "B": [
+    296,
+    284,
+    291,
+    282,
+    283
+   ]
+  },
+  "Lincoln": {
+   "no_change": [
+    1598,
+    1589,
+    1506,
+    1442,
+    1411
+   ],
+   "A": [
+    1580,
+    1546,
+    1442,
+    1358,
+    1331
+   ],
+   "B": [
+    1580,
+    1546,
+    1442,
+    1358,
+    1331
+   ]
+  },
+  "Llewellyn": {
+   "no_change": [
+    312,
+    303,
+    313,
+    316,
+    312
+   ],
+   "A": [
+    330,
+    340,
+    367,
+    387,
+    399
+   ],
+   "B": [
+    312,
+    303,
+    313,
+    316,
+    312
+   ]
+  },
+  "Maplewood": {
+   "no_change": [
+    278,
+    265,
+    258,
+    261,
+    247
+   ],
+   "A": "closes",
+   "B": "closes"
+  },
+  "Markham": {
+   "no_change": [
+    312,
+    340,
+    347,
+    353,
+    347
+   ],
+   "A": [
+    519,
+    543,
+    543,
+    554,
+    549
+   ],
+   "B": [
+    312,
+    340,
+    347,
+    353,
+    347
+   ]
+  },
+  "Marysville": {
+   "no_change": [
+    300,
+    308,
+    317,
+    317,
+    312
+   ],
+   "A": "closes",
+   "B": "closes"
+  },
+  "McDaniel": {
+   "no_change": [
+    1528,
+    1476,
+    1346,
+    1292,
+    1261
+   ],
+   "A": [
+    1535,
+    1488,
+    1363,
+    1311,
+    1281
+   ],
+   "B": [
+    1535,
+    1488,
+    1363,
+    1311,
+    1281
+   ]
+  },
+  "Metropolitan Learning Center": {
+   "no_change": [
+    245,
+    231,
+    215,
+    198,
+    199
+   ],
+   "A": [
+    386,
+    371,
+    353,
+    338,
+    341
+   ],
+   "B": [
+    386,
+    371,
+    353,
+    338,
+    341
+   ]
+  },
+  "Mt  Tabor": {
+   "no_change": [
+    406,
+    411,
+    386,
+    374,
+    354
+   ],
+   "A": [
+    645,
+    647,
+    599,
+    580,
+    546
+   ],
+   "B": [
+    645,
+    647,
+    599,
+    580,
+    546
+   ]
+  },
+  "Ockley Green": {
+   "no_change": [
+    442,
+    405,
+    440,
+    423,
+    436
+   ],
+   "A": [
+    552,
+    486,
+    497,
+    490,
+    507
+   ],
+   "B": [
+    552,
+    486,
+    497,
+    490,
+    507
+   ]
+  },
+  "Odyssey": {
+   "no_change": [
+    220,
+    223,
+    222,
+    223,
+    224
+   ],
+   "A": [
+    220,
+    223,
+    222,
+    223,
+    224
+   ],
+   "B": [
+    220,
+    223,
+    222,
+    223,
+    224
+   ]
+  },
+  "Peninsula": {
+   "no_change": [
+    250,
+    249,
+    236,
+    236,
+    236
+   ],
+   "A": "closes",
+   "B": "closes"
+  },
+  "Richmond": {
+   "no_change": [
+    504,
+    502,
+    506,
+    498,
+    497
+   ],
+   "A": [
+    504,
+    502,
+    506,
+    498,
+    497
+   ],
+   "B": [
+    504,
+    502,
+    506,
+    498,
+    497
+   ]
+  },
+  "Rieke": {
+   "no_change": [
+    252,
+    296,
+    314,
+    317,
+    311
+   ],
+   "A": [
+    348,
+    396,
+    422,
+    434,
+    432
+   ],
+   "B": [
+    348,
+    396,
+    422,
+    434,
+    432
+   ]
+  },
+  "Rigler": {
+   "no_change": [
+    306,
+    329,
+    326,
+    320,
+    321
+   ],
+   "A": [
+    487,
+    515,
+    510,
+    504,
+    505
+   ],
+   "B": [
+    487,
+    515,
+    510,
+    504,
+    505
+   ]
+  },
+  "Roosevelt": {
+   "no_change": [
+    1312,
+    1250,
+    1179,
+    1164,
+    1117
+   ],
+   "A": [
+    1337,
+    1301,
+    1251,
+    1256,
+    1205
+   ],
+   "B": [
+    1337,
+    1301,
+    1251,
+    1256,
+    1205
+   ]
+  },
+  "Rosa Parks": {
+   "no_change": [
+    159,
+    165,
+    168,
+    164,
+    168
+   ],
+   "A": [
+    481,
+    487,
+    479,
+    471,
+    472
+   ],
+   "B": [
+    481,
+    487,
+    479,
+    471,
+    472
+   ]
+  },
+  "Rose City Park": {
+   "no_change": [
+    391,
+    366,
+    368,
+    364,
+    370
+   ],
+   "A": [
+    0,
+    0,
+    0,
+    0,
+    0
+   ],
+   "B": [
+    391,
+    366,
+    368,
+    364,
+    370
+   ]
+  },
+  "Roseway Heights": {
+   "no_change": [
+    554,
+    543,
+    555,
+    535,
+    498
+   ],
+   "A": [
+    655,
+    642,
+    671,
+    655,
+    628
+   ],
+   "B": [
+    655,
+    642,
+    671,
+    655,
+    628
+   ]
+  },
+  "Sabin": {
+   "no_change": [
+    236,
+    248,
+    240,
+    234,
+    235
+   ],
+   "A": "closes",
+   "B": "closes"
+  },
+  "Scott": {
+   "no_change": [
+    500,
+    490,
+    485,
+    476,
+    470
+   ],
+   "A": [
+    512,
+    475,
+    479,
+    465,
+    470
+   ],
+   "B": [
+    326,
+    313,
+    312,
+    304,
+    301
+   ]
+  },
+  "Sellwood": {
+   "no_change": [
+    523,
+    484,
+    439,
+    382,
+    350
+   ],
+   "A": "closes",
+   "B": "closes"
+  },
+  "Sitton": {
+   "no_change": [
+    333,
+    319,
+    317,
+    315,
+    311
+   ],
+   "A": [
+    464,
+    459,
+    465,
+    455,
+    449
+   ],
+   "B": [
+    464,
+    459,
+    465,
+    455,
+    449
+   ]
+  },
+  "Skyline": {
+   "no_change": [
+    196,
+    197,
+    190,
+    180,
+    177
+   ],
+   "A": [
+    196,
+    197,
+    190,
+    180,
+    177
+   ],
+   "B": [
+    196,
+    197,
+    190,
+    180,
+    177
+   ]
+  },
+  "Stephenson": {
+   "no_change": [
+    271,
+    264,
+    251,
+    260,
+    261
+   ],
+   "A": "closes",
+   "B": [
+    271,
+    264,
+    251,
+    260,
+    261
+   ]
+  },
+  "Sunnyside": {
+   "no_change": [
+    484,
+    481,
+    474,
+    478,
+    475
+   ],
+   "A": [
+    376,
+    343,
+    317,
+    281,
+    235
+   ],
+   "B": [
+    376,
+    343,
+    317,
+    281,
+    235
+   ]
+  },
+  "Sunrise": {
+   "no_change": [
+    245,
+    249,
+    239,
+    252,
+    254
+   ],
+   "A": [
+    245,
+    249,
+    239,
+    252,
+    254
+   ],
+   "B": [
+    245,
+    249,
+    239,
+    252,
+    254
+   ]
+  },
+  "Vernon": {
+   "no_change": [
+    492,
+    488,
+    477,
+    463,
+    453
+   ],
+   "A": [
+    325,
+    322,
+    320,
+    318,
+    323
+   ],
+   "B": [
+    325,
+    322,
+    320,
+    318,
+    323
+   ]
+  },
+  "Vestal": {
+   "no_change": [
+    294,
+    290,
+    292,
+    287,
+    279
+   ],
+   "A": [
+    507,
+    505,
+    507,
+    507,
+    500
+   ],
+   "B": [
+    294,
+    290,
+    292,
+    287,
+    279
+   ]
+  },
+  "West Sylvan": {
+   "no_change": [
+    687,
+    647,
+    670,
+    645,
+    620
+   ],
+   "A": [
+    687,
+    647,
+    670,
+    645,
+    620
+   ],
+   "B": [
+    687,
+    647,
+    670,
+    645,
+    620
+   ]
+  },
+  "Whitman": {
+   "no_change": [
+    205,
+    216,
+    217,
+    222,
+    223
+   ],
+   "A": [
+    437,
+    448,
+    452,
+    453,
+    465
+   ],
+   "B": [
+    363,
+    368,
+    373,
+    372,
+    382
+   ]
+  },
+  "Winterhaven": {
+   "no_change": [
+    311,
+    312,
+    312,
+    311,
+    310
+   ],
+   "A": [
+    311,
+    312,
+    312,
+    311,
+    310
+   ],
+   "B": [
+    311,
+    312,
+    312,
+    311,
+    310
+   ]
+  },
+  "Woodlawn": {
+   "no_change": [
+    300,
+    315,
+    298,
+    291,
+    289
+   ],
+   "A": [
+    300,
+    315,
+    298,
+    291,
+    289
+   ],
+   "B": [
+    300,
+    315,
+    298,
+    291,
+    289
+   ]
+  },
+  "Woodmere": {
+   "no_change": [
+    224,
+    222,
+    223,
+    217,
+    225
+   ],
+   "A": "closes",
+   "B": "closes"
+  },
+  "Woodstock": {
+   "no_change": [
+    342,
+    344,
+    337,
+    336,
+    325
+   ],
+   "A": [
+    426,
+    425,
+    419,
+    419,
+    406
+   ],
+   "B": [
+    426,
+    425,
+    419,
+    419,
+    406
+   ]
+  },
+  "da Vinci": {
+   "no_change": [
+    430,
+    430,
+    428,
+    424,
+    419
+   ],
+   "A": [
+    430,
+    430,
+    428,
+    424,
+    419
+   ],
+   "B": [
+    430,
+    430,
+    428,
+    424,
+    419
+   ]
+  }
+ },
+ "status_quo_2027_28": {
+  "block_level": {
+   "K-5": {
+    "flows_current_to_scenario": [
+     {
+      "from": "Abernethy",
+      "to": "Abernethy",
+      "kids_2025_26": 269.0
+     },
+     {
+      "from": "Ainsworth",
+      "to": "Ainsworth",
+      "kids_2025_26": 273.0
+     },
+     {
+      "from": "Alameda",
+      "to": "Alameda",
+      "kids_2025_26": 510.6
+     },
+     {
+      "from": "Alameda",
+      "to": "Beverly Cleary",
+      "kids_2025_26": 4.4
+     },
+     {
+      "from": "Arleta",
+      "to": "Arleta",
+      "kids_2025_26": 230.0
+     },
+     {
+      "from": "Astor",
+      "to": "Astor",
+      "kids_2025_26": 263.8
+     },
+     {
+      "from": "Atkinson",
+      "to": "Atkinson",
+      "kids_2025_26": 188.0
+     },
+     {
+      "from": "Beach",
+      "to": "Beach",
+      "kids_2025_26": 133.0
+     },
+     {
+      "from": "Beverly Cleary",
+      "to": "Beverly Cleary",
+      "kids_2025_26": 276.0
+     },
+     {
+      "from": "Boise-Eliot/Humboldt",
+      "to": "Boise-Eliot/Humboldt",
+      "kids_2025_26": 295.0
+     },
+     {
+      "from": "Bridger",
+      "to": "Bridger",
+      "kids_2025_26": 306.0
+     },
+     {
+      "from": "Bridlemile",
+      "to": "Bridlemile",
+      "kids_2025_26": 421.6
+     },
+     {
+      "from": "Bridlemile",
+      "to": "Rieke",
+      "kids_2025_26": 1.4
+     },
+     {
+      "from": "Buckman",
+      "to": "Buckman",
+      "kids_2025_26": 283.0
+     },
+     {
+      "from": "Capitol Hill",
+      "to": "Capitol Hill",
+      "kids_2025_26": 329.0
+     },
+     {
+      "from": "Cesar Chavez",
+      "to": "Cesar Chavez",
+      "kids_2025_26": 88.1
+     },
+     {
+      "from": "Chapman",
+      "to": "Chapman",
+      "kids_2025_26": 333.0
+     },
+     {
+      "from": "Chief Joseph",
+      "to": "Chief Joseph",
+      "kids_2025_26": 247.0
+     },
+     {
+      "from": "Clark",
+      "to": "Clark",
+      "kids_2025_26": 273.0
+     },
+     {
+      "from": "Creston",
+      "to": "Creston",
+      "kids_2025_26": 219.0
+     },
+     {
+      "from": "Duniway",
+      "to": "Duniway",
+      "kids_2025_26": 362.0
+     },
+     {
+      "from": "Faubion",
+      "to": "Faubion",
+      "kids_2025_26": 377.0
+     },
+     {
+      "from": "Forest Park",
+      "to": "Forest Park",
+      "kids_2025_26": 264.0
+     },
+     {
+      "from": "Glencoe",
+      "to": "Glencoe",
+      "kids_2025_26": 341.0
+     },
+     {
+      "from": "Grout",
+      "to": "Grout",
+      "kids_2025_26": 327.0
+     },
+     {
+      "from": "Hayhurst",
+      "to": "Hayhurst",
+      "kids_2025_26": 290.0
+     },
+     {
+      "from": "Irvington",
+      "to": "Irvington",
+      "kids_2025_26": 259.0
+     },
+     {
+      "from": "James John",
+      "to": "James John",
+      "kids_2025_26": 231.7
+     },
+     {
+      "from": "Kelly",
+      "to": "Kelly",
+      "kids_2025_26": 268.0
+     },
+     {
+      "from": "Laurelhurst",
+      "to": "Glencoe",
+      "kids_2025_26": 3.4
+     },
+     {
+      "from": "Laurelhurst",
+      "to": "Laurelhurst",
+      "kids_2025_26": 375.6
+     },
+     {
+      "from": "Lee",
+      "to": "Lee",
+      "kids_2025_26": 251.0
+     },
+     {
+      "from": "Lent",
+      "to": "Lent",
+      "kids_2025_26": 256.0
+     },
+     {
+      "from": "Lewis",
+      "to": "Duniway",
+      "kids_2025_26": 3.3
+     },
+     {
+      "from": "Lewis",
+      "to": "Lewis",
+      "kids_2025_26": 258.7
+     },
+     {
+      "from": "Llewellyn",
+      "to": "Llewellyn",
+      "kids_2025_26": 345.0
+     },
+     {
+      "from": "MLK Jr",
+      "to": "MLK Jr",
+      "kids_2025_26": 126.0
+     },
+     {
+      "from": "Maplewood",
+      "to": "Maplewood",
+      "kids_2025_26": 288.0
+     },
+     {
+      "from": "Markham",
+      "to": "Capitol Hill",
+      "kids_2025_26": 1.2
+     },
+     {
+      "from": "Markham",
+      "to": "Markham",
+      "kids_2025_26": 336.6
+     },
+     {
+      "from": "Markham",
+      "to": "Stephenson",
+      "kids_2025_26": 1.2
+     },
+     {
+      "from": "Marysville",
+      "to": "Marysville",
+      "kids_2025_26": 304.0
+     },
+     {
+      "from": "Peninsula",
+      "to": "Peninsula",
+      "kids_2025_26": 239.0
+     },
+     {
+      "from": "Rieke",
+      "to": "Capitol Hill",
+      "kids_2025_26": 1.2
+     },
+     {
+      "from": "Rieke",
+      "to": "Rieke",
+      "kids_2025_26": 264.8
+     },
+     {
+      "from": "Rigler",
+      "to": "Rigler",
+      "kids_2025_26": 291.0
+     },
+     {
+      "from": "Rosa Parks",
+      "to": "Rosa Parks",
+      "kids_2025_26": 160.0
+     },
+     {
+      "from": "Rose City Park",
+      "to": "Rose City Park",
+      "kids_2025_26": 210.0
+     },
+     {
+      "from": "Sabin",
+      "to": "Sabin",
+      "kids_2025_26": 270.0
+     },
+     {
+      "from": "Scott",
+      "to": "Scott",
+      "kids_2025_26": 254.0
+     },
+     {
+      "from": "Sitton",
+      "to": "James John",
+      "kids_2025_26": 2.4
+     },
+     {
+      "from": "Sitton",
+      "to": "Sitton",
+      "kids_2025_26": 204.6
+     },
+     {
+      "from": "Skyline",
+      "to": "Skyline",
+      "kids_2025_26": 139.0
+     },
+     {
+      "from": "Stephenson",
+      "to": "Capitol Hill",
+      "kids_2025_26": 2.7
+     },
+     {
+      "from": "Stephenson",
+      "to": "Stephenson",
+      "kids_2025_26": 278.3
+     },
+     {
+      "from": "Sunnyside",
+      "to": "Sunnyside",
+      "kids_2025_26": 292.0
+     },
+     {
+      "from": "Vernon",
+      "to": "Vernon",
+      "kids_2025_26": 344.0
+     },
+     {
+      "from": "Vestal",
+      "to": "Vestal",
+      "kids_2025_26": 286.0
+     },
+     {
+      "from": "Whitman",
+      "to": "Whitman",
+      "kids_2025_26": 193.0
+     },
+     {
+      "from": "Woodlawn",
+      "to": "Woodlawn",
+      "kids_2025_26": 323.0
+     },
+     {
+      "from": "Woodmere",
+      "to": "Woodmere",
+      "kids_2025_26": 226.0
+     },
+     {
+      "from": "Woodstock",
+      "to": "Woodstock",
+      "kids_2025_26": 177.0
+     }
+    ],
+    "neighborhood_kids_by_school_2025_26_basis": {
+     "Abernethy": 269.0,
+     "Ainsworth": 273.0,
+     "Alameda": 510.6,
+     "Arleta": 230.0,
+     "Astor": 263.8,
+     "Atkinson": 188.0,
+     "Beach": 133.2,
+     "Beverly Cleary": 280.4,
+     "Boise-Eliot/Humboldt": 295.0,
+     "Bridger": 306.0,
+     "Bridlemile": 421.6,
+     "Buckman": 283.0,
+     "Capitol Hill": 334.1,
+     "Cesar Chavez": 88.4,
+     "Chapman": 333.0,
+     "Chief Joseph": 247.0,
+     "Clark": 273.0,
+     "Creston": 219.0,
+     "Duniway": 365.3,
+     "Faubion": 377.0,
+     "Forest Park": 264.0,
+     "Glencoe": 344.4,
+     "Grout": 327.0,
+     "Hayhurst": 290.0,
+     "Irvington": 259.0,
+     "James John": 234.2,
+     "Kelly": 268.0,
+     "Laurelhurst": 375.6,
+     "Lee": 251.0,
+     "Lent": 256.0,
+     "Lewis": 258.7,
+     "Llewellyn": 345.0,
+     "MLK Jr": 126.0,
+     "Maplewood": 288.0,
+     "Markham": 336.6,
+     "Marysville": 304.0,
+     "Peninsula": 239.0,
+     "Rieke": 266.2,
+     "Rigler": 291.0,
+     "Rosa Parks": 160.0,
+     "Rose City Park": 210.0,
+     "Sabin": 270.0,
+     "Scott": 254.0,
+     "Sitton": 204.6,
+     "Skyline": 139.0,
+     "Stephenson": 279.5,
+     "Sunnyside": 292.0,
+     "Vernon": 344.0,
+     "Vestal": 286.0,
+     "Whitman": 193.0,
+     "Woodlawn": 323.0,
+     "Woodmere": 226.0,
+     "Woodstock": 177.0
+    },
+    "kids_changing_school_2025_26_basis": 21.6,
+    "block_assignment_method_counts": {
+     "map": 7688,
+     "k8_rule": 1600,
+     "nearest": 7
+    }
+   },
+   "6-8": {
+    "flows_current_to_scenario": [
+     {
+      "from": "Astor",
+      "to": "Astor",
+      "kids_2025_26": 137.0
+     },
+     {
+      "from": "Beaumont",
+      "to": "Beaumont",
+      "kids_2025_26": 190.9
+     },
+     {
+      "from": "Beaumont",
+      "to": "Beverly Cleary",
+      "kids_2025_26": 1.4
+     },
+     {
+      "from": "Beaumont",
+      "to": "Faubion",
+      "kids_2025_26": 0.6
+     },
+     {
+      "from": "Beaumont",
+      "to": "Roseway Heights",
+      "kids_2025_26": 122.1
+     },
+     {
+      "from": "Beverly Cleary",
+      "to": "Beverly Cleary",
+      "kids_2025_26": 204.0
+     },
+     {
+      "from": "Bridger",
+      "to": "Bridger",
+      "kids_2025_26": 140.0
+     },
+     {
+      "from": "Cesar Chavez",
+      "to": "Cesar Chavez",
+      "kids_2025_26": 54.9
+     },
+     {
+      "from": "Faubion",
+      "to": "Faubion",
+      "kids_2025_26": 223.0
+     },
+     {
+      "from": "George",
+      "to": "George",
+      "kids_2025_26": 248.3
+     },
+     {
+      "from": "George",
+      "to": "Ockley Green",
+      "kids_2025_26": 0.6
+     },
+     {
+      "from": "Gray",
+      "to": "Gray",
+      "kids_2025_26": 426.1
+     },
+     {
+      "from": "Gray",
+      "to": "West Sylvan",
+      "kids_2025_26": 5.6
+     },
+     {
+      "from": "Harrison Park",
+      "to": "Harrison Park",
+      "kids_2025_26": 307.9
+     },
+     {
+      "from": "Hosford",
+      "to": "Hosford",
+      "kids_2025_26": 528.0
+     },
+     {
+      "from": "Jackson",
+      "to": "Jackson",
+      "kids_2025_26": 687.8
+     },
+     {
+      "from": "Kellogg",
+      "to": "Hosford",
+      "kids_2025_26": 1.4
+     },
+     {
+      "from": "Kellogg",
+      "to": "Kellogg",
+      "kids_2025_26": 328.4
+     },
+     {
+      "from": "Lane",
+      "to": "Lane",
+      "kids_2025_26": 410.6
+     },
+     {
+      "from": "Laurelhurst",
+      "to": "Laurelhurst",
+      "kids_2025_26": 235.0
+     },
+     {
+      "from": "Mt Tabor",
+      "to": "Bridger",
+      "kids_2025_26": 2.8
+     },
+     {
+      "from": "Mt Tabor",
+      "to": "Hosford",
+      "kids_2025_26": 0.6
+     },
+     {
+      "from": "Mt Tabor",
+      "to": "Laurelhurst",
+      "kids_2025_26": 2.5
+     },
+     {
+      "from": "Mt Tabor",
+      "to": "Mt Tabor",
+      "kids_2025_26": 202.1
+     },
+     {
+      "from": "Ockley Green",
+      "to": "Faubion",
+      "kids_2025_26": 0.8
+     },
+     {
+      "from": "Ockley Green",
+      "to": "Ockley Green",
+      "kids_2025_26": 396.2
+     },
+     {
+      "from": "Roseway Heights",
+      "to": "Beaumont",
+      "kids_2025_26": 3.2
+     },
+     {
+      "from": "Roseway Heights",
+      "to": "Roseway Heights",
+      "kids_2025_26": 411.8
+     },
+     {
+      "from": "Sellwood",
+      "to": "Sellwood",
+      "kids_2025_26": 566.0
+     },
+     {
+      "from": "Skyline",
+      "to": "Skyline",
+      "kids_2025_26": 68.0
+     },
+     {
+      "from": "Sunnyside",
+      "to": "Sunnyside",
+      "kids_2025_26": 193.0
+     },
+     {
+      "from": "Tubman",
+      "to": "Tubman",
+      "kids_2025_26": 354.0
+     },
+     {
+      "from": "Vernon",
+      "to": "Vernon",
+      "kids_2025_26": 195.0
+     },
+     {
+      "from": "West Sylvan",
+      "to": "Gray",
+      "kids_2025_26": 3.3
+     },
+     {
+      "from": "West Sylvan",
+      "to": "West Sylvan",
+      "kids_2025_26": 563.5
+     }
+    ],
+    "neighborhood_kids_by_school_2025_26_basis": {
+     "Astor": 137.0,
+     "Beaumont": 194.2,
+     "Beverly Cleary": 205.4,
+     "Bridger": 142.8,
+     "Cesar Chavez": 55.0,
+     "Faubion": 224.4,
+     "George": 248.3,
+     "Gray": 429.6,
+     "Harrison Park": 307.9,
+     "Hosford": 529.9,
+     "Jackson": 688.3,
+     "Kellogg": 328.9,
+     "Lane": 410.9,
+     "Laurelhurst": 237.5,
+     "Mt Tabor": 202.1,
+     "Ockley Green": 396.8,
+     "Roseway Heights": 533.8,
+     "Sellwood": 566.0,
+     "Skyline": 68.0,
+     "Sunnyside": 193.0,
+     "Tubman": 354.0,
+     "Vernon": 195.0,
+     "West Sylvan": 569.1
+    },
+    "kids_changing_school_2025_26_basis": 146.5,
+    "block_assignment_method_counts": {
+     "map": 7610,
+     "k8_rule": 1602,
+     "nearest": 83
+    }
+   },
+   "9-12": {
+    "flows_current_to_scenario": [
+     {
+      "from": "Cleveland",
+      "to": "Cleveland",
+      "kids_2025_26": 1336.0
+     },
+     {
+      "from": "Franklin",
+      "to": "Franklin",
+      "kids_2025_26": 1578.0
+     },
+     {
+      "from": "Grant",
+      "to": "Grant",
+      "kids_2025_26": 1366.1
+     },
+     {
+      "from": "Grant",
+      "to": "Jefferson",
+      "kids_2025_26": 600.3
+     },
+     {
+      "from": "Ida B. Wells",
+      "to": "Ida B. Wells",
+      "kids_2025_26": 1563.5
+     },
+     {
+      "from": "Ida B. Wells",
+      "to": "Lincoln",
+      "kids_2025_26": 10.5
+     },
+     {
+      "from": "Lincoln",
+      "to": "Lincoln",
+      "kids_2025_26": 1469.0
+     },
+     {
+      "from": "McDaniel",
+      "to": "Jefferson",
+      "kids_2025_26": 264.6
+     },
+     {
+      "from": "McDaniel",
+      "to": "McDaniel",
+      "kids_2025_26": 1124.1
+     },
+     {
+      "from": "Roosevelt",
+      "to": "Jefferson",
+      "kids_2025_26": 478.5
+     },
+     {
+      "from": "Roosevelt",
+      "to": "Roosevelt",
+      "kids_2025_26": 759.5
+     }
+    ],
+    "neighborhood_kids_by_school_2025_26_basis": {
+     "Cleveland": 1336.0,
+     "Franklin": 1578.0,
+     "Grant": 1366.1,
+     "Ida B. Wells": 1563.5,
+     "Jefferson": 1343.4,
+     "Lincoln": 1479.5,
+     "McDaniel": 1124.1,
+     "Roosevelt": 759.5
+    },
+    "kids_changing_school_2025_26_basis": 1353.9,
+    "block_assignment_method_counts": {
+     "map": 9214,
+     "skyline_rule": 76,
+     "nearest": 5
+    }
+   }
+  },
+  "note": "PPS's own 'No Change' map for 2027-28: same lines as today except Jefferson HS dual-assignment zones become Jefferson (phase-in) and the Rigler K-5 area is shown feeding Roseway Heights."
+ },
+ "scenarios": {
+  "A": {
+   "closures": [
+    {
+     "school": "Beach",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Chief Joseph",
+       "group": "neighborhood K-5 (100% of area)"
+      },
+      {
+       "to": "Cesar Chavez",
+       "group": "Spanish DLI"
+      }
+     ]
+    },
+    {
+     "school": "Buckman",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Abernethy",
+       "group": "neighborhood, south of Burnside / north of Hawthorne (~50%)"
+      },
+      {
+       "to": "Sunnyside",
+       "group": "neighborhood, north of Burnside (~50%)"
+      }
+     ],
+     "note": "Arts focus option closes"
+    },
+    {
+     "school": "Creston",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Atkinson",
+       "group": "neighborhood K-5"
+      },
+      {
+       "to": "Glencoe",
+       "group": "DHH program"
+      }
+     ],
+     "note": "Building stays as preschool (Creston Annex)"
+    },
+    {
+     "school": "Irvington",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Beverly Cleary",
+       "group": "K-5"
+      },
+      {
+       "to": "Beaumont",
+       "group": "6-8 area (was Tubman)"
+      }
+     ]
+    },
+    {
+     "school": "James John",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Sitton",
+       "group": "neighborhood K-5"
+      },
+      {
+       "to": "Cesar Chavez",
+       "group": "Spanish DLI"
+      }
+     ]
+    },
+    {
+     "school": "Maplewood",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Hayhurst",
+       "share": 0.7
+      },
+      {
+       "to": "Rieke",
+       "share": 0.3
+      }
+     ],
+     "note": "6-8 area Jackson -> Gray"
+    },
+    {
+     "school": "Marysville",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Arleta",
+       "group": "pre-SEGC Marysville area"
+      },
+      {
+       "to": "Kelly",
+       "group": "pre-SEGC Lent non-DLI area"
+      }
+     ]
+    },
+    {
+     "school": "Peninsula",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Rosa Parks",
+       "group": "100% of area"
+      }
+     ],
+     "note": "6-8 area Ockley Green -> George"
+    },
+    {
+     "school": "Sabin",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "MLK Jr",
+       "group": "100% of area"
+      }
+     ]
+    },
+    {
+     "school": "Woodmere",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Whitman",
+       "group": "100% of area"
+      }
+     ],
+     "note": "combined area -> Lane/Brentwood 6-8, Franklin 9-12"
+    },
+    {
+     "school": "Sellwood",
+     "level": "6-8",
+     "receivers": [
+      {
+       "to": "Hosford",
+       "group": "Llewellyn area"
+      },
+      {
+       "to": "Lane (Brentwood)",
+       "group": "Duniway and Lewis areas"
+      }
+     ],
+     "note": "closes 2028"
+    },
+    {
+     "school": "Lewis",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Duniway",
+       "group": "100% of area"
+      }
+     ]
+    },
+    {
+     "school": "Rose City Park",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Scott",
+       "group": "neighborhood K-5 (100%)"
+      },
+      {
+       "to": "Vestal",
+       "group": "Vietnamese DLI"
+      }
+     ]
+    },
+    {
+     "school": "Stephenson",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Markham",
+       "share": 0.7
+      },
+      {
+       "to": "Capitol Hill",
+       "share": 0.3
+      }
+     ]
+    }
+   ],
+   "k8_conversions_and_grade_changes": [
+    {
+     "school": "Beverly Cleary",
+     "from": "K-8",
+     "to": "K-5",
+     "grades_6_8_to": "Beaumont",
+     "students_6_8_2025_26": 204
+    },
+    {
+     "school": "Laurelhurst",
+     "from": "K-8",
+     "to": "K-5",
+     "grades_6_8_to": "Mt Tabor",
+     "students_6_8_2025_26": 235
+    },
+    {
+     "school": "Sunnyside",
+     "from": "K-8 (neighborhood + environmental focus)",
+     "to": "K-5 neighborhood; focus discontinued, no new lottery transfers (current lottery students may stay through grade 5)",
+     "grades_6_8_to": "Hosford",
+     "students_6_8_2025_26": 193,
+     "hs_change": "Sunnyside area moves Franklin -> Cleveland"
+    },
+    {
+     "school": "Bridger",
+     "from": "K-8",
+     "to": "K-5 (keeps neighborhood area and Creative Science focus)",
+     "grades_6_8_to": "Harrison Park (or return to neighborhood middle school)",
+     "students_6_8_2025_26": 140
+    },
+    {
+     "school": "Cesar Chavez",
+     "from": "K-8 (neighborhood + Spanish DLI)",
+     "to": "K-5 regional Spanish DLI only; neighborhood K-5 -> Rosa Parks",
+     "grades_6_8_to": "George",
+     "students_6_8_2025_26": 170
+    },
+    {
+     "school": "Faubion",
+     "from": "K-8",
+     "to": "K-5",
+     "grades_6_8_to": "Ockley Green",
+     "students_6_8_2025_26": 223,
+     "note": "Bybee Lake Shelter area moves Faubion -> Astor (K-8) and Jefferson -> Roosevelt"
+    },
+    {
+     "school": "Vernon",
+     "from": "K-8",
+     "to": "K-5",
+     "grades_6_8_to": "Tubman",
+     "students_6_8_2025_26": 195
+    },
+    {
+     "school": "MLC",
+     "from": "K-12 alternative",
+     "to": "K-8 alternative (9-12 to neighborhood HS / other options; Odyssey co-locates)",
+     "students_9_12_2025_26": 40
+    }
+   ],
+   "dli_and_program_moves": [
+    {
+     "program": "Spanish DLI K-5",
+     "from": [
+      "Beach",
+      "James John",
+      "Sitton"
+     ],
+     "to": "Cesar Chavez (K-5 regional Spanish DLI hub)",
+     "students_2025_26": {
+      "Beach": 155,
+      "James John": 133,
+      "Sitton": 138
+     }
+    },
+    {
+     "program": "Spanish DLI 6-8",
+     "from": [
+      "Cesar Chavez 6-8",
+      "Ockley Green"
+     ],
+     "to": "George (regional 6-8 Spanish DLI)",
+     "students_2025_26": {
+      "Cesar Chavez 6-8 (est. = 300 x 170/443)": 115,
+      "Ockley Green": 63
+     }
+    },
+    {
+     "program": "Spanish DLI K-5",
+     "from": [
+      "Atkinson"
+     ],
+     "to": "Lent (whole-school Spanish DLI; Lent's neighborhood area -> Kelly)",
+     "students_2025_26": {
+      "Atkinson": 178
+     }
+    },
+    {
+     "program": "Spanish DLI K-5",
+     "from": [
+      "Scott"
+     ],
+     "to": "Rigler (becomes regional Spanish DLI school; Rigler's non-DLI neighborhood area -> Scott)",
+     "students_2025_26": {
+      "Scott": 222
+     }
+    },
+    {
+     "program": "Spanish DLI 6-8",
+     "from": [
+      "Beaumont"
+     ],
+     "to": "Roseway Heights",
+     "students_2025_26": {
+      "Beaumont": 101
+     }
+    },
+    {
+     "program": "Mandarin DLI K-5",
+     "from": [
+      "Clark"
+     ],
+     "to": "Woodstock",
+     "students_2025_26": {
+      "Clark": 91
+     }
+    },
+    {
+     "program": "Mandarin DLI K-5",
+     "from": [
+      "MLK Jr"
+     ],
+     "to": "Boise-Eliot/Humboldt",
+     "students_2025_26": {
+      "MLK Jr": 193
+     }
+    },
+    {
+     "program": "Deaf/Hard of Hearing (regional, CRIS)",
+     "from": [
+      "Creston"
+     ],
+     "to": "Glencoe",
+     "students_2025_26": null
+    },
+    {
+     "program": "Odyssey K-8 focus",
+     "from": [
+      "Odyssey (East Sylvan bldg)"
+     ],
+     "to": "MLC site",
+     "students_2025_26": {
+      "Odyssey": 217
+     }
+    },
+    {
+     "program": "Vietnamese DLI K-5",
+     "from": [
+      "Rose City Park"
+     ],
+     "to": "Vestal (6-8 Vietnamese stays at Roseway Heights)",
+     "students_2025_26": {
+      "Rose City Park": 207
+     }
+    }
+   ],
+   "focus_option_changes": [
+    "Sunnyside environmental focus discontinued",
+    "Buckman arts focus closes with the building",
+    "Odyssey moves to MLC site (East Sylvan building closes)",
+    "MLC becomes K-8",
+    "Winterhaven, da Vinci, ACCESS, Richmond, Benson unchanged"
+   ],
+   "middle_school_changes": [
+    "Beaumont: + Beverly Cleary 6-8 (incl. former Irvington area, which leaves Tubman); Spanish DLI -> Roseway Heights",
+    "Mt Tabor: + Laurelhurst 6-8",
+    "Hosford: + Sunnyside 6-8 + Llewellyn area (from Sellwood) [+ Duniway-west-of-McLoughlin area in A]",
+    "Lane (Brentwood): + Duniway and Lewis areas (from Sellwood); Kelly neighborhood 6-8 -> Harrison Park; Russian DLI stays",
+    "Harrison Park: + Lent and Kelly areas; Atkinson area -> Kellogg; Bridger 6-8 (from K-8); Mandarin DLI stays",
+    "Kellogg: + Atkinson and Creston areas; Lent area -> Harrison Park; all SE Spanish DLI 6-8 stays at Kellogg",
+    "Tubman: + Vernon 6-8; Irvington area -> Beaumont",
+    "Ockley Green: + Faubion 6-8; Peninsula area -> George; Spanish DLI -> George; all Ockley Green feeds Jefferson",
+    "George: + Cesar Chavez 6-8, Peninsula area, Spanish DLI from Ockley Green and Chavez (regional 6-8 Spanish DLI)",
+    "Gray: + Maplewood area (from Jackson); Jackson loses Maplewood area",
+    "Roseway Heights: + Spanish DLI from Beaumont; keeps Vietnamese DLI",
+    "Sellwood: closes (2028)"
+   ],
+   "high_school_changes": [
+    "Cleveland: + Sunnyside area (from Franklin); remaining Woodmere/Whitman pieces -> Franklin",
+    "Franklin: + expanded Whitman area (former Whitman+Woodmere); Sunnyside area -> Cleveland; small Vestal piece -> McDaniel",
+    "McDaniel: + small part of Vestal area (from Franklin)",
+    "Lincoln: Skyline area -> Roosevelt",
+    "Roosevelt: + Skyline area; + Bybee Lake Shelter area (from Jefferson)",
+    "Jefferson: own neighborhood boundary already phasing in under Status Quo (dual assignment ending); minor Bybee Lake Shelter change",
+    "MLC 9-12 program closes; students to neighborhood HS (not counted as a closure)",
+    "Grant, Ida B. Wells, Benson: no change"
+   ],
+   "k8_remaining": [
+    "Astor (gains Bybee Lake Shelter area)",
+    "Skyline (HS pathway Lincoln -> Roosevelt)"
+   ],
+   "block_level": {
+    "K-5": {
+     "flows_current_to_scenario": [
+      {
+       "from": "Abernethy",
+       "to": "Abernethy",
+       "kids_2025_26": 269.0
+      },
+      {
+       "from": "Ainsworth",
+       "to": "Ainsworth",
+       "kids_2025_26": 273.0
+      },
+      {
+       "from": "Alameda",
+       "to": "Alameda",
+       "kids_2025_26": 510.6
+      },
+      {
+       "from": "Alameda",
+       "to": "Beverly Cleary",
+       "kids_2025_26": 4.4
+      },
+      {
+       "from": "Arleta",
+       "to": "Arleta",
+       "kids_2025_26": 230.0
+      },
+      {
+       "from": "Astor",
+       "to": "Astor",
+       "kids_2025_26": 263.8
+      },
+      {
+       "from": "Atkinson",
+       "to": "Atkinson",
+       "kids_2025_26": 188.0
+      },
+      {
+       "from": "Beach",
+       "to": "Chief Joseph",
+       "kids_2025_26": 133.0
+      },
+      {
+       "from": "Beverly Cleary",
+       "to": "Beverly Cleary",
+       "kids_2025_26": 276.0
+      },
+      {
+       "from": "Boise-Eliot/Humboldt",
+       "to": "Boise-Eliot/Humboldt",
+       "kids_2025_26": 295.0
+      },
+      {
+       "from": "Bridger",
+       "to": "Bridger",
+       "kids_2025_26": 306.0
+      },
+      {
+       "from": "Bridlemile",
+       "to": "Bridlemile",
+       "kids_2025_26": 421.6
+      },
+      {
+       "from": "Bridlemile",
+       "to": "Rieke",
+       "kids_2025_26": 1.4
+      },
+      {
+       "from": "Buckman",
+       "to": "Abernethy",
+       "kids_2025_26": 127.9
+      },
+      {
+       "from": "Buckman",
+       "to": "Sunnyside",
+       "kids_2025_26": 155.1
+      },
+      {
+       "from": "Capitol Hill",
+       "to": "Capitol Hill",
+       "kids_2025_26": 329.0
+      },
+      {
+       "from": "Cesar Chavez",
+       "to": "Rosa Parks",
+       "kids_2025_26": 88.1
+      },
+      {
+       "from": "Chapman",
+       "to": "Chapman",
+       "kids_2025_26": 333.0
+      },
+      {
+       "from": "Chief Joseph",
+       "to": "Chief Joseph",
+       "kids_2025_26": 247.0
+      },
+      {
+       "from": "Clark",
+       "to": "Clark",
+       "kids_2025_26": 273.0
+      },
+      {
+       "from": "Creston",
+       "to": "Atkinson",
+       "kids_2025_26": 219.0
+      },
+      {
+       "from": "Duniway",
+       "to": "Duniway",
+       "kids_2025_26": 236.7
+      },
+      {
+       "from": "Duniway",
+       "to": "Llewellyn",
+       "kids_2025_26": 125.3
+      },
+      {
+       "from": "Faubion",
+       "to": "Astor",
+       "kids_2025_26": 5.0
+      },
+      {
+       "from": "Faubion",
+       "to": "Faubion",
+       "kids_2025_26": 372.0
+      },
+      {
+       "from": "Forest Park",
+       "to": "Forest Park",
+       "kids_2025_26": 264.0
+      },
+      {
+       "from": "Glencoe",
+       "to": "Glencoe",
+       "kids_2025_26": 341.0
+      },
+      {
+       "from": "Grout",
+       "to": "Grout",
+       "kids_2025_26": 327.0
+      },
+      {
+       "from": "Hayhurst",
+       "to": "Hayhurst",
+       "kids_2025_26": 253.9
+      },
+      {
+       "from": "Hayhurst",
+       "to": "Rieke",
+       "kids_2025_26": 36.1
+      },
+      {
+       "from": "Irvington",
+       "to": "Beverly Cleary",
+       "kids_2025_26": 259.0
+      },
+      {
+       "from": "James John",
+       "to": "Sitton",
+       "kids_2025_26": 231.7
+      },
+      {
+       "from": "Kelly",
+       "to": "Kelly",
+       "kids_2025_26": 268.0
+      },
+      {
+       "from": "Laurelhurst",
+       "to": "Glencoe",
+       "kids_2025_26": 3.4
+      },
+      {
+       "from": "Laurelhurst",
+       "to": "Laurelhurst",
+       "kids_2025_26": 375.6
+      },
+      {
+       "from": "Lee",
+       "to": "Lee",
+       "kids_2025_26": 251.0
+      },
+      {
+       "from": "Lent",
+       "to": "Kelly",
+       "kids_2025_26": 256.0
+      },
+      {
+       "from": "Lewis",
+       "to": "Duniway",
+       "kids_2025_26": 261.1
+      },
+      {
+       "from": "Lewis",
+       "to": "Whitman",
+       "kids_2025_26": 0.9
+      },
+      {
+       "from": "Llewellyn",
+       "to": "Llewellyn",
+       "kids_2025_26": 345.0
+      },
+      {
+       "from": "MLK Jr",
+       "to": "MLK Jr",
+       "kids_2025_26": 126.0
+      },
+      {
+       "from": "Maplewood",
+       "to": "Hayhurst",
+       "kids_2025_26": 205.2
+      },
+      {
+       "from": "Maplewood",
+       "to": "Rieke",
+       "kids_2025_26": 82.8
+      },
+      {
+       "from": "Markham",
+       "to": "Capitol Hill",
+       "kids_2025_26": 1.2
+      },
+      {
+       "from": "Markham",
+       "to": "Markham",
+       "kids_2025_26": 337.8
+      },
+      {
+       "from": "Marysville",
+       "to": "Arleta",
+       "kids_2025_26": 304.0
+      },
+      {
+       "from": "Peninsula",
+       "to": "Rosa Parks",
+       "kids_2025_26": 239.0
+      },
+      {
+       "from": "Rieke",
+       "to": "Capitol Hill",
+       "kids_2025_26": 1.2
+      },
+      {
+       "from": "Rieke",
+       "to": "Rieke",
+       "kids_2025_26": 264.8
+      },
+      {
+       "from": "Rigler",
+       "to": "Scott",
+       "kids_2025_26": 291.0
+      },
+      {
+       "from": "Rosa Parks",
+       "to": "Rosa Parks",
+       "kids_2025_26": 160.0
+      },
+      {
+       "from": "Rose City Park",
+       "to": "Scott",
+       "kids_2025_26": 210.0
+      },
+      {
+       "from": "Sabin",
+       "to": "MLK Jr",
+       "kids_2025_26": 270.0
+      },
+      {
+       "from": "Scott",
+       "to": "Scott",
+       "kids_2025_26": 254.0
+      },
+      {
+       "from": "Sitton",
+       "to": "Sitton",
+       "kids_2025_26": 207.0
+      },
+      {
+       "from": "Skyline",
+       "to": "Skyline",
+       "kids_2025_26": 139.0
+      },
+      {
+       "from": "Stephenson",
+       "to": "Capitol Hill",
+       "kids_2025_26": 73.2
+      },
+      {
+       "from": "Stephenson",
+       "to": "Markham",
+       "kids_2025_26": 207.8
+      },
+      {
+       "from": "Sunnyside",
+       "to": "Sunnyside",
+       "kids_2025_26": 292.0
+      },
+      {
+       "from": "Vernon",
+       "to": "Vernon",
+       "kids_2025_26": 344.0
+      },
+      {
+       "from": "Vestal",
+       "to": "Vestal",
+       "kids_2025_26": 286.0
+      },
+      {
+       "from": "Whitman",
+       "to": "Whitman",
+       "kids_2025_26": 193.0
+      },
+      {
+       "from": "Woodlawn",
+       "to": "Woodlawn",
+       "kids_2025_26": 323.0
+      },
+      {
+       "from": "Woodmere",
+       "to": "Whitman",
+       "kids_2025_26": 226.0
+      },
+      {
+       "from": "Woodstock",
+       "to": "Woodstock",
+       "kids_2025_26": 177.0
+      }
+     ],
+     "neighborhood_kids_by_school_2025_26_basis": {
+      "Abernethy": 396.9,
+      "Ainsworth": 273.0,
+      "Alameda": 510.6,
+      "Arleta": 534.0,
+      "Astor": 268.8,
+      "Atkinson": 407.0,
+      "Beverly Cleary": 539.4,
+      "Boise-Eliot/Humboldt": 295.0,
+      "Bridger": 306.0,
+      "Bridlemile": 421.6,
+      "Capitol Hill": 404.6,
+      "Chapman": 333.0,
+      "Chief Joseph": 380.2,
+      "Clark": 273.0,
+      "Duniway": 497.8,
+      "Faubion": 372.0,
+      "Forest Park": 264.0,
+      "Glencoe": 344.4,
+      "Grout": 327.0,
+      "Hayhurst": 459.1,
+      "Kelly": 524.0,
+      "Laurelhurst": 375.6,
+      "Lee": 251.0,
+      "Llewellyn": 470.3,
+      "MLK Jr": 396.0,
+      "Markham": 545.6,
+      "Rieke": 385.1,
+      "Rosa Parks": 487.4,
+      "Scott": 755.0,
+      "Sitton": 438.7,
+      "Skyline": 139.0,
+      "Sunnyside": 447.1,
+      "Vernon": 344.0,
+      "Vestal": 286.0,
+      "Whitman": 419.9,
+      "Woodlawn": 323.0,
+      "Woodstock": 177.0
+     },
+     "kids_changing_school_2025_26_basis": 4019.3,
+     "block_assignment_method_counts": {
+      "map": 8869,
+      "k8_rule": 416,
+      "bybee_rule": 5,
+      "nearest": 5
+     }
+    },
+    "6-8": {
+     "flows_current_to_scenario": [
+      {
+       "from": "Astor",
+       "to": "Astor",
+       "kids_2025_26": 137.0
+      },
+      {
+       "from": "Beaumont",
+       "to": "Beaumont",
+       "kids_2025_26": 192.3
+      },
+      {
+       "from": "Beaumont",
+       "to": "Ockley Green",
+       "kids_2025_26": 0.6
+      },
+      {
+       "from": "Beaumont",
+       "to": "Roseway Heights",
+       "kids_2025_26": 122.1
+      },
+      {
+       "from": "Beverly Cleary",
+       "to": "Beaumont",
+       "kids_2025_26": 204.0
+      },
+      {
+       "from": "Bridger",
+       "to": "Harrison Park",
+       "kids_2025_26": 140.0
+      },
+      {
+       "from": "Cesar Chavez",
+       "to": "George",
+       "kids_2025_26": 54.9
+      },
+      {
+       "from": "Faubion",
+       "to": "Astor",
+       "kids_2025_26": 7.3
+      },
+      {
+       "from": "Faubion",
+       "to": "Ockley Green",
+       "kids_2025_26": 215.7
+      },
+      {
+       "from": "George",
+       "to": "George",
+       "kids_2025_26": 249.0
+      },
+      {
+       "from": "Gray",
+       "to": "Gray",
+       "kids_2025_26": 426.1
+      },
+      {
+       "from": "Gray",
+       "to": "West Sylvan",
+       "kids_2025_26": 5.6
+      },
+      {
+       "from": "Harrison Park",
+       "to": "Harrison Park",
+       "kids_2025_26": 217.4
+      },
+      {
+       "from": "Harrison Park",
+       "to": "Kellogg",
+       "kids_2025_26": 90.6
+      },
+      {
+       "from": "Hosford",
+       "to": "Hosford",
+       "kids_2025_26": 431.4
+      },
+      {
+       "from": "Hosford",
+       "to": "Kellogg",
+       "kids_2025_26": 96.6
+      },
+      {
+       "from": "Jackson",
+       "to": "Gray",
+       "kids_2025_26": 142.1
+      },
+      {
+       "from": "Jackson",
+       "to": "Jackson",
+       "kids_2025_26": 545.9
+      },
+      {
+       "from": "Kellogg",
+       "to": "Harrison Park",
+       "kids_2025_26": 103.3
+      },
+      {
+       "from": "Kellogg",
+       "to": "Kellogg",
+       "kids_2025_26": 226.4
+      },
+      {
+       "from": "Lane",
+       "to": "Harrison Park",
+       "kids_2025_26": 123.2
+      },
+      {
+       "from": "Lane",
+       "to": "Lane",
+       "kids_2025_26": 287.4
+      },
+      {
+       "from": "Laurelhurst",
+       "to": "Mt Tabor",
+       "kids_2025_26": 235.0
+      },
+      {
+       "from": "Mt Tabor",
+       "to": "Harrison Park",
+       "kids_2025_26": 2.8
+      },
+      {
+       "from": "Mt Tabor",
+       "to": "Kellogg",
+       "kids_2025_26": 0.6
+      },
+      {
+       "from": "Mt Tabor",
+       "to": "Mt Tabor",
+       "kids_2025_26": 204.6
+      },
+      {
+       "from": "Ockley Green",
+       "to": "George",
+       "kids_2025_26": 97.0
+      },
+      {
+       "from": "Ockley Green",
+       "to": "Ockley Green",
+       "kids_2025_26": 300.0
+      },
+      {
+       "from": "Roseway Heights",
+       "to": "Beaumont",
+       "kids_2025_26": 3.2
+      },
+      {
+       "from": "Roseway Heights",
+       "to": "Roseway Heights",
+       "kids_2025_26": 411.8
+      },
+      {
+       "from": "Sellwood",
+       "to": "Hosford",
+       "kids_2025_26": 281.5
+      },
+      {
+       "from": "Sellwood",
+       "to": "Lane",
+       "kids_2025_26": 284.5
+      },
+      {
+       "from": "Skyline",
+       "to": "Skyline",
+       "kids_2025_26": 68.0
+      },
+      {
+       "from": "Sunnyside",
+       "to": "Hosford",
+       "kids_2025_26": 193.0
+      },
+      {
+       "from": "Tubman",
+       "to": "Beaumont",
+       "kids_2025_26": 125.3
+      },
+      {
+       "from": "Tubman",
+       "to": "Tubman",
+       "kids_2025_26": 228.7
+      },
+      {
+       "from": "Vernon",
+       "to": "Tubman",
+       "kids_2025_26": 195.0
+      },
+      {
+       "from": "West Sylvan",
+       "to": "Gray",
+       "kids_2025_26": 3.3
+      },
+      {
+       "from": "West Sylvan",
+       "to": "West Sylvan",
+       "kids_2025_26": 563.5
+      }
+     ],
+     "neighborhood_kids_by_school_2025_26_basis": {
+      "Astor": 144.3,
+      "Beaumont": 524.8,
+      "George": 400.9,
+      "Gray": 571.5,
+      "Harrison Park": 586.8,
+      "Hosford": 905.8,
+      "Jackson": 546.5,
+      "Kellogg": 414.6,
+      "Lane": 572.2,
+      "Mt Tabor": 439.6,
+      "Ockley Green": 516.3,
+      "Roseway Heights": 533.8,
+      "Skyline": 68.0,
+      "Tubman": 423.7,
+      "West Sylvan": 569.1
+     },
+     "kids_changing_school_2025_26_basis": 2728.4,
+     "block_assignment_method_counts": {
+      "map": 8774,
+      "k8_rule": 417,
+      "nearest": 92,
+      "bybee_rule": 12
+     }
+    },
+    "9-12": {
+     "flows_current_to_scenario": [
+      {
+       "from": "Cleveland",
+       "to": "Cleveland",
+       "kids_2025_26": 1147.6
+      },
+      {
+       "from": "Cleveland",
+       "to": "Franklin",
+       "kids_2025_26": 188.4
+      },
+      {
+       "from": "Franklin",
+       "to": "Cleveland",
+       "kids_2025_26": 114.6
+      },
+      {
+       "from": "Franklin",
+       "to": "Franklin",
+       "kids_2025_26": 1427.0
+      },
+      {
+       "from": "Franklin",
+       "to": "McDaniel",
+       "kids_2025_26": 36.4
+      },
+      {
+       "from": "Grant",
+       "to": "Grant",
+       "kids_2025_26": 1366.1
+      },
+      {
+       "from": "Grant",
+       "to": "Jefferson",
+       "kids_2025_26": 600.3
+      },
+      {
+       "from": "Ida B. Wells",
+       "to": "Ida B. Wells",
+       "kids_2025_26": 1563.5
+      },
+      {
+       "from": "Ida B. Wells",
+       "to": "Lincoln",
+       "kids_2025_26": 10.5
+      },
+      {
+       "from": "Lincoln",
+       "to": "Ida B. Wells",
+       "kids_2025_26": 5.2
+      },
+      {
+       "from": "Lincoln",
+       "to": "Lincoln",
+       "kids_2025_26": 1352.3
+      },
+      {
+       "from": "Lincoln",
+       "to": "Roosevelt",
+       "kids_2025_26": 111.6
+      },
+      {
+       "from": "McDaniel",
+       "to": "Jefferson",
+       "kids_2025_26": 264.6
+      },
+      {
+       "from": "McDaniel",
+       "to": "McDaniel",
+       "kids_2025_26": 1124.1
+      },
+      {
+       "from": "Roosevelt",
+       "to": "Jefferson",
+       "kids_2025_26": 476.1
+      },
+      {
+       "from": "Roosevelt",
+       "to": "Roosevelt",
+       "kids_2025_26": 761.9
+      }
+     ],
+     "neighborhood_kids_by_school_2025_26_basis": {
+      "Cleveland": 1262.2,
+      "Franklin": 1615.4,
+      "Grant": 1366.1,
+      "Ida B. Wells": 1568.7,
+      "Jefferson": 1340.9,
+      "Lincoln": 1362.8,
+      "McDaniel": 1160.5,
+      "Roosevelt": 873.5
+     },
+     "kids_changing_school_2025_26_basis": 1807.6,
+     "block_assignment_method_counts": {
+      "map": 9165,
+      "skyline_rule": 125,
+      "nearest": 5
+     }
+    }
+   }
+  },
+  "B": {
+   "closures": [
+    {
+     "school": "Beach",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Chief Joseph",
+       "group": "neighborhood K-5 (100% of area)"
+      },
+      {
+       "to": "Cesar Chavez",
+       "group": "Spanish DLI"
+      }
+     ]
+    },
+    {
+     "school": "Buckman",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Abernethy",
+       "group": "neighborhood, south of Burnside / north of Hawthorne (~50%)"
+      },
+      {
+       "to": "Sunnyside",
+       "group": "neighborhood, north of Burnside (~50%)"
+      }
+     ],
+     "note": "Arts focus option closes"
+    },
+    {
+     "school": "Creston",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Atkinson",
+       "group": "neighborhood K-5"
+      },
+      {
+       "to": "Glencoe",
+       "group": "DHH program"
+      }
+     ],
+     "note": "Building stays as preschool (Creston Annex)"
+    },
+    {
+     "school": "Irvington",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Beverly Cleary",
+       "group": "K-5"
+      },
+      {
+       "to": "Beaumont",
+       "group": "6-8 area (was Tubman)"
+      }
+     ]
+    },
+    {
+     "school": "James John",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Sitton",
+       "group": "neighborhood K-5"
+      },
+      {
+       "to": "Cesar Chavez",
+       "group": "Spanish DLI"
+      }
+     ]
+    },
+    {
+     "school": "Maplewood",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Hayhurst",
+       "share": 0.7
+      },
+      {
+       "to": "Rieke",
+       "share": 0.3
+      }
+     ],
+     "note": "6-8 area Jackson -> Gray"
+    },
+    {
+     "school": "Marysville",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Arleta",
+       "group": "pre-SEGC Marysville area"
+      },
+      {
+       "to": "Kelly",
+       "group": "pre-SEGC Lent non-DLI area"
+      }
+     ]
+    },
+    {
+     "school": "Peninsula",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Rosa Parks",
+       "group": "100% of area"
+      }
+     ],
+     "note": "6-8 area Ockley Green -> George"
+    },
+    {
+     "school": "Sabin",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "MLK Jr",
+       "group": "100% of area"
+      }
+     ]
+    },
+    {
+     "school": "Woodmere",
+     "level": "K-5",
+     "receivers": [
+      {
+       "to": "Whitman",
+       "group": "100% of area"
+      }
+     ],
+     "note": "combined area -> Lane/Brentwood 6-8, Franklin 9-12"
+    },
+    {
+     "school": "Sellwood",
+     "level": "6-8",
+     "receivers": [
+      {
+       "to": "Hosford",
+       "group": "Llewellyn area"
+      },
+      {
+       "to": "Lane (Brentwood)",
+       "group": "Duniway and Lewis areas"
+      }
+     ],
+     "note": "closes 2028"
+    }
+   ],
+   "k8_conversions_and_grade_changes": [
+    {
+     "school": "Beverly Cleary",
+     "from": "K-8",
+     "to": "K-5",
+     "grades_6_8_to": "Beaumont",
+     "students_6_8_2025_26": 204
+    },
+    {
+     "school": "Laurelhurst",
+     "from": "K-8",
+     "to": "K-5",
+     "grades_6_8_to": "Mt Tabor",
+     "students_6_8_2025_26": 235
+    },
+    {
+     "school": "Sunnyside",
+     "from": "K-8 (neighborhood + environmental focus)",
+     "to": "K-5 neighborhood; focus discontinued, no new lottery transfers (current lottery students may stay through grade 5)",
+     "grades_6_8_to": "Hosford",
+     "students_6_8_2025_26": 193,
+     "hs_change": "Sunnyside area moves Franklin -> Cleveland"
+    },
+    {
+     "school": "Bridger",
+     "from": "K-8",
+     "to": "K-5 (keeps neighborhood area and Creative Science focus)",
+     "grades_6_8_to": "Harrison Park (or return to neighborhood middle school)",
+     "students_6_8_2025_26": 140
+    },
+    {
+     "school": "Cesar Chavez",
+     "from": "K-8 (neighborhood + Spanish DLI)",
+     "to": "K-5 regional Spanish DLI only; neighborhood K-5 -> Rosa Parks",
+     "grades_6_8_to": "George",
+     "students_6_8_2025_26": 170
+    },
+    {
+     "school": "Faubion",
+     "from": "K-8",
+     "to": "K-5",
+     "grades_6_8_to": "Ockley Green",
+     "students_6_8_2025_26": 223,
+     "note": "Bybee Lake Shelter area moves Faubion -> Astor (K-8) and Jefferson -> Roosevelt"
+    },
+    {
+     "school": "Vernon",
+     "from": "K-8",
+     "to": "K-5",
+     "grades_6_8_to": "Tubman",
+     "students_6_8_2025_26": 195
+    },
+    {
+     "school": "MLC",
+     "from": "K-12 alternative",
+     "to": "K-8 alternative (9-12 to neighborhood HS / other options; Odyssey co-locates)",
+     "students_9_12_2025_26": 40
+    }
+   ],
+   "dli_and_program_moves": [
+    {
+     "program": "Spanish DLI K-5",
+     "from": [
+      "Beach",
+      "James John",
+      "Sitton"
+     ],
+     "to": "Cesar Chavez (K-5 regional Spanish DLI hub)",
+     "students_2025_26": {
+      "Beach": 155,
+      "James John": 133,
+      "Sitton": 138
+     }
+    },
+    {
+     "program": "Spanish DLI 6-8",
+     "from": [
+      "Cesar Chavez 6-8",
+      "Ockley Green"
+     ],
+     "to": "George (regional 6-8 Spanish DLI)",
+     "students_2025_26": {
+      "Cesar Chavez 6-8 (est. = 300 x 170/443)": 115,
+      "Ockley Green": 63
+     }
+    },
+    {
+     "program": "Spanish DLI K-5",
+     "from": [
+      "Atkinson"
+     ],
+     "to": "Lent (whole-school Spanish DLI; Lent's neighborhood area -> Kelly)",
+     "students_2025_26": {
+      "Atkinson": 178
+     }
+    },
+    {
+     "program": "Spanish DLI K-5",
+     "from": [
+      "Scott"
+     ],
+     "to": "Rigler (becomes regional Spanish DLI school; Rigler's non-DLI neighborhood area -> Scott)",
+     "students_2025_26": {
+      "Scott": 222
+     }
+    },
+    {
+     "program": "Spanish DLI 6-8",
+     "from": [
+      "Beaumont"
+     ],
+     "to": "Roseway Heights",
+     "students_2025_26": {
+      "Beaumont": 101
+     }
+    },
+    {
+     "program": "Mandarin DLI K-5",
+     "from": [
+      "Clark"
+     ],
+     "to": "Woodstock",
+     "students_2025_26": {
+      "Clark": 91
+     }
+    },
+    {
+     "program": "Mandarin DLI K-5",
+     "from": [
+      "MLK Jr"
+     ],
+     "to": "Boise-Eliot/Humboldt",
+     "students_2025_26": {
+      "MLK Jr": 193
+     }
+    },
+    {
+     "program": "Deaf/Hard of Hearing (regional, CRIS)",
+     "from": [
+      "Creston"
+     ],
+     "to": "Glencoe",
+     "students_2025_26": null
+    },
+    {
+     "program": "Odyssey K-8 focus",
+     "from": [
+      "Odyssey (East Sylvan bldg)"
+     ],
+     "to": "MLC site",
+     "students_2025_26": {
+      "Odyssey": 217
+     }
+    }
+   ],
+   "focus_option_changes": [
+    "Sunnyside environmental focus discontinued",
+    "Buckman arts focus closes with the building",
+    "Odyssey moves to MLC site (East Sylvan building closes)",
+    "MLC becomes K-8",
+    "Winterhaven, da Vinci, ACCESS, Richmond, Benson unchanged"
+   ],
+   "middle_school_changes": [
+    "Beaumont: + Beverly Cleary 6-8 (incl. former Irvington area, which leaves Tubman); Spanish DLI -> Roseway Heights",
+    "Mt Tabor: + Laurelhurst 6-8",
+    "Hosford: + Sunnyside 6-8 + Llewellyn area (from Sellwood) [+ Duniway-west-of-McLoughlin area in A]",
+    "Lane (Brentwood): + Duniway and Lewis areas (from Sellwood); Kelly neighborhood 6-8 -> Harrison Park; Russian DLI stays",
+    "Harrison Park: + Lent and Kelly areas; Atkinson area -> Kellogg; Bridger 6-8 (from K-8); Mandarin DLI stays",
+    "Kellogg: + Atkinson and Creston areas; Lent area -> Harrison Park; all SE Spanish DLI 6-8 stays at Kellogg",
+    "Tubman: + Vernon 6-8; Irvington area -> Beaumont",
+    "Ockley Green: + Faubion 6-8; Peninsula area -> George; Spanish DLI -> George; all Ockley Green feeds Jefferson",
+    "George: + Cesar Chavez 6-8, Peninsula area, Spanish DLI from Ockley Green and Chavez (regional 6-8 Spanish DLI)",
+    "Gray: + Maplewood area (from Jackson); Jackson loses Maplewood area",
+    "Roseway Heights: + Spanish DLI from Beaumont; keeps Vietnamese DLI",
+    "Sellwood: closes (2028)"
+   ],
+   "high_school_changes": [
+    "Cleveland: + Sunnyside area (from Franklin); remaining Woodmere/Whitman pieces -> Franklin",
+    "Franklin: + expanded Whitman area (former Whitman+Woodmere); Sunnyside area -> Cleveland; small Vestal piece -> McDaniel",
+    "McDaniel: + small part of Vestal area (from Franklin)",
+    "Lincoln: Skyline area -> Roosevelt",
+    "Roosevelt: + Skyline area; + Bybee Lake Shelter area (from Jefferson)",
+    "Jefferson: own neighborhood boundary already phasing in under Status Quo (dual assignment ending); minor Bybee Lake Shelter change",
+    "MLC 9-12 program closes; students to neighborhood HS (not counted as a closure)",
+    "Grant, Ida B. Wells, Benson: no change"
+   ],
+   "k8_remaining": [
+    "Astor (gains Bybee Lake Shelter area)",
+    "Skyline (HS pathway Lincoln -> Roosevelt)"
+   ],
+   "block_level": {
+    "K-5": {
+     "flows_current_to_scenario": [
+      {
+       "from": "Abernethy",
+       "to": "Abernethy",
+       "kids_2025_26": 269.0
+      },
+      {
+       "from": "Ainsworth",
+       "to": "Ainsworth",
+       "kids_2025_26": 273.0
+      },
+      {
+       "from": "Alameda",
+       "to": "Alameda",
+       "kids_2025_26": 510.6
+      },
+      {
+       "from": "Alameda",
+       "to": "Beverly Cleary",
+       "kids_2025_26": 4.4
+      },
+      {
+       "from": "Arleta",
+       "to": "Arleta",
+       "kids_2025_26": 230.0
+      },
+      {
+       "from": "Astor",
+       "to": "Astor",
+       "kids_2025_26": 263.8
+      },
+      {
+       "from": "Atkinson",
+       "to": "Atkinson",
+       "kids_2025_26": 188.0
+      },
+      {
+       "from": "Beach",
+       "to": "Chief Joseph",
+       "kids_2025_26": 133.0
+      },
+      {
+       "from": "Beverly Cleary",
+       "to": "Beverly Cleary",
+       "kids_2025_26": 276.0
+      },
+      {
+       "from": "Boise-Eliot/Humboldt",
+       "to": "Boise-Eliot/Humboldt",
+       "kids_2025_26": 295.0
+      },
+      {
+       "from": "Bridger",
+       "to": "Bridger",
+       "kids_2025_26": 306.0
+      },
+      {
+       "from": "Bridlemile",
+       "to": "Bridlemile",
+       "kids_2025_26": 421.6
+      },
+      {
+       "from": "Bridlemile",
+       "to": "Rieke",
+       "kids_2025_26": 1.4
+      },
+      {
+       "from": "Buckman",
+       "to": "Abernethy",
+       "kids_2025_26": 127.9
+      },
+      {
+       "from": "Buckman",
+       "to": "Sunnyside",
+       "kids_2025_26": 155.1
+      },
+      {
+       "from": "Capitol Hill",
+       "to": "Capitol Hill",
+       "kids_2025_26": 329.0
+      },
+      {
+       "from": "Cesar Chavez",
+       "to": "Rosa Parks",
+       "kids_2025_26": 88.1
+      },
+      {
+       "from": "Chapman",
+       "to": "Chapman",
+       "kids_2025_26": 333.0
+      },
+      {
+       "from": "Chief Joseph",
+       "to": "Chief Joseph",
+       "kids_2025_26": 247.0
+      },
+      {
+       "from": "Clark",
+       "to": "Clark",
+       "kids_2025_26": 273.0
+      },
+      {
+       "from": "Creston",
+       "to": "Atkinson",
+       "kids_2025_26": 219.0
+      },
+      {
+       "from": "Duniway",
+       "to": "Duniway",
+       "kids_2025_26": 362.0
+      },
+      {
+       "from": "Faubion",
+       "to": "Astor",
+       "kids_2025_26": 5.0
+      },
+      {
+       "from": "Faubion",
+       "to": "Faubion",
+       "kids_2025_26": 372.0
+      },
+      {
+       "from": "Forest Park",
+       "to": "Forest Park",
+       "kids_2025_26": 264.0
+      },
+      {
+       "from": "Glencoe",
+       "to": "Glencoe",
+       "kids_2025_26": 341.0
+      },
+      {
+       "from": "Grout",
+       "to": "Grout",
+       "kids_2025_26": 327.0
+      },
+      {
+       "from": "Hayhurst",
+       "to": "Hayhurst",
+       "kids_2025_26": 253.9
+      },
+      {
+       "from": "Hayhurst",
+       "to": "Rieke",
+       "kids_2025_26": 36.1
+      },
+      {
+       "from": "Irvington",
+       "to": "Beverly Cleary",
+       "kids_2025_26": 259.0
+      },
+      {
+       "from": "James John",
+       "to": "Sitton",
+       "kids_2025_26": 231.7
+      },
+      {
+       "from": "Kelly",
+       "to": "Kelly",
+       "kids_2025_26": 268.0
+      },
+      {
+       "from": "Laurelhurst",
+       "to": "Glencoe",
+       "kids_2025_26": 3.4
+      },
+      {
+       "from": "Laurelhurst",
+       "to": "Laurelhurst",
+       "kids_2025_26": 375.6
+      },
+      {
+       "from": "Lee",
+       "to": "Lee",
+       "kids_2025_26": 251.0
+      },
+      {
+       "from": "Lent",
+       "to": "Kelly",
+       "kids_2025_26": 256.0
+      },
+      {
+       "from": "Lewis",
+       "to": "Duniway",
+       "kids_2025_26": 3.3
+      },
+      {
+       "from": "Lewis",
+       "to": "Lewis",
+       "kids_2025_26": 258.7
+      },
+      {
+       "from": "Llewellyn",
+       "to": "Llewellyn",
+       "kids_2025_26": 345.0
+      },
+      {
+       "from": "MLK Jr",
+       "to": "MLK Jr",
+       "kids_2025_26": 126.0
+      },
+      {
+       "from": "Maplewood",
+       "to": "Hayhurst",
+       "kids_2025_26": 205.2
+      },
+      {
+       "from": "Maplewood",
+       "to": "Rieke",
+       "kids_2025_26": 82.8
+      },
+      {
+       "from": "Markham",
+       "to": "Capitol Hill",
+       "kids_2025_26": 1.2
+      },
+      {
+       "from": "Markham",
+       "to": "Markham",
+       "kids_2025_26": 336.6
+      },
+      {
+       "from": "Markham",
+       "to": "Stephenson",
+       "kids_2025_26": 1.2
+      },
+      {
+       "from": "Marysville",
+       "to": "Arleta",
+       "kids_2025_26": 304.0
+      },
+      {
+       "from": "Peninsula",
+       "to": "Rosa Parks",
+       "kids_2025_26": 239.0
+      },
+      {
+       "from": "Rieke",
+       "to": "Capitol Hill",
+       "kids_2025_26": 1.2
+      },
+      {
+       "from": "Rieke",
+       "to": "Rieke",
+       "kids_2025_26": 264.8
+      },
+      {
+       "from": "Rigler",
+       "to": "Scott",
+       "kids_2025_26": 291.0
+      },
+      {
+       "from": "Rosa Parks",
+       "to": "Rosa Parks",
+       "kids_2025_26": 160.0
+      },
+      {
+       "from": "Rose City Park",
+       "to": "Rose City Park",
+       "kids_2025_26": 210.0
+      },
+      {
+       "from": "Sabin",
+       "to": "MLK Jr",
+       "kids_2025_26": 270.0
+      },
+      {
+       "from": "Scott",
+       "to": "Scott",
+       "kids_2025_26": 254.0
+      },
+      {
+       "from": "Sitton",
+       "to": "Sitton",
+       "kids_2025_26": 207.0
+      },
+      {
+       "from": "Skyline",
+       "to": "Skyline",
+       "kids_2025_26": 139.0
+      },
+      {
+       "from": "Stephenson",
+       "to": "Capitol Hill",
+       "kids_2025_26": 2.7
+      },
+      {
+       "from": "Stephenson",
+       "to": "Stephenson",
+       "kids_2025_26": 278.3
+      },
+      {
+       "from": "Sunnyside",
+       "to": "Sunnyside",
+       "kids_2025_26": 292.0
+      },
+      {
+       "from": "Vernon",
+       "to": "Vernon",
+       "kids_2025_26": 344.0
+      },
+      {
+       "from": "Vestal",
+       "to": "Vestal",
+       "kids_2025_26": 286.0
+      },
+      {
+       "from": "Whitman",
+       "to": "Lewis",
+       "kids_2025_26": 93.2
+      },
+      {
+       "from": "Whitman",
+       "to": "Whitman",
+       "kids_2025_26": 99.8
+      },
+      {
+       "from": "Woodlawn",
+       "to": "Woodlawn",
+       "kids_2025_26": 323.0
+      },
+      {
+       "from": "Woodmere",
+       "to": "Whitman",
+       "kids_2025_26": 226.0
+      },
+      {
+       "from": "Woodstock",
+       "to": "Woodstock",
+       "kids_2025_26": 177.0
+      }
+     ],
+     "neighborhood_kids_by_school_2025_26_basis": {
+      "Abernethy": 396.9,
+      "Ainsworth": 273.0,
+      "Alameda": 510.6,
+      "Arleta": 534.0,
+      "Astor": 268.8,
+      "Atkinson": 407.0,
+      "Beverly Cleary": 539.4,
+      "Boise-Eliot/Humboldt": 295.0,
+      "Bridger": 306.0,
+      "Bridlemile": 421.6,
+      "Capitol Hill": 334.1,
+      "Chapman": 333.0,
+      "Chief Joseph": 380.2,
+      "Clark": 273.0,
+      "Duniway": 365.3,
+      "Faubion": 372.0,
+      "Forest Park": 264.0,
+      "Glencoe": 344.4,
+      "Grout": 327.0,
+      "Hayhurst": 459.1,
+      "Kelly": 524.0,
+      "Laurelhurst": 375.6,
+      "Lee": 251.0,
+      "Lewis": 351.9,
+      "Llewellyn": 345.0,
+      "MLK Jr": 396.0,
+      "Markham": 336.6,
+      "Rieke": 385.1,
+      "Rosa Parks": 487.4,
+      "Rose City Park": 210.0,
+      "Scott": 545.0,
+      "Sitton": 438.7,
+      "Skyline": 139.0,
+      "Stephenson": 279.5,
+      "Sunnyside": 447.1,
+      "Vernon": 344.0,
+      "Vestal": 286.0,
+      "Whitman": 325.8,
+      "Woodlawn": 323.0,
+      "Woodstock": 177.0
+     },
+     "kids_changing_school_2025_26_basis": 3241.4,
+     "block_assignment_method_counts": {
+      "map": 8869,
+      "k8_rule": 416,
+      "bybee_rule": 5,
+      "nearest": 5
+     }
+    },
+    "6-8": {
+     "flows_current_to_scenario": [
+      {
+       "from": "Astor",
+       "to": "Astor",
+       "kids_2025_26": 137.0
+      },
+      {
+       "from": "Beaumont",
+       "to": "Beaumont",
+       "kids_2025_26": 192.3
+      },
+      {
+       "from": "Beaumont",
+       "to": "Ockley Green",
+       "kids_2025_26": 0.6
+      },
+      {
+       "from": "Beaumont",
+       "to": "Roseway Heights",
+       "kids_2025_26": 122.1
+      },
+      {
+       "from": "Beverly Cleary",
+       "to": "Beaumont",
+       "kids_2025_26": 204.0
+      },
+      {
+       "from": "Bridger",
+       "to": "Harrison Park",
+       "kids_2025_26": 140.0
+      },
+      {
+       "from": "Cesar Chavez",
+       "to": "George",
+       "kids_2025_26": 54.9
+      },
+      {
+       "from": "Faubion",
+       "to": "Astor",
+       "kids_2025_26": 7.3
+      },
+      {
+       "from": "Faubion",
+       "to": "Ockley Green",
+       "kids_2025_26": 215.7
+      },
+      {
+       "from": "George",
+       "to": "George",
+       "kids_2025_26": 249.0
+      },
+      {
+       "from": "Gray",
+       "to": "Gray",
+       "kids_2025_26": 426.1
+      },
+      {
+       "from": "Gray",
+       "to": "West Sylvan",
+       "kids_2025_26": 5.6
+      },
+      {
+       "from": "Harrison Park",
+       "to": "Harrison Park",
+       "kids_2025_26": 217.4
+      },
+      {
+       "from": "Harrison Park",
+       "to": "Kellogg",
+       "kids_2025_26": 90.6
+      },
+      {
+       "from": "Hosford",
+       "to": "Hosford",
+       "kids_2025_26": 431.4
+      },
+      {
+       "from": "Hosford",
+       "to": "Kellogg",
+       "kids_2025_26": 96.6
+      },
+      {
+       "from": "Jackson",
+       "to": "Gray",
+       "kids_2025_26": 142.1
+      },
+      {
+       "from": "Jackson",
+       "to": "Jackson",
+       "kids_2025_26": 545.9
+      },
+      {
+       "from": "Kellogg",
+       "to": "Harrison Park",
+       "kids_2025_26": 103.3
+      },
+      {
+       "from": "Kellogg",
+       "to": "Kellogg",
+       "kids_2025_26": 226.4
+      },
+      {
+       "from": "Lane",
+       "to": "Harrison Park",
+       "kids_2025_26": 123.2
+      },
+      {
+       "from": "Lane",
+       "to": "Lane",
+       "kids_2025_26": 287.4
+      },
+      {
+       "from": "Laurelhurst",
+       "to": "Mt Tabor",
+       "kids_2025_26": 235.0
+      },
+      {
+       "from": "Mt Tabor",
+       "to": "Harrison Park",
+       "kids_2025_26": 2.8
+      },
+      {
+       "from": "Mt Tabor",
+       "to": "Kellogg",
+       "kids_2025_26": 0.6
+      },
+      {
+       "from": "Mt Tabor",
+       "to": "Mt Tabor",
+       "kids_2025_26": 204.6
+      },
+      {
+       "from": "Ockley Green",
+       "to": "George",
+       "kids_2025_26": 97.0
+      },
+      {
+       "from": "Ockley Green",
+       "to": "Ockley Green",
+       "kids_2025_26": 300.0
+      },
+      {
+       "from": "Roseway Heights",
+       "to": "Beaumont",
+       "kids_2025_26": 3.2
+      },
+      {
+       "from": "Roseway Heights",
+       "to": "Roseway Heights",
+       "kids_2025_26": 411.8
+      },
+      {
+       "from": "Sellwood",
+       "to": "Hosford",
+       "kids_2025_26": 211.3
+      },
+      {
+       "from": "Sellwood",
+       "to": "Lane",
+       "kids_2025_26": 354.7
+      },
+      {
+       "from": "Skyline",
+       "to": "Skyline",
+       "kids_2025_26": 68.0
+      },
+      {
+       "from": "Sunnyside",
+       "to": "Hosford",
+       "kids_2025_26": 193.0
+      },
+      {
+       "from": "Tubman",
+       "to": "Beaumont",
+       "kids_2025_26": 125.3
+      },
+      {
+       "from": "Tubman",
+       "to": "Tubman",
+       "kids_2025_26": 228.7
+      },
+      {
+       "from": "Vernon",
+       "to": "Tubman",
+       "kids_2025_26": 195.0
+      },
+      {
+       "from": "West Sylvan",
+       "to": "Gray",
+       "kids_2025_26": 3.3
+      },
+      {
+       "from": "West Sylvan",
+       "to": "West Sylvan",
+       "kids_2025_26": 563.5
+      }
+     ],
+     "neighborhood_kids_by_school_2025_26_basis": {
+      "Astor": 144.3,
+      "Beaumont": 524.8,
+      "George": 400.9,
+      "Gray": 571.5,
+      "Harrison Park": 586.8,
+      "Hosford": 835.6,
+      "Jackson": 546.5,
+      "Kellogg": 414.6,
+      "Lane": 642.4,
+      "Mt Tabor": 439.6,
+      "Ockley Green": 516.3,
+      "Roseway Heights": 533.8,
+      "Skyline": 68.0,
+      "Tubman": 423.7,
+      "West Sylvan": 569.1
+     },
+     "kids_changing_school_2025_26_basis": 2728.4,
+     "block_assignment_method_counts": {
+      "map": 8763,
+      "k8_rule": 417,
+      "nearest": 103,
+      "bybee_rule": 12
+     }
+    },
+    "9-12": {
+     "flows_current_to_scenario": [
+      {
+       "from": "Cleveland",
+       "to": "Cleveland",
+       "kids_2025_26": 1207.6
+      },
+      {
+       "from": "Cleveland",
+       "to": "Franklin",
+       "kids_2025_26": 128.4
+      },
+      {
+       "from": "Franklin",
+       "to": "Cleveland",
+       "kids_2025_26": 141.8
+      },
+      {
+       "from": "Franklin",
+       "to": "Franklin",
+       "kids_2025_26": 1399.8
+      },
+      {
+       "from": "Franklin",
+       "to": "McDaniel",
+       "kids_2025_26": 36.4
+      },
+      {
+       "from": "Grant",
+       "to": "Grant",
+       "kids_2025_26": 1366.1
+      },
+      {
+       "from": "Grant",
+       "to": "Jefferson",
+       "kids_2025_26": 600.3
+      },
+      {
+       "from": "Ida B. Wells",
+       "to": "Ida B. Wells",
+       "kids_2025_26": 1563.5
+      },
+      {
+       "from": "Ida B. Wells",
+       "to": "Lincoln",
+       "kids_2025_26": 10.5
+      },
+      {
+       "from": "Lincoln",
+       "to": "Ida B. Wells",
+       "kids_2025_26": 5.2
+      },
+      {
+       "from": "Lincoln",
+       "to": "Lincoln",
+       "kids_2025_26": 1352.3
+      },
+      {
+       "from": "Lincoln",
+       "to": "Roosevelt",
+       "kids_2025_26": 111.6
+      },
+      {
+       "from": "McDaniel",
+       "to": "Jefferson",
+       "kids_2025_26": 264.6
+      },
+      {
+       "from": "McDaniel",
+       "to": "McDaniel",
+       "kids_2025_26": 1124.1
+      },
+      {
+       "from": "Roosevelt",
+       "to": "Jefferson",
+       "kids_2025_26": 476.1
+      },
+      {
+       "from": "Roosevelt",
+       "to": "Roosevelt",
+       "kids_2025_26": 761.9
+      }
+     ],
+     "neighborhood_kids_by_school_2025_26_basis": {
+      "Cleveland": 1349.3,
+      "Franklin": 1528.3,
+      "Grant": 1366.1,
+      "Ida B. Wells": 1568.7,
+      "Jefferson": 1340.9,
+      "Lincoln": 1362.8,
+      "McDaniel": 1160.5,
+      "Roosevelt": 873.5
+     },
+     "kids_changing_school_2025_26_basis": 1774.8,
+     "block_assignment_method_counts": {
+      "map": 9165,
+      "skyline_rule": 125,
+      "nearest": 5
+     }
+    }
+   },
+   "scenario_B_differences": [
+    "Lewis stays open and receives part of Whitman's area (Lewis/Duniway still go to Lane/Brentwood for 6-8)",
+    "Rose City Park stays open with its area and Vietnamese DLI (Scott does not receive RCP area; Vietnamese DLI not moved)",
+    "Stephenson stays open with no change",
+    "Duniway's area west of McLoughlin stays with Duniway (moves to Llewellyn only in A)"
+   ]
+  }
+ }
+}

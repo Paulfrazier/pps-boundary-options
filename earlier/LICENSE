@@ -1,0 +1,50 @@
+Copyright (c) 2026 Paul Frazier
+
+This repository mixes three kinds of material, licensed separately.
+
+1. CODE: MIT License
+   Applies to all source code: *.py, *.js, *.sh, and the scripts, styles and markup
+   that build the HTML pages.
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+2. ANALYSIS, DOCUMENTATION AND RESULTS: Creative Commons Attribution 4.0 International (CC BY 4.0)
+   Applies to Paul Frazier's own write-ups, method notes, scorecards, maps and
+   derived tables (README, SOURCES, DEFINITIONS, method notes, compare.md,
+   scorecards, per-school CSVs, block assignments, traced scenario boundaries,
+   and the site pages in pages/).
+   https://creativecommons.org/licenses/by/4.0/
+   Attribution: "Paul Frazier, PPS boundary options analysis (independent, unofficial)".
+
+3. THIRD-PARTY DATA keeps its own license. See SOURCES.md. In particular:
+   - Data derived from OpenStreetMap (walk/bike distance matrices, street lines and
+     street-name labels in the pages) is (c) OpenStreetMap contributors and available
+     under the Open Database License (ODbL) 1.0: https://opendatacommons.org/licenses/odbl/
+     Those derived databases are offered under the ODbL, not CC BY.
+   - US Census, NCES and ODE data are US/Oregon public-sector data.
+   - PPS documents: the original PDFs are not redistributed here; they are linked
+     (SOURCES.md). build/pps-texts/ holds unofficial plain-text extractions of those
+     public PPS documents, provided so readers can search and check the figures the
+     analysis cites. The documents and their content remain Portland Public Schools'
+     work; the extractions may contain errors, and the original PDFs are authoritative.
+     These extractions are not covered by the CC BY license above.
+   - Figures from other community projects (e.g. meub/pps-data) keep their own
+     licenses, credited in SOURCES.md.
+   - The Overpass fonts embedded in some pages in pages/ are under the
+     SIL Open Font License 1.1 (fonts/OFL.txt).

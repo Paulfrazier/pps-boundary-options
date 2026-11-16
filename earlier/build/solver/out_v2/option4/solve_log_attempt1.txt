@@ -1,0 +1,65 @@
+== option4 K-5
+ K-5: each kid placed across a A_hs high-school line costs 0.1 kid-miles
+ durability mode (meet_reference, horizon pps2031: 2027-28..2031-32): required at target by year [23, 23, 22, 22, 21] (reference scenario_A); 35 countable schools
+ 37 schools, 9295 blocks, 30700 assignment vars, avg 3.3 candidates/block
+ pruned 72 unreachable (block, school) candidates
+ pruned 2 unreachable (block, school) candidates
+ EDGE CASE (walk-cap fallback): blocks left with no reachable school inside the cap get their nearest-walk schools and their neighbours' nearest in-cap school as candidates: 410510072023008 (2.0 kids; candidates now ['Sitton'])
+ component: 37 schools, 9295 blocks
+  relaxation (no contiguity): FEASIBLE 180s obj=106747505 bound=96583386 islands=104 slack={'Forest Park:lo': 101.63, 'Skyline:lo': 5.83, 'Sunnyside:lo': 8.99}
+  star-feasible warm start: 10 violations left after greedy repair
+  round 0: FEASIBLE 602s obj=97437085 bound=97285789 gap=0.16% islands=0 (0.0 kids) slack={'Forest Park:lo': 102.02, 'Skyline:lo': 5.83} splits=0
+   at target in every modeled year (pps2031): 33/35; at target by year [33, 34, 34, 34, 34] (required [23, 23, 22, 22, 21])
+ K-5 done in 790.6s
+== option4 6-8
+ middle->high feeders vs A_hs: soft (Paul 2026-10-12 ~15:15): ~200 kid-miles per extra HS, no floor penalty 200.0 per high school fed; floor 0% of 15 middle zones feed one HS
+ durability mode (meet_reference, horizon pps2031: 2027-28..2031-32): required at target by year [10, 9, 9, 7, 7] (reference scenario_A); 13 countable schools
+ 15 schools, 9295 blocks, 41225 assignment vars, avg 4.4 candidates/block
+ pruned 0 unreachable (block, school) candidates
+ component: 15 schools, 9295 blocks
+   middle zones feeding one high school: 4/15 (floor 0%); split: {'Beaumont': ['McDaniel', 'Grant', 'Jefferson'], 'George': ['Jefferson', 'Roosevelt'], 'Gray': ['Lincoln', 'Ida B. Wells'], 'Harrison Park': ['Franklin', 'McDaniel'], 'Hosford': ['Cleveland', 'Grant', 'Franklin'], 'Jackson': ['Lincoln', 'Ida B. Wells'], 'Lane': ['Cleveland', 'Franklin'], 'Mt Tabor': ['Cleveland', 'Grant', 'Franklin', 'McDaniel'], 'Ockley Green': ['Jefferson', 'Roosevelt'], 'Tubman': ['McDaniel', 'Grant', 'Jefferson', 'Cleveland'], 'West Sylvan': ['Lincoln', 'Ida B. Wells']}
+  relaxation (no contiguity): OPTIMAL 2s obj=52297776 bound=52297776 islands=7 slack={'Gray:lo': 8.5, 'Roseway Heights:lo': 35.05, 'West Sylvan:lo': 10.65}
+  star-feasible warm start: n/a (zone-level rule; relaxed solution used as hint) violations left after greedy repair
+   middle zones feeding one high school: 6/15 (floor 0%); split: {'Beaumont': ['McDaniel', 'Grant', 'Jefferson'], 'Gray': ['Lincoln', 'Ida B. Wells'], 'Harrison Park': ['Cleveland', 'Grant', 'Franklin', 'McDaniel'], 'Hosford': ['Cleveland', 'Franklin'], 'Lane': ['Cleveland', 'Franklin'], 'Mt Tabor': ['Cleveland', 'Grant', 'Franklin', 'McDaniel'], 'Ockley Green': ['McDaniel', 'Jefferson', 'Roosevelt'], 'Tubman': ['McDaniel', 'Grant', 'Jefferson', 'Cleveland'], 'West Sylvan': ['Lincoln', 'Ida B. Wells']}
+  round 0: OPTIMAL 1s obj=112215853 bound=112215853 gap=0.00% islands=0 (0.0 kids) slack={'Jackson:lo': 78.82, 'Roseway Heights:lo': 35.05} splits=0
+   at target in every modeled year (pps2031): 9/13; at target by year [10, 11, 11, 11, 11] (required [10, 9, 9, 7, 7])
+  whole-zone feeders leave a size violation -> phase 2: allow penalized splits
+  phase 2a: minimise size slack + number of splits only
+   middle zones feeding one high school: 6/15 (floor 0%); split: {'Beaumont': ['McDaniel', 'Grant', 'Jefferson'], 'Harrison Park': ['Cleveland', 'Grant', 'Franklin', 'McDaniel'], 'Hosford': ['Cleveland', 'Franklin'], 'Jackson': ['Lincoln', 'Ida B. Wells'], 'Lane': ['Cleveland', 'Franklin'], 'Mt Tabor': ['Franklin', 'McDaniel'], 'Ockley Green': ['Jefferson', 'Roosevelt'], 'Tubman': ['Grant', 'Jefferson', 'Cleveland'], 'West Sylvan': ['Lincoln', 'Ida B. Wells']}
+  relaxation (no contiguity): FEASIBLE 60s obj=6560000 bound=80000 islands=51 slack={}
+  star-feasible warm start: 29 violations left after greedy repair
+  round 0: status UNKNOWN after 601s
+  phase 2a found no solution (no feasible solution (slack makes this impossible unless a fixed var conflicts)); keeping the whole-zone phase-1 assignment
+ 6-8 done in 676.9s
+== option4 9-12
+ 9-12: fixed to block column A_hs (not solved)
+                                         K-5       6-8      9-12
+kids                               12715.000  5934.400  9261.000
+avg_walk_mi                            0.969     1.898     1.933
+pct_within_0.5mi                      23.800     7.000     5.700
+pct_within_1.0mi                      63.400    26.100    23.400
+pct_within_1.5mi                      85.800    47.900    46.700
+kids_over_bus_threshold             4655.000  3092.000  4936.000
+bus_threshold_mi                       1.000     1.500     1.500
+kids_past_closer_school             1838.000  1614.000   751.000
+past_margin_mi                         0.250     0.250     0.250
+kids_reassigned_vs_status_quo       3594.000  2762.000   388.000
+poc_share_of_movers_vs_status_quo      0.428     0.404     0.421
+kids_reassigned_vs_today            3604.000  2697.000  1565.000
+poc_share_district                     0.426     0.428     0.426
+dissimilarity_index                    0.214     0.137     0.180
+schools_open                          41.000    15.000     8.000
+schools_in_range                      40.000    13.000     8.000
+schools_evaluated_non_exempt          39.000    13.000     8.000
+schools_in_range_non_exempt           38.000    11.000     8.000
+avg_utilization                        0.748     0.740     0.784
+min_size                             172.000   172.000  1181.000
+max_size                             552.000   621.000  1543.000
+schools_in_range_2025_26_basis        34.000    12.000     7.000
+schools_in_range_at_minus9pct         16.000     9.000     7.000
+avg_bike_mi                              NaN     1.973     2.001
+n_split_feeders_es_to_ms                 NaN     0.000       NaN
+pct_within_2.0mi                         NaN       NaN    61.800
+n_split_feeders_ms_to_hs                 NaN       NaN     8.000
+pct_ms_feeders_to_one_hs                 NaN       NaN    46.700
+hs_range                                 NaN       NaN   362.000

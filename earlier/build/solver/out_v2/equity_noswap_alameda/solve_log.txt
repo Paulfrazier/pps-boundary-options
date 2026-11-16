@@ -1,0 +1,46 @@
+== equity_noswap_alameda K-5
+ K-5: each kid placed across a A_hs line (hs_nest) costs 0.1 kid-miles
+ K-5: start from equity_noswap.staging; <= 300 kids may move (1.0 kid-miles each)
+ durability mode (all, horizon pps2031: 2027-28..2031-32): required at target by year [38, 38, 38, 38, 38] (reference scenario_A); 38 countable schools
+ 40 schools, 9295 blocks, 65066 assignment vars, avg 7.0 candidates/block
+ pruned 229 unreachable (block, school) candidates
+ component: 40 schools, 9295 blocks
+  (round 0: 674s wall, det=2271.9 work units)
+  round 0: OPTIMAL 674s obj=-11978052 bound=-11978052 gap=0.00% islands=0 (0.0 kids) slack={} splits=0
+   at target in every modeled year (pps2031): 38/38; at target by year [38, 38, 38, 38, 38] (required [38, 38, 38, 38, 38])
+ K-5 done in 677.3s
+== equity_noswap_alameda 6-8
+ 6-8: fixed to build/solver/out_v2/equity_noswap.staging/assign_6-8.parquet (not solved)
+== equity_noswap_alameda 9-12
+ 9-12: fixed to build/solver/out_v2/equity_noswap.staging/assign_9-12.parquet (not solved)
+                                         K-5       6-8      9-12
+kids                               12715.000  5934.400  9261.000
+avg_walk_mi                            0.913     1.718     1.933
+pct_within_0.5mi                      25.300     7.100     5.700
+pct_within_1.0mi                      70.300    28.300    23.400
+pct_within_1.5mi                      89.700    52.300    46.700
+kids_over_bus_threshold             3777.000  2830.000  4936.000
+bus_threshold_mi                       1.000     1.500     1.500
+kids_past_closer_school              885.000  1037.000   751.000
+past_margin_mi                         0.250     0.250     0.250
+kids_reassigned_vs_status_quo       4762.000  2271.000   388.000
+poc_share_of_movers_vs_status_quo      0.430     0.402     0.421
+kids_reassigned_vs_today            4758.000  2270.000  1565.000
+poc_share_district                     0.426     0.428     0.426
+dissimilarity_index                    0.213     0.167     0.180
+schools_open                          41.000    15.000     8.000
+schools_in_range                      41.000    15.000     8.000
+schools_evaluated_non_exempt          39.000    13.000     8.000
+schools_in_range_non_exempt           39.000    13.000     8.000
+avg_utilization                        0.759     0.734     0.784
+min_size                             178.000   178.000  1181.000
+max_size                             549.000   621.000  1543.000
+schools_in_range_2025_26_basis        35.000    12.000     7.000
+schools_in_range_at_minus9pct         17.000     9.000     7.000
+avg_bike_mi                              NaN     1.774     2.001
+n_split_feeders_es_to_ms                 NaN     3.000       NaN
+pct_within_2.0mi                         NaN       NaN    61.800
+n_split_feeders_ms_to_hs                 NaN       NaN     9.000
+n_split_feeders_es_to_hs                 NaN       NaN    14.000
+pct_ms_feeders_to_one_hs                 NaN       NaN    40.000
+hs_range                                 NaN       NaN   362.000

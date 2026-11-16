@@ -1,0 +1,286 @@
+SELECTED: Beaumont
+RETRIEVED: 2026-10-09T19:08:36.935Z
+SOURCE: https://app.powerbi.com/view?r=eyJrIjoiOWZlNmJhYjQtYzc5YS00MzY5LTk3ODYtMWYxMmQ0YWMyMjIxIiwidCI6ImQwOGRmYzk0LWEyM2MtNDRlNC04YjhkLTRhYmM0MGRkYTlhZSIsImMiOjZ9&pageName=52fe3db4b36f375bbf95
+
+Show keyboard shortcuts
+Show screen reader tips
+Skip to main content
+Power BI Report
+
+School Profiles
+
+2025 - 2026
+
+School
+Abernethy
+Access Academy
+Ainsworth
+Alameda
+Alliance
+Arleta
+Astor
+Atkinson
+Beach
+Beaumont
+Benson
+Beverly Cleary
+Boise-Eliot/Humboldt
+Brentwood
+Bridger Creative Science
+Bridlemile
+Buckman
+Capitol Hill
+Cesar Chavez
+Chapman
+Chief Joseph
+Clark
+Cleveland
+Creston
+DaVinci Arts
+Dr Martin Luther King Jr
+Duniway
+Faubion
+Forest Park
+Franklin
+George
+Glencoe
+Grant
+Grout
+Harriet Tubman
+Harrison Park
+Hayhurst
+Hosford
+Ida B Wells
+Irvington
+Jackson
+James John
+Jefferson
+Kellogg
+Kelly
+Laurelhurst
+Lent
+Lewis
+Lincoln
+Llewellyn
+Maplewood
+Markham
+Marysville
+McDaniel
+MLC K12
+Mt Tabor
+Ockley Green
+Odyssey Program
+Peninsula
+Richmond
+Rieke
+Rigler
+Robert Gray
+Roosevelt
+Rosa Parks
+Rose City Park
+Roseway Heights
+Sabin
+Scott
+Sellwood
+Sitton
+Skyline
+Stephenson
+Sunnyside Environmental
+Sunrise
+Vernon
+Vestal
+West Sylvan
+Whitman
+Winterhaven
+Woodlawn
+Woodmere
+Woodstock
+
+Beaumont
+
+Map panned south east 5.12 kilometers.
+
+Location: NE Fremont St & NE 42nd Ave, Beaumont Wilshire, Maywood Park.
+
+Map style: grayscale_light.
+
+Map shortcuts: Zoom out: hyphen. Zoom in: plus. Pan right 100 pixels: right arrow. Pan left 100 pixels: left arrow. Pan up 100 pixels: up arrow. Pan down 100 pixels: down arrow. Rotate 15 degrees clockwise: shift + right arrow. Rotate 15 degrees counter clockwise: shift + left arrow. Increase pitch 10 degrees: shift + up arrow. Decrease pitch 10 degrees: shift + down arrow. Jump focus to the map: Escape.
+Road
+Satellite
+Hybrid
+Grayscale (Dark)
+Night
+Grayscale (Light)
+Terra
+Blank
+Blank (Accessible)
+High contrast (Dark)
+High contrast (Light)
+Grayscale (Light)
+©2026 TomTom©2026 OSM
+Feedback
+
+Address: 4043 NE FREMONT ST
+Originally Built For: K-8
+HS Cluster: GRANT
+Primary Use: Middle
+
+BUILDING INFORMATION
+
+Grades: MS
+Year Built: 1926
+Square Footage: 93,277
+
+Enrollment
+
+416
+
+=
+
+Utilization Rate
+
+56%
+
+÷
+
+Functional Capacity
+
+737
+
+Functional
+Capacity
+
+736.95
+
+2025-2026 Utilization Rate
+
+56%
+
+Enrollment
+
+Direct Cert. indicates percentage of students qualifying for direct certification. 
+
+2026 - 2027 Projected
+
+415
+
+2025 - 2026 Enrollment
+
+416
+
+2025 - 2026 Direct Cert.
+
+23.6%
+
+Students in Neighborhood School
+
+345
+
+PPS Students Live in Zone
+
+520
+
+In District Capture Rate
+
+66.3%
+
+Historical and Projected Enrollment
+0
+200
+400
+School Year
+2019-2020
+2020-2021
+2021-2022
+2022-2023
+2023-2024
+2024-2025
+2025-2026
+2026-2027
+2027-2028
+2028-2029
+2029-2030
+2030-2031
+2031-2032
+573
+418
+448
+434
+410
+390
+390
+388
+416
+467
+435
+415
+518
+Historical Demographics
+0
+200
+400
+School Year
+2018-19
+2019-20
+2020-21
+2021-22
+2022-23
+2023-24
+2024-25
+2025-26
+314
+318
+280
+261
+260
+262
+259
+244
+48
+48
+55
+47
+46
+53
+126
+135
+133
+125
+123
+107
+114
+99
+62
+59
+Race
+Asian
+Black
+Latino
+Multiple
+Native
+Pacific Islander
+White
+
+Programs
+
+Program Type
+
+Neighborhood / Immersion
+
+Title 1
+
+No
+
+Immersion Language
+
+Spanish
+
+Immersion Language 2
+
+--
+
+-
++
+107%
+Microsoft Power BI
+Report Zoomed To 107%

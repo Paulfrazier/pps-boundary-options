@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Why these sizes | PPS boundary options</title>
-<meta name="description" content="Where PPS&rsquo;s school-size targets (360 elementary, 500 middle and K-8, 1,100 high school) come from, and how many schools fall short.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Crect width=%2732%27 height=%2732%27 rx=%276%27 fill=%27%23245c9e%27/%3E%3Cpath d=%27M6 15 16 7l10 8v10H6z%27 fill=%27%23fff%27/%3E%3Crect x=%2713.5%27 y=%2718%27 width=%275%27 height=%277%27 fill=%27%23245c9e%27/%3E%3C/svg%3E">
-<link rel="stylesheet" href="site.css">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Why these sizes</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Why these sizes: PPS boundary options.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2715%27 fill=%27%2316785a%27/%3E%3Cpath d=%27M9 16 16 10l7 6v7H9z%27 fill=%27%23fff%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="../pages/site2.css">
 <style>
 :root{--below:#b4472f;--above:#2e7d5b;--thr:#2a78d6;--aud:#6b7a86;--band:#e6eef8}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--below:#e8876f;--above:#6cc49a;--thr:#5fa0ec;--aud:#9aa7b2;--band:#1f2c3a}}
@@ -32,10 +34,10 @@ table.ar td,table.ar th{text-align:right}table.ar td:first-child,table.ar th:fir
 </style>
 </head>
 <body>
-<nav class="site-nav"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="options.html">Options</a><a href="plans.html">Plans</a><a href="map.html">Map</a><a href="durability.html">Durability</a><a href="requests.html">Requests</a><a href="sabin.html">Sabin options</a><a href="sabin-explore.html">Exploring Sabin options</a><a href="closer-b.html">Closer schools (B)</a><a href="schools.html">Schools</a><a href="sizes.html" aria-current="page">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a></div></nav>
-<main>
-<div class="warn" id="pps-disclaimer"><b>Independent analysis by a PPS parent, not an official Portland Public Schools product.</b> It may contain errors. Check PPS's own materials: the <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios">Rightsizing scenarios page</a> and the <a href="https://meetings.boardbook.org/Public/Agenda/915?meeting=769955">October 6, 2026 Board of Education meeting materials</a>. Built with AI, directed by a PPS parent (<a href="#ai">how</a>).</div>
-
+<div class="ainote band"><div class="in">Independent analysis by a PPS parent, not an official Portland Public Schools product. Built with AI: Claude did the work, directed and checked by Paul Frazier. <a href="../pages/how.html">How we did this</a> &middot; <a href="#ai">About the AI</a></div></div>
+<nav class="site-nav band" aria-label="Site"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="../pages/map.html">Map</a><a href="../pages/far-walks.html">Far walks</a><a href="../pages/options.html">Options</a><a href="../pages/plans.html">Plans</a><a href="../pages/durability.html">Year by year</a><a href="../pages/schools.html">Schools</a><a href="../pages/sabin.html">Sabin and NE</a><a href="../pages/sabin-explore.html">Exploring Sabin options</a><a href="../pages/sizes.html" aria-current="page">Why these sizes</a><a href="../pages/segc.html">Lessons from SEGC</a><a href="../pages/method.html">Method</a><a href="../pages/sources.html">Sources</a><a href="../pages/how.html">How we did this</a><a class="earlier" href="../earlier/index.html">Earlier work (Scenario A/B era)</a></div></nav>
+<main class="band"><div class="in">
+<div class="carry">
 <h1>Why these sizes?</h1>
 <p class="lede">PPS&rsquo;s size goal is more than 360 students for each elementary school, more than 500 for each middle and K-8 school, and more than 1,100 for each high school (<a href="https://www.pps.net/about/portland-public-schools-information/rightsize/how-could-your-school-be-impacted">PPS Family Guides</a>, glossary, p. 2). Where do those numbers come from, and how many schools fall short?</p>
 
@@ -119,11 +121,14 @@ table.ar td,table.ar th{text-align:right}table.ar td:first-child,table.ar th:fir
 </ul>
 <p class="small muted">Research notes with every quote and page number: <a href="../build/export/sizes/RESEARCH.md">RESEARCH.md</a>. Chart style inspired by the community site <a href="https://rightsizepdx.com/">Right Size Portland</a>.</p>
 
-<footer><p><a href="durability.html">School sizes year by year</a> &middot; <a href="options.html">Every plan side by side</a> &middot; <a href="method.html">Method</a></p><p id="gen"></p><p id="ai"><b>Built with AI.</b> The research, data work, modeling and writing were done by AI (Claude, from Anthropic), directed and guided by Paul Frazier, a PPS parent, who made every judgment call and checked results against PPS&rsquo;s documents. Best effort; it will have errors. <a href="how.html">How we did this</a> &middot; <a href="method.html">Method</a>.</p>
-<p><a href="../LICENSE">License</a>: code MIT, analysis CC BY 4.0, OpenStreetMap-derived data &copy; OpenStreetMap contributors, ODbL. &copy; 2026 Paul Frazier.</p>
-</footer>
-</main>
-<script src="data/site_data.js"></script>
+</div>
+</div></main>
+<footer class="band"><div class="in">
+<p id="ai"><b>Built with AI.</b> The research, data work, modeling and writing were done by AI (Claude, from Anthropic), directed and checked by Paul Frazier, a PPS parent, who made every judgment call and checked results against PPS&rsquo;s documents. Best effort; it will have errors. <a href="../pages/how.html">How we did this</a> &middot; <a href="../pages/method.html">Method</a>.</p>
+<p>Every figure is a model estimate on the Portland State University (PSU) enrollment forecast, from our model, not PPS&rsquo;s, unless a PPS source is cited. Figures may not hold up on PPS&rsquo;s own data.</p>
+<p><a href="../LICENSE">License</a>: code MIT, analysis CC BY 4.0, OpenStreetMap-derived data &copy; OpenStreetMap contributors, ODbL. &copy; 2026 Paul Frazier. Data generated November 15, 2026.</p>
+</div></footer>
+<script src="data/sizes_data.js"></script>
 <script>
 (function(){
 var D=window.SITE_DATA,$=function(i){return document.getElementById(i)};

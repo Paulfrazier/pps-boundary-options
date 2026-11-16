@@ -1,0 +1,19 @@
+school,size_2027_28,size_2031_32,size_2035_36,natural_catchment_2031,direct_cert_2025_26_pct,title_1,dli,seismic,urm,nbhd_kids_2031,walk_now_mi,walk_if_closed_mi,within_1mi_now,within_1mi_if_closed,receivers_if_closed (kids -> receiver 2031 size),receiver_over_capacity
+Sabin,237,236,221,242,28.3,No,-,targeted,True,236,0.45,0.59,1.0,1.0,Alameda 122 -> 612; MLK Jr 88 -> 425; Vernon 24 -> 312,-
+Lee,245,254,239,197,45.4,Yes,-,,False,254,0.82,1.51,0.65,0.05,Scott 127 -> 597; Rose City Park 127 -> 497,-
+Chief Joseph,250,243,226,395,22.3,No,-,targeted,False,243,0.68,1.21,0.76,0.23,Beach 177 -> 464; Woodlawn 30 -> 319; Rosa Parks 22 -> 486; MLK Jr 15 -> 352,-
+Rieke,254,313,250,452,15.2,No,-,,True,313,0.75,1.3,0.81,0.13,Capitol Hill 234 -> 554; Bridlemile 80 -> 486,Capitol Hill
+Forest Park,260,258,243,284,6.4,No,-,,False,258,1.08,4.51,0.54,0.0,Chapman 258 -> 594,Chapman
+Stephenson,270,260,241,194,10.0,No,-,targeted,False,260,1.07,1.62,0.44,0.06,Markham 170 -> 514; Capitol Hill 90 -> 410,-
+Hayhurst,274,266,252,195,26.2,No,-,full,True,266,0.93,0.96,0.61,0.53,Bridlemile 101 -> 508; Rieke 80 -> 393; Maplewood 75 -> 323; Capitol Hill 10 -> 330,-
+Maplewood,279,248,232,194,19.5,No,-,targeted,False,248,0.99,1.1,0.48,0.43,Hayhurst 148 -> 414; Capitol Hill 74 -> 394; Rieke 19 -> 333; Markham 7 -> 351,-
+Beach,284,287,253,174,34.7,Yes,Spanish,planned_targeted,True,160,0.61,1.01,0.92,0.48,Chief Joseph 84 -> 327; Boise-Eliot/Humboldt 40 -> 349; MLK Jr 36 -> 373,-
+Marysville,297,309,276,377,58.3,Yes,-,full,True,309,0.77,1.03,0.76,0.45,Kelly 154 -> 545; Arleta 140 -> 542; Bridger 16 -> 300,-
+Vestal,297,282,265,263,43.8,Yes,-,,False,282,0.68,1.25,0.83,0.23,Bridger 134 -> 418; Clark 104 -> 447; Laurelhurst 28 -> 351; Glencoe 17 -> 317,-
+Woodlawn,300,289,265,456,44.6,Yes,-,targeted,False,289,0.69,1.11,0.79,0.36,Chief Joseph 100 -> 343; MLK Jr 86 -> 423; Faubion 64 -> 443; Vernon 38 -> 326,-
+Grout,303,280,255,288,51.1,Yes,-,,False,280,0.71,1.21,0.81,0.21,Abernethy 129 -> 484; Woodstock 99 -> 424; Sunnyside 29 -> 440; Duniway 13 -> 360; Llewellyn 10 -> 322,-
+Bridger,309,285,276,212,27.1,No,-,full,False,91,0.45,0.94,1.0,0.57,Clark 44 -> 387; Vestal 26 -> 308; Atkinson 19 -> 405,-
+Markham,310,344,307,340,38.3,Yes,-,targeted,False,345,1.2,1.7,0.37,0.06,Stephenson 195 -> 455; Maplewood 143 -> 391; Capitol Hill 7 -> 327,-
+Llewellyn,312,312,291,423,13.3,No,-,,False,312,0.82,1.52,0.72,0.0,Duniway 273 -> 620; Grout 39 -> 319,Duniway
+Rigler,312,328,304,121,54.0,Yes,Spanish (whole school),targeted,True,6,0.81,1.1,0.72,0.31,,-
+Vernon,313,288,282,242,27.9,No,-,planned_targeted,True,288,0.78,0.83,0.69,0.8,Rigler 71 -> 399; Sabin 60 -> 295; Alameda 55 -> 545; Faubion 53 -> 431; MLK Jr 32 -> 369; Woodlawn 17 -> 306,-

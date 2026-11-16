@@ -1,0 +1,36 @@
+== option2_nested K-5
+ K-5: fixed to build/solver/out_v2/nest3_tidy.staging/assign_K-5.parquet (not solved)
+== option2_nested 6-8
+ 6-8: fixed to build/solver/out_v2/nest3_425.staging/assign_6-8.parquet (not solved)
+== option2_nested 9-12
+ 9-12: fixed to block column A_hs (not solved)
+                                         K-5       6-8      9-12
+kids                               12715.000  5934.400  9261.000
+avg_walk_mi                            0.968     1.771     1.933
+pct_within_0.5mi                      23.200     7.400     5.700
+pct_within_1.0mi                      64.200    28.700    23.400
+pct_within_1.5mi                      87.100    50.900    46.700
+kids_over_bus_threshold             4557.000  2913.000  4936.000
+bus_threshold_mi                       1.000     1.500     1.500
+kids_past_closer_school             1594.000  1217.000   751.000
+past_margin_mi                         0.250     0.250     0.250
+kids_reassigned_vs_status_quo       4974.000  2039.000   388.000
+poc_share_of_movers_vs_status_quo      0.435     0.409     0.421
+kids_reassigned_vs_today            4963.000  2142.000  1565.000
+poc_share_district                     0.426     0.428     0.426
+dissimilarity_index                    0.213     0.175     0.180
+schools_open                          41.000    15.000     8.000
+schools_in_range                      40.000    15.000     8.000
+schools_evaluated_non_exempt          39.000    13.000     8.000
+schools_in_range_non_exempt           38.000    13.000     8.000
+avg_utilization                        0.748     0.735     0.784
+min_size                             172.000   172.000  1181.000
+max_size                             574.000   656.000  1543.000
+schools_in_range_2025_26_basis        34.000    13.000     7.000
+schools_in_range_at_minus9pct         14.000    12.000     7.000
+avg_bike_mi                              NaN     1.824     2.001
+n_split_feeders_es_to_ms                 NaN     3.000       NaN
+pct_within_2.0mi                         NaN       NaN    61.800
+n_split_feeders_ms_to_hs                 NaN       NaN     4.000
+pct_ms_feeders_to_one_hs                 NaN       NaN    73.300
+hs_range                                 NaN       NaN   362.000

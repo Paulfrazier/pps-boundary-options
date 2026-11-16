@@ -1,0 +1,1186 @@
+[
+{
+"name": "Abernethy",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 269,
+"y3132": 241
+},
+{
+"name": "Buckman",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 283,
+"y3132": 239
+},
+{
+"name": "Duniway",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 362,
+"y3132": 345
+},
+{
+"name": "Grout",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 327,
+"y3132": 280
+},
+{
+"name": "Lewis",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 259,
+"y3132": 201
+},
+{
+"name": "Llewellyn",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 345,
+"y3132": 312
+},
+{
+"name": "Whitman",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 194,
+"y3132": 223
+},
+{
+"name": "Woodstock",
+"type": "ES",
+"program": "Mandarin",
+"grades": "K-5",
+"y2526": 190,
+"y3132": 194
+},
+{
+"name": "Woodstock",
+"type": "ES",
+"program": "Neighborhood",
+"grades": "K-5",
+"y2526": 177,
+"y3132": 131
+},
+{
+"name": "Woodstock",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 367,
+"y3132": 325
+},
+{
+"name": "Hosford",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 528,
+"y3132": 374
+},
+{
+"name": "Sellwood",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 564,
+"y3132": 350
+},
+{
+"name": "Cleveland",
+"type": "HS",
+"program": "Mandarin",
+"grades": "9-12",
+"y2526": 115,
+"y3132": 112
+},
+{
+"name": "Cleveland",
+"type": "HS",
+"program": "Neighborhood",
+"grades": "9-12",
+"y2526": 1336,
+"y3132": 1206
+},
+{
+"name": "Cleveland",
+"type": "HS",
+"program": "Total",
+"grades": "9-12",
+"y2526": 1451,
+"y3132": 1318
+},
+{
+"name": "Arleta",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 230,
+"y3132": 210
+},
+{
+"name": "Atkinson",
+"type": "ES",
+"program": "Neighborhood",
+"grades": "K-5",
+"y2526": 188,
+"y3132": 203
+},
+{
+"name": "Atkinson",
+"type": "ES",
+"program": "Spanish",
+"grades": "K-5",
+"y2526": 178,
+"y3132": 183
+},
+{
+"name": "Atkinson",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 366,
+"y3132": 386
+},
+{
+"name": "Creston",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 213,
+"y3132": 187
+},
+{
+"name": "Glencoe",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 339,
+"y3132": 296
+},
+{
+"name": "Kelly",
+"type": "ES",
+"program": "Neighborhood",
+"grades": "K-5",
+"y2526": 268,
+"y3132": 246
+},
+{
+"name": "Kelly",
+"type": "ES",
+"program": "Russian",
+"grades": "K-5",
+"y2526": 143,
+"y3132": 145
+},
+{
+"name": "Kelly",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 411,
+"y3132": 391
+},
+{
+"name": "Lent",
+"type": "ES",
+"program": "Spanish",
+"grades": "K-5",
+"y2526": 256,
+"y3132": 274
+},
+{
+"name": "Lent",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 256,
+"y3132": 274
+},
+{
+"name": "Marysville",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 307,
+"y3132": 312
+},
+{
+"name": "Woodmere",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 227,
+"y3132": 225
+},
+{
+"name": "Bridger Creative Science",
+"type": "K8",
+"program": "Total",
+"grades": "K-8",
+"y2526": 446,
+"y3132": 415
+},
+{
+"name": "Sunnyside Environmental",
+"type": "K8",
+"program": "Total",
+"grades": "K-8",
+"y2526": 485,
+"y3132": 475
+},
+{
+"name": "Kellogg",
+"type": "MS",
+"program": "Neighborhood",
+"grades": "6-8",
+"y2526": 330,
+"y3132": 214
+},
+{
+"name": "Kellogg",
+"type": "MS",
+"program": "Spanish",
+"grades": "6-8",
+"y2526": 201,
+"y3132": 257
+},
+{
+"name": "Kellogg",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 531,
+"y3132": 471
+},
+{
+"name": "Lane",
+"type": "MS",
+"program": "Neighborhood",
+"grades": "6-8",
+"y2526": 411,
+"y3132": 327
+},
+{
+"name": "Lane",
+"type": "MS",
+"program": "Russian",
+"grades": "6-8",
+"y2526": 36,
+"y3132": 30
+},
+{
+"name": "Lane",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 447,
+"y3132": 357
+},
+{
+"name": "Mt Tabor",
+"type": "MS",
+"program": "Japanese",
+"grades": "6-8",
+"y2526": 222,
+"y3132": 210
+},
+{
+"name": "Mt Tabor",
+"type": "MS",
+"program": "Neighborhood",
+"grades": "6-8",
+"y2526": 208,
+"y3132": 144
+},
+{
+"name": "Mt Tabor",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 430,
+"y3132": 354
+},
+{
+"name": "Franklin",
+"type": "HS",
+"program": "Neighborhood",
+"grades": "9-12",
+"y2526": 1578,
+"y3132": 1242
+},
+{
+"name": "Franklin",
+"type": "HS",
+"program": "Russian",
+"grades": "9-12",
+"y2526": 29,
+"y3132": 25
+},
+{
+"name": "Franklin",
+"type": "HS",
+"program": "Spanish",
+"grades": "9-12",
+"y2526": 173,
+"y3132": 225
+},
+{
+"name": "Franklin",
+"type": "HS",
+"program": "Total",
+"grades": "9-12",
+"y2526": 1780,
+"y3132": 1492
+},
+{
+"name": "Alameda",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 513,
+"y3132": 492
+},
+{
+"name": "Beverly Cleary",
+"type": "K8",
+"program": "Total",
+"grades": "K-8",
+"y2526": 480,
+"y3132": 389
+},
+{
+"name": "Laurelhurst",
+"type": "K8",
+"program": "Total",
+"grades": "K-8",
+"y2526": 610,
+"y3132": 525
+},
+{
+"name": "Beaumont",
+"type": "MS",
+"program": "Neighborhood",
+"grades": "6-8",
+"y2526": 315,
+"y3132": 273
+},
+{
+"name": "Beaumont",
+"type": "MS",
+"program": "Spanish",
+"grades": "6-8",
+"y2526": 101,
+"y3132": 145
+},
+{
+"name": "Beaumont",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 416,
+"y3132": 418
+},
+{
+"name": "Grant",
+"type": "HS",
+"program": "Japanese",
+"grades": "9-12",
+"y2526": 265,
+"y3132": 221
+},
+{
+"name": "Grant",
+"type": "HS",
+"program": "Neighborhood",
+"grades": "9-12",
+"y2526": 1809,
+"y3132": 1266
+},
+{
+"name": "Grant",
+"type": "HS",
+"program": "Total",
+"grades": "9-12",
+"y2526": 2074,
+"y3132": 1487
+},
+{
+"name": "Boise-Eliot/Humboldt",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 294,
+"y3132": 308
+},
+{
+"name": "Irvington",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 259,
+"y3132": 223
+},
+{
+"name": "MLK Jr",
+"type": "ES",
+"program": "Mandarin",
+"grades": "K-5",
+"y2526": 193,
+"y3132": 196
+},
+{
+"name": "MLK Jr",
+"type": "ES",
+"program": "Neighborhood",
+"grades": "K-5",
+"y2526": 126,
+"y3132": 141
+},
+{
+"name": "MLK Jr",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 319,
+"y3132": 337
+},
+{
+"name": "Sabin",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 269,
+"y3132": 235
+},
+{
+"name": "Harriet Tubman",
+"type": "MS",
+"program": "Mandarin",
+"grades": "6-8",
+"y2526": 48,
+"y3132": 52
+},
+{
+"name": "Harriet Tubman",
+"type": "MS",
+"program": "Neighborhood",
+"grades": "6-8",
+"y2526": 354,
+"y3132": 322
+},
+{
+"name": "Harriet Tubman",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 402,
+"y3132": 374
+},
+{
+"name": "Faubion",
+"type": "K8",
+"program": "Total",
+"grades": "K-8",
+"y2526": 600,
+"y3132": 602
+},
+{
+"name": "Vernon",
+"type": "K8",
+"program": "Total",
+"grades": "K-8",
+"y2526": 541,
+"y3132": 453
+},
+{
+"name": "Beach",
+"type": "ES",
+"program": "Neighborhood",
+"grades": "K-5",
+"y2526": 133,
+"y3132": 160
+},
+{
+"name": "Beach",
+"type": "ES",
+"program": "Spanish",
+"grades": "K-5",
+"y2526": 155,
+"y3132": 127
+},
+{
+"name": "Beach",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 288,
+"y3132": 287
+},
+{
+"name": "Chief Joseph",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 242,
+"y3132": 238
+},
+{
+"name": "Peninsula",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 239,
+"y3132": 236
+},
+{
+"name": "Woodlawn",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 323,
+"y3132": 289
+},
+{
+"name": "Ockley Green",
+"type": "MS",
+"program": "Neighborhood",
+"grades": "6-8",
+"y2526": 397,
+"y3132": 402
+},
+{
+"name": "Ockley Green",
+"type": "MS",
+"program": "Spanish",
+"grades": "6-8",
+"y2526": 63,
+"y3132": 34
+},
+{
+"name": "Ockley Green",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 460,
+"y3132": 436
+},
+{
+"name": "Jefferson",
+"type": "HS",
+"program": "Mandarin",
+"grades": "9-12",
+"y2526": 14,
+"y3132": 11
+},
+{
+"name": "Jefferson",
+"type": "HS",
+"program": "Neighborhood",
+"grades": "9-12",
+"y2526": 377,
+"y3132": 1172
+},
+{
+"name": "Jefferson",
+"type": "HS",
+"program": "Total",
+"grades": "9-12",
+"y2526": 391,
+"y3132": 1183
+},
+{
+"name": "Ainsworth",
+"type": "ES",
+"program": "Neighborhood",
+"grades": "K-5",
+"y2526": 273,
+"y3132": 266
+},
+{
+"name": "Ainsworth",
+"type": "ES",
+"program": "Spanish",
+"grades": "K-5",
+"y2526": 287,
+"y3132": 291
+},
+{
+"name": "Ainsworth",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 560,
+"y3132": 557
+},
+{
+"name": "Chapman",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 330,
+"y3132": 333
+},
+{
+"name": "Forest Park",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 264,
+"y3132": 258
+},
+{
+"name": "Skyline",
+"type": "K8",
+"program": "Total",
+"grades": "K-8",
+"y2526": 207,
+"y3132": 177
+},
+{
+"name": "West Sylvan",
+"type": "MS",
+"program": "Neighborhood",
+"grades": "6-8",
+"y2526": 567,
+"y3132": 487
+},
+{
+"name": "West Sylvan",
+"type": "MS",
+"program": "Spanish",
+"grades": "6-8",
+"y2526": 116,
+"y3132": 133
+},
+{
+"name": "West Sylvan",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 683,
+"y3132": 620
+},
+{
+"name": "Lincoln",
+"type": "HS",
+"program": "Neighborhood",
+"grades": "9-12",
+"y2526": 1469,
+"y3132": 1231
+},
+{
+"name": "Lincoln",
+"type": "HS",
+"program": "Spanish",
+"grades": "9-12",
+"y2526": 178,
+"y3132": 180
+},
+{
+"name": "Lincoln",
+"type": "HS",
+"program": "Total",
+"grades": "9-12",
+"y2526": 1647,
+"y3132": 1411
+},
+{
+"name": "Clark",
+"type": "ES",
+"program": "Mandarin",
+"grades": "K-5",
+"y2526": 91,
+"y3132": 87
+},
+{
+"name": "Clark",
+"type": "ES",
+"program": "Neighborhood",
+"grades": "K-5",
+"y2526": 273,
+"y3132": 256
+},
+{
+"name": "Clark",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 364,
+"y3132": 343
+},
+{
+"name": "Lee",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 251,
+"y3132": 254
+},
+{
+"name": "Rigler",
+"type": "ES",
+"program": "Spanish",
+"grades": "K-5",
+"y2526": 289,
+"y3132": 321
+},
+{
+"name": "Rigler",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 289,
+"y3132": 321
+},
+{
+"name": "Rose City Park",
+"type": "ES",
+"program": "Neighborhood",
+"grades": "K-5",
+"y2526": 210,
+"y3132": 160
+},
+{
+"name": "Rose City Park",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 417,
+"y3132": 370
+},
+{
+"name": "Rose City Park",
+"type": "ES",
+"program": "Vietnamese",
+"grades": "K-5",
+"y2526": 207,
+"y3132": 210
+},
+{
+"name": "Scott",
+"type": "ES",
+"program": "Neighborhood",
+"grades": "K-5",
+"y2526": 254,
+"y3132": 247
+},
+{
+"name": "Scott",
+"type": "ES",
+"program": "Spanish",
+"grades": "K-5",
+"y2526": 222,
+"y3132": 223
+},
+{
+"name": "Scott",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 476,
+"y3132": 470
+},
+{
+"name": "Vestal",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 283,
+"y3132": 279
+},
+{
+"name": "Harrison Park",
+"type": "MS",
+"program": "Mandarin",
+"grades": "6-8",
+"y2526": 111,
+"y3132": 98
+},
+{
+"name": "Harrison Park",
+"type": "MS",
+"program": "Neighborhood",
+"grades": "6-8",
+"y2526": 308,
+"y3132": 319
+},
+{
+"name": "Harrison Park",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 419,
+"y3132": 417
+},
+{
+"name": "Roseway Heights",
+"type": "MS",
+"program": "Neighborhood",
+"grades": "6-8",
+"y2526": 415,
+"y3132": 348
+},
+{
+"name": "Roseway Heights",
+"type": "MS",
+"program": "Spanish",
+"grades": "6-8",
+"y2526": 93,
+"y3132": 78
+},
+{
+"name": "Roseway Heights",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 572,
+"y3132": 498
+},
+{
+"name": "Roseway Heights",
+"type": "MS",
+"program": "Vietnamese",
+"grades": "6-8",
+"y2526": 64,
+"y3132": 72
+},
+{
+"name": "McDaniel",
+"type": "HS",
+"program": "Neighborhood",
+"grades": "9-12",
+"y2526": 1325,
+"y3132": 905
+},
+{
+"name": "McDaniel",
+"type": "HS",
+"program": "PISA",
+"grades": "9-12",
+"y2526": 65,
+"y3132": 72
+},
+{
+"name": "McDaniel",
+"type": "HS",
+"program": "Spanish",
+"grades": "9-12",
+"y2526": 205,
+"y3132": 174
+},
+{
+"name": "McDaniel",
+"type": "HS",
+"program": "Total",
+"grades": "9-12",
+"y2526": 1629,
+"y3132": 1261
+},
+{
+"name": "McDaniel",
+"type": "HS",
+"program": "Vietnamese",
+"grades": "9-12",
+"y2526": 34,
+"y3132": 110
+},
+{
+"name": "James John",
+"type": "ES",
+"program": "Neighborhood",
+"grades": "K-5",
+"y2526": 232,
+"y3132": 216
+},
+{
+"name": "James John",
+"type": "ES",
+"program": "Spanish",
+"grades": "K-5",
+"y2526": 133,
+"y3132": 136
+},
+{
+"name": "James John",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 365,
+"y3132": 352
+},
+{
+"name": "Rosa Parks",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 160,
+"y3132": 168
+},
+{
+"name": "Sitton",
+"type": "ES",
+"program": "Neighborhood",
+"grades": "K-5",
+"y2526": 207,
+"y3132": 198
+},
+{
+"name": "Sitton",
+"type": "ES",
+"program": "Spanish",
+"grades": "K-5",
+"y2526": 138,
+"y3132": 113
+},
+{
+"name": "Sitton",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 345,
+"y3132": 311
+},
+{
+"name": "Astor",
+"type": "K8",
+"program": "Total",
+"grades": "K-8",
+"y2526": 400,
+"y3132": 418
+},
+{
+"name": "C\u00e9sar Ch\u00e1vez",
+"type": "K8",
+"program": "Neighborhood",
+"grades": "K-8",
+"y2526": 143,
+"y3132": 97
+},
+{
+"name": "C\u00e9sar Ch\u00e1vez",
+"type": "K8",
+"program": "Spanish",
+"grades": "K-8",
+"y2526": 300,
+"y3132": 295
+},
+{
+"name": "C\u00e9sar Ch\u00e1vez",
+"type": "K8",
+"program": "Total",
+"grades": "K-8",
+"y2526": 443,
+"y3132": 392
+},
+{
+"name": "George",
+"type": "MS",
+"program": "Neighborhood",
+"grades": "6-8",
+"y2526": 249,
+"y3132": 267
+},
+{
+"name": "George",
+"type": "MS",
+"program": "Spanish",
+"grades": "6-8",
+"y2526": 109,
+"y3132": 123
+},
+{
+"name": "George",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 358,
+"y3132": 390
+},
+{
+"name": "Roosevelt",
+"type": "HS",
+"program": "Neighborhood",
+"grades": "9-12",
+"y2526": 1082,
+"y3132": 782
+},
+{
+"name": "Roosevelt",
+"type": "HS",
+"program": "PISA",
+"grades": "9-12",
+"y2526": 38,
+"y3132": 53
+},
+{
+"name": "Roosevelt",
+"type": "HS",
+"program": "Spanish",
+"grades": "9-12",
+"y2526": 299,
+"y3132": 282
+},
+{
+"name": "Roosevelt",
+"type": "HS",
+"program": "Total",
+"grades": "9-12",
+"y2526": 1419,
+"y3132": 1117
+},
+{
+"name": "Bridlemile",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 423,
+"y3132": 408
+},
+{
+"name": "Capitol Hill",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 325,
+"y3132": 311
+},
+{
+"name": "Hayhurst",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 290,
+"y3132": 266
+},
+{
+"name": "Maplewood",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 287,
+"y3132": 247
+},
+{
+"name": "Markham",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 339,
+"y3132": 347
+},
+{
+"name": "Rieke",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 264,
+"y3132": 311
+},
+{
+"name": "Stephenson",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 281,
+"y3132": 261
+},
+{
+"name": "Gray",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 432,
+"y3132": 368
+},
+{
+"name": "Jackson",
+"type": "MS",
+"program": "Total",
+"grades": "6-8",
+"y2526": 689,
+"y3132": 515
+},
+{
+"name": "Ida B Wells-Barnett",
+"type": "HS",
+"program": "Total",
+"grades": "9-12",
+"y2526": 1574,
+"y3132": 1457
+},
+{
+"name": "ACCESS",
+"type": "G28",
+"program": "Total",
+"grades": "G28",
+"y2526": 324,
+"y3132": 275
+},
+{
+"name": "Odyssey",
+"type": "K8",
+"program": "Total",
+"grades": "K-8",
+"y2526": 217,
+"y3132": 224
+},
+{
+"name": "Richmond",
+"type": "ES",
+"program": "Total",
+"grades": "K-5",
+"y2526": 512,
+"y3132": 497
+},
+{
+"name": "Winterhaven",
+"type": "K8",
+"program": "Total",
+"grades": "K-8",
+"y2526": 316,
+"y3132": 310
+},
+{
+"name": "da Vinci",
+"type": "MS",
+"program": "Total",
+"grades": "K-12",
+"y2526": 429,
+"y3132": 419
+},
+{
+"name": "Benson Polytechnic",
+"type": "HS",
+"program": "Total",
+"grades": "9-12",
+"y2526": 1025,
+"y3132": 1213
+},
+{
+"name": "MLC",
+"type": "K12",
+"program": "Total",
+"grades": "K-12",
+"y2526": 275,
+"y3132": 199
+},
+{
+"name": "Other (incl. Charters)",
+"type": "K12",
+"program": "Total",
+"grades": "K-12",
+"y2526": 2602,
+"y3132": 2339
+}
+]

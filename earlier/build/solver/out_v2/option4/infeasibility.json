@@ -1,0 +1,67 @@
+{
+ "schools_out_of_range_2031_32": [
+  {
+   "school": "Jackson",
+   "type": "6-8",
+   "size": 421.7,
+   "floor": 500,
+   "ceiling": 946.0,
+   "short_by": 78.3,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Roseway Heights",
+   "type": "6-8",
+   "size": 465.5,
+   "floor": 500,
+   "ceiling": 806.0,
+   "short_by": 34.5,
+   "over_by": 0.0,
+   "program_only": false
+  },
+  {
+   "school": "Forest Park",
+   "type": "K-5",
+   "size": 258.5,
+   "floor": 360,
+   "ceiling": 519.0,
+   "short_by": 101.5,
+   "over_by": 0.0,
+   "program_only": false
+  }
+ ],
+ "solver_slack": {
+  "K-5": [
+   {
+    "Forest Park:lo": 102.02,
+    "Skyline:lo": 5.83
+   }
+  ],
+  "6-8": [
+   {
+    "Jackson:lo": 78.82,
+    "Roseway Heights:lo": 35.05
+   }
+  ],
+  "9-12": [
+   {}
+  ]
+ },
+ "feeder_splits_used": {
+  "K-5": [
+   0
+  ],
+  "6-8": [
+   0
+  ],
+  "9-12": [
+   0
+  ]
+ },
+ "exempt_from_floor": [
+  "Astor",
+  "Skyline"
+ ],
+ "note": "Slack is in kids; non-zero slack means no plan with these schools/programs can meet that bound given the candidate sets and contiguity. Program-only buildings have fixed sizes set by the program placement, not by lines."
+}

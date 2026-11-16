@@ -1,0 +1,13 @@
+# Python 3.12+ (built with 3.14.6). Pinned from the working venv; only packages the code imports.
+geopandas==1.2.0
+numpy==2.5.4
+openpyxl==3.1.5
+ortools==9.15.6755
+pandas==3.0.6
+pdfplumber==0.11.10
+pyarrow==26.0.0
+pyogrio==0.13.0
+pyproj==3.8.0
+requests==2.34.2
+scipy==1.18.1
+shapely==2.2.0

@@ -1,0 +1,290 @@
+SELECTED: Buckman
+RETRIEVED: 2026-10-09T19:11:09.451Z
+SOURCE: https://app.powerbi.com/view?r=eyJrIjoiOWZlNmJhYjQtYzc5YS00MzY5LTk3ODYtMWYxMmQ0YWMyMjIxIiwidCI6ImQwOGRmYzk0LWEyM2MtNDRlNC04YjhkLTRhYmM0MGRkYTlhZSIsImMiOjZ9&pageName=52fe3db4b36f375bbf95
+
+Show keyboard shortcuts
+Show screen reader tips
+Skip to main content
+Power BI Report
+
+School Profiles
+
+2025 - 2026
+
+School
+Abernethy
+Access Academy
+Ainsworth
+Alameda
+Alliance
+Arleta
+Astor
+Atkinson
+Beach
+Beaumont
+Benson
+Beverly Cleary
+Boise-Eliot/Humboldt
+Brentwood
+Bridger Creative Science
+Bridlemile
+Buckman
+Capitol Hill
+Cesar Chavez
+Chapman
+Chief Joseph
+Clark
+Cleveland
+Creston
+DaVinci Arts
+Dr Martin Luther King Jr
+Duniway
+Faubion
+Forest Park
+Franklin
+George
+Glencoe
+Grant
+Grout
+Harriet Tubman
+Harrison Park
+Hayhurst
+Hosford
+Ida B Wells
+Irvington
+Jackson
+James John
+Jefferson
+Kellogg
+Kelly
+Laurelhurst
+Lent
+Lewis
+Lincoln
+Llewellyn
+Maplewood
+Markham
+Marysville
+McDaniel
+MLC K12
+Mt Tabor
+Ockley Green
+Odyssey Program
+Peninsula
+Richmond
+Rieke
+Rigler
+Robert Gray
+Roosevelt
+Rosa Parks
+Rose City Park
+Roseway Heights
+Sabin
+Scott
+Sellwood
+Sitton
+Skyline
+Stephenson
+Sunnyside Environmental
+Sunrise
+Vernon
+Vestal
+West Sylvan
+Whitman
+Winterhaven
+Woodlawn
+Woodmere
+Woodstock
+
+Buckman
+
+Map panned north east 6.7 kilometers.
+
+Location: SE Pine St & SE 16th Ave, Buckman, Portland.
+
+Map style: grayscale_light.
+
+Map shortcuts: Zoom out: hyphen. Zoom in: plus. Pan right 100 pixels: right arrow. Pan left 100 pixels: left arrow. Pan up 100 pixels: up arrow. Pan down 100 pixels: down arrow. Rotate 15 degrees clockwise: shift + right arrow. Rotate 15 degrees counter clockwise: shift + left arrow. Increase pitch 10 degrees: shift + up arrow. Decrease pitch 10 degrees: shift + down arrow. Jump focus to the map: Escape.
+Road
+Satellite
+Hybrid
+Grayscale (Dark)
+Night
+Grayscale (Light)
+Terra
+Blank
+Blank (Accessible)
+High contrast (Dark)
+High contrast (Light)
+Grayscale (Light)
+©2026 TomTom©2026 OSM
+Feedback
+
+Address: 320 SE 16TH AVE
+Originally Built For: K-5
+HS Cluster: CLEVELAND
+Primary Use: K-5
+
+BUILDING INFORMATION
+
+Grades: K-5
+Year Built: 1922
+Square Footage: 81,153
+
+Enrollment
+
+283
+
+=
+
+Utilization Rate
+
+45%
+
+÷
+
+Functional Capacity
+
+633
+
+Functional
+Capacity
+
+632.7
+
+2025-2026 Utilization Rate
+
+45%
+
+Enrollment
+
+Direct Cert. indicates percentage of students qualifying for direct certification. 
+
+2026 - 2027 Projected
+
+263
+
+2025 - 2026 Enrollment
+
+283
+
+2025 - 2026 Direct Cert.
+
+36.4%
+
+Students in Neighborhood School
+
+133
+
+PPS Students Live in Zone
+
+194
+
+In District Capture Rate
+
+68.6%
+
+Historical and Projected Enrollment
+0
+100
+200
+300
+400
+School Year
+2019-2020
+2020-2021
+2021-2022
+2022-2023
+2023-2024
+2024-2025
+2025-2026
+2026-2027
+2027-2028
+2028-2029
+2029-2030
+2030-2031
+2031-2032
+427
+239
+395
+371
+244
+246
+248
+245
+283
+400
+308
+263
+446
+Historical Demographics
+0
+100
+200
+300
+400
+School Year
+2018-19
+2019-20
+2020-21
+2021-22
+2022-23
+2023-24
+2024-25
+2025-26
+308
+296
+305
+273
+271
+250
+188
+178
+53
+53
+59
+48
+51
+51
+47
+42
+61
+59
+60
+52
+52
+53
+52
+38
+Race
+Asian
+Black
+Latino
+Multiple
+Native
+Pacific Islander
+White
+
+Programs
+
+Program Type
+
+Neighborhood / Focus Option
+
+Title 1
+
+Yes
+
+Immersion Language
+
+--
+
+Immersion Language 2
+
+--
+
+-
++
+107%
+Microsoft Power BI
+Report Zoomed To 107%

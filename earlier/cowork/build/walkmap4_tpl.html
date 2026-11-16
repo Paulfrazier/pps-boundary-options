@@ -1,0 +1,293 @@
+<title>PPS Walk-Based Redraw</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,400;0,600;0,700;0,800;1,600&family=Overpass+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: atlas plate. Header and controls, then a large map plate with an info card beside it (stacked on phones), then tables and method. */
+:root{
+  --paper:#f3f1ec; --plate:#fbfaf7; --ink:#1f2a30; --muted:#5f6b70; --rule:#dcd8cf;
+  --accent:#2f5d6e; --accent-soft:#e2ecee;
+  --beyond:#e9e6df; --water:#9cc3dc; --water-ink:#3f7aa0; --fwy:#d9822b; --fwy-case:#ffffff; --pri:#b9b3a6; --rail:#3b3b3b; --cur:#1f2a30; --edge:#fbfaf7;
+  --c0:#f4c9a6; --c1:#c8dcae; --c2:#b8d4e6; --c3:#ecd894; --c4:#d8c6e6; --c5:#f2bcbc; --c6:#a9d8cb; --c7:#e2cdb2;
+  --sans:"Overpass",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"Overpass Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --paper:#14191c; --plate:#1b2226; --ink:#e7ebe9; --muted:#9aa7ab; --rule:#2d373c; --accent:#8cc3d4; --accent-soft:#20343c;
+  --beyond:#171d20; --water:#2c5873; --water-ink:#8dc0e0; --fwy:#f0a254; --fwy-case:#14191c; --pri:#4d575b; --rail:#c9cfcf; --cur:#eef2f0; --edge:#1b2226;
+  --c0:#6b4a36; --c1:#4c5d3b; --c2:#3b5568; --c3:#66592f; --c4:#56456a; --c5:#6a3f43; --c6:#355e56; --c7:#5f513f; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#14191c; --plate:#1b2226; --ink:#e7ebe9; --muted:#9aa7ab; --rule:#2d373c; --accent:#8cc3d4; --accent-soft:#20343c;
+  --beyond:#171d20; --water:#2c5873; --water-ink:#8dc0e0; --fwy:#f0a254; --fwy-case:#14191c; --pri:#4d575b; --rail:#c9cfcf; --cur:#eef2f0; --edge:#1b2226;
+  --c0:#6b4a36; --c1:#4c5d3b; --c2:#3b5568; --c3:#66592f; --c4:#56456a; --c5:#6a3f43; --c6:#355e56; --c7:#5f513f; color-scheme:dark}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.55}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:16px;padding-block:28px 56px;display:flex;flex-direction:column;gap:18px}
+.eyebrow{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:700;color:var(--accent)}
+h1{font-size:clamp(1.6rem,3.4vw,2.4rem);font-weight:800;letter-spacing:-.015em;line-height:1.1;margin:4px 0 0;text-wrap:balance}
+h2{font-size:1.15rem;font-weight:700;margin:6px 0 0;text-wrap:balance}
+.lede{color:var(--muted);max-width:70ch;margin:8px 0 0}
+.controls{display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:999px;padding:3px;background:var(--plate);gap:2px}
+.seg button{font:700 .86rem var(--sans);padding:6px 14px;border:0;border-radius:999px;background:transparent;color:var(--muted);cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--plate)}
+.chk{display:inline-flex;gap:7px;align-items:center;font-size:.86rem;color:var(--muted);cursor:pointer}
+.chk input{accent-color:var(--accent)}
+button:focus-visible,input:focus-visible,.area:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--plate);border:1px solid var(--rule);border-radius:6px;min-width:0}
+.plate{box-shadow:0 1px 0 var(--rule),0 12px 30px -18px rgba(20,30,35,.35)}
+.mapbox{position:relative;overflow:hidden;touch-action:none;border-radius:6px 6px 0 0}
+#map{display:block;width:100%;max-width:100%;height:auto;background:var(--beyond);cursor:grab}
+#map.drag{cursor:grabbing}
+.zoom{position:absolute;right:12px;top:12px;display:flex;flex-direction:column;border:1px solid var(--rule);border-radius:6px;overflow:hidden;background:var(--plate)}
+.zoom button{width:34px;height:34px;border:0;border-bottom:1px solid var(--rule);background:var(--plate);color:var(--ink);font:600 1.05rem var(--sans);cursor:pointer}
+.zoom button:last-child{border-bottom:0}
+.zoom button:hover{background:var(--accent-soft)}
+.scale{position:absolute;left:12px;bottom:12px;display:flex;flex-direction:column;gap:2px;font:600 .68rem var(--mono);color:var(--ink);background:color-mix(in srgb,var(--plate) 82%,transparent);padding:5px 8px 6px;border-radius:4px;pointer-events:none}
+.scale b{display:block;height:6px;border:1.5px solid var(--ink);border-top:0}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.78rem;color:var(--muted);padding:10px 14px;border-top:1px solid var(--rule)}
+.legend span{display:inline-flex;align-items:center;gap:7px}
+.legend svg{flex:none}
+.side{padding:16px 18px;display:flex;flex-direction:column;gap:12px}
+.side .tag{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;font-weight:700;color:var(--muted)}
+.side h3{margin:0;font-size:1.4rem;font-weight:800;line-height:1.1;display:flex;align-items:center;gap:10px}
+.side h3 i{width:14px;height:14px;border-radius:3px;flex:none;border:1px solid var(--rule)}
+.kv{display:grid;grid-template-columns:1fr auto;gap:0;font-size:.88rem}
+.kv span{padding:6px 0;border-bottom:1px dotted var(--rule)}
+.kv span:nth-child(odd){color:var(--muted)}
+.kv span:nth-child(even){font-family:var(--mono);text-align:right;padding-left:12px;font-variant-numeric:tabular-nums;font-weight:600}
+.from{display:flex;flex-direction:column;gap:5px;font-size:.84rem}
+.bar{display:grid;grid-template-columns:1fr auto;gap:2px 8px;align-items:center}
+.bar s{grid-column:1/-1;display:block;height:5px;border-radius:3px;background:var(--accent);opacity:.75;text-decoration:none}
+.bar em{font-style:normal;font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.fate{display:grid;grid-template-columns:1fr 1fr;gap:12px;font-size:.9rem;line-height:1.3}
+.fate div{display:flex;flex-direction:column;gap:4px}
+.hint{font-size:.8rem;color:var(--muted);margin:0}
+.tablebox{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:640px;font-size:.86rem}
+th,td{padding:9px 12px;border-bottom:1px solid var(--rule);text-align:left}
+tbody tr:last-child>*{border-bottom:0}
+thead th{font-size:.68rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:700}
+tbody th{font-weight:700}
+.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+tr.hl{background:var(--accent-soft)}
+.bt{min-width:900px}
+.bt th.grp{text-align:center;border-left:2px solid var(--rule);font-size:.72rem}
+.bt td.g0{border-left:2px solid var(--rule)}
+.bt thead tr:last-child th{cursor:pointer;white-space:nowrap}
+.bt thead th[aria-sort]{color:var(--ink)}
+.bt td.pc{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums;font-size:.8rem}
+.bt tfoot td,.bt tfoot th{font-weight:700;border-top:2px solid var(--rule)}
+.bt td.cl{color:var(--muted);text-align:center}
+.note{font-size:.8rem;color:var(--muted);margin:0;max-width:84ch}
+.method{font-size:.84rem;color:var(--muted);display:grid;gap:6px;max-width:84ch;border-top:1px solid var(--rule);padding-top:14px}
+.method p{margin:0}
+.method a{color:var(--accent)}
+.lbl{font:700 11px var(--sans);letter-spacing:.03em;text-transform:uppercase;fill:var(--ink);paint-order:stroke;stroke:var(--plate);stroke-linejoin:round;pointer-events:none}
+.wlbl{font:italic 600 12px var(--sans);letter-spacing:.12em;fill:var(--water-ink);paint-order:stroke;stroke:var(--plate);stroke-linejoin:round;pointer-events:none}
+.shield rect{fill:var(--fwy);stroke:var(--fwy-case)}
+.shield text{font:800 9px var(--sans);fill:#fff;text-anchor:middle;dominant-baseline:central}
+.beyond{fill:var(--beyond);fill-opacity:.82;pointer-events:none}
+.outline{fill:none;stroke:var(--ink);stroke-opacity:.55;stroke-width:1.4;pointer-events:none}
+.lbl.off{display:none}
+.area{vector-effect:non-scaling-stroke;stroke:var(--edge);stroke-width:1.6;stroke-linejoin:round;cursor:pointer;transition:filter .15s}
+.area:hover{filter:brightness(1.05) saturate(1.15)}
+.area.sel{stroke:var(--ink);stroke-width:2.6}
+@media (prefers-reduced-motion:reduce){.area{transition:none}}
+</style>
+<div class="wrap">
+ <header>
+  <div class="eyebrow">Portland Public Schools · K–5 boundaries · walking distance</div>
+  <h1>Redrawn boundaries, measured on foot</h1>
+  <p class="lede">Every populated census block is assigned using walking routes from OpenStreetMap, so freeways, rail lines and the river only count as crossable at real bridges and overpasses. Each color is one school's area. The thin dark lines are today's boundaries, the PPS plan buttons show PPS's proposed boundaries, and the Today button shows today's on their own. Drag to pan, scroll or use the buttons to zoom, and tap an area for its numbers.</p>
+ </header>
+ <div class="controls">
+  <div class="seg" role="group" aria-label="Map view"><button data-s="A" aria-pressed="true">Walk redraw · A</button><button data-s="B" aria-pressed="false">Walk redraw · B</button><button data-s="PA" aria-pressed="false">PPS plan · A</button><button data-s="PB" aria-pressed="false">PPS plan · B</button><button data-s="T" aria-pressed="false">Today</button></div>
+  <label class="chk" id="lcurw"><input type="checkbox" id="lcur" checked> Today's lines on top</label>
+  <label class="chk"><input type="checkbox" id="lpri" checked> Major streets</label>
+  <label class="chk"><input type="checkbox" id="lst" checked> Neighborhood streets <span style="opacity:.7">(zoom in)</span></label>
+  <label class="chk"><input type="checkbox" id="lrail" checked> Rail</label>
+ </div>
+ <div class="grid">
+  <div class="panel plate">
+   <div class="mapbox"><svg id="map" role="img" aria-label="Map of redrawn K-5 attendance boundaries over freeways, rail and the river"></svg>
+    <div class="zoom"><button id="zin" aria-label="Zoom in">+</button><button id="zout" aria-label="Zoom out">−</button><button id="zres" aria-label="Reset view">⟲</button></div><div class="scale" aria-hidden="true"><span id="sclab">1 mile · about 20 min walk</span><b id="scbar"></b></div></div>
+   <div class="legend">
+<span><svg width="26" height="10"><line x1="1" y1="5" x2="25" y2="5" stroke="var(--fwy-case)" stroke-width="5"/><line x1="1" y1="5" x2="25" y2="5" stroke="var(--fwy)" stroke-width="3"/></svg>Freeway</span>
+<span><svg width="26" height="10"><line x1="1" y1="5" x2="25" y2="5" stroke="var(--pri)" stroke-width="1.4"/></svg>Major street</span>
+<span><svg width="26" height="10"><line x1="1" y1="5" x2="25" y2="5" stroke="var(--pri)" stroke-width="0.6"/></svg>Neighborhood street</span>
+<span><svg width="26" height="10"><line x1="1" y1="5" x2="25" y2="5" stroke="var(--rail)" stroke-width="1.4" stroke-dasharray="5 3"/></svg>Rail</span>
+<span><svg width="26" height="10"><line x1="1" y1="5" x2="25" y2="5" stroke="var(--water)" stroke-width="5" stroke-linecap="round"/></svg>River</span>
+<span><svg width="26" height="10"><line x1="1" y1="5" x2="25" y2="5" stroke="var(--cur)" stroke-width="1" stroke-opacity=".6"/></svg>Today's boundary</span>
+<span><svg width="12" height="12"><circle cx="6" cy="6" r="3.6" fill="var(--plate)" stroke="var(--ink)" stroke-width="1.8"/></svg>School</span>
+</div>
+  </div>
+  <aside class="panel side" id="side"></aside>
+ </div>
+ <section style="display:flex;flex-direction:column;gap:10px">
+  <h2>How the options compare on foot</h2>
+  <div class="panel tablebox"><table><thead><tr><th>Assignment</th><th class="num">Avg walk (mi)</th><th class="num">Walk over 1 mile</th><th class="num">Walk over 1.5 miles</th><th class="num">Passing a closer school</th><th class="num">Schools at 360+</th><th class="num">Students reassigned</th></tr></thead><tbody id="cmp"></tbody></table></div>
+  <p class="note">Students are estimated K–5 counts. "Passing a closer school" means another open school is at least a quarter mile shorter to walk to.</p>
+ </section>
+ <section style="display:flex;flex-direction:column;gap:10px">
+  <h2>Where freeways and rail make PPS's plan a long walk</h2>
+  <div class="panel tablebox"><table><thead><tr><th>Today's area</th><th>Assigned in PPS plan (A)</th><th class="num">Students</th><th class="num">Straight line (mi)</th><th class="num">Walk (mi)</th><th>Shortest walk is to</th></tr></thead><tbody id="detour"></tbody></table></div>
+  <p class="note">Groups of blocks whose walk to their assigned school is at least 40% longer than the straight line and more than a mile, usually because a freeway, rail line or the river forces a detour.</p>
+ </section>
+ <section style="display:flex;flex-direction:column;gap:10px" id="bands">
+  <h2>Share of each school's area within walking distance</h2>
+  <div class="seg" role="group" aria-label="Count by" style="align-self:flex-start"><button data-w="S" aria-pressed="true">K–5 students</button><button data-w="H" aria-pressed="false">Homes</button></div>
+  <p class="note" style="color:var(--ink);font-size:.86rem">Percent of each school's neighborhood K–5 students, or of its homes (2020 Census housing units), that are within ½, 1, 1½ and 2 miles of the school on foot, under today's boundaries, PPS Scenario A, and the walk redraw with Scenario A closures. Tap a column heading to sort. “Closes” means the school has no neighborhood area in that plan; César Chávez becomes immersion-only in the redraw.</p>
+  <div class="panel tablebox"><table class="bt"><thead><tr><th rowspan="2" data-k="0">School</th><th colspan="5" class="grp">Today</th><th colspan="5" class="grp">PPS Scenario A</th><th colspan="5" class="grp">Walk redraw · A</th></tr><tr id="bth"></tr></thead><tbody id="btb"></tbody><tfoot id="btf"></tfoot></table></div>
+  <p class="note">Students are estimated from Census under-18 counts calibrated to 2024–25 enrollment; immersion students are left out because they choose a program site. Walks are routed on OpenStreetMap footpaths. In the redraw, Faubion's far-north blocks move to Woodlawn, which is why Woodlawn's shares drop and Faubion's rise.</p>
+ </section>
+ <section class="method">
+  <p><b>Method.</b> Walking distances come from the OpenStreetMap foot router (routing.openstreetmap.de), from each 2020 Census block's center to its 7 nearest schools. Each block's K–5 students are estimated from its under-18 population and calibrated to each school's 2024–25 neighborhood enrollment; immersion programs stay where PPS is moving them. The redraw assigns each block to the shortest-walk school that keeps schools between 360 and 600 students where geography allows. Boundary shapes are drawn from the blocks each school receives, so edges follow block centers rather than exact street lines. Building capacity, safe-route features like crossing guards, and hills aren't modeled.</p>
+  <p>Map data © OpenStreetMap contributors (ODbL). Sources: <a href="https://www.arcgis.com/home/item.html?id=d13cbb4cbb1e445280e53a5dffe88477" target="_blank" rel="noopener">PPS Attendance Boundaries 2023–24</a> · <a href="https://tigerweb.geo.census.gov/" target="_blank" rel="noopener">Census TIGERweb</a> · <a href="https://api.census.gov/data/2020/dec/pl/variables.html" target="_blank" rel="noopener">2020 Census P1/P3</a> · <a href="https://routing.openstreetmap.de/" target="_blank" rel="noopener">FOSSGIS OSRM foot routing</a> · <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios" target="_blank" rel="noopener">PPS rightsizing scenarios</a></p>
+ </section>
+</div>
+<script>
+const BASE=`__BASE__`;
+const CUR=`__CUR__`;
+const RD=__RD__;
+const SCH=__SCH__;
+const CMP=__CMP__;
+const DET=__DET__;
+const PPSP=__PPSP__;
+const STREETS=`__STREETS__`;
+const WB=__WB__;
+const OUTL=__OUTL__;
+const CLOSE_A={"Maplewood":"Hayhurst & Rieke","Stephenson":"Markham & Capitol Hill","Irvington":"Beverly Cleary","Rose City Park":"Scott","Buckman":"Abernethy & Sunnyside","Creston":"Atkinson","Marysville":"Arleta","Woodmere":"Whitman","Lewis":"Duniway","Beach":"Chief Joseph","James John":"Sitton","Peninsula":"Rosa Parks","Sabin":"King"};
+const B_KEEP=["Stephenson","Rose City Park","Lewis"];
+const LBL={"MLK Jr":"King","Lee":"Sunrise (Lee)","Cesar Chavez":"César Chávez","Boise-Eliot/Humboldt":"Boise-Eliot"};
+const nm=n=>LBL[n]||n;
+const dec=s=>s.split("|").map(rr=>{let X=0,Y=0;return rr.trim().split(" ").map((p,i)=>{const[a,b]=p.split(",").map(Number);if(i===0){X=a;Y=b}else{X+=a;Y+=b}return[(X-1229300)/1e4,(Y+454300)/1e4]})});
+const lon0=-122.865,lon1=-122.545,lat0=45.428,lat1=45.66,kx=Math.cos(45.54*Math.PI/180),S=1000/((lon1-lon0)*kx);
+const W=1000,H=Math.round((lat1-lat0)*S);
+const P=([x,y])=>((x-lon0)*kx*S).toFixed(1)+","+((lat1-y)*S).toFixed(1);
+const NS="http://www.w3.org/2000/svg";const mk=(t,a)=>{const e=document.createElementNS(NS,t);for(const k in a)e.setAttribute(k,a[k]);return e};
+const AR=0.78,WMAX=Math.ceil(H/AR);const svg=document.getElementById("map");svg.setAttribute("viewBox",`0 0 ${W} ${Math.round(W*AR)}`);svg.style.aspectRatio=`1000/${Math.round(1000*AR)}`;
+const gA=mk("g"),gPri=mk("g"),gRail=mk("g"),gRiv=mk("g"),gFwy=mk("g"),gCur=mk("g"),gS=mk("g");const gB=mk("g"),gSt=mk("g");svg.append(gA,gSt,gPri,gRail,gRiv,gFwy,gB,gCur,gS);
+const lines=(s)=>dec(s).filter(r=>r.length>1).map(r=>"M"+r.map(P).join("L")).join("");
+const base={};BASE.split("\n").forEach(l=>{const i=l.indexOf("#");base[l.slice(0,i)]=l.slice(i+1)});
+const fwyD=lines(base.motorway)+lines(base.trunk);
+const stD={};STREETS.split("\n").forEach(l=>{const i=l.indexOf("#");stD[l.slice(0,i)]=l.slice(i+1)});
+const stS=mk("path",{d:lines(stD.s)+lines(stD.t),fill:"none",stroke:"var(--pri)","stroke-width":"1.1","stroke-opacity":"0.9","vector-effect":"non-scaling-stroke"});
+const stR=mk("path",{d:lines(stD.r),fill:"none",stroke:"var(--pri)","stroke-width":"0.7","stroke-opacity":"0.9","vector-effect":"non-scaling-stroke"});
+gSt.append(stR,stS);
+gPri.append(mk("path",{d:lines(base.primary),fill:"none",stroke:"var(--pri)","stroke-width":"0.9","vector-effect":"non-scaling-stroke","stroke-opacity":"0.9"}));
+gRail.append(mk("path",{d:lines(base.rail),fill:"none",stroke:"var(--rail)","stroke-width":"1.1","stroke-dasharray":"5 3","vector-effect":"non-scaling-stroke","stroke-opacity":"0.75"}));
+gRiv.append(mk("path",{d:lines(base.river),fill:"none",stroke:"var(--water)","stroke-width":"7","stroke-linecap":"round","stroke-linejoin":"round","vector-effect":"non-scaling-stroke"}));
+gFwy.append(mk("path",{d:fwyD,fill:"none",stroke:"var(--fwy-case)","stroke-width":"4.6","stroke-linejoin":"round","vector-effect":"non-scaling-stroke"}),mk("path",{d:fwyD,fill:"none",stroke:"var(--fwy)","stroke-width":"2.6","stroke-linejoin":"round","vector-effect":"non-scaling-stroke"}));
+const curRings=[];CUR.trim().split("\n").forEach(l=>{const[n,r]=l.split("~");curRings.push(...dec(r))});
+gCur.append(mk("path",{d:curRings.map(r=>"M"+r.map(P).join("L")+"Z").join(""),fill:"none",stroke:"var(--cur)","stroke-width":"1","stroke-opacity":"0.6","stroke-linejoin":"round","vector-effect":"non-scaling-stroke"}));
+const outD=dec(OUTL).map(r=>"M"+r.map(P).join("L")+"Z").join("");
+gB.append(mk("path",{d:`M-3000,-3000H4000V4000H-3000Z`+outD,class:"beyond","fill-rule":"evenodd"}),mk("path",{d:outD,class:"outline","vector-effect":"non-scaling-stroke"}));
+const CURP={};CUR.trim().split("\n").forEach(l=>{const[n,r]=l.split("~");CURP[n]=CURP[n]?CURP[n]+"|"+r:r});
+// route shields and river name, snapped to the nearest mapped line point
+const near=(set,lon,lat,tol)=>{let best=null,bd=tol*tol;set.forEach(r=>r.forEach(p=>{const d=((p[0]-lon)*kx)**2+(p[1]-lat)**2;if(d<bd){bd=d;best=p}}));return best};
+const fwyPts=[...dec(base.motorway),...dec(base.trunk)];
+const gTop=mk("g");
+[["5",-122.684,45.585],["5",-122.694,45.474],["84",-122.615,45.533],["405",-122.687,45.524],["205",-122.566,45.535],["26",-122.735,45.508]].forEach(([n,lo,la])=>{const p=near(fwyPts,lo,la,0.012);if(!p)return;const[x,y]=P(p).split(",").map(Number);
+ const g=mk("g",{class:"shield","data-x":x,"data-y":y});const w=n.length>2?23:n==="26"?34:17;g.append(mk("rect",{x:-w/2,y:-7,width:w,height:14,rx:3.5,"stroke-width":"1.5"}));const tx=mk("text",{x:0,y:0.5});tx.textContent=n==="26"?"US 26":"I-"+n;if(n!=="26")tx.textContent=n;g.append(tx);gTop.append(g)});
+(()=>{const p=near(dec(base.river),-122.667,45.507,0.02);if(!p)return;const[x,y]=P(p).split(",").map(Number);const t=mk("text",{class:"wlbl","data-x":x+8,"data-y":y,x:x+8,y:y});t.textContent="WILLAMETTE";gTop.append(t)})();
+svg.append(gTop);
+const PAL=8,colOf={};
+function colorize(polys){const names=Object.keys(polys),pts={};names.forEach(n=>{pts[n]=dec(polys[n]).flat().map(([x,y])=>[x*kx,y])});
+ const tol=0.0012,cell=k=>Math.floor(k/tol),grid=new Map();names.forEach(n=>pts[n].forEach(([x,y])=>{const k=cell(x)+":"+cell(y);if(!grid.has(k))grid.set(k,new Set());grid.get(k).add(n)}));
+ const adj={};names.forEach(n=>adj[n]=new Set());names.forEach(n=>pts[n].forEach(([x,y])=>{for(let i=-1;i<=1;i++)for(let j=-1;j<=1;j++){const s=grid.get((cell(x)+i)+":"+(cell(y)+j));if(s)s.forEach(m=>{if(m!==n){adj[n].add(m);adj[m].add(n)}})}}));
+ const used=Array(PAL).fill(0),out={};[...names].sort((a,b)=>adj[b].size-adj[a].size).forEach(n=>{const bad=new Set([...adj[n]].map(m=>out[m]));let best=-1;for(let c=0;c<PAL;c++)if(!bad.has(c)&&(best<0||used[c]<used[best]))best=c;if(best<0)best=0;out[n]=best;used[best]++});return out}
+let scn="A",sel=null;
+const polysOf=s=>s==="T"?CURP:s==="PA"?PPSP.A:s==="PB"?PPSP.B:RD[s].poly;
+function drawAreas(){gA.replaceChildren();gS.replaceChildren();const polys=polysOf(scn);const cols=colOf[scn]||(colOf[scn]=colorize(polys));
+ gCur.style.display=(scn!=="T"&&document.getElementById("lcur").checked)?"":"none";document.getElementById("lcurw").style.opacity=scn==="T"?.4:1;
+ Object.entries(polys).forEach(([n,enc],i)=>{const p=mk("path",{d:dec(enc).map(r=>"M"+r.map(P).join("L")+"Z").join(""),class:"area"+(n===sel?" sel":""),"fill-rule":"evenodd","data-n":n,tabindex:"0"});
+  p.setAttribute("style",`fill:var(--c${cols[n]})`);p.addEventListener("click",()=>select(n));p.addEventListener("keydown",e=>{if(e.key==="Enter")select(n)});gA.append(p)});
+ Object.keys(polys).forEach(n=>{const s=SCH[n];if(!s)return;const[x,y]=P(s).split(",");gS.append(mk("circle",{cx:x,cy:y,r:3.5,fill:"var(--plate)",stroke:"var(--ink)","stroke-width":"1.8","vector-effect":"non-scaling-stroke","data-x":x,"data-y":y}));
+  const t=mk("text",{x:+x+6,y:+y+4,class:"lbl","data-x":x,"data-y":y,"data-n":n});t.textContent=nm(n);gS.append(t)});
+ updateLabels();if(!sel||!polys[sel])select(scn==="T"?"Sabin":"MLK Jr");else select(sel)}
+function select(n){sel=n;gA.querySelectorAll(".area").forEach(p=>{p.classList.toggle("sel",p.dataset.n===n);if(p.dataset.n===n)gA.append(p)});
+ if(scn==="PA"||scn==="PB"){const s=scn[1];const c=(colOf[scn]||{})[n];const ins=Object.entries(CLOSE_A).filter(([k,v])=>(s==="A"||!B_KEEP.includes(k))&&v.split(" & ").includes(nm(n))).map(([k,v])=>nm(k)+(v.includes("&")?" (part)":""));
+  const st=RD[s].stats[n]||{};
+  document.getElementById("side").innerHTML=`<div class="tag">PPS proposed · Scenario ${s}</div><h3><i style="background:var(--c${c})"></i>${nm(n)}</h3><div class="kv"><span>Students, PPS plan</span><span>${RD[s].pps[n]??"—"}</span><span>Students, walk redraw</span><span>${st.size??"—"}</span></div>
+  <div class="from"><div class="tag">Area under PPS's plan</div><p class="hint" style="color:var(--ink)">${ins.length?"Today's "+nm(n)+" area plus "+ins.join(", ")+".":"Today's "+nm(n)+" area, unchanged."}</p></div>
+  <p class="hint">Where PPS splits a closing school between two receivers (Maplewood, Stephenson, Buckman), the split line here is drawn halfway between the two schools; PPS's actual line isn't published. Thin dark lines are today's boundaries.</p>`;return}
+ if(scn==="T"){const c=(colOf.T||{})[n];const fate=s=>{if(!CLOSE_A[n])return"Stays open";if(s==="B"&&B_KEEP.includes(n))return"Stays open";return"Closes, students to "+CLOSE_A[n]};
+  const goes=s=>{const o=[];for(const[k,v]of Object.entries(RD[s].stats)){(v.from||"").split(", ").forEach(x=>{const i=x.lastIndexOf(" ");const a=x.slice(0,i);if((a===n)||(n==="MLK Jr"&&a==="King"))o.push([k,+x.slice(i+1)])})}return o.sort((a,b)=>b[1]-a[1])};
+  const blk=s=>{const g=goes(s),mx=Math.max(1,...g.map(p=>p[1]));return `<div class="from"><div class="tag">Walk redraw ${s} sends these students to</div>${g.length?g.map(([a,v])=>`<div class="bar"><span>${nm(a)}</span><em>${v}</em><s style="width:${(v/mx*100).toFixed(0)}%"></s></div>`).join(""):`<p class="hint">Only small groups, under 15 students each.</p>`}</div>`};
+  document.getElementById("side").innerHTML=`<div class="tag">Today's boundary</div><h3><i style="background:var(--c${c})"></i>${nm(n)}</h3><div class="fate"><div><span class="tag">PPS Scenario A</span><b>${fate("A")}</b></div><div><span class="tag">PPS Scenario B</span><b>${fate("B")}</b></div></div>${blk("A")}${blk("B")}<p class="hint">Tap another area to compare.</p>`;return}
+ const st=RD[scn].stats[n]||{};const pp=RD[scn].pps[n];const c=(colOf[scn]||{})[n];
+ const parts=(st.from||"").split(", ").filter(Boolean).map(s=>{const i=s.lastIndexOf(" ");return[s.slice(0,i),+s.slice(i+1)]});const mx=Math.max(1,...parts.map(p=>p[1]));
+ document.getElementById("side").innerHTML=`<div class="tag">Scenario ${scn} · walk-based redraw</div><h3><i style="background:var(--c${c})"></i>${nm(n)}</h3>
+ <div class="kv"><span>Students, redraw</span><span>${st.size??"—"}</span><span>Students, PPS plan</span><span>${pp??"closes"}</span><span>Average walk</span><span>${st.avg!=null?st.avg.toFixed(2)+" mi":"—"}</span><span>Longest walk</span><span>${st.max!=null?st.max.toFixed(2)+" mi":"—"}</span><span>Immersion students</span><span>${st.imm||0}</span></div>
+ ${parts.length?`<div class="from"><div class="tag">Students by today's area</div>${parts.map(([a,v])=>`<div class="bar"><span>${nm(a)}</span><em>${v}</em><s style="width:${(v/mx*100).toFixed(0)}%"></s></div>`).join("")}</div>`:`<p class="hint">All students here are in the citywide immersion program.</p>`}
+ <p class="hint">Tap another area to compare.</p>`}
+document.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{scn=b.dataset.s;sel=null;document.querySelectorAll("[data-s]").forEach(x=>x.setAttribute("aria-pressed",x===b));drawAreas()});
+document.getElementById("lcur").onchange=e=>gCur.style.display=(e.target.checked&&scn!=="T")?"":"none";
+document.getElementById("lst").onchange=updateLabels;
+document.getElementById("lpri").onchange=e=>gPri.style.display=e.target.checked?"":"none";
+document.getElementById("lrail").onchange=e=>gRail.style.display=e.target.checked?"":"none";
+// pan/zoom
+let vb=[(W-WMAX)/2,0,WMAX,H];const setVB=()=>{svg.setAttribute("viewBox",vb.map(v=>v.toFixed(1)).join(" "));updateLabels()};
+function updateLabels(){const z=W/vb[2];const stOn=document.getElementById("lst").checked;stS.style.display=stOn&&z>=1.6?"":"none";stR.style.display=stOn&&z>=3?"":"none";const r=svg.getBoundingClientRect(),pxPer=(r.width||W)/vb[2],k=1/z;
+ gS.querySelectorAll("text").forEach(t=>{t.classList.toggle("off",z<1.5&&t.dataset.n!==sel);t.style.fontSize=(10.5*k*1.0)+"px";t.style.strokeWidth=(3.2*k)+"px";t.setAttribute("x",+t.dataset.x+6*k);t.setAttribute("y",+t.dataset.y+3.8*k)});
+ gS.querySelectorAll("circle").forEach(c=>c.setAttribute("r",(3.6*k).toFixed(2)));
+ gTop.querySelectorAll(".shield").forEach(g=>g.setAttribute("transform",`translate(${g.dataset.x},${g.dataset.y}) scale(${k})`));
+ gTop.querySelectorAll(".wlbl").forEach(t=>{t.style.fontSize=(11*k)+"px";t.style.strokeWidth=(3*k)+"px"});
+ const mi=S/69.05*pxPer;let m=1;if(mi>260)m=0.5;if(mi<60)m=2;if(mi<30)m=5;document.getElementById("scbar").style.width=(mi*m).toFixed(0)+"px";document.getElementById("sclab").textContent=m===0.5?"½ mile · about 10 min walk":m===1?"1 mile · about 20 min walk":m+" miles"}
+function zoomAt(f,cx,cy){const nw=Math.min(WMAX,Math.max(W/16,vb[2]/f)),nh=nw*AR;vb=[cx-(cx-vb[0])*nw/vb[2],cy-(cy-vb[1])*nh/vb[3],nw,nh];setVB()}
+const toSvg=(ev)=>{const r=svg.getBoundingClientRect();return[vb[0]+(ev.clientX-r.left)/r.width*vb[2],vb[1]+(ev.clientY-r.top)/r.height*vb[3]]};
+svg.addEventListener("wheel",e=>{e.preventDefault();const[x,y]=toSvg(e);zoomAt(e.deltaY<0?1.25:0.8,x,y)},{passive:false});
+const ptrs=new Map();let last=null,pinch=null,moved=false;
+svg.addEventListener("pointerdown",e=>{ptrs.set(e.pointerId,e);moved=false;last=[e.clientX,e.clientY];if(ptrs.size===2){const[a,b]=[...ptrs.values()];pinch=Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY)}});
+svg.addEventListener("pointermove",e=>{if(!ptrs.has(e.pointerId))return;ptrs.set(e.pointerId,e);const r=svg.getBoundingClientRect();
+ if(ptrs.size===2&&pinch){const[a,b]=[...ptrs.values()];const d=Math.hypot(a.clientX-b.clientX,a.clientY-b.clientY);const mid={clientX:(a.clientX+b.clientX)/2,clientY:(a.clientY+b.clientY)/2};const[x,y]=toSvg(mid);zoomAt(d/pinch,x,y);pinch=d;moved=true;return}
+ if(ptrs.size===1&&last){const dx=e.clientX-last[0],dy=e.clientY-last[1];if(Math.abs(dx)+Math.abs(dy)>3){moved=true;svg.classList.add("drag");try{svg.setPointerCapture(e.pointerId)}catch(_){}}if(moved){vb[0]-=dx/r.width*vb[2];vb[1]-=dy/r.height*vb[3];setVB()}last=[e.clientX,e.clientY]}});
+const up=e=>{ptrs.delete(e.pointerId);if(ptrs.size<2)pinch=null;if(!ptrs.size){last=null;svg.classList.remove("drag")}};
+svg.addEventListener("pointerup",up);svg.addEventListener("pointercancel",up);
+svg.addEventListener("click",e=>{if(moved){e.stopPropagation();e.preventDefault();moved=false}},true);
+document.getElementById("zin").onclick=()=>zoomAt(1.5,vb[0]+vb[2]/2,vb[1]+vb[3]/2);
+document.getElementById("zout").onclick=()=>zoomAt(1/1.5,vb[0]+vb[2]/2,vb[1]+vb[3]/2);
+document.getElementById("zres").onclick=()=>{vb=[(W-WMAX)/2,0,WMAX,H];setVB()};
+// tables
+document.getElementById("cmp").innerHTML=CMP.map(r=>`<tr><th scope="row">${r[0]}</th>${r.slice(1).map(v=>`<td class="num">${v}</td>`).join("")}</tr>`).join("");
+document.getElementById("detour").innerHTML=DET.map(r=>`<tr${r[0]==="Sabin"?' class="hl"':""}><th scope="row">${nm(r[0])}</th><td>${nm(r[1])}</td><td class="num">${r[2]}</td><td class="num">${r[3]}</td><td class="num">${r[4]}</td><td>${nm(r[5])}</td></tr>`).join("");
+
+// walk-band table
+(()=>{let wk="S";let D,ALL;const setW=()=>{D=WB[wk].filter(r=>r[0]!=="__ALL");ALL=WB[wk].find(r=>r[0]==="__ALL")};setW();const lab=["Count","½ mi","1 mi","1½ mi","2 mi"];
+ const h=document.getElementById("bth");for(let g=0;g<3;g++)lab.forEach((l,k)=>{const th=document.createElement("th");th.textContent=l;th.className=k?"num":"num g0";th.dataset.k=1+g*5+k;h.append(th)});
+ const cell=(v,k,g)=>{const cls=(k===0?"g0 ":"")+"pc";if(v==null)return k===0?`<td class="g0 cl" colspan="5">closes</td>`:"";if(k===0)return `<td class="${cls}">${v}</td>`;
+  const a=Math.max(0,Math.min(1,v/100));return `<td class="${cls}" style="background:color-mix(in srgb,var(--accent) ${Math.round(a*a*38)}%,transparent)">${v}%</td>`};
+ const row=r=>`<tr><th scope="row">${nm(r[0])}</th>${[0,1,2].map(g=>{const s=r.slice(1+g*5,6+g*5);return s[0]==null?cell(null,0,g):s.map((v,k)=>cell(v,k,g)).join("")}).join("")}</tr>`;
+ let sk=0,dir=1;const draw=()=>{const rs=D.slice().sort((a,b)=>{const x=a[sk],y=b[sk];if(sk===0)return dir*String(nm(x)).localeCompare(nm(y));if(x==null&&y==null)return 0;if(x==null)return 1;if(y==null)return -1;return dir*(x-y)});document.getElementById("btb").innerHTML=rs.map(row).join("")};
+ const foot=()=>document.getElementById("btf").innerHTML=row(ALL).replace(nm("__ALL"),"District");foot();
+ document.querySelectorAll("[data-w]").forEach(b=>b.onclick=()=>{wk=b.dataset.w;document.querySelectorAll("[data-w]").forEach(x=>x.setAttribute("aria-pressed",x===b));setW();foot();draw()});
+ document.querySelectorAll(".bt thead th[data-k]").forEach(th=>{th.onclick=()=>{const k=+th.dataset.k;if(sk===k)dir=-dir;else{sk=k;dir=k===0?1:-1}document.querySelectorAll(".bt thead th").forEach(x=>x.removeAttribute("aria-sort"));th.setAttribute("aria-sort",dir>0?"ascending":"descending");draw()}});
+ draw()})();
+drawAreas();
+window.addEventListener("resize",updateLabels);
+// start zoomed on inner NE Portland, where the Sabin question lives
+(()=>{const c=P([-122.65,45.55]).split(",").map(Number);vb=[c[0]-W/5,c[1]-W*AR/5,W/2.5,W*AR/2.5];setVB()})();
+</script>
+
+<!-- pps-disclaimer (added by export) -->
+<style>
+#pps-disclaimer-x{position:absolute;opacity:0;pointer-events:none}
+#pps-disclaimer{position:fixed;bottom:0;left:0;right:0;z-index:2147483000;box-sizing:border-box;padding:7px 40px 7px 16px;
+ font:12.5px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:#fff4d1;color:#3b3000;border-top:1px solid #d9bd5e;
+ box-shadow:0 -1px 4px rgba(0,0,0,.12)}
+#pps-disclaimer a{color:#6b4f00;text-decoration:underline}
+#pps-disclaimer label{position:absolute;top:4px;right:8px;cursor:pointer;font-size:18px;line-height:1;padding:2px 6px;border-radius:4px}
+#pps-disclaimer label:hover{background:rgba(0,0,0,.08)}
+#pps-disclaimer-x:checked + #pps-disclaimer{display:none}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #pps-disclaimer{background:#3a3214;color:#f4e8bf;border-top-color:#7a6528}
+ :root:not([data-theme="light"]) #pps-disclaimer a{color:#ffd970}}
+:root[data-theme="dark"] #pps-disclaimer{background:#3a3214;color:#f4e8bf;border-top-color:#7a6528}
+:root[data-theme="dark"] #pps-disclaimer a{color:#ffd970}
+@media print{#pps-disclaimer{position:static}}
+</style>
+<input type="checkbox" id="pps-disclaimer-x" aria-label="Hide disclaimer">
+<div id="pps-disclaimer" role="note"><b>Independent analysis, not an official PPS product.</b>
+This is a best-effort analysis by a PPS parent and may contain errors. Confirm against PPS's own materials:
+the <a href="https://www.pps.net/about/portland-public-schools-information/rightsize/scenarios" target="_blank" rel="noopener">Rightsizing scenarios site</a> and the
+<a href="https://meetings.boardbook.org/Public/Organization/915" target="_blank" rel="noopener">October 6, 2026 Board of Education meeting materials (BoardBook)</a>.
+<label for="pps-disclaimer-x" title="Hide">&times;</label></div>
+<!-- /pps-disclaimer -->

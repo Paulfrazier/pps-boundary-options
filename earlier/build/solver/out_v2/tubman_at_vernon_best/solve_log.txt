@@ -1,0 +1,1 @@
+tubman_at_vernon_best: spliced by build_tubvern_on.py: dli_home3_rh with the NE package from tubman_at_vernon_beh; not solved; blocks changed {'K-5': 658, '6-8': 1477, '9-12': 0}; orphans 48
