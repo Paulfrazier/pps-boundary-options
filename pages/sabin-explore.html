@@ -104,6 +104,12 @@ tr:last-child td{border-bottom:0}
 </section>
 
 <section>
+<h2>Spare classrooms <span class="pill cur"></span></h2>
+<div class="tw"><table id="rooms"></table></div>
+<p class="note" style="margin-top:8px">Spare classrooms = (seats &minus; K-5 kids) &divide; the school's seats per classroom, in its fullest year from 2027-28 to 2031-32, rounded down; K-5 kids that year in brackets. Under PPS's capacity method, seats already allow for rooms set aside for special education, art and similar uses, so a spare classroom is one a school could give to an added class, such as a Social Emotional Skills (SES) class. PPS plans to move Sabin's two SES classrooms to King and Vernon, one each (School Impact Summaries, Nov 2026). Classrooms: King 34 (PPS, Sabin School Closure Report, Nov 2026, p. 3); Beverly Cleary 26 (PPS, Irvington School Closure Report, Nov 2026), and in 2027-28 it is in the Irvington building (30 classrooms, 618 seats); Alameda 33 and Vernon 29 are from PPS's Long-Range Facility Plan 2021 (Vol. 1, pp. 53, 57), so those two are estimates. Seats: PPS functional capacity (rightsizing dashboard).</p>
+</section>
+
+<section>
 <h2>Pros and cons <span class="pill cur"></span></h2>
 <div id="pros" class="stat"></div>
 <details style="margin-top:12px"><summary style="cursor:pointer;font-weight:600">Pros and cons of every option</summary><div id="allpros" style="display:grid;gap:14px;margin-top:10px"></div></details>
@@ -254,7 +260,13 @@ function stats(){const o=O(),r=REC();const cards=[[[o.to[0],o.to[2],o.to[1],o.to
 function pros(){const o=O();document.getElementById('pros').innerHTML=`<h3 style="margin:0 0 6px;font-size:1rem">${o.label}</h3>`+o.pros.map(p=>`<p>${p}</p>`).join('');
  const A=document.getElementById('allpros');if(!A.dataset.done){A.innerHTML=DATA.options.map(o=>`<div><h3>${o.label}</h3>${o.pros.map(p=>`<p class="note" style="color:var(--fg)">${p}</p>`).join('')}</div>`).join('');A.dataset.done=1}}
 function showing(){const l=O().label;document.getElementById('showbar').innerHTML=`Showing: <b>${l}</b>${opt?' · compared with the recommendation':' (the reference)'}`;document.querySelectorAll('.pill.cur').forEach(p=>p.textContent=l)}
-function updateAll(){opts();showing();stats();walks();years();pros();legend();draw();if(sel>=0)info()}
+function rooms(){const T=document.getElementById('rooms');
+ const R={'MLK Jr':['King',34,584],'Alameda':['Alameda',33,771],'Vernon':['Vernon',29,552],'Beverly Cleary':['Beverly Cleary',26,531]};
+ const spare=(o,n)=>{let best=null,kids=0;o.years[n].forEach((e,i)=>{const[r,c]=(n==='Beverly Cleary'&&i===0)?[30,618]:[R[n][1],R[n][2]];const v=(c-e)/(c/r);if(best===null||v<best){best=v;kids=e}});return[Math.floor(best),kids]};
+ let h='<thead><tr><th style="text-align:left">Option</th>'+Object.keys(R).map(n=>`<th style="white-space:normal">${R[n][0]} (${R[n][1]} classrooms)</th>`).join('')+'</tr></thead><tbody>';
+ DATA.options.forEach((o,i)=>{h+=`<tr class="${i===opt?'on':''}"><td style="white-space:normal;min-width:14rem">${o.label}</td>`+Object.keys(R).map(n=>{const[sp,k]=spare(o,n);return `<td${sp<=0?' class="bad"':''}>${Math.max(sp,0)} <span style="opacity:.65;font-size:.85em">(${k})</span></td>`}).join('')+'</tr>'});
+ T.innerHTML=h+'</tbody>'}
+function updateAll(){opts();showing();stats();walks();years();rooms();pros();legend();draw();if(sel>=0)info()}
 updateAll();
 document.querySelectorAll('.ctrl button').forEach(b=>b.addEventListener('click',()=>{mode=b.dataset.m;document.querySelectorAll('.ctrl button').forEach(o=>o.setAttribute('aria-pressed',o===b));legend();draw()}));
 legend();draw();
