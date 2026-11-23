@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Why close schools at all? | PPS boundary options</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="PPS’s reasons for closing schools, laid out in charts, from the district’s own memo, closure reports and Board slides.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 32 32%27%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2715%27 fill=%27%2316785a%27/%3E%3Cpath d=%27M9 16 16 10l7 6v7H9z%27 fill=%27%23fff%27/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="../pages/site2.css">
+
+</head>
+<body>
+<div class="ainote band"><div class="in">Independent analysis by a PPS parent, not an official Portland Public Schools product. Built with AI: Claude did the work, directed and guided by Paul Frazier. <a href="../pages/how.html">How we did this</a> &middot; <a href="#ai">About the AI</a></div></div>
+<nav class="site-nav band" aria-label="Site"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="../pages/why-close.html" aria-current="page">Why close schools?</a><a href="../pages/map.html">Map</a><a href="../pages/far-walks.html">Far walks</a><a href="../pages/options.html">Options</a><a href="../pages/plans.html">Plans</a><a href="../pages/durability.html">Year by year</a><a href="../pages/schools.html">Schools</a><a href="../pages/sabin.html">Sabin and NE</a><a href="../pages/sabin-explore.html">Exploring Sabin options</a><a href="../pages/sizes.html">Why these sizes</a><a href="../pages/segc.html">Lessons from SEGC</a><a href="../pages/method.html">Method</a><a href="../pages/sources.html">Sources</a><a href="../pages/how.html">How we did this</a><a class="earlier" href="../earlier/index.html">Earlier work (Scenario A/B era)</a></div></nav>
+<main class="band"><div class="in">
+
+<style>
+.wc-short{display:grid;gap:10px;counter-reset:s;padding:0;list-style:none}
+.wc-short li{display:grid;grid-template-columns:2rem 1fr;gap:8px;align-items:start}
+.wc-short li::before{counter-increment:s;content:counter(s);font:700 1rem/1.9rem var(--display);width:1.9rem;height:1.9rem;border-radius:50%;background:var(--ink);color:var(--paper);text-align:center}
+.wc-bars{display:grid;gap:8px}
+.wc-bar{display:grid;grid-template-columns:minmax(0,13em) minmax(60px,1fr) auto;gap:10px;align-items:center;font-size:.95rem}
+@media (max-width:560px){.wc-bar{grid-template-columns:38% 1fr auto;font-size:.86rem;gap:8px}}
+.wc-bar .t{height:22px;background:var(--soft);border-radius:4px;position:relative;overflow:hidden}
+.wc-bar .f{position:absolute;inset:0 auto 0 0;background:var(--c,var(--p-today));border-radius:0 4px 4px 0}
+.wc-bar .v{font:600 .9rem var(--display);color:var(--ink);font-variant-numeric:tabular-nums}
+.wc-two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.wc-card{background:var(--panel);border:1px solid var(--rule);border-radius:10px;padding:14px 16px;display:grid;gap:8px;align-content:start}
+.wc-card h3{font-size:1.05rem}
+.wc-card ul{padding-left:1.1em;display:grid;gap:4px}
+.wc-card.bad{border-top:5px solid var(--bad)} .wc-card.good{border-top:5px solid var(--good)}
+.wc-stack{display:flex;height:46px;border-radius:6px;overflow:hidden;gap:2px;background:var(--panel)}
+.wc-stack div{display:flex;align-items:center;padding:0 10px;font:600 .88rem var(--display);color:#fff;white-space:nowrap;overflow:hidden;transition:background .25s}
+.wc-chips{display:flex;flex-wrap:wrap;gap:6px}
+.wc-chips label{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--rule);border-radius:999px;padding:5px 11px;background:var(--panel);cursor:pointer;font-size:.92rem}
+.wc-chips label:has(input:checked){background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.wc-chips input{accent-color:var(--p-rec)}
+.wc-out{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:12px}
+.wc-school{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.wc-kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.95rem}
+.wc-kv dt{color:var(--mute)} .wc-kv dd{margin:0;font-weight:600;font-variant-numeric:tabular-nums}
+.wc-fill{display:grid;gap:10px}
+.wc-fill .row{display:grid;grid-template-columns:5.6em 1fr 3.2em;gap:8px;align-items:center;font-size:.88rem}
+.wc-fill .t{height:14px;background:var(--soft);border-radius:3px;position:relative}
+.wc-fill .f{position:absolute;inset:0 auto 0 0;border-radius:3px;background:var(--c)}
+.chart{position:relative}
+.wc-q{display:grid;gap:8px;padding-left:1.2em}
+.wc-take{font:600 1.05rem/1.4 var(--display)}
+details.src summary{cursor:pointer;font-size:.84rem;color:var(--mute);list-style-position:inside}
+details.src[open] summary{margin-bottom:4px}
+.wc-kid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px}
+.wc-kid .wc-card p{font-size:.98rem}
+</style>
+
+<header class="hero col">
+<div class="eyebrow">PPS&rsquo;s reasons for closing schools, from its own documents</div>
+<h1>Why close schools at all?</h1>
+<p class="lede">PPS&rsquo;s reasons are spread across a 63-page memo, ten closure reports and months of Board slides. Here they are in one place, from the district&rsquo;s own memo, closure reports and Board slides, so you can judge the trade for yourself.</p>
+<p class="note"><b>A note from me:</b> I&rsquo;m not taking a stance for or against closing schools. I&rsquo;m trying to lay out the math as I see it, using PPS&rsquo;s own numbers, so you can weigh it yourself.</p>
+</header>
+
+<section class="col" aria-labelledby="short">
+<h2 id="short">The short version</h2>
+<ol class="wc-short">
+<li><span><b>Portland has 6,000 fewer students than in 2018, and the drop isn&rsquo;t over.</b> About 30% fewer babies were born than a decade earlier. Elementary schools took most of the hit.</span></li>
+<li><span><b>PPS kept every building.</b> So 33 of 45 elementary schools now have fewer than 360 kids, PPS&rsquo;s minimum for a full program.</span></li>
+<li><span><b>Small schools stretch thin.</b> Two grades in one class, art and music teachers shared between buildings. And every building needs a principal, an office and a custodian whether it holds 200 kids or 500.</span></li>
+<li><span><b>PPS must cut about $65 million either way.</b> Closing 10 buildings means about $10 million of those cuts come from duplicate principals, offices and custodians instead of from inside schools.</span></li>
+</ol>
+</section>
+
+<section class="wide" aria-labelledby="kid">
+<h2 id="kid">What it means for your child</h2>
+<div class="wc-kid">
+<div class="wc-card bad"><h3>If nothing changes</h3>
+<p>By 2031, only <b>18%</b> of elementary schools would reach PPS&rsquo;s 360-student minimum. Small schools would keep stretching: more blended grades (already 17% of K-5 teaching positions), shared art and music teachers, principals pulled onto lunch and recess duty. PPS still has to cut about 223 positions, and none could come from closing duplicate buildings.</p></div>
+<div class="wc-card"><h3>If your school is closing</h3>
+<p>Your child moves in fall 2027 or 2028 to a nearby school. Most receiving schools would be 32&ndash;70% full with no change, and 64&ndash;107% full with the move. PPS reserves 15&ndash;20 positions for the schools taking students in. PPS measured every elementary school against the same 360-student yardstick. <a href="#ten">Find your school below</a>.</p></div>
+</div>
+<details class="src"><summary>Sources and notes</summary><p class="cite">PPS figures: <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=2">memo, p. 1</a> (18%), <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=6">memo, p. 5</a> and the <a href="../build/pps-texts/boardbook-2026-10/boardbook-09-08-26-tle-well-resourced-schools-rightsizing.md">Sept 8, 2026 Board committee deck</a>, p. 9 (blended grades, shared teachers, principal &ldquo;on duty 2-3 hours a day&rdquo;), each closure report&rsquo;s section 3a (principals on lunch and recess duty), <a href="../build/pps-texts/boardbook-2026-10/boardbook-10-06-26-supplemental-26-10-01-qa-tracker.md">Board Q&amp;A tracker</a>, p. 35 (125 of 717 K-5 teaching positions went to blended classrooms), <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=51">memo, pp. 50&ndash;51</a> (223 positions; with no changes &ldquo;the district captures 0 FTE in structural savings&rdquo;), <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=3">memo, p. 2</a> (15&ndash;20 positions reserved for receiving schools). Receiving schools&rsquo; fullness: PPS impact summaries (Attachment D), no change vs. the plan, first year.</p></details>
+</section>
+
+<section class="wide" aria-labelledby="fewer">
+<h2 id="fewer">1. Fewer kids, and fewer still to come</h2>
+<div class="col"><p>PPS had <b>48,708</b> students in fall 2018 and <b>42,622</b> in fall 2025. Portland State&rsquo;s forecast, which PPS plans with, has <b>36,763</b> by 2035. The drop started in elementary school and is now reaching middle school. Tap the grades to see each one.</p></div>
+<div class="chart" id="c-enroll">
+<div class="ctrl" role="group" aria-label="Grades"><span class="lab">Grades</span>
+<button data-g="All" aria-pressed="true">All</button><button data-g="K-5" aria-pressed="false">K-5</button><button data-g="6-8" aria-pressed="false">6-8</button><button data-g="9-12" aria-pressed="false">9-12</button></div>
+<svg role="img" aria-label="PPS enrollment by year, 2016 to 2035"></svg>
+<div class="legend"><span><i class="sw" style="--c:var(--ink)"></i>Actual (each October)</span><span><i class="sw" style="--c:var(--mute);opacity:.55"></i>Forecast</span></div>
+</div>
+<div class="wc-card"><h3>Why: fewer babies</h3>
+<div class="wc-bars" id="b-births"></div>
+<p class="small">Births to families living in PPS, in five-year blocks: down 30%. And more young families move out than in.</p></div>
+<details class="src"><summary>Sources and notes</summary><p class="cite">Portland State University Population Research Center, <a href="../build/pps-texts/psu-pps-enrollment-forecast-2026.md">PPS Enrollment Forecasts 2026-27 to 2035-36</a> (July 2026; <a href="https://resources.finalsite.net/images/v1785171463/ppsnet/ejdr22voeddvux8qwlob/PPS_Forecast_2026_27.pdf">PDF</a>): Table 3.1 (printed p. 16), Table 4.2 (p. 26), Table 2.3 (births, p. 9); &ldquo;more children under the age of 5 tend to migrate out of the PPS district with their families than migrate in&rdquo; (p. 3). PPS: &ldquo;Enrollment fell 12% between 2018-19 and 2025-26, with 89% of that decline in the elementary grades&rdquo; (<a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=2">memo, p. 1</a>). The 30% is our arithmetic on Table 2.3 (26,882 to 18,901).</p></details>
+</section>
+
+<section class="wide" aria-labelledby="small">
+<h2 id="small">2. Most elementary schools are now small</h2>
+<div class="col"><p>PPS still runs 83 school sites, two more than in 2018. PPS says an elementary school needs at least <b>360 students</b>, two to three classes per grade, for a full program. Each dot is one elementary school; tap one for its numbers, or tap &ldquo;2031-32&rdquo; to see the forecast.</p></div>
+<div class="chart" id="c-k5">
+<div class="ctrl" role="group" aria-label="Show"><span class="lab">Show</span>
+<button data-m="kids" aria-pressed="true">Students</button><button data-m="full" aria-pressed="false">How full</button>
+<span class="lab" style="margin-left:10px">Year</span>
+<button data-y="1" aria-pressed="true">2025-26</button><button data-y="3" aria-pressed="false">2031-32</button></div>
+<svg role="img" aria-label="Each PPS elementary school by size"></svg>
+<div class="legend"><span><i class="sw" style="--c:var(--p-rec);border-radius:50%"></i>Recommended to close</span><span><i class="sw" style="--c:var(--p-today);border-radius:50%"></i>Other elementary schools</span></div>
+<p class="small" id="k5-sum" aria-live="polite"></p>
+</div>
+<details class="src"><summary>Sources and notes</summary><p class="cite">Students: PSU <a href="../build/pps-texts/boardbook-2026-10/psu-prc-enrollment-forecasts-by-school-2025-35.md">forecast by school</a> (the copy PPS gave the Board; the closure reports use the same numbers; 2031-32 is the forecast with no changes). &ldquo;How full&rdquo;: students &divide; how many the building is set up for (PPS School Profiles 2025-26 &ldquo;functional capacity&rdquo;, captured second-hand). PPS calls 70&ndash;100% full &ldquo;Efficient Utilization&rdquo; (<a href="../build/pps-texts/boardbook-2026-10/boardbook-10-06-26-supplemental-26-10-01-qa-tracker.md">Board Q&amp;A tracker</a>, p. 26). The 360 floor: <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=29">memo, p. 28</a>. 83 sites, &ldquo;+2&rdquo; since 2018-19: <a href="../build/pps-texts/boardbook-09-01-26-boe-meeting-rightsizing-1.md">Sept 1, 2026 Board deck</a>, p. 9. These are PSU&rsquo;s 45 elementary schools, including the Richmond immersion school; PPS counted 45 K-5 schools in fall 2025 (<a href="../build/pps-texts/boardbook-03-10-26-board-materials-growing-great-schools-rightsizing-planning.md">March 10, 2026 Board materials</a>, p. 7).</p></details>
+</section>
+
+<section class="wide" aria-labelledby="thin">
+<h2 id="thin">3. What &ldquo;stretched thin&rdquo; means for your child</h2>
+<div class="col"><p>PPS has kept small schools going with one-time COVID money, reserves, bigger classes, fewer support staff, and about 40 positions moved from high schools to prop up K-8s and immersion programs. PPS showed its Board what that looks like, and what bigger schools could offer instead:</p></div>
+<div class="wc-two">
+<div class="wc-card bad"><h3>Three small schools, 200&ndash;350 kids each</h3>
+<ul><li>Two grades in one class</li><li>Art and music teachers split across buildings</li><li>Library open part of the week</li><li>Less coaching and extra help for kids who are behind</li><li>Principal on duty 2&ndash;3 hours a day</li><li>Few electives for 6th&ndash;8th graders</li></ul></div>
+<div class="wc-card good"><h3>Two schools, 360&ndash;500 kids each</h3>
+<ul><li>One grade per class</li><li>A full arts program in the building</li><li>Coaching and extra help restored</li><li>Principal free to lead teaching</li><li>Library open more of the week</li></ul></div>
+</div>
+<div class="col"><p class="wc-take">Already, 17% of the K-5 teaching positions PPS handed out this year went to blended classrooms.</p></div>
+<details class="src"><summary>Sources and notes</summary><p class="cite">The two pictures: PPS, <a href="../build/pps-texts/boardbook-2026-10/boardbook-09-08-26-tle-well-resourced-schools-rightsizing.md">Sept 8, 2026 Board committee</a>, pp. 7, 9&ndash;10 (<a href="https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=14374370">original</a>). How PPS has coped: <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=6">memo, p. 5</a>. Blended classrooms: 125 of 717 K-5 positions, <a href="../build/pps-texts/boardbook-2026-10/boardbook-10-06-26-supplemental-26-10-01-qa-tracker.md">Board Q&amp;A tracker</a>, p. 35. In fairness to small schools: PPS says every K-5 student still gets two days of arts, two of PE and one of library each week (same tracker, p. 31).</p></details>
+</section>
+
+<section class="wide" aria-labelledby="cost">
+<h2 id="cost">4. A small school costs more per child</h2>
+<div class="col"><p>Every school gets a principal, an office and a base set of staff no matter how many kids walk in. Spread over 160 kids, that is expensive; spread over 500, it is not. PPS&rsquo;s figures for ten elementary schools, counting basic school staffing only (no equity or grant money):</p></div>
+<div class="chart" id="c-pp">
+<svg role="img" aria-label="Basic staffing cost per student against school size, ten PPS elementary schools"></svg>
+</div>
+<div class="col"><p>The smallest school, Rosa Parks, costs about <b>$4,600 more per child</b> than Richmond. It also runs smaller classes: 23 kids on average, vs. 28 at Richmond.</p></div>
+<details class="src"><summary>Sources and notes</summary><p class="cite">PPS, <a href="../build/pps-texts/boardbook-2026-10/boardbook-10-06-26-boe-meeting-rightsizing-powerpoint.md">Oct 6, 2026 Board presentation</a>, p. 7 (<a href="https://meetings.boardbook.org/Documents/FileViewerOrPublic/915?file=14511742">original</a>): General Fund staffing only, not counting special education, English learner, Title I or Measure 98 money; buildings, utilities and busing are not included. PPS: &ldquo;Fixed baseline positions spread over fewer students result in substantially higher per-pupil costs&rdquo; (p. 6). $12,870 &minus; $8,222 is our arithmetic. Average class sizes are on the same slide.</p></details>
+</section>
+
+<section class="wide" aria-labelledby="money">
+<h2 id="money">5. The money: the cuts come either way</h2>
+<div class="col"><p>PPS has a <b>$65 million</b> budget gap for 2027-28 and plans to cut about 223 positions to close it. Closing schools doesn&rsquo;t fix that. It decides where <b>$10.2 million a year</b> of those cuts land: on duplicate building overhead (principals, office staff, custodians, utilities), or on something else.</p></div>
+<div class="chart" id="c-gap">
+<div class="ctrl" role="group" aria-label="Choice"><span class="lab">If PPS</span>
+<button data-c="close" aria-pressed="true">closes the 10 schools</button><button data-c="keep" aria-pressed="false">keeps every building</button></div>
+<div class="wc-stack" aria-live="polite"><div id="g1"></div><div id="g2"></div></div>
+<div class="legend"><span><i class="sw" style="--c:var(--p-today)"></i>Cut either way</span><span><i class="sw" id="g2sw" style="--c:var(--accent)"></i><span id="g2lab">Building overhead</span></span></div>
+<p class="small" id="g-note"></p>
+</div>
+<div class="note col"><p><b>One big caveat:</b> PPS also estimates 31 new bus routes at about <b>$2.7 million</b>, and hasn&rsquo;t said whether that comes out of the $10.2 million. If it does, the real savings are $7.5 million or less (PPS also expects immersion bus changes to add about $3 million a year).</p></div>
+<div class="col"><h3>What would keeping a school open cost?</h3>
+<p>Tick a school to keep it open. The total is what PPS must cut elsewhere each year.</p></div>
+<div class="wc-chips" id="keep" role="group" aria-label="Schools to keep open"></div>
+<div class="wc-out">
+<div class="stat"><div class="big" id="k-dollars">$0</div><p>a year to cut somewhere else</p></div>
+<div class="stat"><div class="big" id="k-pos">0</div><p>staff positions, at PPS&rsquo;s rate ($10.2 million &asymp; 75 positions)</p></div>
+</div>
+<details class="src"><summary>Sources and notes</summary><p class="cite">$65 million: <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=2">memo, p. 1</a>. 223 positions: <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=51">memo, p. 50</a>. About 75 positions from closures, and &ldquo;0 FTE&rdquo; from buildings with no changes: <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=52">memo, p. 51</a>. Savings by school: &ldquo;Estimated Net Savings by School&rdquo;, <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=50">memo, pp. 49&ndash;50</a>; the ten schools total $9.76 million a year, and moving the Odyssey program out of the East Sylvan building adds $0.42 million for PPS&rsquo;s $10.2 million. The savings cover &ldquo;administrative, custodial, and office staffing, 80% of utilities&rdquo; (each closure report, section 1b). Bus routes and the immersion bus increase: <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=56">memo, p. 55</a>; the savings table itself counts only about $0.3 million for transportation. The position rate ($10.18 million &divide; 75, about $136K) is our division; PPS&rsquo;s 223 positions for $65 million implies a higher rate because the gap includes more than salaries.</p></details>
+</section>
+
+<section class="wide" aria-labelledby="nothing">
+<h2 id="nothing">6. By 2031: no changes vs. the plan</h2>
+<div class="wc-card"><h3>Share of schools at PPS&rsquo;s minimum size (360 for K-5, 500 for middle school), and who attends them</h3>
+<div class="wc-bars" id="b-nothing"></div>
+<div class="legend"><span><i class="sw" style="--c:var(--p-today)"></i>No changes</span><span><i class="sw" style="--c:var(--accent)"></i>Superintendent&rsquo;s plan</span></div></div>
+<div class="thesis">
+<div class="stat"><div class="big">5,641</div><p>K-8 students change schools (19%).</p></div>
+<div class="stat"><div class="big">65% &rarr; 58%</div><p>K-5 kids who live within a mile of their school.</p></div>
+<div class="stat"><div class="big">8 of 12</div><p>receiving schools end up over 90% full. Whitman reaches 107%.</p></div>
+</div>
+<details class="src"><summary>Sources and notes</summary><p class="cite">PPS, <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=2">memo, p. 1</a> table (2031-32); under the plan PPS counts 42 elementary and 15 middle schools (<a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=43">memo, pp. 42&ndash;43</a>). Students who move: <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=47">memo, p. 46</a>. Within a mile: <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=46">memo, p. 45</a>. Receiving schools: PPS impact summaries (Attachment D), first-year projection &divide; capacity; Whitman 444 kids for 416 seats.</p></details>
+</section>
+
+<section class="wide" aria-labelledby="ten">
+<h2 id="ten">7. The ten schools, one at a time</h2>
+<div class="col"><p>Pick a school: how far its enrollment has fallen, why PPS chose it, what it costs, and how full its receiving school becomes. These choices are about size and buildings, not about any school&rsquo;s teachers or families.</p></div>
+<div class="ctrl" role="group" aria-label="School" id="pick"></div>
+<div class="wc-school" id="school" aria-live="polite"></div>
+<details class="src"><summary>Sources and notes</summary><p class="cite">Each school&rsquo;s PPS closure report (Nov 17, 2026; linked in the card): sections 1b, 2a. Running cost and savings: <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=50">memo, pp. 49&ndash;50</a> (the Beach and Rose City Park closure reports repeat Sabin&rsquo;s figures by mistake; we use the memo&rsquo;s). &ldquo;All-in cost per student&rdquo; is the closure reports&rsquo; figure, a broader measure than the staffing-only chart in section 4. Quotes: PPS <a href="../build/pps-texts/school-impact-summaries-2026-11.md">impact summaries</a> (Attachment D). How full: first-year projection (2027-28 or 2028-29) &divide; capacity. Students 2018 &rarr; 2025: state (ODE) fall counts as compiled by ppsdata.info, second-hand. Seismic retrofit: Holmes, <a href="../build/pps-texts/holmes-2024-pps-seismic-assessment.md">2024 PPS Seismic Assessments</a>, a rough estimate. Creston&rsquo;s report lists capacity 558; we use PPS&rsquo;s profile figure, 429.</p></details>
+</section>
+
+<section class="col" aria-labelledby="ask">
+<h2 id="ask">8. What PPS still owes families</h2>
+<div class="ask"><p>PPS&rsquo;s accounting still has gaps worth asking about:</p>
+<ol class="wc-q">
+<li><b>Busing.</b> Do the new bus routes (about $2.7 million) and immersion bus changes (about $3 million) come out of the $10.2 million in savings?</li>
+<li><b>What&rsquo;s left for schools.</b> PPS says $7.1 million is left to put back into schools. Subtracting moving costs its own total leaves out, and its 5% contingency, it&rsquo;s closer to $5.7 million.</li>
+<li><b>Building repairs in dollars.</b> PPS cites repairs (Beach&rsquo;s roof, Sabin&rsquo;s plumbing) as reasons but never prices them. The only figures are 2024 seismic estimates and small upgrade lines for receiving schools.</li>
+<li><b>Boundary changes alone.</b> PPS says redrawing lines couldn&rsquo;t balance enrollment, but hasn&rsquo;t shown the numbers.</li>
+</ol></div>
+<details class="src"><summary>Sources and notes</summary><p class="cite">Bus routes: <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=56">memo, p. 55</a>. $7.1 million and its moving costs: <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=51">memo, p. 50</a> (our arithmetic subtracts the $1.08 million in program-move and grade-change costs and the 5% contingency). Boundary changes: <a href="../build/pps-texts/superintendent-recommendation-2026-11-12.pdf#page=15">memo, p. 14</a>.</p></details>
+<p class="small">Other ways to draw the lines: <a href="options.html">Options</a> compares PPS&rsquo;s plans with ours. Where 360 and 500 come from: <a href="sizes.html">Why these sizes</a>.</p>
+</section>
+
+</div></main>
+<footer class="band"><div class="in">
+<p id="ai"><b>Built with AI.</b> The research, data work, modeling and writing were done by AI (Claude, from Anthropic), directed and guided by Paul Frazier, a PPS parent, who made every judgment call and checked results against PPS&rsquo;s documents. Best effort; it will have errors. <a href="../pages/how.html">How we did this</a> &middot; <a href="../pages/method.html">Method</a>.</p>
+<p>Every figure is a model estimate on the Portland State University (PSU) enrollment forecast, from our model, not PPS&rsquo;s, unless a PPS source is cited. Figures may not hold up on PPS&rsquo;s own data.</p>
+<p><a href="../LICENSE">License</a>: code MIT, analysis CC BY 4.0, OpenStreetMap-derived data &copy; OpenStreetMap contributors, ODbL. &copy; 2026 Paul Frazier. Data generated November 15, 2026.</p>
+</div></footer>
+<script>window.WC={"enroll":{"years":[2016,2017,2018,2019,2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030,2031,2032,2033,2034,2035],"actual_to":2025,"K-5":[24629,24481,23953,23560,21835,20324,20192,19813,19185,18695,18427,18169,18232,18194,18101,17948,17673,17303,16830,16566],"6-8":[10696,10780,10963,11132,11017,10345,10217,9824,9806,9753,9590,9491,9148,8909,8482,8315,8288,8456,8670,8650],"9-12":[12984,13423,13792,13960,14084,14336,14389,14368,14384,14174,13904,13817,13822,13495,13343,12986,12491,12097,11681,11547],"All":[48309,48684,48708,48652,46936,45005,44798,44005,43375,42622,41921,41477,41202,40598,39926,39249,38452,37856,37181,36763]},"k5":[["Abernethy",269,242,241,441],["Ainsworth",560,555,557,582],["Alameda",513,498,492,771],["Arleta",230,213,210,653],["Atkinson",366,363,386,519],["Beach",288,284,287,607],["Boise-Eliot/Humboldt",294,314,308,586],["Bridlemile",423,414,408,582],["Buckman",283,244,239,633],["Capitol Hill",325,310,311,417],["Chapman",330,316,333,464],["Chief Joseph",242,245,238,444],["Clark",364,360,343,459],["Creston",213,201,187,429],["Duniway",362,338,345,552],["Forest Park",264,260,258,519],["Glencoe",339,311,296,573],["Grout",327,303,280,490],["Hayhurst",290,274,266,525],["Irvington",259,240,223,618],["James John",365,359,352,467],["Kelly",411,402,391,616],["Lee",251,245,254,396],["Lent",256,256,274,798],["Lewis",259,224,201,420],["Llewellyn",345,312,312,468],["Maplewood",287,278,247,426],["Markham",339,312,347,561],["Marysville",307,300,312,410],["MLK Jr.",319,337,337,584],["Peninsula",239,250,236,539],["Richmond",512,504,497,723],["Rieke",264,252,311,465],["Rigler",289,306,321,621],["Rosa Parks",160,159,168,499],["Rose City Park",417,391,370,609],["Sabin",269,236,235,621],["Scott",476,500,470,633],["Sitton",345,333,311,419],["Stephenson",281,271,261,486],["Vestal",283,294,279,516],["Whitman",194,205,223,416],["Woodlawn",323,300,289,591],["Woodmere",227,224,225,465],["Woodstock",367,342,325,609]],"perpupil":[["Rosa Parks",161,12870],["Whitman",196,12204],["Creston",198,10465],["Rieke",255,10761],["Beach",286,11161],["Woodstock",351,10097],["Atkinson",358,9810],["Kelly",412,9534],["Ainsworth",554,9227],["Richmond",505,8222]],"closing":[{"k":"beach","n":"Beach","y":2027,"kids":284,"cap":607,"built":1928,"cond":"Poor","cps":17196,"cost":4883769,"save":957658,"seis":14.98,"to":[["Chief Joseph",55,99],["César Chávez (Spanish immersion)",73,73]],"why":"The Beach building needs major repairs. The roof and building structure require urgent, expensive fixes to make it safe and modern.","was":[432,288],"url":"https://drive.google.com/open?id=1lHEHdlRrQ_OG4QaeKCH-GJhEn89NLIHe","md":"../build/pps-texts/beach-closure-report-2026-11.md"},{"k":"buckman","n":"Buckman","y":2027,"kids":244,"cap":633,"built":1921,"cond":"Poor","cps":21705,"cost":5295940,"save":934719,"seis":21.35,"to":[["Sunnyside",98,98],["Abernethy",55,71]],"why":"The Buckman building needs major repairs. … Buckman is expected to drop to just 239 students over the next few years, making it difficult to fund full programs and staffing.","was":[450,283],"url":"https://drive.google.com/open?id=1A5pkItIdNiwW-Et6STpHebmu5KSvhhK0","md":"../build/pps-texts/buckman-closure-report-2026-11.md"},{"k":"creston","n":"Creston","y":2027,"kids":201,"cap":429,"built":1948,"cond":"Poor","cps":29643,"cost":5958144,"save":1085010,"seis":14.61,"to":[["Atkinson",70,91]],"why":"Creston is expected to drop to just 187 students over the next few years, making it too small to support full staffing and programs.","was":[361,219],"url":"https://drive.google.com/open?id=1CYtbN7Urx19Ji5NKdyx4-PzSp41UlNIw","md":"../build/pps-texts/creston-closure-report-2026-11.md"},{"k":"irvington","n":"Irvington","y":2027,"kids":240,"cap":618,"built":1932,"cond":"Poor","cps":17074,"cost":4097714,"save":899830,"seis":16.26,"to":[["Beverly Cleary (merged school)",81,94]],"why":"Irvington is expected to drop to just 223 students by 2031-32 (well below target levels).","was":[339,259],"url":"https://drive.google.com/open?id=1eXKbJI2GA7v7wqRbtNKnm_za9e7UCT1S","md":"../build/pps-texts/irvington-closure-report-2026-11.md"},{"k":"peninsula","n":"Peninsula","y":2027,"kids":250,"cap":539,"built":1952,"cond":"Fair","cps":20018,"cost":5004615,"save":961959,"seis":6.52,"to":[["Rosa Parks",32,96]],"why":"Peninsula’s current enrollment is 239 students and is expected to remain low at 236 students by 2031-32 (over 100 students below target levels).","was":[265,239],"url":"https://drive.google.com/open?id=1WMNVdqCBBtUrVYDyVvu8fbrlw5nUModB","md":"../build/pps-texts/peninsula-closure-report-2026-11.md"},{"k":"sabin","n":"Sabin","y":2027,"kids":236,"cap":621,"built":1928,"cond":"Fair","cps":20744,"cost":4895684,"save":898472,"seis":19.32,"to":[["Dr. Martin Luther King Jr.",58,98]],"why":"Sabin’s enrollment is expected to remain low (235 students), and the building faces major plumbing and heating system replacement needs…","was":[452,270],"url":"https://drive.google.com/open?id=1mLhuDMTLX4DGzzBKwUpOTnHDSqO0B0FH","md":"../build/pps-texts/sabin-closure-report-2026-11.md"},{"k":"lewis","n":"Lewis","y":2028,"kids":224,"cap":420,"built":1952,"cond":"Poor","cps":17560,"cost":3933404,"save":860366,"seis":0,"to":[["Duniway",63,97]],"why":"Lewis enrollment is expected to drop to 201 students by 2031-32.","was":[390,262],"url":"https://drive.google.com/open?id=10PlhU4mBnISLnPc0FeoczyNBikNgyUBc","md":"../build/pps-texts/lewis-closure-report-2026-11.md"},{"k":"marysville","n":"Marysville","y":2028,"kids":300,"cap":410,"built":1921,"cond":"Poor","cps":20945,"cost":6283380,"save":1180128,"seis":7.33,"to":[["Arleta",33,64]],"why":"Arleta has room for 653 students (with 28 main classrooms) compared to Marysville’s space of 410, allowing Arleta to comfortably house both communities.","was":[389,304],"url":"https://drive.google.com/open?id=1IR0x4e1V9QraDCTILgCnfawqNhW44BVC","md":"../build/pps-texts/marysville-closure-report-2026-11.md"},{"k":"rose-city-park","n":"Rose City Park","y":2028,"kids":391,"cap":609,"built":1912,"cond":"Poor","cps":15271,"cost":5971122,"save":883254,"seis":21.1,"to":[["Scott",77,77],["Vestal (Vietnamese immersion)",56,86]],"why":"Rose City Park faces major building risks, including very old building systems and critical maintenance failures requiring a full seismic overhaul.","was":[531,417],"url":"https://drive.google.com/open?id=1hHdQkEse2gitvKOuSHM_LKNxcCo4BYh8","md":"../build/pps-texts/rose-city-park-closure-report-2026-11.md"},{"k":"woodmere","n":"Woodmere","y":2028,"kids":224,"cap":465,"built":1954,"cond":"Poor","cps":22993,"cost":5150541,"save":1100925,"seis":13.69,"to":[["Whitman",52,107]],"why":"Both Whitman and Woodmere are significantly under district enrollment goals, with Woodmere’s enrollment remaining in the low 220s.","was":[301,226],"url":"https://drive.google.com/open?id=1A4IYby_4o5fd0RRElkoPh1tfEaiuuGbM","md":"../build/pps-texts/woodmere-closure-report-2026-11.md"}],"closing_names":["Beach","Buckman","Creston","Irvington","Peninsula","Sabin","Lewis","Marysville","Rose City Park","Woodmere"],"per_position":135744.4};</script>
+<script>
+
+(function(){
+const D=window.WC, $=s=>document.querySelector(s), NS='http://www.w3.org/2000/svg';
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const fmt=n=>Math.round(n).toLocaleString('en-US');
+const money=n=>n>=1e6?'$'+(n/1e6).toFixed(n>=1e7?1:2)+' million':'$'+fmt(n);
+function el(tag,attrs,parent,text){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);if(text!=null)e.textContent=text;if(parent)parent.appendChild(e);return e}
+function tipFor(box){let t=box.querySelector('.tip');if(!t){t=document.createElement('div');t.className='tip';t.hidden=true;box.appendChild(t)}return t}
+function showTip(box,html,x,y){const t=tipFor(box);t.innerHTML=html;t.hidden=false;const bw=box.clientWidth;const w=t.offsetWidth;t.style.left=Math.max(4,Math.min(bw-w-4,x-w/2))+'px';t.style.top=Math.max(4,y-t.offsetHeight-12)+'px'}
+function hideTip(box){const t=box.querySelector('.tip');if(t)t.hidden=true}
+function bars(id,rows,max,opts={}){const box=$(id);box.innerHTML='';rows.forEach(r=>{const d=document.createElement('div');d.className='wc-bar';d.innerHTML=`<span>${r[0]}</span><span class="t"><span class="f" style="width:${Math.max(1,r[1]/max*100)}%;--c:${r[2]||'var(--p-today)'}"></span></span><span class="v">${r[3]||fmt(r[1])}</span>`;box.appendChild(d)})}
+function press(group,btn){group.querySelectorAll('button').forEach(b=>{if(b.dataset[Object.keys(btn.dataset)[0]]!==undefined)b.setAttribute('aria-pressed',b===btn?'true':'false')})}
+
+// 1. enrollment line
+let G='All';
+function drawEnroll(){
+  const box=$('#c-enroll'), svg=box.querySelector('svg'), W=Math.max(300,box.clientWidth-28), H=Math.round(Math.min(360,Math.max(230,W*.45)));
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.innerHTML='';
+  const m={l:52,r:14,t:16,b:28}, ys=D.enroll.years, v=D.enroll[G], lo=Math.min(...v), hi=Math.max(...v);
+  const span=(hi-lo)*1.5, st=[500,1000,2000,2500,5000].find(x=>span/x<=6)||5000, y0=Math.max(0,Math.floor((lo-(hi-lo)*.25)/st)*st), y1=Math.ceil((hi+(hi-lo)*.12)/st)*st;
+  const X=i=>m.l+i/(ys.length-1)*(W-m.l-m.r), Y=n=>H-m.b-(n-y0)/(y1-y0)*(H-m.t-m.b);
+  for(let n=y0;n<=y1;n+=st){const yy=Y(n);el('line',{x1:m.l,x2:W-m.r,y1:yy,y2:yy,stroke:css('--rule'),'stroke-width':1},svg);el('text',{x:m.l-6,y:yy+4,'text-anchor':'end'},svg,fmt(n))}
+  ys.forEach((yr,i)=>{if(yr%(W<520?4:2)===0)el('text',{x:X(i),y:H-8,'text-anchor':'middle'},svg,yr)});
+  const ai=ys.indexOf(D.enroll.actual_to);
+  const pts=v.map((n,i)=>[X(i),Y(n)]);
+  el('path',{d:'M'+pts.slice(0,ai+1).map(p=>p.join(',')).join('L'),fill:'none',stroke:css('--ink'),'stroke-width':2.5},svg);
+  el('path',{d:'M'+pts.slice(ai).map(p=>p.join(',')).join('L'),fill:'none',stroke:css('--mute'),'stroke-width':2,'stroke-dasharray':'5 4'},svg);
+  el('line',{x1:X(ai),x2:X(ai),y1:m.t,y2:H-m.b,stroke:css('--rule'),'stroke-dasharray':'2 3'},svg);
+  el('text',{x:X(ai)+6,y:m.t+10},svg,'forecast →');
+  const pk=v.slice(0,ai+1).indexOf(Math.max(...v.slice(0,ai+1)));
+  [[pk,'peak '+fmt(v[pk])],[ai,fmt(v[ai])],[ys.length-1,fmt(v[ys.length-1])]].forEach(([i,t],j)=>{el('circle',{cx:X(i),cy:Y(v[i]),r:4,fill:j<2?css('--ink'):css('--mute'),stroke:css('--panel'),'stroke-width':2},svg);el('text',{x:X(i)+(j===2?-4:0),y:Y(v[i])-9,'text-anchor':j===2?'end':'middle',class:'lab'},svg,t)});
+  const cross=el('line',{y1:m.t,y2:H-m.b,stroke:css('--mute'),'stroke-width':1,opacity:0},svg), dot=el('circle',{r:5,fill:css('--accent'),opacity:0},svg);
+  const hit=el('rect',{x:m.l,y:m.t,width:W-m.l-m.r,height:H-m.t-m.b,fill:'transparent'},svg);
+  const move=e=>{const r=svg.getBoundingClientRect(),sx=(e.clientX-r.left)*W/r.width;let i=Math.round((sx-m.l)/(W-m.l-m.r)*(ys.length-1));i=Math.max(0,Math.min(ys.length-1,i));
+    cross.setAttribute('x1',X(i));cross.setAttribute('x2',X(i));cross.setAttribute('opacity',1);dot.setAttribute('cx',X(i));dot.setAttribute('cy',Y(v[i]));dot.setAttribute('opacity',1);
+    const ch=v[i]-v[0];showTip(box,`<b>Fall ${ys[i]}</b> ${ys[i]>D.enroll.actual_to?'(forecast)':''}<br>${G==='All'?'All grades':'Grades '+G}: <b>${fmt(v[i])}</b><br>${ch<=0?'':'+'}${fmt(ch)} vs 2016`,X(i)*r.width/W+14,Y(v[i])*r.height/H+60)};
+  hit.addEventListener('pointermove',move);hit.addEventListener('pointerdown',move);hit.addEventListener('pointerleave',()=>{cross.setAttribute('opacity',0);dot.setAttribute('opacity',0);hideTip(box)});
+}
+$('#c-enroll .ctrl').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;G=b.dataset.g;press(b.parentNode,b);drawEnroll()});
+
+bars('#b-births',[['2011&ndash;15',26882],['2016&ndash;20',22462],['2021&ndash;25',18901,'var(--bad)']],26882);
+bars('#b-nothing',[
+ ['K-5 schools: no changes',18,'var(--p-today)','18%'],['&nbsp;&nbsp;&hellip;the plan',50,'var(--accent)','50%'],
+ ['Middle schools: no changes',13,'var(--p-today)','13%'],['&nbsp;&nbsp;&hellip;the plan',47,'var(--accent)','47%'],
+ ['K-5 kids in poverty at such a school: no changes',20,'var(--p-today)','20%'],['&nbsp;&nbsp;&hellip;the plan',59,'var(--accent)','59%'],
+ ['K-5 English learners at such a school: no changes',29,'var(--p-today)','29%'],['&nbsp;&nbsp;&hellip;the plan',68,'var(--accent)','68%']],100);
+
+// 3. K-5 dot chart
+let KM='kids', KY=1;
+function drawK5(){
+  const box=$('#c-k5'), svg=box.querySelector('svg'), W=Math.max(300,box.clientWidth-28);
+  const close=new Set(D.closing_names);
+  const S=D.k5.map(r=>({n:r[0],k:r[KY],full:r[KY]/r[4]*100,cap:r[4],c:close.has(r[0])}));
+  const val=s=>KM==='kids'?s.k:s.full, lo=KM==='kids'?100:20, hi=KM==='kids'?600:100, thr=KM==='kids'?360:70;
+  const m={l:14,r:14}, R=W<520?6:7, bin=(hi-lo)/((W-m.l-m.r)/(2*R+1));
+  const cols={};S.sort((a,b)=>val(a)-val(b)).forEach(s=>{const b=Math.round((Math.min(hi,val(s))-lo)/bin);(cols[b]=cols[b]||[]).push(s)});
+  const maxStack=Math.max(...Object.values(cols).map(c=>c.length)), H=Math.max(170,maxStack*(2*R+2)+70);
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.innerHTML='';
+  const X=x=>m.l+(x-lo)/(hi-lo)*(W-m.l-m.r), base=H-34;
+  el('line',{x1:m.l,x2:W-m.r,y1:base+R+2,y2:base+R+2,stroke:css('--rule')},svg);
+  const ticks=KM==='kids'?[100,200,300,400,500,600]:[20,40,60,80,100];
+  ticks.forEach(t=>el('text',{x:X(t),y:H-12,'text-anchor':'middle'},svg,KM==='kids'?fmt(t):t+'%'));
+  el('line',{x1:X(thr),x2:X(thr),y1:14,y2:base+R+2,stroke:css('--ink'),'stroke-width':2,'stroke-dasharray':'4 3'},svg);
+  el('text',{x:X(thr)+6,y:24,class:'lab'},svg,KM==='kids'?'360: PPS’s floor':'70%: PPS’s “efficient” floor');
+  for(const b in cols){cols[b].forEach((s,j)=>{const cx=m.l+b*bin/(hi-lo)*(W-m.l-m.r), cy=base-j*(2*R+2);
+    const c=el('circle',{cx,cy,r:R,fill:s.c?css('--p-rec'):css('--p-today'),stroke:css('--panel'),'stroke-width':2,tabindex:0,role:'img','aria-label':`${s.n}: ${fmt(s.k)} students, ${Math.round(s.full)}% full`},svg);
+    const show=()=>{const r=svg.getBoundingClientRect();showTip(box,`<b>${s.n}</b>${s.c?' (recommended to close)':''}<br>${fmt(s.k)} students &middot; room for ${fmt(s.cap)}<br>${Math.round(s.full)}% full`,cx*r.width/W+14,cy*r.height/H+56)};
+    c.addEventListener('pointerenter',show);c.addEventListener('pointerdown',show);c.addEventListener('focus',show);c.addEventListener('pointerleave',()=>hideTip(box));c.addEventListener('blur',()=>hideTip(box))})}
+  const under=S.filter(s=>s.k<360).length, kids=S.reduce((a,s)=>a+s.k,0), seats=S.reduce((a,s)=>a+s.cap,0), u70=S.filter(s=>s.full<70).length;
+  $('#k5-sum').innerHTML=`${KY===1?'Fall 2025':'Fall 2031 (forecast, no changes)'}: <b>${under} of ${S.length}</b> elementary schools under 360 students. Together they have room for ${fmt(seats)} kids and hold ${fmt(kids)}: <b>about ${fmt(Math.round((seats-kids)/100)*100)} empty seats</b>, ${Math.round(100-kids/seats*100)}% of the space.`;
+}
+$('#c-k5 .ctrl').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.m){KM=b.dataset.m;b.parentNode.querySelectorAll('[data-m]').forEach(x=>x.setAttribute('aria-pressed',x===b))}else{KY=+b.dataset.y;b.parentNode.querySelectorAll('[data-y]').forEach(x=>x.setAttribute('aria-pressed',x===b))}drawK5()});
+
+// 4. cost per pupil scatter
+function drawPP(){
+  const box=$('#c-pp'), svg=box.querySelector('svg'), W=Math.max(300,box.clientWidth-28), H=Math.round(Math.min(340,Math.max(240,W*.42)));
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.innerHTML='';
+  const m={l:62,r:16,t:34,b:40}, X=x=>m.l+(x-100)/(500)*(W-m.l-m.r), Y=y=>H-m.b-(y-7000)/(7000)*(H-m.t-m.b);
+  [8000,10000,12000,14000].forEach(t=>{el('line',{x1:m.l,x2:W-m.r,y1:Y(t),y2:Y(t),stroke:css('--rule')},svg);el('text',{x:m.l-6,y:Y(t)+4,'text-anchor':'end'},svg,'$'+fmt(t))});
+  [100,200,300,400,500,600].forEach(t=>el('text',{x:X(t),y:H-m.b+18,'text-anchor':'middle'},svg,t));
+  el('text',{x:(m.l+W-m.r)/2,y:H-4,'text-anchor':'middle'},svg,'students in the school');
+  el('text',{x:4,y:14,'text-anchor':'start'},svg,'Staffing cost per student');
+  el('line',{x1:X(360),x2:X(360),y1:m.t,y2:H-m.b,stroke:css('--ink'),'stroke-dasharray':'4 3','stroke-width':1.5},svg);
+  el('text',{x:X(360)+5,y:m.t+10,class:'lab'},svg,'360');
+  const lab=new Set(W>=420?['Rosa Parks','Whitman','Beach','Richmond','Ainsworth']:['Rosa Parks','Richmond']);
+  D.perpupil.forEach(([n,k,c])=>{const cx=X(k),cy=Y(c);const d=el('circle',{cx,cy,r:7,fill:css('--accent'),stroke:css('--panel'),'stroke-width':2,tabindex:0,role:'img','aria-label':`${n}: ${k} students, $${fmt(c)} per student`},svg);
+    if(lab.has(n))el('text',{x:cx+(n==='Richmond'?-10:10),y:cy+(n==='Ainsworth'?-10:4),'text-anchor':n==='Richmond'?'end':'start',class:'lab'},svg,n);
+    const show=()=>{const r=svg.getBoundingClientRect();showTip(box,`<b>${n}</b><br>${k} students<br><b>$${fmt(c)}</b> per student`,cx*r.width/W,cy*r.height/H)};
+    d.addEventListener('pointerenter',show);d.addEventListener('pointerdown',show);d.addEventListener('focus',show);d.addEventListener('pointerleave',()=>hideTip(box));d.addEventListener('blur',()=>hideTip(box))});
+}
+
+// 6. money
+let GAP='close';
+function drawGap(){
+  const g1=$('#g1'), g2=$('#g2'), cl=GAP==='close';
+  g1.style.flex='54.8';g1.style.background=css('--p-today');g1.textContent='$54.8M';
+  g2.style.flex='10.2';g2.style.background=cl?css('--accent'):css('--bad');g2.textContent='$10.2M';
+  $('#g2sw').style.setProperty('--c',cl?'var(--accent)':'var(--bad)');$('#g2lab').textContent=cl?'From duplicate building costs':'Found somewhere else in schools';
+  $('#g-note').innerHTML=cl?'$10.2 million a year comes from the duplicate costs of running ten more buildings. The other $54.8 million is cut either way.'
+   :'Keep every building and PPS saves nothing on overhead. The same $10.2 million has to come from somewhere else. PPS&rsquo;s warning: &ldquo;more blended classrooms, possibility of shared or split administrators&rdquo; (Board Q&amp;A tracker, p. 24).';
+}
+$('#c-gap .ctrl').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;GAP=b.dataset.c;press(b.parentNode,b);drawGap()});
+const keep=$('#keep');
+D.closing.forEach((c,i)=>{const l=document.createElement('label');l.innerHTML=`<input type="checkbox" value="${i}"> ${c.n} <span class="small">$${(c.save/1e6).toFixed(2)}M</span>`;keep.appendChild(l)});
+function drawKeep(){let s=0;keep.querySelectorAll('input:checked').forEach(i=>s+=D.closing[+i.value].save);
+  $('#k-dollars').textContent=s?money(s):'$0';$('#k-pos').textContent=s?'about '+Math.round(s/D.per_position):'0'}
+keep.addEventListener('change',drawKeep);
+
+// 7. school picker
+const pick=$('#pick');
+D.closing.forEach((c,i)=>{const b=document.createElement('button');b.textContent=c.n;b.dataset.i=i;b.setAttribute('aria-pressed',i===0);pick.appendChild(b)});
+function fillRow(lab,pct,c){return `<div class="row"><span>${lab}</span><span class="t"><span class="f" style="width:${Math.min(100,pct)}%;--c:${c}"></span></span><span class="n">${pct}%</span></div>`}
+function drawSchool(i){const c=D.closing[i], full=Math.round(c.kids/c.cap*100), age=2027-c.built;
+  const recv=c.to.map(([n,a,b])=>a==null?`<div><b>${n}</b><p class="small">Takes the immersion students; PPS gives no before/after figure.</p></div>`:`<div><b>${n}</b>${fillRow('no change',a,'var(--p-today)')}${fillRow('with move',b,b>100?'var(--bad)':'var(--accent)')}</div>`).join('');
+  $('#school').innerHTML=`<div class="wc-card"><h3>${c.n} <span class="small">closes fall ${c.y}</span></h3><p>PPS: &ldquo;${c.why}&rdquo;</p>
+  <dl class="wc-kv"><dt>Students, 2018 &rarr; 2025</dt><dd>${c.was[0]} &rarr; ${c.was[1]} (${Math.round((c.was[1]/c.was[0]-1)*100)}%)</dd><dt>Forecast, 2027-28</dt><dd>${fmt(c.kids)}</dd><dt>Room for</dt><dd>${fmt(c.cap)} (${full}% full)</dd><dt>Building</dt><dd>Built ${c.built} (about ${Math.round(age/5)*5} years old in 2027); condition &ldquo;${c.cond}&rdquo;</dd>
+  <dt>All-in cost per student</dt><dd>$${fmt(c.cps)} a year</dd><dt>Running cost</dt><dd>${money(c.cost)} a year</dd><dt>Saved if closed</dt><dd>${money(c.save)} a year</dd>
+  <dt>Seismic retrofit</dt><dd>${c.seis?'about $'+c.seis.toFixed(1)+' million (rough 2024 estimate)':'already done'}</dd></dl>
+  <p class="cite">PPS <a href="${c.md}">closure report</a> (<a href="${c.url}">original</a>).</p></div>
+  <div class="wc-card"><h3>Where its students go</h3><div class="wc-fill">${recv}</div><p class="cite">How full the receiving school is with no change vs. with ${c.n}&rsquo;s students, first year of the move. Over 100% = over capacity.</p></div>`}
+pick.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;press(pick,b);drawSchool(+b.dataset.i)});
+
+function all(){drawEnroll();drawK5();drawPP()}
+all();drawGap();drawKeep();drawSchool(0);
+let rt;addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(all,150)});
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>{all();drawGap()});
+})();
+</script>
+</body>
+</html>
