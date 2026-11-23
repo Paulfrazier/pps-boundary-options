@@ -129,6 +129,8 @@ td.n,th.n{text-align:right}
     <p class="lede" id="lede"></p>
   </header>
   <div class="controls">
+    <div class="ctl"><span>Plan</span>
+      <div class="switch" role="group" aria-label="Plan compared with today"><button data-p="rec">Superintendent's rec</button><button data-p="lf">La Forte's plan</button></div></div>
     <div class="ctl"><span>Area</span>
       <div class="switch" role="group" aria-label="Area">
         <button data-a="all">Whole district</button><button data-a="NE">NE</button><button data-a="N">N</button><button data-a="SE">SE</button><button data-a="W">West side</button>
@@ -172,8 +174,8 @@ td.n,th.n{text-align:right}
       </div>
       <div class="picker">
         <div><h2>Which schools are open</h2>
-          <p>Starts as the Superintendent's recommendation. Check a school to keep it open as a neighborhood school, uncheck to close it. You can also click a school on the map. Your choices use the closest-open-school view, since new boundaries would need a new solve.</p></div>
-        <div class="presets"><button id="pRec">The rec</button><button id="pToday">Today's schools</button><span class="scn" id="scnNote"></span></div>
+          <p>Starts as the plan picked above. Check a school to keep it open as a neighborhood school, uncheck to close it. You can also click a school on the map. Your choices use the closest-open-school view, since new boundaries would need a new solve.</p></div>
+        <div class="presets"><button id="pRec">The rec</button><button id="pLF">La Forte</button><button id="pToday">Today's schools</button><span class="scn" id="scnNote"></span></div>
         <div class="slist" id="slist"></div>
       </div>
       <div>
@@ -193,6 +195,7 @@ td.n,th.n{text-align:right}
     <p><b>Areas:</b> NE = north of Burnside and east of N Williams Ave; N = north of Burnside and west of Williams; SE = south of Burnside on the east side; West side = the Lincoln and Ida B. Wells high school clusters. Totals and the table count only the selected area; kids are measured to any school, even across an area line.</p>
     <p><b>Kids</b> are projected 2031-32 PPS K-5 students by home block (the project's 2031-32 "where kids live" estimate), rounded to the nearest 10. <b>Walk</b> is the shortest walking route on the OpenStreetMap street and path network (local OSRM foot routing) from each block's center to the school. Minutes assume 3 mph, so 15 minutes = 0.75 mile. A 5-to-10-year-old usually walks slower than that.</p>
     <p><b>Density:</b> projected K-5 kids per square mile, each block averaged with its neighbors, in five steps (under 100, 100–200, 200–300, 300–450, 450+; each step holds roughly a fifth of the district’s kids). <b>Walk + density</b> draws the walk colors stronger in denser steps; <b>Density map</b> colors each block by its walk status and its density together: newly over the line runs from light red to near-black, over the line today too from light to dark amber, and within the line in greys. A desert's density divides its kids by its land area (block areas from census-block cells clipped to the district), so patches of parks or industrial land score low even when they are large.</p>
+    <p><b>La Forte's plan</b> is the rec with Rose City Park, Scott and Rigler left as they are today, after Board member Virginia La Forte (Zone 5) posted on 2026-11-18 “RCP, Scott, Rigler remain as is.” It is not confirmed as an amendment. As we model it, Rose City Park and Rigler keep today’s neighborhood areas, the Vietnamese program stays at Rose City Park and Spanish stays at Scott and Rigler; every other school and line is the rec’s. Our mock-up, not a PPS map.</p>
     <p><b>The rec's closures, as modeled:</b> Sabin, Irvington, Rose City Park, Beach, Buckman, Creston, Lewis, Marysville, Peninsula, Woodmere and Cesar Chavez close. Rigler becomes a Spanish dual-language hub with no neighborhood area; Lent and Richmond are hubs too.</p>
   </div>
 </div>
@@ -204,17 +207,19 @@ const AREA={all:'Portland Public Schools',NE:'Northeast Portland',N:'North Portl
 const AREA_SHORT={NE:'Northeast',N:'North',SE:'Southeast',W:'West side'};
 const DROP_LABELS=new Set(['Logie Trail','Front','Naito']);
 // block: [path,kids, closest today d,recd,name,recname, assigned today d,recd,name,recname, area]
-let D=null, view='fifteen', mode='assigned', area='NE', open=[], recOpen=[], todayOpen=[];
+let D=null, view='fifteen', mode='assigned', area='NE', plan='rec', open=[], recOpen=[], lfOpen=[], todayOpen=[];
+const PW={rec:'under the rec',lf:'under La Forte'}, PNAME={rec:'the Superintendent\u2019s November 12 recommendation',lf:'La Forte\u2019s plan (the rec with Rose City Park, Scott and Rigler as they are today)'};
+const planOpen=()=>plan==='lf'?lfOpen:recOpen;
 const r10=n=>Math.round(n/10)*10, fmt=n=>r10(n).toLocaleString('en-US');
 const mins=mi=>Math.round(mi*20);
-const isRec=()=>open.every((v,j)=>v===recOpen[j]);
-const scnWord=()=>isRec()?'under the rec':'with your choices';
+const isRec=()=>open.every((v,j)=>v===planOpen()[j]);
+const scnWord=()=>isRec()?PW[plan]:'with your choices';
 // nearest open school for block i under the current choices
 function scn(i){const nb=D.nb[i],K=D.K;for(let q=0;q<K;q++){const j=nb[q];if(open[j])return {d:nb[K+q]/1000,n:D.schools[j][0]}}
   return {d:nb[2*K-1]/1000+.01,n:'none of the 8 nearest open'}}
 function F(i){const b=D.blocks[i];
-  if(mode==='assigned') return {t:b[6],r:b[7],nt:b[8],nr:b[9]};
-  if(isRec()) return {t:b[2],r:b[3],nt:b[4],nr:b[5]};
+  if(mode==='assigned') return plan==='lf'?{t:b[6],r:b[12],nt:b[8],nr:b[13]}:{t:b[6],r:b[7],nt:b[8],nr:b[9]};
+  if(plan==='rec'&&isRec()) return {t:b[2],r:b[3],nt:b[4],nr:b[5]};
   const s=scn(i); return {t:b[2],r:s.d,nt:b[4],nr:s.n}}
 function cat(f){const t=TH[view].mi; if(f.r>t) return f.t>t?'old':'new'; return f.t>t?'closer':'near'}
 
@@ -313,7 +318,7 @@ function build(){
   function show(ev){
     const j=schoolAt(ev.clientX,ev.clientY); cv.classList.toggle('onschool',j>=0);
     if(j>=0){const s=D.schools[j];if(HL!==-1){HL=-1;redraw()}
-      tip.innerHTML=`<b>${s[0]}</b><div style="color:var(--w-muted)">${open[j]?'Open':'Closed'} in this view. Today: ${s[5]?'open':'no neighborhood zone'}. The rec: ${s[3]==='open'?'open':s[3]==='hub'?'dual-language hub only':'closes'}.</div><div class="k" style="margin-top:4px">Click to ${open[j]?'close':'open'} it</div>`;
+      tip.innerHTML=`<b>${s[0]}</b><div style="color:var(--w-muted)">${open[j]?'Open':'Closed'} in this view. Today: ${s[5]?'open':'no neighborhood zone'}. The rec: ${s[3]==='open'?'open':s[3]==='hub'?'dual-language hub only':'closes'}. La Forte: ${s[6]?'open':s[3]==='hub'?'dual-language hub only':'closes'}.</div><div class="k" style="margin-top:4px">Click to ${open[j]?'close':'open'} it</div>`;
       place(ev);return}
     const i=blockAt(ev.clientX,ev.clientY); if(i<0){hide();return}
     if(HL!==i){HL=i;redraw()}
@@ -361,7 +366,8 @@ function build(){
   NEAR={};['NE','N','SE','W'].forEach(a=>NEAR[a]=new Set());
   D.blocks.forEach((bk,i)=>{if(bk[1]<=0)return;for(let q=0;q<3;q++){const j=D.nb[i][q];if(D.schools[j][4]!==bk[10])NEAR[bk[10]].add(j)}});
   document.getElementById('slist').addEventListener('change',e=>{const c=e.target;if(c.dataset&&c.dataset.j!=null){open[+c.dataset.j]=c.checked;afterChange()}});
-  document.getElementById('pRec').onclick=()=>{open=recOpen.slice();afterChange()};
+  document.getElementById('pRec').onclick=()=>{plan='rec';open=recOpen.slice();go();afterChange()};
+  document.getElementById('pLF').onclick=()=>{plan='lf';open=lfOpen.slice();go();afterChange()};
   document.getElementById('pToday').onclick=()=>{open=todayOpen.slice();afterChange()};
 }
 let SD=[], DCAP=1, colorBy='shade', PAT={};
@@ -411,8 +417,8 @@ function render(){
   document.getElementById('sNew').textContent='+'+fmt(c);
   document.getElementById('h1').textContent=`${AREA[area]}: homes ${T.ttl} ${M}`;
   document.getElementById('lede').textContent=(mode==='assigned'
-    ?'Each patch is one census block. Walks go to the K-5 school each home is zoned for: today’s boundaries vs the boundaries in the Superintendent’s November 12 recommendation.'
-    :`Each patch is one census block. Walks go to the closest open neighborhood K-5 or K-8, ignoring boundaries: today vs ${rec?'the Superintendent’s November 12 recommendation':'the set of open schools you picked'}.`);
+    ?`Each patch is one census block. Walks go to the K-5 school each home is zoned for: today’s boundaries vs the boundaries in ${PNAME[plan]}.`
+    :`Each patch is one census block. Walks go to the closest open neighborhood K-5 or K-8, ignoring boundaries: today vs ${rec?PNAME[plan]:'the set of open schools you picked'}.`);
   document.getElementById('lgNew').textContent=`Newly over ${T.name} ${sw}`;
   document.getElementById('lgOld').textContent=`Over ${T.name} both today and ${sw}`;
   document.getElementById('lgCloser').textContent=`Over ${T.name} today, within it ${sw}`;
@@ -423,7 +429,7 @@ function render(){
   document.getElementById('miniCl').textContent=`Over today, within ${sw}`;
   document.getElementById('tblH').textContent=`Newly over ${T.name}${area==='all'?'':' in '+AREA_SHORT[area]}, by school`;
   document.getElementById('thA').textContent=mode==='assigned'?'Assigned today':'Nearest today';
-  document.getElementById('thB').textContent=mode==='assigned'?'Assigned under the rec':'Nearest open '+sw;
+  document.getElementById('thB').textContent=mode==='assigned'?'Assigned '+sw:'Nearest open '+sw;
   const rows=Object.entries(by).filter(([,v])=>v.k>=5).sort((x,y)=>y[1].k-x[1].k);
   document.getElementById('tbl').innerHTML=rows.map(([n,v])=>{
     const to=Object.entries(v.to).sort((x,y)=>y[1]-x[1]).filter(([,q],j)=>j===0||q>=v.k*.2).map(x=>x[0]).join(', ');
@@ -440,28 +446,30 @@ function render(){
   document.querySelectorAll('[data-s]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.s===colorBy));
   // markers + checkboxes
   redraw();
-  const n=open.reduce((s,v,j)=>s+(v!==recOpen[j]),0);
-  document.getElementById('scnNote').textContent=n?`${n} change${n>1?'s':''} from the rec`:'';
+  const n=open.reduce((s,v,j)=>s+(v!==planOpen()[j]),0);
+  document.getElementById('scnNote').textContent=n?`${n} change${n>1?'s':''} from ${plan==='lf'?'La Forte':'the rec'}`:'';
   document.getElementById('mAs').disabled=!rec;
   document.getElementById('mAs').title=rec?'':'Boundaries for your set of schools are not drawn; use the closest-open-school view';
   document.querySelectorAll('[data-v]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===view));
   document.querySelectorAll('[data-m]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.m===mode));
   document.querySelectorAll('[data-a]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.a===area));
+  document.querySelectorAll('[data-p]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.p===plan));
   if(listArea!==area){document.getElementById('slist').innerHTML=listHTML();listArea=area}
-  D.schools.forEach((s,j)=>{const c=document.getElementById('cb'+j);if(!c)return;c.checked=open[j];document.getElementById('lab'+j).classList.toggle('chg',open[j]!==recOpen[j])});
+  D.schools.forEach((s,j)=>{const c=document.getElementById('cb'+j);if(!c)return;c.checked=open[j];document.getElementById('lab'+j).classList.toggle('chg',open[j]!==planOpen()[j])});
 }
 function fromHash(){const h=location.hash.slice(1).split('-');
   const na=AREA[h[2]]?h[2]:'NE', changed=na!==area||!D; area=na;
-  mode=h[0]==='closest'?'closest':'assigned'; view=TH[h[1]]?h[1]:'fifteen';
+  mode=h[0]==='closest'?'closest':'assigned'; const np=h[3]==='lf'?'lf':'rec'; if(np!==plan){plan=np; if(D) open=planOpen().slice()} view=TH[h[1]]?h[1]:'fifteen';
   if(D){render(); if(changed) fitArea()}}
-const go=()=>{location.hash=[mode,view,area].join('-')};
+const go=()=>{location.hash=[mode,view,area,plan].join('-')};
 document.querySelectorAll('[data-v]').forEach(x=>x.addEventListener('click',()=>{view=x.dataset.v;go()}));
 document.querySelectorAll('[data-m]').forEach(x=>x.addEventListener('click',()=>{if(x.disabled)return;mode=x.dataset.m;go()}));
 document.querySelectorAll('[data-a]').forEach(x=>x.addEventListener('click',()=>{area=x.dataset.a;go();fitArea()}));
+document.querySelectorAll('[data-p]').forEach(x=>x.addEventListener('click',()=>{plan=x.dataset.p;open=planOpen().slice();go();render()}));
 addEventListener('hashchange',fromHash);
 fromHash();
 fetch('data/school_walks.json').then(r=>r.json()).then(j=>{D=j;
-  recOpen=D.schools.map(s=>s[3]==='open'); todayOpen=D.schools.map(s=>!!s[5]); open=recOpen.slice();
+  recOpen=D.schools.map(s=>s[3]==='open'); lfOpen=D.schools.map(s=>!!s[6]); todayOpen=D.schools.map(s=>!!s[5]); open=planOpen().slice();
   build();render();fitArea()}).catch(e=>{document.getElementById('mapbox').textContent='The map data did not load. Reload the page to try again.';console.error(e)});
 </script>
 <footer class="band"><div class="in">
