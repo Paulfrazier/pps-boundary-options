@@ -13,17 +13,20 @@
   --w-land:#e6ebe9; --w-street:#c3cdca; --w-street2:#9eaba7;
   --w-near:#e6ebe9; --w-old:#e8b96a; --w-new:#c8412b; --w-closer:#3f8f7d; --w-ink:#1d2624; --w-accent:#2f6b5e; --w-chg:#fbefd9;
   --d0:#eef2f7; --d1:#c6d6ea; --d2:#8fb0d6; --d3:#527fb8; --d4:#22487f;
+  --r0:#f7d3ca; --r1:#ec9580; --r2:#d4523a; --r3:#9c2216; --r4:#3d0905;
+  --a0:#f7ecd4; --a1:#efd39b; --a2:#ddaf60; --a3:#b07a2b; --a4:#664214;
+  --g0:#f2f4f4; --g1:#e2e7e7; --g2:#cdd4d5; --g3:#b0babc; --g4:#8a9699;
   --w-display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
   --w-body:"Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --w-bg:#141a19; --w-panel:#1b2321; --w-fg:#e4ebe9; --w-muted:#9aaaa6; --w-line:#2e3936;
   --w-land:#232c2a; --w-street:#36423f; --w-street2:#4d5b57;
-  --w-near:#232c2a; --w-old:#a77d38; --w-new:#f0654b; --w-closer:#5fb8a2; --w-ink:#e4ebe9; --w-accent:#7cc2b0; --w-chg:#3a3020; --d0:#1c2530; --d1:#26405c; --d2:#36628f; --d3:#5389c4; --d4:#9cc4ee; color-scheme:dark}}
+  --w-near:#232c2a; --w-old:#a77d38; --w-new:#f0654b; --w-closer:#5fb8a2; --w-ink:#e4ebe9; --w-accent:#7cc2b0; --w-chg:#3a3020; --d0:#1c2530; --d1:#26405c; --d2:#36628f; --d3:#5389c4; --d4:#9cc4ee; --r0:#3c1b17; --r1:#702519; --r2:#b23a25; --r3:#e8634a; --r4:#ffb4a3; --a0:#2f291d; --a1:#4f3f22; --a2:#7d612c; --a3:#b68c3f; --a4:#ecc16e; --g0:#1c2224; --g1:#273033; --g2:#343e40; --g3:#465254; --g4:#5f6d71; color-scheme:dark}}
 :root[data-theme="dark"]{
   --w-bg:#141a19; --w-panel:#1b2321; --w-fg:#e4ebe9; --w-muted:#9aaaa6; --w-line:#2e3936;
   --w-land:#232c2a; --w-street:#36423f; --w-street2:#4d5b57;
-  --w-near:#232c2a; --w-old:#a77d38; --w-new:#f0654b; --w-closer:#5fb8a2; --w-ink:#e4ebe9; --w-accent:#7cc2b0; --w-chg:#3a3020; --d0:#1c2530; --d1:#26405c; --d2:#36628f; --d3:#5389c4; --d4:#9cc4ee; color-scheme:dark}
+  --w-near:#232c2a; --w-old:#a77d38; --w-new:#f0654b; --w-closer:#5fb8a2; --w-ink:#e4ebe9; --w-accent:#7cc2b0; --w-chg:#3a3020; --d0:#1c2530; --d1:#26405c; --d2:#36628f; --d3:#5389c4; --d4:#9cc4ee; --r0:#3c1b17; --r1:#702519; --r2:#b23a25; --r3:#e8634a; --r4:#ffb4a3; --a0:#2f291d; --a1:#4f3f22; --a2:#7d612c; --a3:#b68c3f; --a4:#ecc16e; --g0:#1c2224; --g1:#273033; --g2:#343e40; --g3:#465254; --g4:#5f6d71; color-scheme:dark}
 body{background:var(--w-bg);color:var(--w-fg)}
 .wrap{font-family:var(--w-body);font-size:15px;line-height:1.5;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 32px}
 .wrap{max-width:1500px;margin:0 auto;display:grid;gap:16px}
@@ -58,7 +61,9 @@ canvas#map.onschool{cursor:pointer}
 .dkey{display:grid!important;gap:4px;margin-top:2px}
 .dkey[hidden]{display:none!important}
 .dkey b{font-size:12.5px;font-weight:600}
-.dsteps{display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.legend .dsteps{display:grid;gap:3px;min-width:0}
+.legend .drow{display:grid;grid-template-columns:92px repeat(5,minmax(0,1fr));gap:2px;align-items:center;min-width:0}
+.drow em{font-style:normal;font-size:11.5px;color:var(--w-fg)}
 .dsteps span{display:grid;gap:2px;font-size:11px;color:var(--w-muted);text-align:center;font-variant-numeric:tabular-nums}
 .dsteps i{display:block;height:12px;border-radius:2px;border:1px solid var(--w-line)}
 .dkn{font-size:12px;color:var(--w-muted)}
@@ -187,7 +192,7 @@ td.n,th.n{text-align:right}
     <p><b>Choosing schools:</b> the checkboxes set which buildings run as neighborhood K-5 / K-8 schools. Each home is then measured to the nearest one that is open. Boundaries for a custom set of schools are not drawn, so the assigned view only covers the rec as written. Capacity is not checked: keeping a school open or closing one does not test whether the neighbors can hold the kids.</p>
     <p><b>Areas:</b> NE = north of Burnside and east of N Williams Ave; N = north of Burnside and west of Williams; SE = south of Burnside on the east side; West side = the Lincoln and Ida B. Wells high school clusters. Totals and the table count only the selected area; kids are measured to any school, even across an area line.</p>
     <p><b>Kids</b> are projected 2031-32 PPS K-5 students by home block (the project's 2031-32 "where kids live" estimate), rounded to the nearest 10. <b>Walk</b> is the shortest walking route on the OpenStreetMap street and path network (local OSRM foot routing) from each block's center to the school. Minutes assume 3 mph, so 15 minutes = 0.75 mile. A 5-to-10-year-old usually walks slower than that.</p>
-    <p><b>Density:</b> projected K-5 kids per square mile, each block averaged with its neighbors, in five steps (under 100, 100–200, 200–300, 300–450, 450+; each step holds roughly a fifth of the district’s kids). <b>Walk + density</b> draws the walk colors stronger in denser steps; <b>Density map</b> colors every block by density and stripes the blocks over the line. A desert's density divides its kids by its land area (block areas from census-block cells clipped to the district), so patches of parks or industrial land score low even when they are large.</p>
+    <p><b>Density:</b> projected K-5 kids per square mile, each block averaged with its neighbors, in five steps (under 100, 100–200, 200–300, 300–450, 450+; each step holds roughly a fifth of the district’s kids). <b>Walk + density</b> draws the walk colors stronger in denser steps; <b>Density map</b> colors each block by its walk status and its density together: newly over the line runs from light red to near-black, over the line today too from light to dark amber, and within the line in greys. A desert's density divides its kids by its land area (block areas from census-block cells clipped to the district), so patches of parks or industrial land score low even when they are large.</p>
     <p><b>The rec's closures, as modeled:</b> Sabin, Irvington, Rose City Park, Beach, Buckman, Creston, Lewis, Marysville, Peninsula, Woodmere and Cesar Chavez close. Rigler becomes a Spanish dual-language hub with no neighborhood area; Lent and Richmond are hubs too.</p>
   </div>
 </div>
@@ -220,7 +225,8 @@ const hex=h=>{h=h.trim().replace('#','');if(h.length===3)h=h.split('').map(c=>c+
 function readColors(){const cs=getComputedStyle(document.documentElement);
   ['bg','panel','fg','muted','line','land','street','street2','near','old','new','closer','ink'].forEach(t=>COL[t]=cs.getPropertyValue('--w-'+t).trim()||'#888');
   COL.rgb={};['near','old','new','closer'].forEach(t=>COL.rgb[t]=hex(COL[t]));
-  COL.d=[0,1,2,3,4].map(q=>cs.getPropertyValue('--d'+q).trim()||'#888'); PAT={}}
+  const ramp=c=>[0,1,2,3,4].map(q=>cs.getPropertyValue('--'+c+q).trim()||'#888');
+  COL.d=ramp('d'); COL.r=ramp('r'); COL.a=ramp('a'); COL.g=ramp('g'); PAT={}}
 function pattern(kind){if(PAT[kind])return PAT[kind];const n=Math.round(9*(window.devicePixelRatio||1)),c=document.createElement('canvas');c.width=c.height=n;
   const g=c.getContext('2d');g.globalAlpha=kind==='new'?1:.5;g.strokeStyle=kind==='new'?COL.new:COL.old;g.lineWidth=Math.max(1.6,n*.24);g.beginPath();
   for(const o of [-n,0,n]){g.moveTo(o,n);g.lineTo(o+n,0)}g.stroke();return PAT[kind]=ctx.createPattern(c,'repeat')}
@@ -393,7 +399,7 @@ function render(){
   if(!rec&&mode==='assigned') mode='closest';
   const FS=D.blocks.map((_,i)=>F(i));
   D.blocks.forEach((bk,i)=>{const f=FS[i], kk=cat(f), rc=COL.rgb[kk], dc=dcls(SD[i]);
-    if(colorBy==='dens'){FILL[i]=COL.d[dc];HATCH[i]=kk==='new'||kk==='old'?kk:null}
+    if(colorBy==='dens'){FILL[i]=kk==='new'?COL.r[dc]:kk==='old'?COL.a[dc]:kk==='closer'?COL.closer:COL.g[dc];HATCH[i]=null}
     else{const al=colorBy==='shade'&&kk!=='near'?DAL[dc]:1;FILL[i]=`rgba(${rc[0]},${rc[1]},${rc[2]},${al})`;HATCH[i]=null}
     if(area!=='all'&&bk[10]!==area) return;
     if(f.t>T.mi) a+=bk[1]; if(f.r>T.mi) b+=bk[1];
@@ -426,8 +432,11 @@ function render(){
   document.getElementById('dH').textContent=`Walk deserts${area==='all'?'':' in '+AREA_SHORT[area]}, ranked by density`;
   document.getElementById('dtbl').innerHTML=DES.slice(0,15).map((d,c)=>`<tr data-c="${c}" title="${d.sq.toFixed(2)} sq mi; longest walk ${d.mx.toFixed(2)} mi"><td>${c+1}</td><td>${d.name}</td><td>${d.to}</td><td class="n">${fmt(d.kids)}</td><td class="n">${(Math.round(d.den/10)*10).toLocaleString('en-US')}</td><td class="n">${fmt(d.nw)}</td></tr>`).join('')||'<tr><td colspan="6">None</td></tr>';
   document.getElementById('lgShade').hidden=colorBy==='walk';
-  document.getElementById('dkS').innerHTML=DLAB.map((l,q)=>`<span><i style="background:${colorBy==='dens'?COL.d[q]:`rgba(${COL.rgb.new.join(',')},${DAL[q]})`}"></i>${l}</span>`).join('');
-  document.getElementById('dkN').textContent=colorBy==='dens'?'Red stripes: newly over the line. Amber stripes: over the line today too.':'Over-the-line colors get stronger where more kids live.';
+  const chips=(cols)=>cols.map(c=>`<span><i style="background:${c}"></i></span>`).join('');
+  document.getElementById('dkS').innerHTML=colorBy==='dens'
+    ?`<div class="drow"><em>Newly over</em>${chips(COL.r)}</div><div class="drow"><em>Over today too</em>${chips(COL.a)}</div><div class="drow"><em>Within the line</em>${chips(COL.g)}</div><div class="drow"><em></em>${DLAB.map(l=>`<span>${l}</span>`).join('')}</div>`
+    :`<div class="drow"><em></em>${DLAB.map((l,q)=>`<span><i style="background:rgba(${COL.rgb.new.join(',')},${DAL[q]})"></i>${l}</span>`).join('')}</div>`;
+  document.getElementById('dkN').textContent=colorBy==='dens'?'Darker = more kids per square mile. Dark red is where many kids are newly too far.':'Over-the-line colors get stronger where more kids live.';
   document.querySelectorAll('[data-s]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.s===colorBy));
   // markers + checkboxes
   redraw();
