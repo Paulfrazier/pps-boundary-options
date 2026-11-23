@@ -1,0 +1,443 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>School walks after closures | PPS boundary options</title>
+<meta name="description" content="Which homes would be more than a 15-minute walk or a mile from an elementary school under the Superintendent’s recommendation, with a school picker and walk deserts ranked by how many kids live there (model estimates, 2031-32).">
+<link rel="stylesheet" href="site.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&display=swap"><link rel="stylesheet" href="site2-chrome.css">
+<style>
+/* Layout: header + switches, then map (left, large, zoomable) beside a summary + school-picker column; stacks on phones. */
+:root{
+  --w-bg:#f4f6f5; --w-panel:#ffffff; --w-fg:#1d2624; --w-muted:#5d6b68; --w-line:#d5dcda;
+  --w-land:#e6ebe9; --w-street:#c3cdca; --w-street2:#9eaba7;
+  --w-near:#e6ebe9; --w-old:#e8b96a; --w-new:#c8412b; --w-closer:#3f8f7d; --w-ink:#1d2624; --w-accent:#2f6b5e; --w-chg:#fbefd9;
+  --w-display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
+  --w-body:"Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --w-bg:#141a19; --w-panel:#1b2321; --w-fg:#e4ebe9; --w-muted:#9aaaa6; --w-line:#2e3936;
+  --w-land:#232c2a; --w-street:#36423f; --w-street2:#4d5b57;
+  --w-near:#232c2a; --w-old:#a77d38; --w-new:#f0654b; --w-closer:#5fb8a2; --w-ink:#e4ebe9; --w-accent:#7cc2b0; --w-chg:#3a3020; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --w-bg:#141a19; --w-panel:#1b2321; --w-fg:#e4ebe9; --w-muted:#9aaaa6; --w-line:#2e3936;
+  --w-land:#232c2a; --w-street:#36423f; --w-street2:#4d5b57;
+  --w-near:#232c2a; --w-old:#a77d38; --w-new:#f0654b; --w-closer:#5fb8a2; --w-ink:#e4ebe9; --w-accent:#7cc2b0; --w-chg:#3a3020; color-scheme:dark}
+body{background:var(--w-bg);color:var(--w-fg)}
+.wrap{font-family:var(--w-body);font-size:15px;line-height:1.5;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 32px}
+.wrap{max-width:1500px;margin:0 auto;display:grid;gap:16px}
+h1{font-family:var(--w-display);font-weight:700;font-size:clamp(26px,3.6vw,38px);line-height:1.05;margin:0;text-wrap:balance;letter-spacing:.005em}
+.lede{margin:6px 0 0;color:var(--w-muted);max-width:80ch}
+.controls{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.ctl{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.ctl > span{font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.07em;color:var(--w-muted)}
+.switch{display:inline-flex;flex-wrap:wrap;border:1px solid var(--w-line);border-radius:999px;background:var(--w-panel);padding:3px;gap:2px}
+.switch button{font:600 14px var(--w-body);color:var(--w-muted);background:none;border:0;border-radius:999px;padding:7px 13px;cursor:pointer}
+.switch button[aria-pressed="true"]{background:var(--w-fg);color:var(--w-bg)}
+.switch button:disabled{opacity:.4;cursor:not-allowed}
+button:focus-visible,input:focus-visible{outline:2px solid var(--w-accent);outline-offset:2px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:18px;align-items:start}
+@media (max-width:900px){.grid{grid-template-columns:minmax(0,1fr)}}
+.mapbox{background:var(--w-panel);border:1px solid var(--w-line);border-radius:10px;padding:8px;position:relative;min-width:0;overflow:hidden}
+canvas#map{display:block;width:100%;touch-action:none;cursor:grab}
+canvas#map.drag{cursor:grabbing}
+canvas#map.onschool{cursor:pointer}
+.blk path{stroke:none}
+.out{fill:none;stroke:var(--w-street2);stroke-width:1.2}
+.st-r{fill:none;stroke:var(--w-street);stroke-width:.35}
+.st-t{fill:none;stroke:var(--w-street);stroke-width:.8}
+.st-s{fill:none;stroke:var(--w-street2);stroke-width:1.3}
+.lbl{font-family:var(--w-body);font-weight:600;fill:var(--w-muted);paint-order:stroke;stroke:var(--w-panel);stroke-linejoin:round;letter-spacing:.04em;text-transform:uppercase;pointer-events:none}
+.sch g{cursor:pointer}
+.sch text{font:600 11px var(--w-body);fill:var(--w-ink);paint-order:stroke;stroke:var(--w-panel);stroke-width:3px;stroke-linejoin:round;pointer-events:none}
+.sch .closed text{fill:var(--w-new)}
+.nonames .sch text,.nostreets .lbl{display:none}
+.dots{fill:none;stroke:var(--w-ink);stroke-opacity:.7;stroke-width:3;stroke-linecap:round;pointer-events:none}
+.nodots .dots{display:none}
+.ramp{width:46px;height:12px;border-radius:3px;flex:none;background:linear-gradient(90deg,color-mix(in srgb,var(--w-new) 14%,var(--w-panel)),var(--w-new))}
+.sel{fill:var(--w-ink);fill-opacity:.16;stroke:var(--w-ink);stroke-width:2;pointer-events:none}
+#dtbl tr{cursor:pointer}
+#dtbl tr:hover td,#dtbl tr.on td{background:var(--w-chg)}
+.dnote{font-size:12px;color:var(--w-muted);margin:6px 0 0}
+.hl{fill:none;stroke:var(--w-ink);stroke-width:1.8;pointer-events:none}
+.zoom{position:absolute;top:16px;right:16px;display:grid;gap:4px}
+.zoom button{width:38px;height:34px;border-radius:8px;border:1px solid var(--w-line);background:var(--w-panel);color:var(--w-fg);font:600 18px/1 var(--w-body);cursor:pointer;box-shadow:0 2px 8px rgb(0 0 0 / .08)}
+.zoom button#zr,.zoom button#zx{font-size:11px;width:auto;padding:0 6px}
+.hint{position:absolute;left:16px;bottom:12px;font-size:12px;color:var(--w-muted);background:var(--w-panel);padding:2px 8px;border-radius:6px;pointer-events:none}
+.mapbox.full{position:fixed;inset:0;z-index:50;border-radius:0;border:0;padding:calc(8px + env(safe-area-inset-top,0px)) max(8px,env(safe-area-inset-right,0px)) calc(8px + env(safe-area-inset-bottom,0px)) max(8px,env(safe-area-inset-left,0px));display:flex}
+.mapbox.full canvas#map{width:100%;height:100%!important;flex:1}
+.mapbox.full .zoom{top:calc(16px + env(safe-area-inset-top,0px));right:max(16px,env(safe-area-inset-right,0px))}
+.mini{display:none;position:absolute;left:max(16px,env(safe-area-inset-left,0px));top:calc(16px + env(safe-area-inset-top,0px));background:var(--w-panel);border:1px solid var(--w-line);border-radius:8px;padding:8px 10px;font-size:12.5px;gap:5px;box-shadow:0 2px 10px rgb(0 0 0 / .1);max-width:270px}
+.mapbox.full .mini{display:grid}
+.mini div{display:flex;gap:7px;align-items:center}
+.mini b{font-weight:600}
+body.lock{overflow:hidden}
+.side{display:grid;gap:14px;min-width:0}
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.stat{background:var(--w-panel);border:1px solid var(--w-line);border-radius:8px;padding:10px 12px}
+.stat b{display:block;font:700 26px/1.1 var(--w-display);font-variant-numeric:tabular-nums}
+.stat span{font-size:12px;color:var(--w-muted);line-height:1.3;display:block}
+.stat.new b{color:var(--w-new)}
+.legend{display:grid;gap:6px;font-size:13.5px}
+.legend div{display:flex;gap:9px;align-items:center}
+.sw{width:16px;height:16px;border-radius:3px;flex:none;border:1px solid var(--w-line)}
+.mk{width:16px;height:16px;flex:none}
+h2{font:600 13px var(--w-body);text-transform:uppercase;letter-spacing:.07em;color:var(--w-muted);margin:0 0 6px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;font-variant-numeric:tabular-nums}
+td,th{padding:5px 4px;border-bottom:1px solid var(--w-line);text-align:left}
+th{font-weight:600;color:var(--w-muted);font-size:12px}
+td.n,th.n{text-align:right}
+.picker{background:var(--w-panel);border:1px solid var(--w-line);border-radius:10px;padding:12px;display:grid;gap:10px}
+.picker p{margin:0;font-size:12.5px;color:var(--w-muted)}
+.presets{display:flex;flex-wrap:wrap;gap:6px}
+.presets button{font:600 12.5px var(--w-body);border:1px solid var(--w-line);background:var(--w-bg);color:var(--w-fg);border-radius:999px;padding:5px 11px;cursor:pointer}
+.slist{max-height:360px;overflow:auto;display:grid;gap:8px;padding-right:4px}
+.slist h3{font:600 11.5px var(--w-body);text-transform:uppercase;letter-spacing:.07em;color:var(--w-muted);margin:4px 0 0}
+.slist .cols{display:grid;grid-template-columns:1fr 1fr;gap:1px 8px}
+.slist label{display:flex;gap:6px;align-items:center;font-size:13px;padding:2px 4px;border-radius:5px;cursor:pointer;min-width:0}
+.slist label span{min-width:0;line-height:1.25}
+.slist label.chg{background:var(--w-chg)}
+.slist label small{color:var(--w-muted);font-size:10.5px;margin-left:auto;flex:none}
+.scn{font-size:12.5px;font-weight:600;color:var(--w-new)}
+.tip{position:absolute;pointer-events:none;background:var(--w-panel);border:1px solid var(--w-line);border-radius:8px;padding:9px 11px;font-size:13px;box-shadow:0 6px 22px rgb(0 0 0 / .18);max-width:270px;line-height:1.4}
+.tip .k{color:var(--w-muted);font-size:11.5px;text-transform:uppercase;letter-spacing:.06em}
+.tip .far{color:var(--w-new);font-weight:600}
+.notes{font-size:13px;color:var(--w-muted);max-width:84ch;display:grid;gap:6px}
+.notes p{margin:0}
+.notes b{color:var(--w-fg);font-weight:600}
+</style>
+</head>
+<body class="s2map">
+<div class="ainote band"><div class="in">Independent analysis by a PPS parent, not an official Portland Public Schools product. Built with AI: Claude did the work, directed and guided by Paul Frazier. <a href="how.html">How we did this</a> &middot; <a href="#ai">About the AI</a></div></div>
+<nav class="site-nav band" aria-label="Site"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="why-close.html">Why close schools?</a><a href="map.html">Map</a><a href="far-walks.html">Far walks</a><a href="school-walks.html" aria-current="page">School walks</a><a href="options.html">Options</a><a href="plans.html">Plans</a><a href="durability.html">Year by year</a><a href="schools.html">Schools</a><a href="sabin.html">Sabin and NE</a><a href="sabin-explore.html">Exploring Sabin options</a><a href="sizes.html">Why these sizes</a><a href="segc.html">Lessons from SEGC</a><a href="method.html">Method</a><a href="sources.html">Sources</a><a href="how.html">How we did this</a><a class="earlier" href="../earlier/index.html">Earlier work (Scenario A/B era)</a></div></nav>
+<div class="wrap">
+  <header>
+    <h1 id="h1">Homes more than a 15-minute walk from school</h1>
+    <p class="lede" id="lede"></p>
+  </header>
+  <div class="controls">
+    <div class="ctl"><span>Area</span>
+      <div class="switch" role="group" aria-label="Area">
+        <button data-a="all">Whole district</button><button data-a="NE">NE</button><button data-a="N">N</button><button data-a="SE">SE</button><button data-a="W">West side</button>
+      </div></div>
+    <div class="ctl"><span>School</span>
+      <div class="switch" role="group" aria-label="Which school">
+        <button id="mAs" data-m="assigned">Assigned by boundaries</button>
+        <button id="mCl" data-m="closest">Closest open school</button>
+      </div></div>
+    <div class="ctl"><span>Show</span>
+      <div class="switch" role="group" aria-label="Layers"><button id="tDots" aria-pressed="true">Shade by kid density</button></div></div>
+    <div class="ctl"><span>Line</span>
+      <div class="switch" role="group" aria-label="Distance threshold">
+        <button data-v="fifteen">15-minute walk</button>
+        <button data-v="mile">1 mile</button>
+      </div></div>
+  </div>
+  <div class="grid">
+    <div class="mapbox" id="mapbox">
+      <canvas id="map" role="img" aria-label="Zoomable map of Portland Public Schools blocks colored by walk distance to school"></canvas>
+      <div class="zoom"><button id="zi" aria-label="Zoom in">+</button><button id="zo" aria-label="Zoom out">&minus;</button><button id="zr" aria-label="Fit the selected area">Fit</button><button id="zx" aria-label="Expand map to fill the window" aria-pressed="false">Expand</button></div>
+      <div class="mini" id="mini"><b id="miniT"></b><div><span class="sw" style="background:var(--w-new)"></span><span id="miniNew"></span></div><div><span class="sw" style="background:var(--w-old)"></span><span id="miniOld"></span></div><div><span class="sw" style="background:var(--w-closer)"></span><span id="miniCl"></span></div></div>
+      <div class="hint" id="hint">Scroll or pinch to zoom, drag to move, click a school to open or close it</div>
+      <div class="tip" id="tip" hidden></div>
+    </div>
+    <aside class="side">
+      <div class="stats">
+        <div class="stat"><b id="sToday">–</b><span>kids over the line today</span></div>
+        <div class="stat"><b id="sRec">–</b><span id="sRecL">kids over the line under the rec</span></div>
+        <div class="stat new"><b id="sNew">+–</b><span>newly over</span></div>
+      </div>
+      <div class="legend">
+        <div><span class="sw" style="background:var(--w-new)"></span><span id="lgNew"></span></div>
+        <div><span class="sw" style="background:var(--w-old)"></span><span id="lgOld"></span></div>
+        <div><span class="sw" style="background:var(--w-closer)"></span><span id="lgCloser"></span></div>
+        <div><span class="sw" style="background:var(--w-near)"></span><span id="lgNear"></span></div>
+        <div id="lgShade"><span class="ramp"></span><span>Fainter = fewer kids, stronger = more kids per sq mi</span></div>
+        <div><svg class="mk" viewBox="-8 -8 16 16"><circle r="4.5" fill="var(--w-ink)"/></svg><span>Open neighborhood K-5 / K-8</span></div>
+        <div><svg class="mk" viewBox="-8 -8 16 16"><path d="M-5 -5L5 5M5 -5L-5 5" stroke="var(--w-new)" stroke-width="2.4"/></svg><span>Closed</span></div>
+        <div><svg class="mk" viewBox="-8 -8 16 16"><rect x="-4" y="-4" width="8" height="8" transform="rotate(45)" fill="none" stroke="var(--w-ink)" stroke-width="1.8"/></svg><span>Dual-language hub only (no neighborhood zone)</span></div>
+      </div>
+      <div class="picker">
+        <div><h2>Which schools are open</h2>
+          <p>Starts as the Superintendent's recommendation. Check a school to keep it open as a neighborhood school, uncheck to close it. You can also click a school on the map. Your choices use the closest-open-school view, since new boundaries would need a new solve.</p></div>
+        <div class="presets"><button id="pRec">The rec</button><button id="pToday">Today's schools</button><span class="scn" id="scnNote"></span></div>
+        <div class="slist" id="slist"></div>
+      </div>
+      <div>
+        <h2 id="dH">Walk deserts, ranked by density</h2>
+        <table><thead><tr><th>#</th><th>Around</th><th>Walks to</th><th class="n">Kids</th><th class="n">Kids / sq mi</th><th class="n">Newly over</th></tr></thead><tbody id="dtbl"></tbody></table>
+        <p class="dnote">A desert is a connected patch of blocks over the line that all walk to the same school (“Walks to”: closest open or assigned, as the view is set), within one area, with at least 50 kids. Density = projected K-5 kids per square mile of the patch. "Around" names today's closest school for most of its kids. Click a row to zoom to it.</p>
+      </div>
+      <div>
+        <h2 id="tblH"></h2>
+        <table><thead><tr><th id="thA">School today</th><th class="n">Kids</th><th id="thB">Under the rec</th></tr></thead><tbody id="tbl"></tbody></table>
+      </div>
+    </aside>
+  </div>
+  <div class="notes">
+    <p><b>Assigned by boundaries</b> measures the walk to the K-5 school whose attendance area each home falls in: today's 2025-26 boundaries vs the boundaries in the Superintendent's recommendation (memo of 2026-11-12) as modeled in this project. <b>Closest open school</b> ignores boundaries and measures the walk to the nearest open neighborhood K-5 or K-8. The gap between the two views is the extra walking that comes from where the lines are drawn rather than from which schools close.</p>
+    <p><b>Choosing schools:</b> the checkboxes set which buildings run as neighborhood K-5 / K-8 schools. Each home is then measured to the nearest one that is open. Boundaries for a custom set of schools are not drawn, so the assigned view only covers the rec as written. Capacity is not checked: keeping a school open or closing one does not test whether the neighbors can hold the kids.</p>
+    <p><b>Areas:</b> NE = north of Burnside and east of N Williams Ave; N = north of Burnside and west of Williams; SE = south of Burnside on the east side; West side = the Lincoln and Ida B. Wells high school clusters. Totals and the table count only the selected area; kids are measured to any school, even across an area line.</p>
+    <p><b>Kids</b> are projected 2031-32 PPS K-5 students by home block (the project's 2031-32 "where kids live" estimate), rounded to the nearest 10. <b>Walk</b> is the shortest walking route on the OpenStreetMap street and path network (local OSRM foot routing) from each block's center to the school. Minutes assume 3 mph, so 15 minutes = 0.75 mile. A 5-to-10-year-old usually walks slower than that.</p>
+    <p><b>Density shading:</b> blocks over the line are drawn stronger where more projected K-5 kids live per square mile (each block averaged with its neighbors) and fainter where few do; full strength starts at the district's 85th percentile. A desert's density divides its kids by its land area (block areas from census-block cells clipped to the district), so patches of parks or industrial land score low even when they are large.</p>
+    <p><b>The rec's closures, as modeled:</b> Sabin, Irvington, Rose City Park, Beach, Buckman, Creston, Lewis, Marysville, Peninsula, Woodmere and Cesar Chavez close. Rigler becomes a Spanish dual-language hub with no neighborhood area; Lent and Richmond are hubs too.</p>
+  </div>
+</div>
+
+<script>
+const TH={fifteen:{mi:.75,name:'15 minutes',ttl:'more than a 15-minute walk from'},
+          mile:{mi:1,name:'1 mile',ttl:'more than a mile’s walk from'}};
+const AREA={all:'Portland Public Schools',NE:'Northeast Portland',N:'North Portland',SE:'Southeast Portland',W:'Portland’s west side'};
+const AREA_SHORT={NE:'Northeast',N:'North',SE:'Southeast',W:'West side'};
+const DROP_LABELS=new Set(['Logie Trail','Front','Naito']);
+// block: [path,kids, closest today d,recd,name,recname, assigned today d,recd,name,recname, area]
+let D=null, view='fifteen', mode='assigned', area='NE', open=[], recOpen=[], todayOpen=[];
+const r10=n=>Math.round(n/10)*10, fmt=n=>r10(n).toLocaleString('en-US');
+const mins=mi=>Math.round(mi*20);
+const isRec=()=>open.every((v,j)=>v===recOpen[j]);
+const scnWord=()=>isRec()?'under the rec':'with your choices';
+// nearest open school for block i under the current choices
+function scn(i){const nb=D.nb[i],K=D.K;for(let q=0;q<K;q++){const j=nb[q];if(open[j])return {d:nb[K+q]/1000,n:D.schools[j][0]}}
+  return {d:nb[2*K-1]/1000+.01,n:'none of the 8 nearest open'}}
+function F(i){const b=D.blocks[i];
+  if(mode==='assigned') return {t:b[6],r:b[7],nt:b[8],nr:b[9]};
+  if(isRec()) return {t:b[2],r:b[3],nt:b[4],nr:b[5]};
+  const s=scn(i); return {t:b[2],r:s.d,nt:b[4],nr:s.n}}
+function cat(f){const t=TH[view].mi; if(f.r>t) return f.t>t?'old':'new'; return f.t>t?'closer':'near'}
+
+// ---- canvas view: world units = the data's map units; screen = ox + s0*(k*x + tx - VB0)
+let k=1,tx=0,ty=0,VB=null,cv,ctx,box,dpr=1,cw=1,ch=1,s0=1,ox=0,oy=0;
+let PATH=[],PB=[],GRID=null,GS=40,PST={},POUT=null,FILL=[],HL=-1,SEL=null,COL={},hctx,LBL=[],queued=false;
+const hex=h=>{h=h.trim().replace('#','');if(h.length===3)h=h.split('').map(c=>c+c).join('');const n=parseInt(h,16);return [(n>>16)&255,(n>>8)&255,n&255]};
+function readColors(){const cs=getComputedStyle(document.documentElement);
+  ['bg','panel','fg','muted','line','land','street','street2','near','old','new','closer','ink'].forEach(t=>COL[t]=cs.getPropertyValue('--w-'+t).trim()||'#888');
+  COL.rgb={};['near','old','new','closer'].forEach(t=>COL.rgb[t]=hex(COL[t]))}
+function draw(){queued=false; if(!ctx)return;
+  const S=s0*k, X0=ox+s0*(tx-VB[0]), Y0=oy+s0*(ty-VB[1]);
+  ctx.setTransform(dpr,0,0,dpr,0,0); ctx.fillStyle=COL.panel; ctx.fillRect(0,0,cw,ch);
+  ctx.setTransform(dpr*S,0,0,dpr*S,dpr*X0,dpr*Y0);
+  ctx.fillStyle=COL.land; ctx.fill(POUT);
+  const vx0=-X0/S, vy0=-Y0/S, vx1=(cw-X0)/S, vy1=(ch-Y0)/S;
+  for(let i=0;i<PATH.length;i++){const b=PB[i]; if(b[2]<vx0||b[0]>vx1||b[3]<vy0||b[1]>vy1)continue; ctx.fillStyle=FILL[i]; ctx.fill(PATH[i])}
+  ctx.lineJoin='round'; ctx.lineCap='round';
+  if(S>0.45){ctx.strokeStyle=COL.street;ctx.lineWidth=.35/S;ctx.stroke(PST.r)}
+  ctx.strokeStyle=COL.street;ctx.lineWidth=.8/S;ctx.stroke(PST.t);
+  ctx.strokeStyle=COL.street2;ctx.lineWidth=1.3/S;ctx.stroke(PST.s);
+  ctx.lineWidth=1.2/S;ctx.stroke(POUT);
+  if(SEL){ctx.globalAlpha=.16;ctx.fillStyle=COL.ink;SEL.forEach(i=>ctx.fill(PATH[i]));ctx.globalAlpha=1;ctx.strokeStyle=COL.ink;ctx.lineWidth=1.6/S;SEL.forEach(i=>ctx.stroke(PATH[i]))}
+  if(HL>=0){ctx.strokeStyle=COL.ink;ctx.lineWidth=1.8/S;ctx.stroke(PATH[HL])}
+  // screen-space labels and markers
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  const sx=x=>X0+S*x, sy=y=>Y0+S*y;
+  ctx.lineJoin='round';
+  if(S>=0.75){ctx.font='600 9.5px "Source Sans 3",system-ui,sans-serif';ctx.textAlign='center';ctx.textBaseline='alphabetic';
+    LBL.forEach(([t,x,y,a])=>{const X=sx(x),Y=sy(y);if(X<-50||X>cw+50||Y<-20||Y>ch+20)return;
+      ctx.save();ctx.translate(X,Y);ctx.rotate(a*Math.PI/180);ctx.strokeStyle=COL.panel;ctx.lineWidth=2.8;ctx.strokeText(t.toUpperCase(),0,-3);ctx.fillStyle=COL.muted;ctx.fillText(t.toUpperCase(),0,-3);ctx.restore()})}
+  const names=S>=0.55; ctx.font='600 11px "Source Sans 3",system-ui,sans-serif';ctx.textAlign='left';ctx.textBaseline='middle';
+  D.schools.forEach((sc,j)=>{const X=sx(sc[1]),Y=sy(sc[2]);if(X<-150||X>cw+20||Y<-20||Y>ch+20)return;
+    const o=open[j],hub=!o&&sc[3]==='hub';
+    if(o){ctx.beginPath();ctx.arc(X,Y,5,0,7);ctx.fillStyle=COL.ink;ctx.fill();ctx.lineWidth=1.6;ctx.strokeStyle=COL.panel;ctx.stroke()}
+    else if(hub){ctx.save();ctx.translate(X,Y);ctx.rotate(Math.PI/4);ctx.fillStyle=COL.panel;ctx.fillRect(-4.5,-4.5,9,9);ctx.lineWidth=1.8;ctx.strokeStyle=COL.ink;ctx.strokeRect(-4.5,-4.5,9,9);ctx.restore()}
+    else{ctx.beginPath();ctx.moveTo(X-5,Y-5);ctx.lineTo(X+5,Y+5);ctx.moveTo(X+5,Y-5);ctx.lineTo(X-5,Y+5);ctx.lineWidth=2.6;ctx.lineCap='round';ctx.strokeStyle=COL.new;ctx.stroke()}
+    if(names){ctx.lineWidth=3;ctx.strokeStyle=COL.panel;ctx.strokeText(sc[0],X+9,Y);ctx.fillStyle=o||hub?COL.ink:COL.new;ctx.fillText(sc[0],X+9,Y)}});
+  document.getElementById('hint').hidden=k>1.6;
+}
+function redraw(){if(!queued){queued=true;requestAnimationFrame(draw)}}
+function applyZ(){redraw()}
+function layout(){const full=box.classList.contains('full');
+  const w=cv.clientWidth||box.clientWidth-16;
+  const h=full?(box.clientHeight-16):Math.min(w*VB[3]/VB[2], innerHeight*0.9);
+  if(!full) cv.style.height=h+'px'; else cv.style.height='';
+  cw=w; ch=full?cv.clientHeight:h; dpr=window.devicePixelRatio||1;
+  cv.width=Math.round(cw*dpr); cv.height=Math.round(ch*dpr);
+  s0=Math.min(cw/VB[2],ch/VB[3]); ox=(cw-s0*VB[2])/2; oy=(ch-s0*VB[3])/2; redraw()}
+function clampT(){const w=VB[2],h=VB[3],cx=VB[0]+w/2,cy=VB[1]+h/2;
+  tx=Math.min(cx-VB[0]*k,Math.max(cx-(VB[0]+w)*k,tx)); ty=Math.min(cy-VB[1]*k,Math.max(cy-(VB[1]+h)*k,ty));}
+function zoomAt(f,px,py){const nk=Math.max(1,Math.min(40,k*f)); f=nk/k;
+  tx=px-(px-tx)*f; ty=py-(py-ty)*f; k=nk; if(k===1){tx=0;ty=0} clampT(); applyZ();}
+function fitBox(x0,y0,x1,y1,pad){k=Math.max(1,Math.min(40,VB[2]/(x1-x0+2*pad),VB[3]/(y1-y0+2*pad)));
+  tx=VB[0]+VB[2]/2-k*(x0+x1)/2; ty=VB[1]+VB[3]/2-k*(y0+y1)/2; clampT(); applyZ()}
+function fitArea(){ if(area==='all'||!D.regions[area]){k=1;tx=0;ty=0;applyZ();return} const r=D.regions[area]; fitBox(r[0],r[1],r[2],r[3],30)}
+// client point -> pre-zoom map units (what the old SVG called viewBox coords)
+function svgPt(cx,cy){const r=cv.getBoundingClientRect();return {x:(cx-r.left-ox)/s0+VB[0], y:(cy-r.top-oy)/s0+VB[1]}}
+function worldAt(cx,cy){const p=svgPt(cx,cy);return {x:(p.x-tx)/k,y:(p.y-ty)/k}}
+function blockAt(cx,cy){const w=worldAt(cx,cy);const gx=Math.floor(w.x/GS),gy=Math.floor(w.y/GS);const c=GRID.get(gx+','+gy);if(!c)return -1;
+  for(const i of c){const b=PB[i];if(w.x<b[0]||w.x>b[2]||w.y<b[1]||w.y>b[3])continue;if(hctx.isPointInPath(PATH[i],w.x,w.y))return i}return -1}
+function schoolAt(cx,cy){const r=cv.getBoundingClientRect(),S=s0*k,X0=ox+s0*(tx-VB[0]),Y0=oy+s0*(ty-VB[1]);let best=-1,bd=11;
+  D.schools.forEach((sc,j)=>{const d=Math.hypot(X0+S*sc[1]-(cx-r.left),Y0+S*sc[2]-(cy-r.top));if(d<bd){bd=d;best=j}});return best}
+
+function build(){
+  cv=document.getElementById('map'); ctx=cv.getContext('2d'); box=document.getElementById('mapbox');
+  hctx=document.createElement('canvas').getContext('2d');
+  VB=[-10,-10,D.W+20,D.H+20];
+  readColors();
+  POUT=new Path2D(D.outline); ['r','t','s'].forEach(c=>PST[c]=new Path2D(D.streets[c]));
+  GRID=new Map();
+  D.blocks.forEach((b,i)=>{PATH.push(new Path2D(b[0]));const bb=bbox(i);PB.push(bb);
+    for(let gx=Math.floor(bb[0]/GS);gx<=Math.floor(bb[2]/GS);gx++)for(let gy=Math.floor(bb[1]/GS);gy<=Math.floor(bb[3]/GS);gy++){const key=gx+','+gy;let c=GRID.get(key);if(!c)GRID.set(key,c=[]);c.push(i)}});
+  LBL=D.labels.filter(l=>!DROP_LABELS.has(l[0]));
+  SD=D.blocks.map((b,i)=>{let kk=b[1],aa=b[11];for(const j of D.adj[i]){kk+=D.blocks[j][1];aa+=D.blocks[j][11]}return aa>0?kk/aa:0});
+  {const v=SD.filter((x,i)=>D.blocks[i][1]>0).sort((a,b)=>a-b);DCAP=v[Math.floor(v.length*.85)]||1}
+  const td=document.getElementById('tDots');
+  td.onclick=()=>{const on=td.getAttribute('aria-pressed')!=='true';td.setAttribute('aria-pressed',on);shade=on;render()};
+  document.getElementById('dtbl').addEventListener('click',e=>{const tr=e.target.closest('tr');if(tr&&tr.dataset.c!=null)focusDesert(+tr.dataset.c)});
+  const mq=matchMedia('(prefers-color-scheme: dark)');
+  const recolor=()=>{readColors();if(D)render()};
+  mq.addEventListener&&mq.addEventListener('change',recolor);
+  new MutationObserver(recolor).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+  new ResizeObserver(()=>layout()).observe(box);
+  layout();
+
+  const tip=document.getElementById('tip');
+  function show(ev){
+    const j=schoolAt(ev.clientX,ev.clientY); cv.classList.toggle('onschool',j>=0);
+    if(j>=0){const s=D.schools[j];if(HL!==-1){HL=-1;redraw()}
+      tip.innerHTML=`<b>${s[0]}</b><div style="color:var(--w-muted)">${open[j]?'Open':'Closed'} in this view. Today: ${s[5]?'open':'no neighborhood zone'}. The rec: ${s[3]==='open'?'open':s[3]==='hub'?'dual-language hub only':'closes'}.</div><div class="k" style="margin-top:4px">Click to ${open[j]?'close':'open'} it</div>`;
+      place(ev);return}
+    const i=blockAt(ev.clientX,ev.clientY); if(i<0){hide();return}
+    if(HL!==i){HL=i;redraw()}
+    const b=D.blocks[i], t=TH[view].mi, f=F(i), kids=b[1];
+    const far=m=>m>t?' class="far"':'', w=mode==='assigned'?'Assigned school':'Closest open school';
+    tip.innerHTML=`<div class="k">${w}, today</div><div${far(f.t)}>${f.nt}: ${f.t.toFixed(2)} mi, ~${mins(f.t)} min</div>`+
+      `<div class="k" style="margin-top:5px">${w}, ${scnWord()}</div><div${far(f.r)}>${f.nr}: ${f.r.toFixed(2)} mi, ~${mins(f.r)} min</div>`+
+      `<div style="margin-top:5px;color:var(--w-muted)">${kids<0.5?'Under 1 projected K-5 kid':'About '+Math.round(kids)+' projected K-5 kid'+(Math.round(kids)===1?'':'s')} on this block</div>`;
+    place(ev);
+  }
+  function place(ev){tip.hidden=false;
+    const r=box.getBoundingClientRect(); let x=ev.clientX-r.left+14, y=ev.clientY-r.top+14;
+    if(x+280>r.width) x=ev.clientX-r.left-284; if(y+150>r.height) y=ev.clientY-r.top-154;
+    tip.style.left=Math.max(4,x)+'px'; tip.style.top=Math.max(4,y)+'px';}
+  function hide(){tip.hidden=true;if(HL!==-1){HL=-1;redraw()}}
+
+  const P=new Map(); let moved=false, pinch0=null, hov=null;
+  cv.addEventListener('pointerdown',e=>{P.set(e.pointerId,{x:e.clientX,y:e.clientY});moved=false;
+    if(P.size===2){const [a,b]=[...P.values()];pinch0={d:Math.hypot(a.x-b.x,a.y-b.y),k}}});
+  cv.addEventListener('pointermove',e=>{
+    if(!P.has(e.pointerId)){ if(e.pointerType==='mouse'){hov=e;if(!hov._q){hov._q=1;requestAnimationFrame(()=>show(hov))}} return }
+    const prev=P.get(e.pointerId), cur={x:e.clientX,y:e.clientY};
+    if(P.size===2&&pinch0){P.set(e.pointerId,cur);const [a,b]=[...P.values()];const m=svgPt((a.x+b.x)/2,(a.y+b.y)/2);
+      zoomAt(pinch0.k*Math.hypot(a.x-b.x,a.y-b.y)/pinch0.d/k,m.x,m.y);moved=true;hide();return}
+    if(!moved&&Math.hypot(cur.x-prev.x,cur.y-prev.y)<4) return;
+    P.set(e.pointerId,cur);
+    if(k>1){tx+=(cur.x-prev.x)/s0;ty+=(cur.y-prev.y)/s0;clampT();applyZ();moved=true;cv.classList.add('drag');hide();try{cv.setPointerCapture(e.pointerId)}catch(_){}}
+  });
+  const up=e=>{const wasDown=P.has(e.pointerId);P.delete(e.pointerId);if(P.size<2)pinch0=null;cv.classList.remove('drag');
+    if(wasDown&&!moved&&e.type==='pointerup'){const j=schoolAt(e.clientX,e.clientY); if(j>=0)toggle(j); show(e)}};
+  cv.addEventListener('pointerup',up); cv.addEventListener('pointercancel',up);
+  cv.addEventListener('pointerleave',e=>{if(e.pointerType==='mouse'&&!P.size)hide()});
+  cv.addEventListener('wheel',e=>{e.preventDefault();const p=svgPt(e.clientX,e.clientY);zoomAt(Math.exp(-e.deltaY*0.0022),p.x,p.y);hide()},{passive:false});
+  cv.addEventListener('dblclick',e=>{const p=svgPt(e.clientX,e.clientY);zoomAt(2,p.x,p.y)});
+  const mid=()=>[VB[0]+VB[2]/2,VB[1]+VB[3]/2];
+  document.getElementById('zi').onclick=()=>zoomAt(1.6,...mid());
+  document.getElementById('zo').onclick=()=>zoomAt(1/1.6,...mid());
+  document.getElementById('zr').onclick=fitArea;
+  const zx=document.getElementById('zx');
+  const setFull=on=>{box.classList.toggle('full',on);document.body.classList.toggle('lock',on);zx.textContent=on?'Close':'Expand';zx.setAttribute('aria-pressed',on);hide();requestAnimationFrame(layout)};
+  zx.onclick=()=>setFull(!box.classList.contains('full'));
+  addEventListener('keydown',e=>{if(e.key==='Escape'&&box.classList.contains('full'))setFull(false)});
+
+  // school picker: the area's own schools, plus schools in other areas that are among the 3 closest for its homes
+  NEAR={};['NE','N','SE','W'].forEach(a=>NEAR[a]=new Set());
+  D.blocks.forEach((bk,i)=>{if(bk[1]<=0)return;for(let q=0;q<3;q++){const j=D.nb[i][q];if(D.schools[j][4]!==bk[10])NEAR[bk[10]].add(j)}});
+  document.getElementById('slist').addEventListener('change',e=>{const c=e.target;if(c.dataset&&c.dataset.j!=null){open[+c.dataset.j]=c.checked;afterChange()}});
+  document.getElementById('pRec').onclick=()=>{open=recOpen.slice();afterChange()};
+  document.getElementById('pToday').onclick=()=>{open=todayOpen.slice();afterChange()};
+}
+let SD=[], DCAP=1, shade=true;
+let NEAR={}, listArea=null, DES=[], selC=-1;
+const BB={};
+function bbox(i){if(BB[i])return BB[i];const n=D.blocks[i][0].match(/-?\d+(\.\d+)?/g).map(Number);let a=[1e9,1e9,-1e9,-1e9];
+  for(let q=0;q<n.length;q+=2){a[0]=Math.min(a[0],n[q]);a[2]=Math.max(a[2],n[q]);a[1]=Math.min(a[1],n[q+1]);a[3]=Math.max(a[3],n[q+1])}return BB[i]=a}
+function deserts(FS){const t=TH[view].mi,N=D.blocks.length,seen=new Uint8Array(N),out=[];
+  for(let s0=0;s0<N;s0++){if(seen[s0]||!(FS[s0].r>t))continue;
+    const st=[s0],m=[];seen[s0]=1;
+    while(st.length){const i=st.pop();m.push(i);for(const j of D.adj[i])if(!seen[j]&&FS[j].r>t&&FS[j].nr===FS[s0].nr&&D.blocks[j][10]===D.blocks[s0][10]){seen[j]=1;st.push(j)}}
+    let kids=0,sq=0,nw=0,mx=0;const ar={},nm={};
+    m.forEach(i=>{const b=D.blocks[i],f=FS[i];kids+=b[1];sq+=b[11];if(f.t<=t)nw+=b[1];mx=Math.max(mx,f.r);ar[b[10]]=(ar[b[10]]||0)+b[1];nm[b[4]]=(nm[b[4]]||0)+b[1]});
+    if(kids<50)continue;
+    const top=o=>Object.entries(o).sort((x,y)=>y[1]-x[1])[0][0];
+    out.push({m,kids,sq,nw,mx,den:kids/sq,area:top(ar),name:top(nm),to:FS[s0].nr})}
+  return out.sort((a,b)=>b.den-a.den)}
+function focusDesert(c){const d=DES[c];if(!d)return;selC=c;
+  SEL=d.m;
+  let a=[1e9,1e9,-1e9,-1e9];d.m.forEach(i=>{const b=PB[i];a=[Math.min(a[0],b[0]),Math.min(a[1],b[1]),Math.max(a[2],b[2]),Math.max(a[3],b[3])]});
+  fitBox(a[0],a[1],a[2],a[3],40);
+  document.querySelectorAll('#dtbl tr').forEach(r=>r.classList.toggle('on',+r.dataset.c===c));
+  box.scrollIntoView({block:'nearest',behavior:'smooth'})}
+function item(j){const s=D.schools[j];return `<label id="lab${j}"><input type="checkbox" id="cb${j}" data-j="${j}"><span>${s[0]}</span><small>${s[3]==='close'?'rec closes':s[3]==='hub'?'rec hub':''}</small></label>`}
+function grp(title,js){js=js.sort((a,b)=>D.schools[a][0].localeCompare(D.schools[b][0]));return js.length?`<div><h3>${title}</h3><div class="cols">${js.map(item).join('')}</div></div>`:''}
+function listHTML(){const own=a=>D.schools.map((s,j)=>j).filter(j=>D.schools[j][4]===a);
+  if(area==='all') return ['NE','N','SE','W'].map(a=>grp(AREA_SHORT[a],own(a))).join('');
+  return grp(AREA_SHORT[area],own(area))+grp('Nearby, in other areas',[...NEAR[area]]);}
+function toggle(j){open[j]=!open[j];afterChange()}
+function afterChange(){ if(!isRec()&&mode==='assigned') mode='closest'; render() }
+function render(){
+  const T=TH[view], rec=isRec(); let a=0,b=0,c=0; const by={};
+  if(!rec&&mode==='assigned') mode='closest';
+  const FS=D.blocks.map((_,i)=>F(i));
+  D.blocks.forEach((bk,i)=>{const f=FS[i], kk=cat(f), rc=COL.rgb[kk], al=shade&&kk!=='near'?(0.14+0.86*Math.pow(Math.min(1,SD[i]/DCAP),0.75)):1;
+    FILL[i]=`rgba(${rc[0]},${rc[1]},${rc[2]},${al.toFixed(2)})`;
+    if(area!=='all'&&bk[10]!==area) return;
+    if(f.t>T.mi) a+=bk[1]; if(f.r>T.mi) b+=bk[1];
+    if(kk==='new'){c+=bk[1]; const key=f.nt; by[key]=by[key]||{k:0,to:{}}; by[key].k+=bk[1]; by[key].to[f.nr]=(by[key].to[f.nr]||0)+bk[1];}});
+  const sw=scnWord(), M=mode==='assigned'?'their assigned school':'the closest open school';
+  document.getElementById('sToday').textContent=fmt(a);
+  document.getElementById('sRec').textContent=fmt(b);
+  document.getElementById('sRecL').textContent='kids over the line '+sw;
+  document.getElementById('sNew').textContent='+'+fmt(c);
+  document.getElementById('h1').textContent=`${AREA[area]}: homes ${T.ttl} ${M}`;
+  document.getElementById('lede').textContent=(mode==='assigned'
+    ?'Each patch is one census block. Walks go to the K-5 school each home is zoned for: today’s boundaries vs the boundaries in the Superintendent’s November 12 recommendation.'
+    :`Each patch is one census block. Walks go to the closest open neighborhood K-5 or K-8, ignoring boundaries: today vs ${rec?'the Superintendent’s November 12 recommendation':'the set of open schools you picked'}.`);
+  document.getElementById('lgNew').textContent=`Newly over ${T.name} ${sw}`;
+  document.getElementById('lgOld').textContent=`Over ${T.name} both today and ${sw}`;
+  document.getElementById('lgCloser').textContent=`Over ${T.name} today, within it ${sw}`;
+  document.getElementById('lgNear').textContent=`Within ${T.name} both today and ${sw}`;
+  document.getElementById('miniT').textContent=`${mode==='assigned'?'Assigned school':'Closest open school'}: over ${T.name}`;
+  document.getElementById('miniNew').textContent=`Newly over ${sw}`;
+  document.getElementById('miniOld').textContent=`Over both today and ${sw}`;
+  document.getElementById('miniCl').textContent=`Over today, within ${sw}`;
+  document.getElementById('tblH').textContent=`Newly over ${T.name}${area==='all'?'':' in '+AREA_SHORT[area]}, by school`;
+  document.getElementById('thA').textContent=mode==='assigned'?'Assigned today':'Nearest today';
+  document.getElementById('thB').textContent=mode==='assigned'?'Assigned under the rec':'Nearest open '+sw;
+  const rows=Object.entries(by).filter(([,v])=>v.k>=5).sort((x,y)=>y[1].k-x[1].k);
+  document.getElementById('tbl').innerHTML=rows.map(([n,v])=>{
+    const to=Object.entries(v.to).sort((x,y)=>y[1]-x[1]).filter(([,q],j)=>j===0||q>=v.k*.2).map(x=>x[0]).join(', ');
+    return `<tr><td>${n}</td><td class="n">${fmt(v.k)}</td><td>${to}</td></tr>`}).join('')||'<tr><td colspan="3">None</td></tr>';
+  DES=deserts(FS).filter(d=>area==='all'||d.area===area); selC=-1; SEL=null;
+  document.getElementById('dH').textContent=`Walk deserts${area==='all'?'':' in '+AREA_SHORT[area]}, ranked by density`;
+  document.getElementById('dtbl').innerHTML=DES.slice(0,15).map((d,c)=>`<tr data-c="${c}" title="${d.sq.toFixed(2)} sq mi; longest walk ${d.mx.toFixed(2)} mi"><td>${c+1}</td><td>${d.name}</td><td>${d.to}</td><td class="n">${fmt(d.kids)}</td><td class="n">${(Math.round(d.den/10)*10).toLocaleString('en-US')}</td><td class="n">${fmt(d.nw)}</td></tr>`).join('')||'<tr><td colspan="6">None</td></tr>';
+  document.getElementById('lgShade').hidden=!shade;
+  // markers + checkboxes
+  redraw();
+  const n=open.reduce((s,v,j)=>s+(v!==recOpen[j]),0);
+  document.getElementById('scnNote').textContent=n?`${n} change${n>1?'s':''} from the rec`:'';
+  document.getElementById('mAs').disabled=!rec;
+  document.getElementById('mAs').title=rec?'':'Boundaries for your set of schools are not drawn; use the closest-open-school view';
+  document.querySelectorAll('[data-v]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.v===view));
+  document.querySelectorAll('[data-m]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.m===mode));
+  document.querySelectorAll('[data-a]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.a===area));
+  if(listArea!==area){document.getElementById('slist').innerHTML=listHTML();listArea=area}
+  D.schools.forEach((s,j)=>{const c=document.getElementById('cb'+j);if(!c)return;c.checked=open[j];document.getElementById('lab'+j).classList.toggle('chg',open[j]!==recOpen[j])});
+}
+function fromHash(){const h=location.hash.slice(1).split('-');
+  const na=AREA[h[2]]?h[2]:'NE', changed=na!==area||!D; area=na;
+  mode=h[0]==='closest'?'closest':'assigned'; view=TH[h[1]]?h[1]:'fifteen';
+  if(D){render(); if(changed) fitArea()}}
+const go=()=>{location.hash=[mode,view,area].join('-')};
+document.querySelectorAll('[data-v]').forEach(x=>x.addEventListener('click',()=>{view=x.dataset.v;go()}));
+document.querySelectorAll('[data-m]').forEach(x=>x.addEventListener('click',()=>{if(x.disabled)return;mode=x.dataset.m;go()}));
+document.querySelectorAll('[data-a]').forEach(x=>x.addEventListener('click',()=>{area=x.dataset.a;go();fitArea()}));
+addEventListener('hashchange',fromHash);
+fromHash();
+fetch('data/school_walks.json').then(r=>r.json()).then(j=>{D=j;
+  recOpen=D.schools.map(s=>s[3]==='open'); todayOpen=D.schools.map(s=>!!s[5]); open=recOpen.slice();
+  build();render();fitArea()}).catch(e=>{document.getElementById('mapbox').textContent='The map data did not load. Reload the page to try again.';console.error(e)});
+</script>
+<footer class="band"><div class="in">
+<p id="ai"><b>Built with AI.</b> The research, data work, modeling and writing were done by AI (Claude, from Anthropic), directed and guided by Paul Frazier, a PPS parent, who made every judgment call and checked results against PPS&rsquo;s documents. Best effort; it will have errors. <a href="how.html">How we did this</a> &middot; <a href="method.html">Method</a>.</p>
+<p>Every figure is a model estimate on the Portland State University (PSU) enrollment forecast, from our model, not PPS&rsquo;s, unless a PPS source is cited. Figures may not hold up on PPS&rsquo;s own data.</p>
+<p><a href="../LICENSE">License</a>: code MIT, analysis CC BY 4.0, OpenStreetMap-derived data &copy; OpenStreetMap contributors, ODbL. &copy; 2026 Paul Frazier. Data generated November 15, 2026.</p>
+</div></footer>
+</body>
+</html>
