@@ -54,18 +54,18 @@
   },
   "6-8": {
    "kids": 5830.7,
-   "avg_walk_mi": 1.71,
+   "avg_walk_mi": 1.699,
    "pct_within_0.5mi": 8.5,
    "pct_within_1.0mi": 31.7,
    "pct_within_1.5mi": 55.2,
    "kids_over_bus_threshold": 2612.0,
    "bus_threshold_mi": 1.5,
-   "avg_bike_mi": 1.763,
-   "kids_past_closer_school": 1226.0,
+   "avg_bike_mi": 1.749,
+   "kids_past_closer_school": 1148.0,
    "past_margin_mi": 0.25,
-   "kids_reassigned_vs_status_quo": 1598.0,
-   "poc_share_of_movers_vs_status_quo": 0.425,
-   "kids_reassigned_vs_today": 1710.0,
+   "kids_reassigned_vs_status_quo": 1500.0,
+   "poc_share_of_movers_vs_status_quo": 0.411,
+   "kids_reassigned_vs_today": 1612.0,
    "poc_share_district": 0.428,
    "dissimilarity_index": 0.198,
    "schools_open": 16,
@@ -77,25 +77,29 @@
     "Gray": 472,
     "Hosford": 495,
     "Jackson": 409,
-    "Lane": 259,
+    "Lane": 357,
     "Sellwood": 351,
     "Tubman": 398
    },
    "above_ceiling": {
     "George": 673
    },
-   "avg_utilization": 0.688,
+   "avg_utilization": 0.689,
    "min_size": 177,
    "max_size": 731,
    "schools_in_range_2025_26_basis": 13,
-   "schools_in_range_at_minus9pct": 8,
+   "schools_in_range_at_minus9pct": 7,
    "split_feeders_es_to_ms": {
     "Bridlemile": {
      "Gray": 102.2,
      "West Sylvan": 51.7
+    },
+    "Kelly": {
+     "Harrison Park": 67.0,
+     "Lane": 100.4
     }
    },
-   "n_split_feeders_es_to_ms": 1
+   "n_split_feeders_es_to_ms": 2
   },
   "9-12": {
    "kids": 9261.0,
@@ -127,12 +131,12 @@
    "schools_in_range_at_minus9pct": 6,
    "split_feeders_ms_to_hs": {
     "Harrison Park": {
-     "Franklin": 325.6,
+     "Franklin": 180.8,
      "McDaniel": 350.3
     },
     "Lane": {
      "Cleveland": 91.6,
-     "Franklin": 302.1
+     "Franklin": 446.8
     },
     "Mt Tabor": {
      "Franklin": 210.9,
@@ -1754,18 +1758,18 @@
       "first_year_out": null,
       "by": null,
       "sizes_by_year": {
-       "2027-28": 605.0,
-       "2028-29": 618.6,
-       "2029-30": 643.3,
-       "2030-31": 612.3,
-       "2031-32": 620.4,
-       "2032-33": 614.4,
-       "2033-34": 638.0,
-       "2034-35": 643.8,
-       "2035-36": 645.6
+       "2027-28": 566.7,
+       "2028-29": 545.3,
+       "2029-30": 535.4,
+       "2030-31": 509.8,
+       "2031-32": 522.4,
+       "2032-33": 518.2,
+       "2033-34": 542.1,
+       "2034-35": 542.5,
+       "2035-36": 543.4
       },
       "program_only": false,
-      "size_2031": 620.4,
+      "size_2031": 522.4,
       "in_range_by_year": [
        true,
        true,
@@ -1872,20 +1876,20 @@
      },
      "Lane": {
       "first_year_out": "2027-28",
-      "by": -121.5,
+      "by": -83.1,
       "sizes_by_year": {
-       "2027-28": 378.5,
-       "2028-29": 328.5,
-       "2029-30": 285.0,
-       "2030-31": 269.4,
-       "2031-32": 258.9,
-       "2032-33": 255.7,
-       "2033-34": 256.0,
-       "2034-35": 268.6,
-       "2035-36": 269.7
+       "2027-28": 416.9,
+       "2028-29": 401.9,
+       "2029-30": 392.9,
+       "2030-31": 371.9,
+       "2031-32": 356.9,
+       "2032-33": 351.9,
+       "2033-34": 351.9,
+       "2034-35": 369.9,
+       "2035-36": 371.9
       },
       "program_only": false,
-      "size_2031": 258.9,
+      "size_2031": 356.9,
       "in_range_by_year": [
        false,
        false,

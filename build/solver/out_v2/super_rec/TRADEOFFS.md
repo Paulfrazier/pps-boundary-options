@@ -16,9 +16,11 @@ build/pps-texts/superintendent-recommendation-2026-11-12.md. Scored, not solved.
 Sitton 208, James John 233, Maplewood 248, Lee/Sunrise 254, Forest Park 258, Stephenson 260, Clark 262, Hayhurst 266*,
 Grout 280, Bridger 285, Vernon 289, Woodlawn 290, Glencoe 301, Boise-Eliot/Humboldt 310, Rieke 313, Capitol Hill 320,
 Laurelhurst 323, Chapman 336, Markham 345, Abernethy 355. Over building: Whitman 447 / 416 seats, George 673 / 623.
-Middle under 500: Lane (Brentwood) 259*, Sellwood 351, Jackson 409, Tubman 423, Beaumont 464, Gray 472, Hosford 495.
-(*) model assumptions: Hayhurst gets back A's piece given to Rieke; Lane's low number comes from A's Lane -> Harrison Park
-move plus Sellwood keeping its own area. PPS lists Hosford, Gray, Sellwood under 400 and does not flag Brentwood.
+Middle under 500: Sellwood 351, Lane (Brentwood) 357*, Jackson 409, Tubman 423, Beaumont 464, Gray 472, Hosford 495.
+(*) model assumptions: Hayhurst gets back A's piece given to Rieke. Kelly's 6-8 stays at Brentwood (corrected 2026-11-25: Scenario A's
+Kelly -> Harrison Park move went with Brentwood taking Duniway/Lewis from a closing Sellwood; the memo lists neither for the rec, and its
+2027-28 Brentwood 422 / Harrison Park 407 fit Kelly staying; ours 417 / 567, the Harrison Park gap being Bridger's 6-8, which PPS moves in 2028-29).
+PPS lists Hosford, Gray, Sellwood under 400.
 
 ## Main findings
 1. James John and Sitton: the memo keeps James John open because it is "close to the planning floor of 360 through 2031-32"
