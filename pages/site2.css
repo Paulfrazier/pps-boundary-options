@@ -3,7 +3,7 @@
 :root{
   --paper:#f3f5f5; --panel:#ffffff; --ink:#132029; --mute:#53626d; --rule:#d3dbdf; --soft:#e7ecee;
   --accent:#0d5b77; --accent-ink:#ffffff; --good:#1b6e45; --bad:#a3361b; --badbg:#f8e6e0; --goodbg:#e2f1e8;
-  --p-A:#16785a; --p-B:#2c5fb3; --p-rec:#bf5414; --p-today:#66717b; --p-ne:#7a4ea3; --p-sabin:#b0306a;
+  --p-A:#16785a; --p-B:#2c5fb3; --p-rec:#bf5414; --p-today:#66717b; --p-ne:#7a4ea3; --p-sabin:#b0306a; --p-As:#0f7a8a;
   --display:"Schibsted Grotesk","Helvetica Neue",Arial,sans-serif;
   --body:"Source Sans 3","Segoe UI",system-ui,-apple-system,sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
@@ -12,11 +12,11 @@
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
   --paper:#0f1519; --panel:#172027; --ink:#e3e9ec; --mute:#9aa8b2; --rule:#2b3741; --soft:#1d2830;
   --accent:#6fb8d6; --accent-ink:#0b1418; --good:#6fd19c; --bad:#ff9a7a; --badbg:#3a2019; --goodbg:#16301f;
-  --p-A:#4fc79a; --p-B:#7ea6f0; --p-rec:#f08c4f; --p-today:#a3adb6; --p-ne:#b994e0; --p-sabin:#f27fb0; color-scheme:dark}}
+  --p-A:#4fc79a; --p-B:#7ea6f0; --p-rec:#f08c4f; --p-today:#a3adb6; --p-ne:#b994e0; --p-sabin:#f27fb0; --p-As:#5cc8d8; color-scheme:dark}}
 :root[data-theme="dark"]{
   --paper:#0f1519; --panel:#172027; --ink:#e3e9ec; --mute:#9aa8b2; --rule:#2b3741; --soft:#1d2830;
   --accent:#6fb8d6; --accent-ink:#0b1418; --good:#6fd19c; --bad:#ff9a7a; --badbg:#3a2019; --goodbg:#16301f;
-  --p-A:#4fc79a; --p-B:#7ea6f0; --p-rec:#f08c4f; --p-today:#a3adb6; --p-ne:#b994e0; --p-sabin:#f27fb0; color-scheme:dark}
+  --p-A:#4fc79a; --p-B:#7ea6f0; --p-rec:#f08c4f; --p-today:#a3adb6; --p-ne:#b994e0; --p-sabin:#f27fb0; --p-As:#5cc8d8; color-scheme:dark}
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
@@ -170,3 +170,4 @@ h1 .pname,h2 .pname,h3 .pname{white-space:normal}
 td.sel{background:var(--soft);box-shadow:inset 2px 0 0 var(--ink),inset -2px 0 0 var(--ink)}
 .site-nav a{font-size:.86rem;padding:5px 7px}
 .pb.sabin{--pc:var(--p-sabin)} .pcard.sabin{--pc:var(--p-sabin)}
+.pb.As{--pc:var(--p-As)} .pcard.As{--pc:var(--p-As)}

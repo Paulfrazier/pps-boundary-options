@@ -16,20 +16,32 @@
 <nav class="site-nav band" aria-label="Site"><div class="in"><a class="brand" href="../index.html">PPS boundary options</a><a href="../pages/why-close.html">Why close schools?</a><a href="../pages/map.html">Map</a><a href="../pages/far-walks.html">Far walks</a><a href="../pages/school-walks.html">School walks</a><a href="../pages/options.html">Options</a><a href="../pages/plans.html" aria-current="page">Plans</a><a href="../pages/durability.html">Year by year</a><a href="../pages/schools.html">Schools</a><a href="../pages/sabin.html">Sabin and NE</a><a href="../pages/sabin-explore.html">Exploring Sabin options</a><a href="../pages/sizes.html">Why these sizes</a><a href="../pages/segc.html">Lessons from SEGC</a><a href="../pages/method.html">Method</a><a href="../pages/sources.html">Sources</a><a href="../pages/how.html">How we did this</a><a class="earlier" href="../earlier/index.html">Earlier work (Scenario A/B era)</a></div></nav>
 <main class="band"><div class="in">
 <header class="hero col"><div class="eyebrow">Plans</div><h1>What each plan changes</h1>
-<p class="lede">The Superintendent&rsquo;s recommendation, two maps of ours, and an NE-only option. Each runs on the same model, and every school count below is 2031-32.</p></header>
+<p class="lede">The Superintendent&rsquo;s recommendation, three maps of ours (Map A, Map A with Sellwood Middle open, Map B), and Sabin-only and NE-only options. Each runs on the same model, and every school count below is 2031-32.</p></header>
 <section class="col" id="A" style="max-width:var(--wide)">
 <h2><span class="pb A" aria-hidden="true">A</span> Map A: our best overall</h2>
 <div class="col"><p>Map A is the strongest plan we found. Every school is at target at every level, and the worst walks are nearly gone.</p>
 <ul class="tight"><li><b>School set:</b> ours, carried over from our earlier best plan. Ch&aacute;vez, Lent and Rigler keep neighborhood areas, with immersion alongside; James John, Maplewood and Stephenson close.</li>
 <li><b>Lines:</b> K-5 redrawn under the move rule and a worst-walk pass; middle school redrawn for its own K-5 zones; high school redrawn toward one-high-school feeders.</li>
-<li><b>The price is more change:</b> 14 buildings close instead of the rec&rsquo;s 10 (also James John, Maplewood, Stephenson and Sellwood Middle School), and 4,145 K-5 kids change schools against the rec&rsquo;s 2,133. Of those, 1,317 are at schools that stay open (337 of them to a longer walk); the rec moves 124.</li></ul>
+<li><b>The price is more change:</b> 14 buildings close instead of the rec&rsquo;s 10 (also James John, Maplewood, Stephenson and Sellwood Middle School; <a href="#As">Map A + Sellwood</a> keeps Sellwood open), and 4,145 K-5 kids change schools against the rec&rsquo;s 2,133. Of those, 1,317 are at schools that stay open (337 of them to a longer walk); the rec moves 124.</li></ul>
 <div class="note"><b>2031-32 on our model</b>
 <span>K-5 under 360: none.</span>
 <span>Middle under 500: none.</span>
 
 <span>Immersion or program only, no neighborhood area: Richmond.</span>
 <span>Run: <code>mapA4</code>. <a href="map.html">On the map</a> &middot; <a href="compare.html#A">worst walks</a>.</span></div>
-<p class="cite">Full trade-offs: <a href="../build/solver/out_v2/mapA4/TRADEOFFS.md">mapA4/TRADEOFFS.md</a>.</p></div></section><section class="col" id="B" style="max-width:var(--wide)">
+<p class="cite">Full trade-offs: <a href="../build/solver/out_v2/mapA4/TRADEOFFS.md">mapA4/TRADEOFFS.md</a>.</p></div></section><section class="col" id="As" style="max-width:var(--wide)">
+<h2><span class="pb As" aria-hidden="true">AS</span> Map A, Sellwood Middle open</h2>
+<div class="col"><p>Map A with Sellwood Middle School kept open. Elementary and high school lines are Map A&rsquo;s; middle school is redrawn with each K-5 zone kept whole and lines drawn for shorter walks, not forced up to 500.</p>
+<ul class="tight"><li><b>Middle school:</b> 8 of 14 at 500 in 2031-32 (10 in 2027-28). Short: Sellwood about 300, Brentwood 411, Jackson 420, Harrison Park 455, Hosford 456 and Tubman 461. There are not enough middle schoolers in the Southeast for five schools at 500.</li>
+<li><b>Better middle school walks than Map A or the rec:</b> 1.64 mi on average (Map A 1.67, the rec 1.71), no K-5 zone split across middle schools, and 69% of middle schools feed one high school (Map A 53%, the rec 81%).</li>
+<li><b>Students in poverty:</b> every K-5 student, including every student experiencing poverty, is in a school at 360 or more (the rec: 64%). They change schools a little less often than students overall (27.5% vs 28.1%); under the rec they change a little more often (24.5% vs 22.8%).</li></ul>
+<div class="note"><b>2031-32 on our model</b>
+<span>K-5 under 360: none.</span>
+<span>Middle under 500: Sellwood 301; Brentwood 411; Jackson 420; Harrison Park 455; Hosford 456; Tubman 461.</span>
+
+<span>Immersion or program only, no neighborhood area: Richmond.</span>
+<span>Run: <code>mapA_sell3</code>. <a href="map.html">On the map</a> &middot; <a href="compare.html#As">worst walks</a>.</span></div>
+</div></section><section class="col" id="B" style="max-width:var(--wide)">
 <h2><span class="pb B" aria-hidden="true">B</span> Map B: the rec, lines fixed</h2>
 <div class="col"><p>Map B is the realistic ask: the recommendation&rsquo;s closures and immersion hubs, plus one change, James John into Sitton, and better K-5 lines.</p>
 <ul class="tight"><li><b>The North works:</b> Sitton about 361, Rosa Parks 408, Astor 460, Chief Joseph 427.</li>
